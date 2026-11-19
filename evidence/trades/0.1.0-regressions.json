@@ -1,0 +1,121 @@
+{
+  "integrationBaseCommit": "0b428205c300c068d7b73532e8f74ad6d1432aa5",
+  "archiveSHA256": "4a1dd2049f620fc9ba43daeedd6d93a94efb372d26124a1d42ea8cd47aa1353d",
+  "command": "sh evidence/trades/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "passingSuites": [
+      "account",
+      "activity-direct",
+      "activity-installed",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "media-direct",
+      "media-installed",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces",
+      "special-direct",
+      "special-installed",
+      "trades-direct",
+      "trades-installed"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "03485890fb2cea40c1ed04fa0dc9d41078cdeccb978131aaa0c53042df1775c8"
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "8adbd0f530c9a95ae8b1d6182d2d6f8b386d0c683460da106d436f1c41f461c5"
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "23afe636ad8e1aa5b3a44307b720ea2f69401be9b08f1ebe5a75f3ec52915bdb"
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "1d79b8eab651206ccccb2cd96b5aa58debe70f68ae5dcfe0a5f405b37ba76164"
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f"
+    },
+    "media-direct": {
+      "status": "passed",
+      "receiptSHA256": "4677625e01a6e24581d4c94a14e62dc689294b8f290820a09e3dea52486a6dc1"
+    },
+    "media-installed": {
+      "status": "passed",
+      "receiptSHA256": "f53ef978fc5958939f21f062c2dd9170d6c3b7ab4616d02707bc65cec99cce36"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "9a565dce7a46b40b39d3f60c694eee813229c5026ea255759be7aab59e6f5457"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "ea68fa2309cc51d6e3107ab576006c4676fcafb03fc34c1a55bc3ac0ea6e5c96"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "b115c657274d3e6a76c2f3d9c3a6b3cf2d849ef9c39f426465b30a54b107f0c7"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "992bde2a619d8eccaa4c85cadd441a7d2ad7f880293ec2a9466914a3b2124f0a"
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "733b8874778b92c34cf623f16ad734c15810a5ec5ec49974a38dbf68d2008f0f"
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "43958e15a6d84bd9182521d70381af0710f265a0194d17302ff59b39795aed49"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "16222dc5e8e599d45bf5ffb3a7ca1f95408dec11993b82a89f7a0347730bb6b9"
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "eef72dbc5f809adb24c5c81a14ad2b5d615f235716108e4c39dd23f252823d54"
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "a27a0ea81b7c41a3cdb07c7c225ebb94291eb7fd424c4b9a84dc32d4c7f45254"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "508f4f6ead0a375aa19648cff2942e76e8f218ee7a138698d8353015def08de9"
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "d03c4ee2f8b2a0d69628309dd105e5745ca15189afd973093ddce2bb352dbf60"
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "2491b443e1514144ea3066fbdf505db9a2cbac11fc63d4ea4fb8ce679ed274aa"
+    },
+    "trades-direct": {
+      "status": "passed",
+      "receiptSHA256": "db5e09e2d84ebf030f16777b573935d86510c7b004558e25facfd34177431e80"
+    },
+    "trades-installed": {
+      "status": "passed",
+      "receiptSHA256": "2746b37b097ce0c3803068e6fc9c85ca1bf7f3369e17c2f5a128f5fcc415ec2f"
+    }
+  }
+}

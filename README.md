@@ -18,6 +18,7 @@
 - [Organize threads into collections](docs/collections.md)
 - [Inspect and respond to post activity](docs/activity.md)
 - [Upload media and retrieve attachments](docs/media.md)
+- [Buy a paid thread or complete a trade order](docs/trades.md)
 
 ## Install a local candidate
 

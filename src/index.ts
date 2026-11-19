@@ -408,3 +408,13 @@ export type {
   SpecialThreadSettings,
   SpecialThreadWriteResult,
 } from "./forum-client/special/client.js";
+
+export { createTradeClient } from "./forum-client/trades/client.js";
+export type {
+  TradeClientOptions, TradeFailure, PaidThread, PaidThreadRead, PaidThreadTerms,
+  PaidThreadForm, PaidThreadPreparation, PaidThreadConfirmation, TradeHandoff,
+  TradeItemTarget, TradeGoods, TradeGoodsRead, TradeRecipientField, TradeOrderTerms,
+  TradeOrderForm, TradeOrderInput, TradeOrderReference, TradeOrderPreparation,
+  TradeOrderCreation, TradeOrder, TradeOrderRead, TradePaymentForm,
+  TradePaymentInput, TradePaymentPreparation, TradePaymentResult,
+} from "./forum-client/trades/client.js";
