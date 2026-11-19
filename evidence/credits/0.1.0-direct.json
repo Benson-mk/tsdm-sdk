@@ -1,0 +1,1093 @@
+{
+  "archiveSHA256": "ee9cca6af49b3328177987c4cc7c3fd3e6240df99f1403839b95b8aecb8acde1",
+  "guideSHA256": "92653654f3edeb92108cde7f52ac9309789c3e90f0bb96976c3808a90a1a4f35",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "limitations": [
+    "Inert loopback responses",
+    "No deployed forum traffic or account effects"
+  ],
+  "results": [
+    {
+      "name": "Python read attendance",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python read balance",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "base"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "base"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python read log",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "log"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "exttype": [
+              "2"
+            ],
+            "income": [
+              "1"
+            ],
+            "optype": [
+              "PRC"
+            ],
+            "starttime": [
+              "2026-11-01"
+            ],
+            "endtime": [
+              "2026-11-30"
+            ],
+            "page": [
+              "2"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "log"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "exttype": [
+              "2"
+            ],
+            "income": [
+              "1"
+            ],
+            "optype": [
+              "PRC"
+            ],
+            "starttime": [
+              "2026-11-01"
+            ],
+            "endtime": [
+              "2026-11-30"
+            ],
+            "page": [
+              "2"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python read group",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python read group detail",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "gid": [
+              "15"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "gid": [
+              "15"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python read expiry",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "expiry"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "do": [
+              "expiry"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python opens switch window",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python deliberate check-in followed by a separate read",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "dsu_paulsign:sign"
+            ],
+            "operation": [
+              "qiandao"
+            ],
+            "infloat": [
+              "1"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "qdmode": [
+              "1"
+            ],
+            "qdxq": [
+              "kx"
+            ],
+            "todaysay": [
+              "Exact & 原文"
+            ],
+            "fastreply": [
+              "1"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "dsu_paulsign:sign"
+            ],
+            "operation": [
+              "qiandao"
+            ],
+            "infloat": [
+              "1"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "qdxq": [
+              "kx"
+            ],
+            "qdmode": [
+              "1"
+            ],
+            "todaysay": [
+              "Exact & 原文"
+            ],
+            "fastreply": [
+              "1"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python deliberate group switch",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "groupsubmit": [
+              "true"
+            ],
+            "gid": [
+              ""
+            ],
+            "editsubmit_btn": [
+              "true"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "referer": [
+              "https://forum.invalid/"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "groupsubmit": [
+              "true"
+            ],
+            "gid": [
+              ""
+            ],
+            "editsubmit_btn": [
+              "true"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "referer": [
+              "https://forum.invalid/"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "Python switch without approval sends zero requests",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "Python rejects a mismatched switch target",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "curl read attendance",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "curl read bounded log",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "log"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "exttype": [
+              "2"
+            ],
+            "income": [
+              "1"
+            ],
+            "optype": [
+              "PRC"
+            ],
+            "starttime": [
+              "2026-11-01"
+            ],
+            "endtime": [
+              "2026-11-30"
+            ],
+            "page": [
+              "2"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "credit"
+            ],
+            "op": [
+              "log"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "exttype": [
+              "2"
+            ],
+            "income": [
+              "1"
+            ],
+            "optype": [
+              "PRC"
+            ],
+            "starttime": [
+              "2026-11-01"
+            ],
+            "endtime": [
+              "2026-11-30"
+            ],
+            "page": [
+              "2"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "curl read switch opener",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "curl deliberate check-in",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "dsu_paulsign:sign"
+            ],
+            "operation": [
+              "qiandao"
+            ],
+            "infloat": [
+              "1"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "qdmode": [
+              "1"
+            ],
+            "qdxq": [
+              "kx"
+            ],
+            "todaysay": [
+              "Exact & 原文"
+            ],
+            "fastreply": [
+              "1"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "dsu_paulsign:sign"
+            ],
+            "operation": [
+              "qiandao"
+            ],
+            "infloat": [
+              "1"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "qdxq": [
+              "kx"
+            ],
+            "qdmode": [
+              "1"
+            ],
+            "todaysay": [
+              "Exact & 原文"
+            ],
+            "fastreply": [
+              "1"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "curl deliberate switch",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "groupsubmit": [
+              "true"
+            ],
+            "gid": [
+              ""
+            ],
+            "editsubmit_btn": [
+              "true"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "referer": [
+              "https://forum.invalid/"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "usergroup"
+            ],
+            "do": [
+              "switch"
+            ],
+            "groupid": [
+              "22"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "f1f2f3f4"
+            ],
+            "groupsubmit": [
+              "true"
+            ],
+            "gid": [
+              ""
+            ],
+            "editsubmit_btn": [
+              "true"
+            ],
+            "handlekey": [
+              "switchgrouphk"
+            ],
+            "referer": [
+              "https://forum.invalid/"
+            ]
+          },
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    },
+    {
+      "name": "curl requires approval for switch",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "curl stops at the unresolved redirect",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ],
+            "test_redirect": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "checkin"
+            ],
+            "test_redirect": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "credits_fixture=loopback"
+        }
+      ]
+    }
+  ]
+}

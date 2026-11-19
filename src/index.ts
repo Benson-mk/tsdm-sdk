@@ -51,6 +51,39 @@ export type {
   SmileyScript,
 } from "./forum-client/media/types.js";
 
+export { createCreditsClient } from "./forum-client/credits/client.js";
+export type {
+  Attendance,
+  AttendanceCalendar,
+  AttendanceResult,
+  CheckInChoice,
+  CheckInFeeling,
+  CheckInForm,
+  CheckInPreparation,
+  CheckInResult,
+  CreditBalance,
+  CreditChange,
+  CreditLog,
+  CreditLogQuery,
+  CreditValue,
+  CreditsClientOptions,
+  CreditsFailure,
+  CreditsHandoff,
+  CreditsRequest,
+  CreditsSession,
+  ExpiringGroup,
+  GroupDetail,
+  GroupExpiry,
+  GroupMenu,
+  GroupPermissionSection,
+  GroupProgress,
+  GroupSummary,
+  GroupSwitchForm,
+  GroupSwitchPreparation,
+  GroupSwitchResult,
+  Groups,
+} from "./forum-client/credits/types.js";
+
 export { createReplyClient } from "./forum-client/replies.js";
 export type {
   ReplyClientOptions,

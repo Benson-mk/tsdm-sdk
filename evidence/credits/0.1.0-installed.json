@@ -1,0 +1,853 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "ee9cca6af49b3328177987c4cc7c3fd3e6240df99f1403839b95b8aecb8acde1",
+  "consumerSHA256": "4bc9fdfc29e6e237c3d61f1b234430072e4ac187d9fe34ff50762fd29c24c934",
+  "guideSHA256": "92653654f3edeb92108cde7f52ac9309789c3e90f0bb96976c3808a90a1a4f35",
+  "pinsSHA256": "d425a30b2d83d9489db9b1a2c5f34de2d2867a381da6439fd5565bd3da3cbd11",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "fixturesVerified": 13,
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "results": [
+    {
+      "name": "attendance state is a read",
+      "actual": [
+        "attendance",
+        true,
+        false,
+        43,
+        12,
+        1699977600,
+        "GET",
+        "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+      ],
+      "expected": [
+        "attendance",
+        true,
+        false,
+        43,
+        12,
+        1699977600,
+        "GET",
+        "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+      ]
+    },
+    {
+      "name": "check-in uses one deliberate plugin POST and verifies attendance",
+      "actual": [
+        "checked-in",
+        true,
+        [
+          [
+            "GET",
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+          ],
+          [
+            "POST",
+            "/plugin.php?id=dsu_paulsign%3Asign&operation=qiandao&infloat=1&inajax=1&tsdmapp=json"
+          ],
+          [
+            "GET",
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+          ]
+        ],
+        {
+          "formhash": "f1f2f3f4",
+          "qdxq": "kx",
+          "qdmode": "1",
+          "todaysay": "Hello & 原文",
+          "fastreply": "1"
+        }
+      ],
+      "expected": [
+        "checked-in",
+        true,
+        [
+          [
+            "GET",
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+          ],
+          [
+            "POST",
+            "/plugin.php?id=dsu_paulsign%3Asign&operation=qiandao&infloat=1&inajax=1&tsdmapp=json"
+          ],
+          [
+            "GET",
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin"
+          ]
+        ],
+        {
+          "formhash": "f1f2f3f4",
+          "qdxq": "kx",
+          "qdmode": "1",
+          "todaysay": "Hello & 原文",
+          "fastreply": "1"
+        }
+      ]
+    },
+    {
+      "name": "check-in preparation is one-use",
+      "actual": "invalid-input",
+      "expected": "invalid-input"
+    },
+    {
+      "name": "duplicate receipt is distinct",
+      "actual": [
+        "already-checked",
+        true,
+        1
+      ],
+      "expected": [
+        "already-checked",
+        true,
+        1
+      ]
+    },
+    {
+      "name": "success wording with missing stored attendance stays unknown",
+      "actual": [
+        "unknown",
+        {
+          "feeling": "kx",
+          "message": "Hello & 原文"
+        },
+        3
+      ],
+      "expected": [
+        "unknown",
+        {
+          "feeling": "kx",
+          "message": "Hello & 原文"
+        },
+        3
+      ]
+    },
+    {
+      "name": "readback after a lost check-in observes attendance without attribution",
+      "actual": [
+        "attendance-observed",
+        true,
+        1
+      ],
+      "expected": [
+        "attendance-observed",
+        true,
+        1
+      ]
+    },
+    {
+      "name": "same UID new session cannot send a prepared check-in",
+      "actual": [
+        "session-changed",
+        1
+      ],
+      "expected": [
+        "session-changed",
+        1
+      ]
+    },
+    {
+      "name": "closed window offers no submission",
+      "actual": [
+        "closed",
+        [
+          "GET"
+        ]
+      ],
+      "expected": [
+        "closed",
+        [
+          "GET"
+        ]
+      ]
+    },
+    {
+      "name": "native desk settles legacy status",
+      "actual": [
+        "attendance",
+        true,
+        [
+          "/plugin.php?id=tsdmapp%3Aapi&action=checkin",
+          "/plugin.php?id=dsu_paulsign%3Asign"
+        ]
+      ],
+      "expected": [
+        "attendance",
+        true,
+        [
+          "/plugin.php?id=tsdmapp%3Aapi&action=checkin",
+          "/plugin.php?id=dsu_paulsign%3Asign"
+        ]
+      ]
+    },
+    {
+      "name": "document-free credits, recent changes and native credit-rules handoff",
+      "actual": [
+        "credit-balance",
+        2644,
+        {
+          "id": "2",
+          "title": "天使币",
+          "value": 1504,
+          "unit": ""
+        },
+        "7950",
+        "browser-handoff",
+        "https://forum.test/home.php?mod=spacecp&ac=credit&op=rule",
+        "/home.php?mod=spacecp&ac=credit&op=base&tsdmapp=json&tsdmv=4&nodoc=1"
+      ],
+      "expected": [
+        "credit-balance",
+        2644,
+        {
+          "id": "2",
+          "title": "天使币",
+          "unit": "",
+          "value": 1504
+        },
+        "7950",
+        "browser-handoff",
+        "https://forum.test/home.php?mod=spacecp&ac=credit&op=rule",
+        "/home.php?mod=spacecp&ac=credit&op=base&tsdmapp=json&tsdmv=4&nodoc=1"
+      ]
+    },
+    {
+      "name": "legacy balance after one unsupported structured read",
+      "actual": [
+        "credit-balance",
+        "native",
+        2644,
+        {
+          "title": "腹黑",
+          "value": -470
+        },
+        "2026-11-13",
+        [
+          "/home.php?mod=spacecp&ac=credit&op=base&tsdmapp=json&tsdmv=4&nodoc=1",
+          "/home.php?mod=spacecp&ac=credit&op=base"
+        ]
+      ],
+      "expected": [
+        "credit-balance",
+        "native",
+        2644,
+        {
+          "title": "腹黑",
+          "value": -470
+        },
+        "2026-11-13",
+        [
+          "/home.php?mod=spacecp&ac=credit&op=base&tsdmapp=json&tsdmv=4&nodoc=1",
+          "/home.php?mod=spacecp&ac=credit&op=base"
+        ]
+      ]
+    },
+    {
+      "name": "credit filter echo, signed changes and pagination",
+      "actual": [
+        "credit-log",
+        {
+          "creditId": "0",
+          "direction": 1,
+          "operation": "PRC",
+          "start": "",
+          "end": "",
+          "page": 1
+        },
+        22,
+        1,
+        2,
+        true,
+        20,
+        5,
+        true,
+        "/home.php?mod=spacecp&ac=credit&op=log&exttype=0&income=1&optype=PRC&starttime=&endtime=&page=1&tsdmapp=json&nodoc=1"
+      ],
+      "expected": [
+        "credit-log",
+        {
+          "creditId": "0",
+          "direction": 1,
+          "operation": "PRC",
+          "start": "",
+          "end": "",
+          "page": 1
+        },
+        22,
+        1,
+        2,
+        true,
+        20,
+        5,
+        true,
+        "/home.php?mod=spacecp&ac=credit&op=log&exttype=0&income=1&optype=PRC&starttime=&endtime=&page=1&tsdmapp=json&nodoc=1"
+      ]
+    },
+    {
+      "name": "calendar covers inclusive monthly bounds and deduplicates rewards",
+      "actual": [
+        "attendance-calendar",
+        "2026-11-01",
+        "2026-11-30",
+        [
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-05",
+          "2026-11-06"
+        ],
+        true,
+        "/home.php?mod=spacecp&ac=credit&op=log&exttype=0&income=0&optype=&starttime=2026-11-01&endtime=2026-11-30&page=1&tsdmapp=json&nodoc=1",
+        "GET"
+      ],
+      "expected": [
+        "attendance-calendar",
+        "2026-11-01",
+        "2026-11-30",
+        [
+          "2026-11-01",
+          "2026-11-02",
+          "2026-11-03",
+          "2026-11-05",
+          "2026-11-06"
+        ],
+        true,
+        "/home.php?mod=spacecp&ac=credit&op=log&exttype=0&income=0&optype=&starttime=2026-11-01&endtime=2026-11-30&page=1&tsdmapp=json&nodoc=1",
+        "GET"
+      ]
+    },
+    {
+      "name": "rate-limited continuation retains partial calendar",
+      "actual": [
+        "attendance-calendar",
+        false,
+        5,
+        "rate-limited",
+        6,
+        [
+          "1",
+          "2"
+        ]
+      ],
+      "expected": [
+        "attendance-calendar",
+        false,
+        5,
+        "rate-limited",
+        6,
+        [
+          "1",
+          "2"
+        ]
+      ]
+    },
+    {
+      "name": "altered and impossible date bounds are rejected",
+      "actual": [
+        "invalid-response",
+        "invalid-input",
+        1
+      ],
+      "expected": [
+        "invalid-response",
+        "invalid-input",
+        1
+      ]
+    },
+    {
+      "name": "group list preserves categories and active membership",
+      "actual": [
+        "groups",
+        "23",
+        2644,
+        [
+          [
+            "my",
+            1
+          ],
+          [
+            "upgrade",
+            7
+          ],
+          [
+            "user",
+            9
+          ],
+          [
+            "admin",
+            8
+          ]
+        ],
+        "/home.php?mod=spacecp&ac=usergroup&tsdmapp=json&tsdmv=4&nodoc=1"
+      ],
+      "expected": [
+        "groups",
+        "23",
+        2644,
+        [
+          [
+            "my",
+            1
+          ],
+          [
+            "upgrade",
+            7
+          ],
+          [
+            "user",
+            9
+          ],
+          [
+            "admin",
+            8
+          ]
+        ],
+        "/home.php?mod=spacecp&ac=usergroup&tsdmapp=json&tsdmv=4&nodoc=1"
+      ]
+    },
+    {
+      "name": "group detail is separate from actual current membership",
+      "actual": [
+        "groups",
+        "23",
+        "15",
+        3000,
+        356,
+        4,
+        "/home.php?mod=spacecp&ac=usergroup&gid=15&tsdmapp=json&tsdmv=4&nodoc=1"
+      ],
+      "expected": [
+        "groups",
+        "23",
+        "15",
+        3000,
+        356,
+        4,
+        "/home.php?mod=spacecp&ac=usergroup&gid=15&tsdmapp=json&tsdmv=4&nodoc=1"
+      ]
+    },
+    {
+      "name": "native progress reads the actual offered next tier",
+      "actual": [
+        "group-progress",
+        "13",
+        "高级会员",
+        700,
+        "14",
+        300,
+        1000,
+        [
+          "/home.php?mod=spacecp&ac=usergroup&tsdmapp=json&tsdmv=4&nodoc=1",
+          "/home.php?mod=spacecp&ac=usergroup"
+        ]
+      ],
+      "expected": [
+        "group-progress",
+        "13",
+        "高级会员",
+        700,
+        "14",
+        300,
+        1000,
+        [
+          "/home.php?mod=spacecp&ac=usergroup&tsdmapp=json&tsdmv=4&nodoc=1",
+          "/home.php?mod=spacecp&ac=usergroup"
+        ]
+      ]
+    },
+    {
+      "name": "same-response native group detail",
+      "actual": [
+        "groups",
+        "native",
+        "论坛元老",
+        2300,
+        3000,
+        1
+      ],
+      "expected": [
+        "groups",
+        "native",
+        "论坛元老",
+        2300,
+        3000,
+        1
+      ]
+    },
+    {
+      "name": "expiry preserves date, balance and offered switch eligibility",
+      "actual": [
+        "AG低權組",
+        1000,
+        [
+          [
+            "22",
+            "2023-11-25",
+            false,
+            true
+          ],
+          [
+            "20",
+            "",
+            false,
+            false
+          ],
+          [
+            "24",
+            "",
+            false,
+            true
+          ]
+        ],
+        true,
+        "/home.php?mod=spacecp&ac=usergroup&do=expiry&tsdmapp=json&tsdmform=1&nodoc=1",
+        "GET"
+      ],
+      "expected": [
+        "AG低權組",
+        1000,
+        [
+          [
+            "22",
+            "2023-11-25",
+            false,
+            true
+          ],
+          [
+            "20",
+            "",
+            false,
+            false
+          ],
+          [
+            "24",
+            "",
+            false,
+            true
+          ]
+        ],
+        true,
+        "/home.php?mod=spacecp&ac=usergroup&do=expiry&tsdmapp=json&tsdmform=1&nodoc=1",
+        "GET"
+      ]
+    },
+    {
+      "name": "purchase-only group does not open a switch form",
+      "actual": [
+        "invalid-input",
+        1
+      ],
+      "expected": [
+        "invalid-input",
+        1
+      ]
+    },
+    {
+      "name": "switch opening is a read with old and offered membership",
+      "actual": [
+        "AG低權組",
+        "字幕組",
+        "22",
+        [
+          [
+            "/home.php?mod=spacecp&ac=usergroup&do=expiry&tsdmapp=json&tsdmform=1&nodoc=1",
+            "GET"
+          ],
+          [
+            "/home.php?mod=spacecp&ac=usergroup&do=switch&groupid=22&handlekey=switchgrouphk&infloat=yes&inajax=1&tsdmapp=json&tsdmform=1",
+            "GET"
+          ]
+        ]
+      ],
+      "expected": [
+        "AG低權組",
+        "字幕組",
+        "22",
+        [
+          [
+            "/home.php?mod=spacecp&ac=usergroup&do=expiry&tsdmapp=json&tsdmform=1&nodoc=1",
+            "GET"
+          ],
+          [
+            "/home.php?mod=spacecp&ac=usergroup&do=switch&groupid=22&handlekey=switchgrouphk&infloat=yes&inajax=1&tsdmapp=json&tsdmform=1",
+            "GET"
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "switch uses returned destination and fields once",
+      "actual": [
+        "switched",
+        "22",
+        "/home.php?mod=spacecp&ac=usergroup&do=switch&groupid=22&inajax=1&tsdmapp=json",
+        "POST",
+        {
+          "referer": "https://www.tsdm39.com/./",
+          "groupsubmit": "true",
+          "gid": "",
+          "handlekey": "switchgrouphk",
+          "formhash": "f1f2f3f4",
+          "editsubmit_btn": "true"
+        }
+      ],
+      "expected": [
+        "switched",
+        "22",
+        "/home.php?mod=spacecp&ac=usergroup&do=switch&groupid=22&inajax=1&tsdmapp=json",
+        "POST",
+        {
+          "referer": "https://www.tsdm39.com/./",
+          "groupsubmit": "true",
+          "gid": "",
+          "handlekey": "switchgrouphk",
+          "formhash": "f1f2f3f4",
+          "editsubmit_btn": "true"
+        }
+      ]
+    },
+    {
+      "name": "switch approval cannot replay",
+      "actual": "invalid-input",
+      "expected": "invalid-input"
+    },
+    {
+      "name": "explicit switch refusal",
+      "actual": [
+        "refused",
+        1
+      ],
+      "expected": [
+        "refused",
+        1
+      ]
+    },
+    {
+      "name": "redrawn switch form",
+      "actual": [
+        "redrawn",
+        1
+      ],
+      "expected": [
+        "redrawn",
+        1
+      ]
+    },
+    {
+      "name": "continuation after switch",
+      "actual": [
+        "switch-handoff",
+        1
+      ],
+      "expected": [
+        "switch-handoff",
+        1
+      ]
+    },
+    {
+      "name": "lost switch response",
+      "actual": [
+        "unknown",
+        1
+      ],
+      "expected": [
+        "unknown",
+        1
+      ]
+    },
+    {
+      "name": "mismatched window cannot authorize switch",
+      "actual": [
+        "invalid-response",
+        2
+      ],
+      "expected": [
+        "invalid-response",
+        2
+      ]
+    },
+    {
+      "name": "native check-in form and XML receipt qualify with native readback",
+      "actual": [
+        "native",
+        "checked-in",
+        true,
+        [
+          [
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin",
+            "GET"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign",
+            "GET"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign&operation=qiandao&infloat=1&inajax=1&tsdmapp=json",
+            "POST"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign",
+            "GET"
+          ]
+        ]
+      ],
+      "expected": [
+        "native",
+        "checked-in",
+        true,
+        [
+          [
+            "/plugin.php?id=tsdmapp%3Aapi&action=checkin",
+            "GET"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign",
+            "GET"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign&operation=qiandao&infloat=1&inajax=1&tsdmapp=json",
+            "POST"
+          ],
+          [
+            "/plugin.php?id=dsu_paulsign%3Asign",
+            "GET"
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "rate-limited readback leaves check-in unknown and keeps advice",
+      "actual": [
+        "unknown",
+        "rate-limited",
+        4,
+        1
+      ],
+      "expected": [
+        "unknown",
+        "rate-limited",
+        4,
+        1
+      ]
+    },
+    {
+      "name": "explicit login refusal after POST ends without another request",
+      "actual": [
+        "refused",
+        "login",
+        2
+      ],
+      "expected": [
+        "refused",
+        "login",
+        2
+      ]
+    },
+    {
+      "name": "native expiry, switch confirmation and X3 callback",
+      "actual": [
+        "AG低權組",
+        "字幕組",
+        "switched",
+        "group",
+        [
+          "GET",
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "AG低權組",
+        "字幕組",
+        "switched",
+        "group",
+        [
+          "GET",
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "same UID re-login invalidates switch authority",
+      "actual": [
+        "session-changed",
+        2
+      ],
+      "expected": [
+        "session-changed",
+        2
+      ]
+    },
+    {
+      "name": "native history with unestablished pagination keeps observed day and partial coverage",
+      "actual": [
+        "attendance-calendar",
+        [
+          "2026-11-06"
+        ],
+        false,
+        1
+      ],
+      "expected": [
+        "attendance-calendar",
+        [
+          "2026-11-06"
+        ],
+        false,
+        1
+      ]
+    },
+    {
+      "name": "offered group list view is a separate read",
+      "actual": [
+        "group-expiry",
+        "list",
+        3,
+        "GET",
+        "list"
+      ],
+      "expected": [
+        "group-expiry",
+        "list",
+        3,
+        "GET",
+        "list"
+      ]
+    },
+    {
+      "name": "packaged TypeScript declines check-in and approves an offered switch",
+      "expected": [
+        "cancelled",
+        [
+          "GET"
+        ],
+        "switched",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "cancelled",
+        [
+          "GET"
+        ],
+        "switched",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed forum requests or account effects"
+  ]
+}
