@@ -20,6 +20,9 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const archive = resolve(process.argv[2]);
 const fixtureRoot =
   process.env.TSDM_READ_FIXTURES && resolve(process.env.TSDM_READ_FIXTURES);
+const discoveryRoot =
+  process.env.TSDM_DISCOVERY_FIXTURES &&
+  resolve(process.env.TSDM_DISCOVERY_FIXTURES);
 const cwd = mkdtempSync(join(tmpdir(), "tsdm-sdk-consumer-"));
 console.error(`Clean consumer: ${cwd}`);
 writeFileSync(join(cwd, "package.json"), '{"private":true,"type":"module"}\n');
@@ -27,6 +30,12 @@ for (const [source, target] of [
   ["consumer.mjs", "consumer.mjs"],
   ["types.ts", "types.ts"],
   ["fixtures/thread_plain.json", "thread_plain.json"],
+  ...(discoveryRoot
+    ? [
+        ["discovery.mjs", "discovery.mjs"],
+        ["discovery-pins.json", "discovery-pins.json"],
+      ]
+    : []),
   ...(fixtureRoot
     ? [
         ["board-thread.mjs", "board-thread.mjs"],
@@ -64,6 +73,41 @@ const boardThread =
       env: { ...process.env, TSDM_READ_FIXTURES: fixtureRoot },
     }),
   );
+const installed = join(cwd, "node_modules/tsdm-sdk");
+const readme = readFileSync(join(installed, "README.md"), "utf8");
+assert.match(
+  readme,
+  /\[Read a public board and open a thread\]\(#read-a-public-board-and-open-a-thread\)/,
+);
+assert.match(readme, /^## Read a public board and open a thread$/m);
+const guidePath = "docs/discovery.md";
+assert.ok(readme.includes(`](${guidePath})`), "README discovery link");
+const guide = readFileSync(join(installed, guidePath), "utf8");
+assert.match(guide, /\]\(\.\.\/README\.md#tasks\)/);
+assert.match(readme, /^## Tasks$/m);
+const example = guide.match(/^```ts\n([\s\S]+?)^```$/m)?.[1];
+assert.ok(example, "Packaged TypeScript discovery example");
+writeFileSync(join(cwd, "discovery-guide.ts"), example);
+const documentation = {
+  guide: guidePath,
+  checkedLinks: [
+    "README.md#read-a-public-board-and-open-a-thread",
+    "docs/discovery.md",
+    "README.md#tasks",
+  ],
+  example: discoveryRoot
+    ? "compiled and executed from installed guide"
+    : "compiled from installed guide",
+};
+const discovery =
+  discoveryRoot &&
+  JSON.parse(
+    execFileSync(process.execPath, ["discovery.mjs"], {
+      cwd,
+      encoding: "utf8",
+      env: { ...process.env, TSDM_DISCOVERY_FIXTURES: discoveryRoot },
+    }),
+  );
 const tsc = join(root, "node_modules/typescript/bin/tsc");
 const typescript = exec(process.execPath, [tsc, "--version"]).trim();
 writeFileSync(
@@ -77,7 +121,7 @@ writeFileSync(
         strict: true,
         noEmit: true,
       },
-      files: ["types.ts"],
+      files: ["types.ts", "discovery-guide.ts"],
     },
     null,
     2,
@@ -88,7 +132,6 @@ execFileSync(process.execPath, [tsc, "--project", "tsconfig.json"], {
   stdio: ["ignore", 2, 2],
 });
 
-const installed = join(cwd, "node_modules/tsdm-sdk");
 const packageJson = JSON.parse(
   readFileSync(join(installed, "package.json"), "utf8"),
 );
@@ -131,6 +174,8 @@ console.log(
       notices,
       ...observed,
       ...(boardThread ? { boardThread } : {}),
+      documentation,
+      ...(discovery ? { discovery } : {}),
     },
     null,
     2,

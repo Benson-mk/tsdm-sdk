@@ -1,3 +1,25 @@
+import { createDiscoveryOperations } from "./forum-client/discovery.js";
+export type {
+  DiscoveryFailure,
+  DiscoveryThread,
+  GuideModule,
+  GuideResult,
+  GuideView,
+  SearchPage,
+  SearchQuery,
+  SearchResult,
+  MemberActivityOptions,
+  MemberActivityResult,
+  RankingsResult,
+  TagResult,
+  StatisticsCell,
+  StatisticsTable,
+  StatisticsPage,
+  StatisticsResult,
+  TrendData,
+  TrendResult,
+} from "./forum-client/discovery.js";
+
 import { publicRead } from "./forum-client/public-read.js";
 
 import type {
@@ -59,7 +81,9 @@ export type BoardReadResult = ReadContext &
 export type HomepageReadResult = ReadContext &
   ({ kind: "homepage"; homepage: Homepage } | ReadFailure);
 
-export interface ForumClient {
+export interface ForumClient extends ReturnType<
+  typeof createDiscoveryOperations
+> {
   readHomepage(
     destination?: string,
     options?: ReadOptions,
@@ -83,6 +107,7 @@ export function createForumClient({
 }): ForumClient {
   const request = (url: string) => transport.request(url, { fresh: true });
   return {
+    ...createDiscoveryOperations(origin, transport),
     async readHomepage(destination = `${origin}/forum.php`, options) {
       const result = await publicRead(
         destination,

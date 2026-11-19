@@ -40,7 +40,9 @@ const transport = {
   },
 };
 const client = sdk.createForumClient({ origin, transport });
-assert.deepEqual(Object.keys(client), ["readHomepage", "readBoard", "readThread"]);
+for (const method of ["readHomepage", "readBoard", "readThread"]) {
+  assert.equal(typeof client[method], "function");
+}
 assert.notEqual(client, sdk.createForumClient({ origin, transport }));
 for (const unqualified of [
   `${origin}/forum.php?mod=forumdisplay&fid=2`,

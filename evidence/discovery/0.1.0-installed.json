@@ -1,0 +1,857 @@
+{
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "sha256": "fc66fef179666467117634ff82482a4b506cf4ba7087c6ae3652f8110561c076",
+  "integrity": "sha512-xDFDsF9U7vjHGsrm8eoHdP3mcF4qc8w+VTu9Zn1DTJWF699hFkHuqPYiQKjAFdoBFA7EhhUCf69W1UPrAjwGSw==",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "typescript": "Version 6.0.3",
+  "typecheck": "strict NodeNext, ES2023, types: [], noEmit",
+  "notices": [
+    "parse5-8.0.1.LICENSE",
+    "entities-8.1.0.LICENSE"
+  ],
+  "fixtureSha256": "4c315c9baa628790c74c0eed3c477cea13fc6ef961b4fe78cef8080a2e01e1b1",
+  "requests": [
+    {
+      "url": "https://forum.test/forum.php?mod=viewthread&tid=9199345&tsdmapp=json",
+      "session": "fixture-member-31",
+      "fresh": true
+    }
+  ],
+  "thread": {
+    "id": "9199345",
+    "title": "[Rulebot multi fixture 20260930-101846] FID2 版規問答測試",
+    "page": "1"
+  },
+  "viewerId": "31",
+  "posts": [
+    [
+      "3938",
+      "32",
+      "ag_admin",
+      "此主題僅供 Rulebot 1.1 多版塊隔離驗證，透過 Discuz 原生流程建立；驗證完畢保留測試證據。"
+    ],
+    [
+      "3954",
+      "33",
+      "ag_mid",
+      "NC984059ag_mid 粗體 廣告連結 紅字 @ag_low2"
+    ],
+    [
+      "3940",
+      "31",
+      "ag_low",
+      "多版驗收怎麼算？"
+    ],
+    [
+      "3942",
+      "35",
+      "ag_low2",
+      "此帖仅作者可见"
+    ],
+    [
+      "3950",
+      "31",
+      "ag_low",
+      "NC650591ag_low 編輯 [​i]斜體[​/i] [​size=7]大字[​/size]"
+    ],
+    [
+      "3951",
+      "33",
+      "ag_mid",
+      "NC650591ag_mid 粗體 廣告連結 紅字 @ag_low2"
+    ],
+    [
+      "3952",
+      "31",
+      "ag_low",
+      "NC912001off 粗體"
+    ],
+    [
+      "3953",
+      "31",
+      "ag_low",
+      "NC984059ag_low 編輯 [​i]斜體[​/i] [​size=7]大字[​/size]"
+    ],
+    [
+      "3955",
+      "31",
+      "ag_low",
+      "NC048829off 粗體"
+    ]
+  ],
+  "documentation": {
+    "guide": "docs/discovery.md",
+    "checkedLinks": [
+      "README.md#read-a-public-board-and-open-a-thread",
+      "docs/discovery.md",
+      "README.md#tasks"
+    ],
+    "example": "compiled and executed from installed guide"
+  },
+  "discovery": {
+    "inputs": {
+      "guide_new_x5.html": "edc73638160542b807a3d2c368f47c19f3e33d7b6a5a2353c01b6cad3aff7e50",
+      "ranklist/member_credit_x5.html": "59956af3b3d8222dc2ac5dae33e42b1caff1b541e9d478d623ffb7065aef5625",
+      "ranklist/member_onlinetime_x5.html": "d7872fbf0744fc036acd6c42c3dbd653914bccbfcbfcd2ce3fba214fb92528ec",
+      "ranklist/member_post_x5.html": "3165be6de256cdec8f355c909ad9fb0d714b349b71663d7f89fccc8c60b4ad37",
+      "ranklist/thread_closed_x5.html": "83f8ddcf1b6690a04ae38354705558d669bbf585a68d3b36da3e0004e4060d2a",
+      "ranklist/thread_heats_x5.html": "70a76b38d5bd4168fbe3fdf67da4f81d38964f20fbe57e60dee144e53a9e6fe2",
+      "ranklist/thread_replies_x5.html": "cf352a27a1b416cee508fe581dba72c4fa92efe519619ef9c937fcdf3b1eb791",
+      "search_filtered_x5.html": "b5135808c1b12cfed074e2973e5ce9c1ecc060808eec34018a2c7d2e1bbbc81d",
+      "site_stats/basic.html": "ecebabb344d158578079c4baaccee59b355e15cf59a531dc91862fd78c61ec7c",
+      "site_stats/forumstat.html": "122467b14c737b3c4768513079b5b7af4a9c07f8a37af784b8cb760c800133e0",
+      "site_stats/forumstat_fid.html": "38833a523d9595e96bcc11279d46e0936559263d133ee15e05e49e7b211ec571",
+      "site_stats/guest.html": "d15752fc91c98b9ebcff82a7aceadacefd4df017f2c06137518bbf03191a4055",
+      "site_stats/memberlist.html": "35421006b44213ec16fe2a2f76059953129712516df83e7e01b01e9374b1e0a2",
+      "site_stats/modworks.html": "39f3954ff191e6a887c9d8dae0ae2daf74d8518e770430bf4c4fbb2a0b152be2",
+      "site_stats/no_permission.html": "3dadcddd37d5faa794aa1bcbd3462bffc79e4c2c83bbfe940d6d1843a131aa63",
+      "site_stats/team.html": "92c8fb6fa03a57c96d24e0ff0f5e187166604ae8e38e66b7e69ef7c345b62c96",
+      "site_stats/trend.html": "25c8384e325f53fef37790c3ae767ff11b19d31dd54d6206b1de40b6cb3f5ddf",
+      "site_stats/trend.xml": "290c7898a6fe8760f117e3a9732c10b6d5ab767d50f69588bd4a26771d44f63b",
+      "tag/tag_cloud_x5.html": "6035f4ad8b385d07b4841c95c21292a863c23faecde16e2fc1aa0b7de179c824",
+      "tag/tag_threads_page1_x5.html": "b6c392c20000a32bf20cec2a0eafb9c75847d7fd414203260a4b40ce493ff3ab",
+      "tag/tag_threads_page2_x5.html": "9af726586e888e88fa6fc67cdd58d5250b23696cd2b7dd672a7e7e343b85a4a8",
+      "tag/tag_threads_preview_x5.html": "b96894be71d5746fbbb774582ab4e1c22d25dc7900c5c0df79b3b60cc2cd528b",
+      "tsdmapp/guide_v7_digest.json": "8a57d67ea149780f68c857301a4a0d12821f842f71d1176e7063af39f7d6edcc",
+      "tsdmapp/guide_v7_guest_my.json": "972a27e982daadecbf5bceb7fcd8c820eb217b1ae42e5f210995ce2c96fae4ab",
+      "tsdmapp/guide_v7_hot.json": "a54851c565a77b5e905bdd8ceb72c27d2f01ad5147b99f277399994f226d0526",
+      "tsdmapp/guide_v7_index.json": "db4afca926b086d19ddb391c4708e86d4a85c7c91e70ea49892f113ad1f080ee",
+      "tsdmapp/guide_v7_my.json": "418a5abf73602ec5379654d2c6432118f5584437ab4bb48a58df058210cc5733",
+      "tsdmapp/guide_v7_my_reply.json": "a29bf1ef9dfb2c520454c1c3438e49c1af45d66e2b23da09c362c4296797e79f",
+      "tsdmapp/guide_v7_new.json": "7e4b35d4a8044075a1cf58797d7fe3973d686e91fb7ce1fc5bb752cc6301c9d9",
+      "tsdmapp/guide_v7_new_p2.json": "ae143e5e13f2af812bf123daa4c194574b6f7753ed340348d6f79b82ff8b4649",
+      "tsdmapp/guide_v7_newthread.json": "cfebe72f06d18539581d59cac5cbdd0d22693d6f55d301b6aeecd0d8a552d23e",
+      "tsdmapp/guide_v7_sofa.json": "ac217a2e5759d5e7c6b57db9007c632c1a05c3666b1f7f10a0b12002e4cfb2ea",
+      "tsdmapp/mythread_v9_draft.json": "85dd1b981db263df12e1b6aba6e8a43afc4652e503d454083095082b8c4de2e0",
+      "tsdmapp/mythread_v9_draft_empty.json": "db3171804a71a0465623db7a286c9c32c59cc52bcf18d2177b15ac9f95fb81ea",
+      "tsdmapp/mythread_v9_guest.json": "f8315af9ee7f9046f3ac388b9f7839804581701ceeddbb5f54121cdacde19c5d",
+      "tsdmapp/mythread_v9_other_reply.json": "9969d129f4256125f9494a24a7395562ab3edf0db7615b28c0358735fe80cbd8",
+      "tsdmapp/mythread_v9_reply.json": "29023f1952ee13f2ef74908a42becc266274105539d347fd3927759d3b540739",
+      "tsdmapp/mythread_v9_thread.json": "37ba205b285eeb296f72cbef8555ca362a415a793a740fe5667ec8551f9e3bf5",
+      "tsdmapp/mythread_v9_thread_p2.json": "86e16b39d6dee77da5175b7258976d9fe14557c4881f7418e927c9326995e481",
+      "tsdmapp/search_v6_empty.json": "0d044e3c6ff077b19b27ac16109dd3f82e6968652d5176e732ecd9a9715813b8",
+      "tsdmapp/search_v6_form.json": "311e0aed9e5bff331594bf8ed72c0ac8cb2b6629ccc1e02a1ec4fcc93deb9c48",
+      "tsdmapp/search_v6_p2.json": "cb59f18c005fa0f7b75982e46f46e75ffac3cb0cdc023122c620d979ef96c230",
+      "tsdmapp/search_v6_results.json": "56318a7d719c204c54bacb22d74f529606dd7ecbc704c092510f181c97e815b8"
+    },
+    "observations": {
+      "guide:index": {
+        "view": "index",
+        "count": 0,
+        "page": "1",
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=index&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:hot": {
+        "view": "hot",
+        "count": 5,
+        "first": "9199670",
+        "page": "1",
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=hot&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:digest": {
+        "view": "digest",
+        "count": 0,
+        "page": "1",
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=digest&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:new": {
+        "view": "new",
+        "count": 50,
+        "first": "9199961",
+        "page": "1",
+        "next": "https://www.tsdm39.com/forum.php?mod=guide&view=new&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=new&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:newthread": {
+        "view": "newthread",
+        "count": 50,
+        "first": "9199970",
+        "page": "1",
+        "next": "https://www.tsdm39.com/forum.php?mod=guide&view=newthread&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=newthread&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:sofa": {
+        "view": "sofa",
+        "count": 50,
+        "first": "9199970",
+        "page": "1",
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=sofa&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guide:my": {
+        "view": "my",
+        "count": 50,
+        "first": "9199982",
+        "page": "1",
+        "next": "https://www.tsdm39.com/forum.php?mod=guide&view=my&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=my&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "guideContinuation": {
+        "reply": "https://www.tsdm39.com/forum.php?mod=redirect&goto=findpost&ptid=9199982&pid=4719",
+        "guest": "login",
+        "native": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1264837&extra=",
+        "page": "2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=my&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=my&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=new&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=new&page=2&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "search": {
+        "form": "https://www.tsdm39.com/search.php?mod=forum",
+        "searchId": "1",
+        "count": 211,
+        "page1": "9199879",
+        "page2": "9199821",
+        "continuationRefusal": "expired",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=%E7%BD%91%E7%9B%98&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=3&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "nativeSearch": {
+        "searchId": "4",
+        "firstURL": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=9199401&highlight=%E6%B8%AC%E8%A9%A6",
+        "next": "https://www.tsdm39.com/search.php?mod=forum&searchid=4&orderby=replies&ascdesc=asc&searchsubmit=yes&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=%E6%B8%AC%E8%A9%A6&orderby=replies&ascdesc=asc&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "emptySearch": {
+        "count": 0,
+        "refusal": "throttle",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=no+matches&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=no+matches&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "searchScope": {
+        "previous": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=1",
+        "invalidOrder": "invalid",
+        "invalidId": "invalid",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=%E7%BD%91%E7%9B%98&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=2&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "memberActivity": {
+        "own": {
+          "id": "35",
+          "name": "ag_low2"
+        },
+        "page2": "9199876",
+        "replyOwner": {
+          "id": "31",
+          "name": "ag_low"
+        },
+        "hidden": 4,
+        "reply": "https://www.tsdm39.com/forum.php?mod=redirect&goto=findpost&ptid=9199341&pid=3925",
+        "draftIds": [
+          "9199982"
+        ],
+        "emptyPage": "2",
+        "wrongOwner": "invalid",
+        "guest": "login",
+        "filteredNext": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=31&type=thread&fid=10&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=31&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&filter=save&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=31&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=31&type=thread&fid=10&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "legacyActivity": {
+        "owner": {
+          "id": "1103",
+          "name": null
+        },
+        "reply": "https://www.tsdm39.com/forum.php?mod=redirect&goto=findpost&ptid=125&pid=1250#pid1250",
+        "next": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=1103&type=reply&page=2",
+        "envelopeViewer": {
+          "kind": "unknown"
+        },
+        "handoff": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=1103&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=1103&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:credit": {
+        "first": {
+          "url": "https://www.tsdm39.com/home.php?mod=space&uid=31",
+          "label": "测试版主",
+          "id": "31",
+          "rank": 1,
+          "value": "2085118",
+          "details": "区版主 积分数: 2085118",
+          "valueURL": null,
+          "thread": null
+        },
+        "ranks": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=member&view=credit",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:post": {
+        "first": {
+          "url": "https://www.tsdm39.com/home.php?mod=space&uid=31",
+          "label": "测试版主",
+          "id": "31",
+          "rank": 1,
+          "value": "1041482",
+          "details": "帖子数: 1041482",
+          "valueURL": "https://www.tsdm39.com/home.php?mod=space&uid=31&do=thread&view=me&from=space",
+          "thread": null
+        },
+        "ranks": [
+          1,
+          2
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=member&view=post",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:onlinetime": {
+        "first": {
+          "url": "https://www.tsdm39.com/home.php?mod=space&uid=35",
+          "label": "测试会员丁",
+          "id": "35",
+          "rank": 1,
+          "value": "11160 分钟",
+          "details": "使者在线时间: 11160 分钟",
+          "valueURL": null,
+          "thread": null
+        },
+        "ranks": [
+          1,
+          2
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=member&view=onlinetime",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:heats": {
+        "first": {
+          "id": "1001",
+          "label": "测试主题 & 长楼",
+          "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+          "rank": 1,
+          "value": "88",
+          "details": "88",
+          "valueURL": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+          "thread": {
+            "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+            "label": "测试主题 & 长楼",
+            "id": "1001",
+            "postId": null,
+            "board": {
+              "url": "https://www.tsdm39.com/forum.php?mod=forumdisplay&fid=6",
+              "label": "测试版块一",
+              "id": "6"
+            },
+            "author": {
+              "id": "31",
+              "name": "测试版主",
+              "url": "https://www.tsdm39.com/home.php?mod=space&uid=31"
+            },
+            "summary": null
+          }
+        },
+        "ranks": [
+          1,
+          2,
+          4
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=heats",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:replies": {
+        "first": {
+          "id": "1001",
+          "label": "测试主题 & 长楼",
+          "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+          "rank": 1,
+          "value": "301",
+          "details": "301",
+          "valueURL": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+          "thread": {
+            "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1001",
+            "label": "测试主题 & 长楼",
+            "id": "1001",
+            "postId": null,
+            "board": {
+              "url": "https://www.tsdm39.com/forum.php?mod=forumdisplay&fid=6",
+              "label": "测试版块一",
+              "id": "6"
+            },
+            "author": {
+              "id": "31",
+              "name": "测试版主",
+              "url": "https://www.tsdm39.com/home.php?mod=space&uid=31"
+            },
+            "summary": null
+          }
+        },
+        "ranks": [
+          1,
+          2,
+          4
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=replies",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:views": {
+        "first": {
+          "id": "72",
+          "label": "Example",
+          "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=72&from=rank",
+          "rank": 1,
+          "value": "120",
+          "details": "120",
+          "valueURL": null,
+          "thread": {
+            "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=72&from=rank",
+            "label": "Example",
+            "id": "72",
+            "postId": null,
+            "board": null,
+            "author": null,
+            "summary": null
+          }
+        },
+        "ranks": [
+          1
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=views",
+            "fresh": true
+          }
+        ]
+      },
+      "rankings:favtimes": {
+        "first": {
+          "id": "72",
+          "label": "Example",
+          "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=72&from=rank",
+          "rank": 1,
+          "value": "23",
+          "details": "23",
+          "valueURL": null,
+          "thread": {
+            "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=72&from=rank",
+            "label": "Example",
+            "id": "72",
+            "postId": null,
+            "board": null,
+            "author": null,
+            "summary": null
+          }
+        },
+        "ranks": [
+          1
+        ],
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=favtimes",
+            "fresh": true
+          }
+        ]
+      },
+      "rankingClosed": {
+        "kind": "permission",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=views",
+            "fresh": true
+          }
+        ]
+      },
+      "tags": {
+        "count": 14,
+        "lossless": {
+          "url": "https://www.tsdm39.com/misc.php?mod=tag&id=2",
+          "label": "无损",
+          "id": "2",
+          "count": 3
+        },
+        "preview": "9199411",
+        "more": "https://www.tsdm39.com/misc.php?mod=tag&id=2&type=thread",
+        "firstPageCount": 20,
+        "secondPageCount": 5,
+        "firstOnPage2": "1134",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag&id=2",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag&id=15&type=thread",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag&id=15&type=thread&page=2",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat": {
+        "title": "基本概况",
+        "tables": 2,
+        "cellsInFirstRow": 4,
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat&op=forumstat": {
+        "title": "版块统计",
+        "tables": 1,
+        "cellsInFirstRow": 2,
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=forumstat",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat&op=forumstat&fid=7&month=2026-11": {
+        "title": "版块统计日志 - 神作殿堂 - 2026-11",
+        "tables": 2,
+        "cellsInFirstRow": 2,
+        "next": null,
+        "dailyFirstDate": "2026-11-01",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=forumstat&fid=7&month=2026-11",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat&op=team": {
+        "title": "管理团队",
+        "tables": 6,
+        "cellsInFirstRow": 11,
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=team",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat&op=modworks": {
+        "title": "管理统计 - 全体管理人员",
+        "tables": 1,
+        "cellsInFirstRow": 37,
+        "next": null,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=modworks",
+            "fresh": true
+          }
+        ]
+      },
+      "statistics:/misc.php?mod=stat&op=memberlist": {
+        "title": "会员列表",
+        "tables": 1,
+        "cellsInFirstRow": 7,
+        "next": "https://www.tsdm39.com/misc.php?mod=stat&op=memberlist&srchmem=&order=&asc=&page=2",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=memberlist",
+            "fresh": true
+          }
+        ]
+      },
+      "trend": {
+        "destination": "https://www.tsdm39.com/misc.php?mod=stat&op=trend&xml=1&type=all&primarybegin=2026-10-11&primaryend=2026-11-10",
+        "labels": 30,
+        "series": 5,
+        "first": 14,
+        "last": 27,
+        "guest": "login",
+        "restricted": "permission",
+        "malformed": "incomplete",
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend&xml=1&type=all&primarybegin=2026-10-11&primaryend=2026-11-10",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=modworks",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend&xml=1&type=all&primarybegin=2026-10-11&primaryend=2026-11-10",
+            "fresh": true
+          }
+        ]
+      },
+      "packagedExample": {
+        "searchPage": "2",
+        "tag": "14",
+        "trendPoints": 30,
+        "requests": [
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=index&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/forum.php?mod=guide&view=hot&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&srchtxt=%E7%BD%91%E7%9B%98&searchsubmit=yes&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/search.php?mod=forum&searchid=1&orderby=lastpost&ascdesc=desc&searchsubmit=yes&page=2&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&uid=31&type=reply&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=member&view=credit",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=ranklist&type=thread&view=heats",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=tag&id=14",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend",
+            "fresh": true
+          },
+          {
+            "url": "https://www.tsdm39.com/misc.php?mod=stat&op=trend&xml=1&type=all&primarybegin=2026-10-11&primaryend=2026-11-10",
+            "fresh": true
+          }
+        ]
+      }
+    }
+  },
+  "version": "0.1.0",
+  "kind": "controlled installed package and host transport",
+  "upstreamPin": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "integrationBase": "9583f6a9c1b2d9dcb92aa6ed86603eb1dcc0c9f7",
+  "boardThread": {
+    "replayed": true,
+    "passedChecks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ]
+  }
+}

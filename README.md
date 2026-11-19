@@ -2,6 +2,11 @@
 
 `tsdm-sdk` is an unofficial TypeScript SDK for the TSDM forum.
 
+## Tasks
+
+- [Read a public board and open a thread](#read-a-public-board-and-open-a-thread)
+- [Find threads and explore forum activity](docs/discovery.md)
+
 ## Install a local candidate
 
 Use Node.js 26.x and npm. From a new project directory, install the local `0.1.0` tarball and import the ESM entry from `tsdm-sdk`.

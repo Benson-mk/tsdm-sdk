@@ -15,7 +15,10 @@ const manifest = {
     "index.js",
     "index.d.ts",
     "forum-client/types.d.ts",
+    "forum-client/discovery.d.ts",
+    "forum-client/discovery/",
     "README.md",
+    "docs/discovery.md",
     "notices/",
   ],
 };
@@ -24,8 +27,21 @@ writeFileSync(
   JSON.stringify(manifest, null, 2) + "\n",
 );
 copyFileSync(new URL("README.md", root), new URL("README.md", stage));
+mkdirSync(new URL("docs/", stage));
+copyFileSync(
+  new URL("docs/discovery.md", root),
+  new URL("docs/discovery.md", stage),
+);
 mkdirSync(new URL("forum-client/", stage));
-for (const declaration of ["index.d.ts", "forum-client/types.d.ts"]) {
+mkdirSync(new URL("forum-client/discovery/", stage));
+for (const declaration of [
+  "index.d.ts",
+  "forum-client/types.d.ts",
+  "forum-client/discovery.d.ts",
+  ...["types", "lists", "search", "activity", "statistics"].map(
+    (name) => `forum-client/discovery/${name}.d.ts`,
+  ),
+]) {
   copyFileSync(
     new URL(`dist/sdk-types/${declaration}`, root),
     new URL(declaration, stage),

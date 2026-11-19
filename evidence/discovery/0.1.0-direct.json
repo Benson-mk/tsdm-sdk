@@ -1,0 +1,194 @@
+{
+  "kind": "controlled loopback",
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "sha256": "fc66fef179666467117634ff82482a4b506cf4ba7087c6ae3652f8110561c076",
+  "python": "3.12.10",
+  "curl": [
+    "curl",
+    "8.7.1"
+  ],
+  "requests": [
+    [
+      "/search.php",
+      {
+        "mod": "forum",
+        "srchtxt": "网盘",
+        "searchsubmit": "yes",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/search.php",
+      {
+        "mod": "forum",
+        "searchid": "1",
+        "orderby": "lastpost",
+        "ascdesc": "desc",
+        "searchsubmit": "yes",
+        "page": "2",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/search.php",
+      {
+        "mod": "forum",
+        "srchtxt": "网盘",
+        "searchsubmit": "yes",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/search.php",
+      {
+        "mod": "forum",
+        "searchid": "1",
+        "orderby": "lastpost",
+        "ascdesc": "desc",
+        "searchsubmit": "yes",
+        "page": "2",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/forum.php",
+      {
+        "mod": "guide",
+        "view": "index",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/forum.php",
+      {
+        "mod": "guide",
+        "view": "index",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "thread",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "thread",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "reply",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "reply",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "thread",
+        "filter": "save",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/home.php",
+      {
+        "mod": "space",
+        "do": "thread",
+        "view": "me",
+        "type": "thread",
+        "filter": "save",
+        "tsdmapp": "json"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "ranklist",
+        "type": "member",
+        "view": "credit"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "ranklist",
+        "type": "member",
+        "view": "credit"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "ranklist",
+        "type": "thread",
+        "view": "heats"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "ranklist",
+        "type": "thread",
+        "view": "heats"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "tag"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "tag"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "stat"
+      }
+    ],
+    [
+      "/misc.php",
+      {
+        "mod": "stat"
+      }
+    ]
+  ],
+  "observed": {
+    "searchId": 1,
+    "count": 211,
+    "page2FirstThread": 9199821,
+    "readBodiesMatchedAcrossClients": 8
+  }
+}
