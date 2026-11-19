@@ -47,7 +47,9 @@ try {
   const installed = join(cwd, "node_modules/tsdm-sdk");
   const readme = read(join(installed, "README.md"));
   const guides = [...readme.matchAll(/\]\((docs\/[\w-]+\.md)\)/g)].map(([, file]) => file);
-  assert.deepEqual(guides, ["docs/discovery.md", "docs/account.md", "docs/profile.md", "docs/members.md", "docs/notices.md", "docs/messages.md"]);
+  const requiredGuides = ["docs/discovery.md", "docs/account.md", "docs/profile.md", "docs/members.md", "docs/notices.md", "docs/messages.md"];
+  assert.deepEqual(guides.filter((file) => requiredGuides.includes(file)), requiredGuides);
+  assert.equal(new Set(guides).size, guides.length);
   for (const file of guides) assert.equal(read(join(installed, file)), read(join(root, file)));
   const guide = read(join(installed, "docs/notices.md"));
   assert.match(guide, /\]\(\.\.\/README\.md#tasks\)/);

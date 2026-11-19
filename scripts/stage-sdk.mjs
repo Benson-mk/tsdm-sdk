@@ -10,6 +10,10 @@ const noticeDeclarations = [
     (name) => `forum-client/notice-${name}.d.ts`,
   ),
 ];
+const collectionDeclarations = [
+  "forum-client/collection-client.d.ts",
+  "forum-client/collection-types.d.ts",
+];
 const manifest = {
   name: "tsdm-sdk",
   version: "0.1.0",
@@ -23,6 +27,7 @@ const manifest = {
     "index.d.ts",
     "forum-client/types.d.ts",
     ...noticeDeclarations,
+    ...collectionDeclarations,
     "forum-client/message-client.d.ts",
     "forum-client/message-effects.d.ts",
     "forum-client/account-client.d.ts",
@@ -40,6 +45,7 @@ const manifest = {
     "docs/notices.md",
     "docs/messages.md",
     "docs/spaces.md",
+    "docs/collections.md",
     "notices/",
   ],
 };
@@ -68,6 +74,10 @@ copyFileSync(
 copyFileSync(new URL("docs/notices.md", root), new URL("docs/notices.md", stage));
 copyFileSync(new URL("docs/messages.md", root), new URL("docs/messages.md", stage));
 copyFileSync(new URL("docs/spaces.md", root), new URL("docs/spaces.md", stage));
+copyFileSync(
+  new URL("docs/collections.md", root),
+  new URL("docs/collections.md", stage),
+);
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
 mkdirSync(new URL("forum-client/spaces/", stage));
@@ -79,6 +89,7 @@ for (const declaration of [
   "forum-client/profile-client.d.ts",
   "forum-client/types.d.ts",
   ...noticeDeclarations,
+  ...collectionDeclarations,
   "forum-client/member-reads.d.ts",
   "forum-client/member-client.d.ts",
   "forum-client/discovery.d.ts",

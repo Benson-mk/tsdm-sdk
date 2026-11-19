@@ -284,3 +284,24 @@ export type {
   SpaceRequest,
   SpaceView,
 } from "./forum-client/spaces/client.js";
+
+export { createCollectionClient } from "./forum-client/collection-client.js";
+export type {
+  CollectionAddDialog,
+  CollectionClientOptions,
+  CollectionComment,
+  CollectionComments,
+  CollectionCreate,
+  CollectionDetail,
+  CollectionFailure,
+  CollectionList,
+  CollectionListQuery,
+  CollectionMetadata,
+  CollectionOrder,
+  CollectionRelation,
+  CollectionRequest,
+  CollectionSession,
+  CollectionSummary,
+  CollectionThread,
+  CollectionWrite,
+} from "./forum-client/collection-types.js";

@@ -12,6 +12,7 @@
 - [Poll unread notices and deliberately acknowledge them](docs/notices.md)
 - [Read and send private messages](docs/messages.md)
 - [Use member spaces, walls and follow feeds](docs/spaces.md)
+- [Organize threads into collections](docs/collections.md)
 
 ## Install a local candidate
 

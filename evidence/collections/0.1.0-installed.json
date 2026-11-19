@@ -1,0 +1,1306 @@
+{
+  "evidence": "controlled installed SDK and host transport, with fictitious accounts",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "typescript": "Version 6.0.3",
+  "package": "tsdm-sdk@0.1.0",
+  "install": [
+    "install",
+    "--offline",
+    "--ignore-scripts",
+    "--engine-strict",
+    "--no-audit",
+    "--no-fund",
+    "--cache",
+    "./cache",
+    "<archive>"
+  ],
+  "archiveBytes": 176940,
+  "archiveSHA256": "64560d2d4033c5524f0167162e847fcc84b1a6d03953d0c6ae395d160a170357",
+  "syntheticInputsSHA256": "db45dabd27a7a9243460760902a212063249ed374e6a72d8f21f79c3ef9215f9",
+  "guideSHA256": "2dd89a6d71b64f2a8d65340ac03c0f2d4e8431e10fdcd4d1bcf83ead8192b2e9",
+  "sourcePin": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "manifestSHA256": "abbbb7bb8c21bdd398703f5da2b20fa7bbda80882fb64b119f813c286de4dc40"
+  },
+  "packagedGuides": [
+    "docs/discovery.md",
+    "docs/account.md",
+    "docs/profile.md",
+    "docs/members.md",
+    "docs/notices.md",
+    "docs/messages.md",
+    "docs/spaces.md",
+    "docs/collections.md"
+  ],
+  "guideExample": {
+    "expected": "91 Example Archive",
+    "observed": "91 Example Archive"
+  },
+  "results": [
+    {
+      "name": "recommended",
+      "expected": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ]
+    },
+    {
+      "name": "all ordered",
+      "expected": [
+        "list",
+        2,
+        7,
+        3
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&op=all&order=follownum",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "list",
+        2,
+        7,
+        3
+      ]
+    },
+    {
+      "name": "owned and team",
+      "expected": [
+        "list",
+        [
+          [
+            "91",
+            "created"
+          ],
+          [
+            "92",
+            "team"
+          ]
+        ],
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&op=my",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "list",
+        [
+          [
+            "91",
+            "created"
+          ],
+          [
+            "92",
+            "team"
+          ]
+        ],
+        1
+      ]
+    },
+    {
+      "name": "subscriptions",
+      "expected": [
+        "list",
+        [
+          [
+            "93",
+            "subscribed"
+          ]
+        ],
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&op=my",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "list",
+        [
+          [
+            "93",
+            "subscribed"
+          ]
+        ],
+        1
+      ]
+    },
+    {
+      "name": "unrelated edit link cannot authorize create",
+      "expected": false,
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&op=my",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": false
+    },
+    {
+      "name": "create from an unqualified directory skips dispatch",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "related thread",
+      "expected": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&tid=501",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ]
+    },
+    {
+      "name": "wrong related thread",
+      "expected": "invalid-response",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&tid=501",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "invalid-response"
+    },
+    {
+      "name": "detail page 2",
+      "expected": [
+        "detail",
+        "91",
+        2,
+        3,
+        "501",
+        "Fictitious example",
+        true
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=91&page=2",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "detail",
+        "91",
+        2,
+        3,
+        "501",
+        "Fictitious example",
+        true
+      ]
+    },
+    {
+      "name": "wrong detail target",
+      "expected": "invalid-response",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=98",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "invalid-response"
+    },
+    {
+      "name": "collection comments",
+      "expected": [
+        "comments",
+        "91",
+        "Example comment",
+        4,
+        true
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&op=comment&ctid=91",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "comments",
+        "91",
+        "Example comment",
+        4,
+        true
+      ]
+    },
+    {
+      "name": "native missing collection",
+      "expected": "refused",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=98",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "refused"
+    },
+    {
+      "name": "structured add dialog",
+      "expected": [
+        "add-dialog",
+        "501",
+        [
+          "91",
+          "92"
+        ],
+        3
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&handlekey=k_collect&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "add-dialog",
+        "501",
+        [
+          "91",
+          "92"
+        ],
+        3
+      ]
+    },
+    {
+      "name": "add to two collections",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "inajax": "1",
+            "handlekey": "k_collect",
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "tids[0]": "501",
+            "reason": "Sort this thread",
+            "ctid[0]": "91",
+            "ctid[1]": "92"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "outside offered collections",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "copied dialog cannot authorize write",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "v4 redisplay is ambiguous",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "inajax": "1",
+            "handlekey": "k_collect",
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "tids[0]": "501",
+            "reason": "Sort this thread",
+            "ctid[0]": "91",
+            "ctid[1]": "92"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "v4 response from a different member",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "inajax": "1",
+            "handlekey": "k_collect",
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "tids[0]": "501",
+            "reason": "Sort this thread",
+            "ctid[0]": "91",
+            "ctid[1]": "92"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "structured submission requires its operation key",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "inajax": "1",
+            "handlekey": "k_collect",
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "tids[0]": "501",
+            "reason": "Sort this thread",
+            "ctid[0]": "91",
+            "ctid[1]": "92"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "v4 wrong receipt thread",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "inajax": "1",
+            "handlekey": "k_collect",
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "tids[0]": "501",
+            "reason": "Sort this thread",
+            "ctid[0]": "91",
+            "ctid[1]": "92"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "structured target rejected then legacy dialog",
+      "expected": [
+        "add-dialog",
+        "501",
+        [
+          "91"
+        ],
+        2
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&handlekey=k_collect&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "add-dialog",
+        "501",
+        [
+          "91"
+        ],
+        2
+      ]
+    },
+    {
+      "name": "native add request and callback",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "addthread": "1",
+            "handlekey": "k_collect",
+            "tids[0]": "501",
+            "reason": "",
+            "ctid[0]": "91"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "schema 13 wrapped add dialog",
+      "expected": [
+        "add-dialog",
+        "501",
+        [
+          "91"
+        ],
+        2
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": [
+        "add-dialog",
+        "501",
+        [
+          "91"
+        ],
+        2
+      ]
+    },
+    {
+      "name": "wrong native dialog target",
+      "expected": "invalid-response",
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "invalid-response"
+    },
+    {
+      "name": "dialog login",
+      "expected": "login",
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=addthread&tid=501&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "login"
+    },
+    {
+      "name": "dialog rate limit is terminal",
+      "expected": "rate-limited",
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "rate-limited"
+    },
+    {
+      "name": "create and return exact new page",
+      "expected": [
+        "confirmed",
+        "94",
+        "https://forum.example.test/forum.php?mod=collection&action=view&ctid=94"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=add&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": [
+        "confirmed",
+        "94",
+        "https://forum.example.test/forum.php?mod=collection&action=view&ctid=94"
+      ]
+    },
+    {
+      "name": "create from thread dialog",
+      "expected": [
+        "confirmed",
+        "94"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=add&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": [
+        "confirmed",
+        "94"
+      ]
+    },
+    {
+      "name": "create with conflicting receipt target",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=add&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "edit collection",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=edit&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "edit explicitly refused",
+      "expected": "refused",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=edit&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": "refused"
+    },
+    {
+      "name": "stale form hash refused",
+      "expected": "refused",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=edit&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": "refused"
+    },
+    {
+      "name": "remove selected thread",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=delthread&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "ctid": "91",
+            "delthread[0]": "501"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "remove unoffered thread",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "delete collection deliberately",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=remove&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "comment and rate",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=comment&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "handlekey": "k_addComment",
+            "message": "My thoughts",
+            "ratescore": "5"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "comment flood control",
+      "expected": [
+        "rate-limited",
+        15
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=comment&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "handlekey": "k_addComment",
+            "message": "My thoughts",
+            "ratescore": "5"
+          }
+        }
+      ],
+      "observed": [
+        "rate-limited",
+        15
+      ]
+    },
+    {
+      "name": "off-origin subscription control",
+      "expected": "unavailable",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=91",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "unavailable"
+    },
+    {
+      "name": "off-origin subscription control skips dispatch",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "subscription available",
+      "expected": "can-follow",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=91",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "can-follow"
+    },
+    {
+      "name": "subscribe deliberately",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "already followed response is ambiguous",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "duplicate destination target is ambiguous",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "off-origin receipt handoff is ambiguous",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "reverse subscription receipt is ambiguous",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "lost effectful GET response is never retried",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "redirect of effectful GET remains uncertain",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "current subscription readback",
+      "expected": "following",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=view&ctid=91",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "following"
+    },
+    {
+      "name": "unsubscribe deliberately via legacy callback",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=unfo&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "edited display ID cannot retarget a write",
+      "expected": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=edit&op=edit&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "collectionsubmit": "1",
+            "submitcollection": "1",
+            "title": "Example Archive",
+            "desc": "An example",
+            "keyword": "anime music"
+          }
+        }
+      ],
+      "observed": "confirmed"
+    },
+    {
+      "name": "native comment rate limit",
+      "expected": [
+        "rate-limited",
+        15
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=comment&ctid=91&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          },
+          "body": {
+            "formhash": "fixturehash",
+            "handlekey": "k_addComment",
+            "message": "My thoughts",
+            "ratescore": "5"
+          }
+        }
+      ],
+      "observed": [
+        "rate-limited",
+        15
+      ]
+    },
+    {
+      "name": "no deletion without its signed link",
+      "expected": "invalid",
+      "requests": [],
+      "observed": "invalid"
+    },
+    {
+      "name": "session changes after dispatch",
+      "expected": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection&action=follow&op=follow&ctid=91&formhash=fixturehash&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "71",
+            "continuity": "fixture-session"
+          }
+        }
+      ],
+      "observed": "uncertain"
+    },
+    {
+      "name": "same UID after re-login cannot reuse page authority",
+      "expected": "session-changed",
+      "requests": [],
+      "observed": "session-changed"
+    },
+    {
+      "name": "guest public list",
+      "expected": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=collection",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": null
+        }
+      ],
+      "observed": [
+        "list",
+        [
+          [
+            "91",
+            null
+          ]
+        ],
+        1
+      ]
+    },
+    {
+      "name": "guest cannot load member dialog",
+      "expected": "login",
+      "requests": [],
+      "observed": "login"
+    }
+  ]
+}
