@@ -185,3 +185,19 @@ export type {
   LogoutResult,
   SessionIdentity,
 } from "./forum-client/account-client.js";
+
+export { createProfileClient } from "./forum-client/profile-client.js";
+export type {
+  AvatarSettings,
+  AvatarUploadHandoff,
+  BlacklistMember,
+  ForumDevice,
+  ForumSyncDocument,
+  PrivacyTab,
+  ProfileClientOptions,
+  ProfileFailure,
+  ProfileRequest,
+  RegisterForumDevice,
+  SettingsEditor,
+  SettingsField,
+} from "./forum-client/profile-client.js";

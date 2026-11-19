@@ -16,11 +16,13 @@ const manifest = {
     "index.d.ts",
     "forum-client/types.d.ts",
     "forum-client/account-client.d.ts",
+    "forum-client/profile-client.d.ts",
     "forum-client/discovery.d.ts",
     "forum-client/discovery/",
     "README.md",
     "docs/discovery.md",
     "docs/account.md",
+    "docs/profile.md",
     "notices/",
   ],
 };
@@ -38,11 +40,16 @@ copyFileSync(
   new URL("docs/account.md", root),
   new URL("docs/account.md", stage),
 );
+copyFileSync(
+  new URL("docs/profile.md", root),
+  new URL("docs/profile.md", stage),
+);
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
 for (const declaration of [
   "index.d.ts",
   "forum-client/account-client.d.ts",
+  "forum-client/profile-client.d.ts",
   "forum-client/types.d.ts",
   "forum-client/discovery.d.ts",
   ...["types", "lists", "search", "activity", "statistics"].map(

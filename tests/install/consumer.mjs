@@ -3,7 +3,11 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import * as sdk from "tsdm-sdk";
 
-assert.deepEqual(Object.keys(sdk), ["createAccountClient", "createForumClient"]);
+assert.deepEqual(Object.keys(sdk), [
+  "createAccountClient",
+  "createForumClient",
+  "createProfileClient",
+]);
 await assert.rejects(import("tsdm-sdk/index.js"), {
   code: "ERR_PACKAGE_PATH_NOT_EXPORTED",
 });

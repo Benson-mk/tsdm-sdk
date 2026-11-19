@@ -1,0 +1,1465 @@
+{
+  "evidence": "controlled installed consumer and host handoffs",
+  "package": "tsdm-sdk@0.1.0",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "archiveSHA256": "ea6ccd10ec61ba38bcd8bbb450e2563c95cf820d3aa8524c92e21e1b77b69bdb",
+  "documentation": {
+    "guide": "docs/profile.md",
+    "links": "checked in archive",
+    "typescript": "Version 6.0.3",
+    "example": "compiled without DOM or ambient types and executed from the archive"
+  },
+  "upstream": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "inputs": {
+    "tsdmapp/device_v20_list.json": "dfaa8c2e5d4c4ab27fa9a36a9ecb8b0cb6b2ff36f64d9f710b0a1503b500fcf1",
+    "tsdmapp/device_v20_register.json": "1385ed027bd9ca9e390cce77647b461c114efe831a630889859f98eb2d67d0c6",
+    "tsdmapp/device_v20_revoke.json": "d428bd0abf3c0a0753346f1d99a01b567928ef6373ffccaa98c2c5f00fbca2a1",
+    "tsdmapp/device_v20_remove.json": "8e1cf377199fe68cb37459b143c6f3fbdd724490c17c7296c04ba9caed032c9b",
+    "tsdmapp/device_v20_revoked.json": "26b4dcbf31ed5f80634db3618ce22e1f38e252b3c6e9181350ec564ac2e28367",
+    "../regression/test_283_sync_client_per_account_test.dart": "d036e54e4b3b098dfeac5543bd6bae0af1ff09deb9cbae19f3915c1cb0a7117d",
+    "profile_edit/signature_base_v17.json": "158504483ae9c10109dffa274fdbff6de1db6aad8cbe66b032ad6c346d4a18d9",
+    "profile_edit/signature_info_v17.json": "1d1eabbfc098e30b3591298257353dc6b4e13d6ec0582d63dbb99da74f6478c2",
+    "profile_edit_form_x5.html": "05139bd58c131c4642d16820db7758a298fe1deb2564a4a71c22f407d4b0d5eb",
+    "profile_edit/signature_info_x5.html": "dd776ae26cf095c3749c5c6a824a6db18e157678e38c85cab38d42eb6002699d",
+    "account/privacy_base_x5.html": "50da77e9d00a75bf3cf3fdd37e75936e3ee46886eba7312d4f74d14d06a54c95",
+    "account/result_privacy_v13.json": "cbde435d02cf066590a03220a0978a1ecb2e2af4db9ff7758aad9166eeb20947",
+    "account/privacy_feed_x5.html": "a6a403b78736adf38b006d39a64971ccda154035f910e7372cbbc9f896befe17",
+    "account/privacy_other_x5.html": "f46de1dc31d2aa7dfd9dce9c04589e586729f31f8367144e6d7d1d7f5c16e0af",
+    "tsdmapp/v4/g3_privacy_filter_v55.json": "9ab42f5fe816fc74f4c97d7f544f594e10b4684e9b2c5a5494cff2ec7023d9b7",
+    "tsdmapp/v4/g3_privacy_filter_web.html": "0a971b333e3aac442a1aa451066c54f9e6f389270374a947e773b06d0d48df0b",
+    "profile_edit/avatar_x5.html": "bf11ee64d3012d57fab6d50892e8d0eaa88b514b62c639002e9a4852d830fd52",
+    "tsdmapp/v4/g3_blockuser_v56_empty.json": "96377052158369c1bf0e127f72ce2ff28129bc31ba33b3cfbbfe071d228ba4d2",
+    "tsdmapp/v4/g3_blockuser_v56_lookup.json": "8a19e2a8ed1d4b91ba8c241b58f9fcb444708ae1d3e90f0b8c559e20fa7276fe",
+    "tsdmapp/v4/g3_blockuser_web_lookup.html": "85ce993bc4c54ae0ce20e1b6ba82ca3e74868b8d16ea366593ded2372192bea2",
+    "tsdmapp/v4/g3_blockuser_web_empty.html": "30a773386881cc9513be601b628bf34ee6b77060554981d4f4e66474fb5046c9"
+  },
+  "operations": [
+    {
+      "operation": "device list",
+      "expected": {
+        "kind": "devices",
+        "current": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "limit": 50,
+        "rows": [
+          [
+            "8ff19e8b-e328-4d40-843d-c79267d29702",
+            true,
+            false
+          ],
+          [
+            "8ff19e8b-e328-4d40-843d-c79267d29701",
+            false,
+            true
+          ]
+        ]
+      },
+      "observed": {
+        "kind": "devices",
+        "current": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "limit": 50,
+        "rows": [
+          [
+            "8ff19e8b-e328-4d40-843d-c79267d29702",
+            true,
+            false
+          ],
+          [
+            "8ff19e8b-e328-4d40-843d-c79267d29701",
+            false,
+            true
+          ]
+        ]
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "device registration",
+      "expected": {
+        "kind": "registered",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "created": true
+      },
+      "observed": {
+        "kind": "registered",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "created": true
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "register",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29701",
+            "platform": "android",
+            "app_version": "0.1.0",
+            "name": "Fixture phone"
+          },
+          "deviceHeader": "8ff19e8b-e328-4d40-843d-c79267d29701"
+        }
+      ]
+    },
+    {
+      "operation": "device revocation keeps row",
+      "expected": {
+        "kind": "revoked",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29702",
+        "revoked": true
+      },
+      "observed": {
+        "kind": "revoked",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29702",
+        "revoked": true
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "revoke",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29702"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "device removal",
+      "expected": {
+        "kind": "removed",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29702"
+      },
+      "observed": {
+        "kind": "removed",
+        "id": "8ff19e8b-e328-4d40-843d-c79267d29702"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "remove",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29702"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "device refusal",
+      "expected": {
+        "kind": "refused",
+        "reason": "notrevoked"
+      },
+      "observed": {
+        "kind": "refused",
+        "reason": "notrevoked"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "remove",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29702"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "device wrong account before dispatch",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "device continuity lost after dispatch",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "remove",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29702"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "revoked device response remains a refusal",
+      "expected": {
+        "kind": "refused",
+        "reason": "device_revoked"
+      },
+      "observed": {
+        "kind": "refused",
+        "reason": "device_revoked"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "device rate limit without automatic retry",
+      "expected": {
+        "kind": "rate-limited"
+      },
+      "observed": {
+        "kind": "rate-limited"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "op": "remove",
+            "device": "8ff19e8b-e328-4d40-843d-c79267d29702"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync download for intended member",
+      "expected": {
+        "kind": "sync-document",
+        "memberId": "501",
+        "updated": 52,
+        "data": "{\"version\":1,\"fixture\":\"café\"}",
+        "maxBytes": 65536
+      },
+      "observed": {
+        "kind": "sync-document",
+        "memberId": "501",
+        "updated": 52,
+        "data": "{\"version\":1,\"fixture\":\"café\"}",
+        "maxBytes": 65536
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "sync download wrong member",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "sync upload",
+      "expected": {
+        "kind": "uploaded",
+        "updated": 73
+      },
+      "observed": {
+        "kind": "uploaded",
+        "updated": 73
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "base_updated": "0",
+            "data": "{\"version\":1,\"fixture\":\"café\"}"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync conflict",
+      "expected": {
+        "kind": "conflict",
+        "updated": 51,
+        "data": "{\"other\":true}"
+      },
+      "observed": {
+        "kind": "conflict",
+        "updated": 51,
+        "data": "{\"other\":true}"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "base_updated": "0",
+            "data": "{\"version\":1,\"fixture\":\"café\"}"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync size refusal",
+      "expected": {
+        "kind": "too-large",
+        "maxBytes": 16
+      },
+      "observed": {
+        "kind": "too-large",
+        "maxBytes": 16
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "base_updated": "0",
+            "data": "{\"version\":1,\"fixture\":\"café\"}"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync lost upload response",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "base_updated": "0",
+            "data": "{\"version\":1,\"fixture\":\"café\"}"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync wrong upload account",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "base_updated": "0",
+            "data": "{\"version\":1,\"fixture\":\"café\"}"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "sync same member with a replaced session",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "read structured profile",
+      "expected": {
+        "kind": "profile",
+        "tab": "base",
+        "gender": "0"
+      },
+      "observed": {
+        "kind": "profile",
+        "tab": "base",
+        "gender": "0"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "profile structured edit",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=profile&op=base&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "profilesubmit": "true",
+            "profilesubmitbtn": "true",
+            "gender": "2",
+            "privacy[gender]": "0"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "read signature on the advertised info tab",
+      "expected": {
+        "kind": "signature",
+        "tab": "info",
+        "name": "sightml",
+        "bbcode": true
+      },
+      "observed": {
+        "kind": "signature",
+        "tab": "info",
+        "name": "sightml",
+        "bbcode": true
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&op=info&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "signature follows advertised tab and posts signature alone",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&op=info&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=profile&op=info&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "profilesubmit": "true",
+            "profilesubmitbtn": "true",
+            "sightml": "[b]Fixture[/b]"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "profile falls back once to native and keeps other fields out of POST",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=profile&op=base",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "profilesubmit": "true",
+            "profilesubmitbtn": "true",
+            "bio": "Fixture after"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "native signature refusal reports the field",
+      "expected": {
+        "kind": "refused",
+        "reason": "sightml"
+      },
+      "observed": {
+        "kind": "refused",
+        "reason": "sightml"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=profile&op=base",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "profilesubmit": "true",
+            "profilesubmitbtn": "true",
+            "sightml": "Fixture after"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "profile refuses a value outside supplied choices",
+      "expected": {
+        "kind": "invalid"
+      },
+      "observed": {
+        "kind": "invalid"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "profile rejects same-member session replacement",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "profile redirect alone leaves write unverified",
+      "expected": {
+        "kind": "unverified"
+      },
+      "observed": {
+        "kind": "unverified"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=profile&tsdmapp=json&tsdmform=1&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=profile&op=base&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "profilesubmit": "true",
+            "profilesubmitbtn": "true",
+            "gender": "2",
+            "privacy[gender]": "0"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "read privacy base",
+      "expected": {
+        "kind": "privacy",
+        "tab": "base",
+        "selected": "1"
+      },
+      "observed": {
+        "kind": "privacy",
+        "tab": "base",
+        "selected": "1"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=base",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "privacy base read and save",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=base",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=base&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacysubmit": "true",
+            "privacy[view][friend]": "3",
+            "privacy[view][wall]": "0",
+            "privacy[view][home]": "0",
+            "privacy[view][blog]": "3",
+            "privacy[view][album]": "0"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "read privacy feed",
+      "expected": {
+        "kind": "privacy",
+        "tab": "feed",
+        "selected": false
+      },
+      "observed": {
+        "kind": "privacy",
+        "tab": "feed",
+        "selected": false
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=feed",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "privacy feed read and save",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=feed",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=feed&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacysubmit": "true",
+            "privacy[feed][newreply]": "1",
+            "privacy[feed][newthread]": "1"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "read privacy other",
+      "expected": {
+        "kind": "privacy",
+        "tab": "other",
+        "selected": "0"
+      },
+      "observed": {
+        "kind": "privacy",
+        "tab": "other",
+        "selected": "0"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "privacy other read and save",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacy3submit": "true",
+            "allowasfriend": "1"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "privacy filter saves only the supplied tab",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacy2submit": "true",
+            "privacy[filter_gid][2]": "2"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "privacy filter native fallback",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=filter",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacy2submit": "true",
+            "privacy[filter_gid][2]": "2"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "privacy native redirect requires same-account tab readback",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other&tsdmapp=json",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "privacy3submit": "true",
+            "allowasfriend": "1"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=other",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "privacy unsupported control prevents whole-tab replacement",
+      "expected": {
+        "kind": "unsupported"
+      },
+      "observed": {
+        "kind": "unsupported"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=privacy&op=feed",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "current avatar and offered modes",
+      "expected": {
+        "kind": "avatar",
+        "memberId": "501",
+        "currentUrl": "https://images.example.test/avatars/fixture.jpg",
+        "externalUrl": "https://images.example.test/before.jpg",
+        "uploadAvailable": true
+      },
+      "observed": {
+        "kind": "avatar",
+        "memberId": "501",
+        "currentUrl": "https://images.example.test/avatars/fixture.jpg",
+        "externalUrl": "https://images.example.test/before.jpg",
+        "uploadAvailable": true
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "signed avatar upload goes to host without a forum request",
+      "expected": {
+        "kind": "avatar-upload",
+        "destination": "https://uploader.example.test/uc/index.php?m=user&a=rectavatar&input=fixture-signed&agent=fixture-agent",
+        "memberId": "501",
+        "session": "jar-1",
+        "method": "POST",
+        "contentType": "application/x-www-form-urlencoded",
+        "fields": [
+          "avatar1",
+          "avatar2",
+          "avatar3"
+        ]
+      },
+      "observed": {
+        "kind": "avatar-upload",
+        "destination": "https://uploader.example.test/uc/index.php?m=user&a=rectavatar&input=fixture-signed&agent=fixture-agent",
+        "memberId": "501",
+        "session": "jar-1",
+        "method": "POST",
+        "contentType": "application/x-www-form-urlencoded",
+        "fields": [
+          "avatar1",
+          "avatar2",
+          "avatar3"
+        ]
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "stale signed avatar destination withheld from host",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "non-HTTPS avatar uploader withheld",
+      "expected": {
+        "kind": "unsupported"
+      },
+      "observed": {
+        "kind": "unsupported"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "avatar URL save with native redirect and matching readback",
+      "expected": {
+        "kind": "saved"
+      },
+      "observed": {
+        "kind": "saved"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "headsubmit": "true",
+            "headedit": "https://images.example.test/after.jpg"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "avatar URL response lost without a resend",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=avatar",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "headsubmit": "true",
+            "headedit": "https://images.example.test/after.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist list",
+      "expected": {
+        "kind": "blacklist",
+        "members": [
+          {
+            "id": "502",
+            "name": "Fixture neighbor"
+          }
+        ],
+        "complete": true,
+        "count": 1,
+        "limit": 10
+      },
+      "observed": {
+        "kind": "blacklist",
+        "members": [
+          {
+            "id": "502",
+            "name": "Fixture neighbor"
+          }
+        ],
+        "complete": true,
+        "count": 1,
+        "limit": 10
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist lookup is read-only",
+      "expected": {
+        "kind": "blacklist-member",
+        "id": "502",
+        "name": "Fixture neighbor",
+        "alreadyListed": false,
+        "canAdd": true
+      },
+      "observed": {
+        "kind": "blacklist-member",
+        "id": "502",
+        "name": "Fixture neighbor",
+        "alreadyListed": false,
+        "canAdd": true
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist add requires fresh list readback",
+      "expected": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "observed": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuseradd": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist remove requires complete absence",
+      "expected": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "observed": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuserdel": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist removal cannot confirm a partial list",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuserdel": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist changed lookup name prevents POST",
+      "expected": {
+        "kind": "invalid"
+      },
+      "observed": {
+        "kind": "invalid"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist redrawn refusal and unchanged list",
+      "expected": {
+        "kind": "refused",
+        "reason": "full"
+      },
+      "observed": {
+        "kind": "refused",
+        "reason": "full"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuseradd": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist readback after a lost write without resending",
+      "expected": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "observed": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuseradd": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "website blacklist session change prevents readback",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuseradd": "yes",
+            "buid": "502"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "native website blacklist add from supplied form",
+      "expected": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "observed": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&bu_q=502",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuseradd": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "native website blacklist removal from row form",
+      "expected": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "observed": {
+        "kind": "confirmed",
+        "memberId": "502"
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp&tsdmapp=json&tsdmv=4&nodoc=1",
+          "effect": false
+        },
+        {
+          "method": "POST",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp",
+          "effect": true,
+          "fields": {
+            "formhash": "fixturehash",
+            "blockuserdel": "yes",
+            "buid": "502"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/home.php?mod=spacecp&ac=plugin&id=blockuser%3Aspacecp",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "operation": "packaged TypeScript guide",
+      "expected": {
+        "kind": "sync-document",
+        "memberId": "501",
+        "updated": 0,
+        "data": null,
+        "maxBytes": 65536
+      },
+      "observed": {
+        "kind": "sync-document",
+        "memberId": "501",
+        "updated": 0,
+        "data": null,
+        "maxBytes": 65536
+      },
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+          "effect": false
+        }
+      ]
+    }
+  ]
+}
