@@ -2,6 +2,23 @@
 
 The candidate is `tsdm-sdk-0.1.0.tgz`, 423256 bytes, SHA-256 `33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7`. The [candidate manifest](candidate.json) binds the archive to the [package inputs](package-inputs.json), including source paths, file modes, content digests, the lockfile, the staging script and third-party notices. The attached release manifest identifies the full Git commit after rebuilding its clean export and comparing the tarballs byte for byte.
 
+## Published release
+
+GitHub published immutable `v0.1.0` on November 19, 2026 at 14:45:30 UTC. Its tag resolves to `edbabcedfe03c5d8da817ec1a1aa7ed3ac98ccd8`. A clean export of this commit produced a byte-identical 423256-byte tarball. Before publication, both authenticated draft downloads matched the local files and GitHub reported immutability enabled. [Source manifest](release.json) · [Draft verification](draft-verification.json) · [Public release metadata](public-release.json)
+
+A fresh anonymous consumer downloaded both release assets and verified their bytes. The exact command in `INSTALL.md` installed the SDK from the versioned URL into an empty npm cache. The lockfile recorded the expected URL and SHA-512. The package imported as ESM and its declarations passed strict NodeNext checking without DOM types. GitHub CLI verified the release attestation and its reference to each asset. [Public installation receipt](public-install.json) · [GitHub attestation](github-attestation.json)
+
+To repeat the public check from an SDK checkout with the locked development packages installed, supply the local qualified tarball and the attached release manifest. The verifier uses a fresh home and cache and emits a JSON receipt.
+
+```sh
+python3 evidence/release/0.1.0/verify-public.py "$archive" evidence/release/0.1.0/release.json INSTALL.md --tsc node_modules/typescript/bin/tsc
+gh release verify v0.1.0 --repo Benson-mk/tsdm-sdk
+gh release verify-asset v0.1.0 "$archive" --repo Benson-mk/tsdm-sdk
+gh release verify-asset v0.1.0 evidence/release/0.1.0/release.json --repo Benson-mk/tsdm-sdk
+```
+
+## Candidate evidence
+
 | Qualification check | Expected and observed |
 | --- | --- |
 | Package and rights | A fresh external Node.js 26.0.0 project installed the exact bytes, imported the public ESM package, and passed strict TypeScript 6.0.3 checking with ES2023 and no DOM or ambient types. The installed README linked to the repository-identical MIT license. The package declared MIT and carried the matching notices for parse5 8.0.1 and entities 8.1.0. [Installation and terms](terms.json) |

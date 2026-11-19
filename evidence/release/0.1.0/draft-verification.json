@@ -1,0 +1,29 @@
+{
+  "repository": "Benson-mk/tsdm-sdk",
+  "tag": "v0.1.0",
+  "sourceCommit": "edbabcedfe03c5d8da817ec1a1aa7ed3ac98ccd8",
+  "releaseId": 451481314,
+  "draft": true,
+  "immutability": {
+    "enabled": true,
+    "enforced_by_owner": false
+  },
+  "qualificationLink": "https://github.com/Benson-mk/tsdm-sdk/blob/edbabcedfe03c5d8da817ec1a1aa7ed3ac98ccd8/evidence/release/0.1.0/README.md",
+  "assets": [
+    {
+      "id": 768055041,
+      "name": "release.json",
+      "size": 343,
+      "state": "uploaded",
+      "digest": "sha256:edeebebbfa66e2e967ba16afacf132b9029a748b77b96f43cc80ce77ecac3ba6"
+    },
+    {
+      "id": 768055038,
+      "name": "tsdm-sdk-0.1.0.tgz",
+      "size": 423256,
+      "state": "uploaded",
+      "digest": "sha256:33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7"
+    }
+  ],
+  "downloadedBytesMatched": true
+}
