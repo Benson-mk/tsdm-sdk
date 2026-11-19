@@ -1,0 +1,426 @@
+{
+  "evidence": "packaged direct HTTP helpers against a controlled loopback forum",
+  "archiveSHA256": "a51deb6836a4b9cbe51fd2a5f73dd9d528d14fbc14685f811eb9c72eccf1b551",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "expected": "each exchange twice, once per language, with exact query, form body and fixture session",
+  "observed": [
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "uid": "204",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "username": "Fictional Birch",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "friend",
+        "uid": "101",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "friend",
+        "uid": "204",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "friend",
+        "uid": "101",
+        "group": "1",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "friend",
+        "view": "visitor",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "friend",
+        "view": "online",
+        "type": "member",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "favorite",
+        "type": "forum",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "space",
+        "do": "favorite",
+        "type": "thread",
+        "tsdmapp": "json",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/plugin.php",
+      "query": {
+        "id": "atplus:search"
+      },
+      "body": {
+        "op": "init"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/plugin.php",
+      "query": {
+        "id": "atplus:search"
+      },
+      "body": {
+        "op": "search",
+        "q": "Fictional Birch"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/misc.php",
+      "query": {
+        "mod": "getatuser",
+        "inajax": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "friend",
+        "op": "add",
+        "uid": "204",
+        "handlekey": "addfriendhk_204",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmform": "1",
+        "tsdmv": "4",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "friend",
+        "op": "add",
+        "uid": "204",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmv": "4"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "addfriendhk_204",
+        "addsubmit": "true",
+        "gid": "1",
+        "note": "Hello"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "friend",
+        "op": "add",
+        "uid": "204",
+        "handlekey": "afr_204",
+        "infloat": "yes",
+        "from": "notice",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmform": "1",
+        "tsdmv": "4",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "friend",
+        "op": "add",
+        "uid": "204",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmv": "4"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "afr_204",
+        "add2submit": "true",
+        "gid": "1",
+        "from": "notice"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "forum",
+        "id": "44",
+        "infloat": "yes",
+        "handlekey": "k_favorite",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmform": "1",
+        "tsdmv": "4",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "forum",
+        "id": "44",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmv": "4"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "k_favorite",
+        "favoritesubmit": "true",
+        "description": "Saved"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "forum",
+        "op": "delete",
+        "favid": "502",
+        "infloat": "yes",
+        "handlekey": "favdelete",
+        "inajax": "1",
+        "tsdmapp": "json"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "forum",
+        "op": "delete",
+        "favid": "502",
+        "inajax": "1",
+        "tsdmapp": "json"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "favdelete",
+        "deletesubmit": "true"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "thread",
+        "id": "44",
+        "infloat": "yes",
+        "handlekey": "k_favorite",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmform": "1",
+        "tsdmv": "4",
+        "nodoc": "1"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "thread",
+        "id": "44",
+        "inajax": "1",
+        "tsdmapp": "json",
+        "tsdmv": "4"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "k_favorite",
+        "favoritesubmit": "true",
+        "description": "Saved"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "thread",
+        "op": "delete",
+        "favid": "501",
+        "infloat": "yes",
+        "handlekey": "favdelete",
+        "inajax": "1",
+        "tsdmapp": "json"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "mod": "spacecp",
+        "ac": "favorite",
+        "type": "thread",
+        "op": "delete",
+        "favid": "501",
+        "inajax": "1",
+        "tsdmapp": "json"
+      },
+      "body": {
+        "formhash": "fictional_token",
+        "handlekey": "favdelete",
+        "deletesubmit": "true"
+      },
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    },
+    {
+      "method": "POST",
+      "path": "/home.php",
+      "query": {
+        "op": "redirect"
+      },
+      "body": {},
+      "ajax": "XMLHttpRequest",
+      "session": "controlled=fictional"
+    }
+  ],
+  "requestCount": 50,
+  "redirectsFollowed": 0
+}

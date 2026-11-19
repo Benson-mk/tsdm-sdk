@@ -1,0 +1,912 @@
+{
+  "evidence": "controlled installed consumer and host transport",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "a51deb6836a4b9cbe51fd2a5f73dd9d528d14fbc14685f811eb9c72eccf1b551",
+  "syntheticInputsSHA256": "6f3dd9e80ccc5bf362802bc4b6a046adb6ab1c680caa0489943429808faf504f",
+  "sourcePin": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "verifiedFiles": 35
+  },
+  "guideCheck": {
+    "links": "checked in archive",
+    "declarations": "Version 6.0.3",
+    "typescript": "compiled without DOM or ambient types and executed in the installed consumer"
+  },
+  "results": {
+    "lookup": {
+      "expected": {
+        "exact": {
+          "id": "204",
+          "name": "Fictional Birch"
+        },
+        "byName": "204",
+        "actor": "101",
+        "wrong": "invalid",
+        "missing": "missing",
+        "requests": [
+          {
+            "mod": "space",
+            "uid": "204",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          {
+            "mod": "space",
+            "username": "Fictional Birch",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          {
+            "mod": "space",
+            "uid": "205",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          {
+            "mod": "space",
+            "uid": "999",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          }
+        ]
+      },
+      "observed": {
+        "exact": {
+          "id": "204",
+          "name": "Fictional Birch"
+        },
+        "byName": "204",
+        "actor": "101",
+        "wrong": "invalid",
+        "missing": "missing",
+        "requests": [
+          {
+            "mod": "space",
+            "uid": "204",
+            "nodoc": "1",
+            "tsdmapp": "json"
+          },
+          {
+            "mod": "space",
+            "username": "Fictional Birch",
+            "nodoc": "1",
+            "tsdmapp": "json"
+          },
+          {
+            "mod": "space",
+            "uid": "205",
+            "nodoc": "1",
+            "tsdmapp": "json"
+          },
+          {
+            "mod": "space",
+            "uid": "999",
+            "nodoc": "1",
+            "tsdmapp": "json"
+          }
+        ]
+      }
+    },
+    "lists": {
+      "expected": {
+        "own": [
+          "204",
+          2
+        ],
+        "next": [
+          2,
+          null
+        ],
+        "member": "203",
+        "group": [
+          {
+            "id": "0",
+            "name": "Other"
+          },
+          {
+            "id": "1",
+            "name": "Study"
+          }
+        ],
+        "visitors": [
+          "204",
+          null
+        ],
+        "online": "204",
+        "privateView": "permission",
+        "switched": "stale",
+        "forum": [
+          "502",
+          "44"
+        ],
+        "thread": [
+          "501",
+          "44"
+        ],
+        "requests": [
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            -1,
+            2
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            203,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "visitor",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "member",
+            "online",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            999,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "visitor",
+            101,
+            -1,
+            1
+          ],
+          [
+            "favorite",
+            "forum",
+            "me",
+            101,
+            -1,
+            1
+          ],
+          [
+            "favorite",
+            "thread",
+            "me",
+            101,
+            -1,
+            1
+          ]
+        ]
+      },
+      "observed": {
+        "own": [
+          "204",
+          2
+        ],
+        "next": [
+          2,
+          null
+        ],
+        "member": "203",
+        "group": [
+          {
+            "id": "0",
+            "name": "Other"
+          },
+          {
+            "id": "1",
+            "name": "Study"
+          }
+        ],
+        "visitors": [
+          "204",
+          null
+        ],
+        "online": "204",
+        "privateView": "permission",
+        "switched": "stale",
+        "forum": [
+          "502",
+          "44"
+        ],
+        "thread": [
+          "501",
+          "44"
+        ],
+        "requests": [
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            -1,
+            2
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            203,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            101,
+            1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "visitor",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "member",
+            "online",
+            101,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "me",
+            999,
+            -1,
+            1
+          ],
+          [
+            "friend",
+            "",
+            "visitor",
+            101,
+            -1,
+            1
+          ],
+          [
+            "favorite",
+            "forum",
+            "me",
+            101,
+            -1,
+            1
+          ],
+          [
+            "favorite",
+            "thread",
+            "me",
+            101,
+            -1,
+            1
+          ]
+        ]
+      }
+    },
+    "mentions": {
+      "expected": {
+        "recent": [
+          "204"
+        ],
+        "found": [
+          "204"
+        ],
+        "stock": [
+          "Fictional Elm",
+          "Fictional Birch"
+        ],
+        "fallback": [
+          "Fictional Elm",
+          "Fictional Birch"
+        ],
+        "switched": "stale",
+        "requests": [
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=init"
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=search&q=Fictional+Birch"
+          ],
+          [
+            "/misc.php?mod=getatuser&inajax=1",
+            "GET",
+            false,
+            null
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=init"
+          ],
+          [
+            "/misc.php?mod=getatuser&inajax=1",
+            "GET",
+            false,
+            null
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=search&q=204"
+          ]
+        ]
+      },
+      "observed": {
+        "recent": [
+          "204"
+        ],
+        "found": [
+          "204"
+        ],
+        "stock": [
+          "Fictional Elm",
+          "Fictional Birch"
+        ],
+        "fallback": [
+          "Fictional Elm",
+          "Fictional Birch"
+        ],
+        "switched": "stale",
+        "requests": [
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=init"
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=search&q=Fictional+Birch"
+          ],
+          [
+            "/misc.php?mod=getatuser&inajax=1",
+            "GET",
+            false,
+            null
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=init"
+          ],
+          [
+            "/misc.php?mod=getatuser&inajax=1",
+            "GET",
+            false,
+            null
+          ],
+          [
+            "/plugin.php?id=atplus%3Asearch",
+            "POST",
+            false,
+            "op=search&q=204"
+          ]
+        ]
+      }
+    },
+    "friendEffects": {
+      "expected": {
+        "sent": "request-sent",
+        "approved": "approved",
+        "invalidLink": "invalid",
+        "wrongResult": "uncertain",
+        "pending": "pending",
+        "self": "invalid",
+        "wrongForm": "stale",
+        "dropped": "uncertain",
+        "switched": "uncertain",
+        "writes": [
+          [
+            "send",
+            "204",
+            "true",
+            null,
+            "0",
+            "Hello",
+            null
+          ],
+          [
+            "approve",
+            "204",
+            null,
+            "true",
+            "1",
+            null,
+            "notice"
+          ],
+          [
+            "wrong-result",
+            "204",
+            null,
+            "true",
+            "1",
+            null,
+            "notice"
+          ],
+          [
+            "drop",
+            "204",
+            "true",
+            null,
+            "1",
+            "",
+            null
+          ],
+          [
+            "switch",
+            "204",
+            "true",
+            null,
+            "1",
+            "",
+            null
+          ]
+        ]
+      },
+      "observed": {
+        "sent": "request-sent",
+        "approved": "approved",
+        "invalidLink": "invalid",
+        "wrongResult": "uncertain",
+        "pending": "pending",
+        "self": "invalid",
+        "wrongForm": "stale",
+        "dropped": "uncertain",
+        "switched": "uncertain",
+        "writes": [
+          [
+            "send",
+            "204",
+            "true",
+            null,
+            "0",
+            "Hello",
+            null
+          ],
+          [
+            "approve",
+            "204",
+            null,
+            "true",
+            "1",
+            null,
+            "notice"
+          ],
+          [
+            "wrong-result",
+            "204",
+            null,
+            "true",
+            "1",
+            null,
+            "notice"
+          ],
+          [
+            "drop",
+            "204",
+            "true",
+            null,
+            "1",
+            "",
+            null
+          ],
+          [
+            "switch",
+            "204",
+            "true",
+            null,
+            "1",
+            "",
+            null
+          ]
+        ]
+      }
+    },
+    "favoriteEffects": {
+      "expected": {
+        "board": [
+          "added",
+          "502"
+        ],
+        "thread": [
+          "added",
+          "501"
+        ],
+        "repeat": "already-saved",
+        "mismatch": "invalid",
+        "removeBoard": "removed",
+        "removeThread": "removed",
+        "refused": "refused",
+        "unverified": "uncertain",
+        "dropped": "uncertain",
+        "writes": [
+          [
+            "forum",
+            "add",
+            "44",
+            "Board",
+            "4"
+          ],
+          [
+            "thread",
+            "add",
+            "44",
+            "Thread",
+            null
+          ],
+          [
+            "forum",
+            "remove",
+            "502",
+            null,
+            null
+          ],
+          [
+            "thread",
+            "remove",
+            "501",
+            null,
+            null
+          ],
+          [
+            "forum",
+            "add",
+            "44",
+            "",
+            "4"
+          ],
+          [
+            "thread",
+            "add",
+            "44",
+            "",
+            null
+          ]
+        ],
+        "reads": [
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "thread",
+            [
+              "501"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            []
+          ],
+          [
+            "thread",
+            [
+              "501"
+            ]
+          ],
+          [
+            "thread",
+            []
+          ],
+          [
+            "forum",
+            []
+          ]
+        ]
+      },
+      "observed": {
+        "board": [
+          "added",
+          "502"
+        ],
+        "thread": [
+          "added",
+          "501"
+        ],
+        "repeat": "already-saved",
+        "mismatch": "invalid",
+        "removeBoard": "removed",
+        "removeThread": "removed",
+        "refused": "refused",
+        "unverified": "uncertain",
+        "dropped": "uncertain",
+        "writes": [
+          [
+            "forum",
+            "add",
+            "44",
+            "Board",
+            "4"
+          ],
+          [
+            "thread",
+            "add",
+            "44",
+            "Thread",
+            null
+          ],
+          [
+            "forum",
+            "remove",
+            "502",
+            null,
+            null
+          ],
+          [
+            "thread",
+            "remove",
+            "501",
+            null,
+            null
+          ],
+          [
+            "forum",
+            "add",
+            "44",
+            "",
+            "4"
+          ],
+          [
+            "thread",
+            "add",
+            "44",
+            "",
+            null
+          ]
+        ],
+        "reads": [
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "thread",
+            [
+              "501"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            [
+              "502"
+            ]
+          ],
+          [
+            "forum",
+            []
+          ],
+          [
+            "thread",
+            [
+              "501"
+            ]
+          ],
+          [
+            "thread",
+            []
+          ],
+          [
+            "forum",
+            []
+          ]
+        ]
+      }
+    },
+    "native": {
+      "expected": {
+        "profile": "204",
+        "visitors": "204",
+        "online": "204",
+        "group": [
+          {
+            "id": "1",
+            "name": "Study"
+          }
+        ],
+        "board": [
+          "forum",
+          "508"
+        ],
+        "thread": [
+          "thread",
+          "508"
+        ],
+        "sent": "request-sent",
+        "approved": "approved",
+        "calls": [
+          [
+            "send",
+            "1",
+            null,
+            true
+          ],
+          [
+            "approve",
+            "1",
+            null,
+            true
+          ]
+        ]
+      },
+      "observed": {
+        "profile": "204",
+        "visitors": "204",
+        "online": "204",
+        "group": [
+          {
+            "id": "1",
+            "name": "Study"
+          }
+        ],
+        "board": [
+          "forum",
+          "508"
+        ],
+        "thread": [
+          "thread",
+          "508"
+        ],
+        "sent": "request-sent",
+        "approved": "approved",
+        "calls": [
+          [
+            "send",
+            "1",
+            null,
+            true
+          ],
+          [
+            "approve",
+            "1",
+            null,
+            true
+          ]
+        ]
+      }
+    },
+    "unprovenAbsence": {
+      "expected": {
+        "result": "unavailable",
+        "requests": [
+          [
+            null,
+            "GET",
+            false
+          ],
+          [
+            "favorite",
+            "GET",
+            false
+          ],
+          [
+            "favorite",
+            "GET",
+            false
+          ]
+        ]
+      },
+      "observed": {
+        "result": "unavailable",
+        "requests": [
+          [
+            null,
+            "GET",
+            false
+          ],
+          [
+            "favorite",
+            "GET",
+            false
+          ],
+          [
+            "favorite",
+            "GET",
+            false
+          ]
+        ]
+      }
+    },
+    "redirectedScope": {
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    "guide": {
+      "expected": {
+        "kind": "member",
+        "id": "204"
+      },
+      "observed": {
+        "kind": "member",
+        "id": "204"
+      }
+    }
+  }
+}

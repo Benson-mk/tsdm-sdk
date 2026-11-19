@@ -1,3 +1,9 @@
+import { createMemberReads } from "./forum-client/member-reads.js";
+export type {
+  MemberIdentity,
+  MemberLookup,
+  MemberLookupResult,
+} from "./forum-client/member-reads.js";
 import { createDiscoveryOperations } from "./forum-client/discovery.js";
 export type {
   DiscoveryFailure,
@@ -81,9 +87,10 @@ export type BoardReadResult = ReadContext &
 export type HomepageReadResult = ReadContext &
   ({ kind: "homepage"; homepage: Homepage } | ReadFailure);
 
-export interface ForumClient extends ReturnType<
-  typeof createDiscoveryOperations
-> {
+export interface ForumClient
+  extends
+    ReturnType<typeof createDiscoveryOperations>,
+    ReturnType<typeof createMemberReads> {
   readHomepage(
     destination?: string,
     options?: ReadOptions,
@@ -108,6 +115,7 @@ export function createForumClient({
   const request = (url: string) => transport.request(url, { fresh: true });
   return {
     ...createDiscoveryOperations(origin, transport),
+    ...createMemberReads(origin, transport),
     async readHomepage(destination = `${origin}/forum.php`, options) {
       const result = await publicRead(
         destination,
@@ -201,3 +209,29 @@ export type {
   SettingsEditor,
   SettingsField,
 } from "./forum-client/profile-client.js";
+
+export { createMemberClient } from "./forum-client/member-client.js";
+export type {
+  MemberClient,
+  MemberClientOptions,
+  SendFriendRequest,
+  ApproveFriendRequest,
+  MemberEffectResult,
+  AddFavorite,
+  RemoveFavorite,
+  FavoriteEffectResult,
+  MemberRequest,
+  MemberFailure,
+  MentionCandidates,
+  MentionSearch,
+  NativeMentions,
+} from "./forum-client/member-client.js";
+export type {
+  FriendQuery,
+  FriendEntry,
+  FriendGroup,
+  FriendListResult,
+  FavoriteQuery,
+  FavoriteEntry,
+  FavoriteListResult,
+} from "./forum-client/member-reads.js";
