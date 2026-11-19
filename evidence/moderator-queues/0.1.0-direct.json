@@ -1,0 +1,6171 @@
+{
+  "archiveSHA256": "2954f182716a9f69868e72b15b07c837f1139c2a88fbe45f94029ac465f963ae",
+  "guideSHA256": "4b5a94a4a785d7fb1714b3513635de7b5c79aa012f31230a430d811d23b2fe97",
+  "results": [
+    {
+      "name": "requests dashboard asks for password",
+      "expected": [
+        [
+          200,
+          "<form action=\"forum.php?mod=modcp&action=login\" method=\"post\"><input type=\"password\" name=\"cppwd\"></form>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<form action=\"forum.php?mod=modcp&action=login\" method=\"post\"><input type=\"password\" name=\"cppwd\"></form>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl dashboard asks for password",
+      "expected": [
+        [
+          200,
+          "<form action=\"forum.php?mod=modcp&action=login\" method=\"post\"><input type=\"password\" name=\"cppwd\"></form>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<form action=\"forum.php?mod=modcp&action=login\" method=\"post\"><input type=\"password\" name=\"cppwd\"></form>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests approved panel login",
+      "expected": [
+        [
+          302,
+          ""
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "login"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          302,
+          ""
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "login"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl approved panel login",
+      "expected": [
+        [
+          302,
+          ""
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "login"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          302,
+          ""
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "login"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests dashboard access rechecked",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "counts": {
+              "moderate": 3
+            }
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "counts": {
+              "moderate": 3
+            }
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl dashboard access rechecked",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "counts": {
+              "moderate": 3
+            }
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "counts": {
+              "moderate": 3
+            }
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests thread management page",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl thread management page",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests thread stored search",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "search",
+              "submit": "true",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "search",
+              "submit": "true",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl thread stored search",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "search",
+              "submit": "true",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "search",
+              "submit": "true",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests thread result continuation",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl thread result continuation",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_thread",
+            "schema": 36,
+            "threads": [
+              {
+                "tid": 801
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests post management page",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl post management page",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests post stored search",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl post stored search",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "keywords": "fixture",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests post result continuation",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "posttableid": "0",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "posttableid": "0",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl post result continuation",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "posttableid": "0",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 901
+              },
+              {
+                "pid": 902
+              }
+            ],
+            "page": 2
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "do": "list",
+              "page": "2",
+              "posttableid": "0",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests delete selected posts with partial result",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 902
+              }
+            ],
+            "message_key": "modcp_thread_delete_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 902
+              }
+            ],
+            "message_key": "modcp_thread_delete_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl delete selected posts with partial result",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 902
+              }
+            ],
+            "message_key": "modcp_thread_delete_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_post",
+            "schema": 37,
+            "posts": [
+              {
+                "pid": 902
+              }
+            ],
+            "message_key": "modcp_thread_delete_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests threads queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "threads",
+            "items": [
+              {
+                "id": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "threads",
+            "items": [
+              {
+                "id": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl threads queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "threads",
+            "items": [
+              {
+                "id": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "threads",
+            "items": [
+              {
+                "id": 801
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests threads verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl threads verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests replies queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "replies",
+            "items": [
+              {
+                "id": 901
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "replies",
+            "items": [
+              {
+                "id": 901
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl replies queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "replies",
+            "items": [
+              {
+                "id": 901
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "replies",
+            "items": [
+              {
+                "id": 901
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests replies verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl replies verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests members queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": [
+              {
+                "uid": 105
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": [
+              {
+                "uid": 105
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl members queue read",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": [
+              {
+                "uid": 105
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": [
+              {
+                "uid": 105
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests members verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl members verdict",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_mod_succeed"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests registration selection rechecked",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": []
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": []
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl registration selection rechecked",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": []
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_moderate",
+            "schema": 42,
+            "op": "members",
+            "members": []
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests report listing",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_report",
+            "schema": 28,
+            "reports": [
+              {
+                "id": 501,
+                "uid": 77
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_report",
+            "schema": 28,
+            "reports": [
+              {
+                "id": 501,
+                "uid": 77
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl report listing",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_report",
+            "schema": 28,
+            "reports": [
+              {
+                "id": 501,
+                "uid": 77
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "fid": 10,
+            "type": "modcp_report",
+            "schema": 28,
+            "reports": [
+              {
+                "id": 501,
+                "uid": 77
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests report resolution",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_report_success"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_report_success"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl report resolution",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_report_success"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_report_success"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests report refusal",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "quickclear_noperm",
+            "alert": "error"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "quickclear_noperm",
+            "alert": "error"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl report refusal",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "quickclear_noperm",
+            "alert": "error"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "quickclear_noperm",
+            "alert": "error"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests report loss sends once",
+      "expected": [
+        "uncertain",
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl report loss sends once",
+      "expected": [
+        {
+          "exit": 52
+        },
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        {
+          "exit": 52
+        },
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin view",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin view",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin search",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin search",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin restore",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin restore",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin restore readback",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin restore readback",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin delete",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin delete",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebin delete readback",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebin delete readback",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"801\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost view",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost view",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost search",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost search",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fixture"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost restore",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost restore",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost restore readback",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost restore readback",
+      "expected": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<p class=\"emp\">No results</p>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost delete",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost delete",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            "fields": [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests recyclebinpost delete readback",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl recyclebinpost delete readback",
+      "expected": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "fictionalCookie": true,
+            "administratorToken": false,
+            "contentType": null
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          "<input type=\"checkbox\" name=\"moderate[]\" value=\"901\"><button onclick=\"modthreads('restore')\">Restore</button>"
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": false
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests declined report effect",
+      "expected": [
+        "declined",
+        []
+      ],
+      "actual": [
+        "declined",
+        []
+      ]
+    },
+    {
+      "name": "requests replaced login prevents effect",
+      "expected": [
+        "binding-changed",
+        []
+      ],
+      "actual": [
+        "binding-changed",
+        []
+      ]
+    },
+    {
+      "name": "requests panel report deletion unavailable",
+      "expected": [
+        "panel-report-delete-unavailable",
+        []
+      ],
+      "actual": [
+        "panel-report-delete-unavailable",
+        []
+      ]
+    },
+    {
+      "name": "curl declined report effect",
+      "expected": [
+        null,
+        []
+      ],
+      "actual": [
+        null,
+        []
+      ]
+    },
+    {
+      "name": "curl replaced login prevents effect",
+      "expected": [
+        {
+          "exit": 3
+        },
+        []
+      ],
+      "actual": [
+        {
+          "exit": 3
+        },
+        []
+      ]
+    },
+    {
+      "name": "curl panel report deletion unavailable",
+      "expected": [
+        {
+          "exit": 4
+        },
+        []
+      ],
+      "actual": [
+        {
+          "exit": 4
+        },
+        []
+      ]
+    },
+    {
+      "name": "requests administrator independently reselects report",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "schema": 29,
+            "op": "resolved",
+            "reports": [
+              {
+                "id": 501,
+                "fid": 10
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport",
+              "op": "resolved"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "schema": 29,
+            "op": "resolved",
+            "reports": [
+              {
+                "id": 501,
+                "fid": 10
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport",
+              "op": "resolved"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl administrator independently reselects report",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "schema": 29,
+            "op": "resolved",
+            "reports": [
+              {
+                "id": 501,
+                "fid": 10
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport",
+              "op": "resolved"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "schema": 29,
+            "op": "resolved",
+            "reports": [
+              {
+                "id": 501,
+                "fid": 10
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport",
+              "op": "resolved"
+            },
+            "fields": [],
+            "contentType": null,
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests administrator deletion declined",
+      "expected": [
+        "declined",
+        []
+      ],
+      "actual": [
+        "declined",
+        []
+      ]
+    },
+    {
+      "name": "requests administrator binding changed",
+      "expected": [
+        "binding-changed",
+        []
+      ],
+      "actual": [
+        "binding-changed",
+        []
+      ]
+    },
+    {
+      "name": "requests administrator write permission absent",
+      "expected": [
+        "admin-report-delete-unavailable",
+        []
+      ],
+      "actual": [
+        "admin-report-delete-unavailable",
+        []
+      ]
+    },
+    {
+      "name": "requests role-specific report deletion",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "op": "delete",
+            "deleted": [
+              501
+            ]
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "op": "delete",
+            "deleted": [
+              501
+            ]
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests administrator denial",
+      "expected": [
+        [
+          403,
+          {
+            "ok": 0,
+            "uid": 32,
+            "type": "adminreport",
+            "error": "admin_noperm"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          403,
+          {
+            "ok": 0,
+            "uid": 32,
+            "type": "adminreport",
+            "error": "admin_noperm"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests administrator reply lost",
+      "expected": [
+        "uncertain",
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl administrator deletion declined",
+      "expected": [
+        null,
+        []
+      ],
+      "actual": [
+        null,
+        []
+      ]
+    },
+    {
+      "name": "curl administrator binding changed",
+      "expected": [
+        {
+          "exit": 3
+        },
+        []
+      ],
+      "actual": [
+        {
+          "exit": 3
+        },
+        []
+      ]
+    },
+    {
+      "name": "curl administrator write permission absent",
+      "expected": [
+        {
+          "exit": 4
+        },
+        []
+      ],
+      "actual": [
+        {
+          "exit": 4
+        },
+        []
+      ]
+    },
+    {
+      "name": "curl role-specific report deletion",
+      "expected": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "op": "delete",
+            "deleted": [
+              501
+            ]
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          200,
+          {
+            "ok": 1,
+            "uid": 32,
+            "type": "adminreport",
+            "op": "delete",
+            "deleted": [
+              501
+            ]
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl administrator denial",
+      "expected": [
+        [
+          403,
+          {
+            "ok": 0,
+            "uid": 32,
+            "type": "adminreport",
+            "error": "admin_noperm"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        [
+          403,
+          {
+            "ok": 0,
+            "uid": 32,
+            "type": "adminreport",
+            "error": "admin_noperm"
+          }
+        ],
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "curl administrator reply lost",
+      "expected": [
+        {
+          "exit": 52
+        },
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ],
+      "actual": [
+        {
+          "exit": 52
+        },
+        [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "adminreport"
+            },
+            "fields": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "501"
+              ],
+              [
+                "opid",
+                "sdk38-fixture-report-delete"
+              ],
+              [
+                "formhash",
+                "d00df00d"
+              ]
+            ],
+            "contentType": "application/x-www-form-urlencoded",
+            "fictionalCookie": true,
+            "administratorToken": true
+          }
+        ]
+      ]
+    },
+    {
+      "name": "requests administrator selection must be independently observed",
+      "expected": [
+        "invalid-selection",
+        []
+      ],
+      "actual": [
+        "invalid-selection",
+        []
+      ]
+    }
+  ],
+  "limitations": [
+    "Fictional accounts and targets on inert loopback",
+    "No live requests or effects"
+  ]
+}

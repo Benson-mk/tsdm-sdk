@@ -28,6 +28,7 @@
 - [Open a Pokémon session and manage a roster](docs/pokemon.md)
 - [Shop and battle in Pokémon](docs/pokemon-battles.md)
 - [Moderate threads, replies and attachments](docs/moderation.md)
+- [Triage moderator queues, reports and recycle bins](docs/moderator-queues.md)
 
 ## Install a local candidate
 
