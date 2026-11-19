@@ -18,6 +18,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createReplyClient",
   "createSpaceClient",
   "createSpecialThreadClient",
+  "createTaskMagicClient",
   "createTradeClient",
 ]);
 await assert.rejects(import("tsdm-sdk/index.js"), {

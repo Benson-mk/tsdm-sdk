@@ -1,0 +1,1696 @@
+{
+  "evidence": "controlled loopback, packaged guide",
+  "archiveSHA256": "4a69b7a994c64d238e005614d8cad2ebede92c1200efbf044be12b1e3dc96906",
+  "guideSHA256": "69ad69698b0b6556778b370f488c856a90cbb2ae3e8de49d8ae5c0071c1c361f",
+  "results": [
+    {
+      "name": "Python read new",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "new",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "new",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read doing",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "doing",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "doing",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read done",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "done",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "done",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read detail",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "view",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "view",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read participants",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "parter",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "parter",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read shop",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read mybox",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read usage",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "uselog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "uselog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read purchase",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "buylog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "buylog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read gift",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "givelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "givelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read receipt",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python paged receipt log",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "page": "2"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog",
+            "page": "2",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python inspect buy",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "operation": "buy",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "mid": "fiction:card",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "tsdmform": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "operation": "buy",
+            "mid": "fiction:card",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "tsdmform": "1",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python legacy window buy",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "operation": "buy",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "mid": "fiction:card",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "operation": "buy",
+            "mid": "fiction:card",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python inspect use",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "operation": "use",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "magicid": "34",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "tsdmform": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "operation": "use",
+            "magicid": "34",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "tsdmform": "1",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python legacy window use",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "operation": "use",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "magicid": "34",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "operation": "use",
+            "magicid": "34",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl read lists, details, participants, both windows and all logs",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "new",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "doing",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "item": "done",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "view",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "parter",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "uselog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "buylog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "givelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "operation": "buy",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "mid": "fiction:card",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "tsdmform": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "operation": "use",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "magicid": "34",
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "tsdmform": "1"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "task",
+            "item": "new"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "task",
+            "item": "doing"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "task",
+            "item": "done"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "task",
+            "do": "view",
+            "id": "42"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "task",
+            "do": "parter",
+            "id": "42"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "shop"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "mybox"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "log",
+            "operation": "uselog"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "log",
+            "operation": "buylog"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "log",
+            "operation": "givelog"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "action": "log",
+            "operation": "receivelog"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmform": "1",
+            "action": "shop",
+            "operation": "buy",
+            "mid": "fiction:card"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "tsdmapp": "json",
+            "tsdmv": "4",
+            "nodoc": "1",
+            "mod": "magic",
+            "infloat": "yes",
+            "handlekey": "magics",
+            "inajax": "1",
+            "tsdmform": "1",
+            "action": "mybox",
+            "operation": "use",
+            "magicid": "34"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined apply",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved apply",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python legacy apply",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined apply",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved apply",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "apply",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined claim",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved claim",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python legacy claim",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "inajax": "1",
+            "tsdmapp": "json"
+          },
+          "fields": [],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined claim",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved claim",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "draw",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined abandon",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved abandon",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "delete",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "delete",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined abandon",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved abandon",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "delete",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/home.php",
+          "query": {
+            "mod": "task",
+            "do": "delete",
+            "id": "42",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [],
+          "xhr": null,
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined buy",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved buy",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "buy"
+            ],
+            [
+              "mid",
+              "fiction:card"
+            ],
+            [
+              "operatesubmit",
+              "yes"
+            ],
+            [
+              "magicnum",
+              "2"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "buy"
+            ],
+            [
+              "mid",
+              "fiction:card"
+            ],
+            [
+              "operatesubmit",
+              "yes"
+            ],
+            [
+              "magicnum",
+              "2"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined buy",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved buy",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "buy"
+            ],
+            [
+              "mid",
+              "fiction:card"
+            ],
+            [
+              "operatesubmit",
+              "yes"
+            ],
+            [
+              "magicnum",
+              "2"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "shop",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "buy"
+            ],
+            [
+              "mid",
+              "fiction:card"
+            ],
+            [
+              "operatesubmit",
+              "yes"
+            ],
+            [
+              "magicnum",
+              "2"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined use",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved use",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "use"
+            ],
+            [
+              "magicid",
+              "34"
+            ],
+            [
+              "usesubmit",
+              "yes"
+            ],
+            [
+              "username",
+              "Fictitious & Member"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "use"
+            ],
+            [
+              "magicid",
+              "34"
+            ],
+            [
+              "usesubmit",
+              "yes"
+            ],
+            [
+              "username",
+              "Fictitious & Member"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined use",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved use",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "use"
+            ],
+            [
+              "magicid",
+              "34"
+            ],
+            [
+              "usesubmit",
+              "yes"
+            ],
+            [
+              "username",
+              "Fictitious & Member"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": "magic",
+            "action": "mybox",
+            "infloat": "yes",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "handlekey",
+              "magics"
+            ],
+            [
+              "operation",
+              "use"
+            ],
+            [
+              "magicid",
+              "34"
+            ],
+            [
+              "usesubmit",
+              "yes"
+            ],
+            [
+              "username",
+              "Fictitious & Member"
+            ]
+          ],
+          "xhr": "XMLHttpRequest",
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    }
+  ]
+}

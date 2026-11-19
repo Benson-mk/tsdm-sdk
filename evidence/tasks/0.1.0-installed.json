@@ -1,0 +1,2107 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "4a69b7a994c64d238e005614d8cad2ebede92c1200efbf044be12b1e3dc96906",
+  "archiveBytes": 290438,
+  "lockfileIntegrity": "sha512-1+qYSjStCVVzUBLL1x5rKDtI4HtPkaTFK3/oLhpdB25HeibhTAgjrS+D7R6IJIg22xf19AoSNeu3SD9QS0i7Bg==",
+  "guideSHA256": "69ad69698b0b6556778b370f488c856a90cbb2ae3e8de49d8ae5c0071c1c361f",
+  "consumerSHA256": "28b278f4c62b8ba90a26631034eb88f1894df06068bdcd367a8d11b491976ab7",
+  "results": [
+    {
+      "name": "new tasks expose their exact offer without visiting it",
+      "expected": {
+        "kind": "task-list",
+        "tab": "new",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-list",
+        "tab": "new",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "active tasks show progress and the claim action",
+      "expected": {
+        "kind": "task-list",
+        "tab": "doing",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": 34,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "claim"
+            ]
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-list",
+        "tab": "doing",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": 34,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "claim"
+            ]
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=doing&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=doing&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "finished tasks do not imply a reward can be claimed again",
+      "expected": {
+        "kind": "task-list",
+        "tab": "done",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": []
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-list",
+        "tab": "done",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": []
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=done&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=done&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "wrong viewer cannot authorize an effect",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "detail reports progress, condition and the participant route",
+      "expected": {
+        "kind": "task-detail",
+        "task": {
+          "id": "42",
+          "name": "Fictitious forum task",
+          "description": "Fictitious instruction",
+          "reward": {
+            "type": "credit",
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            },
+            "amount": 5
+          },
+          "applicants": 3,
+          "progress": 34,
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+          "actions": [
+            "claim",
+            "abandon"
+          ]
+        },
+        "state": -1,
+        "condition": "Complete the fictitious action",
+        "conditions": [
+          {
+            "name": "Count",
+            "value": "3"
+          }
+        ],
+        "period": {
+          "type": 2,
+          "value": 7
+        },
+        "endTime": 1700003600,
+        "timeOffset": 8,
+        "next": "Next fictitious period",
+        "applyCondition": {
+          "limit": 10
+        },
+        "participantsURL": "https://tasks.example/home.php?mod=task&do=parter&id=42"
+      },
+      "observed": {
+        "kind": "task-detail",
+        "task": {
+          "id": "42",
+          "name": "Fictitious forum task",
+          "description": "Fictitious instruction",
+          "reward": {
+            "type": "credit",
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            },
+            "amount": 5
+          },
+          "applicants": 3,
+          "progress": 34,
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+          "actions": [
+            "claim",
+            "abandon"
+          ]
+        },
+        "state": -1,
+        "condition": "Complete the fictitious action",
+        "conditions": [
+          {
+            "name": "Count",
+            "value": "3"
+          }
+        ],
+        "period": {
+          "type": 2,
+          "value": 7
+        },
+        "endTime": 1700003600,
+        "timeOffset": 8,
+        "next": "Next fictitious period",
+        "applyCondition": {
+          "limit": 10
+        },
+        "participantsURL": "https://tasks.example/home.php?mod=task&do=parter&id=42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "finished task detail cannot authorize an inconsistent effect link",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "task participants are linked to the exact task",
+      "expected": {
+        "kind": "task-participants",
+        "taskId": "42",
+        "participants": [
+          {
+            "memberId": "33",
+            "username": "Fictitious Participant",
+            "avatarURL": "https://tasks.example/avatar.php?uid=33",
+            "status": 1,
+            "progress": 100
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-participants",
+        "taskId": "42",
+        "participants": [
+          {
+            "memberId": "33",
+            "username": "Fictitious Participant",
+            "avatarURL": "https://tasks.example/avatar.php?uid=33",
+            "status": 1,
+            "progress": 100
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=parter&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=parter&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "apply is an effectful GET and its claim redirect is held",
+      "expected": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": true
+      },
+      "observed": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "a manual native redirect does not claim twice",
+      "expected": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": true
+      },
+      "observed": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "application refusal can arrive as ok=1",
+      "expected": {
+        "kind": "refused",
+        "code": "task_duplicate",
+        "message": "Already applied"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "task_duplicate",
+        "message": "Already applied"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "claim has its own success receipt",
+      "expected": {
+        "kind": "rewarded",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "rewarded",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "claim can return progress without paying a reward",
+      "expected": {
+        "kind": "in-progress",
+        "taskId": "42",
+        "progress": 34,
+        "message": "34%"
+      },
+      "observed": {
+        "kind": "in-progress",
+        "taskId": "42",
+        "progress": 34,
+        "message": "34%"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "a legacy claim progress fragment stays distinct",
+      "expected": {
+        "kind": "in-progress",
+        "taskId": "42",
+        "progress": 38,
+        "message": "Fictitious progress"
+      },
+      "observed": {
+        "kind": "in-progress",
+        "taskId": "42",
+        "progress": 38,
+        "message": "Fictitious progress"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "abandon is independently confirmed and acknowledged",
+      "expected": {
+        "kind": "abandoned",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "abandoned",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=delete&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=delete&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "a lost abandon response is uncertain and is not resent",
+      "expected": {
+        "kind": "uncertain",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=delete&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=delete&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "another task’s redirect is uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "shop reads credits, capacity, prices and an available item",
+      "expected": {
+        "kind": "magic-shop",
+        "page": 1,
+        "pages": 2,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "balances": [
+          {
+            "id": 2,
+            "title": "Fictional credits",
+            "unit": "",
+            "amount": 50
+          }
+        ],
+        "items": [
+          {
+            "id": "34",
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "price": 5,
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            },
+            "available": true
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-shop",
+        "page": 1,
+        "pages": 2,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "balances": [
+          {
+            "id": 2,
+            "title": "Fictional credits",
+            "unit": "",
+            "amount": 50
+          }
+        ],
+        "items": [
+          {
+            "id": "34",
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "price": 5,
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            },
+            "available": true
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "inventory reads counts and weight separately",
+      "expected": {
+        "kind": "magic-inventory",
+        "page": 1,
+        "pages": 1,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "items": [
+          {
+            "id": "34",
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "count": 2,
+            "weight": 10,
+            "available": true
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-inventory",
+        "page": 1,
+        "pages": 1,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "items": [
+          {
+            "id": "34",
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "count": 2,
+            "weight": 10,
+            "available": true
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "separate usage log preserves its direction and entries",
+      "expected": {
+        "kind": "magic-log",
+        "direction": "usage",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "target": {
+              "type": "tid",
+              "id": "42",
+              "url": "https://tasks.example/forum.php?mod=viewthread&tid=42"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-log",
+        "direction": "usage",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "target": {
+              "type": "tid",
+              "id": "42",
+              "url": "https://tasks.example/forum.php?mod=viewthread&tid=42"
+            }
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=uselog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=uselog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "separate purchase log preserves its direction and entries",
+      "expected": {
+        "kind": "magic-log",
+        "direction": "purchase",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 2,
+            "price": 10,
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            }
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-log",
+        "direction": "purchase",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 2,
+            "price": 10,
+            "credit": {
+              "id": 2,
+              "title": "Fictional credits",
+              "unit": ""
+            }
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=buylog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=buylog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "separate gift log preserves its direction and entries",
+      "expected": {
+        "kind": "magic-log",
+        "direction": "gift",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 2,
+            "member": {
+              "id": "33",
+              "username": "Fictitious Counterparty"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-log",
+        "direction": "gift",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 2,
+            "member": {
+              "id": "33",
+              "username": "Fictitious Counterparty"
+            }
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=givelog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=givelog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "separate receipt log preserves its direction and entries",
+      "expected": {
+        "kind": "magic-log",
+        "direction": "receipt",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 1,
+            "member": {
+              "id": "33",
+              "username": "Fictitious Counterparty"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-log",
+        "direction": "receipt",
+        "page": 2,
+        "pages": 3,
+        "timeOffset": 8,
+        "entries": [
+          {
+            "magicId": "34",
+            "name": "Fictitious Magic",
+            "time": 1700000000,
+            "amount": 1,
+            "member": {
+              "id": "33",
+              "username": "Fictitious Counterparty"
+            }
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=receivelog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=receivelog&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "empty gift log is an observed empty page",
+      "expected": {
+        "kind": "magic-log",
+        "direction": "gift",
+        "page": 1,
+        "pages": 1,
+        "timeOffset": 8,
+        "entries": []
+      },
+      "observed": {
+        "kind": "magic-log",
+        "direction": "gift",
+        "page": 1,
+        "pages": 1,
+        "timeOffset": 8,
+        "entries": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=givelog&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=givelog&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "another log direction cannot answer the selected read",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=receivelog&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=log&operation=receivelog&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "inspect purchase terms and send one approved purchase",
+      "expected": {
+        "kind": "purchased",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "purchased",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ]
+    },
+    {
+      "name": "purchase without a purchase receipt remains uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ]
+    },
+    {
+      "name": "magic purchase can be refused on final balance check",
+      "expected": {
+        "kind": "refused",
+        "code": "magics_credits_no_enough",
+        "message": "Fictitious balance declined"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "magics_credits_no_enough",
+        "message": "Fictitious balance declined"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ]
+    },
+    {
+      "name": "inspect the exact native target control and consume one magic on explicit use",
+      "expected": {
+        "kind": "used",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "used",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ]
+    },
+    {
+      "name": "a plugin use control mismatch hands off without dispatch",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a hostile form action cannot authorize a purchase",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "lost magic use does not automatically consume another",
+      "expected": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ]
+    },
+    {
+      "name": "legacy use can open an AJAX form and post a qualified exact thread ID",
+      "expected": {
+        "kind": "used",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "used",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&tid=42"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&tid=42"
+        }
+      ]
+    },
+    {
+      "name": "a recognized legacy task list authorizes only its native apply route",
+      "expected": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": false
+      },
+      "observed": {
+        "kind": "applied",
+        "taskId": "42",
+        "claimAvailable": false
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=apply&id=42&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "unsupported participants are a safe browser read handoff",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=task&do=parter&id=42"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=task&do=parter&id=42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=parter&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=parter&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "native inventory reads exact counts and use availability",
+      "expected": {
+        "kind": "magic-inventory",
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "page": 1,
+        "pages": 1,
+        "items": [
+          {
+            "id": "34",
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "count": 2,
+            "weight": 10,
+            "available": true
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-inventory",
+        "items": [
+          {
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "id": "34",
+            "count": 2,
+            "weight": 10,
+            "available": true
+          }
+        ],
+        "page": 1,
+        "pages": 1,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "legacy shop and purchase form retain limits and qualified success",
+      "expected": {
+        "kind": "purchased",
+        "magicId": null,
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "purchased",
+        "magicId": null,
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&operation=buy&mid=prankmagic%3Apkcat&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&infloat=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-buy-hash&handlekey=magics&operation=buy&mid=prankmagic%3Apkcat&operatesubmit=yes&magicnum=2"
+        }
+      ]
+    },
+    {
+      "name": "a session change before approval prevents effectful GET",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "an older plugin without the structured task page is retried only as a read",
+      "expected": {
+        "kind": "task-list",
+        "tab": "new",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "text": "5 fictional credits"
+            },
+            "applicants": null,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-list",
+        "tab": "new",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "text": "5 fictional credits"
+            },
+            "applicants": null,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a structured shop unavailable on v4 is read on its legacy route",
+      "expected": {
+        "kind": "magic-shop",
+        "page": 1,
+        "pages": 1,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "balances": [],
+        "items": [
+          {
+            "id": null,
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "price": 5,
+            "credit": null,
+            "available": true
+          }
+        ]
+      },
+      "observed": {
+        "kind": "magic-shop",
+        "items": [
+          {
+            "identifier": "prankmagic:pkcat",
+            "name": "Fictitious Magic",
+            "description": "Fictitious effect",
+            "imageURL": "https://tasks.example/magic.gif",
+            "id": null,
+            "price": 5,
+            "credit": null,
+            "available": true
+          }
+        ],
+        "page": 1,
+        "pages": 1,
+        "capacity": {
+          "used": 20,
+          "max": 100
+        },
+        "balances": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=shop&tsdmapp=json",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a differently typed structured control cannot prepare magic use",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "redisplayed magic form leaves the write uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "magicId": "34",
+        "identifier": "prankmagic:pkcat"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&operation=use&magicid=34&infloat=yes&handlekey=magics&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=magic&action=mybox&infloat=yes&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=fictitious-use-hash&handlekey=magics&operation=use&magicid=34&usesubmit=yes&username=Fictitious+Member"
+        }
+      ]
+    },
+    {
+      "name": "a failed task claim is separate from refusal and success",
+      "expected": {
+        "kind": "failed",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "failed",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "native claimed-reward fragment verifies its own claim",
+      "expected": {
+        "kind": "rewarded",
+        "taskId": "42"
+      },
+      "observed": {
+        "kind": "rewarded",
+        "taskId": "42"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=view&id=42&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://tasks.example/home.php?mod=task&do=draw&id=42&tsdmapp=json&tsdmv=4",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "already-finished task may expose an explicit reapply action",
+      "expected": {
+        "kind": "task-list",
+        "tab": "done",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "observed": {
+        "kind": "task-list",
+        "tab": "done",
+        "tasks": [
+          {
+            "id": "42",
+            "name": "Fictitious forum task",
+            "description": "Fictitious instruction",
+            "reward": {
+              "type": "credit",
+              "credit": {
+                "id": 2,
+                "title": "Fictional credits",
+                "unit": ""
+              },
+              "amount": 5
+            },
+            "applicants": 3,
+            "progress": null,
+            "url": "https://tasks.example/home.php?mod=task&do=view&id=42",
+            "actions": [
+              "apply"
+            ]
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=done&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=done&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "the packed TypeScript guide respects the declined application",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://tasks.example/home.php?mod=task&item=new&tsdmapp=json&tsdmv=4&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    }
+  ]
+}

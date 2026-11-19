@@ -52,6 +52,7 @@ const manifest = {
     "forum-client/posts/client.d.ts",
     "forum-client/special/",
     "forum-client/trades/client.d.ts",
+    "forum-client/tasks/",
     "README.md",
     "docs/replies.md",
     "docs/posts.md",
@@ -67,6 +68,7 @@ const manifest = {
     "docs/activity.md",
     "docs/media.md",
     "docs/trades.md",
+    "docs/tasks.md",
     "docs/credits.md",
     "notices/",
   ],
@@ -113,6 +115,7 @@ copyFileSync(
 copyFileSync(new URL("docs/media.md", root), new URL("docs/media.md", stage));
 copyFileSync(new URL("docs/trades.md", root), new URL("docs/trades.md", stage));
 copyFileSync(new URL("docs/credits.md", root), new URL("docs/credits.md", stage));
+copyFileSync(new URL("docs/tasks.md", root), new URL("docs/tasks.md", stage));
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/credits/", stage));
 mkdirSync(new URL("forum-client/media/", stage));
@@ -121,8 +124,10 @@ mkdirSync(new URL("forum-client/spaces/", stage));
 mkdirSync(new URL("forum-client/posts/", stage));
 mkdirSync(new URL("forum-client/special/", stage));
 mkdirSync(new URL("forum-client/trades/", stage));
+mkdirSync(new URL("forum-client/tasks/", stage));
 for (const declaration of [
   "forum-client/trades/client.d.ts",
+  ...["client", "types"].map((name) => `forum-client/tasks/${name}.d.ts`),
   "forum-client/special/client.d.ts",
   "forum-client/special/types.d.ts",
   "forum-client/special/participation.d.ts",

@@ -451,3 +451,14 @@ export type {
   TradeOrderCreation, TradeOrder, TradeOrderRead, TradePaymentForm,
   TradePaymentInput, TradePaymentPreparation, TradePaymentResult,
 } from "./forum-client/trades/client.js";
+export { createTaskMagicClient } from "./forum-client/tasks/client.js";
+export type {
+  ForumTaskListResult, ForumTaskDetailResult, ForumTaskParticipantsResult,
+  ForumTaskPreparation, ForumTaskEffectResult, ForumTask, ForumTaskTab,
+  ForumTaskAction, ForumTaskOutcome, ForumTaskParticipant, PreparedForumTaskAction,
+  TaskMagicClient, TaskMagicClientOptions, TaskMagicFailure, TaskMagicHandoff,
+  MagicCapacity, MagicItem, MagicShopItem, MagicInventoryItem, MagicPage,
+  MagicShopResult, MagicInventoryResult, MagicLogDirection, MagicLogEntry,
+  MagicLogResult, MagicOperation, MagicField, MagicPurchaseTerms, PreparedMagicForm,
+  MagicPreparation, MagicEffectResult,
+} from "./forum-client/tasks/types.js";
