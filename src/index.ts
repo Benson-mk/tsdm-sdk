@@ -1,3 +1,24 @@
+export { createActivityClient } from "./forum-client/activity-client.js";
+export type {
+  ActivityClientOptions,
+  ActivityRequest,
+  ActivitySession,
+} from "./forum-client/activity-client.js";
+export type {
+  ActivityFailure,
+  ActivityQuery,
+  ActivityRead,
+} from "./forum-client/activity-read-types.js";
+export type {
+  ActivityCommentItem,
+  ActivityEffect,
+  ActivityIntent,
+  ActivityPreparation,
+  ActivityRatingChoice,
+  ActivityTarget,
+  PreparedActivity,
+} from "./forum-client/activity-effects.js";
+
 export { createReplyClient } from "./forum-client/replies.js";
 export type {
   ReplyClientOptions,

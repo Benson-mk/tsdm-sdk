@@ -15,6 +15,7 @@
 - [Read and send private messages](docs/messages.md)
 - [Use member spaces, walls and follow feeds](docs/spaces.md)
 - [Organize threads into collections](docs/collections.md)
+- [Inspect and respond to post activity](docs/activity.md)
 
 ## Install a local candidate
 

@@ -1,0 +1,1261 @@
+{
+  "integrationBaseCommit": "a2729bf834416c9b619922b501e3ae461a8f8b37",
+  "archiveSHA256": "278abafbae7c513c194b9c32f739657eda5e9d0a8d789bc6be936f82263e0889",
+  "guideSHA256": "e923423a4bbd826c9e22a17d06549f30fa01d96b715ded9691a7f63189d88ab6",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "limitations": [
+    "Inert loopback responses only",
+    "No forum network traffic or account effects"
+  ],
+  "results": [
+    {
+      "name": "Python viewratings",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewratings"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewratings"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python viewvote",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewvote"
+            ],
+            "tid": [
+              "90"
+            ],
+            "polloptionid": [
+              "4"
+            ],
+            "page": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewvote"
+            ],
+            "tid": [
+              "90"
+            ],
+            "polloptionid": [
+              "4"
+            ],
+            "page": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python viewthreadmod",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewthreadmod"
+            ],
+            "tid": [
+              "90"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewthreadmod"
+            ],
+            "tid": [
+              "90"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python viewpayments",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewpayments"
+            ],
+            "tid": [
+              "90"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewpayments"
+            ],
+            "tid": [
+              "90"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python viewwarning",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewwarning"
+            ],
+            "tid": [
+              "90"
+            ],
+            "uid": [
+              "31"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewwarning"
+            ],
+            "tid": [
+              "90"
+            ],
+            "uid": [
+              "31"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python commentmore",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "commentmore"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "page": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "commentmore"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "page": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python open rate",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "handlekey": [
+              "rate"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "ajaxtarget": [
+              "fwin_content_rate"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "handlekey": [
+              "rate"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "ajaxtarget": [
+              "fwin_content_rate"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python submit rate",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "ratesubmit": [
+              "yes"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "score6": [
+              "-8"
+            ],
+            "reason": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "ratesubmit": [
+              "yes"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "score6": [
+              "-8"
+            ],
+            "reason": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python submit report",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "report"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "rid": [
+              "302"
+            ],
+            "rtype": [
+              "post"
+            ],
+            "fid": [
+              "7"
+            ],
+            "message": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "report"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "rid": [
+              "302"
+            ],
+            "rtype": [
+              "post"
+            ],
+            "fid": [
+              "7"
+            ],
+            "message": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python submit comment",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "reply"
+            ],
+            "comment": [
+              "yes"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "message": [
+              "Exact & 原文"
+            ],
+            "commentitem[画质]": [
+              ""
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "reply"
+            ],
+            "comment": [
+              "yes"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "message": [
+              "Exact & 原文"
+            ],
+            "commentitem[画质]": [
+              ""
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python deliberate evaluation add",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "add"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "add"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "Python deliberate evaluation subtract",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "subtract"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "subtract"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "curl reads and form opener",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewratings"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewwarning"
+            ],
+            "tid": [
+              "90"
+            ],
+            "uid": [
+              "31"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "handlekey": [
+              "rate"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "ajaxtarget": [
+              "fwin_content_rate"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewratings"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "viewwarning"
+            ],
+            "tid": [
+              "90"
+            ],
+            "uid": [
+              "31"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "handlekey": [
+              "rate"
+            ],
+            "ajaxtarget": [
+              "fwin_content_rate"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "tsdmform": [
+              "1"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "curl deliberate form POST",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "ratesubmit": [
+              "yes"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "score6": [
+              "-8"
+            ],
+            "reason": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "rate"
+            ],
+            "ratesubmit": [
+              "yes"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "tid": [
+              "90"
+            ],
+            "pid": [
+              "302"
+            ],
+            "score6": [
+              "-8"
+            ],
+            "reason": [
+              "Exact & 原文"
+            ]
+          },
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "curl deliberate evaluation add",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "add"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "add"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "curl deliberate evaluation subtract",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "subtract"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ],
+      "actual": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "recommend"
+            ],
+            "do": [
+              "subtract"
+            ],
+            "tid": [
+              "90"
+            ],
+            "hash": [
+              "fixture"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {},
+          "cookie": "fixture_session=activity-replay"
+        }
+      ]
+    },
+    {
+      "name": "curl without deliberate confirmation",
+      "expected": [],
+      "actual": []
+    }
+  ]
+}

@@ -14,6 +14,11 @@ const collectionDeclarations = [
   "forum-client/collection-client.d.ts",
   "forum-client/collection-types.d.ts",
 ];
+const activityDeclarations = [
+  "forum-client/activity-client.d.ts",
+  "forum-client/activity-read-types.d.ts",
+  "forum-client/activity-effects.d.ts",
+];
 const manifest = {
   name: "tsdm-sdk",
   version: "0.1.0",
@@ -27,6 +32,7 @@ const manifest = {
     "index.d.ts",
     "forum-client/types.d.ts",
     ...noticeDeclarations,
+    ...activityDeclarations,
     "forum-client/replies.d.ts",
     "forum-client/reply-verification.d.ts",
     ...collectionDeclarations,
@@ -51,6 +57,7 @@ const manifest = {
     "docs/messages.md",
     "docs/spaces.md",
     "docs/collections.md",
+    "docs/activity.md",
     "notices/",
   ],
 };
@@ -85,6 +92,10 @@ copyFileSync(
   new URL("docs/collections.md", root),
   new URL("docs/collections.md", stage),
 );
+copyFileSync(
+  new URL("docs/activity.md", root),
+  new URL("docs/activity.md", stage),
+);
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
 mkdirSync(new URL("forum-client/spaces/", stage));
@@ -100,6 +111,7 @@ for (const declaration of [
   "forum-client/profile-client.d.ts",
   "forum-client/types.d.ts",
   ...noticeDeclarations,
+  ...activityDeclarations,
   ...collectionDeclarations,
   "forum-client/member-reads.d.ts",
   "forum-client/member-client.d.ts",

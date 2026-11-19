@@ -23,7 +23,7 @@ import type {
 // literal array may vary; unfamiliar generator semantics require native handling.
 const generator =
   "var reasonstring = '';\nfor (i=0; i<reasons.length; i++) {\nreasonstring += '<label><input type=\"radio\" name=\"report_select\" class=\"pr\" onclick=\"' + (i < reasons.length -1 ? '$(\\'report_message\\').innerHTML=this.value;' : '') + '$(\\'report_other\\').style.display=\\'' + (i < reasons.length -1 ? 'none' : '') + '\\';$(\\'report_msg\\').style.display=\\'' + (i < reasons.length -1 ? 'none' : '') + '\\'\" value=\"' + reasons[i] + '\"> ' + reasons[i] + '</label><br />';\n}\n$('report_reasons').innerHTML = reasonstring;";
-function reasonsFrom(source: string) {
+export function reportReasonsFrom(source: string) {
   const match =
     /^\s*var reasons = \[('[^'"&\\<>\r\n]{1,200}'(?:,\s*'[^'"&\\<>\r\n]{1,200}'){1,19})\];\s*([\s\S]*)$/.exec(
       source,
@@ -220,7 +220,7 @@ export function createReport(config: {
     );
     if (generators.length !== 1)
       throw Error("The report reasons are ambiguous.");
-    const reasons = reasonsFrom(generators[0]!);
+    const reasons = reportReasonsFrom(generators[0]!);
     const counter = descendants(form, (n) => attr(n, "id") === "checklen"),
       message = controls.find((n) => attr(n, "name") === "message")!;
     if (

@@ -23,7 +23,7 @@ import type {
 
 function returned(
   response: HostResponse,
-  target: RatingTarget,
+  target: Pick<RatingTarget, "url" | "threadId" | "postId">,
   action: string,
 ) {
   const u = new URL(response.url),
@@ -57,7 +57,10 @@ function document(response: HostResponse): Node {
     throw Error("The rating response is unsupported.");
   return documentFrom(source);
 }
-function parseForm(response: HostResponse, target: RatingTarget) {
+export function parseNativeRatingForm(
+  response: HostResponse,
+  target: Pick<RatingTarget, "url" | "threadId" | "postId">,
+) {
   returned(response, target, "rate");
   const doc = document(response),
     error = descendants(
@@ -424,7 +427,7 @@ export function createRating(config: {
       );
     }
     config.observe(observed);
-    const native = parseForm(response, target);
+    const native = parseNativeRatingForm(response, target);
     if (envelopeHash !== null && native.fields.formhash !== envelopeHash)
       throw Error(
         "The rating form authority does not match the current account envelope.",
