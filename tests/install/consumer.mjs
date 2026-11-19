@@ -7,6 +7,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createAccountClient",
   "createForumClient",
   "createMemberClient",
+  "createNoticeClient",
   "createProfileClient",
 ]);
 await assert.rejects(import("tsdm-sdk/index.js"), {

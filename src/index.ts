@@ -235,3 +235,31 @@ export type {
   FavoriteEntry,
   FavoriteListResult,
 } from "./forum-client/member-reads.js";
+
+export { createNoticeClient } from "./forum-client/notice-client.js";
+export type {
+  NoticeAcknowledgement,
+  PollUnreadNoticesOptions,
+  UnreadNotice,
+  UnreadNoticePoll,
+} from "./forum-client/notice-poll.js";
+export type {
+  NoticeIgnoreChange,
+  NoticeIgnoreFormResult,
+  NoticeIgnoreRule,
+  NoticeIgnoreRulesResult,
+  NoticeIgnoreScope,
+} from "./forum-client/notice-ignore.js";
+export type { NoticeIgnoreTarget } from "./forum-client/notice-links.js";
+export type {
+  NativeNoticeHandoff,
+  NativeNoticePage,
+  NativeNoticeResult,
+  NoticeHandoff,
+} from "./forum-client/native-notices.js";
+export type { NativeNoticeEntry } from "./forum-client/notices.js";
+export type {
+  NoticeClientOptions,
+  NoticeRequest,
+  NoticeSession,
+} from "./forum-client/notice-transport.js";

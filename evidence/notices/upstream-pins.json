@@ -1,0 +1,27 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "sha256": {
+    "LICENSE": "a07d3e5d6fa74061bd349669fac3ae578516ebebf4e8ece941569cbcea0cc7a6",
+    "lib/constants/url.dart": "706754bb8b64c1c7f918b689b7d72bedd79bf78c6b8bed95970c6d0ae88acf89",
+    "lib/features/notification/repository/notification_repository.dart": "f277b34063b71a34b3f984296d36f1452532c44b90121131a7a4b98319582f53",
+    "lib/features/tsdmapp/tsdmapp_api.dart": "53c2b0883bd933399ade7fe6abca7275a4a6b4f2649ba10c2ee1bdba81b39b95",
+    "lib/features/tsdmapp/small_form.dart": "9244a44c126c18e0f9480fa3a56aaa41a3abfdc364767cacd6f7bdab99c0c834",
+    "lib/features/tsdmapp/v4.dart": "539fc5185fd3ade29307f4e2f120fe9cecc87af7d960135bab52795fcfa18481",
+    "test/regression/test_092_notice_ignore_rules_test.dart": "62e627ce182d523d8386fe8a92f6113f547811c973c406b7606a4bc047599ede",
+    "test/regression/test_1002_notify_paging_test.dart": "808fe76256ee4544fc9d45b29b6a9d423b32baa38087d9b0e96bf826ffac602f",
+    "test/regression/test_1022_small_dialogs_v4_test.dart": "d0d4b074bc906e9c3d2ad99685d2f885dffb273b6441742b54a8d8a920132e6c",
+    "test/regression/test_1150_notify_busy_no_pages_test.dart": "24534d37ce55056c9c5b3b13f986ea319d27f6e9b6449d8e0d52c44077e955bf",
+    "test/regression/test_211_notify_api_lists_test.dart": "d9488eda36dc5fcc12fc4dfa784d9e8ce3ab14664f814e6758bcbe88b06cc2b1",
+    "test/regression/test_390_notification_categories_test.dart": "64b7aa659a66ddef28af81582fae8362ddc1e21da634ffc7ec072e55eb345a3c",
+    "test/data/tsdmapp/v4/notify_paged_p1.json": "d24666a22b5d1bd53ba54ce42d415a4b430790eb6f9009cbcbd8ab4a32d5fa9b",
+    "test/data/tsdmapp/v4/notify_paged_p2.json": "404f902dbb1c2b9ad9857e6f304488247d7863b8b2344196ed16f7db561db00b",
+    "test/data/tsdmapp/v4/g3_ignore_form_system_v4.json": "9aefd593a053ffe16a4b7dda42f14eff3ef1524726b01e6bd60fefcd0282c4ca",
+    "test/data/tsdmapp/v4/g3_privacy_filter_v55.json": "9ab42f5fe816fc74f4c97d7f544f594e10b4684e9b2c5a5494cff2ec7023d9b7",
+    "test/data/notice_unread_x5.html": "53ac10b9c4553fa52fbf5f28e6be0b022d6c83c7b3675f67f4e4ae61abbdcd0c",
+    "test/data/notice_read_x5.html": "15c586ef6fc31eed96191c036590362aff8b6b0bdd24a53d245b378f67b9d36b",
+    "test/data/notice_friend_request_x5.html": "976f4a53a98542e13fbd58bbedceee54e366745891fc351eae9d51fb15bbe6a3",
+    "lib/features/blocking/repository/website_blocklist_repository.dart": "a31f21475706b530f6abef92c7d0a02c92d97ca281920315a1f8850229be6d15",
+    "lib/features/blocking/repository/user_block_repository.dart": "5f292c196718a7c0660434c0f4bf528fa247a78451f359420488eb9d430f4160",
+    "lib/features/blocking/repository/notice_ignore_repository.dart": "0b8f3a3a52402e7fade7d546bb4084a96087f0fc7c56b4563c7b9558fd9a321c"
+  }
+}

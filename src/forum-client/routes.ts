@@ -163,3 +163,12 @@ export function cleanURL(value: string): string {
   url.searchParams.delete("tsdmapp");
   return url.href;
 }
+
+export function safeURL(value: string, base?: string): URL | null {
+  try {
+    const url = new URL(value, base);
+    return url.protocol === "https:" && !url.username && !url.password ? url : null;
+  } catch {
+    return null;
+  }
+}

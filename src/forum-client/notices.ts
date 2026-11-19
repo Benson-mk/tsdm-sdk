@@ -11,21 +11,27 @@ import {
   type Node,
   type Element,
 } from "./html.js";
+import { ignoreTargetFromLink, noticeContent, postDestinations, type NoticeIgnoreTarget } from "./notice-links.js";
 import { accountFrom } from "./read-thread.js";
 import { cleanURL, routeFor } from "./routes.js";
 import type {
   Account,
   ContentNode,
+  FailureKind,
   HostResponse,
   ForumLink,
   Notices,
   ReadResult,
 } from "./types.js";
-type Decoded = ReadResult extends infer R
-  ? R extends ReadResult
-    ? Omit<R, "generation">
-    : never
-  : never;
+export type NativeNoticeEntry = Notices["entries"][number] & {
+  postDestinations: string[];
+  ignoreTarget: NoticeIgnoreTarget | null;
+};
+type Decoded =
+  | Omit<Extract<ReadResult, { kind: "notices" }>, "generation" | "notices"> & {
+      notices: Omit<Notices, "entries"> & { entries: NativeNoticeEntry[] };
+    }
+  | Omit<Extract<ReadResult, { kind: FailureKind }>, "generation">;
 function within(node: Node, predicate: (element: Element) => boolean): boolean {
   let current: Node | null = node;
   while (current && "tagName" in current) {
@@ -43,28 +49,6 @@ function readable(nodes: readonly ContentNode[]): boolean {
         readable(node.children),
   );
 }
-function noticeContent(nodes: ContentNode[]): ContentNode[] {
-  return nodes.map((node) => {
-    if (node.kind === "text") return node;
-    const children = noticeContent([...node.children]);
-    if (
-      node.kind === "element" &&
-      [node.attributes.href, node.attributes.src].some(
-        (value) =>
-          value &&
-          [...new URL(value).searchParams.keys()].some(
-            (key) => key.toLowerCase() === "formhash",
-          ),
-      )
-    )
-      return {
-        kind: "unsupported",
-        description: "This action requires current native forum controls.",
-        children,
-      };
-    return { ...node, children };
-  });
-}
 function sameCategory(left: URL, right: URL): boolean {
   return (
     (left.searchParams.get("view") ?? "all") ===
@@ -73,7 +57,7 @@ function sameCategory(left: URL, right: URL): boolean {
       (right.searchParams.get("type") ?? "")
   );
 }
-export function decodeNotices(
+export function decodeNativeNotices(
   response: HostResponse,
   requested: string,
 ): Decoded {
@@ -220,8 +204,17 @@ export function decodeNotices(
     const time = (stamp && attr(stamp, "title")) || label(plain);
     const bodyContent =
       body.length === 1 ? noticeContent(content(body[0]!, response.url)) : [];
+    const targets = new Map<string, NoticeIgnoreTarget>();
+    for (const anchor of descendants(row, (node) => node.tagName === "a")) {
+      const target = ignoreTargetFromLink(attr(anchor, "href"), response.url);
+      if (target) targets.set(`${target.type}|${target.authorId}`, target);
+    }
     return /^[1-9]\d*$/.test(id) && time && readable(bodyContent)
-      ? { id, time, body: bodyContent }
+      ? {
+          id, time, body: bodyContent,
+          postDestinations: postDestinations(bodyContent, request.url.origin),
+          ignoreTarget: targets.size === 1 ? targets.values().next().value ?? null : null,
+        }
       : null;
   });
   if (
@@ -369,4 +362,11 @@ export function decodeNotices(
       unread,
     },
   };
+}
+
+export function decodeNotices(response: HostResponse, destination: string) {
+  const decoded = decodeNativeNotices(response, destination);
+  if (decoded.kind !== "notices") return decoded;
+  const entries = decoded.notices.entries.map(({ id, time, body }) => ({ id, time, body }));
+  return { ...decoded, notices: { ...decoded.notices, entries } };
 }

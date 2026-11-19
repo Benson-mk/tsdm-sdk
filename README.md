@@ -9,6 +9,7 @@
 - [Sign in and manage account security](docs/account.md)
 - [Manage profile, privacy, devices and forum sync](docs/profile.md)
 - [Find members, make friends and save favourites](docs/members.md)
+- [Poll unread notices and deliberately acknowledge them](docs/notices.md)
 
 ## Install a local candidate
 

@@ -3,6 +3,13 @@ import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const root = new URL("../", import.meta.url);
 const stage = new URL("dist/sdk/", root);
+const noticeDeclarations = [
+  "forum-client/native-notices.d.ts",
+  "forum-client/notices.d.ts",
+  ...["client", "ignore", "links", "poll", "transport"].map(
+    (name) => `forum-client/notice-${name}.d.ts`,
+  ),
+];
 const manifest = {
   name: "tsdm-sdk",
   version: "0.1.0",
@@ -15,6 +22,7 @@ const manifest = {
     "index.js",
     "index.d.ts",
     "forum-client/types.d.ts",
+    ...noticeDeclarations,
     "forum-client/account-client.d.ts",
     "forum-client/profile-client.d.ts",
     "forum-client/member-reads.d.ts",
@@ -26,6 +34,7 @@ const manifest = {
     "docs/account.md",
     "docs/profile.md",
     "docs/members.md",
+    "docs/notices.md",
     "notices/",
   ],
 };
@@ -51,6 +60,7 @@ copyFileSync(
   new URL("docs/members.md", root),
   new URL("docs/members.md", stage),
 );
+copyFileSync(new URL("docs/notices.md", root), new URL("docs/notices.md", stage));
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
 for (const declaration of [
@@ -58,6 +68,7 @@ for (const declaration of [
   "forum-client/account-client.d.ts",
   "forum-client/profile-client.d.ts",
   "forum-client/types.d.ts",
+  ...noticeDeclarations,
   "forum-client/member-reads.d.ts",
   "forum-client/member-client.d.ts",
   "forum-client/discovery.d.ts",

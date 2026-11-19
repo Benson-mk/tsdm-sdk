@@ -1,5 +1,7 @@
 import {
   createForumClient,
+  createNoticeClient,
+  type NoticeClientOptions,
   type ContentNode,
   type ForumTransport,
   type ThreadReadResult,
@@ -36,3 +38,9 @@ if (result.kind === "thread") {
 void client.readPage;
 // @ts-expect-error A compiler configured without DOM types has no document global.
 void document;
+
+declare const noticeOptions: NoticeClientOptions;
+const noticeClient = createNoticeClient(noticeOptions);
+const poll = await noticeClient.pollUnreadNotices({ since: 1793491200 });
+const acknowledgement = await noticeClient.acknowledgeAllUnreadNotices(poll);
+void acknowledgement;
