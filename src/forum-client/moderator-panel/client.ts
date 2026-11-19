@@ -1,3 +1,8 @@
+import { panelAnnouncements } from "./settings/announcements.js";
+import { panelRules, panelRecommendations } from "./settings/forum.js";
+import { panelLog, panelNotes } from "./settings/records.js";
+import { panelMembers, panelIpBans } from "./settings/members.js";
+import { panelAccess } from "./settings/access.js";
 import type {
   ModeratorDashboardResult,
   ModeratorPanelClient,
@@ -148,5 +153,13 @@ export function createModeratorPanelClient(
     ...panelReports(panel),
     ...panelQueues(panel),
     ...panelRecycle(panel),
+    ...panelAccess(panel),
+    ...panelMembers(panel),
+    ...panelIpBans(panel),
+    ...panelLog(panel),
+    ...panelNotes(panel),
+    ...panelRules(panel),
+    ...panelRecommendations(panel),
+    ...panelAnnouncements(panel),
   };
 }

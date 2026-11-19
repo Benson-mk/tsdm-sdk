@@ -1,3 +1,4 @@
+import type { ModeratorSettings } from "./settings-types.js";
 import type { ActivityClientOptions } from "../activity-client.js";
 
 export type PanelFailure =
@@ -146,7 +147,7 @@ export interface ModeratorReportDeletionHandoff {
   readonly reportIds: readonly string[];
 }
 
-export interface ModeratorPanelClient {
+export interface ModeratorPanelClient extends ModeratorSettings {
   readDashboard(): Promise<ModeratorDashboardResult>;
   login(
     form: ModeratorPanelLoginForm,

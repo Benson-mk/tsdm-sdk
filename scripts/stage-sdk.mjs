@@ -98,6 +98,7 @@ const manifest = {
     "docs/pokemon-battles.md",
     "docs/moderation.md",
     "docs/moderator-queues.md",
+    "docs/moderator-settings.md",
     "docs/admin.md",
     "notices/",
   ],
@@ -153,6 +154,7 @@ copyFileSync(new URL("docs/pokemon.md", root), new URL("docs/pokemon.md", stage)
 copyFileSync(new URL("docs/pokemon-battles.md", root), new URL("docs/pokemon-battles.md", stage));
 copyFileSync(new URL("docs/moderation.md", root), new URL("docs/moderation.md", stage));
 copyFileSync(new URL("docs/moderator-queues.md", root), new URL("docs/moderator-queues.md", stage));
+copyFileSync(new URL("docs/moderator-settings.md", root), new URL("docs/moderator-settings.md", stage));
 copyFileSync(new URL("docs/admin.md", root), new URL("docs/admin.md", stage));
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/pokemon/", stage));
@@ -178,7 +180,7 @@ for (const declaration of [
   "forum-client/admin/types.d.ts",
   "forum-client/moderation/types.d.ts",
   "forum-client/moderation/operations.d.ts",
-  ...["client", "types"].map(
+  ...["client", "types", "settings-types"].map(
     (name) => `forum-client/moderator-panel/${name}.d.ts`,
   ),
   "forum-client/bank/types.d.ts",

@@ -1,0 +1,4895 @@
+{
+  "archiveSHA256": "583d449b42dd22a4970efee67849f8f97466f10a383bf72a99bed8448d654f05",
+  "guideSHA256": "81dcd8f48dcd176207dd9669c6b833566b44c9af82e733e97eeee8cef7167670",
+  "results": [
+    {
+      "name": "requests list forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "page": 2
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "page": 2
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl list forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "page": 2
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "page": 2
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests search forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fixture member"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fixture member"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl search forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fixture member"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fixture member"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests deny forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl deny forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests restore forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "deleteaccess": "1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "deleteaccess": "1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl restore forum access",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "deleteaccess": "1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [],
+            "result": {
+              "done": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "deleteaccess": "1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests protected access refusal",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "error": 1,
+              "error_key": "whitelist"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "error": 1,
+              "error_key": "whitelist"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl protected access refusal",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "error": 1,
+              "error_key": "whitelist"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_forumaccess",
+            "schema": 38,
+            "fid": 10,
+            "list": [
+              {
+                "uid": 71,
+                "username": "fixture member",
+                "reply": -1
+              }
+            ],
+            "result": {
+              "error": 1,
+              "error_key": "whitelist"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fixture member",
+              "new_reply": "-1"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests find member editor by name",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "edit",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fixture member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "edit",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fixture member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl find member editor by name",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "edit",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fixture member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "edit",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fixture member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests edit member fields",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "members_edit_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bionew": "Fictional profile",
+              "signaturenew": "Fixture signature",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "members_edit_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bionew": "Fictional profile",
+              "signaturenew": "Fixture signature",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl edit member fields",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "members_edit_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bionew": "Fictional profile",
+              "signaturenew": "Fixture signature",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "members_edit_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bionew": "Fictional profile",
+              "signaturenew": "Fixture signature",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests find member ban form by UID",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "ban",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "ban",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl find member ban form by UID",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "ban",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_member",
+            "schema": 43,
+            "op": "ban",
+            "member": {
+              "uid": 71,
+              "username": "fixture member"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests ban selected member",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "4",
+              "banexpirynew": "3",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "4",
+              "banexpirynew": "3",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl ban selected member",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "4",
+              "banexpirynew": "3",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "4",
+              "banexpirynew": "3",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests lift member ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "0",
+              "banexpirynew": "",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "0",
+              "banexpirynew": "",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl lift member ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "0",
+              "banexpirynew": "",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "result",
+            "schema": 13,
+            "kind": "message",
+            "message_key": "modcp_member_ban_succeed"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bannew": "0",
+              "banexpirynew": "",
+              "reason": "Fictional reason",
+              "bansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests list IP bans",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl list IP bans",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests add IP ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl add IP ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": [
+              {
+                "id": 44,
+                "ip": "192.0.2.7",
+                "can_delete": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests delete selected IP ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "delete[0]": "44",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "delete[0]": "44",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl delete selected IP ban",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "delete[0]": "44",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_ipban",
+            "schema": 44,
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "delete[0]": "44",
+              "ipbansubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests read filtered log",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_log",
+            "schema": 24,
+            "page": 2,
+            "pages": 3,
+            "keyword": "fictional subject",
+            "entries": [
+              {
+                "id": 44,
+                "action": "forum"
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fictional subject",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_log",
+            "schema": 24,
+            "page": 2,
+            "pages": 3,
+            "keyword": "fictional subject",
+            "entries": [
+              {
+                "id": 44,
+                "action": "forum"
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fictional subject",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl read filtered log",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_log",
+            "schema": 24,
+            "page": 2,
+            "pages": 3,
+            "keyword": "fictional subject",
+            "entries": [
+              {
+                "id": 44,
+                "action": "forum"
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fictional subject",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_log",
+            "schema": 24,
+            "page": 2,
+            "pages": 3,
+            "keyword": "fictional subject",
+            "entries": [
+              {
+                "id": 44,
+                "action": "forum"
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fictional subject",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests list management notes",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl list management notes",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests create management note",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": [
+              {
+                "id": 91,
+                "message": "Fixture note",
+                "to_supermod": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": [
+              {
+                "id": 91,
+                "message": "Fixture note",
+                "to_supermod": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl create management note",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": [
+              {
+                "id": 91,
+                "message": "Fixture note",
+                "to_supermod": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": [
+              {
+                "id": 91,
+                "message": "Fixture note",
+                "to_supermod": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests delete management note",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl delete management note",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_home",
+            "schema": 39,
+            "notes": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests read forum rules",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Original",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Original",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl read forum rules",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Original",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Original",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests save forum rules",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Fixture rules",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Fixture rules",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl save forum rules",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Fixture rules",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_editforum",
+            "schema": 46,
+            "fid": 10,
+            "rules": "Fixture rules",
+            "editable": 1
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests locked native rules redraw",
+      "expected": {
+        "result": [
+          200,
+          "<textarea name=\"rulesnew\" readonly>Original</textarea>"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<textarea name=\"rulesnew\" readonly>Original</textarea>"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl locked native rules redraw",
+      "expected": {
+        "result": [
+          200,
+          "<textarea name=\"rulesnew\" readonly>Original</textarea>"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<textarea name=\"rulesnew\" readonly>Original</textarea>"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "rulesnew": "Fixture rules",
+              "editsubmit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests list recommendations",
+      "expected": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"1\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"1\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl list recommendations",
+      "expected": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"1\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"1\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests save and remove recommendation rows",
+      "expected": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"3\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "fid": "10",
+              "page": "1",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "Edited",
+              "expirationrecommend[801]": "2099-1-1 12:00",
+              "order[802]": "2",
+              "subject[802]": "Original",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"3\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "fid": "10",
+              "page": "1",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "Edited",
+              "expirationrecommend[801]": "2099-1-1 12:00",
+              "order[802]": "2",
+              "subject[802]": "Original",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl save and remove recommendation rows",
+      "expected": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"3\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "fid": "10",
+              "page": "1",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "Edited",
+              "expirationrecommend[801]": "2099-1-1 12:00",
+              "order[802]": "2",
+              "subject[802]": "Original",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          "<input name=\"order[801]\" value=\"3\">"
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "fid": "10",
+              "page": "1",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "Edited",
+              "expirationrecommend[801]": "2099-1-1 12:00",
+              "order[802]": "2",
+              "subject[802]": "Original",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests list announcements and create offer",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl list announcements and create offer",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests create announcement",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "subject": "Fixture announcement",
+              "type": "0",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "Fixture message",
+              "message[1]": "",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "subject": "Fixture announcement",
+              "type": "0",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "Fixture message",
+              "message[1]": "",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl create announcement",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "subject": "Fixture announcement",
+              "type": "0",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "Fixture message",
+              "message[1]": "",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": [
+              {
+                "id": 66,
+                "subject": "Fixture announcement",
+                "editable": 1
+              }
+            ],
+            "result": {
+              "added": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "subject": "Fixture announcement",
+              "type": "0",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "Fixture message",
+              "message[1]": "",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests read selected announcement editor",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl read selected announcement editor",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "form": null,
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests edit announcement link",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            },
+            "result": {
+              "edited": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            },
+            "result": {
+              "edited": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl edit announcement link",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            },
+            "result": {
+              "edited": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "edit",
+            "form": {
+              "id": 66,
+              "subject": "Fixture announcement",
+              "displayorder": "7"
+            },
+            "result": {
+              "edited": 1
+            }
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests delete selected announcement",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl delete selected announcement",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 1,
+            "uid": 31,
+            "type": "modcp_announcement",
+            "schema": 47,
+            "op": "add",
+            "list": []
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests expired panel on announcement edit",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 0,
+            "uid": 31,
+            "error": "modcp_login"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 0,
+            "uid": 31,
+            "error": "modcp_login"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl expired panel on announcement edit",
+      "expected": {
+        "result": [
+          200,
+          {
+            "ok": 0,
+            "uid": 31,
+            "error": "modcp_login"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          {
+            "ok": 0,
+            "uid": 31,
+            "error": "modcp_login"
+          }
+        ],
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests lost reply on selected announcement",
+      "expected": {
+        "result": "uncertain",
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": "uncertain",
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl lost reply on selected announcement",
+      "expected": {
+        "result": {
+          "exit": 52
+        },
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "exit": 52
+        },
+        "requests": [
+          {
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "form": {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "subject": "Fixture announcement",
+              "type": "1",
+              "starttime": "2099-01-01",
+              "endtime": "2099-02-01",
+              "message[0]": "",
+              "message[1]": "https://example.test/fixture",
+              "submit": "true"
+            },
+            "moderatorCookie": true,
+            "adminTokenPresent": false,
+            "contentType": "application/x-www-form-urlencoded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines search forum access",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines deny forum access",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines restore forum access",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines protected access refusal",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines edit member fields",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines ban selected member",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines lift member ban",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines add IP ban",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines delete selected IP ban",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines create management note",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines delete management note",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines save forum rules",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines locked native rules redraw",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines save and remove recommendation rows",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines create announcement",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines edit announcement link",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines delete selected announcement",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines expired panel on announcement edit",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines lost reply on selected announcement",
+      "expected": {
+        "result": "declined",
+        "requests": []
+      },
+      "actual": {
+        "result": "declined",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests rejects replaced moderator login",
+      "expected": {
+        "result": "binding-changed",
+        "requests": []
+      },
+      "actual": {
+        "result": "binding-changed",
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines search forum access",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines deny forum access",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines restore forum access",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines protected access refusal",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines edit member fields",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines ban selected member",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines lift member ban",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines add IP ban",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines delete selected IP ban",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines create management note",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines delete management note",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines save forum rules",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines locked native rules redraw",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines save and remove recommendation rows",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines create announcement",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines edit announcement link",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines delete selected announcement",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines expired panel on announcement edit",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines lost reply on selected announcement",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl rejects replaced moderator login",
+      "expected": {
+        "result": {
+          "exit": 3
+        },
+        "requests": []
+      },
+      "actual": {
+        "result": {
+          "exit": 3
+        },
+        "requests": []
+      }
+    },
+    {
+      "name": "curl refuses reserved query override",
+      "expected": {
+        "result": {
+          "exit": 2
+        },
+        "requests": []
+      },
+      "actual": {
+        "result": {
+          "exit": 2
+        },
+        "requests": []
+      }
+    }
+  ],
+  "limitations": [
+    "Fictional moderator, members, addresses and content on loopback",
+    "No administrator grant or deployed forum effects"
+  ]
+}
