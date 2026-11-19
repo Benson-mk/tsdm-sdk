@@ -1,0 +1,19 @@
+{
+  "repository": "Carinoasd/tsdm_client",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "upstreamFiles": {
+    "lib/features/bank/models/bank_data.dart": "7ce536db0c675dd1aa7631b926909c54f45fa79335884aacbbe0895f8fce74cd",
+    "lib/features/bank/models/bank_service_data.dart": "b7b4f7c3e5f1cbac924fcb9bb7b263b25e29cb8199bc06b85e223f9ae8991f65",
+    "lib/features/bank/repository/bank_repository.dart": "9700265a36880dec68dc92420060c5a42a492881186647c832428655c28c7c68",
+    "lib/features/bank/cubit/bank_cubit.dart": "3ae824a6d02a2999b56466c5e4f244799f5d7529a1fd80e7b5fd9ee624291feb",
+    "test/regression/fixtures/bank_service_fixtures.dart": "f121b16de24bf160f19b39bc16bbd77f5839bd52d8a1eb1e27d9512ecc72d80d",
+    "test/regression/test_120_bank_parser_test.dart": "528c0217b03cc1b8b0b4ab4f18ceae288fe3d58a2e5d37cf1397e51e1795b8e1",
+    "test/regression/test_123_bank_transport_test.dart": "d3530c6da0d25a1fe6c6d4e64ebba8c29c1126dae77547a7dcfc5d5f981d2339",
+    "test/regression/test_124_bank_services_test.dart": "27b51e3260b2bf59ee1125cbc786d68311c9d1963e1a45de80c83576494a8e93",
+    "test/regression/test_264_bank_term_withdraw_test.dart": "34d58ec123450c3874853c0cf27cb2a6a1eaeccbda3c0d88d512560a091416bf"
+  },
+  "controlledFiles": {
+    "tests/install/bank.mjs": "ff258de4f21e0569b1f72be01e1a04e25e45e221cf29bd3a06a2e00daed5a2e2",
+    "evidence/bank/check-direct-guide.py": "85ce14a66f1c9c39efa1a9742230129ae6ba5849af7e6e7073d62adf723132e3"
+  }
+}

@@ -514,3 +514,12 @@ export type {
   PacketState,
   ThreadPacket,
 } from "./forum-client/packets/types.js";
+
+export { createBankClient } from "./forum-client/bank/client.js";
+export type {
+  BankBlock, BankBrowserHandoff, BankClient, BankClientOptions,
+  BankConfirmationResult, BankDirectoryResult, BankEffectResult, BankFailure,
+  BankField, BankForm, BankInput, BankLogEntry, BankLogQuery, BankLogsResult,
+  BankOperation, BankService, BankServicePage, BankServiceResult, BankValues,
+  BankWithdrawal, ForumBank,
+} from "./forum-client/bank/types.js";

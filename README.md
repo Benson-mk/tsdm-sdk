@@ -21,6 +21,7 @@
 - [Buy a paid thread or complete a trade order](docs/trades.md)
 - [Complete forum tasks and use magic items](docs/tasks.md)
 - [Run and reconcile a batch rating](docs/batch-ratings.md)
+- [Use forum banking and loan services](docs/bank.md)
 - [Check in and manage credits and group membership](docs/credits.md)
 - [Acquire, display and grant medals, titles and backgrounds](docs/awards.md)
 - [Claim and manage red packets](docs/packets.md)

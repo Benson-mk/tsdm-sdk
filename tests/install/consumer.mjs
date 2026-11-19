@@ -7,6 +7,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createAccountClient",
   "createActivityClient",
   "createAwardsClient",
+  "createBankClient",
   "createBatchRatingClient",
   "createCollectionClient",
   "createCreditsClient",
