@@ -555,3 +555,18 @@ export type {
   PokemonShopPetPurchase,
   PokemonShopPetsPage,
 } from "./forum-client/pokemon/types.js";
+export { createModerationClient } from "./forum-client/moderation/client.js";
+export type {
+  ModerationChoice,
+  ModerationClientOptions,
+  ModerationEffect,
+  ModerationFailure,
+  ModerationField,
+  ModerationForm,
+  ModerationOperation,
+  ModerationPostTarget,
+  ModerationPreparation,
+  ModerationTarget,
+  ModerationValues,
+  PosterIpResult,
+} from "./forum-client/moderation/types.js";

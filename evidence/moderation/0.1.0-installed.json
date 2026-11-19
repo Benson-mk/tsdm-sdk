@@ -1,0 +1,4709 @@
+{
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "30e11df946bb32eaa9b577f6beefb2356d36b65de6a0865e45fc4cb82d880790",
+  "lockfileIntegrity": "sha512-MqBhx4Nc7sacXKJeZoutQih6SZXiRI4AJAxSqU9I2cQRla4EY1quhZhiPvImYbkFlCNtjZBc7rAFxusYkfW/2Q==",
+  "consumerSHA256": "07b9c19d0ff425066dd619d37023c50a0a50046f075013f0f8a52240cb972f6a",
+  "guideSHA256": "2551c3d4c46e3f4dd9bd173bac2cfa6b7a3e6d6f4e2dc0efa2fb2e377ef8b439",
+  "results": [
+    {
+      "name": "reads destination types for this moderator and forum",
+      "expected": {
+        "kind": "thread-types",
+        "forumId": "12",
+        "required": true,
+        "choices": [
+          {
+            "value": "8",
+            "label": "Fictional type"
+          }
+        ]
+      },
+      "observed": {
+        "kind": "thread-types",
+        "forumId": "12",
+        "required": true,
+        "choices": [
+          {
+            "value": "8",
+            "label": "Fictional type"
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "does not substitute another destination forum’s types",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "batch delete honors exactly the offered selection and never includes collateral user controls",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&modsubmit=%E7%A1%AE%E5%AE%9A&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete&reason=Fictional+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&modsubmit=%E7%A1%AE%E5%AE%9A&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete&reason=Fictional+reason"
+        }
+      ]
+    },
+    {
+      "name": "the moderator must explicitly choose a new batch if the server drops a thread",
+      "expected": {
+        "kind": "selection-changed",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "offeredThreadIds": [
+          "80"
+        ]
+      },
+      "observed": {
+        "kind": "selection-changed",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "offeredThreadIds": [
+          "80"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation stick",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stick",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stick",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=stick&sticklevel=1&expirationstick=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=stick&sticklevel=1&expirationstick=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation stick",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stick",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stick",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1&expirationstick=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1&expirationstick=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation digest",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "digest",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "digest",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=digest&digestlevel=1&expirationdigest=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=digest&digestlevel=1&expirationdigest=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation digest",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "digest",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "digest",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=1&expirationdigest=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=1&expirationdigest=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation highlight",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "highlight",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "highlight",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=highlight&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=highlight&highlight_color=2&highlight_style%5B1%5D=1&highlight_style%5B2%5D=0&highlight_style%5B3%5D=0&highlight_bgcolor=&expirationhighlight=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=highlight&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=highlight&highlight_color=2&highlight_style%5B1%5D=1&highlight_style%5B2%5D=0&highlight_style%5B3%5D=0&highlight_bgcolor=&expirationhighlight=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation highlight",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "highlight",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "highlight",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=highlight&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2&highlight_style%5B1%5D=1&highlight_style%5B2%5D=0&highlight_style%5B3%5D=0&highlight_bgcolor=&expirationhighlight=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=highlight&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2&highlight_style%5B1%5D=1&highlight_style%5B2%5D=0&highlight_style%5B3%5D=0&highlight_bgcolor=&expirationhighlight=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation recommend",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "recommend",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "recommend",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=recommend&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=recommend&isrecommend=1&expirationrecommend=&reducetitle=Fictional+recommendation&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=recommend&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=recommend&isrecommend=1&expirationrecommend=&reducetitle=Fictional+recommendation&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation recommend",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "recommend",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "recommend",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=recommend&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1&expirationrecommend=&reducetitle=Fictional+recommendation&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=1&operation=recommend&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=1&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1&expirationrecommend=&reducetitle=Fictional+recommendation&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation close",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "close",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "close",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=close&expirationclose=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=close&expirationclose=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation close",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "close",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "close",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close&expirationclose=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close&expirationclose=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation open",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "open",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "open",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=open&expirationclose=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=open&expirationclose=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation open",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "open",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "open",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open&expirationclose=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=4&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=4&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open&expirationclose=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation move",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "move",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "move",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=move&moveto=13&threadtypeid=0&type=normal&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=move&moveto=13&threadtypeid=0&type=normal&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation move",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "move",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "move",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=0&type=normal&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=0&type=normal&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation type",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "type",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "type",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&operation=type&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=type&typeid=8&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&operation=type&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=type&typeid=8&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation type",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "type",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "type",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&operation=type&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=2&operation=type&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=2&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation delete",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=delete&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=delete&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation delete",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delete",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&operation=delete&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation bump",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "bump",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "bump",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=bump&expirationbump=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=bump&expirationbump=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation bump",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "bump",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "bump",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump&expirationbump=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump&expirationbump=&reason="
+        }
+      ]
+    },
+    {
+      "name": "individual thread operation down",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "down",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "down",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=down&expirationdown=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&operations%5B%5D=down&expirationdown=&reason="
+        }
+      ]
+    },
+    {
+      "name": "batch thread operation down",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "down",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "down",
+          "forumId": "12",
+          "threadIds": [
+            "80",
+            "81"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down&expirationdown=&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&handlekey=mods&infloat=yes&nopost=yes&optgroup=3&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down&expirationdown=&reason="
+        }
+      ]
+    },
+    {
+      "name": "thread operation stamp",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stamp",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stamp",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamp&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamp&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&stamp=2&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamp&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamp&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&stamp=2&reason="
+        }
+      ]
+    },
+    {
+      "name": "thread operation stamplist",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stamplist",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stamplist",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamplist&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamplist&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&stamplist=4&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamplist&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stamplist&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&stamplist=4&reason="
+        }
+      ]
+    },
+    {
+      "name": "thread operation copy",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=8&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=8&reason="
+        }
+      ]
+    },
+    {
+      "name": "thread operation merge",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "merge",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "merge",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=merge&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=merge&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&othertid=85&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=merge&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=merge&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&othertid=85&reason="
+        }
+      ]
+    },
+    {
+      "name": "thread operation split",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "split",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "split",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&subject=Fictional+split&split=2%2C3&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&subject=Fictional+split&split=2%2C3&reason="
+        }
+      ]
+    },
+    {
+      "name": "reply operation delpost ",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation warn 1",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "warn",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "warn",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&warned=1&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&warned=1&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation warn 0",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "warn",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "warn",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&warned=0&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=warn&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&warned=0&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation banpost 1",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "banpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "banpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&banned=1&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&banned=1&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation banpost 0",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "banpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "banpost",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&banned=0&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=banpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&banned=0&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation stickreply 1",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stickreply",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stickreply",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&stickreply=1&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&stickreply=1&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "reply operation stickreply 0",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stickreply",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "undo": true
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "stickreply",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "undo": true
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&undo=1&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&stickreply=0&reason=Fictitious+reason"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&undo=1&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=stickreply&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist%5B%5D=90&stickreply=0&reason=Fictitious+reason"
+        }
+      ]
+    },
+    {
+      "name": "first-floor delete redirect cannot authorize a whole-thread deletion",
+      "expected": {
+        "kind": "refused",
+        "code": "thread-delete-requires-separate-intent"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "thread-delete-requires-separate-intent"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "separately confirms removereward and displays its terms",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "removereward",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "removereward",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=removereward&fid=12&tid=80&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=removereward&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&modsubmit=ture&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=removereward&fid=12&tid=80&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=removereward&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&modsubmit=ture&reason="
+        }
+      ]
+    },
+    {
+      "name": "separately confirms refund and displays its terms",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "refund",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "refund",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=refund&fid=12&tid=80&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=refund&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&modsubmit=ture&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=refund&fid=12&tid=80&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=refund&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&modsubmit=ture&reason="
+        }
+      ]
+    },
+    {
+      "name": "deletes the exact comment through its own form",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delcomment",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "commentId": "72"
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "delcomment",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "commentId": "72"
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delcomment&tid=80&handlekey=mods&infloat=yes&nopost=yes&topiclist%5B%5D=72&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delcomment&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist=72&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delcomment&tid=80&handlekey=mods&infloat=yes&nopost=yes&topiclist%5B%5D=72&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delcomment&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&topiclist=72&reason="
+        }
+      ]
+    },
+    {
+      "name": "removes only the selected rating rows of the exact post",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "removerate",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "thread_rate_removesucceed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "removerate",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90"
+        },
+        "code": "thread_rate_removesucceed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=misc&action=removerate&tid=80&pid=90&infloat=yes&handlekey=rate&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=misc&action=removerate&ratesubmit=yes&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&tid=80&pid=90&handlekey=rate&logidarray%5B%5D=55+1+1234567890&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=misc&action=removerate&tid=80&pid=90&infloat=yes&handlekey=rate&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=misc&action=removerate&ratesubmit=yes&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&tid=80&pid=90&handlekey=rate&logidarray%5B%5D=55+1+1234567890&reason="
+        }
+      ]
+    },
+    {
+      "name": "reads only the offered poster IP and omits supplied administrator links",
+      "expected": {
+        "kind": "poster-ip",
+        "forumId": "12",
+        "threadId": "80",
+        "postId": "90",
+        "ip": "203.0.113.8",
+        "port": 1234,
+        "location": "Documentation network"
+      },
+      "observed": {
+        "kind": "poster-ip",
+        "forumId": "12",
+        "threadId": "80",
+        "postId": "90",
+        "ip": "203.0.113.8",
+        "port": 1234,
+        "location": "Documentation network"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=getip&pid=90&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=getip&pid=90&tsdmapp=json&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "poster-IP authority cannot substitute another post",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "no poster-IP permission cannot open the private read",
+      "expected": {
+        "kind": "refused",
+        "code": "permission-not-offered"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "permission-not-offered"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "repair opens no topicadmin preview and acts only on the approved request",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "repair",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_repair_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "repair",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_repair_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=repair&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": ""
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=repair&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "repair permission missing sends no repair request",
+      "expected": {
+        "kind": "refused",
+        "code": "permission-not-offered"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "permission-not-offered"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "attachment effectful GET one deleted",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        },
+        "code": "deleteattach_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        },
+        "code": "deleteattach_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "attachment effectful GET zero deleted",
+      "expected": {
+        "kind": "refused",
+        "code": "deleteattach_none"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "deleteattach_none"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "attachment effectful GET response lost",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "attachment effectful GET expired hash or server error",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "deleteattach",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ],
+          "postId": "90",
+          "attachmentId": "96"
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=deleteattach&inajax=yes&formhash=fictional-edit-form&tid=80&pid=90&aids%5B%5D=96&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "unlisted attachment cannot become an effectful URL",
+      "expected": {
+        "kind": "refused",
+        "code": "attachment-not-offered"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "attachment-not-offered"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=post&action=edit&fid=12&tid=80&pid=90&page=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "copy receipt recognized native handler",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt server refusal",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_copy_invalid"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_copy_invalid"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt the form was redrawn",
+      "expected": {
+        "kind": "redrawn",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "observed": {
+        "kind": "redrawn",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt unknown 503 after dispatch",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt redirect with unknown effect",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt success-shaped wrong account",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "copy receipt success-shaped different thread",
+      "expected": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "observed": {
+        "kind": "uncertain",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=13&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=13&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "changing session cannot dispatch an old form",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an off-origin window action grants no moderation form",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "v4 destination lookup falls back only to a qualified native select",
+      "expected": {
+        "kind": "thread-types",
+        "forumId": "12",
+        "required": false,
+        "choices": [
+          {
+            "value": "0",
+            "label": "Fictitious 0"
+          },
+          {
+            "value": "8",
+            "label": "Fictitious 8"
+          }
+        ]
+      },
+      "observed": {
+        "kind": "thread-types",
+        "forumId": "12",
+        "required": false,
+        "choices": [
+          {
+            "value": "0",
+            "label": "Fictitious 0"
+          },
+          {
+            "value": "8",
+            "label": "Fictitious 8"
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript asks before deleting the exact reply",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=delpost&fid=12&tid=80&topiclist%5B%5D=90&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "refuses to split away every observed floor across the selected pages",
+      "expected": {
+        "kind": "refused",
+        "code": "split-requires-observed-retained-floor"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "split-requires-observed-retained-floor"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=split&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=viewthread&tid=80&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allows an approved same-forum copy offered by the server",
+      "expected": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "observed": {
+        "kind": "acknowledged",
+        "target": {
+          "operation": "copy",
+          "forumId": "12",
+          "threadIds": [
+            "80"
+          ]
+        },
+        "code": "admin_succeed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=12&threadtypeid=0&reason="
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=ajax&action=getthreadtypes&fid=12&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        },
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fresh": true,
+          "effect": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          },
+          "body": "formhash=controlled-form-token&fid=12&handlekey=mods&tid=80&copyto=12&threadtypeid=0&reason="
+        }
+      ]
+    },
+    {
+      "name": "a replaced session cannot perform the old form’s destination preflight",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://moderation.example/forum.php?mod=topicadmin&action=copy&fid=12&tid=80&handlekey=mods&infloat=yes&nopost=yes&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "fresh": true,
+          "effect": false,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-moderator-session"
+          }
+        }
+      ]
+    }
+  ]
+}
