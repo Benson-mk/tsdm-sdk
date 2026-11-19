@@ -1,0 +1,1752 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "eae3ff3b3c92afa5370dd0186f884ecc03454efdc88fb7180a356652424579b0",
+  "syntheticInputsSHA256": "6518af0a3c435169c01b001a272e3890d960aad66bfa9de01cd361a2ebe4b586",
+  "guideSHA256": "fa1a4fc06bd27005cf01ec7c929694bd1ac369be795531d732f57b958df3115c",
+  "guides": [
+    "spaces",
+    "messages"
+  ],
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "sourcePin": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "verifiedFiles": 39
+  },
+  "evidence": "controlled installed SDK and host boundary",
+  "results": [
+    {
+      "name": "member statuses preserve owner, privacy and next page",
+      "expected": [
+        "statuses",
+        "502",
+        "71",
+        "A fictional status",
+        1,
+        "2"
+      ],
+      "observed": [
+        "statuses",
+        "502",
+        "71",
+        "A fictional status",
+        1,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=doing&view=me&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "nested status replies preserve parent",
+      "expected": [
+        "status-replies",
+        null,
+        "72",
+        "A nested reply",
+        null,
+        null,
+        "70"
+      ],
+      "observed": [
+        "status-replies",
+        null,
+        "72",
+        "A nested reply",
+        null,
+        null,
+        "70"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&page_c=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "public timeline",
+      "expected": [
+        "timeline",
+        "502",
+        "81",
+        "Relay note",
+        null,
+        "2",
+        null,
+        "Members only"
+      ],
+      "observed": [
+        "timeline",
+        "502",
+        "81",
+        "Relay note",
+        null,
+        "2",
+        null,
+        "Members only"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&view=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "member timeline",
+      "expected": [
+        "timeline",
+        "502",
+        "81",
+        "Relay note",
+        null,
+        null,
+        null,
+        "Members only"
+      ],
+      "observed": [
+        "timeline",
+        "502",
+        "81",
+        "Relay note",
+        null,
+        null,
+        null,
+        "Members only"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&uid=502&do=view&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "following feed",
+      "expected": [
+        "timeline",
+        "501",
+        "81",
+        "Relay note",
+        null,
+        null,
+        null,
+        "Members only"
+      ],
+      "observed": [
+        "timeline",
+        "501",
+        "81",
+        "Relay note",
+        null,
+        null,
+        null,
+        "Members only"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&view=follow&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "following list",
+      "expected": [
+        "following",
+        "502",
+        "501",
+        "A nickname",
+        null,
+        "2"
+      ],
+      "observed": [
+        "following",
+        "502",
+        "501",
+        "A nickname",
+        null,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "followers list",
+      "expected": [
+        "followers",
+        "502",
+        "501",
+        null,
+        null,
+        "2"
+      ],
+      "observed": [
+        "followers",
+        "502",
+        "501",
+        null,
+        null,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=follower&uid=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "blogs",
+      "expected": [
+        "blogs",
+        "502",
+        "91",
+        "Blog summary",
+        null,
+        "2",
+        null,
+        "2"
+      ],
+      "observed": [
+        "blogs",
+        "502",
+        "91",
+        "Blog summary",
+        null,
+        "2",
+        null,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=blog&view=me&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "albums",
+      "expected": [
+        "albums",
+        "502",
+        "93",
+        null,
+        null,
+        "2",
+        null,
+        "password"
+      ],
+      "observed": [
+        "albums",
+        "502",
+        "93",
+        null,
+        null,
+        "2",
+        null,
+        "password"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=album&view=me&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "wall",
+      "expected": [
+        "wall",
+        "502",
+        "94",
+        "Wall note",
+        null,
+        "2"
+      ],
+      "observed": [
+        "wall",
+        "502",
+        "94",
+        "Wall note",
+        null,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "received greetings",
+      "expected": [
+        "greetings",
+        "501",
+        "502",
+        "Hello",
+        null,
+        "2"
+      ],
+      "observed": [
+        "greetings",
+        "501",
+        "502",
+        "Hello",
+        null,
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "XML switches to archive on explicit false",
+      "expected": [
+        "page",
+        null,
+        "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=1&page=1&viewtype=other"
+      ],
+      "observed": [
+        "page",
+        null,
+        "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=1&page=1&viewtype=other"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "XML archive false establishes exhaustion",
+      "expected": [
+        "page",
+        null,
+        null
+      ],
+      "observed": [
+        "page",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=1&page=1&viewtype=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "result document preserves older feed entry",
+      "expected": [
+        "page",
+        "Older note",
+        "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=3&viewtype=other"
+      ],
+      "observed": [
+        "page",
+        "Older note",
+        "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=3&viewtype=other"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "native album thumbnails",
+      "expected": [
+        "page",
+        "photos",
+        "95",
+        null
+      ],
+      "observed": [
+        "page",
+        "photos",
+        "95",
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=album&id=93&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "legacy blog article and comments",
+      "expected": [
+        "page",
+        "blog",
+        "91",
+        "Fictional article",
+        "96"
+      ],
+      "observed": [
+        "page",
+        "blog",
+        "91",
+        "Fictional article",
+        "96"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=blog&id=91&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "photo viewer handoff",
+      "expected": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502&do=album&picid=95"
+      ],
+      "observed": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502&do=album&picid=95"
+      ],
+      "requests": []
+    },
+    {
+      "name": "protected blog handoff",
+      "expected": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502&do=blog&id=91"
+      ],
+      "observed": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502&do=blog&id=91"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=blog&id=91&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "wall privacy ends the read",
+      "expected": [
+        "permission"
+      ],
+      "observed": [
+        "permission"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "guest cannot view received greetings",
+      "expected": [
+        "login"
+      ],
+      "observed": [
+        "login"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "missing member space",
+      "expected": [
+        "missing"
+      ],
+      "observed": [
+        "missing"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "rate-limited continuation",
+      "expected": [
+        "limited"
+      ],
+      "observed": [
+        "limited"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "foreign destination never reaches host",
+      "expected": [
+        "invalid"
+      ],
+      "observed": [
+        "invalid"
+      ],
+      "requests": []
+    },
+    {
+      "name": "wrong wall owner is rejected",
+      "expected": [
+        "invalid"
+      ],
+      "observed": [
+        "invalid"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "unsupported schema falls back once to explicit native empty reply list",
+      "expected": [
+        "page",
+        0
+      ],
+      "observed": [
+        "page",
+        0
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&inajax=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "native timeline uses recent pagination when advertised",
+      "expected": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other",
+      "observed": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&view=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "first feed page offers a same-scope continuation",
+      "expected": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other",
+      "observed": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&view=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "returned account change discards a structured continuation",
+      "expected": "session-changed",
+      "observed": "session-changed",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=getfeed&archiver=0&page=2&viewtype=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "session change before continuation sends nothing",
+      "expected": "session-changed",
+      "observed": "session-changed",
+      "requests": []
+    },
+    {
+      "name": "native blog list preserves visible privacy",
+      "expected": [
+        "page",
+        "Friends only",
+        "Fictional Cedar"
+      ],
+      "observed": [
+        "page",
+        "Friends only",
+        "Fictional Cedar"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=blog&view=me&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "member-space handoff gives the native target and performs no read",
+      "expected": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502"
+      ],
+      "observed": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&uid=502"
+      ],
+      "requests": []
+    },
+    {
+      "name": "anonymous wall entry does not expose a supplied author ID",
+      "expected": [
+        "page",
+        null
+      ],
+      "observed": [
+        "page",
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "post-status",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&do=doing&view=all&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&addsubmit=true&message=New+status&handlekey=doing"
+        }
+      ]
+    },
+    {
+      "name": "reply-status",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=comment&doid=71&docid=0&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&commentsubmit=true&message=New+reply&handlekey=doing_71"
+        }
+      ]
+    },
+    {
+      "name": "reply-status",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=comment&doid=71&docid=72&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&commentsubmit=true&message=Nested&handlekey=doing_71"
+        }
+      ]
+    },
+    {
+      "name": "delete-status",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&do=doing&view=all&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=delete&doid=71&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&deletesubmit=true&handlekey=doinghk_71"
+        }
+      ]
+    },
+    {
+      "name": "delete-status",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=delete&doid=71&docid=72&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&deletesubmit=true&handlekey=doinghk_71_72"
+        }
+      ]
+    },
+    {
+      "name": "publish-blog",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        "https://forum.example/home.php?mod=space&uid=501&do=blog&id=110"
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        "https://forum.example/home.php?mod=space&uid=501&do=blog&id=110"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=blog",
+          "fresh": true,
+          "session": "offline-session",
+          "effect": false,
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=blog&blogid=&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&blogsubmit=true&plaintext=1&subject=A+blog&message=A+%26lt%3Bdraft%26gt%3B+%26amp%3B+note&classid=0&friend=4&tags=&password=fictitious-passphrase"
+        }
+      ]
+    },
+    {
+      "name": "post-wall",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+wall+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "reply-wall",
+      "expected": [
+        "confirmed",
+        "note_wall_reply_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "note_wall_reply_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=501&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=503&idtype=uid&commentsubmit=true&cid=94&message=A+wall+reply&handlekey=replycommenthk_94"
+        }
+      ]
+    },
+    {
+      "name": "delete-wall",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=501&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&op=delete&cid=94&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&deletesubmit=true&handlekey=delcommenthk_94"
+        }
+      ]
+    },
+    {
+      "name": "send-greeting",
+      "expected": [
+        "confirmed",
+        "poke_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "poke_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=send&uid=502",
+          "fresh": true,
+          "session": "offline-session",
+          "effect": false,
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=send&uid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&pokesubmit=true&iconid=3&note=Greetings&from=&handlekey=propokehk_502"
+        }
+      ]
+    },
+    {
+      "name": "reply-greeting",
+      "expected": [
+        "confirmed",
+        "poke_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "poke_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=reply&uid=502",
+          "fresh": true,
+          "session": "offline-session",
+          "effect": false,
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=reply&uid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&pokesubmit=true&iconid=3&note=Hello+back&from=&handlekey=pokereply"
+        }
+      ]
+    },
+    {
+      "name": "ignore-greeting",
+      "expected": [
+        "confirmed",
+        "has_been_hailed_overlooked",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "has_been_hailed_overlooked",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=ignore&uid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&ignoresubmit=true&from=&handlekey=pokeignore"
+        }
+      ]
+    },
+    {
+      "name": "ignore-all-greetings",
+      "expected": [
+        "confirmed",
+        "has_been_hailed_overlooked",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "has_been_hailed_overlooked",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=poke&op=ignore&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&ignoresubmit=true&from=&handlekey=allignore"
+        }
+      ]
+    },
+    {
+      "name": "follow",
+      "expected": [
+        "confirmed",
+        "follow_add_succeed",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "follow_add_succeed",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=add&fuid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "hash=0123abcd&handlekey=followmod"
+        }
+      ]
+    },
+    {
+      "name": "unfollow",
+      "expected": [
+        "confirmed",
+        "follow_cancel_succeed",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "follow_cancel_succeed",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=501&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=del&fuid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&handlekey=followmod"
+        }
+      ]
+    },
+    {
+      "name": "rename-follow",
+      "expected": [
+        "confirmed",
+        "follow_remark_succeed",
+        "Kept name",
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "follow_remark_succeed",
+        "Kept name",
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=501&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=bkname&fuid=502&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&editbkname=true&bkname=New+name&handlekey=fbkname_502"
+        }
+      ]
+    },
+    {
+      "name": "relay",
+      "expected": [
+        "confirmed",
+        "relay_feed_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "relay_feed_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&view=other&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=relay&tid=82&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&relaysubmit=true&tid=82&note=Interesting&addnewreply=1&handlekey=qrelay_82"
+        }
+      ]
+    },
+    {
+      "name": "delete-feed",
+      "expected": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "observed": [
+        "confirmed",
+        "do_success",
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&uid=501&do=view&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=follow&op=delete&feedid=81&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&deletesubmit=true&handlekey=c_delete_81"
+        }
+      ]
+    },
+    {
+      "name": "lost effect response stays uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "foreign effect response stays uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "generic ok cannot confirm a write",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "operation-specific refusal",
+      "expected": "refused",
+      "observed": "refused",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "another account cannot confirm a write",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "session switch during effect",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "native XML AJAX confirms matching wall handler",
+      "expected": "confirmed",
+      "observed": "confirmed",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "native AJAX handler from another operation is uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=A+note&handlekey=qcwall_502"
+        }
+      ]
+    },
+    {
+      "name": "effect requires explicit deliberate intent",
+      "expected": "invalid",
+      "observed": "invalid",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "offline-session",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "session change before dispatch sends nothing",
+      "expected": "stale",
+      "observed": "stale",
+      "requests": []
+    },
+    {
+      "name": "wrong account cannot prepare an effect",
+      "expected": "stale",
+      "observed": "stale",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a different wall cannot supply the post target",
+      "expected": "invalid",
+      "observed": "invalid",
+      "requests": []
+    },
+    {
+      "name": "wall form with a conflicting target is refused before dispatch",
+      "expected": "incomplete",
+      "observed": "incomplete",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&uid=502&do=wall&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "legacy reply without viewer evidence hands off the full status",
+      "expected": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&do=doing&doid=71"
+      ],
+      "observed": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=space&do=doing&doid=71"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=getcomment&doid=71&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "unlabelled status redirect leaves deletion uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain",
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&do=doing&view=all&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=doing&op=delete&doid=71&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&deletesubmit=true&handlekey=doinghk_71"
+        }
+      ]
+    },
+    {
+      "name": "follow independent membership read",
+      "expected": [
+        "502",
+        "Old name"
+      ],
+      "observed": [
+        "502",
+        "Old name"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=501&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "unfollow independent terminal list",
+      "expected": [
+        null,
+        null
+      ],
+      "observed": [
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=501&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "rename independent stored name",
+      "expected": [
+        "502",
+        "Kept name"
+      ],
+      "observed": [
+        "502",
+        "Kept name"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&do=following&uid=501&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "relay independent member timeline",
+      "expected": [
+        "81",
+        "A relay"
+      ],
+      "observed": [
+        "81",
+        "A relay"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&uid=501&do=view&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "delete independent terminal timeline",
+      "expected": [
+        null,
+        null
+      ],
+      "observed": [
+        null,
+        null
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=follow&uid=501&do=view&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "challenge hands the original form to the host",
+      "expected": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=spacecp&ac=blog",
+        false
+      ],
+      "observed": [
+        "document-navigation",
+        "https://forum.example/home.php?mod=spacecp&ac=blog",
+        false
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=blog",
+          "fresh": true,
+          "session": "switched-before-send",
+          "effect": false,
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript read opens two pages",
+      "expected": [
+        "502",
+        "2"
+      ],
+      "observed": [
+        "502",
+        "2"
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&do=wall&uid=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=space&do=wall&uid=502&page=2&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript example submits one deliberate fixture effect",
+      "expected": [
+        "confirmed",
+        1
+      ],
+      "observed": [
+        "confirmed",
+        1
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example/home.php?mod=space&do=wall&uid=502&tsdmapp=json&tsdmv=4&nodoc=1",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://forum.example/home.php?mod=spacecp&ac=comment&inajax=1&tsdmapp=json",
+          "fresh": true,
+          "session": "switched-before-send",
+          "method": "POST",
+          "effect": true,
+          "body": "formhash=0123abcd&id=502&idtype=uid&commentsubmit=true&quickcomment=true&message=Fixture+guide+note&handlekey=qcwall_502"
+        }
+      ]
+    }
+  ]
+}

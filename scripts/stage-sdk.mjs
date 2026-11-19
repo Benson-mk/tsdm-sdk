@@ -31,6 +31,7 @@ const manifest = {
     "forum-client/member-client.d.ts",
     "forum-client/discovery.d.ts",
     "forum-client/discovery/",
+    "forum-client/spaces/",
     "README.md",
     "docs/discovery.md",
     "docs/account.md",
@@ -38,6 +39,7 @@ const manifest = {
     "docs/members.md",
     "docs/notices.md",
     "docs/messages.md",
+    "docs/spaces.md",
     "notices/",
   ],
 };
@@ -65,8 +67,10 @@ copyFileSync(
 );
 copyFileSync(new URL("docs/notices.md", root), new URL("docs/notices.md", stage));
 copyFileSync(new URL("docs/messages.md", root), new URL("docs/messages.md", stage));
+copyFileSync(new URL("docs/spaces.md", root), new URL("docs/spaces.md", stage));
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
+mkdirSync(new URL("forum-client/spaces/", stage));
 for (const declaration of [
   "index.d.ts",
   "forum-client/message-client.d.ts",
@@ -78,6 +82,7 @@ for (const declaration of [
   "forum-client/member-reads.d.ts",
   "forum-client/member-client.d.ts",
   "forum-client/discovery.d.ts",
+  ...["client", "model"].map((name) => `forum-client/spaces/${name}.d.ts`),
   ...["types", "lists", "search", "activity", "statistics"].map(
     (name) => `forum-client/discovery/${name}.d.ts`,
   ),

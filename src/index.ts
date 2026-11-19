@@ -267,3 +267,20 @@ export type {
 export { createMessageClient } from "./forum-client/message-client.js";
 export type { PrivateMessageForm } from "./forum-client/message-client.js";
 export type { HomepageMessageCheck, PrivateMessagePrompt } from "./forum-client/message-effects.js";
+
+export { createSpaceClient } from "./forum-client/spaces/client.js";
+export type {
+  PreparedSpaceWrite,
+  PrepareSpaceWrite,
+  SpaceClient,
+  SpaceClientOptions,
+  SpaceCommand,
+  SpaceEffect,
+  SpaceEntry,
+  SpaceMember,
+  SpacePage,
+  SpacePreparation,
+  SpaceRead,
+  SpaceRequest,
+  SpaceView,
+} from "./forum-client/spaces/client.js";

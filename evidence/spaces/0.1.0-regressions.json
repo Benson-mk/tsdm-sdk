@@ -1,0 +1,51 @@
+{
+  "evidence": "controlled combined candidate regressions",
+  "parent": "d163df95abaa3ab1fe61bcbf90adf6b5baca9647",
+  "archiveSHA256": "eae3ff3b3c92afa5370dd0186f884ecc03454efdc88fb7180a356652424579b0",
+  "repackSHA256": "eae3ff3b3c92afa5370dd0186f884ecc03454efdc88fb7180a356652424579b0",
+  "checks": [
+    {
+      "command": "npm run test:install",
+      "expected": "clean package installation, root runtime and type contracts, bundled notices, documentation and existing fixture replay",
+      "observed": {
+        "exitCode": 0,
+        "typecheck": "strict NodeNext, ES2023, types: [], noEmit",
+        "typescript": "Version 6.0.3",
+        "notices": [
+          "parse5-8.0.1.LICENSE",
+          "entities-8.1.0.LICENSE"
+        ],
+        "documentation": {
+          "guide": "docs/discovery.md",
+          "checkedLinks": [
+            "README.md#read-a-public-board-and-open-a-thread",
+            "docs/discovery.md",
+            "README.md#tasks"
+          ],
+          "example": "compiled from installed guide"
+        },
+        "fixtureSHA256": "4c315c9baa628790c74c0eed3c477cea13fc6ef961b4fe78cef8080a2e01e1b1",
+        "returnedPostCount": 9
+      }
+    },
+    {
+      "command": "node scripts/check-installed-messages.mjs dist/tsdm-sdk-0.1.0.tgz",
+      "expected": "installed #20 operations and packed TypeScript guide pass",
+      "observed": {
+        "exitCode": 0,
+        "categories": [
+          "lists",
+          "details",
+          "chat",
+          "sends",
+          "prompt",
+          "homepage",
+          "legacy"
+        ],
+        "guideOutput": "702 Fake message",
+        "guideSHA256": "fc65b83687ac215a8f312a3be4c7e61ab7eb5e24f464c1814a75327233903dbb",
+        "consumerSHA256": "2eb3e550bd01647e298451f04844c12212b3e83df25815d3d868c9913383c029"
+      }
+    }
+  ]
+}

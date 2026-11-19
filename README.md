@@ -11,6 +11,7 @@
 - [Find members, make friends and save favourites](docs/members.md)
 - [Poll unread notices and deliberately acknowledge them](docs/notices.md)
 - [Read and send private messages](docs/messages.md)
+- [Use member spaces, walls and follow feeds](docs/spaces.md)
 
 ## Install a local candidate
 
