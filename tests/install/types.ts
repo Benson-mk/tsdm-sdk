@@ -14,6 +14,13 @@ const client = createForumClient({ origin: "https://forum.test", transport });
 const read: Promise<ThreadReadResult> = client.readThread(
   "https://forum.test/forum.php?mod=viewthread&tid=9199345",
 );
+const board = await client.readBoard(
+  "https://forum.test/forum.php?mod=forumdisplay&fid=2",
+  { previews: true },
+);
+const homepage = await client.readHomepage();
+if (board.kind === "board") void board.board.threads[0]?.preview;
+if (homepage.kind === "homepage") void homepage.homepage.activities;
 const result = await read;
 if (result.kind === "thread") {
   const post = result.thread.posts[0];
@@ -25,7 +32,7 @@ if (result.kind === "thread") {
     void post.reportURL;
   }
 }
-// @ts-expect-error The installed facade has only the qualified thread read.
+// @ts-expect-error The installed facade has the qualified public reads.
 void client.readPage;
 // @ts-expect-error A compiler configured without DOM types has no document global.
 void document;

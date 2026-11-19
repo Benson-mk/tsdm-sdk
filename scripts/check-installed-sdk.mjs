@@ -18,6 +18,8 @@ if (process.versions.node.split(".")[0] !== "26" || process.argv.length !== 3) {
 }
 const root = fileURLToPath(new URL("../", import.meta.url));
 const archive = resolve(process.argv[2]);
+const fixtureRoot =
+  process.env.TSDM_READ_FIXTURES && resolve(process.env.TSDM_READ_FIXTURES);
 const cwd = mkdtempSync(join(tmpdir(), "tsdm-sdk-consumer-"));
 console.error(`Clean consumer: ${cwd}`);
 writeFileSync(join(cwd, "package.json"), '{"private":true,"type":"module"}\n');
@@ -25,6 +27,12 @@ for (const [source, target] of [
   ["consumer.mjs", "consumer.mjs"],
   ["types.ts", "types.ts"],
   ["fixtures/thread_plain.json", "thread_plain.json"],
+  ...(fixtureRoot
+    ? [
+        ["board-thread.mjs", "board-thread.mjs"],
+        ["board-thread-pins.json", "board-thread-pins.json"],
+      ]
+    : []),
 ]) {
   copyFileSync(join(root, "tests/install", source), join(cwd, target));
 }
@@ -47,6 +55,15 @@ execFileSync(
   { cwd, stdio: ["ignore", 2, 2] },
 );
 const observed = JSON.parse(exec(process.execPath, ["consumer.mjs"]));
+const boardThread =
+  fixtureRoot &&
+  JSON.parse(
+    execFileSync(process.execPath, ["board-thread.mjs"], {
+      cwd,
+      encoding: "utf8",
+      env: { ...process.env, TSDM_READ_FIXTURES: fixtureRoot },
+    }),
+  );
 const tsc = join(root, "node_modules/typescript/bin/tsc");
 const typescript = exec(process.execPath, [tsc, "--version"]).trim();
 writeFileSync(
@@ -113,6 +130,7 @@ console.log(
       typecheck: "strict NodeNext, ES2023, types: [], noEmit",
       notices,
       ...observed,
+      ...(boardThread ? { boardThread } : {}),
     },
     null,
     2,

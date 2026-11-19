@@ -119,7 +119,7 @@ function outsidePosts(node: Node): boolean {
   }
   return true;
 }
-function readable(nodes: readonly ContentNode[]): boolean {
+export function readable(nodes: readonly ContentNode[]): boolean {
   return nodes.some((node) =>
     node.kind === "text"
       ? Boolean(node.text.trim())
@@ -324,6 +324,7 @@ type DecodedResult = ReadResult extends infer R
 export function decodeThread(
   response: HostResponse,
   requestedURL: string,
+  qualified = false,
 ): DecodedResult {
   const requestedOrigin = threadURL(requestedURL)?.origin;
   let responseOrigin: string | null = null;
@@ -487,6 +488,12 @@ export function decodeThread(
     doc,
     (n) => n.tagName === "link" && attr(n, "rel") === "canonical",
   )[0];
+  if (qualified && !canonical && envelopeThreadId === null) {
+    const subject = byId(doc, "thread_subject");
+    const subjectLink = subject && safeURL(attr(subject, "href"), response.url);
+    if (!subjectLink || threadURL(subjectLink)?.searchParams.get("tid") !== requested.searchParams.get("tid") || new URL(subjectLink).origin !== requested.origin)
+      return fail("invalid", "The page did not establish the requested thread identity.");
+  }
   if (canonical) {
     const url = safeURL(attr(canonical, "href"), response.url);
     if (
@@ -558,7 +565,8 @@ export function decodeThread(
       profile.inlineImages,
       layoutNodes,
     );
-    if (!readable(bodyContent)) return null;
+    const restriction = descendants(wrapper, (n) => hasClass(n, "locked") || hasClass(n, "attach_nopermission"))[0];
+    if (!readable(bodyContent) && !(qualified && restriction)) return null;
     const authorArea = descendants(wrapper, (n) => hasClass(n, "authi"))[0];
     const author = authorArea
       ? descendants(
@@ -585,6 +593,7 @@ export function decodeThread(
     );
     return {
       id,
+      ...(qualified && restriction ? { restriction: hasClass(restriction, "locked") ? "locked" : "attachment-permission" } : {}),
       ...(reportURL ? { reportURL } : {}),
       attachments: profile.attachments,
       ...(rateURL ? { rateURL } : {}),
@@ -651,7 +660,8 @@ export function decodeThread(
       "invalid",
       "A post could not be interpreted. Continue in the native forum for complete content.",
     );
-  const pages = pagination(doc, response.url);
+  const pages = pagination(doc, response.url, qualified);
+  if (qualified && !pages.current && !actual.searchParams.has("page")) pages.current = "1";
   const history = threadHistory(doc, response.url);
   const jump = pageJump(doc, response.url);
   let target =

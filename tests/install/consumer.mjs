@@ -40,7 +40,7 @@ const transport = {
   },
 };
 const client = sdk.createForumClient({ origin, transport });
-assert.deepEqual(Object.keys(client), ["readThread"]);
+assert.deepEqual(Object.keys(client), ["readHomepage", "readBoard", "readThread"]);
 assert.notEqual(client, sdk.createForumClient({ origin, transport }));
 for (const unqualified of [
   `${origin}/forum.php?mod=forumdisplay&fid=2`,

@@ -1,8 +1,10 @@
-import { createForumClient as createHistoricalClient } from "./forum-client/index.js";
-import { threadURL } from "./forum-client/routes.js";
+import { publicRead } from "./forum-client/public-read.js";
+
 import type {
   Account,
+  Board,
   FailureKind,
+  Homepage,
   HostResponse as HistoricalResponse,
   Post as HistoricalPost,
   Thread as HistoricalThread,
@@ -11,6 +13,11 @@ import type {
 export type {
   Account,
   Attachment,
+  Board,
+  BoardLink,
+  DirectoryGroup,
+  ThreadRow,
+  ThreadSpecial,
   ContentNode,
   ForumLink,
   Pagination,
@@ -31,16 +38,40 @@ export type Post = Omit<
 >;
 export type Thread = Omit<HistoricalThread, "posts"> & { posts: Post[] };
 
+export type { Homepage } from "./forum-client/types.js";
+
+export interface ReadOptions {
+  representation?: "structured" | "native";
+}
+
+export interface BoardReadOptions extends ReadOptions {
+  previews?: boolean;
+}
+
 type ReadContext = { account: Account; sourceURL: string };
+type ReadFailure =
+  | { kind: "document-navigation"; message: string; destination: string }
+  | { kind: FailureKind; message: string };
 export type ThreadReadResult = ReadContext &
-  (
-    | { kind: "thread"; thread: Thread }
-    | { kind: "document-navigation"; message: string; destination: string }
-    | { kind: FailureKind; message: string }
-  );
+  ({ kind: "thread"; thread: Thread } | ReadFailure);
+export type BoardReadResult = ReadContext &
+  ({ kind: "board"; board: Board } | ReadFailure);
+export type HomepageReadResult = ReadContext &
+  ({ kind: "homepage"; homepage: Homepage } | ReadFailure);
 
 export interface ForumClient {
-  readThread(destination: string): Promise<ThreadReadResult>;
+  readHomepage(
+    destination?: string,
+    options?: ReadOptions,
+  ): Promise<HomepageReadResult>;
+  readBoard(
+    destination: string,
+    options?: BoardReadOptions,
+  ): Promise<BoardReadResult>;
+  readThread(
+    destination: string,
+    options?: ReadOptions,
+  ): Promise<ThreadReadResult>;
 }
 
 export function createForumClient({
@@ -50,57 +81,60 @@ export function createForumClient({
   origin: string;
   transport: ForumTransport;
 }): ForumClient {
-  const historical = createHistoricalClient({
-    origin,
-    transport: {
-      async request(url) {
-        const response = await transport.request(url, { fresh: true });
-        // An opaque redirect has no destination the thread decoder can verify.
-        if (response.redirect === "opaque") return { ...response, url: "" };
-        return response;
-      },
-    },
-  });
-
+  const request = (url: string) => transport.request(url, { fresh: true });
   return {
-    async readThread(destination) {
-      if (threadURL(destination)?.origin === origin) {
-        const result = await historical.readThread(destination);
-        const { account, sourceURL } = result;
-        if (result.kind === "thread") {
-          const posts = result.thread.posts.map(
-            ({ rateURL, reportURL, redPacketThreadId, ...post }) => post,
-          );
-          return {
-            kind: "thread",
-            account,
-            sourceURL,
-            thread: { ...result.thread, posts },
-          };
-        }
-        if (result.kind === "document-navigation") {
-          return {
-            kind: result.kind,
-            account,
-            sourceURL,
-            message: result.message,
-            destination: result.destination,
-          };
-        }
-        if ("message" in result) {
-          return {
-            kind: result.kind,
-            account,
-            sourceURL,
-            message: result.message,
-          };
-        }
-      }
+    async readHomepage(destination = `${origin}/forum.php`, options) {
+      const result = await publicRead(
+        destination,
+        origin,
+        ["directory"],
+        request,
+        options,
+      );
+      if (result.kind === "homepage" || "message" in result) return result;
       return {
         kind: "invalid",
-        account: { kind: "unknown" },
+        account: result.account,
         sourceURL: destination,
-        message: "This is not a supported thread destination for this origin.",
+        message: "Unexpected homepage result.",
+      };
+    },
+    async readBoard(destination, options) {
+      const result = await publicRead(
+        destination,
+        origin,
+        ["board"],
+        request,
+        options,
+      );
+      if (result.kind === "board" || "message" in result) return result;
+      return {
+        kind: "invalid",
+        account: result.account,
+        sourceURL: destination,
+        message: "Unexpected board result.",
+      };
+    },
+    async readThread(destination, options) {
+      const result = await publicRead(
+        destination,
+        origin,
+        ["thread", "redirect"],
+        request,
+        options,
+      );
+      if (result.kind === "thread") {
+        const posts = result.thread.posts.map(
+          ({ rateURL, reportURL, redPacketThreadId, ...post }) => post,
+        );
+        return { ...result, thread: { ...result.thread, posts } };
+      }
+      if ("message" in result) return result;
+      return {
+        kind: "invalid",
+        account: result.account,
+        sourceURL: destination,
+        message: "Unexpected thread result.",
       };
     },
   };

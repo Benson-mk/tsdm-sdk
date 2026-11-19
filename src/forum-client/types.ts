@@ -134,6 +134,8 @@ export interface Post {
   rateURL?: string;
   reportURL?: string;
   redPacketThreadId?: string;
+  restriction?: string;
+  promoted?: boolean;
   id: string;
   author: string;
   authorId: string | null;
@@ -150,6 +152,7 @@ export interface ForumLink {
 export interface Pagination {
   current: string;
   links: ForumLink[];
+  total?: string;
 }
 export interface Notice {
   id: string;
@@ -214,6 +217,13 @@ export interface DirectoryGroup {
   sourceId?: string;
   sourceURL?: string;
 }
+export interface Homepage {
+  url: string;
+  groups: DirectoryGroup[];
+  favoriteBoards: BoardLink[];
+  activities: ForumLink[];
+}
+
 export interface Directory {
   groups: DirectoryGroup[];
   url: string;
@@ -224,12 +234,18 @@ export interface ThreadRow extends ForumLink {
   rowId: string;
   pinned: boolean;
   moved: boolean;
+  restriction?: string;
   category: string;
   author: string;
   date: string;
   replies: string;
   views: string;
   lastPost: ForumLink | null;
+  preview?: {
+    excerpt: string | null;
+    reason: string | null;
+    imageTotal: number;
+  };
   /** Native latest-reply cell metadata; absent on legacy or unsupported sources. */
   latestReply?: { author: string | null; time: string | null };
 }
@@ -263,6 +279,8 @@ export interface Board {
   criteria: ForumLink[];
   pages: Pagination;
   empty: string;
+  count?: number;
+  query?: Record<string, string>;
 }
 /** Native pager provenance added in 0.16.0; absence means unqualified boundaries. */
 export interface ThreadHistory {
@@ -273,6 +291,9 @@ export interface ThreadHistory {
   latest: ForumLink | null;
   order: "ascending" | "descending";
 }
+export type ThreadSpecial =
+  | { type: "poll"; choices: { id: string; text: string; votes?: number }[]; resultsVisible: boolean }
+  | { type: "activity" | "debate" | "reward" | "trade"; details: Record<string, string | number | boolean | null> };
 export interface Thread {
   history?: ThreadHistory;
   /** Optional native numeric jump capability, added in 0.21.0. Never infer it from visible links. */
@@ -282,6 +303,9 @@ export interface Thread {
   url: string;
   posts: Post[];
   pages: Pagination;
+  authorId?: string | null;
+  special?: ThreadSpecial;
+  order?: "ascending" | "descending";
   filters: ForumLink[];
   parent: ForumLink | null;
   target: string | null;
@@ -296,6 +320,7 @@ export type FailureKind =
   | "permission"
   | "missing"
   | "challenge"
+  | "incomplete"
   | "invalid"
   | "network"
   | "stale";

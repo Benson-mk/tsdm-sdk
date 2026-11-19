@@ -101,16 +101,19 @@ function links(
     .filter((n) => n !== null);
   return [...new Map(items.map((n) => [n.url, n])).values()];
 }
-export function pagination(doc: Node, base: string): Pagination {
+export function pagination(doc: Node, base: string, qualified = false): Pagination {
   const root = descendants(
     doc,
     (n) => hasClass(n, "pg") || hasClass(n, "page"),
   )[0];
+  const total = root && descendants(root, (n) => n.tagName === "span")
+    .map((node) => /^(?:共|\/)\s*([1-9]\d*)\s*[页頁]$/.exec(attr(node, "title") || label(node))?.[1])
+    .find(Boolean);
   return {
+    ...(qualified && total ? { total } : {}),
     current:
       label(root && descendants(root, (n) => n.tagName === "strong")[0]) ||
-      new URL(base).searchParams.get("page") ||
-      "1",
+      (qualified ? "" : new URL(base).searchParams.get("page") || "1"),
     links: root
       ? links(root, base, (n) =>
           Boolean(routeFor(safeURL(attr(n, "href"), base) ?? "")),
@@ -168,6 +171,7 @@ function boards(doc: Node, base: string): BoardLink[] {
 export function decodeBoard(
   response: HostResponse,
   requested: string,
+  qualified = false,
 ): Decoded {
   const request = routeFor(requested),
     actual = routeFor(response.url);
@@ -328,6 +332,7 @@ export function decodeBoard(
   )[0];
   const touch = Boolean(touchContainer);
   const container = touchContainer ?? byId(doc, "threadlisttableid");
+  const portal = container && descendants(container, (n) => hasClass(n, "kmlist")).length > 0;
   if (byId(doc, "waterfall") && !container)
     return {
       ...fail(
@@ -355,7 +360,7 @@ export function decodeBoard(
             n.tagName === "a" &&
             (touch
               ? attr(n, "href").includes("mod=viewthread")
-              : hasClass(n, "xst")),
+              : hasClass(n, portal ? "kmtit" : "xst")),
         )[0],
         url,
       ),
@@ -379,6 +384,7 @@ export function decodeBoard(
       latestTime && descendants(latestTime, (n) => !!attr(n, "title"))[0];
     return {
       ...item,
+      ...(portal ? { label: label(descendants(row, (n) => hasClass(n, "km_subject"))[0]) || item.label } : {}),
       id,
       rowId,
       ...(latestCell
@@ -428,7 +434,7 @@ export function decodeBoard(
   if (
     threads.some((n) => n === null) ||
     (!threads.length &&
-      !subboards.length &&
+      (qualified || !subboards.length) &&
       !/暂无|沒有|没有|無主題|no (?:threads|posts)/i.test(empty))
   )
     return {
@@ -617,6 +623,14 @@ export function decodeBoard(
           .filter(Boolean)
           .join(" ")
       : "";
+  const breadcrumb = byId(doc, "pt");
+  const boardIdentity = breadcrumb && links(breadcrumb, url, () => true)
+    .filter((item) => {
+      const route = routeFor(item.url);
+      return route?.kind === "board" && route.url.origin === actual.url.origin;
+    }).at(-1);
+  if (qualified && !headingLink && (!boardIdentity || new URL(boardIdentity.url).searchParams.get("fid") !== actual.url.searchParams.get("fid")))
+    return { ...fail("invalid", "The page did not establish the requested board identity."), account };
   const clearFilter =
     headingLink && criteriaFor(headingLink.url).length === 0
       ? headingLink
@@ -660,7 +674,7 @@ export function decodeBoard(
       filters: [...new Map(filters.map((n) => [n.url, n])).values()],
       filterGroups,
       criteria,
-      pages: pagination(doc, url),
+      pages: pagination(doc, url, qualified),
       empty,
     },
   };
