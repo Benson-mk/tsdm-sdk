@@ -1,6 +1,7 @@
 import type { AttachmentResult, FileResponse } from "./types.js";
 export function fileFailure(
   response: FileResponse,
+  { allowSvg = false }: { allowSvg?: boolean } = {},
 ): Exclude<AttachmentResult, { kind: "file" }> | null {
   const encoding =
     response.bytes[0] === 0xff && response.bytes[1] === 0xfe
@@ -15,7 +16,7 @@ export function fileFailure(
   // lies or a long comment hides the recognizable forum error farther down.
   const html =
     /(?:text\/html|application\/xhtml\+xml)/i.test(response.contentType) ||
-    /^\s*</.test(sample);
+    (!allowSvg && /^\s*</.test(sample));
   if (
     response.status === 401 ||
     (html && /loginform|name=["']?password|请先登录|尚未登录/i.test(sample))

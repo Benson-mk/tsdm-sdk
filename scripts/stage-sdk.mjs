@@ -14,6 +14,7 @@ const collectionDeclarations = [
   "forum-client/collection-client.d.ts",
   "forum-client/collection-types.d.ts",
 ];
+const mediaDeclarations = ["forum-client/media/client.d.ts", "forum-client/media/types.d.ts"];
 const activityDeclarations = [
   "forum-client/activity-client.d.ts",
   "forum-client/activity-read-types.d.ts",
@@ -33,6 +34,7 @@ const manifest = {
     "forum-client/types.d.ts",
     ...noticeDeclarations,
     ...activityDeclarations,
+    ...mediaDeclarations,
     "forum-client/replies.d.ts",
     "forum-client/reply-verification.d.ts",
     ...collectionDeclarations,
@@ -60,6 +62,7 @@ const manifest = {
     "docs/spaces.md",
     "docs/collections.md",
     "docs/activity.md",
+    "docs/media.md",
     "notices/",
   ],
 };
@@ -102,7 +105,9 @@ copyFileSync(
   new URL("docs/activity.md", root),
   new URL("docs/activity.md", stage),
 );
+copyFileSync(new URL("docs/media.md", root), new URL("docs/media.md", stage));
 mkdirSync(new URL("forum-client/", stage));
+mkdirSync(new URL("forum-client/media/", stage));
 mkdirSync(new URL("forum-client/discovery/", stage));
 mkdirSync(new URL("forum-client/spaces/", stage));
 mkdirSync(new URL("forum-client/posts/", stage));
@@ -122,6 +127,7 @@ for (const declaration of [
   "forum-client/types.d.ts",
   ...noticeDeclarations,
   ...activityDeclarations,
+  ...mediaDeclarations,
   ...collectionDeclarations,
   "forum-client/member-reads.d.ts",
   "forum-client/member-client.d.ts",

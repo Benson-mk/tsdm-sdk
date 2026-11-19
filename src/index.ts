@@ -19,6 +19,38 @@ export type {
   PreparedActivity,
 } from "./forum-client/activity-effects.js";
 
+export { createMediaClient } from "./forum-client/media/client.js";
+export type {
+  AlbumFiling,
+  AlbumOpen,
+  AlbumOption,
+  AlbumPicture,
+  AlbumTarget,
+  AlbumUpload,
+  AlbumUploadForm,
+  AttachmentCredit,
+  AttachmentCreditOffer,
+  AttachmentRead,
+  AttachmentResume,
+  ExternalMediaHandoff,
+  MediaBrowserHandoff,
+  MediaClientOptions,
+  MediaDelivery,
+  MediaFailure,
+  MediaFile,
+  MediaRead,
+  MediaRequest,
+  MediaResponse,
+  MediaSession,
+  PostImageForm,
+  PostImageOpen,
+  PostImageUpload,
+  Smiley,
+  SmileyCatalogue,
+  SmileyGroup,
+  SmileyScript,
+} from "./forum-client/media/types.js";
+
 export { createReplyClient } from "./forum-client/replies.js";
 export type {
   ReplyClientOptions,

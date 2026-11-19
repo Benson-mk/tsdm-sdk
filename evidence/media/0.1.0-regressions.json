@@ -1,0 +1,120 @@
+{
+  "integrationBaseCommit": "cdaca1d53ccc173d4930f63d9597658920a972bb",
+  "archiveSHA256": "33861d31f1deece3568a719f32eb27cbabbb65271a6cb44b53fa264dcb350e46",
+  "command": "sh evidence/special-threads/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "passingSuites": [
+      "account",
+      "activity-direct",
+      "activity-installed",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces",
+      "special-direct",
+      "special-installed"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "c5039e519be33005b1c9da4c09af51f190bfa57f3b7e1e3db97fc924687b2e79",
+      "observationGroups": 66
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "3a05261aa291c13c22b33e692bc065cfa943e5aaaea03dd9a66a05055a0037fc",
+      "observationGroups": 17
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "7f4f2f88f7538e65dff2d15dd29e93a04e93ab158382aa2bf07aa338d11ee955",
+      "observationGroups": 53
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "1e29e8073d85a6c62b9de8746f9c2dec14d9b2073f39abbe9fb063d4fb82cd5a",
+      "observationGroups": 56
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e",
+      "observationGroups": 2,
+      "historicalBundleSHA256": "2ce48c840f327fd44868e2496b564e375f68d0626ea766c6e03f3e95270713c6"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f",
+      "observationGroups": 3,
+      "historicalBundleSHA256": "2ce48c840f327fd44868e2496b564e375f68d0626ea766c6e03f3e95270713c6"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "f87b39148354424f8b846cc7f1d9644a2f01ea82d697c54f7cc20a3f91ce05e8",
+      "observationGroups": 9
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "f0d0627085b0882fef03e4413c6bad24c26d72d15c5b23b8052e82a874a38dad",
+      "observationGroups": 7
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "cf0c0f0a7ccc6efa64d0cca9bb3ee54a9f1ec45d9cb691362dd89bbbd699b220",
+      "observationGroups": 68
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "2f336f1daacb7581be03f9d388521f1080dca033bdeeee1ef2cad3784bbb9823",
+      "observationGroups": 16
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "d0a6da64ced0b1007322c830471176160489935ac714ead175c428fc5b057575",
+      "observationGroups": 31
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "4bba895873c3d63a8a9d039337b11965ddecbc13a67cce45817e38141ef615d6",
+      "observationGroups": 54
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "8f07a00af42420676aff789d4485a8919731a87782dbcbdd3778ac9e4c5829e9",
+      "observationGroups": 18
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "510efc23edec195c804a07fa8469c30a369b5de9ef5ee4a1fd5afcd6fb5db791",
+      "observationGroups": 2
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "12cdb02e5157f791a2f273ab6d38dbc468c1d38e04d48b0622a8aaccf89a334c"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "d81d6c54e4880fdef73d61733320bfe8e97da8a9478b095ee56190ef1012bd47",
+      "observationGroups": 73
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "b450697c0d3a8b495754ce43da4ac6f188f036a8f4fc696daf9374ba829b05b6",
+      "observationGroups": 24
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "3fe2b87135a2afc983c6639ba828f0d324453f29122d98a4a18f83abfd42884e",
+      "observationGroups": 33
+    }
+  }
+}

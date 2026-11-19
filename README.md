@@ -17,6 +17,7 @@
 - [Use member spaces, walls and follow feeds](docs/spaces.md)
 - [Organize threads into collections](docs/collections.md)
 - [Inspect and respond to post activity](docs/activity.md)
+- [Upload media and retrieve attachments](docs/media.md)
 
 ## Install a local candidate
 
