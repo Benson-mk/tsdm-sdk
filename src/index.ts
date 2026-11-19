@@ -360,3 +360,19 @@ export type {
   PostVerificationCheck,
   PostVerificationPrompt,
 } from "./forum-client/posts/client.js";
+
+export { createSpecialThreadClient } from "./forum-client/special/client.js";
+export type {
+  SpecialThreadClientOptions,
+  SpecialThreadRequest,
+  SpecialActionForm,
+  SpecialActivityInput,
+  SpecialActionInput,
+  SpecialActionPreparation,
+  SpecialActionResult,
+  SpecialActionTarget,
+  SpecialThreadInput,
+  SpecialThreadKind,
+  SpecialThreadSettings,
+  SpecialThreadWriteResult,
+} from "./forum-client/special/client.js";

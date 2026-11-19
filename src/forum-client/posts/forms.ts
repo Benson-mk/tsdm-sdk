@@ -194,7 +194,7 @@ function pairs(value: unknown): Pair[] | null {
   return result;
 }
 
-function suppliedInput(raw: unknown): Pair[] {
+export function suppliedInput(raw: unknown): Pair[] {
   const input = object(raw);
   if (
     !input ||

@@ -1,0 +1,3503 @@
+{
+  "evidence": "controlled loopback HTTP",
+  "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+  "guideSHA256": "674e2e7b96da6d21c8dbcc2827ecde21d980664e77efb6f1d9b1397549c8214c",
+  "results": [
+    {
+      "language": "Python requests",
+      "operation": "poll",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "1"
+            ],
+            [
+              "polls",
+              "yes"
+            ],
+            [
+              "tpolloption",
+              "1"
+            ],
+            [
+              "polloptions",
+              "Amber\nViolet"
+            ],
+            [
+              "maxchoices",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "1"
+            ],
+            [
+              "polls",
+              "yes"
+            ],
+            [
+              "tpolloption",
+              "1"
+            ],
+            [
+              "polloptions",
+              "Amber\nViolet"
+            ],
+            [
+              "maxchoices",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "bounty",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "3"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "3"
+            ],
+            [
+              "rewardprice",
+              "12"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "3"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "3"
+            ],
+            [
+              "rewardprice",
+              "12"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "activity",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "4"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "4"
+            ],
+            [
+              "starttimefrom[0]",
+              "2099-05-16 15:30"
+            ],
+            [
+              "activityplace",
+              "Fictional room"
+            ],
+            [
+              "activityclass",
+              "Workshop"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "4"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "4"
+            ],
+            [
+              "starttimefrom[0]",
+              "2099-05-16 15:30"
+            ],
+            [
+              "activityplace",
+              "Fictional room"
+            ],
+            [
+              "activityclass",
+              "Workshop"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "debate",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "5"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "5"
+            ],
+            [
+              "affirmpoint",
+              "Fictional affirmative"
+            ],
+            [
+              "negapoint",
+              "Fictional negative"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "5"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "5"
+            ],
+            [
+              "affirmpoint",
+              "Fictional affirmative"
+            ],
+            [
+              "negapoint",
+              "Fictional negative"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "red-packet",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "specialextra": [
+              "hongbao"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "127"
+            ],
+            [
+              "specialextra",
+              "hongbao"
+            ],
+            [
+              "hb_total",
+              "20"
+            ],
+            [
+              "hb_shares",
+              "4"
+            ],
+            [
+              "hb_split",
+              "2"
+            ],
+            [
+              "hb_expire",
+              "24"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "specialextra": [
+              "hongbao"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "127"
+            ],
+            [
+              "specialextra",
+              "hongbao"
+            ],
+            [
+              "hb_total",
+              "20"
+            ],
+            [
+              "hb_shares",
+              "4"
+            ],
+            [
+              "hb_split",
+              "2"
+            ],
+            [
+              "hb_expire",
+              "24"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "poll-vote",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "votepoll"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pollsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "pollsubmit",
+              "true"
+            ],
+            [
+              "pollanswers[0]",
+              "201"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "votepoll"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pollsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "pollsubmit",
+              "true"
+            ],
+            [
+              "pollanswers[0]",
+              "201"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "thread_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "activity-apply",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitysubmit",
+              "true"
+            ],
+            [
+              "handlekey",
+              "activityapplies"
+            ],
+            [
+              "message",
+              "Fictitious application"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitysubmit",
+              "true"
+            ],
+            [
+              "handlekey",
+              "activityapplies"
+            ],
+            [
+              "message",
+              "Fictitious application"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "activity_completion",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "activity-cancel",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitycancel",
+              "true"
+            ],
+            [
+              "message",
+              "Fictitious cancellation"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitycancel",
+              "true"
+            ],
+            [
+              "message",
+              "Fictitious cancellation"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "activity_cancel_success",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "debate-position",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "stand": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "stand": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "debate_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "debater-vote",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "debate_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "bounty-answer",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "bestanswer"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "from": [
+              ""
+            ],
+            "bestanswersubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "optgroup",
+              ""
+            ],
+            [
+              "operation",
+              ""
+            ],
+            [
+              "page",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "bestanswer"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "from": [
+              ""
+            ],
+            "bestanswersubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "optgroup",
+              ""
+            ],
+            [
+              "operation",
+              ""
+            ],
+            [
+              "page",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "reward_completion",
+        "alert": "info",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "poll",
+      "approved": false,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": null
+    },
+    {
+      "language": "curl",
+      "operation": "poll",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "1"
+            ],
+            [
+              "polls",
+              "yes"
+            ],
+            [
+              "tpolloption",
+              "1"
+            ],
+            [
+              "polloptions",
+              "Amber\nViolet"
+            ],
+            [
+              "maxchoices",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "1"
+            ],
+            [
+              "polls",
+              "yes"
+            ],
+            [
+              "tpolloption",
+              "1"
+            ],
+            [
+              "polloptions",
+              "Amber\nViolet"
+            ],
+            [
+              "maxchoices",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "bounty",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "3"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "3"
+            ],
+            [
+              "rewardprice",
+              "12"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "3"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "3"
+            ],
+            [
+              "rewardprice",
+              "12"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "activity",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "4"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "4"
+            ],
+            [
+              "starttimefrom[0]",
+              "2099-05-16 15:30"
+            ],
+            [
+              "activityplace",
+              "Fictional room"
+            ],
+            [
+              "activityclass",
+              "Workshop"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "4"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "4"
+            ],
+            [
+              "starttimefrom[0]",
+              "2099-05-16 15:30"
+            ],
+            [
+              "activityplace",
+              "Fictional room"
+            ],
+            [
+              "activityclass",
+              "Workshop"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "debate",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "5"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "5"
+            ],
+            [
+              "affirmpoint",
+              "Fictional affirmative"
+            ],
+            [
+              "negapoint",
+              "Fictional negative"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "5"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "5"
+            ],
+            [
+              "affirmpoint",
+              "Fictional affirmative"
+            ],
+            [
+              "negapoint",
+              "Fictional negative"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "red-packet",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "specialextra": [
+              "hongbao"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "127"
+            ],
+            [
+              "specialextra",
+              "hongbao"
+            ],
+            [
+              "hb_total",
+              "20"
+            ],
+            [
+              "hb_shares",
+              "4"
+            ],
+            [
+              "hb_split",
+              "2"
+            ],
+            [
+              "hb_expire",
+              "24"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "specialextra": [
+              "hongbao"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "extra": [
+              ""
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious message"
+            ],
+            [
+              "special",
+              "127"
+            ],
+            [
+              "specialextra",
+              "hongbao"
+            ],
+            [
+              "hb_total",
+              "20"
+            ],
+            [
+              "hb_shares",
+              "4"
+            ],
+            [
+              "hb_split",
+              "2"
+            ],
+            [
+              "hb_expire",
+              "24"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "post_newthread_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "poll-vote",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "votepoll"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pollsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "pollsubmit",
+              "true"
+            ],
+            [
+              "pollanswers[0]",
+              "201"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "votepoll"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pollsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "pollsubmit",
+              "true"
+            ],
+            [
+              "pollanswers[0]",
+              "201"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "thread_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "activity-apply",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitysubmit",
+              "true"
+            ],
+            [
+              "handlekey",
+              "activityapplies"
+            ],
+            [
+              "message",
+              "Fictitious application"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitysubmit",
+              "true"
+            ],
+            [
+              "handlekey",
+              "activityapplies"
+            ],
+            [
+              "message",
+              "Fictitious application"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "activity_completion",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "activity-cancel",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitycancel",
+              "true"
+            ],
+            [
+              "message",
+              "Fictitious cancellation"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "activityapplies"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "activitycancel",
+              "true"
+            ],
+            [
+              "message",
+              "Fictitious cancellation"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "activity_cancel_success",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "debate-position",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "stand": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "stand": [
+              "2"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "debate_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "debater-vote",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "debatevote"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "debate_poll_succeed",
+        "alert": "right",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "bounty-answer",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "bestanswer"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "from": [
+              ""
+            ],
+            "bestanswersubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "optgroup",
+              ""
+            ],
+            [
+              "operation",
+              ""
+            ],
+            [
+              "page",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "viewthread"
+            ],
+            "tid": [
+              "42"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "bestanswer"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "from": [
+              ""
+            ],
+            "bestanswersubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fictional_session=controlled",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "optgroup",
+              ""
+            ],
+            [
+              "operation",
+              ""
+            ],
+            [
+              "page",
+              "1"
+            ]
+          ]
+        }
+      ],
+      "wireResult": {
+        "ok": 1,
+        "type": "result",
+        "schema": 13,
+        "uid": 31,
+        "login": 0,
+        "kind": "message",
+        "message_key": "reward_completion",
+        "alert": "info",
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "poll",
+      "approved": false,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "special": [
+              "1"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fictional_session=controlled"
+        }
+      ],
+      "wireResult": null
+    }
+  ]
+}

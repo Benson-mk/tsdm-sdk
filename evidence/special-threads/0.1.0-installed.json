@@ -1,0 +1,976 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+  "archiveBytes": 235209,
+  "lockfileIntegrity": "sha512-EHqnzaJpS5IRvQ8dAS/wnk3/Gdl4m75D+VvxYX/gZnB0b+z1Qxjix6Y9x4LUQCcRpfe3YAPH5muJc/rz5UXfnQ==",
+  "consumerSHA256": "00c46b09dc654a187c947871f8d9a061ab894dcc9ed3c653e881b466126c1bf5",
+  "guideSHA256": "674e2e7b96da6d21c8dbcc2827ecde21d980664e77efb6f1d9b1397549c8214c",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "sourcePin": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "verifiedFiles": 29
+  },
+  "results": [
+    {
+      "name": "create a poll and observe its choices",
+      "expected": {
+        "kind": "created",
+        "threadType": "poll",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "created",
+        "threadType": "poll",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "1",
+            "usesig": "1",
+            "polls": "yes",
+            "fid": "7",
+            "tpolloption": "1",
+            "polloptions": "Amber\nViolet",
+            "maxchoices": "1",
+            "expiration": "",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "create a bounty and observe its offered reward",
+      "expected": {
+        "kind": "created",
+        "threadType": "bounty",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "created",
+        "threadType": "bounty",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=3&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "3",
+            "usesig": "1",
+            "rewardprice": "10",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "bounty tax and balance reject an unaffordable price before dispatch",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=3&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "create an activity with a range and one requested profile field",
+      "expected": {
+        "kind": "created",
+        "threadType": "activity",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "created",
+        "threadType": "activity",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=4&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "4",
+            "usesig": "1",
+            "starttimefrom[0]": "",
+            "starttimefrom[1]": "2099-05-16 15:30",
+            "starttimeto": "2099-05-16 17:30",
+            "activityplace": "Fictional room",
+            "activitycity": "",
+            "activityclass": "Workshop",
+            "activitynumber": "8",
+            "gender": "0",
+            "activitycredit": "",
+            "cost": "",
+            "activityexpiration": "",
+            "activityaid": "",
+            "activityaid_url": "",
+            "activitytime": "1",
+            "userfield[0]": "mobile",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "an activity end earlier than its start is invalid",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=4&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "create a debate and observe both positions",
+      "expected": {
+        "kind": "created",
+        "threadType": "debate",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "created",
+        "threadType": "debate",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=5&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "5",
+            "usesig": "1",
+            "affirmpoint": "Fictional affirmative",
+            "negapoint": "Fictional negative",
+            "endtime": "2099-05-16 17:30",
+            "umpire": "Fictitious Referee",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "create a red packet and observe the sender and share count",
+      "expected": {
+        "kind": "created",
+        "threadType": "red-packet",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "created",
+        "threadType": "red-packet",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://special.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "127",
+            "specialextra": "hongbao",
+            "usesig": "1",
+            "hb_split": "2",
+            "hb_expire": "6",
+            "hb_blessing": "Fictional blessing",
+            "hb_password": "",
+            "hb_appoint": "",
+            "hb_total": "20",
+            "hb_shares": "4",
+            "hb_cond": "1",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "red packet forum notice without a packet identity remains uncertain",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "127",
+            "specialextra": "hongbao",
+            "usesig": "1",
+            "hb_split": "2",
+            "hb_expire": "6",
+            "hb_blessing": "Fictional blessing",
+            "hb_password": "",
+            "hb_appoint": "",
+            "hb_total": "20",
+            "hb_shares": "4",
+            "hb_cond": "1",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        }
+      ]
+    },
+    {
+      "name": "red packet share minimum and divisibility prevent invalid spending",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&specialextra=hongbao",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "vote on a poll with an offered multiple choice",
+      "expected": {
+        "kind": "poll-voted",
+        "message": ""
+      },
+      "observed": {
+        "kind": "poll-voted",
+        "message": ""
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=votepoll&fid=7&tid=42&pollsubmit=yes&quickforward=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "pollsubmit": "true",
+            "pollanswers[0]": "201",
+            "pollanswers[1]": "202"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a lost poll vote response sends just once",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=votepoll&fid=7&tid=42&pollsubmit=yes&quickforward=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "pollsubmit": "true",
+            "pollanswers[0]": "201",
+            "pollanswers[1]": "202"
+          }
+        }
+      ]
+    },
+    {
+      "name": "poll form targeting a different thread is invalid",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "apply for an activity using the served questions",
+      "expected": {
+        "kind": "activity-applied",
+        "message": "Application received"
+      },
+      "observed": {
+        "kind": "activity-applied",
+        "message": "Application received"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=activityapplies&fid=7&tid=42&pid=101&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "handlekey": "activityapplies",
+            "activitysubmit": "true",
+            "payment": "0",
+            "field-size": "large",
+            "message": "Fictitious application",
+            "date-choice[0]": "day"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cancel activity participation with a message",
+      "expected": {
+        "kind": "activity-cancelled",
+        "message": "Cancelled"
+      },
+      "observed": {
+        "kind": "activity-cancelled",
+        "message": "Cancelled"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=activityapplies&fid=7&tid=42&pid=101&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "activitycancel": "true",
+            "message": "Fictitious cancellation"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an activity form with a native-only field hands off",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=viewthread&tid=42"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=viewthread&tid=42"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "vote for the negative debate position with an effectful GET",
+      "expected": {
+        "kind": "debate-position-voted",
+        "message": "Voted"
+      },
+      "observed": {
+        "kind": "debate-position-voted",
+        "message": "Voted"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&stand=2&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "vote for the other member's specific debate post with an effectful GET",
+      "expected": {
+        "kind": "debater-voted",
+        "message": "Voted"
+      },
+      "observed": {
+        "kind": "debater-voted",
+        "message": "Voted"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&pid=102&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "a repeated debater vote receives the forum's already-voted result",
+      "expected": {
+        "kind": "already-voted",
+        "message": "Already voted"
+      },
+      "observed": {
+        "kind": "already-voted",
+        "message": "Already voted"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&pid=102&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "voting for one's own debate post is refused before dispatch",
+      "expected": {
+        "kind": "refused"
+      },
+      "observed": {
+        "kind": "refused"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "joining a debate hands off to the supplied editor with the chosen position",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=reply&fid=7&tid=42&stand=1"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=reply&fid=7&tid=42&stand=1"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "lost effectful debate GET stays uncertain after one dispatch",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&pid=102&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "select a bounty answer with the forum's success key even when its alert is info",
+      "expected": {
+        "kind": "bounty-answer-selected",
+        "message": "Best answer selected"
+      },
+      "observed": {
+        "kind": "bounty-answer-selected",
+        "message": "Best answer selected"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=bestanswer&tid=42&pid=102&from=&bestanswersubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "optgroup": "",
+            "operation": "",
+            "listextra": "page%3D1",
+            "page": "1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "the forum expressly refuses the bounty selection",
+      "expected": {
+        "kind": "refused",
+        "code": "reward_cant_operate",
+        "message": "Selection refused"
+      },
+      "observed": {
+        "kind": "refused",
+        "message": "Selection refused",
+        "code": "reward_cant_operate"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=bestanswer&tid=42&pid=102&from=&bestanswersubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "optgroup": "",
+            "operation": "",
+            "listextra": "page%3D1",
+            "page": "1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bounty answer must be an advertised reply",
+      "expected": {
+        "kind": "refused"
+      },
+      "observed": {
+        "kind": "refused"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "poll requires moderation and the thread is still pending",
+      "expected": {
+        "kind": "moderation"
+      },
+      "observed": {
+        "kind": "moderation"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "1",
+            "usesig": "1",
+            "polls": "yes",
+            "fid": "7",
+            "tpolloption": "1",
+            "polloptions": "Amber\nViolet",
+            "maxchoices": "1",
+            "expiration": "",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        }
+      ]
+    },
+    {
+      "name": "native special editor is a browser handoff without submission",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a published ordinary thread does not qualify a claimed poll",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&extra=&topicsubmit=yes&fixture=sent&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "posttime": "1700000000",
+            "wysiwyg": "1",
+            "topicsubmit": "true",
+            "save": "",
+            "special": "1",
+            "usesig": "1",
+            "polls": "yes",
+            "fid": "7",
+            "tpolloption": "1",
+            "polloptions": "Amber\nViolet",
+            "maxchoices": "1",
+            "expiration": "",
+            "subject": "A fictitious discussion",
+            "message": "Fictitious content for this controlled replay."
+          }
+        },
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "poll writes cannot override the special selector through supplied controls",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=1&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a session change during a debate effect leaves uncertainty",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&stand=2&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "generic success text after a vote does not identify the effect",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=votepoll&fid=7&tid=42&pollsubmit=yes&quickforward=yes&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": {
+            "formhash": "fakehash",
+            "pollsubmit": "true",
+            "pollanswers[0]": "201",
+            "pollanswers[1]": "202"
+          }
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript guide stops after the read when unapproved",
+      "expected": {
+        "kind": "action-form"
+      },
+      "observed": {
+        "kind": "action-form"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript guide executes one approved effectful GET",
+      "expected": {
+        "kind": "debate-position-voted",
+        "message": "Voted"
+      },
+      "observed": {
+        "kind": "debate-position-voted",
+        "message": "Voted"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://special.example/forum.php?mod=misc&action=debatevote&tid=42&stand=2&inajax=1&tsdmapp=json",
+          "method": "GET",
+          "effect": true
+        }
+      ]
+    },
+    {
+      "name": "an activity editor cannot supply a different board in a special field",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=4"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=4"
+      },
+      "requests": [
+        {
+          "url": "https://special.example/forum.php?mod=post&action=newthread&fid=7&special=4&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    }
+  ]
+}

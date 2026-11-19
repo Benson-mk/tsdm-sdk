@@ -15,6 +15,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createProfileClient",
   "createReplyClient",
   "createSpaceClient",
+  "createSpecialThreadClient",
 ]);
 await assert.rejects(import("tsdm-sdk/index.js"), {
   code: "ERR_PACKAGE_PATH_NOT_EXPORTED",
