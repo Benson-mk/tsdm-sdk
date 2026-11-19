@@ -1,0 +1,42 @@
+{
+  "consume.mjs": {
+    "bytes": 107416,
+    "sha256": "5a63a1c0a1b047175c89d0d3af4feec4d376942bf9f9a55cdc9f79cac416eb9f"
+  },
+  "consume.ts": {
+    "bytes": 11885,
+    "sha256": "861aab2a59c335deb0c8a455022ce3246dde4743064d391921d623781ca65bce"
+  },
+  "tsconfig.json": {
+    "bytes": 191,
+    "sha256": "fe411e9b86dd0cfa691569d4be05ffe057fac83e3edc335e665a93ed7cf70ab1"
+  },
+  "package.json": {
+    "bytes": 195,
+    "sha256": "958b5aa86f051f806e8f6e5557ae52d65a3e594b23b1fde08c3359f2b16f825c"
+  },
+  "package-lock.json": {
+    "bytes": 1120,
+    "sha256": "459117fc6655d5d1a933839102486bb700a1e6fee8d52fb733332cabbeaf7a95"
+  },
+  "tsdm-forum-client-0.26.0.tgz": {
+    "bytes": 115363,
+    "sha256": "1e0d15a313cd8aee8d08e6a596beda67225de9796fdb808c051dd5f5546457fe"
+  },
+  "replay-consumer.mjs": {
+    "bytes": 6162,
+    "sha256": "319282aa21ce34b1fcadd600e07041cc6dca5ceb2ba95fea0038ecc34bad4740"
+  },
+  "inputs.json": {
+    "bytes": 6834,
+    "sha256": "f8f8320c96fe2da93c6caa6b30c96e9f70f9e4ecd93a959e5a42fdaa0689cf5b"
+  },
+  "receipt.json": {
+    "bytes": 22333,
+    "sha256": "880109032c03fbd349c1ba62329bd41bb048cf4e0d0bf7a7ddde9b41e1785b30"
+  },
+  "report.md": {
+    "bytes": 1721,
+    "sha256": "881179aaf8dba3689b804af1f0aa7451deb7c9a1cc750f90688fb91fca1b324a"
+  }
+}
