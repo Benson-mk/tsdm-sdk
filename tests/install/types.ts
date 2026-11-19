@@ -1,5 +1,9 @@
 import {
   createForumClient,
+  createMessageClient,
+  type HomepageMessageCheck,
+  type PrivateMessageForm,
+  type PrivateMessagePrompt,
   createNoticeClient,
   type NoticeClientOptions,
   type ContentNode,
@@ -44,3 +48,20 @@ const noticeClient = createNoticeClient(noticeOptions);
 const poll = await noticeClient.pollUnreadNotices({ since: 1793491200 });
 const acknowledgement = await noticeClient.acknowledgeAllUnreadNotices(poll);
 void acknowledgement;
+
+const messaging = createMessageClient(noticeOptions);
+const dialog = await messaging.openChatDialog("702", { confirm: true });
+if (dialog.kind === "chat-dialog") {
+  const form: PrivateMessageForm = dialog.send;
+  void messaging.sendPrivateMessage(form, "Fake message", { confirm: true });
+}
+const prompt = await messaging.preparePrivateMessageAcknowledgement();
+if (prompt.kind === "private-prompt") {
+  const proof: PrivateMessagePrompt = prompt;
+  void messaging.acknowledgePrivateMessagePrompt(proof, { confirm: true });
+}
+const check = await messaging.prepareHomepageMessageCheck();
+if (check.kind === "homepage-check") {
+  const proof: HomepageMessageCheck = check;
+  void messaging.checkHomepageMessages(proof, { confirm: true });
+}

@@ -1,0 +1,491 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "1ebf45aab13230549a8516627ddfe48f41bfa1fe3a7185bfdd7b7a90576df828",
+  "archiveBytes": 149395,
+  "consumerSHA256": "2eb3e550bd01647e298451f04844c12212b3e83df25815d3d868c9913383c029",
+  "guideSHA256": "fc65b83687ac215a8f312a3be4c7e61ab7eb5e24f464c1814a75327233903dbb",
+  "guideOutput": "702 Fake message",
+  "typescript": "Version 6.0.3",
+  "results": {
+    "lists": {
+      "expected": "private peers, distinct broadcasts, closed, no implicit native read, wrong UID and limit rejected",
+      "observed": [
+        {
+          "kind": "private-list",
+          "memberId": "701",
+          "closed": false,
+          "rows": [
+            {
+              "id": "812",
+              "peerId": "702",
+              "peerName": "Fake Peer",
+              "preview": "Fake & private",
+              "unread": true,
+              "timestamp": 1700000001,
+              "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702"
+            }
+          ],
+          "omittedGroups": 1
+        },
+        {
+          "kind": "broadcast-list",
+          "memberId": "701",
+          "closed": false,
+          "page": 1,
+          "count": 1,
+          "rows": [
+            {
+              "id": "911",
+              "preview": "Fake broadcast",
+              "unread": true,
+              "timestamp": 1700000002,
+              "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911"
+            }
+          ]
+        },
+        {
+          "kind": "native-page",
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&filter=announcepm&page=1",
+          "effect": "none"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist&filter=announce",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist&filter=announce",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist&filter=announce",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist",
+          "method": "GET"
+        }
+      ]
+    },
+    "details": {
+      "expected": "deliberate detail reads, returned page, empty history, refusal and lost response without fallback dispatch",
+      "observed": [
+        {
+          "kind": "conversation",
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "peerId": "702",
+          "peerName": "Fake Peer",
+          "page": 3,
+          "pages": 4,
+          "hasNext": true,
+          "count": 12,
+          "messages": [
+            {
+              "id": "901",
+              "senderId": "702",
+              "sender": "Fake Peer",
+              "time": 1700000000,
+              "body": [
+                {
+                  "kind": "element",
+                  "tag": "b",
+                  "attributes": {},
+                  "children": [
+                    {
+                      "kind": "text",
+                      "text": "Fake"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "send": {
+            "peerId": "702",
+            "maxLength": null
+          }
+        },
+        {
+          "kind": "broadcast",
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "id": "911",
+          "time": 1700000002,
+          "body": [
+            {
+              "kind": "element",
+              "tag": "b",
+              "attributes": {},
+              "children": [
+                {
+                  "kind": "text",
+                  "text": "Fake notice"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911&tsdmapp=json&nodoc=1&tsdmv=4",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911&tsdmapp=json&nodoc=1&tsdmv=4",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911&tsdmapp=json&nodoc=1&tsdmv=4",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911&tsdmapp=json&nodoc=1&tsdmv=4",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=viewg&pmid=911&tsdmapp=json&nodoc=1&tsdmv=4",
+          "method": "GET"
+        }
+      ]
+    },
+    "chat": {
+      "expected": "dialog with send form, recent XML without form, wrong recipient rejected",
+      "observed": [
+        {
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "peerId": "702",
+          "messages": [
+            {
+              "date": "2026-01-01",
+              "senderLabel": "Fake Peer:",
+              "body": [
+                {
+                  "kind": "text",
+                  "text": "Fake recent"
+                }
+              ]
+            }
+          ],
+          "kind": "chat-dialog",
+          "send": {
+            "peerId": "702",
+            "maxLength": null
+          }
+        },
+        {
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "peerId": "702",
+          "messages": [
+            {
+              "date": "2026-01-01",
+              "senderLabel": "Fake Peer:",
+              "body": [
+                {
+                  "kind": "text",
+                  "text": "Fake recent"
+                }
+              ]
+            }
+          ],
+          "kind": "recent-messages"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_702&touid=702&pmid=0&daterange=2&infloat=yes&inajax=1&ajaxtarget=fwin_content_showMsgBox",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&msgonly=1&touid=702&pmid=0&inajax=1&daterange=2",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_702&touid=702&pmid=0&daterange=2&infloat=yes&inajax=1&ajaxtarget=fwin_content_showMsgBox",
+          "method": "GET"
+        }
+      ]
+    },
+    "sends": {
+      "expected": "exact form sends, explicit acceptance/refusal, dropped send once, and session drift uncertain",
+      "observed": [
+        {
+          "kind": "accepted",
+          "messageId": "902"
+        },
+        {
+          "kind": "accepted",
+          "messageId": "903"
+        },
+        [
+          {
+            "kind": "uncertain"
+          },
+          {
+            "kind": "not-dispatched"
+          }
+        ],
+        {
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "peerId": "702",
+          "messages": [
+            {
+              "date": "2026-01-01",
+              "senderLabel": "Fake Peer:",
+              "body": [
+                {
+                  "kind": "text",
+                  "text": "Retain me"
+                }
+              ]
+            }
+          ],
+          "kind": "recent-messages"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&touid=702&inajax=1",
+          "method": "POST",
+          "body": "pmsubmit=true&touid=702&formhash=fakehash&handlekey=showmsg_702&messageappend=&message=Hello+%26+%2B+%E2%9C%93"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&pmid=901&daterange=0&handlekey=pmsend&pmsubmit=yes&topmuid=702",
+          "method": "POST",
+          "body": "formhash=fakehash&message=Fake+reply"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_702&touid=702&pmid=0&daterange=2&infloat=yes&inajax=1&ajaxtarget=fwin_content_showMsgBox",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&touid=702&inajax=1",
+          "method": "POST",
+          "body": "pmsubmit=true&touid=702&formhash=fakehash&handlekey=showmsg_702&messageappend=&message=Fake+message"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_702&touid=702&pmid=0&daterange=2&infloat=yes&inajax=1&ajaxtarget=fwin_content_showMsgBox",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&touid=702&inajax=1",
+          "method": "POST",
+          "body": "pmsubmit=true&touid=702&formhash=fakehash&handlekey=showmsg_702&messageappend=&message=Retain+me"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&msgonly=1&touid=702&pmid=0&inajax=1&daterange=2",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_702&touid=702&pmid=0&daterange=2&infloat=yes&inajax=1&ajaxtarget=fwin_content_showMsgBox",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&touid=702&inajax=1",
+          "method": "POST",
+          "body": "pmsubmit=true&touid=702&formhash=fakehash&handlekey=showmsg_702&messageappend=&message=Fake+draft"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&pmid=901&daterange=0&handlekey=pmsend&pmsubmit=yes&topmuid=702",
+          "method": "POST",
+          "body": "formhash=fakehash&message=Fake+reply"
+        }
+      ]
+    },
+    "prompt": {
+      "expected": "fresh notify proof, deliberate PM-only seen, explicit confirmation, notice response and loss remain uncertain",
+      "observed": [
+        {
+          "kind": "private-prompt",
+          "memberId": "701",
+          "count": 1
+        },
+        {
+          "kind": "cleared"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=notify",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=seen",
+          "method": "POST",
+          "body": "formhash=fakehash&pm=1"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=notify",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=seen",
+          "method": "POST",
+          "body": "formhash=fakehash&pm=1"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=notify",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=seen",
+          "method": "POST",
+          "body": "formhash=fakehash&pm=1"
+        },
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=notify",
+          "method": "GET"
+        }
+      ]
+    },
+    "homepage": {
+      "expected": "only advertised same-origin check runs deliberately, success gives no confirmed daily credit",
+      "observed": [
+        {
+          "kind": "homepage-check",
+          "memberId": "701",
+          "effect": "may-credit-daily-login"
+        },
+        {
+          "kind": "loaded",
+          "credit": "unknown"
+        },
+        {
+          "kind": "homepage-check",
+          "memberId": "701",
+          "effect": "may-credit-daily-login"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/forum.php?mod=index&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1700000000",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=index&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=index&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/forum.php?mod=index&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1",
+          "method": "GET"
+        }
+      ]
+    },
+    "legacy": {
+      "expected": "legacy list handoff and historical history markup with named submit button and length limit",
+      "observed": [
+        {
+          "kind": "native-page",
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&filter=privatepm&page=1",
+          "effect": "may-clear-private-prompt"
+        },
+        {
+          "kind": "conversation",
+          "effect": "may-mark-read",
+          "memberId": "701",
+          "peerId": "702",
+          "peerName": "Fake Peer",
+          "page": 1,
+          "pages": null,
+          "hasNext": false,
+          "count": 1,
+          "messages": [
+            {
+              "id": "901",
+              "senderId": "702",
+              "sender": "Fake Peer",
+              "time": "2026-01-01 10:00",
+              "body": [
+                {
+                  "kind": "text",
+                  "text": "Native reply"
+                },
+                {
+                  "kind": "element",
+                  "tag": "br",
+                  "attributes": {},
+                  "children": []
+                }
+              ],
+              "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702#pmlist_901"
+            }
+          ],
+          "send": {
+            "peerId": "702",
+            "maxLength": 12
+          }
+        },
+        {
+          "kind": "accepted",
+          "messageId": "904"
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://forum.example.test/plugin.php?id=tsdmapp%3Aapi&action=pmlist",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=space&do=pm&subop=view&touid=702&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://forum.example.test/home.php?mod=spacecp&ac=pm&op=send&pmid=901&daterange=0&handlekey=pmsend&pmsubmit=yes&topmuid=702",
+          "method": "POST",
+          "body": "formhash=fakehash&message=Native+form"
+        }
+      ]
+    }
+  }
+}

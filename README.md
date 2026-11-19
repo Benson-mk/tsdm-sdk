@@ -10,6 +10,7 @@
 - [Manage profile, privacy, devices and forum sync](docs/profile.md)
 - [Find members, make friends and save favourites](docs/members.md)
 - [Poll unread notices and deliberately acknowledge them](docs/notices.md)
+- [Read and send private messages](docs/messages.md)
 
 ## Install a local candidate
 

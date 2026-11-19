@@ -7,6 +7,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createAccountClient",
   "createForumClient",
   "createMemberClient",
+  "createMessageClient",
   "createNoticeClient",
   "createProfileClient",
 ]);

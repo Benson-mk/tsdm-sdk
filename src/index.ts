@@ -263,3 +263,7 @@ export type {
   NoticeRequest,
   NoticeSession,
 } from "./forum-client/notice-transport.js";
+
+export { createMessageClient } from "./forum-client/message-client.js";
+export type { PrivateMessageForm } from "./forum-client/message-client.js";
+export type { HomepageMessageCheck, PrivateMessagePrompt } from "./forum-client/message-effects.js";

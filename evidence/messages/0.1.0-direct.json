@@ -1,0 +1,1918 @@
+{
+  "evidence": "controlled loopback, packed direct guide",
+  "archiveSHA256": "1ebf45aab13230549a8516627ddfe48f41bfa1fe3a7185bfdd7b7a90576df828",
+  "guideSHA256": "fc65b83687ac215a8f312a3be4c7e61ab7eb5e24f464c1814a75327233903dbb",
+  "python": "Python 3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "results": [
+    {
+      "client": "python",
+      "mode": "private",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pms": [
+            {
+              "touid": 702
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pms": [
+            {
+              "touid": 702
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "broadcasts",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ],
+            "filter": [
+              "announce"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "announces": [
+            {
+              "id": 911
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ],
+            "filter": [
+              "announce"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "announces": [
+            {
+              "id": 911
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "private-native",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "privatepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"pmlist_812\">Fake native PM</div>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "privatepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"pmlist_812\">Fake native PM</div>"
+      }
+    },
+    {
+      "client": "python",
+      "mode": "broadcasts-native",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "announcepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"gpmlist_911\">Fake native broadcast</div>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "announcepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"gpmlist_911\">Fake native broadcast</div>"
+      }
+    },
+    {
+      "client": "python",
+      "mode": "history",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "view"
+            ],
+            "touid": [
+              "702"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 11,
+          "messages": [
+            {
+              "pmid": 901
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "view"
+            ],
+            "touid": [
+              "702"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 11,
+          "messages": [
+            {
+              "pmid": 901
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "broadcast",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "viewg"
+            ],
+            "pmid": [
+              "911"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 40,
+          "announce": {
+            "id": 911
+          }
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "viewg"
+            ],
+            "pmid": [
+              "911"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 40,
+          "announce": {
+            "id": 911
+          }
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "dialog",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "ajaxtarget": [
+              "fwin_content_showMsgBox"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<form id=\"pmform_702\">Fake dialog</form>]]></root>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "ajaxtarget": [
+              "fwin_content_showMsgBox"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<form id=\"pmform_702\">Fake dialog</form>]]></root>"
+      }
+    },
+    {
+      "client": "python",
+      "mode": "recent",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "msgonly": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<li>Fake recent</li>]]></root>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "msgonly": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<li>Fake recent</li>]]></root>"
+      }
+    },
+    {
+      "client": "python",
+      "mode": "send-dialog",
+      "expected": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "touid": [
+              "702"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ],
+            "touid": [
+              "702"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "messageappend": [
+              "fake append"
+            ],
+            "pmsubmit": [
+              "true"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "showmsg_702"
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "touid": [
+              "702"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ],
+            "touid": [
+              "702"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "pmsubmit": [
+              "true"
+            ],
+            "messageappend": [
+              "fake append"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "showmsg_702"
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "send-history",
+      "expected": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "pmid": [
+              "901"
+            ],
+            "daterange": [
+              "0"
+            ],
+            "handlekey": [
+              "pmsend"
+            ],
+            "pmsubmit": [
+              "yes"
+            ],
+            "topmuid": [
+              "702"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "pmsend"
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "pmid": [
+              "901"
+            ],
+            "daterange": [
+              "0"
+            ],
+            "handlekey": [
+              "pmsend"
+            ],
+            "pmsubmit": [
+              "yes"
+            ],
+            "topmuid": [
+              "702"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "pmsend"
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "prompt",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "notify"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "formhash": "fakehash",
+          "counts": {
+            "pm": 1,
+            "notice": 9
+          }
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "notify"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "formhash": "fakehash",
+          "counts": {
+            "pm": 1,
+            "notice": 9
+          }
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "clear",
+      "expected": {
+        "request": [
+          "POST",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "seen"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "pm": [
+              "1"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pm": 1,
+          "notice": 0
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "seen"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "pm": [
+              "1"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pm": 1,
+          "notice": 0
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "homepage",
+      "expected": {
+        "request": [
+          "GET",
+          "forum.php",
+          {
+            "mod": [
+              "index"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "checknewpm": "home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1700000000"
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "forum.php",
+          {
+            "mod": [
+              "index"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "checknewpm": "home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1700000000"
+        }
+      }
+    },
+    {
+      "client": "python",
+      "mode": "check",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "checknewpm"
+            ],
+            "rand": [
+              "1700000000"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "/* Controlled script response */"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "checknewpm"
+            ],
+            "rand": [
+              "1700000000"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "/* Controlled script response */"
+      }
+    },
+    {
+      "client": "python",
+      "mode": "send-dialog without confirmation",
+      "expectedDispatches": 0,
+      "observedDispatches": 0
+    },
+    {
+      "client": "sh",
+      "mode": "private",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pms": [
+            {
+              "touid": 702
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pms": [
+            {
+              "touid": 702
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "broadcasts",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ],
+            "filter": [
+              "announce"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "announces": [
+            {
+              "id": 911
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "pmlist"
+            ],
+            "filter": [
+              "announce"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "announces": [
+            {
+              "id": 911
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "private-native",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "privatepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"pmlist_812\">Fake native PM</div>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "privatepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"pmlist_812\">Fake native PM</div>"
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "broadcasts-native",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "announcepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"gpmlist_911\">Fake native broadcast</div>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "filter": [
+              "announcepm"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<div id=\"gpmlist_911\">Fake native broadcast</div>"
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "history",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "view"
+            ],
+            "touid": [
+              "702"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 11,
+          "messages": [
+            {
+              "pmid": 901
+            }
+          ]
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "view"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "touid": [
+              "702"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 11,
+          "messages": [
+            {
+              "pmid": 901
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "broadcast",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "viewg"
+            ],
+            "pmid": [
+              "911"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 40,
+          "announce": {
+            "id": 911
+          }
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "space"
+            ],
+            "do": [
+              "pm"
+            ],
+            "subop": [
+              "viewg"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tsdmv": [
+              "4"
+            ],
+            "pmid": [
+              "911"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 40,
+          "announce": {
+            "id": 911
+          }
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "dialog",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "ajaxtarget": [
+              "fwin_content_showMsgBox"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<form id=\"pmform_702\">Fake dialog</form>]]></root>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "infloat": [
+              "yes"
+            ],
+            "ajaxtarget": [
+              "fwin_content_showMsgBox"
+            ],
+            "touid": [
+              "702"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<form id=\"pmform_702\">Fake dialog</form>]]></root>"
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "recent",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "touid": [
+              "702"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "msgonly": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<li>Fake recent</li>]]></root>"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "showmsg"
+            ],
+            "msgonly": [
+              "1"
+            ],
+            "pmid": [
+              "0"
+            ],
+            "daterange": [
+              "2"
+            ],
+            "inajax": [
+              "1"
+            ],
+            "touid": [
+              "702"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "<root><![CDATA[<li>Fake recent</li>]]></root>"
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "send-dialog",
+      "expected": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "touid": [
+              "702"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ],
+            "touid": [
+              "702"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "messageappend": [
+              "fake append"
+            ],
+            "pmsubmit": [
+              "true"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "showmsg_702"
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "touid": [
+              "702"
+            ],
+            "inajax": [
+              "1"
+            ]
+          },
+          {
+            "touid": [
+              "702"
+            ],
+            "handlekey": [
+              "showmsg_702"
+            ],
+            "pmsubmit": [
+              "true"
+            ],
+            "messageappend": [
+              "fake append"
+            ],
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "showmsg_702"
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "send-history",
+      "expected": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "pmid": [
+              "901"
+            ],
+            "daterange": [
+              "0"
+            ],
+            "handlekey": [
+              "pmsend"
+            ],
+            "pmsubmit": [
+              "yes"
+            ],
+            "topmuid": [
+              "702"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "pmsend"
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "send"
+            ],
+            "pmid": [
+              "901"
+            ],
+            "daterange": [
+              "0"
+            ],
+            "handlekey": [
+              "pmsend"
+            ],
+            "pmsubmit": [
+              "yes"
+            ],
+            "topmuid": [
+              "702"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "message": [
+              "Fake & + ✓"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "schema": 13,
+          "kind": "handle",
+          "handlekey": "pmsend"
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "prompt",
+      "expected": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "notify"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "formhash": "fakehash",
+          "counts": {
+            "pm": 1,
+            "notice": 9
+          }
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "notify"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "formhash": "fakehash",
+          "counts": {
+            "pm": 1,
+            "notice": 9
+          }
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "clear",
+      "expected": {
+        "request": [
+          "POST",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "seen"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "pm": [
+              "1"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pm": 1,
+          "notice": 0
+        }
+      },
+      "observed": {
+        "request": [
+          "POST",
+          "plugin.php",
+          {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "seen"
+            ]
+          },
+          {
+            "formhash": [
+              "fakehash"
+            ],
+            "pm": [
+              "1"
+            ]
+          },
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "pm": 1,
+          "notice": 0
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "homepage",
+      "expected": {
+        "request": [
+          "GET",
+          "forum.php",
+          {
+            "mod": [
+              "index"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "checknewpm": "home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1700000000"
+        }
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "forum.php",
+          {
+            "mod": [
+              "index"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": {
+          "ok": 1,
+          "uid": 701,
+          "checknewpm": "home.php?mod=spacecp&ac=pm&op=checknewpm&rand=1700000000"
+        }
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "check",
+      "expected": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "checknewpm"
+            ],
+            "rand": [
+              "1700000000"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "/* Controlled script response */"
+      },
+      "observed": {
+        "request": [
+          "GET",
+          "home.php",
+          {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "pm"
+            ],
+            "op": [
+              "checknewpm"
+            ],
+            "rand": [
+              "1700000000"
+            ]
+          },
+          {},
+          "controlled=701"
+        ],
+        "response": "/* Controlled script response */"
+      }
+    },
+    {
+      "client": "sh",
+      "mode": "send-dialog without confirmation",
+      "expectedDispatches": 0,
+      "observedDispatches": 0
+    }
+  ]
+}
