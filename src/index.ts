@@ -602,3 +602,15 @@ export type {
   PanelFailure,
   PanelSelectionOutcome,
 } from "./forum-client/moderator-panel/types.js";
+export { createAdminClient } from "./forum-client/admin/client.js";
+export type {
+  AdminAccess, AdminAction, AdminBan, AdminBanAcknowledged, AdminBanChange,
+  AdminCleanup, AdminCleanupCheckpoint, AdminCleanupEffect, AdminClientOptions,
+  AdminCredentials, AdminCreditAdjustment, AdminCreditLookup, AdminCreditMember,
+  AdminCredits, AdminCreditsAdjusted, AdminCreditType, AdminCrime, AdminDuplicate,
+  AdminExtendedGroup, AdminFailure, AdminGroup, AdminGroupAcknowledged,
+  AdminGroupChange, AdminGroupChoice, AdminGroupExpiry, AdminLoginState,
+  AdminMember, AdminMemberLookup, AdminMemberState, AdminReport,
+  AdminReportDecision, AdminReportEffect, AdminReportResolution, AdminReportReward,
+  AdminReports, AdminReportScope, AdminRequest, AdminSessionResult, AdminWriteIntent,
+} from "./forum-client/admin/types.js";

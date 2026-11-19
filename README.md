@@ -29,6 +29,7 @@
 - [Shop and battle in Pokémon](docs/pokemon-battles.md)
 - [Moderate threads, replies and attachments](docs/moderation.md)
 - [Triage moderator queues, reports and recycle bins](docs/moderator-queues.md)
+- [Use the administrator API under its own session](docs/admin.md)
 
 ## Install a local candidate
 

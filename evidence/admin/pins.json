@@ -1,0 +1,41 @@
+{
+  "repository": "Carinoasd/tsdm_client",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "upstreamFiles": {
+    "lib/features/admin_tools/repository/admin_repository.dart": "1bcacc07a4aeca4565cad2cb975373116fb8837159df4f82fe6bcce2536cb6b8",
+    "lib/features/admin_tools/models/admin_models.dart": "8747ea5a710a12aa97ca3651c8e1cbb7b1982a25fe2a9a0880acfacc7d8ddd5c",
+    "lib/features/admin_tools/view/admin_credit_page.dart": "8d9e5ce1b642c8e2d884085884c16783637ccc2e781718dc70d2b40c22eb197d",
+    "lib/features/admin_tools/view/admin_group_page.dart": "fe837a6e47f1e2a796f7fd43b54cd5dde283b61a0cc2804c3ace15e1855c94fc",
+    "lib/features/admin_tools/view/admin_ban_page.dart": "0247990122b81be64db4c9aec91d91de288f3442034e55345c153f7ff46098a9",
+    "lib/features/admin_tools/widgets/admin_widgets.dart": "de5ab17a4e1b23fee106d3c6ddaddea5888df3246b482ebc0b7142c6247fa4be",
+    "lib/features/report_handling/repository/admin_report_source.dart": "60c1ca21c3b17724efefb061a3f531ab2a396c4b878adcc0443a447b75d2c861",
+    "lib/features/report_handling/models/report_handling.dart": "2352e8cbabd23b32f7a2d1a943e6bc5749626ea537027a63ceb03bbb6ac40371",
+    "lib/features/tsdmapp/tsdmapp_api.dart": "53c2b0883bd933399ade7fe6abca7275a4a6b4f2649ba10c2ee1bdba81b39b95",
+    "test/regression/admin_tools_fakes.dart": "efad744b0d4af7c95630ab77ebf899e62b97edc7d6c16f4a9c287fb9b5792d82",
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+    "test/regression/test_885_admin_entry_test.dart": "2b7e41a8bedc3a5124c6994c37a7630fcb2b89d1262ed6cfbe99306279d0d633",
+    "test/regression/test_886_admin_login_test.dart": "baf66741f9d60fe9750cf0b0f66c8fba10d42b8f31db00463e2835d9abf8bafd",
+    "test/regression/test_887_admin_pages_test.dart": "3c0a92c604a665c391eea910e5ce3387127770d0885c38b27b6ccdd41afe846a",
+    "test/regression/test_895_admin_round2_test.dart": "1b8caf347cf00e88254c559928f9c022e80e0be63a3cb4f3d6ad71bbad1b6663",
+    "test/regression/test_896_admin_report_test.dart": "7da9e9d08bf581e5004b301e54188e5d03be172ca08bae3ed3f346154c8ff5b7",
+    "test/regression/test_965_admin_session_lifetime_test.dart": "52582d0cb24194b688882a4e96562af8044c10d58615814e77e4670e763cd82f",
+    "test/regression/test_969_admin_logout_before_identity_change_test.dart": "7b1bcc654c087be4e151a1c1cae5ab26c9dccf1a3545f1190f4a21d9cd911476",
+    "test/data/tsdmapp_admin/admin_founder.json": "15f13d830bbce6f5b5198044b81f63face0be680f22552d1825c8e68d5d2dffc",
+    "test/data/tsdmapp_admin/admin_read_only.json": "048fb2107ecac732f1ff23a3bdbe67d580f509e0b7cbe79dec6623073d0484a9",
+    "test/data/tsdmapp_admin/admin_report_only.json": "1da7f448ad16fe9655bd69af22a142c678dcd203fdcd55a2343bf9cf15c10fb0",
+    "test/data/tsdmapp_admin/admin_login_needed.json": "264615bf799b2c851166785047ff7e088fdb90d4e8f6592dc9a15e48f9838a6c",
+    "test/data/tsdmapp_admin/logout_admin_login.json": "f48f6ec42b48383ff9e1d63a87a4d10c8199b812d4731cb67082c47e346afabb",
+    "test/data/tsdmapp_admin/credit_members.json": "da2fb4bb2995bc4967eb214b93fa4549ac08d7cfadbf470a8c965e7aa01eca91",
+    "test/data/tsdmapp_admin/group_member.json": "25cfbc619cd2229699a8ddd3c4f6b1915598fd79d2887a54deb397cecbb9a421",
+    "test/data/tsdmapp_admin/group_founder_view.json": "13d349a96cb327039374afec89bcd24c7e612ee93769e0f1554fa23407795f05",
+    "test/data/tsdmapp_admin/report_new.json": "fa2a248efce40f91ad1c7897c632a94cdf480550aeaa233db8fc4e3feb65fc24",
+    "test/data/tsdmapp_admin/report_resolved.json": "a1094431c0e547ee39b8963c346257977ce18fbb5f650916acd0e2b1c0700f4e",
+    "test/data/tsdmapp_admin/ban_member.json": "d06174e067a194a6aa863cc848dd1bf8485e4a07a2696380ff4e131de28fc7ac",
+    "test/data/tsdmapp_admin/ban_protected.json": "bb186611972f2dc1393a637119700ff22e82122ec41b866847c6a4b789de76a8",
+    "test/data/tsdmapp_admin/ban_post_left.json": "7ca1f00fc5bb61bf78baefb7079cb8ecfb65faed829ea88c7728520b66996057"
+  },
+  "controlledFiles": {
+    "tests/install/admin.mjs": "bf23f9c368b062df376619341c8c155f814ac9718cc31c9399ebb5d75592bdfc",
+    "evidence/admin/check-direct-guide.py": "239f587fe1bebe5841342a81525d369a2902076e67039a65a65ebeb521b99b82"
+  }
+}

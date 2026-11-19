@@ -6,6 +6,7 @@ import * as sdk from "tsdm-sdk";
 assert.deepEqual(Object.keys(sdk), [
   "createAccountClient",
   "createActivityClient",
+  "createAdminClient",
   "createAwardsClient",
   "createBankClient",
   "createBatchRatingClient",

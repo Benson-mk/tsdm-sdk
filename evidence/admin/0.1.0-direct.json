@@ -1,0 +1,2749 @@
+{
+  "archiveSHA256": "6592d85ecedee749b8ca6d075e825ed0cbb1c00d6f66daceb5699db64ab25762",
+  "guideSHA256": "826b177619aaf3c0a43dde055621f202f6147a673f1ba43f6f96bac2bc4584e5",
+  "scope": "Inert loopback and fictional authorization. No deployed administrator effects.",
+  "results": [
+    {
+      "name": "requests reads status discovery",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "status"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "status"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads status discovery",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "status"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "status"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads admin discovery",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads admin discovery",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads admin authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads admin authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads admincredit authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ],
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "usernames",
+                "Fictional first\nFictional second"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ],
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "usernames",
+                "Fictional first\nFictional second"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads admincredit authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ],
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "usernames",
+                "Fictional first\nFictional second"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ],
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "usernames",
+                "Fictional first\nFictional second"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads admingroup authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ],
+              [
+                "uid",
+                "71"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ],
+              [
+                "uid",
+                "71"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads admingroup authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ],
+              [
+                "uid",
+                "71"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ],
+              [
+                "uid",
+                "71"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads adminreport authorized new",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "new"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "new"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads adminreport authorized new",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "new"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "new"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads adminreport authorized resolved",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "resolved"
+              ],
+              [
+                "page",
+                "2"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "resolved"
+              ],
+              [
+                "page",
+                "2"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads adminreport authorized resolved",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "resolved"
+              ],
+              [
+                "page",
+                "2"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ],
+              [
+                "op",
+                "resolved"
+              ],
+              [
+                "page",
+                "2"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads adminban authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ],
+              [
+                "username",
+                "Fictional target"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ],
+              [
+                "username",
+                "Fictional target"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads adminban authorized",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ],
+              [
+                "username",
+                "Fictional target"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ],
+              [
+                "username",
+                "Fictional target"
+              ]
+            ],
+            "body": [],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves login",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "login"
+              ],
+              [
+                "password",
+                "[masked]"
+              ],
+              [
+                "questionid",
+                "3"
+              ],
+              [
+                "answer",
+                "[masked]"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "login"
+              ],
+              [
+                "password",
+                "[masked]"
+              ],
+              [
+                "questionid",
+                "3"
+              ],
+              [
+                "answer",
+                "[masked]"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves login",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "login"
+              ],
+              [
+                "password",
+                "[masked]"
+              ],
+              [
+                "questionid",
+                "3"
+              ],
+              [
+                "answer",
+                "[masked]"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "login"
+              ],
+              [
+                "password",
+                "[masked]"
+              ],
+              [
+                "questionid",
+                "3"
+              ],
+              [
+                "answer",
+                "[masked]"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "absent",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines login",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines login",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves reward",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ]
+            ],
+            "body": [
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "credits[2]",
+                "-3"
+              ],
+              [
+                "reason",
+                "Fictional reason"
+              ],
+              [
+                "notify",
+                "1"
+              ],
+              [
+                "opid",
+                "controlled-credit-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ]
+            ],
+            "body": [
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "credits[2]",
+                "-3"
+              ],
+              [
+                "reason",
+                "Fictional reason"
+              ],
+              [
+                "notify",
+                "1"
+              ],
+              [
+                "opid",
+                "controlled-credit-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves reward",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ]
+            ],
+            "body": [
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "credits[2]",
+                "-3"
+              ],
+              [
+                "reason",
+                "Fictional reason"
+              ],
+              [
+                "notify",
+                "1"
+              ],
+              [
+                "opid",
+                "controlled-credit-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admincredit"
+              ]
+            ],
+            "body": [
+              [
+                "uids",
+                "71,72"
+              ],
+              [
+                "credits[2]",
+                "-3"
+              ],
+              [
+                "reason",
+                "Fictional reason"
+              ],
+              [
+                "notify",
+                "1"
+              ],
+              [
+                "opid",
+                "controlled-credit-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines reward",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines reward",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves group",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ]
+            ],
+            "body": [
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "groupid",
+                "22"
+              ],
+              [
+                "expiry",
+                ""
+              ],
+              [
+                "extgroupids[0]",
+                "15"
+              ],
+              [
+                "opid",
+                "controlled-group-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ]
+            ],
+            "body": [
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "groupid",
+                "22"
+              ],
+              [
+                "expiry",
+                ""
+              ],
+              [
+                "extgroupids[0]",
+                "15"
+              ],
+              [
+                "opid",
+                "controlled-group-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves group",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ]
+            ],
+            "body": [
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "groupid",
+                "22"
+              ],
+              [
+                "expiry",
+                ""
+              ],
+              [
+                "extgroupids[0]",
+                "15"
+              ],
+              [
+                "opid",
+                "controlled-group-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admingroup"
+              ]
+            ],
+            "body": [
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "groupid",
+                "22"
+              ],
+              [
+                "expiry",
+                ""
+              ],
+              [
+                "extgroupids[0]",
+                "15"
+              ],
+              [
+                "opid",
+                "controlled-group-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines group",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines group",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves resolve",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "resolve"
+              ],
+              [
+                "ids[0]",
+                "91"
+              ],
+              [
+                "credits[91]",
+                "3"
+              ],
+              [
+                "msg[91]",
+                "Fictitious review"
+              ],
+              [
+                "opid",
+                "controlled-resolve-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "resolve"
+              ],
+              [
+                "ids[0]",
+                "91"
+              ],
+              [
+                "credits[91]",
+                "3"
+              ],
+              [
+                "msg[91]",
+                "Fictitious review"
+              ],
+              [
+                "opid",
+                "controlled-resolve-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves resolve",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "resolve"
+              ],
+              [
+                "ids[0]",
+                "91"
+              ],
+              [
+                "credits[91]",
+                "3"
+              ],
+              [
+                "msg[91]",
+                "Fictitious review"
+              ],
+              [
+                "opid",
+                "controlled-resolve-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "resolve"
+              ],
+              [
+                "ids[0]",
+                "91"
+              ],
+              [
+                "credits[91]",
+                "3"
+              ],
+              [
+                "msg[91]",
+                "Fictitious review"
+              ],
+              [
+                "opid",
+                "controlled-resolve-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines resolve",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines resolve",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves delete",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "92"
+              ],
+              [
+                "opid",
+                "controlled-delete-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "92"
+              ],
+              [
+                "opid",
+                "controlled-delete-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves delete",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "92"
+              ],
+              [
+                "opid",
+                "controlled-delete-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminreport"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "ids[0]",
+                "92"
+              ],
+              [
+                "opid",
+                "controlled-delete-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines delete",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines delete",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves ban",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "ban"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "bannew",
+                "post"
+              ],
+              [
+                "banexpirynew",
+                "7"
+              ],
+              [
+                "clear[0]",
+                "post"
+              ],
+              [
+                "opid",
+                "controlled-ban-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "ban"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "bannew",
+                "post"
+              ],
+              [
+                "banexpirynew",
+                "7"
+              ],
+              [
+                "clear[0]",
+                "post"
+              ],
+              [
+                "opid",
+                "controlled-ban-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves ban",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "ban"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "bannew",
+                "post"
+              ],
+              [
+                "banexpirynew",
+                "7"
+              ],
+              [
+                "clear[0]",
+                "post"
+              ],
+              [
+                "opid",
+                "controlled-ban-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "ban"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "bannew",
+                "post"
+              ],
+              [
+                "banexpirynew",
+                "7"
+              ],
+              [
+                "clear[0]",
+                "post"
+              ],
+              [
+                "opid",
+                "controlled-ban-1"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines ban",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines ban",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves clear",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "clear"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "cursor",
+                "0-0"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "clear"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "cursor",
+                "0-0"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves clear",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "clear"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "cursor",
+                "0-0"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "adminban"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "clear"
+              ],
+              [
+                "uid",
+                "71"
+              ],
+              [
+                "cursor",
+                "0-0"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines clear",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines clear",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves logout",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "logout"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "logout"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves logout",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "logout"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": [
+              [
+                "id",
+                "tsdmapp:api"
+              ],
+              [
+                "action",
+                "admin"
+              ]
+            ],
+            "body": [
+              [
+                "op",
+                "logout"
+              ],
+              [
+                "formhash",
+                "[masked]"
+              ]
+            ],
+            "token": "matched",
+            "cookieMatched": true,
+            "formEncoded": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines logout",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines logout",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests refuses report write without the observed capability",
+      "expected": {
+        "result": true,
+        "requests": []
+      },
+      "actual": {
+        "result": true,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl rejects tokenless private read",
+      "expected": {
+        "result": 2,
+        "requests": []
+      },
+      "actual": {
+        "result": 2,
+        "requests": []
+      }
+    }
+  ]
+}
