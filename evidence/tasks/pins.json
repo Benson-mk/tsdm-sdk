@@ -48,6 +48,8 @@
     "test/regression/test_1035_task_center_v4_test.dart": "20a31db35eb0c8b10f47710a1cb4d9518cb1fce3a97b5bffbabe9941680cdd3b",
     "test/regression/test_1036_magic_achievement_v4_test.dart": "e75e01efc4e82e30e84bbebfc41564c189f2ea4c5b998cc2d0dfbca14ffb153e",
     "test/regression/test_1080_task_detail_test.dart": "6b4fe8b98cc0b374532f8396250d386c52f9bfaf0f5d861f23c472433a53ddf4",
-    "test/regression/test_1081_magic_log_test.dart": "17a456c5635ce8eac664c56678cf5ef858a7deee543332621f90e097addbb51e"
+    "test/regression/test_1081_magic_log_test.dart": "17a456c5635ce8eac664c56678cf5ef858a7deee543332621f90e097addbb51e",
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+    "lib/features/tsdmapp/v4.dart": "539fc5185fd3ade29307f4e2f120fe9cecc87af7d960135bab52795fcfa18481"
   }
 }

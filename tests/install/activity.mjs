@@ -13,7 +13,10 @@ function check(name, actual, expected) {
   assert.deepEqual(actual, expected, name);
   results.push({ name, expected, actual });
 }
+const capabilityURL = origin + "/plugin.php?id=tsdmapp%3Aapi&action=status";
 function journey(memberId, ...replies) {
+  const capabilityCalls = [];
+  const capabilities = {ok:1, uid:Number(memberId), v4:1, thread_lists:["ratings","poll_voters","thread_mod","payments"]};
   const requests = [];
   let continuity = "original";
   const client = createActivityClient({
@@ -21,6 +24,11 @@ function journey(memberId, ...replies) {
     session: () => ({ memberId, continuity }),
     transport: {
       async request(url, options) {
+        if (url === capabilityURL) {
+          capabilityCalls.push(url);
+          assert.equal(options.method, "GET");
+          return response(capabilities)(url);
+        }
         requests.push({ url: new URL(url), ...options });
         assert.equal(options.fresh, true);
         assert.deepEqual(options.session, { memberId, continuity });
@@ -32,7 +40,7 @@ function journey(memberId, ...replies) {
   });
   return {
     client,
-    requests,
+    requests, capabilityCalls, capabilities,
     drift: () => {
       continuity = "new";
     },
@@ -58,6 +66,7 @@ async function read(name, query, files, expected, project, routes) {
   const j = journey("31", ...files.map(replay));
   const actual = await j.client.readActivity(query);
   check(name, project(actual), expected);
+  assert.equal(j.capabilityCalls.length, ["ratings","voters","moderation","payments"].includes(query.view) ? 1 : 0, name);
   check(
     `${name} requests`,
     j.requests.map(({ url, method, effect }) => [
@@ -831,6 +840,20 @@ for (const [file, page, length] of [
     [r.kind, j.requests.length],
     ["refused", 1],
   );
+  j.end();
+}
+for (const [query, file] of [
+  [{view:"ratings",threadId:"9199193",postId:"3400"}, "ratings_v48_window.xml"],
+  [{view:"voters",threadId:"1019",optionId:"3"}, "voters_v49_window.xml"],
+  [{view:"moderation",threadId:"9199453"}, "thread_mod_v50_window.xml"],
+  [{view:"payments",threadId:"9202665"}, "payments_v51_window.xml"],
+]) {
+  const j = journey("31", replay("tsdmapp/v4/"+file));
+  j.capabilities.thread_lists = ["unrelated"];
+  const result = await j.client.readActivity(query);
+  check("only an advertised thread list selects v4: " + query.view,
+    [result.kind, j.capabilityCalls, j.requests.map(r=>r.url.searchParams.has("tsdmv"))],
+    [query.view,[capabilityURL],[false]]);
   j.end();
 }
 console.log(JSON.stringify(results));

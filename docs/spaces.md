@@ -75,11 +75,15 @@ Use the matching source above, or `source: null` for the three dedicated forms. 
 | `relay`                                    | Timeline with a relay target, `feedId`, `note`, explicit `reply`                                                             | Relay the thread and optionally post a thread reply, `relay_feed_success`                            |
 | `delete-feed`                              | Timeline with an offered delete action, `feedId`                                                                             | Delete the feed entry, `do_success`                                                                  |
 
+A same-account schema-13 `poke_success` can confirm a greeting with an empty `handlekey`. A conflicting nonempty key is inconclusive. A redrawn native dialog may contain a callback definition. Only an actual qualified callback invocation establishes the native result.
+
 The forum decides who can read and act. If blog privacy requires selecting specific friends, or the forum requires a challenge, follow the native form handoff. A legacy response may omit the viewer or confirmation fields. If the response cannot establish the signed-in form, keep the operation in the forum UI. Album file uploads and final filing use the separate media workflow.
 
 ## Python requests and curl
 
-For direct HTTP callers, request the same native route. For an eligible structured list add `tsdmapp=json&tsdmv=4&nodoc=1` and validate its `type`, `schema`, viewer, target, scope, page and list fields. For native fallback, parse the returned document (including `document` in the legacy envelope), or request the same route once without representation flags. A reply-list or older-feed native request also needs `inajax=1`. Parse the XML CDATA, or a schema-13 `kind=page` document, with an HTML parser. A login requirement, privacy notice, missing member or rate limit ends the read. Treat unrecognized markup as incomplete.
+The SDK reads `status` in the current session before selecting a structured space page or greeting dialog. For direct HTTP callers, check `/plugin.php?id=tsdmapp%3Aapi&action=status` in the same session. A structured list requires `v4: 1` and the exact name in `space_pages` (`doing`, `docomment`, `feed`, `follow`, `blog`, `album`, `wall`, or `poke`). For an eligible list add `tsdmapp=json&tsdmv=4&nodoc=1` and validate its `type`, `schema`, viewer, target, scope, page and list fields. For native fallback, parse the returned document (including `document` in the legacy envelope), or request the same route once without representation flags. A reply-list or older-feed native request also needs `inajax=1`. Parse the XML CDATA, or a schema-13 `kind=page` document, with an HTML parser. A login requirement, privacy notice, missing member or rate limit ends the read. Treat unrecognized markup as incomplete.
+
+Greeting forms have their own capability. Only use `tsdmv=4&tsdmform=1&nodoc=1` with `tsdmapp=json` when `v4` is on and `forms` includes `poke`. Ask the send or reply window with `infloat=yes`, `inajax=1` and the appropriate handle key. Check the returned `op`, `touid`, viewer, offered icon and POST destination. Use the served fields on one approved POST with the v4 write flags. Use the original full-page form when the structured window is unavailable.
 
 With Python 3 and `requests` installed, set `TSDM_ORIGIN` and a member ID in `TSDM_MEMBER` for a wall readable by the guest or member session. Optionally supply the original session cookie through `TSDM_COOKIE`. This checks the schema-63 owner and prints the observed comment IDs. For a native deployment inspect the HTML wall container and its own next-page link.
 
@@ -92,6 +96,13 @@ member = int(os.environ["TSDM_MEMBER"])
 with requests.Session() as session:
     if os.environ.get("TSDM_COOKIE"):
         session.headers["Cookie"] = os.environ["TSDM_COOKIE"]
+    status = session.get(origin + "/plugin.php", params={"id": "tsdmapp:api", "action": "status"},
+                         allow_redirects=False, timeout=20)
+    status.raise_for_status()
+    capabilities = status.json()
+    space_pages = capabilities.get("space_pages")
+    if capabilities.get("ok") != 1 or capabilities.get("v4") != 1 or not isinstance(space_pages, list) or "wall" not in space_pages:
+        raise SystemExit("Open the native wall in this session")
     response = session.get(
         origin + "/home.php",
         params={"mod": "space", "do": "wall", "uid": member,
@@ -111,6 +122,10 @@ with requests.Session() as session:
 The curl equivalent returns the response for inspection. Keep the cookie in the supplied session jar, if the wall requires membership. An empty guest jar works for a wall available to guests.
 
 ```sh
+status=$(curl --silent --show-error --fail --get --max-time 20 \
+  --cookie "$TSDM_COOKIE_JAR" --data-urlencode 'id=tsdmapp:api' \
+  --data-urlencode 'action=status' "${TSDM_ORIGIN%/}/plugin.php") || exit 1
+printf '%s' "$status" | jq -e '.ok == 1 and .v4 == 1 and (.space_pages // [] | index("wall") != null)' >/dev/null || exit 1
 curl --silent --show-error --fail-with-body --get --max-time 20 \
   --cookie "$TSDM_COOKIE_JAR" \
   --data-urlencode 'mod=space' --data-urlencode 'do=wall' \

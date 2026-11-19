@@ -1,3 +1,4 @@
+import { linkedPostVideo } from "./linked-post-video.js";
 import { attachmentProfiles } from "./attachments.js";
 import { pagination, link } from "./read-board.js";
 import { routeFor, cleanURL } from "./routes.js";
@@ -535,7 +536,7 @@ export function decodeThread(
     const profile = attachmentProfiles(wrapper, response.url);
     // Native postmessage identity establishes which ancestor tables belong to
     // the forum layout. Retain all siblings, and never unwrap authored tables.
-    const message = byId(body, `postmessage_${id}`);
+    const message = attr(body, "id") === `postmessage_${id}` ? body : byId(body, `postmessage_${id}`);
     const layoutTables = new Set<Node>();
     for (
       let parent = message?.parentNode;
@@ -565,6 +566,7 @@ export function decodeThread(
       profile.inlineImages,
       layoutNodes,
     );
+    if (message) bodyContent.push(...linkedPostVideo(message));
     const restriction = descendants(wrapper, (n) => hasClass(n, "locked") || hasClass(n, "attach_nopermission"))[0];
     if (!readable(bodyContent) && !(qualified && restriction)) return null;
     const authorArea = descendants(wrapper, (n) => hasClass(n, "authi"))[0];

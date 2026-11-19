@@ -23,6 +23,9 @@ namespace = {}
 exec(compile(python, 'packed-tasks-guide.py', 'exec'), namespace)
 calls, results = [], []
 cookie = 'fixture_session=fictitious-member'
+status_query = dict(id='tsdmapp:api', action='status')
+capabilities = {'ok': 1, 'uid': 31, 'v4': 1, 'task_pages': ['task_list', 'task', 'task_parter'],
+                'magic_pages': ['magic_shop', 'magic_mybox', 'magic_log'], 'forms': ['magicbuy', 'magicuse']}
 redirect = '/home.php?mod=task&do=draw&id=42'
 
 
@@ -40,7 +43,15 @@ class Forum(BaseHTTPRequestHandler):
         self.send_response(status)
         if status == 302:
             self.send_header('Location', redirect)
-        self.end_headers()
+        if route.path == '/plugin.php':
+            assert request['query'] == status_query and self.command == 'GET'
+            body = json.dumps(capabilities).encode()
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        else:
+            self.end_headers()
 
     do_GET = do_POST = handle_exchange
 
@@ -48,8 +59,8 @@ class Forum(BaseHTTPRequestHandler):
         pass
 
 
-def trace(method, query, fields=(), xhr=False):
-    return {'method': method, 'path': '/home.php', 'query': query, 'fields': list(fields),
+def trace(method, query, fields=(), xhr=False, path='/home.php'):
+    return {'method': method, 'path': path, 'query': query, 'fields': list(fields),
             'xhr': 'XMLHttpRequest' if xhr else None, 'cookie': cookie}
 
 
@@ -80,23 +91,36 @@ with ThreadingHTTPServer(('127.0.0.1', 0), Forum) as server, TemporaryDirectory(
         reads.update({tab: dict(mod='magic', action=tab) for tab in ('shop', 'mybox')})
         for direction, operation in zip(('usage', 'purchase', 'gift', 'receipt'), ('uselog', 'buylog', 'givelog', 'receivelog')):
             reads[direction] = dict(mod='magic', action='log', operation=operation)
+        status_read = trace('GET', status_query, path='/plugin.php')
         for step, params in reads.items():
             assert namespace['read'](session, origin, step, target='42').status_code == 200
-            observe('Python read ' + step, trace('GET', params | page))
+            observe('Python read ' + step, status_read, trace('GET', params | page))
         assert namespace['read'](session, origin, 'receipt', page=2).status_code == 200
-        observe('Python paged receipt log', trace('GET', reads['receipt'] | page | {'page': '2'}))
+        observe('Python paged receipt log', status_read, trace('GET', reads['receipt'] | page | {'page': '2'}))
         windows = {}
         for operation, action, key, target in [('buy', 'shop', 'mid', 'fiction:card'), ('use', 'mybox', 'magicid', '34')]:
             query = dict(mod='magic', action=action, operation=operation, infloat='yes', handlekey='magics', inajax='1') | {key: target}
             windows[operation] = (query, target)
             assert namespace['magic_window'](session, origin, operation, target).status_code == 200
-            observe('Python inspect ' + operation, trace('GET', query | page | {'tsdmform': '1'}, xhr=True))
-            assert namespace['magic_window'](session, origin, operation, target, legacy=True).status_code == 200
-            observe('Python legacy window ' + operation, trace('GET', query | {'tsdmapp': 'json'}, xhr=True))
+            observe('Python inspect ' + operation, status_read, trace('GET', query | page | {'tsdmform': '1'}, xhr=True))
+            capabilities['forms'].remove('magic' + operation)
+            assert namespace['magic_window'](session, origin, operation, target).status_code == 200
+            observe('Python legacy window ' + operation, status_read, trace('GET', query | {'tsdmapp': 'json'}, xhr=True))
+            capabilities['forms'].append('magic' + operation)
         subprocess.run(['sh', '-eu', '-c', read_script], env=env, check=True, capture_output=True)
-        observe('curl read lists, details, participants, both windows and all logs',
+        observe('curl read lists, details, participants, both windows and all logs', status_read,
                 *(trace('GET', params | page) for params in reads.values()),
                 *(trace('GET', query | page | {'tsdmform': '1'}, xhr=True) for query, _ in windows.values()))
+        capabilities['task_pages'].remove('task')
+        assert namespace['read'](session, origin, 'detail', target='42') is None
+        observe('Python unadvertised detail does not request a page', status_read)
+        capabilities['task_pages'].append('task')
+        capabilities['v4'] = 0
+        subprocess.run(['sh', '-eu', '-c', read_script], env=env, check=True, capture_output=True)
+        observe('curl falls back to legacy lists and windows when v4 is off', status_read,
+                *(trace('GET', reads[name] | {'tsdmapp': 'json'}) for name in ('new', 'doing', 'done', 'shop', 'mybox')),
+                *(trace('GET', query | {'tsdmapp': 'json'}, xhr=True) for query, _ in windows.values()))
+        capabilities['v4'] = 1
         for operation, action in [('apply', 'apply'), ('claim', 'draw'), ('abandon', 'delete')]:
             task_write = namespace['task_write']
             params = dict(mod='task', do=action, id='42')

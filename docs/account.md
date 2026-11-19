@@ -18,6 +18,8 @@ import type {
   AccountChange,
   AccountChangeForm,
   LoginCredentials,
+  StoredDeviceStatusInput,
+  StoredDeviceStatusResult,
 } from "tsdm-sdk";
 
 type Client = ReturnType<typeof createAccountClient>;
@@ -78,12 +80,20 @@ export function inspect(client: Client) {
   return client.readStatus();
 }
 
+export function inspectSavedDevice(
+  savedAccount: Client,
+  input: StoredDeviceStatusInput,
+): Promise<StoredDeviceStatusResult> {
+  return savedAccount.readStoredDeviceStatus(input);
+}
+
 export function signOut(client: Client, memberId: string) {
   return client.logout(memberId);
 }
 ```
 
 - `readStatus()` reports the UID or guest, plugin API and version, and advertised switches, operation lists and check-in settings. Treat missing fields as unknown and check `switches.v4` before using a v4 capability. `readIdentity()` can use a native settings read when status is unavailable. A login submission returns the identity reported by the login response. A fresh identity read checks the jar that the host will adopt.
+- To probe a saved login, bind the account client to that login's isolated jar. Call `readStoredDeviceStatus({ memberId, deviceId })` with the saved member UID and lowercase device UUID. Forward the `X-Tsdmapp-Device` header from the SDK request only to the configured origin and keep the identifier private. `status` establishes the returned member. `device-revoked` requires an explicit forum response naming both that member and that device under the original continuity. The host decides whether to retire that saved login. A rate limit or unavailable response leaves revocation unresolved.
 - Surface `loginForm.registration` and `loginForm.lostPassword` as browser links. For `verification-image`, fetch and render the image from `destination` in the indicated `session` and let the user supply the answer. A `browser` result gives the host a URL for the user to continue. Other account checks may require an email or phone code in the browser. Browser completion belongs to the user. Read identity again before using the resulting session.
 - The account change form keys are `newpassword` and `renewpassword`, `email`, or `questionidnew` and `answernew`. Use the exact fields and offered choices returned for that form. An empty question choice means keep the existing question and answer when offered. `changed` means the forum explicitly reported the change. Follow any additional delivery or activation instructions presented by the forum in its account center. `refused` means the forum reported a refusal. A refused, unverified, or lost response consumes the form. To make a new attempt, obtain fresh forms after reviewing the outcome and getting the user's approval.
 - `logout(memberId)` sends a logout GET only for the requested member and checks for returned guest identity. `already-guest` entails no logout dispatch. `unverified` means the received evidence did not establish the requested effect. `uncertain` means a request may have reached the server without a trustworthy result. For login or logout, check fresh identity after the forum's rate limit permits it. For a setting, consult the signed-in account center and let the user decide how to proceed. Status cannot establish the stored password or answer.
@@ -91,6 +101,8 @@ export function signOut(client: Client, memberId: string) {
 ## Direct HTTP with Python requests or curl
 
 Use one isolated cookie jar per attempt. Disable automatic retries and redirect following on effects. Resolve and validate each supplied URL against the configured HTTPS origin and expected operation before using it. Keep credentials in URL-encoded POST bodies. Parse XML CDATA as HTML and inspect forum messages and AJAX callbacks as data. Leave script execution and browser verification to the user in the browser.
+
+For a stored-device probe, use the saved account's jar on the status GET. Supply `headers={"X-Tsdmapp-Device": device_id}` to Python `requests` or `--header "X-Tsdmapp-Device: $DEVICE_ID"` to curl. Leave redirects disabled. Read a matching `uid` on a successful status or require `ok: 0`, `error: "device_revoked"`, the expected `uid` and the expected device together on a direct HTTP 200, 401 or 403 response. Discard the response if the host replaced the saved session while it was in flight.
 
 | Task                    | Request and observation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

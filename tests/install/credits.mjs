@@ -23,7 +23,10 @@ function check(name, actual, expected) {
   assert.deepEqual(actual, expected, name);
   results.push({ name, actual, expected });
 }
+const capabilityURL = origin + "/plugin.php?id=tsdmapp%3Aapi&action=status";
 function journey(memberId, ...replies) {
+  const capabilityCalls=[];
+  const capabilities={ ok:1, uid:Number(memberId), v4:1, credit_pages:["credit_base","usergroup_info"] };
   let continuity = "old";
   const calls = [];
   const client = createCreditsClient({
@@ -34,6 +37,11 @@ function journey(memberId, ...replies) {
         assert.equal(new URL(url).origin, origin);
         assert.deepEqual(opts.session, { memberId, continuity });
         assert.equal(opts.fresh, true);
+        if (url === capabilityURL) {
+          capabilityCalls.push(url);
+          assert.equal(opts.method, "GET");
+          return answer(capabilities)(url);
+        }
         calls.push({ url: new URL(url), ...opts });
         assert.ok(replies.length, "unexpected request or retry");
         return replies.shift()(url, opts);
@@ -42,7 +50,7 @@ function journey(memberId, ...replies) {
   });
   return {
     client,
-    calls,
+    calls, capabilityCalls, capabilities,
     drift: () => {
       continuity = "new";
     },
@@ -795,6 +803,18 @@ for (const [result, label, expected] of [
     ],
     ["group-expiry", "list", 3, "GET", "list"],
   );
+  j.done();
+}
+for (const [method, file, kind] of [
+  ["readCreditBalance","g3_credit_base_web.html","credit-balance"],
+  ["readGroups","g3_usergroup_web.html","groups"],
+]) {
+  const j = journey("31", answer(fixture("tsdmapp/v4/"+file)));
+  j.capabilities.credit_pages = ["unrelated"];
+  const result = await j.client[method]();
+  check("only an advertised credit page selects v4: " + method,
+    [result.kind, result.source, j.capabilityCalls, j.calls.map(r=>r.url.searchParams.has("tsdmv"))],
+    [kind,"native",[capabilityURL],[false]]);
   j.done();
 }
 console.log(JSON.stringify(results));

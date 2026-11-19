@@ -101,6 +101,21 @@ export async function checkPolling() {
   }, { poll: pollState(incomplete), acknowledgement: afterPartial.kind, repeated: repeated.rows.map((item) => item.id), trace: partial.trace });
   partial.done();
 
+  for (const [name, pages, ids, total, stop, trace, window = 'partial'] of [
+    ['replayed pinned page cannot end the account scan', [first, { ...first, has_more: 0, next: '' }], [26771, 26769, 26767], 221, 'invalid-cursor', [expectNotify(), expectBefore(firstCursor)]],
+    ['advancing terminal page cannot contradict the first unread total', [first, { ...older, has_more: 0, next: '' }], [26771, 26769, 26767], 221, 'invalid-response', [expectNotify(), expectBefore(firstCursor)], 'complete'],
+    ['terminal page cannot retain a continuation token', [page(firstRows, { next: firstCursor })], [26771, 26769, 26767], null, 'invalid-cursor', [expectNotify()]],
+    ['single terminal page cannot omit known unread rows', [page(firstRows, { counts: { notice: 221 } })], [26771, 26769, 26767], 221, 'invalid-response', [expectNotify()]],
+    ['repeated boundary row alone is not terminal progress even without a count', [{ ...first, counts: undefined }, page([firstRows[2]])], [26771, 26769, 26767], null, 'invalid-cursor', [expectNotify(), expectBefore(firstCursor)]],
+  ]) {
+    const host = controlled([...pages, seenReply]);
+    const result = await host.client.pollUnreadNotices({ since, coverage: 'account' });
+    const acknowledgement = await host.client.acknowledgeAllUnreadNotices(result);
+    record(name, { poll: state(ids, window, 'unproven', stop, since, total), acknowledgement: 'not-dispatched', trace }, {
+      poll: pollState(result), acknowledgement: acknowledgement.kind, trace: host.trace,
+    });
+  }
+
   const invalidCases = [
     ['first-page 429', [busy], [], 'unknown', 'rate-limited', [expectNotify()]],
     ['first-page busy envelope', [{ ok: 0, error: 'busy' }], [], 'unknown', 'rate-limited', [expectNotify()]],
@@ -125,13 +140,29 @@ export async function checkPolling() {
   }
 
   const bound = 1794278273;
-  const across = controlled([first, page([firstRows[2], row(26766, bound), olderRows[0]])]);
+  const across = controlled([{ ...first, counts: { notice: 5 } }, page([firstRows[2], row(26766, bound), olderRows[0]], { counts: { notice: 6 } })]);
   const inclusive = await across.client.pollUnreadNotices({ since: bound });
   record('same-second continuation and repeated ID', {
-    poll: state([26771, 26769, 26767, 26766], 'complete', 'exhausted', 'exhausted', firstTime, 221),
+    poll: state([26771, 26769, 26767, 26766], 'complete', 'exhausted', 'exhausted', firstTime, 5),
     trace: [expectNotify(bound), expectBefore(firstCursor)],
   }, { poll: pollState(inclusive), trace: across.trace });
   across.done();
+
+  const movingWindow = controlled([first, { ...older, has_more: 0, next: '', counts: { notice: 224 } }]);
+  const bounded = await movingWindow.client.pollUnreadNotices({ since });
+  record('older notices still complete the window when the account total is unproven', {
+    poll: state([26771, 26769, 26767], 'complete', 'unproven', 'window-boundary', firstTime, 221),
+    acknowledgement: 'not-dispatched', trace: [expectNotify(), expectBefore(firstCursor)],
+  }, { poll: pollState(bounded), acknowledgement: (await movingWindow.client.acknowledgeAllUnreadNotices(bounded)).kind, trace: movingWindow.trace });
+  movingWindow.done();
+
+  const emptyTerminal = controlled([{ ...first, counts: { notice: 3 } }, page([], { next: '' })]);
+  const closedScan = await emptyTerminal.client.pollUnreadNotices({ since, coverage: 'account' });
+  record('empty terminal continuation can close a scan whose known total is covered', {
+    poll: state([26771, 26769, 26767], 'complete', 'exhausted', 'exhausted', firstTime, 3),
+    trace: [expectNotify(), expectBefore(firstCursor)],
+  }, { poll: pollState(closedScan), trace: emptyTerminal.trace });
+  emptyTerminal.done();
 
   const empty = controlled([older]);
   const emptyWindow = await empty.client.pollUnreadNotices({ since });
@@ -174,12 +205,12 @@ export async function checkPolling() {
 export async function checkAcknowledgement() {
   const final = page([row(26000, 1793010000)], { time: secondTime + 30, formhash: 'fixture-final' });
   const olderPage = { ...older, has_more: 1 };
-  const full = controlled([first, olderPage, final, seenReply]);
+  const full = controlled([{ ...first, counts: { notice: 7 } }, olderPage, final, seenReply]);
   const exhausted = await full.client.pollUnreadNotices({ since, coverage: 'account' });
   const effect = await full.client.acknowledgeAllUnreadNotices(exhausted);
   const second = await full.client.acknowledgeAllUnreadNotices(exhausted);
   record('account-wide deliberate notice-only acknowledgement', {
-    poll: state([26771, 26769, 26767], 'complete', 'exhausted', 'exhausted', firstTime, 221),
+    poll: state([26771, 26769, 26767], 'complete', 'exhausted', 'exhausted', firstTime, 7),
     outcomes: ['cleared', 'not-dispatched'], trace: [expectNotify(), expectBefore(firstCursor), expectBefore(secondCursor), expectSeen()],
   }, { poll: pollState(exhausted), outcomes: [effect.kind, second.kind], trace: full.trace });
   full.done();

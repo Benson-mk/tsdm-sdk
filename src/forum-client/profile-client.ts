@@ -1,3 +1,4 @@
+import { selectV4, unsupportedV4 } from "./v4-selection.js";
 import type { HostResponse } from "../index.js";
 import type {
   AccountClientOptions,
@@ -475,6 +476,9 @@ export function createProfileClient({
     const data = json(response.body);
     if (response.status === 429 || data.error === "busy")
       return { kind: "rate-limited" } as const;
+    if (response.status === 401) return { kind: "login-required" } as const;
+    if (response.status === 403)
+      return { kind: "refused", reason: "forum" } as const;
     if (response.status !== 200) return { kind: "unavailable" } as const;
     if (
       data.uid === 0 ||
@@ -485,7 +489,10 @@ export function createProfileClient({
       return { kind: "login-required" } as const;
     if (data.uid !== undefined && memberId(data.uid) !== active.member)
       return { kind: "session-changed" } as const;
-    if (data.type === "message" || data.error === "message")
+    if (
+      data.type === "message" ||
+      (data.ok === 0 && data.error !== undefined && !unsupportedV4(data))
+    )
       return { kind: "refused", reason: "forum" } as const;
     const html =
       typeof data.document === "string"
@@ -502,6 +509,40 @@ export function createProfileClient({
       html,
     } as const;
   }
+  async function blockCapability(
+    active: Scope,
+    name: "privacy_filter" | "blockuser",
+  ) {
+    const url = plugin("status");
+    const status = await exchange(url, active);
+    if (status.kind !== "response") return status;
+    const data = json(status.response.body);
+    if (
+      data.login === 1 ||
+      data.error === "login" ||
+      data.uid === 0 ||
+      data.uid === "0" ||
+      status.response.status === 401
+    )
+      return { kind: "login-required" } as const;
+    if (
+      status.response.status === 403 ||
+      (data.ok === 0 && data.error !== "busy" && !unsupportedV4(data))
+    )
+      return { kind: "refused", reason: "forum" } as const;
+    if (data.uid !== undefined && memberId(data.uid) !== active.member)
+      return { kind: "session-changed" } as const;
+    const selection = selectV4(
+      status.response,
+      url.href,
+      "block_pages",
+      name,
+      active.member,
+    );
+    return selection.kind === "limited"
+      ? ({ kind: "rate-limited" } as const)
+      : selection;
+  }
   async function openEditor(
     active: Scope,
     kind: SettingsEditor["kind"],
@@ -516,11 +557,27 @@ export function createProfileClient({
       const op = queue.shift();
       if (op && seen.has(op)) continue;
       const dest = home(ac, op);
-      const flags = privacy ? (op === "filter" ? v4 : null) : structured;
+      const capability =
+        privacy && op === "filter"
+          ? await blockCapability(active, "privacy_filter")
+          : null;
+      if (
+        capability &&
+        capability.kind !== "legacy" &&
+        capability.kind !== "v4"
+      )
+        return capability;
+      const flags = privacy
+        ? capability?.kind === "v4"
+          ? v4
+          : null
+        : structured;
       let result = await page(flags ? parameters(dest, flags) : dest, active);
       if (result.kind !== "page") return result;
       let form = privacy
-        ? privacyFilter(result.data, base)
+        ? flags
+          ? privacyFilter(result.data, base)
+          : null
         : profileForm(result.data, base, wanted);
       if (form && op && form.action.searchParams.get("op") !== op)
         return { kind: "invalid" } as const;
@@ -647,13 +704,31 @@ export function createProfileClient({
   }
   const blacklistURL = new URL("/home.php", base);
   blacklistURL.search = new URLSearchParams(blacklistQuery).toString();
-  async function blacklist(active: Scope, target?: string, useV4 = true) {
+  async function blacklist(
+    active: Scope,
+    target?: string,
+    checkCapability = true,
+  ) {
     const url = target
       ? parameters(blacklistURL, { bu_q: target })
       : blacklistURL;
+    const capability = checkCapability
+      ? await blockCapability(active, "blockuser")
+      : null;
+    if (
+      capability &&
+      capability.kind !== "legacy" &&
+      capability.kind !== "v4"
+    )
+      return capability;
+    const useV4 = capability?.kind === "v4";
     let result = await page(useV4 ? parameters(url, v4) : url, active);
     if (result.kind !== "page") return result;
-    if (result.data.type === "blockuser" && result.data.schema === 56) {
+    if (
+      useV4 &&
+      result.data.type === "blockuser" &&
+      result.data.schema === 56
+    ) {
       const parsed = structuredBlacklist(
         result.data,
         base,

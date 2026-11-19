@@ -11,6 +11,7 @@ import {
 import type { NoticeHost } from "../notice-transport.js";
 import {
   answer,
+  creditPageAvailable,
   bit,
   failure,
   forumURL,
@@ -475,7 +476,10 @@ export function createLedger(host: NoticeHost) {
     lean.searchParams.set("tsdmapp", "json");
     if (version4) lean.searchParams.set("tsdmv", "4");
     lean.searchParams.set("nodoc", "1");
-    for (const source of [lean, url]) {
+    const available =
+      !version4 || (await creditPageAvailable(host, owner, "credit_base"));
+    if (typeof available !== "boolean") return available;
+    for (const source of available ? [lean, url] : [url]) {
       const result = await host.request(source.href, owner);
       if (result.kind !== "response")
         return failure(result.kind, "Credit view unavailable.");

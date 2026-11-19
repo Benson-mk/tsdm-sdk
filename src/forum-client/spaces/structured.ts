@@ -1,7 +1,12 @@
 import { positive, record } from "../discovery/shared.js";
 import { content, fragmentFrom, safeURL } from "../html.js";
 import type { Account } from "../types.js";
-import type { SpaceEntry, SpaceMember, SpacePage, SpaceView } from "./model.js";
+import type {
+  SpaceEntry,
+  SpaceMember,
+  SpacePage,
+  SpaceView,
+} from "./model.js";
 import { continuation, forumURL, type SpaceRoute } from "./routes.js";
 
 type Fields = Record<string, unknown>;
@@ -120,8 +125,20 @@ function structuredEntry(row: Fields, key: string, route: SpaceRoute) {
   });
 }
 
-export const supportsStructuredSpace = (route: SpaceRoute) =>
-  route.view !== "photo" && Boolean(schemas[route.view]);
+export const structuredSpaceName = (route: SpaceRoute) =>
+  (
+    ({
+      statuses: "doing",
+      "status-replies": "docomment",
+      timeline: "feed",
+      following: "follow",
+      followers: "follow",
+      blogs: "blog",
+      albums: "album",
+      wall: "wall",
+      greetings: "poke",
+    }) as Partial<Record<SpaceRoute["view"], string>>
+  )[route.view];
 
 export function structuredPage(
   payload: Fields,

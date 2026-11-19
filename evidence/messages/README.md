@@ -20,7 +20,7 @@ npm ci --offline --ignore-scripts
 npm_config_cache="$(mktemp -d)" npm run pack:sdk
 archive=dist/tsdm-sdk-0.1.0.tgz
 shasum -a 256 "$archive"
-node scripts/check-installed-messages.mjs "$archive"
+TSDM_MEMBERS_UPSTREAM="$UPSTREAM" node scripts/check-installed-messages.mjs "$archive"
 python3 evidence/messages/check-direct-guide.py "$archive"
 TSDM_READ_FIXTURES="$UPSTREAM/test/data" TSDM_DISCOVERY_FIXTURES="$UPSTREAM/test/data" npm run test:install
 node scripts/check-installed-account.mjs "$archive" "$UPSTREAM/test/data"
@@ -32,6 +32,10 @@ node scripts/check-installed-notices.mjs "$archive" "$UPSTREAM"
 The SDK replay inputs are in [the installed consumer](../../tests/install/messages.mjs). The loopback inputs are in [the guide runner](check-direct-guide.py). They use an authored fake session, destination, member IDs and message text. The [upstream source and fixture hashes](upstream-pins.json) pin behavior references from `Carinoasd/tsdm_client` v1.59.0. The installed consumer uses synthetic analogues for the PM history pages, X5 XML dialog, positive and disabled broadcast responses, and schema 13 PM handlers. No upstream private messages or captured session material were copied into these inputs. Regressions #018, #185, #210, #211, #220 and #1003 inform the route and result checks.
 
 The installed checks first failed on the missing public client, then on the missing detail, dialog and acknowledgement methods as each slice was added. The legacy form case failed on the named submit button until the historical layout was covered. A later destination check failed when a success callback for a different peer was accepted. The final installed run passes each of these cases.
+
+## #42 native lists
+
+The installed `nativeLists` case verifies deliberate opening of the two filters with a scoped member session, exact paging, native row decoding and an empty broadcast page. It checks zero dispatch when confirmation is declined, `effect: true` on the private GET, and effect uncertainty after loss, an unresolved page or session replacement. It also checks a different viewer and a different active broadcast filter. Set `TSDM_MEMBERS_UPSTREAM` to enable `pinnedPrivateList`, which hashes and replays the pinned X5 private list from the checkout. Broadcast markup is authored from the pinned Dart regressions. The archive before implementation failed at each missing native opener. An intermediate archive reproduced the missing GET effect flag.
 
 ## Previous private-writing regression
 

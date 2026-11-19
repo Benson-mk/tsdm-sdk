@@ -22,11 +22,55 @@ let continuity = "offline-session";
 let calls = [];
 let pending = [];
 const results = [];
+let statusCalls = [];
+let statusOverride;
+let statusChange = false;
+function statusFor(url, request) {
+  if (new URL(url).pathname !== "/plugin.php") return null;
+  assert.equal(url, origin + "/plugin.php?id=tsdmapp%3Aapi&action=status");
+  assert.deepEqual(request, {
+    session: continuity,
+    fresh: true,
+    method: "GET",
+    effect: false,
+  });
+  statusCalls.push({ url, ...request });
+  const uid = pending[0]?.body?.uid ?? 501;
+  const body = {
+    ok: 1,
+    uid,
+    api: 1,
+    version: "4.0.0",
+    v4: 1,
+    space_pages: [
+      "doing",
+      "docomment",
+      "feed",
+      "follow",
+      "blog",
+      "album",
+      "wall",
+      "poke",
+    ],
+    forms: [],
+    ...statusOverride,
+  };
+  if (statusChange) continuity = "offline-other";
+  return {
+    url,
+    status: 200,
+    redirect: "none",
+    contentType: "application/json",
+    body: JSON.stringify(body),
+  };
+}
 const client = sdk.createSpaceClient({
   origin,
   session: () => continuity,
   transport: {
     async request(url, request) {
+      const status = statusFor(url, request);
+      if (status) return status;
       calls.push({ url, ...request });
       const next = pending.shift();
       assert.ok(next, `unexpected dispatch ${url}`);
@@ -46,9 +90,16 @@ const client = sdk.createSpaceClient({
 });
 function expect(name, actual, expected) {
   assert.deepEqual(actual, expected, name);
-  results.push({ name, expected, observed: actual, requests: calls });
+  results.push({
+    name,
+    expected,
+    observed: actual,
+    requests: calls,
+    statusRequests: statusCalls,
+  });
   assert.equal(pending.length, 0, name);
   calls = [];
+  statusCalls = [];
 }
 const envelope = (type, schema, fields) => ({
   ...common,
@@ -434,6 +485,41 @@ expect(
   [anonymous.kind, anonymous.entries?.[0]?.author],
   ["page", null],
 );
+for (const [name, capability] of [
+  [
+    "space status lists only a different operation",
+    { space_pages: ["poke"] },
+  ],
+  ["v4 switch disables even an advertised space page", { v4: 0 }],
+]) {
+  statusOverride = capability;
+  pending = [
+    { body: { type: "obsolete", schema: 1 } },
+    {
+      body: '<root><![CDATA[<div class="doing_form" id="abc12345_form_71_0"></div><div class="doing_empty">No replies</div>]]></root>',
+    },
+  ];
+  const read = await client.read(cp("doing&op=getcomment&doid=71"));
+  assert.equal(statusCalls.length, 1);
+  assert.equal(calls.length, 2);
+  assert.ok(
+    calls.every(({ url }) => !new URL(url).searchParams.has("tsdmv")),
+  );
+  expect(name, [read.kind, read.entries?.length], ["page", 0]);
+}
+statusOverride = undefined;
+statusChange = true;
+const switched = await client.read(space("do=doing&view=me"));
+assert.equal(statusCalls.length, 1);
+assert.equal(calls.length, 0);
+expect(
+  "session switch during status stops the space read",
+  switched.kind,
+  "session-changed",
+);
+statusChange = false;
+continuity = "offline-session";
+
 if (process.argv[2] === "reads") console.log(JSON.stringify(results));
 
 if (process.argv[2] !== "reads") {
@@ -699,7 +785,12 @@ if (process.argv[2] !== "reads") {
       feed("other"),
       "follow",
       "relay_feed_success",
-      { relaysubmit: "true", addnewreply: "1", tid: "82", note: "Interesting" },
+      {
+        relaysubmit: "true",
+        addnewreply: "1",
+        tid: "82",
+        note: "Interesting",
+      },
       { tid: "82", op: "relay" },
     ],
     [
@@ -731,7 +822,11 @@ if (process.argv[2] !== "reads") {
     query = {},
   ] of cases) {
     pending = [{ body }];
-    const opened = await client.prepare({ accountId: "501", source, command });
+    const opened = await client.prepare({
+      accountId: "501",
+      source,
+      command,
+    });
     assert.equal(opened.kind, "prepared", command.action);
     assert.equal(calls.length, 1);
     assert.equal(calls[0].effect, false);
@@ -742,7 +837,10 @@ if (process.argv[2] !== "reads") {
         : command.action === "publish-blog"
           ? {
               kind: "redirect",
-              url: space("do=blog&quickforward=1&id=110").replace("502", "501"),
+              url: space("do=blog&quickforward=1&id=110").replace(
+                "502",
+                "501",
+              ),
             }
           : {},
     );
@@ -813,7 +911,10 @@ if (process.argv[2] !== "reads") {
     [
       "operation-specific refusal",
       {
-        body: acknowledgement("operating_too_fast", { ok: 0, alert: "error" }),
+        body: acknowledgement("operating_too_fast", {
+          ok: 0,
+          alert: "error",
+        }),
       },
       "refused",
     ],
@@ -895,7 +996,9 @@ if (process.argv[2] !== "reads") {
     "invalid",
   );
   pending = [
-    { body: { ...wall, post: { url: cp("comment"), fields: { id: "503" } } } },
+    {
+      body: { ...wall, post: { url: cp("comment"), fields: { id: "503" } } },
+    },
   ];
   const wrongForm = await client.prepare({
     accountId: "501",
@@ -1009,6 +1112,8 @@ if (process.argv[2] !== "reads") {
     session: () => continuity,
     transport: {
       request: async (url, request) => {
+        const status = statusFor(url, request);
+        if (status) return status;
         calls.push({ url, ...request });
         const next = pending.shift();
         assert.ok(next);
@@ -1046,5 +1151,159 @@ if (process.argv[2] !== "reads") {
     [guideWrite.kind, calls.filter((request) => request.effect).length],
     ["confirmed", 1],
   );
+  for (const op of ["send", "reply"]) {
+    const key = op === "reply" ? "pokereply" : "propokehk_502";
+    const destination = cp(`poke&op=${op}&uid=502`);
+    const command = {
+      action: `${op}-greeting`,
+      memberId: "502",
+      iconId: "3",
+      note: " Hello ",
+    };
+    const offer = envelope("form", 17, {
+      form: "poke",
+      touid: 502,
+      op,
+      submit: {
+        method: "POST",
+        enctype: "application/x-www-form-urlencoded",
+        url: destination,
+        fields: {
+          referer: origin + "/",
+          pokesubmit: "true",
+          formhash: "0123abcd",
+          from: "",
+          handlekey: key,
+        },
+      },
+      iconid: {
+        name: "iconid",
+        type: "radio",
+        choices: [{ value: "3", label: "Smile" }],
+      },
+      note: { name: "note", type: "text", max: 30 },
+      hook_fields: [],
+      unsupported: [],
+    });
+    statusOverride = { forms: ["poke"] };
+    pending = [{ body: offer }];
+    const opened = await client.prepare({
+      accountId: "501",
+      source: null,
+      command,
+    });
+    assert.equal(opened.kind, "prepared");
+    assert.equal(statusCalls.length, 1);
+    assert.deepEqual(await client.submit(opened, { deliberate: false }), {
+      kind: "invalid",
+    });
+    assert.equal(calls.length, 1);
+    pending = [
+      {
+        body: acknowledgement("poke_success", {
+          kind: "handle",
+          handlekey: key,
+        }),
+      },
+    ];
+    const result = await client.submit(opened, { deliberate: true });
+    const [get, post] = calls;
+    assert.equal(new URL(get.url).searchParams.get("tsdmform"), "1");
+    assert.equal(new URL(get.url).searchParams.get("handlekey"), key);
+    assert.equal(new URL(post.url).searchParams.get("tsdmv"), "4");
+    assert.equal(post.effect, true);
+    assert.deepEqual(Object.fromEntries(new URLSearchParams(post.body)), {
+      ...offer.submit.fields,
+      iconid: "3",
+      note: "Hello",
+    });
+    expect(`advertised structured ${op} greeting`, result.kind, "confirmed");
+    for (const [name, body, expected] of [
+      [
+        "redrawn greeting callback definition is not a success receipt",
+        `<root><![CDATA[<form id="pokeform"></form><script>function succeedhandle_${key}(url, msg, values) { showCreditPrompt(); }</script>]]></root>`,
+        "uncertain",
+      ],
+      [
+        "explicit poke_success with empty handlekey confirms the greeting",
+        acknowledgement("poke_success", { kind: "handle", handlekey: "" }),
+        "confirmed",
+      ],
+      [
+        "explicit greeting success with a conflicting handle remains uncertain",
+        acknowledgement("poke_success", {
+          kind: "handle",
+          handlekey: "other",
+        }),
+        "uncertain",
+      ],
+    ]) {
+      pending = [{ body: offer }, { body }];
+      const ready = await client.prepare({
+        accountId: "501",
+        source: null,
+        command,
+      });
+      assert.equal(ready.kind, "prepared");
+      const effect = await client.submit(ready, { deliberate: true });
+      assert.equal(calls.filter((request) => request.effect).length, 1);
+      expect(`${op}: ${name}`, effect.kind, expected);
+    }
+
+    const viewer = '<script>var discuz_uid = "501";</script>';
+    pending = [
+      { body: { ...offer, schema: 16 } },
+      {
+        body: `<html><head>${viewer}</head><body><form method="post" action="${destination}"><input type="hidden" name="formhash" value="0123abcd"><input name="pokesubmit" value="true"><input type="radio" name="iconid" value="3"></form></body></html>`,
+      },
+    ];
+    const fallback = await client.prepare({
+      accountId: "501",
+      source: null,
+      command,
+    });
+    assert.equal(calls.length, 2);
+    assert.equal(calls[1].url, origin + destination);
+    assert.ok(calls.every(({ effect }) => !effect));
+    expect(
+      `advertised ${op} greeting falls back to native HTML`,
+      fallback.kind,
+      "prepared",
+    );
+    pending = [{ body: offer, changeSession: true }];
+    const changed = await client.prepare({
+      accountId: "501",
+      source: null,
+      command,
+    });
+    assert.equal(calls.length, 1);
+    expect(
+      `session replacement on the structured ${op} greeting GET`,
+      changed.kind,
+      "stale",
+    );
+    continuity = "offline-session";
+    statusOverride = { forms: ["magicuse"], space_pages: ["poke"] };
+    pending = [
+      {
+        body:
+          '<html><head><script>var discuz_uid = "501";</script></head><body>' +
+          `<form method="post" action="${destination}"><input type="hidden" name="formhash" value="0123abcd"><input name="pokesubmit" value="true"><input type="radio" name="iconid" value="3"></form></body></html>`,
+      },
+    ];
+    const legacy = await client.prepare({
+      accountId: "501",
+      source: null,
+      command,
+    });
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, origin + destination);
+    expect(
+      `unadvertised ${op} form uses native HTML even when the poke page is advertised`,
+      legacy.kind,
+      "prepared",
+    );
+  }
+  statusOverride = undefined;
   console.log(JSON.stringify(results));
 }

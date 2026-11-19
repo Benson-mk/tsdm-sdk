@@ -6,13 +6,13 @@ Use Node.js 26 and the installed `tsdm-sdk` package. For member operations, the 
 
 ## Observe unread notices
 
-`pollUnreadNotices({ since })` takes an inclusive Unix timestamp in seconds. Read `rows`, `window`, `accountCoverage`, `stop`, `forumUnreadCount` and `nextSince` together. Store the lower bound per account. A failed continuation returns the accepted rows and retains the previous bound. A first-page rate limit leaves the window unknown. A retry may show the same IDs, so merge displayed rows by notice ID within the account. `forumUnreadCount` is the total reported by the forum when present.
+`pollUnreadNotices({ since })` takes an inclusive Unix timestamp in seconds. Read `rows`, `window`, `accountCoverage`, `stop`, `forumUnreadCount` and `nextSince` together. Store the lower bound per account. A failed continuation returns the accepted rows and retains the previous bound. A first-page rate limit leaves the window unknown. A retry may show the same IDs, so merge displayed rows by notice ID within the account. `forumUnreadCount` is the total reported by the first page when present. Count distinct unread IDs across all accepted pages, including notices older than `since`, when checking that total. Later totals can change as notices arrive.
 
 The default window scan can stop when it sees a strictly older unread row. For account-wide coverage, request `coverage: "account"`. The SDK follows the supplied cursors through an explicit last page or checks that a legacy response contains the reported number of distinct unread rows. The default budget is ten pages. Set `maxPages` explicitly if the host can afford more requests. A continuation can hit a plugin rate limit, so space requests in the host transport if the deployment requires it. Polling dispatches only `notify` GETs.
 
 ## Acknowledge all unread notices
 
-Show the member the scope of the action and ask for a separate choice. Acknowledgement can clear older notices outside the displayed time window. Keep the original poll object on the same SDK client. After `accountCoverage: "exhausted"` and the member's choice, call `acknowledgeAllUnreadNotices(poll)`. A usable first-page forum time and form hash and continuous session are required. `cleared` is explicit forum confirmation for that account. `newer-unread` means the forum left notices unread because one arrived or was flagged unread again. `unknown-effect` means the dispatch may have cleared the notices. Start a fresh poll and get a fresh deliberate choice before trying again. `not-dispatched` means the SDK made no acknowledgement request for that call.
+Show the member the scope of the action and ask for a separate choice. Acknowledgement can clear older notices outside the displayed time window. Keep the original poll object on the same SDK client. After `accountCoverage: "exhausted"` and the member's choice, call `acknowledgeAllUnreadNotices(poll)`. A usable first-page forum time and form hash and continuous session are required. A terminal page must have an empty or absent `next`. A nonempty terminal continuation must advance past the incoming cursor and contribute an unread ID. A known first-page total must be covered before sending `seen`. `cleared` is explicit forum confirmation for that account. `newer-unread` means the forum left notices unread because one arrived or was flagged unread again. `unknown-effect` means the dispatch may have cleared the notices. Start a fresh poll and get a fresh deliberate choice before trying again. `not-dispatched` means the SDK made no acknowledgement request for that call.
 
 ### TypeScript with the installed SDK
 
@@ -66,6 +66,8 @@ Call `prepareNativeNoticePage()` for the inbox or pass a returned `categories` o
 
 Call `loadNoticeIgnoreRules()` to read current rules and `loadNoticeIgnoreForm(row.ignoreTarget)` for the scopes offered by the forum. After a deliberate choice, call `addNoticeIgnoreRule(target, "author")` or `addNoticeIgnoreRule(target, "everybody")`. Use `removeNoticeIgnoreRule(target)` to remove a listed rule. Removing a rule submits the privacy form with the other checked filters preserved. Keep privacy writes for the same account serialized across host clients. `applied` includes the rules returned by fresh readback. On an `unknown-effect`, read the rules again before making another choice.
 
+The SDK checks the current member’s `status` for `v4: 1` and `ignore` in `forms` before opening the structured window. If the form is unadvertised or the response uses an unsupported representation, `loadNoticeIgnoreForm` returns `handoff` with the native destination. Explicit refusal, rate limit or session change ends the attempt. `addNoticeIgnoreRule` rechecks before attempting a structured form and leaves native submission to the host.
+
 For native forms, `prepareNativeNoticeIgnoreForm(target)` returns the add form destination and `prepareNativeNoticeIgnoreRules()` returns the privacy filter destination for removal. Let the forum display, submit and report the form in the host browser. The handoffs themselves send zero SDK requests.
 
 ## Direct HTTP with Python requests and curl
@@ -104,7 +106,8 @@ with requests.Session() as session:
             raise ValueError("Unqualified response")
         return data
 
-    ids, cursors = {}, set()
+    ids, all_ids = {}, set()
+    incoming = None
     oldest = float("inf")
     for index in range(10):
         page = api("GET", params)
@@ -112,17 +115,28 @@ with requests.Session() as session:
             first = page
         assert page["has_more"] in (0, 1)
         unread = [row for row in page["notices"] if row["new"] == 1]
+        previously_seen = len(all_ids)
         for row in unread:
+            all_ids.add(row["id"])
             assert 0 < row["dateline"] <= oldest
             oldest = row["dateline"]
             if oldest >= since:
                 ids[row["id"]] = None
+        tail = (unread[-1]["dateline"], unread[-1]["id"]) if unread else None
+        if tail is not None and incoming is not None:
+            if not tail < incoming:
+                raise ValueError("Notice cursor did not advance")
         if page["has_more"] == 0:
+            total = first.get("counts", {}).get("notice")
+            if (page.get("next") not in (None, "")
+                    or (incoming is not None and unread and len(all_ids) == previously_seen)
+                    or (isinstance(total, int) and len(all_ids) < total)):
+                raise ValueError("Unread coverage remains unproven")
             break
-        tail = unread[-1]
         cursor = page["next"]
-        assert cursor == f'{tail["dateline"]}_{tail["id"]}' and cursor not in cursors
-        cursors.add(cursor)
+        if tail is None or cursor != f"{tail[0]}_{tail[1]}":
+            raise ValueError("Invalid notice cursor")
+        incoming = tail
         params.pop("since", None)
         params["before"] = cursor
     else:
@@ -167,8 +181,16 @@ cursor=$(jq -er 'select(.ok == 1 and .uid == 34 and .has_more == 1) |
   select($next == "\(.dateline)_\(.id)") | $next' <<<"$first")
 last=$(request --get --data-urlencode "before=$cursor" "$api&action=notify&limit=200")
 printf '%s\n' "$first" "$last" | jq -ers '
-  select(.[1].ok == 1 and .[1].uid == 34 and .[1].has_more == 0) |
-  [.[] | .notices[] | select(.new == 1)] as $rows |
+  select(.[1].ok == 1 and .[1].uid == 34 and .[1].has_more == 0
+    and (.[1].next == null or .[1].next == "")) |
+  .[0].counts.notice as $total |
+  [.[0].notices[] | select(.new == 1)] as $initial |
+  [.[1].notices[] | select(.new == 1)] as $terminal |
+  ($initial + $terminal) as $rows |
+  select(($terminal | length) == 0 or
+    (([$terminal[-1].dateline, $terminal[-1].id] < [$initial[-1].dateline, $initial[-1].id])
+      and (($rows | map(.id) | unique | length) > ($initial | map(.id) | unique | length)))) |
+  select($total == null or (($rows | map(.id) | unique | length) >= $total)) |
   ($rows | map(.dateline)) as $times |
   select($times == ($times | sort | reverse)) |
   [$rows[] | select(.dateline >= 1793491200) | .id] | unique | reverse | join(" ")'
@@ -192,5 +214,5 @@ For both HTTP clients, the other operations use the following requests. In Pytho
 | Native category or history | After warning that the GET can mark notices read, GET `/home.php?mod=space&do=notice`. Follow a supplied category such as `view=system`, the `isread=1` history destination, or a supplied `page` link. Inspect the returned category and page. A failed GET or decode leaves the effect uncertain. |
 | Notice-to-post | Hand the same-origin `forum.php?mod=redirect&goto=findpost` URL from a notice to the browser with its `pid` and supplied thread parameters. The browser can resolve the redirect to the post. |
 | List ignore rules | GET `/home.php?mod=spacecp&ac=privacy&op=filter`. Inspect the checked `privacy[filter_note]` controls for the active account. |
-| Add an ignore rule | Open the notice's `/home.php?mod=spacecp&ac=common&op=ignore` link with its `type` and `authorid`. Inspect the offered author choices. After consent, POST the supplied same-origin form action using its hidden fields, including `formhash` and `ignoresubmit`, and the chosen `authorid`. Read the privacy form again and verify the new rule. |
+| Add an ignore rule | Open the notice's `/home.php?mod=spacecp&ac=common&op=ignore` link with its `type` and `authorid`. Check same-account `status` before adding `tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1`. Require `v4: 1` and `ignore` in `forms`; otherwise use the native URL. Inspect the offered author choices. After consent, POST the supplied same-origin form action using its hidden fields, including `formhash` and `ignoresubmit`, and the chosen `authorid`. Read the privacy form again and verify the new rule. |
 | Remove an ignore rule | After consent, POST the active privacy form's supplied action with its hidden fields, including `formhash` and `privacy2submit`, and all the checked notice, feed and group controls except the selected notice rule. Reload the privacy form and verify that the rule disappeared and the other checked filters remain. |

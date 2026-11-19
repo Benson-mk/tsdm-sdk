@@ -18,6 +18,10 @@ TSDM_READ_FIXTURES="$TSDM_ACCOUNT_FIXTURES" TSDM_DISCOVERY_FIXTURES="$TSDM_ACCOU
 
 `npm ci --offline` uses a cache populated with the locked build dependencies. Both installed checks create their own clean consumer and install the local archive offline. The direct checker binds to `127.0.0.1`, checks method, route, body, and jar continuity, and verifies that a redirect response produces one request. The installed replay asserts fresh requests, effect flags, encoded fields, session continuity, exact request counts, and expected results. The receipts contain digests and reduced observations. The fixture bodies, submitted data, jar contents, and form tokens stay out of the receipts.
 
+## #42 stored-device status
+
+The same installed runner records the `stored-device` observations. It checks the pinned successful status against the saved member and asserts one header-bearing GET on the original continuity. Authored controls exercise matching HTTP 200 and 403 revocations, mismatched member or device, a guest response, a busy response, service unavailability, a redirect, a session switch and invalid input with zero dispatch. The control checks the request's header and the result without needing a deployed saved login. The pre-implementation tarball fails at the missing `readStoredDeviceStatus` method.
+
 ## Acceptance criteria
 
 | Criterion                                                                                                                 | Verification                                                                                                                                                                                                                                                                                                                                                                                                             |

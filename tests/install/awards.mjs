@@ -373,7 +373,7 @@ const titlePage = (worn) =>
   });
 {
   const { client, calls } = forum(
-    [json("tsdmapp/v4/achievement_v68_empty.json")],
+    [{ok:1,uid:31,v4:1,achievement:1}, json("tsdmapp/v4/achievement_v68_empty.json")],
     "31",
   );
   const view = await client.read("achievements");
@@ -385,6 +385,7 @@ const titlePage = (worn) =>
       [],
       0,
       [
+        get(api("status")),
         get(
           plugin("tsdmtitle:achi", { tsdmapp: "json", tsdmv: "4", nodoc: "1" }),
         ),

@@ -39,6 +39,10 @@
     "test/regression/test_650_space_parse_test.dart": "6eafded336e2bf88f910b7d7d895a5b99c94528fe754d1951dc1c873d8a51215",
     "test/regression/test_651_space_write_test.dart": "8c07e8dff1f449fffa9e3093d572c8ea70d2df845de796ae760a6a912ac0f704",
     "test/regression/test_849_space_wall_poke_test.dart": "51a5242886138d336ca04ce7792500fd80db7f86101048f12087e9e94fed793f",
-    "test/regression/test_851_follow_feed_doing_test.dart": "a4e3a501bc90565986f6aa86d8363ad5789158a7d5a30785bf9a1f79827bd57f"
+    "test/regression/test_851_follow_feed_doing_test.dart": "a4e3a501bc90565986f6aa86d8363ad5789158a7d5a30785bf9a1f79827bd57f",
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+    "lib/features/tsdmapp/v4.dart": "539fc5185fd3ade29307f4e2f120fe9cecc87af7d960135bab52795fcfa18481",
+    "test/data/tsdmapp/v4/g3_poke_send.json": "94ea5e419fce46fdcc5f92e993f9616b9b7c001ba6cc8477d79146863ea6fbbe",
+    "test/data/tsdmapp/v4/g3_poke_send_web.xml": "e5e0d7f1ece93b9ffc6aa9d228ef686db82ff42727846419d24a305ca960f1d6"
   }
 }

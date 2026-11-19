@@ -14,6 +14,7 @@ import {
   createMemberClient,
   type ForumTransport,
   type MemberClientOptions,
+  type MemberProfileResult,
 } from "tsdm-sdk";
 
 export function memberTools(
@@ -32,6 +33,10 @@ export function memberTools(
   return {
     byUID: (id: string) => forum.lookupMember({ id }),
     byName: (username: string) => forum.lookupMember({ username }),
+    profileByUID: (id: string): Promise<MemberProfileResult> =>
+      forum.readMemberProfile({ id }),
+    profileByName: (username: string): Promise<MemberProfileResult> =>
+      forum.readMemberProfile({ username }),
     ownFriends: (page = 1) =>
       forum.readFriends({ scope: "own", accountId, page }),
     memberFriends: (memberId: string) =>
@@ -69,6 +74,7 @@ export function memberTools(
 ```
 
 - A `member` result carries the looked-up identity and the separately observed viewer in `account`. Own friends include group IDs and labels when the forum supplies them. Continue a list with `nextPage`. A `permission` result means the forum withheld the view. An `incomplete` result leaves the list unresolved.
+- `readMemberProfile` returns `member-profile` with the verified owner in `member` and the separately observed viewer in `account`. It reads schema 4 fields, then attempts the supplied native document or one fresh native page when the profile remains unresolved. `profile` includes the visible rows and their safe content, avatar, signature, titles, medals, managed forums, groups, activity, check-in, credits and viewer unread indicators. Missing values can reflect the forum's privacy rules. Structured activity and check-in times are Unix seconds with `timeOffsetHours` supplied separately. Native times retain the forum's printed clock text.
 - `atplus` candidates contain recent mentions and friends. `members` contains search matches by name or UID. When the plugin endpoint is missing, candidate loading uses the stock mention list. The `native` result contains names only. The own friends list is available independently for hosts that combine a picker with the stock names.
 - Invoke a friend effect after the user selects a recipient or an incoming request. Approval requires the exact `from=notice` action URL obtained from the request notice for the same account. Use a group offered by the current form or let the forum's default apply. The optional request note is limited to 30 characters. `request-sent` means the forum acknowledged a request awaiting approval. `approved` means the forum acknowledged an incoming approval. `pending`, `already-friends` and `refused` are distinct outcomes.
 - Both favourite lists show the forum record ID (`favid`) and the target ID (`fid` or `tid`). Use the matching pair from that kind's list for removal. Adding can store a description of up to 200 characters. `added` and `already-saved` require a matching record in a fresh list. `removed` and `already-absent` require a complete read of the matching list with the target absent. Verification follows up to 20 pages. Concurrent changes or an inaccessible page can leave the outcome uncertain.
@@ -80,7 +86,7 @@ Set `FORUM_ORIGIN` to the forum origin. Use the current account's authenticated 
 
 | Operation                       | Method and path                    | Query or POST fields                                                       | Observable forum response                                                                                      |
 | ------------------------------- | ---------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Profile by UID or name          | GET `home.php`                     | `mod=space`, exactly one of `uid` or `username`                            | Schema 4 `user.uid` and `user.username`, or the native profile heading. Top-level `uid` identifies the viewer. |
+| Profile by UID or name          | GET `home.php`                     | `mod=space`, exactly one of `uid` or `username`                            | Schema 4 `user`, `profiles`, `stats`, `medals`, `manage_forums`, `groups`, `activity`, `checkin` and `unread`, or the native profile heading and sections. Top-level `uid` identifies the viewer. |
 | Own or another member's friends | GET `home.php`                     | `mod=space`, `do=friend`, `uid=OWNER_UID`, optional `page`                 | Schema 10 `owner`, `friends`, paging and, for the owner, `groups`, or native friend rows.                      |
 | Friends in a group              | GET `home.php`                     | Same as own friends plus `group=GID`                                       | The matching scope and rows.                                                                                   |
 | Visitors                        | GET `home.php`                     | `mod=space`, `do=friend`, `view=visitor`, optional `page`                  | The signed-in account's visitor view. Anonymous rows have no usable identity.                                  |

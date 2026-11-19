@@ -1,5 +1,10 @@
+import { selectV4, unsupportedV4 } from "./v4-selection.js";
 import { messageEffects } from "./message-effects.js";
 import { messageJSON, pageDocument, messageBody } from "./message-pages.js";
+import {
+  nativeMessageList,
+  type MessageListFilter,
+} from "./native-message-lists.js";
 import {
   chatDocument,
   chatMessages,
@@ -45,6 +50,48 @@ export interface PrivateMessageForm {
   readonly maxLength: number | null;
 }
 
+export interface NativeMessageListOptions {
+  confirm: boolean;
+  page?: number;
+}
+
+interface NativeMessageListView {
+  source: "native";
+  memberId: string;
+  page: number;
+  nextPage: number | null;
+  closed: boolean;
+}
+
+export interface NativeMessageListRow {
+  id: string;
+  preview: string;
+  unread: boolean;
+  /** Absolute time as printed by the forum, whose timezone may be unknown. */
+  timestamp: string;
+  url: string;
+}
+
+export type NativePrivateMessageList = NativeMessageListView & {
+  kind: "private-list";
+  effect: "may-clear-private-prompt";
+  omittedGroups: number;
+  rows: (NativeMessageListRow & { peerId: string; peerName: string })[];
+};
+
+export type NativeBroadcastMessageList = NativeMessageListView & {
+  kind: "broadcast-list";
+  effect: "none";
+  count: null;
+  rows: NativeMessageListRow[];
+};
+
+export type NativeMessageListResult =
+  | NativePrivateMessageList
+  | NativeBroadcastMessageList
+  | { kind: "not-dispatched" | "refused" | "rate-limited" | "session-changed" | "network" | "invalid-response" }
+  | { kind: "effect-unknown"; effect: "may-clear-private-prompt" };
+
 export function createMessageClient(options: NoticeClientOptions) {
   const host = noticeHost(options);
   function url(path: string, query: Record<string, string>): URL {
@@ -68,17 +115,45 @@ export function createMessageClient(options: NoticeClientOptions) {
   const invalid = { kind: "invalid-response" } as const;
   const sessionChanged = { kind: "session-changed" } as const;
   const refused = { kind: "refused" } as const;
+  async function broadcastCapability(session: NoticeSession) {
+    const url = api("status").href;
+    const reply = await host.request(url, session);
+    if (reply.kind !== "response") return reply;
+    const answer = noticeJSON(reply.response);
+    if (reply.response.status !== 200 || answer.kind === "rate-limited") return answer.kind === "json" ? invalid : answer;
+    const data = messageJSON(reply.response.body);
+    const viewer = numericId(data?.uid);
+    if (data?.login === 1 || viewer === "0") return refused;
+    if (data?.uid !== undefined && viewer !== session.memberId) return sessionChanged;
+    if (answer.kind === "unsupported" || unsupportedV4(data)) return { kind: "legacy" } as const;
+    if (answer.kind !== "json") return answer;
+    if (viewer !== session.memberId) return invalid;
+    const capability = selectV4(reply.response, url, "announce", "announce", session.memberId);
+    return capability.kind === "limited" ? { kind: "rate-limited" } as const : capability;
+  }
   async function list(filter: "privatepm" | "announcepm", page: number) {
     const session = host.session();
     if (!session) return refused;
     if (!integer(page, 1)) return invalid;
     if (page !== 1) return nativeList(filter, page);
+    if (filter === "announcepm") {
+      const capability = await broadcastCapability(session);
+      if (capability.kind === "legacy") return nativeList(filter, page);
+      if (capability.kind !== "v4") return capability;
+    }
     const request = await host.request(
       api("pmlist", filter === "announcepm" ? { filter: "announce" } : {}).href,
       session,
     );
     if (request.kind !== "response") return request;
     const answer = noticeJSON(request.response);
+    if (filter === "announcepm" && request.response.status === 200 && answer.kind !== "rate-limited") {
+      const payload = messageJSON(request.response.body);
+      const viewer = numericId(payload?.uid);
+      if (payload?.login === 1 || viewer === "0") return refused;
+      if (payload?.uid !== undefined && viewer !== session.memberId) return sessionChanged;
+      if (unsupportedV4(payload)) return nativeList(filter, page);
+    }
     if (answer.kind === "unsupported") return nativeList(filter, page);
     if (answer.kind !== "json") return answer;
     const { data } = answer;
@@ -168,6 +243,41 @@ export function createMessageClient(options: NoticeClientOptions) {
     kind: "effect-unknown",
     effect: "may-mark-read",
   } as const;
+  const unknownNativePrompt = {
+    kind: "effect-unknown",
+    effect: "may-clear-private-prompt",
+  } as const;
+
+  async function openNativeList(
+    filter: MessageListFilter,
+    settings: NativeMessageListOptions,
+  ): Promise<NativeMessageListResult> {
+    const session = host.session();
+    const page = settings.page ?? 1;
+    if (!session || settings.confirm !== true || !integer(page, 1))
+      return notDispatched;
+    const destination = new URL(nativeList(filter, page).url);
+    const privatePage = filter === "privatepm";
+    const loaded = await host.request(
+      destination.href,
+      session,
+      undefined,
+      privatePage || undefined,
+    );
+    if (loaded.kind !== "response")
+      return privatePage ? unknownNativePrompt : loaded;
+    const response = loaded.response;
+    if (response.status === 429) return { kind: "rate-limited" };
+    if ([401, 403].includes(response.status)) return refused;
+    if (response.status !== 200) return privatePage ? unknownNativePrompt : invalid;
+    const payload = messageJSON(response.body);
+    if (payload?.uid !== undefined && numericId(payload.uid) !== session.memberId)
+      return privatePage ? unknownNativePrompt : sessionChanged;
+    const read = nativeMessageList(pageDocument(response, payload), destination, filter, page, session.memberId);
+    return privatePage && ["invalid-response", "session-changed"].includes(read.kind)
+      ? unknownNativePrompt
+      : read;
+  }
   const jsonMode = { tsdmapp: "json", nodoc: "1" };
   const sendForms = new WeakMap<
     PrivateMessageForm,
@@ -187,9 +297,10 @@ export function createMessageClient(options: NoticeClientOptions) {
 
   async function detailResponse(
     target: URL,
-    session: NonNullable<ReturnType<typeof host.session>>,
+    session: NoticeSession,
+    effect?: true,
   ) {
-    const request = await host.request(target.href, session);
+    const request = await host.request(target.href, session, undefined, effect);
     if (request.kind !== "response") return unknownRead;
     const { response } = request;
     if (response.status === 429) return { kind: "rate-limited" } as const;
@@ -203,6 +314,8 @@ export function createMessageClient(options: NoticeClientOptions) {
       return refused;
     if (data?.ok === 0 && data.error === "busy")
       return { kind: "rate-limited" } as const;
+    if (effect && data?.ok === 0 && typeof data.error === "string" && !unsupportedV4(data))
+      return refused;
     return { kind: "loaded", response, data } as const;
   }
 
@@ -339,17 +452,16 @@ export function createMessageClient(options: NoticeClientOptions) {
     if (!session || settings.confirm !== true || !positiveId(id))
       return notDispatched;
     const native = home({ ...inbox, subop: "viewg", pmid: id });
-    const target = home({
-      ...inbox,
-      subop: "viewg",
-      pmid: id,
-      ...jsonMode,
-      tsdmv: "4",
-    });
-    const loaded = await detailResponse(target, session);
+    const capability = await broadcastCapability(session);
+    if (capability.kind !== "v4" && capability.kind !== "legacy") return capability;
+    const target = new URL(native.href);
+    if (capability.kind === "v4")
+      for (const [key, value] of Object.entries({ ...jsonMode, tsdmv: "4" }))
+        target.searchParams.set(key, value);
+    const loaded = await detailResponse(target, session, true);
     if (loaded.kind !== "loaded") return loaded;
     const { data, response } = loaded;
-    if (data?.type === "announcepm" && data.schema === 40) {
+    if (capability.kind === "v4" && data?.type === "announcepm" && data.schema === 40) {
       if (
         data.ok !== 1 ||
         numericId(data.uid) !== session.memberId ||
@@ -531,6 +643,10 @@ export function createMessageClient(options: NoticeClientOptions) {
   return {
     listPrivateMessages: (page = 1) => list("privatepm", page),
     listBroadcastMessages: (page = 1) => list("announcepm", page),
+    openNativePrivateMessageList: (settings: NativeMessageListOptions) =>
+      openNativeList("privatepm", settings),
+    openNativeBroadcastMessageList: (settings: NativeMessageListOptions) =>
+      openNativeList("announcepm", settings),
     openPrivateConversation,
     openBroadcastMessage,
     openChatDialog: (peerId: string, settings: { confirm: boolean }) =>

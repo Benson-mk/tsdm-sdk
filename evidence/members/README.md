@@ -4,7 +4,7 @@ The [installed receipt](installed.json) and [direct HTTP receipt](direct.json) c
 
 ## Replay
 
-Use Node.js 26.x, npm, Python 3 with `requests`, and curl. `TSDM_MEMBERS_UPSTREAM` optionally verifies the original inputs against the [source digests](upstream-pins.json). The consumer uses the [authored controls](../../tests/install/members.mjs) and can run without the upstream checkout. The direct checker extracts and executes the Python and curl helpers from the tarball. Its loopback forum records each method, route, form, fixture session and redirect. The installed checker validates npm integrity, imports the package root in a clean project and compiles the packaged TypeScript example with strict `NodeNext`, `ES2023`, and no DOM or ambient types.
+Use Node.js 26.x, npm, Python 3 with `requests`, and curl. `TSDM_MEMBERS_UPSTREAM` verifies the original inputs against the [source digests](upstream-pins.json) and enables the pinned profile replay. The [authored controls](../../tests/install/members.mjs) can run without the upstream checkout. The direct checker extracts and executes the Python and curl helpers from the tarball. Its loopback forum records each method, route, form, fixture session and redirect. The installed checker validates npm integrity, imports the package root in a clean project and compiles the packaged TypeScript example with strict `NodeNext`, `ES2023`, and no DOM or ambient types.
 
 ```sh
 export TSDM_MEMBERS_UPSTREAM=/absolute/path/to/pinned-tsdm_client
@@ -16,6 +16,10 @@ python3 evidence/members/check-direct-guide.py dist/tsdm-sdk-0.1.0.tgz > /tmp/sd
 ```
 
 Pass a scenario name after the archive to run one controlled group. The lookup, list, mention and effect checks were written against the installed package before their implementation. The clean declaration check also caught leakage of internal URL types. The incomplete-list regression first reproduced a false absence and now verifies that no removal is dispatched.
+
+## #42 full profile read
+
+Select `fullProfiles` to replay authored controls for a document-free schema-4 profile, a supplied legacy document, and a single fresh native fallback. The control also checks owner mismatch, login refusal and unresolved data. Select `pinnedProfiles` with `TSDM_MEMBERS_UPSTREAM` to replay schema 4 by UID and username from the pinned checkout, with `profile_html` removed, plus the unchanged `profile_self_x5.html` by username. The receipt records reduced identity and profile observations. Both installed scenarios fail at the missing `readMemberProfile` method on the pre-implementation tarball.
 
 ## Operation evidence
 

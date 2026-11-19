@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { createMessageClient } from "tsdm-sdk";
 
 const origin = "https://forum.example.test";
 const account = { memberId: "701", continuity: "session-a" };
 const identity = { ok: 1, uid: 701, timeoffset: 8, formhash: "fakehash" };
 const once = { confirm: true };
+const statusQuery = { id: "tsdmapp:api", action: "status" };
+const announceStatus = { ...identity, v4: 1, announce: 1 };
 const responses = [];
 const traces = [];
 const results = {};
@@ -17,7 +22,12 @@ const sdk = createMessageClient({
       assert.equal(new URL(url).origin, origin);
       assert.equal(request.fresh, true);
       assert.deepEqual(request.session, account);
-      traces.push({ url, method: request.method, body: request.body });
+      traces.push({
+        url,
+        method: request.method,
+        body: request.body,
+        ...(request.effect && { effect: request.effect }),
+      });
       const next = responses.shift();
       assert.ok(next, `Unexpected dispatch ${url}`);
       if (next.drop) throw new Error("Controlled response loss after dispatch");
@@ -79,6 +89,16 @@ assert.deepEqual(
   [["702", "Fake & private", true]],
 );
 assert.equal(privateList.omittedGroups, 1);
+const broadcastsAt = traces.length;
+for (const data of [{ ...announceStatus, announce: 0 }, { ...announceStatus, v4: 0 }]) {
+  json(data);
+  const unadvertised = await sdk.listBroadcastMessages();
+  assert.equal(unadvertised.kind, "native-page", "unadvertised broadcast list uses native destination");
+  assert.equal(new URL(unadvertised.url).searchParams.get("filter"), "announcepm");
+  expectRequest("/plugin.php", statusQuery);
+}
+assert.equal(traces.length - broadcastsAt, 2);
+json(announceStatus);
 json({
   ...identity,
   filter: "announce",
@@ -101,6 +121,7 @@ assert.deepEqual(
   broadcasts.rows.map(({ id, preview, unread }) => [id, preview, unread]),
   [["911", "Fake broadcast", true]],
 );
+json(announceStatus);
 json({
   ...identity,
   filter: "announce",
@@ -111,11 +132,12 @@ json({
   announces: [],
 });
 assert.equal((await sdk.listBroadcastMessages()).closed, true);
+json(announceStatus);
 json({ ...identity, pms: [] });
 const fallback = await sdk.listBroadcastMessages();
 assert.equal(fallback.kind, "native-page");
 assert.equal(new URL(fallback.url).searchParams.get("filter"), "announcepm");
-assert.equal(traces.length, 4);
+assert.equal(traces.length, 9);
 json({ ...identity, uid: 799, pms: [] });
 assert.equal((await sdk.listPrivateMessages()).kind, "session-changed");
 responses.push({ status: 429, body: "" });
@@ -223,16 +245,20 @@ assert.equal(
   (await sdk.openPrivateConversation("702", once)).kind,
   "effect-unknown",
 );
+json(announceStatus);
 json(broadcast);
 const opened = await sdk.openBroadcastMessage("911", once);
 expectRequest("/home.php", broadcastQuery);
 assert.equal(opened.kind, "broadcast");
 assert.equal(opened.id, "911");
 assert.doesNotMatch(JSON.stringify(opened.body), /ignore\(\)/);
+json(announceStatus);
 json({ ok: 0, uid: 701, error: "message", message_key: "pm_status_off" });
 assert.equal((await sdk.openBroadcastMessage("911", once)).kind, "refused");
+json(announceStatus);
 json({ ...broadcast, announce: null });
 assert.equal((await sdk.openBroadcastMessage("911", once)).kind, "refused");
+json(announceStatus);
 responses.push({ drop: true });
 assert.equal(
   (await sdk.openBroadcastMessage("911", once)).kind,
@@ -240,10 +266,30 @@ assert.equal(
 );
 const nativeAccount =
   '<div id="um"><strong class="vwmy"><a href="home.php?mod=space&amp;uid=701">Fake Sender</a></strong></div>';
-html(
-  `${nativeAccount}<div id="pm_ul"><dl><dd class="ptm"><span class="xg1"><span title="2026-01-01 10:00">today</span></span><p class="pm_smry">Fake native broadcast</p></dd></dl></div>`,
-);
+const nativeBroadcastHTML = `${nativeAccount}<div id="pm_ul"><dl><dd class="ptm"><span class="xg1"><span title="2026-01-01 10:00">today</span></span><p class="pm_smry">Fake native broadcast</p></dd></dl></div>`;
+json({ ...announceStatus, announce: 0 });
+html(nativeBroadcastHTML);
 assert.equal((await sdk.openBroadcastMessage("911", once)).kind, "broadcast");
+expectRequest("/home.php", {
+  mod: "space", do: "pm", subop: "viewg", pmid: "911",
+});
+assert.equal(traces.at(-1).effect, true);
+const gatesAt = traces.length;
+for (const [response, kind] of [
+  [{ body: { ...announceStatus, uid: 799 } }, "session-changed"],
+  [{ body: { ok: 0, uid: 799, error: "off" } }, "session-changed"],
+  [{ body: announceStatus, switch: true }, "session-changed"],
+  [{ status: 429, body: {} }, "rate-limited"],
+  [{ status: 403, body: {} }, "refused"],
+]) {
+  for (const read of [() => sdk.listBroadcastMessages(), () => sdk.openBroadcastMessage("911", once)]) {
+    responses.push(response);
+    assert.equal((await read()).kind, kind);
+    expectRequest("/plugin.php", statusQuery);
+    session = account;
+  }
+}
+results.broadcastCapability = { expected: "same-session capability refusals stop before broadcast requests", requests: traces.slice(gatesAt) };
 results.details = {
   expected:
     "deliberate detail reads, returned page, empty history, refusal and lost response without fallback dispatch",
@@ -616,5 +662,179 @@ results.legacy = {
   observed: [nativeList, legacyHistory, nativeReply],
   requests: traces.slice(legacyAt),
 };
+const nativeListHeader = (
+  filter,
+  memberId = "701",
+) => `<div id=um><strong><a href="home.php?mod=space&uid=${memberId}">Viewer</a></strong></div>
+<div id=ct><ul class=tb><li class=a><a href="home.php?mod=space&do=pm&filter=${filter}">Current list</a></li></ul>`;
+const privatePage = `${nativeListHeader("privatepm")}
+<form id=deletepmform><div class="pml"><dl id=pmlist_101 class=newpm><dd class="m avt"><a href="home.php?mod=space&uid=702"><img src="peer.png"></a></dd>
+<dd class="ptm pm_c"><a class=xw1 href="home.php?mod=space&uid=702">Fake Peer</a> 对 <span class=xi2>您</span> 说 :<br>
+Hello &amp; <b>goodbye</b><br><span class=xg1><span title="2026-9-10 11:45">just now</span></span>
+<span class=pm_o><a href="home.php?mod=space&do=pm&subop=view&touid=702#last">Reply</a></span></dd></dl></div></form>
+<div class=pg><strong>2</strong><a class=nxt href="home.php?mod=space&do=pm&filter=privatepm&page=3">Next</a></div></div>`;
+const broadcastPage = `${nativeListHeader("announcepm")}
+<div class=pml><dl id=gpmlist_342 class=newpm>
+<dd class="y mtm pm_o"><a id=pm_g_342 class=o>Menu</a></dd>
+<dd class="m avt"><div class=newpm_avt></div><a href="home.php?mod=space&do=pm&subop=viewg&pmid=342"><img src="a.png"></a></dd>
+<dd class="ptm pm_c"><span id=p_gpmid_342>A <b>broadcast</b></span>
+<span class=xg1><span title="2026-9-10 12:20">recent</span></span>
+<a id=gpmlist_342_a href="home.php?mod=space&do=pm&subop=viewg&pmid=342">Read</a></dd></dl></div></div>`;
+const newListsAt = traces.length;
+assert.deepEqual(await sdk.openNativePrivateMessageList({ confirm: false }), {
+  kind: "not-dispatched",
+});
+assert.deepEqual(await sdk.openNativeBroadcastMessageList({ confirm: false }), {
+  kind: "not-dispatched",
+});
+assert.equal(traces.length, newListsAt);
+html(privatePage);
+const nativePrivate = await sdk.openNativePrivateMessageList({
+  ...once,
+  page: 2,
+});
+expectRequest("/home.php", {
+  mod: "space",
+  do: "pm",
+  filter: "privatepm",
+  page: "2",
+});
+assert.equal(traces.at(-1).effect, true);
+assert.deepEqual(nativePrivate, {
+  kind: "private-list",
+  source: "native",
+  effect: "may-clear-private-prompt",
+  memberId: "701",
+  page: 2,
+  nextPage: 3,
+  closed: false,
+  omittedGroups: 0,
+  rows: [
+    {
+      id: "101",
+      peerId: "702",
+      peerName: "Fake Peer",
+      preview: "Hello & goodbye",
+      unread: true,
+      timestamp: "2026-9-10 11:45",
+      url: `${origin}/home.php?mod=space&do=pm&subop=view&touid=702`,
+    },
+  ],
+});
+html(broadcastPage);
+const nativeBroadcast = await sdk.openNativeBroadcastMessageList(once);
+expectRequest("/home.php", {
+  mod: "space",
+  do: "pm",
+  filter: "announcepm",
+  page: "1",
+});
+assert.equal(traces.at(-1).effect, undefined);
+assert.deepEqual(nativeBroadcast, {
+  kind: "broadcast-list",
+  source: "native",
+  effect: "none",
+  memberId: "701",
+  page: 1,
+  nextPage: null,
+  count: null,
+  closed: false,
+  rows: [
+    {
+      id: "342",
+      preview: "A broadcast",
+      unread: true,
+      timestamp: "2026-9-10 12:20",
+      url: `${origin}/home.php?mod=space&do=pm&subop=viewg&pmid=342`,
+    },
+  ],
+});
+html(`${nativeListHeader("announcepm")}<p class=emp>暂无公共消息</p></div>`);
+const empty = await sdk.openNativeBroadcastMessageList(once);
+assert.deepEqual(
+  [empty.kind, empty.rows, empty.page],
+  ["broadcast-list", [], 1],
+);
+html(`${nativeListHeader("privatepm")}<p>Unrecognized list</p></div>`);
+assert.deepEqual(await sdk.openNativePrivateMessageList(once), {
+  kind: "effect-unknown",
+  effect: "may-clear-private-prompt",
+});
+html(broadcastPage.replace("uid=701", "uid=799"));
+assert.deepEqual(await sdk.openNativeBroadcastMessageList(once), {
+  kind: "session-changed",
+});
+html(broadcastPage.replace("filter=announcepm", "filter=privatepm"));
+assert.deepEqual(await sdk.openNativeBroadcastMessageList(once), {
+  kind: "invalid-response",
+});
+responses.push({ body: privatePage, switch: true });
+assert.deepEqual(await sdk.openNativePrivateMessageList(once), {
+  kind: "effect-unknown",
+  effect: "may-clear-private-prompt",
+});
+session = account;
+responses.push({ drop: true });
+assert.deepEqual(await sdk.openNativePrivateMessageList(once), {
+  kind: "effect-unknown",
+  effect: "may-clear-private-prompt",
+});
+results.nativeLists = {
+  expected:
+    "deliberate native list reads with scoped rows and unknown private-prompt effect after response loss",
+  observed: [nativePrivate, nativeBroadcast, empty],
+  requests: traces.slice(newListsAt),
+};
+if (process.env.TSDM_MEMBERS_UPSTREAM) {
+  const file = "test/data/pm_list_bare_url_x5.html";
+  const native = readFileSync(join(process.env.TSDM_MEMBERS_UPSTREAM, file));
+  assert.equal(
+    createHash("sha256").update(native).digest("hex"),
+    "b71924e76b7d4bb535a08199da7ef447d9bd6ef673e2b0886bd25ca36ab6a4e6",
+  );
+  const client = createMessageClient({
+    origin,
+    session: () => ({ memberId: "1001", continuity: "saved-jar" }),
+    transport: {
+      async request(url, request) {
+        assert.deepEqual(request.session, {
+          memberId: "1001",
+          continuity: "saved-jar",
+        });
+        return {
+          url,
+          status: 200,
+          body: native.toString(),
+          redirect: "none",
+          contentType: "text/html",
+        };
+      },
+    },
+  });
+  const read = await client.openNativePrivateMessageList(once);
+  const expected = [
+    "private-list",
+    "1001",
+    "172",
+    "1000",
+    "Alice",
+    "2026-9-10 11:45",
+    true,
+    "分享帖子: 链接测试 https://www.tsdm39.com/forum.php?mod=viewthreadtid=1264975",
+  ];
+  const row = read.rows?.[0];
+  const observed = [
+    read.kind,
+    read.memberId,
+    row?.id,
+    row?.peerId,
+    row?.peerName,
+    row?.timestamp,
+    row?.unread,
+    row?.preview,
+  ];
+  assert.deepEqual(observed, expected);
+  results.pinnedPrivateList = { file, expected, observed };
+}
 assert.equal(responses.length, 0);
 console.log(JSON.stringify(results));

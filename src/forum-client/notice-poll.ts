@@ -88,6 +88,7 @@ export function noticePolling(host: NoticeHost) {
     const canAcknowledge = !effectInFlight;
     const session = host.session();
     const rows = new Map<string, UnreadNotice>();
+    const unreadIds = new Set<string>();
     let count: number | null = null;
     let time: number | null = null;
     let formhash: string | null = null;
@@ -148,21 +149,32 @@ export function noticePolling(host: NoticeHost) {
         formhash = typeof data.formhash === "string" && data.formhash.trim() ? data.formhash : null;
       }
       accepted++;
+      const previousSize = unreadIds.size;
       for (const row of page) {
+        unreadIds.add(row.id);
         if (row.dateline < since) boundary = true;
         else if (!rows.has(row.id)) rows.set(row.id, row);
       }
-      if (data.has_more === 0 || (data.has_more === undefined && count !== null && count === page.length && new Set(page.map(row => row.id)).size === count)) {
-        return finish("exhausted");
-      }
-      if (boundary && coverage === "window") return finish("window-boundary");
-      if (data.has_more === undefined) return finish("legacy-incomplete");
-      const next = data.next;
       const tail = page.at(-1);
-      if (!tail || next !== `${tail.dateline}_${tail.id}` ||
-        (cursorTail?.dateline === tail.dateline && BigInt(tail.id) >= BigInt(cursorTail.id))) {
-        return finish("invalid-cursor");
+      const advances = !cursorTail || (tail && (
+        tail.dateline < cursorTail.dateline ||
+        (tail.dateline === cursorTail.dateline && BigInt(tail.id) < BigInt(cursorTail.id))
+      ));
+      if (data.has_more === 0) {
+        if ((data.next != null && data.next !== "") ||
+          (cursorTail && tail && (!advances || unreadIds.size === previousSize))) {
+          return finish("invalid-cursor");
+        }
+        if (count === null || unreadIds.size >= count) return finish("exhausted");
+        return finish(boundary && coverage === "window" ? "window-boundary" : "invalid-response");
       }
+      if (data.has_more === undefined) {
+        if (count !== null && count === page.length && unreadIds.size === count) return finish("exhausted");
+        return finish(boundary && coverage === "window" ? "window-boundary" : "legacy-incomplete");
+      }
+      const next = data.next;
+      if (!tail || next !== `${tail.dateline}_${tail.id}` || !advances) return finish("invalid-cursor");
+      if (boundary && coverage === "window") return finish("window-boundary");
       cursorTail = tail;
       before = next;
     }

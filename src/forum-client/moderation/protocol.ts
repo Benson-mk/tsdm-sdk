@@ -1,3 +1,4 @@
+import { unsupportedV4 } from "../v4-selection.js";
 import { answer, id, responseIssue, string } from "../activity-protocol.js";
 import type { ActivityClientOptions } from "../activity-client.js";
 import {
@@ -29,7 +30,7 @@ export function moderationHost(options: ActivityClientOptions) {
         ),
     },
   });
-  async function exchange(
+  async function request(
     url: string,
     owner: NoticeSession,
     effect = false,
@@ -42,12 +43,31 @@ export function moderationHost(options: ActivityClientOptions) {
         url,
         body === undefined
           ? { method: "GET", fresh: true, effect, session: owner }
-          : { method: "POST", fresh: true, effect: true, session: owner, body },
+          : {
+              method: "POST",
+              fresh: true,
+              effect: true,
+              session: owner,
+              body,
+            },
       );
     } catch {
-      return { kind: current(owner) ? "network" : "session-changed" } as const;
+      return {
+        kind: current(owner) ? "network" : "session-changed",
+      } as const;
     }
     if (!current(owner)) return { kind: "session-changed" } as const;
+    return { kind: "response", response } as const;
+  }
+  async function exchange(
+    url: string,
+    owner: NoticeSession,
+    effect = false,
+    body?: string,
+  ) {
+    const result = await request(url, owner, effect, body);
+    if (result.kind !== "response") return result;
+    const { response } = result;
     if (response.url !== url || response.redirect !== "none")
       return { kind: "invalid-response" } as const;
     const parsed = answer(response);
@@ -64,7 +84,7 @@ export function moderationHost(options: ActivityClientOptions) {
       return { kind: "refused", code: "login" } as const;
     if (response.status !== 200) return { kind: "invalid-response" } as const;
     if (data?.ok === 0 || data?.alert === "error") {
-      if (!effect && (data.error === "action" || data.error === "off"))
+      if (!effect && unsupportedV4(data))
         return { kind: "unsupported" } as const;
       return {
         kind: "refused",
@@ -73,5 +93,5 @@ export function moderationHost(options: ActivityClientOptions) {
     }
     return { kind: "answer", ...parsed } as const;
   }
-  return { origin, session, current, exchange };
+  return { origin, session, current, exchange, request };
 }

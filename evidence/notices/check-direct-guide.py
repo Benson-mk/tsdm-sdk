@@ -23,7 +23,7 @@ cursor = "1794278273_26771"
 first = {
     "ok": 1, "uid": 34, "time": 1794534229, "formhash": "fixture-first",
     "notices": [{"id": 26771, "dateline": 1794278273, "new": 1}],
-    "has_more": 1, "next": cursor,
+    "has_more": 1, "next": cursor, "counts": {"notice": 2},
 }
 last = {
     "ok": 1, "uid": 34, "time": 1794534246, "formhash": "fixture-continuation",
@@ -109,6 +109,9 @@ with HTTPServer(("127.0.0.1", 0), FixtureHandler) as server, TemporaryDirectory(
                 "newer unread": check(confirm, scans + [(seen_post, 200, {**successful, "newer": 1})], rows + ["newer-unread"]),
                 "lost acknowledgement": check(confirm, scans + [(seen_post, None, None)], rows + ["unknown-effect"]),
                 "wrong acknowledgement account": check(confirm, scans + [(seen_post, 200, {**successful, "uid": 35})], rows + ["unknown-effect"]),
+                "replayed terminal page": check(confirm, scans[:1] + [(continuation_get, 200, {**first, "has_more": 0, "next": ""})], [], False),
+                "terminal continuation token": check(confirm, scans[:1] + [(continuation_get, 200, {**last, "next": cursor})], [], False),
+                "uncovered unread total": check(confirm, [(initial_get, 200, {**first, "counts": {"notice": 221}}), scans[1]], [], False),
                 "rate-limited continuation": check(confirm, scans[:1] + [(continuation_get, 429, {"ok": 0})], [], False),
                 "wrong continuation account": check(confirm, scans[:1] + [(continuation_get, 200, {**last, "uid": 35})], [], False),
             }

@@ -45,7 +45,8 @@ class Forum(BaseHTTPRequestHandler):
             self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
-        self.wfile.write(b'{"fixture":"inert"}')
+        flags = {"ok":1,"v4":1,"uid":31,"credit_pages":["credit_base","usergroup_info"]}
+        self.wfile.write(json.dumps(flags).encode() if "action=status" in self.path else b'{"fixture":"inert"}')
 
     do_POST = do_GET
 
@@ -89,7 +90,8 @@ with ThreadingHTTPServer(("127.0.0.1", 0), Forum) as server, TemporaryDirectory(
             ("expiry", expiry, {}),
         ]:
             r = functions["read_view"](session, origin, name, **options)
-            observe("Python read " + name + (" detail" if options.get("gid") else ""), [trace("GET", route)], r.json() == {"fixture": "inert"})
+            status = [trace("GET","/plugin.php?id=tsdmapp:api&action=status")] if name in {"balance","group"} else []
+            observe("Python read " + name + (" detail" if options.get("gid") else ""), [*status,trace("GET", route)], r.json() == {"fixture": "inert"})
         r = functions["open_switch"](session, origin, switch + "&handlekey=switchgrouphk", "22")
         observe("Python opens switch window", [trace("GET", switch_open)], r.status_code == 200)
         r = functions["submit_checkin"](session, origin, "f1f2f3f4", "kx", "Exact & 原文", approved=True)

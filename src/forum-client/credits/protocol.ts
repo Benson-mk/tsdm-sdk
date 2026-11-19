@@ -11,6 +11,8 @@ import {
 import { nativeIdentity, unwrap } from "../account-forms.js";
 import { numericId, object } from "../notice-transport.js";
 import { safeURL } from "../routes.js";
+import { selectV4, v4StatusURL } from "../v4-selection.js";
+import type { NoticeHost, NoticeSession } from "../notice-transport.js";
 import type { HostResponse } from "../types.js";
 import type { CreditsFailure } from "./types.js";
 
@@ -144,4 +146,30 @@ export function nativeControls(
     isError,
     form: forms.length === 1 ? forms[0] : undefined,
   };
+}
+
+export async function creditPageAvailable(
+  host: NoticeHost,
+  owner: NoticeSession,
+  operation: "credit_base" | "usergroup_info",
+) {
+  const url = v4StatusURL(host.origin);
+  const status = await host.request(url, owner);
+  if (status.kind !== "response")
+    return failure(status.kind, "Credit capabilities unavailable.");
+  if (status.response.status === 404) return false;
+  const issue = readIssue(
+    status.response,
+    answer(status.response).data,
+    owner.memberId,
+  );
+  if (issue) return issue;
+  const selected = selectV4(
+    status.response,
+    url,
+    "credit_pages",
+    operation,
+    owner.memberId,
+  );
+  return selected.kind === "v4";
 }

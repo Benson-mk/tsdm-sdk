@@ -108,7 +108,9 @@ export type {
   MemberIdentity,
   MemberLookup,
   MemberLookupResult,
+  MemberProfileResult,
 } from "./forum-client/member-reads.js";
+export type { MemberProfile, MemberProfileField, MemberProfileGroup } from "./forum-client/member-profile-types.js";
 import { createDiscoveryOperations } from "./forum-client/discovery.js";
 export type {
   DiscoveryFailure,
@@ -292,6 +294,8 @@ export type {
   AccountFailure,
   AccountRequest,
   AccountStatus,
+  StoredDeviceStatusInput,
+  StoredDeviceStatusResult,
   LoginCredentials,
   LoginForm,
   LoginResult,
@@ -370,7 +374,10 @@ export type {
 } from "./forum-client/notice-transport.js";
 
 export { createMessageClient } from "./forum-client/message-client.js";
-export type { PrivateMessageForm } from "./forum-client/message-client.js";
+export type {
+  PrivateMessageForm, NativeMessageListOptions, NativeMessageListRow,
+  NativePrivateMessageList, NativeBroadcastMessageList, NativeMessageListResult,
+} from "./forum-client/message-client.js";
 export type { HomepageMessageCheck, PrivateMessagePrompt } from "./forum-client/message-effects.js";
 
 export { createSpaceClient } from "./forum-client/spaces/client.js";

@@ -1,6 +1,9 @@
+import { answer, responseIssue } from "./activity-protocol.js";
+import { selectV4, v4StatusURL } from "./v4-selection.js";
 import {
   addWindow,
   activityReadURL,
+  threadListCapability,
   decodeActivityRead,
 } from "./activity-reads.js";
 import type {
@@ -131,9 +134,31 @@ export function createActivityClient(options: ActivityClientOptions) {
       const first = activityReadURL(origin, target, false);
       if (!first)
         return { kind: "invalid", message: "Invalid activity target." };
-      for (const url of [first, activityReadURL(origin, target, true)!].filter(
-        (url, index, all) => index === 0 || url.href !== all[0]!.href,
-      )) {
+      const native = activityReadURL(origin, target, true)!;
+      const capability = threadListCapability(target.view);
+      let structured = first.href !== native.href;
+      if (capability) {
+        const url = v4StatusURL(origin.origin);
+        const status = await exchange(new URL(url), owner);
+        if (status.kind !== "response") return status;
+        const { data } = answer(status.response);
+        const issue = responseIssue(status.response, data);
+        if (issue && status.response.status !== 404) return issue;
+        const selection = selectV4(
+          status.response,
+          url,
+          "thread_lists",
+          capability,
+          owner.memberId,
+        );
+        if (selection.kind === "session-changed")
+          return {
+            kind: "session-changed",
+            message: "The forum session changed.",
+          };
+        structured = selection.kind === "v4";
+      }
+      for (const url of structured ? [first, native] : [native]) {
         const result = await exchange(url, owner);
         if (result.kind !== "response") return result;
         const decoded = decodeActivityRead(

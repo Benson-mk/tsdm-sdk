@@ -11,6 +11,7 @@ import {
 import type { NoticeHost } from "../notice-transport.js";
 import {
   answer,
+  creditPageAvailable,
   bit,
   failure,
   forumURL,
@@ -246,7 +247,9 @@ export function createGroupReads(host: NoticeHost) {
     lean.searchParams.set("tsdmapp", "json");
     lean.searchParams.set("tsdmv", "4");
     lean.searchParams.set("nodoc", "1");
-    for (const source of [lean, native]) {
+    const available = await creditPageAvailable(host, owner, "usergroup_info");
+    if (typeof available !== "boolean") return available;
+    for (const source of available ? [lean, native] : [native]) {
       const sent = await host.request(source.href, owner);
       if (sent.kind !== "response")
         return failure(sent.kind, "Group view unavailable.");

@@ -13,14 +13,13 @@ import {
 } from "./discovery/shared.js";
 import type { Context, DiscoveryFailure } from "./discovery/types.js";
 import {
-  attr,
-  byId,
-  children,
-  descendants,
-  hasClass,
-  label,
-  text,
-} from "./html.js";
+  nativeProfile,
+  nativeProfileHeading,
+  structuredProfile,
+} from "./member-profile.js";
+import { attr, byId, descendants, hasClass, label } from "./html.js";
+
+import type { MemberProfile } from "./member-profile-types.js";
 
 export interface MemberIdentity {
   id: string;
@@ -32,6 +31,15 @@ export type MemberLookupResult =
   | (Context & {
       kind: "member";
       member: MemberIdentity;
+    });
+
+export type MemberProfileResult =
+  | DiscoveryFailure
+  | (Context & {
+      kind: "member-profile";
+      representation: "structured" | "native";
+      member: MemberIdentity;
+      profile: MemberProfile;
     });
 
 export function memberIdentity(value: unknown): MemberIdentity | null {
@@ -482,87 +490,117 @@ export function createMemberReads(origin: string, transport: ForumTransport) {
         favoritesFromPage(query, url, page, view),
       );
     },
-    async lookupMember(lookup: MemberLookup): Promise<MemberLookupResult> {
-      const lookupById = "id" in lookup;
-      const key = lookupById ? "uid" : "username";
-      const value = lookupById ? lookup.id : lookup.username.trim();
-      const url = new URL("/home.php?mod=space", origin);
-      if (lookupById ? !positive(value) : !value || value.length > 100)
-        return invalid(url.href, "Provide a member UID or username.");
-      url.searchParams.set(key, value);
-      const accepts = (destination: string) => {
-        const actual = target(destination, url.href, "/home.php", "space");
-        return (
-          !!actual &&
-          (!actual.searchParams.has(key) ||
-            (actual.searchParams.get(key) ?? "").toLowerCase() ===
-              value.toLowerCase())
+    lookupMember: (lookup: MemberLookup) => readMember(lookup, false),
+    readMemberProfile: (lookup: MemberLookup) => readMember(lookup, true),
+  };
+
+  function readMember(
+    lookup: MemberLookup,
+    full: false,
+  ): Promise<MemberLookupResult>;
+  function readMember(
+    lookup: MemberLookup,
+    full: true,
+  ): Promise<MemberProfileResult>;
+  async function readMember(
+    lookup: MemberLookup,
+    full: boolean,
+  ): Promise<MemberLookupResult | MemberProfileResult> {
+    const lookupById = "id" in lookup;
+    const key = lookupById ? "uid" : "username";
+    const value = lookupById ? lookup.id : lookup.username.trim();
+    const url = new URL("/home.php?mod=space", origin);
+    if (lookupById ? !positive(value) : !value || value.length > 100)
+      return invalid(url.href, "Provide a member UID or username.");
+    url.searchParams.set(key, value);
+    const accepts = (destination: string) => {
+      const actual = target(destination, url.href, "/home.php", "space");
+      return (
+        !!actual &&
+        (!full || [null, "profile"].includes(actual.searchParams.get("do"))) &&
+        (!actual.searchParams.has(key) ||
+          (actual.searchParams.get(key) ?? "").toLowerCase() ===
+            value.toLowerCase())
+      );
+    };
+    const app = new URL(url);
+    app.searchParams.set("nodoc", "1");
+    for (const requested of [app, url]) {
+      const view = await receive(
+        requested,
+        transport,
+        requested === app,
+        accepts,
+      );
+      if ("kind" in view) return view;
+      const { payload, doc, context, actual } = view;
+      const structured =
+        payload?.ok === 1 &&
+        payload.type === "profile" &&
+        Number(payload.schema) >= 4;
+      const native = nativeProfileHeading(doc);
+      const member =
+        (structured ? memberIdentity(payload.user) : null) ??
+        (!structured || full ? memberIdentity(native?.user) : null);
+      if (!member) continue;
+      const returnedUID = actual.searchParams.get("uid");
+      if (
+        (returnedUID !== null && returnedUID !== member.id) ||
+        (lookupById
+          ? member.id !== value
+          : member.name.toLowerCase() !== value.toLowerCase())
+      )
+        return failure(
+          context,
+          "invalid",
+          "The returned member did not match the lookup.",
         );
-      };
-      const app = new URL(url);
-      app.searchParams.set("nodoc", "1");
-      for (const requested of [app, url]) {
-        const view = await receive(
-          requested,
-          transport,
-          requested === app,
-          accepts,
-        );
-        if ("kind" in view) return view;
-        const { payload, doc, context, actual } = view;
-        const structured =
-          payload?.ok === 1 &&
-          payload.type === "profile" &&
-          Number(payload.schema) >= 4;
-        const profile =
-          first(doc, (node) => hasClass(node, "u_profile")) ??
-          byId(doc, "pprl");
-        const heading =
-          profile &&
-          first(
+      const result = { ...context, sourceURL: url.href, member };
+      if (!full) return { ...result, kind: "member" };
+      if (structured && typeof payload.schema === "number") {
+        const profile = structuredProfile(payload, url.href);
+        if (profile)
+          return {
+            ...result,
+            kind: "member-profile",
+            representation: "structured",
             profile,
-            (node) =>
-              node.tagName === "h2" &&
-              hasClass(node, "mbn") &&
-              !!first(
-                node,
-                (part) =>
-                  hasClass(part, "xw0") && /UID[:：]/i.test(label(part)),
-              ),
-          );
-        const nativeUID =
-          heading && first(heading, (part) => hasClass(part, "xw0"));
-        const member = structured
-          ? memberIdentity(payload.user)
-          : memberIdentity({
-              uid: /UID[:：]\s*([1-9]\d*)/i.exec(label(nativeUID))?.[1],
-              username:
-                heading &&
-                children(heading)
-                  .filter((node) => node.nodeName === "#text")
-                  .map(text)
-                  .join(""),
-            });
-        if (!member) continue;
-        const returnedUID = actual.searchParams.get("uid");
+          };
+      }
+      if (native) {
+        const owner = memberIdentity(native.user);
         if (
-          (returnedUID !== null && returnedUID !== member.id) ||
-          (lookupById
-            ? member.id !== value
-            : member.name.toLowerCase() !== value.toLowerCase())
+          !owner ||
+          owner.id !== member.id ||
+          owner.name.toLowerCase() !== member.name.toLowerCase()
         )
           return failure(
             context,
             "invalid",
-            "The returned member did not match the lookup.",
+            "The returned profile identifies a different member.",
           );
-        return { ...context, sourceURL: url.href, kind: "member", member };
+        const profile = nativeProfile(
+          doc,
+          native.root,
+          native.heading,
+          member.id,
+          url.href,
+        );
+        if (profile)
+          return {
+            ...result,
+            kind: "member-profile",
+            representation: "native",
+            profile,
+          };
       }
-      return failure(
-        { sourceURL: url.href, account: { kind: "unknown" } },
-        "incomplete",
-        "The response did not establish a member identity.",
-      );
-    },
-  };
+    }
+    return failure(
+      { sourceURL: url.href, account: { kind: "unknown" } },
+      "incomplete",
+      full
+        ? "The response did not establish a full member profile."
+        : "The response did not establish a member identity.",
+    );
+  }
 }

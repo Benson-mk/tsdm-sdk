@@ -41,7 +41,13 @@ assert.equal(sha256(archive), manifest.sha256);
 assert.equal(manifest.name, "tsdm-sdk");
 assert.equal(manifest.version, "0.1.0");
 assert.equal(manifest.tag, "v0.1.0");
-assert.match(manifest.sourceCommit, /^[0-9a-f]{40}$/);
+const precommit = process.argv[5] === "--candidate";
+if (precommit) {
+  const inputs = readFileSync(join(dirname(manifestPath), "package-inputs.json"));
+  assert.equal(manifest.packageInputsSHA256, sha256(inputs));
+} else {
+  assert.match(manifest.sourceCommit, /^[0-9a-f]{40}$/);
+}
 assert.equal(
   manifest.assetUrl,
   "https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
@@ -349,8 +355,8 @@ const receipt = {
     typecheck: "strict NodeNext, ES2023, types: [], noEmit",
   },
   commands: [
-    "sh tests/rehearsal/build-source.sh <full-source-commit> <output>",
-    "npm run test:rehearsal -- <output>/tsdm-sdk-0.1.0.tgz <output>/release.json <output>/receipt.json",
+    precommit ? "python3 evidence/release/0.1.0/build-candidate.py <output>" : "sh tests/rehearsal/build-source.sh <full-source-commit> <output>",
+    `npm run test:rehearsal -- <output>/tsdm-sdk-0.1.0.tgz <output>/${precommit ? "candidate.json <output>/receipt.json --candidate" : "release.json <output>/receipt.json"}`,
     `npm install --cache <empty> --ignore-scripts --engine-strict --no-audit --no-fund --fetch-retries=0 --fetch-timeout=10000 --save-exact <loopback>${originalAssetPath}`,
     "node consume.mjs",
     "node <repo>/node_modules/typescript/bin/tsc --project tsconfig.json",
@@ -363,7 +369,7 @@ const receipt = {
     {
       name: "manifest",
       expected:
-        "The manifest names tsdm-sdk 0.1.0, tag v0.1.0, full source commit, exact filename and archive SHA-256.",
+        `The manifest names tsdm-sdk 0.1.0, tag v0.1.0, ${precommit ? "package input fingerprint" : "full source commit"}, exact filename and archive SHA-256.`,
       observed: "The versioned manifest matched the local manifest and its SHA-256 matched the archive bytes.",
     },
     {

@@ -1,0 +1,85 @@
+{
+  "archiveSHA256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "observations": {
+    "fixtureSHA256": "4c315c9baa628790c74c0eed3c477cea13fc6ef961b4fe78cef8080a2e01e1b1",
+    "requests": [
+      "https://forum.test/forum.php?mod=viewthread&tid=9199345&tsdmapp=json"
+    ],
+    "expected": [
+      {
+        "kind": "video",
+        "url": "https://player.test/watch?a=1&b=2"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/video.swf"
+      },
+      {
+        "kind": "audio",
+        "url": "https://music.test/track.mp3"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/movie.mp4"
+      },
+      {
+        "kind": "audio",
+        "url": "https://forum.test/listen"
+      },
+      {
+        "kind": "audio",
+        "url": "https://music.test/song"
+      },
+      {
+        "kind": "video",
+        "url": "https://player.test/clip.swf"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/nested.swf"
+      },
+      {
+        "kind": "video",
+        "url": "https://www.bilibili.com/video/BV123456789A/?p=2"
+      }
+    ],
+    "observed": [
+      {
+        "kind": "video",
+        "url": "https://player.test/watch?a=1&b=2"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/video.swf"
+      },
+      {
+        "kind": "audio",
+        "url": "https://music.test/track.mp3"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/movie.mp4"
+      },
+      {
+        "kind": "audio",
+        "url": "https://forum.test/listen"
+      },
+      {
+        "kind": "audio",
+        "url": "https://music.test/song"
+      },
+      {
+        "kind": "video",
+        "url": "https://player.test/clip.swf"
+      },
+      {
+        "kind": "video",
+        "url": "https://forum.test/nested.swf"
+      },
+      {
+        "kind": "video",
+        "url": "https://www.bilibili.com/video/BV123456789A/?p=2"
+      }
+    ]
+  }
+}

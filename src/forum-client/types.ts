@@ -128,6 +128,8 @@ export type ContentNode =
   | {
       kind: "unsupported";
       description: string;
+      /** Inert address for a host-approved player handoff. */
+      media?: { kind: "audio" | "video"; url: string };
       children: readonly ContentNode[];
     };
 export interface Post {

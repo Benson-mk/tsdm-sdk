@@ -28,7 +28,6 @@ import {
   home,
   homeRoute,
   href,
-  pageMode,
   type taskMagicHost,
   writeMode,
 } from "./protocol.js";
@@ -41,7 +40,6 @@ const logs = {
 } as const;
 export interface MagicAuthority {
   owner: NoticeSession;
-  legacy: boolean;
   operation: MagicOperation;
 }
 const positive = (n: unknown) =>
@@ -144,8 +142,14 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
     });
     const loaded =
       action === "log"
-        ? await host.read(query(base, pageMode), owner)
-        : await host.readCompatible(base, owner);
+        ? await host.readV4Only(base, owner, "magic_pages", "magic_log")
+        : await host.readCompatible(
+            base,
+            owner,
+            "magic_pages",
+            `magic_${action}`,
+            action === "shop" ? 69 : 70,
+          );
     return loaded.kind === "page" ? { ...loaded, base, owner } : loaded;
   }
   function paging(
@@ -173,7 +177,7 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
     const loaded = await loadMagic("shop", current);
     if (loaded.kind !== "page") return loaded;
     const data = loaded.page.data;
-    if (data?.type !== "magic_shop") {
+    if (!loaded.v4 || data?.type !== "magic_shop") {
       const native =
         loaded.identified &&
         nativeMagicPage(loaded.page.doc, loaded.base, "shop", current);
@@ -183,10 +187,16 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
         if (item.available)
           authority.set(item, {
             owner: loaded.owner,
-            legacy: true,
             operation: "buy",
           });
-      return { kind: "magic-shop", items, page, pages, capacity, balances: [] };
+      return {
+        kind: "magic-shop",
+        items,
+        page,
+        pages,
+        capacity,
+        balances: [],
+      };
     }
     const pages = paging(data, current);
     const entries = rows(data.list);
@@ -217,7 +227,6 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
       if (available)
         authority.set(item, {
           owner: loaded.owner,
-          legacy: false,
           operation: "buy",
         });
       return [item];
@@ -236,7 +245,7 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
     const loaded = await loadMagic("mybox", current);
     if (loaded.kind !== "page") return loaded;
     const data = loaded.page.data;
-    if (data?.type !== "magic_mybox") {
+    if (!loaded.v4 || data?.type !== "magic_mybox") {
       const native =
         loaded.identified &&
         nativeMagicPage(loaded.page.doc, loaded.base, "mybox", current);
@@ -246,7 +255,6 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
         if (item.available)
           authority.set(item, {
             owner: loaded.owner,
-            legacy: true,
             operation: "use",
           });
       return { kind: "magic-inventory", items, page, pages, capacity };
@@ -279,7 +287,6 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
       if (available)
         authority.set(item, {
           owner: loaded.owner,
-          legacy: false,
           operation: "use",
         });
       return [item];
@@ -354,31 +361,38 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
       inajax: "1",
     });
     const legacyURL = query(window, { tsdmapp: "json" });
+    const selected = await host.capability(
+      "forms",
+      `magic${operation}`,
+      offer.owner,
+    );
+    if (selected.kind === "session-changed" || selected.kind === "refused")
+      return selected;
+    const structured = selected.kind === "v4";
     let loaded = await host.read(
-      offer.legacy
-        ? legacyURL
-        : query(window, { ...writeMode, tsdmform: "1", nodoc: "1" }),
+      structured
+        ? query(window, { ...writeMode, tsdmform: "1", nodoc: "1" })
+        : legacyURL,
       offer.owner,
     );
     if (loaded.kind !== "page") return loaded;
-    if (
-      !offer.legacy &&
-      loaded.page.data?.ok === 0 &&
-      loaded.page.data.error === "unknown" &&
-      loaded.page.data.form === `magic${operation}`
-    ) {
-      loaded = await host.read(legacyURL, offer.owner);
-      if (loaded.kind !== "page") return loaded;
-    }
     const data = loaded.page.data;
     if (data?.type === "form" && !loaded.identified)
       return { kind: "invalid-response" };
-    const form =
-      data?.type === "form"
+    let form =
+      structured &&
+      data?.type === "form" &&
+      data.form === `magic${operation}` &&
+      data.schema === 17
         ? structuredMagicForm(data, window, item, operation)
         : nativeMagicForm(loaded.page.doc, window, item, operation);
+    if (structured && form === "browser") {
+      loaded = await host.read(legacyURL, offer.owner);
+      if (loaded.kind !== "page") return loaded;
+      form = nativeMagicForm(loaded.page.doc, window, item, operation);
+    }
     if (form === "invalid") return { kind: "invalid-response" };
-    if (form === "browser") return handoff(base);
+    if (typeof form === "string") return handoff(base);
     prepared.set(form.form, {
       owner: offer.owner,
       url: form.url,
@@ -403,7 +417,12 @@ export function magicClient(host: ReturnType<typeof taskMagicHost>) {
       offer.url,
       offer.legacy ? { tsdmapp: "json" } : writeMode,
     );
-    const sent = await host.exchange(url, offer.owner, true, fields.toString());
+    const sent = await host.exchange(
+      url,
+      offer.owner,
+      true,
+      fields.toString(),
+    );
     return sent.kind === "response"
       ? magicResult(
           sent.response,

@@ -22,6 +22,7 @@
     "test/data/notice_friend_request_x5.html": "976f4a53a98542e13fbd58bbedceee54e366745891fc351eae9d51fb15bbe6a3",
     "lib/features/blocking/repository/website_blocklist_repository.dart": "a31f21475706b530f6abef92c7d0a02c92d97ca281920315a1f8850229be6d15",
     "lib/features/blocking/repository/user_block_repository.dart": "5f292c196718a7c0660434c0f4bf528fa247a78451f359420488eb9d430f4160",
-    "lib/features/blocking/repository/notice_ignore_repository.dart": "0b8f3a3a52402e7fade7d546bb4084a96087f0fc7c56b4563c7b9558fd9a321c"
+    "lib/features/blocking/repository/notice_ignore_repository.dart": "0b8f3a3a52402e7fade7d546bb4084a96087f0fc7c56b4563c7b9558fd9a321c",
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160"
   }
 }

@@ -1,4 +1,6 @@
-import { scripts, unwrap } from "../account-forms.js";
+import { numericId } from "../notice-transport.js";
+import { unsupportedV4 } from "../v4-selection.js";
+import { operationURL, unwrap } from "../account-forms.js";
 import { positive, record } from "../discovery/shared.js";
 import {
   attr,
@@ -7,6 +9,7 @@ import {
   descendants,
   documentFrom,
   label,
+  text,
   type Element,
   type Node,
 } from "../html.js";
@@ -35,6 +38,7 @@ export interface SpaceObservation {
 }
 type Plan = {
   ac: string;
+  submit?: URL;
   query?: Record<string, string>;
   fields: Record<string, string>;
   key: string;
@@ -65,7 +69,11 @@ const lists = {
   wall: "comments",
   greetings: "pokes",
 } as const;
-function sourceRow(page: SpacePage, observation: SpaceObservation, id: string) {
+function sourceRow(
+  page: SpacePage,
+  observation: SpaceObservation,
+  id: string,
+) {
   const key = lists[page.view as keyof typeof lists];
   const rows = observation.payload?.[key];
   const idKey =
@@ -131,7 +139,10 @@ function observedHash(doc: Node, base: string): string | null {
   );
 }
 
-function sourceFor(input: PrepareSpaceWrite, base: string): SpaceRoute | null {
+function sourceFor(
+  input: PrepareSpaceWrite,
+  base: string,
+): SpaceRoute | null {
   if (!input.source) return null;
   const route = spaceRoute(input.source, base);
   if (!route) return null;
@@ -475,6 +486,94 @@ function documentForm(
   return matches.length === 1 ? matches[0]! : null;
 }
 
+function greetingOffer(
+  payload: Fields,
+  destination: URL,
+  command: Extract<
+    SpaceCommand,
+    { action: "send-greeting" | "reply-greeting" }
+  >,
+) {
+  const operation = command.action === "reply-greeting" ? "reply" : "send";
+  const submit = record(payload.submit);
+  const fields = record(submit?.fields);
+  const token = formHash(fields?.formhash);
+  const key = str(fields?.handlekey);
+  const referer = str(fields?.referer);
+  const controls = record(payload.iconid);
+  const url = operationURL(str(submit?.url) ?? "", destination, "/home.php", {
+    mod: "spacecp",
+    ac: "poke",
+    op: operation,
+    uid: command.memberId,
+  });
+  if (
+    payload.ok !== 1 ||
+    payload.type !== "form" ||
+    payload.schema !== 17 ||
+    payload.form !== "poke" ||
+    payload.op !== operation ||
+    numericId(payload.touid) !== command.memberId ||
+    submit?.method !== "POST" ||
+    submit.enctype !== "application/x-www-form-urlencoded" ||
+    !url ||
+    [...url.searchParams].some(
+      ([name, value]) =>
+        !destination.searchParams.has(name) &&
+        !(name === "inajax" && value === "1"),
+    ) ||
+    !fields ||
+    !token ||
+    !key ||
+    !/^[a-zA-Z0-9_]{1,128}$/.test(key) ||
+    fields.pokesubmit !== "true" ||
+    fields.from !== "" ||
+    Object.keys(fields).some(
+      (name) =>
+        !["formhash", "handlekey", "pokesubmit", "from", "referer"].includes(
+          name,
+        ),
+    ) ||
+    (fields.referer !== undefined &&
+      (!referer || !forumURL(referer, destination.origin))) ||
+    (submit.lists !== undefined &&
+      (!record(submit.lists) || Object.keys(record(submit.lists)!).length)) ||
+    [payload.hook_fields, payload.unsupported].some(
+      (value) =>
+        value !== undefined && (!Array.isArray(value) || value.length),
+    ) ||
+    controls?.name !== "iconid" ||
+    controls.type !== "radio" ||
+    !Array.isArray(controls.choices) ||
+    !controls.choices.some((value) => {
+      const choice = record(value);
+      return str(choice?.value) === command.iconId && !flag(choice?.disabled);
+    }) ||
+    record(payload.note)?.name !== "note" ||
+    typeof command.note !== "string" ||
+    [...command.note.trim()].length > 50
+  )
+    return null;
+  url.searchParams.set("inajax", "1");
+  url.searchParams.set("tsdmapp", "json");
+  url.searchParams.set("tsdmv", "4");
+  const plan: Plan = {
+    ac: "poke",
+    submit: url,
+    fields: {
+      ...(referer && { referer }),
+      pokesubmit: "true",
+      from: "",
+      iconid: command.iconId,
+      note: command.note.trim(),
+    },
+    key,
+    success: "poke_success",
+    target: command.memberId,
+  };
+  return { plan, token };
+}
+
 function blogPlan(
   c: Extract<SpaceCommand, { action: "publish-blog" }>,
   form: Element,
@@ -552,7 +651,13 @@ function writeResult(
   if (response.status === 403) return { kind: "refused" };
   if (response.status !== 200) return { kind: "uncertain" };
   if (payload?.type === "result" && payload.schema === 13) {
-    if (payload.kind === "handle" && payload.handlekey !== plan.key)
+    const explicitGreetingSuccess =
+      plan.ac === "poke" && key === plan.success && payload.handlekey === "";
+    if (
+      payload.kind === "handle" &&
+      payload.handlekey !== plan.key &&
+      !explicitGreetingSuccess
+    )
       return { kind: "uncertain" };
     if (payload.ok === 0 || payload.alert === "error")
       return {
@@ -587,14 +692,22 @@ function writeResult(
     }
   }
   const source = payload ? (str(payload.document) ?? "") : response.body;
-  const script = scripts(source);
   const native = documentFrom(unwrap(source));
   const nativeViewer = identify(native, url.href);
   if (nativeViewer.kind === "member" && nativeViewer.id !== prepared.accountId)
     return { kind: "uncertain" };
   const ownHandler =
-    plan.key && new RegExp(`\\b(succeed|error)handle_${plan.key}\\s*\\(`);
-  const handler = ownHandler ? ownHandler.exec(script)?.[1] : null;
+    plan.key &&
+    new RegExp(
+      String.raw`^\s*(?:if\s*\(\s*typeof\s+(?:succeed|error)handle_${plan.key}\s*={2,3}\s*['"]function['"]\s*\)\s*\{\s*)?(succeed|error)handle_${plan.key}\s*\(\s*(['"])`,
+    );
+  const handler = ownHandler
+    ? descendants(native, (node) => node.tagName === "script")
+        .map(
+          (node) => ownHandler.exec(node.childNodes.map(text).join(""))?.[1],
+        )
+        .find(Boolean)
+    : null;
   if (handler === "succeed")
     return {
       kind: "confirmed",
@@ -625,10 +738,21 @@ export function spaceEffects(
   ) => Promise<SpaceRead>,
   json: (response: HostResponse) => Fields | null,
   identify: Identify,
+  capability: (
+    group: "forms",
+    name: string,
+    continuity: string,
+    memberId: string,
+  ) => Promise<{ kind: "session-changed" | "limited" | "legacy" | "v4" }>,
 ) {
   const prepared = new WeakMap<
     PreparedSpaceWrite,
-    { plan: Plan; token: string; session: string; identity: PreparedSpaceWrite }
+    {
+      plan: Plan;
+      token: string;
+      session: string;
+      identity: PreparedSpaceWrite;
+    }
   >();
   const failure = (
     kind:
@@ -642,6 +766,23 @@ export function spaceEffects(
     url: string,
     message: string,
   ): SpacePreparation => ({ kind, url, message });
+  function remember(
+    plan: Plan,
+    token: string,
+    continuity: string,
+    accountId: string,
+    action: SpaceCommand["action"],
+  ) {
+    const identity: PreparedSpaceWrite = {
+      kind: "prepared",
+      action,
+      accountId,
+      targetId: plan.target,
+    };
+    const handle = Object.freeze({ ...identity });
+    prepared.set(handle, { plan, token, session: continuity, identity });
+    return handle;
+  }
   return {
     async prepare(request: PrepareSpaceWrite): Promise<SpacePreparation> {
       const input = { ...request, command: { ...request.command } };
@@ -702,6 +843,113 @@ export function spaceEffects(
           destination: formURL,
           message: "Open this forum form in the original session.",
         });
+        let structuredOffer: ReturnType<typeof greetingOffer> = null;
+        if (!blog) {
+          const status = await capability(
+            "forms",
+            "poke",
+            continuity,
+            accountId,
+          );
+          if (status.kind === "session-changed") return { kind: "stale" };
+          if (status.kind === "limited")
+            return failure(
+              "limited",
+              formURL,
+              "The forum is limiting requests.",
+            );
+          if (status.kind === "v4") {
+            const window = new URL(formURL);
+            window.searchParams.set(
+              "handlekey",
+              operation === "reply"
+                ? "pokereply"
+                : `propokehk_${command.memberId}`,
+            );
+            for (const [key, value] of Object.entries({
+              infloat: "yes",
+              inajax: "1",
+              tsdmapp: "json",
+              tsdmv: "4",
+              tsdmform: "1",
+              nodoc: "1",
+            }))
+              window.searchParams.set(key, value);
+            let response: HostResponse | undefined;
+            try {
+              response = await options.transport.request(window.href, {
+                fresh: true,
+                session: continuity,
+                effect: false,
+                method: "GET",
+              });
+            } catch {
+              // The full page can still supply the form after an unavailable window.
+            }
+            if (options.session() !== continuity) return { kind: "stale" };
+            if (response) {
+              if (response.redirect === "opaque") return handoff();
+              if (
+                response.redirect !== "none" ||
+                response.url !== window.href
+              )
+                return failure(
+                  "invalid",
+                  formURL,
+                  "The returned form destination did not match.",
+                );
+              const payload = json(response);
+              if (response.status === 429 || payload?.error === "busy")
+                return failure(
+                  "limited",
+                  formURL,
+                  "The forum is limiting requests.",
+                );
+              if (
+                response.status === 401 ||
+                payload?.login === 1 ||
+                payload?.message_key === "to_login"
+              )
+                return failure(
+                  "login",
+                  formURL,
+                  "Sign in through the forum.",
+                );
+              const viewer = numericId(payload?.uid);
+              if (viewer !== null && viewer !== accountId)
+                return { kind: "stale" };
+              if (
+                response.status === 403 ||
+                (payload?.ok === 0 && !unsupportedV4(payload))
+              )
+                return failure(
+                  "permission",
+                  formURL,
+                  str(payload?.message) || "The forum denied this form.",
+                );
+              if (response.status === 404)
+                return failure(
+                  "missing",
+                  formURL,
+                  "The forum form is missing.",
+                );
+              if (response.status === 200 && payload && viewer === accountId)
+                structuredOffer = greetingOffer(
+                  payload,
+                  destination,
+                  command,
+                );
+            }
+          }
+        }
+        if (structuredOffer)
+          return remember(
+            structuredOffer.plan,
+            structuredOffer.token,
+            continuity,
+            accountId,
+            command.action,
+          );
         let response: HostResponse;
         try {
           response = await options.transport.request(formURL, {
@@ -728,11 +976,19 @@ export function spaceEffects(
             "The returned form destination did not match.",
           );
         if (response.status === 429)
-          return failure("limited", formURL, "The forum is limiting requests.");
+          return failure(
+            "limited",
+            formURL,
+            "The forum is limiting requests.",
+          );
         if (response.status === 401)
           return failure("login", formURL, "Sign in through the forum.");
         if (response.status === 403)
-          return failure("permission", formURL, "The forum denied this form.");
+          return failure(
+            "permission",
+            formURL,
+            "The forum denied this form.",
+          );
         if (response.status === 404)
           return failure("missing", formURL, "The forum form is missing.");
         if (response.status !== 200)
@@ -752,7 +1008,9 @@ export function spaceEffects(
         )
           return handoff();
         const nativeViewer = identify(doc, formURL);
-        const viewer = payload ? readAccount(payload) : nativeViewer;
+        const envelopeViewer = readAccount(payload ?? {});
+        const viewer =
+          envelopeViewer.kind === "unknown" ? nativeViewer : envelopeViewer;
         const notice = byId(doc, "messagetext");
         if (
           viewer.kind === "guest" ||
@@ -876,15 +1134,7 @@ export function spaceEffects(
           source,
           "The forum did not offer the requested operation for this target and input.",
         );
-      const identity: PreparedSpaceWrite = {
-        kind: "prepared",
-        action: command.action,
-        accountId,
-        targetId: plan.target,
-      };
-      const handle = Object.freeze({ ...identity });
-      prepared.set(handle, { plan, token, session: continuity, identity });
-      return handle;
+      return remember(plan, token, continuity, accountId, command.action);
     },
     async submit(
       handle: PreparedSpaceWrite,
@@ -896,14 +1146,15 @@ export function spaceEffects(
       prepared.delete(handle);
       if (options.session() !== record.session) return { kind: "stale" };
       const { plan, token, identity } = record;
-      const url = new URL("/home.php", base);
-      url.search = new URLSearchParams({
-        mod: "spacecp",
-        ac: plan.ac,
-        ...plan.query,
-        ...(plan.ac === "blog" ? {} : { inajax: "1" }),
-        tsdmapp: "json",
-      }).toString();
+      const url = plan.submit ?? new URL("/home.php", base);
+      if (!plan.submit)
+        url.search = new URLSearchParams({
+          mod: "spacecp",
+          ac: plan.ac,
+          ...plan.query,
+          ...(plan.ac === "blog" ? {} : { inajax: "1" }),
+          tsdmapp: "json",
+        }).toString();
       const body = new URLSearchParams({
         [identity.action === "follow" ? "hash" : "formhash"]: token,
         ...plan.fields,

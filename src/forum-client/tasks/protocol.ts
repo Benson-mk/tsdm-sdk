@@ -1,3 +1,8 @@
+import {
+  unsupportedV4,
+  v4ForMember,
+  type V4CapabilityGroup,
+} from "../v4-selection.js";
 import type { TaskMagicClientOptions, TaskMagicHandoff } from "./types.js";
 import { activityURL, answer, responseIssue } from "../activity-protocol.js";
 import { nativeIdentity, operationURL } from "../account-forms.js";
@@ -65,10 +70,18 @@ export function taskMagicHost(options: TaskMagicClientOptions) {
         url,
         body === undefined
           ? { method: "GET", fresh: true, session: owner, effect }
-          : { method: "POST", fresh: true, session: owner, effect: true, body },
+          : {
+              method: "POST",
+              fresh: true,
+              session: owner,
+              effect: true,
+              body,
+            },
       );
     } catch {
-      return { kind: current(owner) ? "network" : "session-changed" } as const;
+      return {
+        kind: current(owner) ? "network" : "session-changed",
+      } as const;
     }
     if (!current(owner)) return { kind: "session-changed" } as const;
     if (response.url !== url || response.redirect !== "none")
@@ -91,10 +104,7 @@ export function taskMagicHost(options: TaskMagicClientOptions) {
     }
     if (loaded.response.status !== 200)
       return { kind: "invalid-response" } as const;
-    if (
-      page.failure ||
-      (page.data?.ok === 0 && page.data.error === "message")
-    ) {
+    if (page.failure || (page.data?.ok === 0 && !unsupportedV4(page.data))) {
       return {
         kind: "refused",
         message: page.failure || String(page.data?.message ?? ""),
@@ -103,22 +113,58 @@ export function taskMagicHost(options: TaskMagicClientOptions) {
     return {
       kind: "page",
       page,
+      v4: new URL(url).searchParams.get("tsdmv") === "4",
       identified:
         viewer === owner.memberId ||
         numericId(page.data?.uid) === owner.memberId,
     } as const;
   }
-  async function readCompatible(base: string, owner: NoticeSession) {
+  const capability = (
+    group: V4CapabilityGroup,
+    name: string,
+    owner: NoticeSession,
+  ) =>
+    v4ForMember(origin, group, name, owner.memberId, (url) =>
+      exchange(url, owner),
+    );
+  async function readCompatible(
+    base: string,
+    owner: NoticeSession,
+    group: "task_pages" | "magic_pages",
+    name: string,
+    schema: number,
+  ) {
+    const selected = await capability(group, name, owner);
+    if (selected.kind === "session-changed" || selected.kind === "refused")
+      return selected;
+    const legacy = () => read(query(base, { tsdmapp: "json" }), owner);
+    if (selected.kind !== "v4") return legacy();
     const loaded = await read(query(base, pageMode), owner);
     if (loaded.kind !== "page" || loaded.page.html) return loaded;
     const data = loaded.page.data;
-    if (
-      (data?.ok === 0 && data.error === "unknown") ||
-      (data?.type === "result" && data.kind === "page")
-    ) {
-      return read(query(base, { tsdmapp: "json" }), owner);
-    }
-    return loaded;
+    return data?.type === name && data.schema === schema ? loaded : legacy();
   }
-  return { origin, session, current, exchange, read, readCompatible };
+  async function readV4Only(
+    base: string,
+    owner: NoticeSession,
+    group: "task_pages" | "magic_pages",
+    name: string,
+  ) {
+    const selected = await capability(group, name, owner);
+    if (selected.kind === "session-changed" || selected.kind === "refused")
+      return selected;
+    return selected.kind === "v4"
+      ? read(query(base, pageMode), owner)
+      : handoff(base);
+  }
+  return {
+    origin,
+    session,
+    current,
+    exchange,
+    read,
+    capability,
+    readCompatible,
+    readV4Only,
+  };
 }

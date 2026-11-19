@@ -4,7 +4,7 @@ Use Node.js 26.x and npm. The package exposes ESM through `import { createForumC
 
 ## Install the versioned release asset
 
-The `v0.1.0` install has been rehearsed locally. Once `v0.1.0` is published, use its versioned GitHub Release URL in an npm project.
+Use the versioned GitHub Release URL in an npm project.
 
 ```sh
 npm install --save-exact --engine-strict https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz

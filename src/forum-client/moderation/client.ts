@@ -1,3 +1,4 @@
+import { v4ForMember } from "../v4-selection.js";
 import { id, record, rows, string } from "../activity-protocol.js";
 import { attr, descendants, label } from "../html.js";
 import { directOffer, qualifySplit, readPosterIp } from "./permissions.js";
@@ -5,6 +6,7 @@ import { moderationReceipt } from "./receipts.js";
 import type { NoticeSession } from "../notice-transport.js";
 import {
   moderationBody,
+  moderationCapability,
   moderationWindow,
   nativeForm,
   offeredForm,
@@ -30,6 +32,10 @@ import {
 
 export function createModerationClient(options: ModerationClientOptions) {
   const host = moderationHost(options);
+  const capability = (name: string, owner: NoticeSession) =>
+    v4ForMember(host.origin, "forms", name, owner.memberId, (url) =>
+      host.request(url, owner),
+    );
   async function readDestinationTypes(forumId: string) {
     if (!validId(forumId)) return { kind: "invalid-input" } as const;
     const owner = host.session();
@@ -43,8 +49,22 @@ export function createModerationClient(options: ModerationClientOptions) {
       fid: forumId,
       inajax: "1",
     });
-    let reply = await host.exchange(v4Form(url), owner);
-    if (reply.kind === "unsupported")
+    const selected = await capability("threadtypes", owner);
+    if (selected.kind === "session-changed" || selected.kind === "refused")
+      return selected;
+    let reply = await host.exchange(
+      selected.kind === "v4" ? v4Form(url) : jsonWrite(url),
+      owner,
+    );
+    if (
+      selected.kind === "v4" &&
+      (reply.kind === "unsupported" ||
+        (reply.kind === "answer" &&
+          !reply.html &&
+          (reply.data?.type !== "form" ||
+            reply.data.schema !== 17 ||
+            reply.data.form !== "threadtypes")))
+    )
       reply = await host.exchange(jsonWrite(url), owner);
     if (reply.kind !== "answer") return reply;
     const { data, doc } = reply;
@@ -110,45 +130,73 @@ export function createModerationClient(options: ModerationClientOptions) {
       offers.set(offer.form, { owner, offer });
       return { kind: "moderation-form", form: offer.form };
     }
-    const url = moderationWindow(host.origin, target);
-    let reply = await host.exchange(url, owner);
-    if (reply.kind === "unsupported" && url.includes("tsdmform=")) {
-      const fallback = new URL(url);
-      for (const key of ["tsdmform", "tsdmv", "nodoc"])
-        fallback.searchParams.delete(key);
-      reply = await host.exchange(fallback.href, owner);
-    }
-    if (reply.kind !== "answer") return reply;
-    const { data, doc } = reply;
-    if (data && id(data.uid) !== owner.memberId)
-      return { kind: "invalid-response" };
-    if (target.operation === "delpost" && data?.kind === "redirect") {
-      try {
-        const forwarded = new URL(string(data.url), host.origin);
-        if (
-          forwarded.origin === host.origin &&
-          forwarded.pathname === "/forum.php" &&
-          forwarded.searchParams.get("mod") === "topicadmin" &&
-          forwarded.searchParams.get("action") === "moderate" &&
-          forwarded.searchParams.get("operation") === "delete"
-        )
-          return {
-            kind: "refused",
-            code: "thread-delete-requires-separate-intent",
-          };
-      } catch {
-        /* Unqualified redirect. */
+    const native = moderationWindow(host.origin, target);
+    const name = moderationCapability(target.operation);
+    const selected = name
+      ? await capability(name, owner)
+      : ({ kind: "legacy" } as const);
+    if (selected.kind === "session-changed" || selected.kind === "refused")
+      return selected;
+    const selectedURL = selected.kind === "v4" ? v4Form(native) : native;
+    const decode = (
+      reply: Awaited<ReturnType<typeof host.exchange>>,
+      url: string,
+    ) => {
+      if (reply.kind !== "answer") return reply;
+      const { data, doc } = reply;
+      if (data && id(data.uid) !== owner.memberId)
+        return { kind: "invalid-response" } as const;
+      if (target.operation === "delpost" && data?.kind === "redirect") {
+        try {
+          const forwarded = new URL(string(data.url), host.origin);
+          if (
+            forwarded.origin === host.origin &&
+            forwarded.pathname === "/forum.php" &&
+            forwarded.searchParams.get("mod") === "topicadmin" &&
+            forwarded.searchParams.get("action") === "moderate" &&
+            forwarded.searchParams.get("operation") === "delete"
+          )
+            return {
+              kind: "refused",
+              code: "thread-delete-requires-separate-intent",
+            } as const;
+        } catch {
+          /* Unqualified redirect. */
+        }
       }
-    }
-    const offer =
-      data?.type === "form"
-        ? offeredForm(data, url, target)
+      return data?.type === "form"
+        ? !name || (selected.kind === "v4" && url === selectedURL)
+          ? offeredForm(data, url, target)
+          : null
         : !data ||
             (data.type === "result" &&
               data.schema === 13 &&
               data.kind === "page")
           ? nativeForm(doc, url, target)
           : null;
+    };
+    let offer = decode(await host.exchange(selectedURL, owner), selectedURL);
+    if (
+      selected.kind === "v4" &&
+      (!offer || ("kind" in offer && offer.kind === "unsupported"))
+    )
+      offer = decode(await host.exchange(native, owner), native);
+    else if (
+      selected.kind === "legacy" &&
+      native.includes("tsdmform=") &&
+      offer &&
+      "kind" in offer &&
+      offer.kind === "unsupported"
+    ) {
+      const fallback = new URL(native);
+      for (const key of ["tsdmform", "nodoc"])
+        fallback.searchParams.delete(key);
+      offer = decode(
+        await host.exchange(fallback.href, owner),
+        fallback.href,
+      );
+    }
+    if (offer && "kind" in offer) return offer;
     if (!offer) return { kind: "invalid-response" };
     if ("offeredThreadIds" in offer)
       return {

@@ -46,10 +46,19 @@
     "test/regression/test_898_thread_admin_forms_test.dart": "bc0b9adecc84e242c6ae4bbd99b9277ccc33d79448671907f9e302f2dec14c86",
     "test/regression/test_1010_moderate_windows_v4_test.dart": "0be0284917905a16024d0a7413b5ead5d10c16a185ea34aafe848b574f6664fc",
     "test/regression/test_1011_delcomment_v4_test.dart": "6224928dd4d3d8e2177431557db8c6a688b34c8b6a10c4201c2393d4a5f8c084",
-    "test/regression/test_1200_delete_attachment_expired_formhash_test.dart": "496d886b79d7d7e07acbd66dc875b231df5424b9aa34afe4833e3a42416eeda8"
+    "test/regression/test_1200_delete_attachment_expired_formhash_test.dart": "496d886b79d7d7e07acbd66dc875b231df5424b9aa34afe4833e3a42416eeda8",
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+    "lib/features/tsdmapp/v4.dart": "539fc5185fd3ade29307f4e2f120fe9cecc87af7d960135bab52795fcfa18481",
+    "test/data/tsdmapp/v4/g2_act_stamp.json": "6a1917f9693e85a228c006dded2c2428433050342860d53fc4f2d430f4367a72",
+    "test/data/tsdmapp/v4/g2_act_stamplist.json": "aed8216a402982c1775e42904968964caae966ed0c63103fc77462821f1b871e",
+    "test/data/tsdmapp/v4/g2_act_copy.json": "af3bf04a7b98787b9361032d49fdf431ede6b4030ee7c9a2114a1ef13fe3a238",
+    "test/data/tsdmapp/v4/g2_act_merge.json": "9dbb90024b21a2b6975081e0002fb9a6d57c8dd99afe608a831e9ebccd80764c",
+    "test/data/tsdmapp/v4/g2_act_split.json": "e1c4419286c21cc8c7221557a83f8213471ebe3c508668aa0b19fac76f3e21bc",
+    "test/data/tsdmapp/v4/g2_mod_3_x.json": "dbc2d4193755474e506e07ad6a601e9591dac39231b31bf7d85be5381d8b9ccd",
+    "test/data/tsdmapp/v4/g2_mod_3_x.xml": "3f8713ec2fa8a016424d3f39925689421e429f698992fcad4286e6a17273809f"
   },
   "controlledFiles": {
-    "tests/install/moderation.mjs": "07b9c19d0ff425066dd619d37023c50a0a50046f075013f0f8a52240cb972f6a",
+    "tests/install/moderation.mjs": "c1b0dab62e422daeafa049e937c9d7e98109b2747a534313da868022aca872ba",
     "evidence/moderation/check-direct-guide.py": "f09a374c7d345efab74f6965b7ab8f6c8076072cc9ece78f32b264b5d1902b40"
   }
 }

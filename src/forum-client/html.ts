@@ -86,6 +86,119 @@ const discarded = new Set(
   ),
 );
 const interactive = new Set("iframe object embed video audio form".split(" "));
+export function explicitlyHidden(node: Element) {
+  return (
+    node.attrs.some(({ name }) => name === "hidden") ||
+    attr(node, "aria-hidden").toLowerCase() === "true" ||
+    /(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*(?:hidden|collapse))\s*(?:!important)?\s*(?:;|$)/i.test(
+      attr(node, "style"),
+    )
+  );
+}
+
+function visibleSource(
+  node: Element,
+  tag: string,
+  name?: string,
+): Element | undefined {
+  for (const child of children(node)) {
+    if (
+      !element(child) ||
+      explicitlyHidden(child) ||
+      discarded.has(child.tagName)
+    )
+      continue;
+    if (
+      child.tagName === tag &&
+      (!name || attr(child, "name").toLowerCase() === name)
+    )
+      return child;
+    const nested = visibleSource(child, tag, name);
+    if (nested) return nested;
+  }
+}
+
+function flashFile(vars: string, base: string): string | null {
+  for (const part of vars.split("&")) {
+    const match = /^(?:son|mp3|file|url|src|sound)=(.+)$/i.exec(part.trim());
+    if (!match) continue;
+    let value = match[1]!
+      .trim()
+      .replace(/%u([a-f\d]{4})/gi, (_, hex: string) =>
+        String.fromCharCode(parseInt(hex, 16)),
+      );
+    try {
+      value = decodeURIComponent(value);
+    } catch {
+      /* Some original filenames contain literal percent signs. */
+    }
+    if (/^(?:https?:)?\/\//i.test(value)) {
+      const url = safeURL(value, base);
+      if (url) return url;
+    }
+  }
+  return null;
+}
+
+function playerDestination(node: Element, base: string) {
+  const tag = node.tagName;
+  if (tag === "embed") {
+    for (let parent: Node | null = node.parentNode; parent && element(parent); parent = parent.parentNode) {
+      if (parent.tagName === "object") return null;
+    }
+  }
+  let raw = attr(node, "src");
+  let audio = tag === "audio";
+  if (tag === "script") {
+    const script = children(node).map(text).join("");
+    const player =
+      /\bdetectPlayer\(\s*["'][^"']*["']\s*,\s*["']([^"']*)["']\s*,\s*["']([^"']+)["']/.exec(
+        script,
+      );
+    if (player) {
+      audio = /^(?:mp3|wma|ra|rm|ram|m4a|ogg|wav)$/i.test(player[1]!);
+      raw = player[2]!;
+    } else if (
+      /\b(?:AC_FL_RunContent\s*\(|detectHtml5Support\s*\(\s*\)\s*\?)/.test(
+        script,
+      )
+    ) {
+      raw =
+        /<iframe[^>]*\ssrc=\\?["']([^"'\\]+)/i.exec(script)?.[1] ??
+        /["']src["']\s*,\s*["']([^"']+)["']/.exec(script)?.[1] ??
+        "";
+    } else return null;
+  } else if (tag === "object" || tag === "embed") {
+    const nested = tag === "object" ? visibleSource(node, "embed") : undefined;
+    const param = (name: string) => {
+      const p = visibleSource(node, "param", name);
+      return p ? attr(p, "value") : "";
+    };
+    raw =
+      flashFile(attr(node, "flashvars"), base) ||
+      flashFile(param("flashvars"), base) ||
+      (nested && flashFile(attr(nested, "flashvars"), base)) ||
+      (tag === "object"
+        ? attr(node, "data") ||
+          param("movie") ||
+          param("src") ||
+          (nested && attr(nested, "src")) ||
+          ""
+        : raw || attr(node, "data-src"));
+  } else if (tag === "audio" || tag === "video") {
+    const source = !raw && visibleSource(node, "source");
+    raw ||= source ? attr(source, "src") : "";
+  } else if (tag === "iframe") {
+    if (!raw || /^about:/i.test(raw.trim())) raw = attr(node, "data-src");
+  } else return null;
+  const url = safeURL(raw, base);
+  if (!url) return null;
+  audio ||= /\.(?:mp3|m4a|aac|ogg|oga|opus|wav|flac|wma)$/i.test(
+    new URL(url).pathname,
+  );
+  return { kind: audio ? ("audio" as const) : ("video" as const), url };
+}
+
 export function content(
   node: Node,
   base: string,
@@ -94,7 +207,33 @@ export function content(
 ): ContentNode[] {
   return children(node).flatMap((child): ContentNode[] => {
     if ("value" in child) return [{ kind: "text", text: child.value }];
-    if (!element(child) || discarded.has(child.tagName)) return [];
+    if (
+      !element(child) ||
+      (child.tagName !== "script" && discarded.has(child.tagName))
+    )
+      return [];
+    if (explicitlyHidden(child))
+      return [
+        {
+          kind: "unsupported",
+          description:
+            "Additional native content is hidden; view it in the native forum.",
+          children: [],
+        },
+      ];
+    if (child.tagName === "script") {
+      const media = playerDestination(child, base);
+      return media
+        ? [
+            {
+              kind: "unsupported",
+              description: "Embedded media player",
+              media,
+              children: [],
+            },
+          ]
+        : [];
+    }
     if (
       attr(child, "id") === "hb_mask" &&
       hasClass(child, "mask") &&
@@ -153,33 +292,19 @@ export function content(
         },
       ];
     }
-    const explicitlyHidden =
-      child.attrs.some((attribute) => attribute.name === "hidden") ||
-      /(?:^|;)\s*display\s*:\s*none(?:\s*!important)?\s*(?:;|$)/i.test(
-        attr(child, "style"),
-      ) ||
-      /(?:^|;)\s*visibility\s*:\s*hidden(?:\s*!important)?\s*(?:;|$)/i.test(
-        attr(child, "style"),
-      );
-    if (explicitlyHidden)
-      return [
-        {
-          kind: "unsupported",
-          description:
-            "Additional native content is hidden; view it in the native forum.",
-          children: [],
-        },
-      ];
     if (child.tagName === "ignore_js_op")
       return content(child, base, inlineImages, nativeLayout);
-    if (interactive.has(child.tagName))
+    if (interactive.has(child.tagName)) {
+      const media = playerDestination(child, base);
       return [
         {
           kind: "unsupported",
           description: "Unsupported interactive content",
+          ...(media ? { media } : {}),
           children: content(child, base, inlineImages, nativeLayout),
         },
       ];
+    }
     if (!allowed.has(child.tagName))
       return [
         {

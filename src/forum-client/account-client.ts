@@ -14,7 +14,12 @@ import { attr, descendants, documentFrom, fragmentFrom } from "./html.js";
 import type { HostResponse } from "../index.js";
 
 export type AccountRequest = { fresh: true; session: string } & (
-  | { method: "GET"; effect: boolean; body?: never }
+  | {
+      method: "GET";
+      effect: boolean;
+      body?: never;
+      headers?: Readonly<{ "X-Tsdmapp-Device": string }>;
+    }
   | { method: "POST"; effect: true; body: string }
 );
 
@@ -52,6 +57,16 @@ export interface AccountStatus {
     openNow: boolean;
   };
 }
+
+export interface StoredDeviceStatusInput {
+  memberId: string;
+  deviceId: string;
+}
+
+export type StoredDeviceStatusResult =
+  | AccountFailure
+  | (StoredDeviceStatusInput & { kind: "device-revoked" })
+  | (AccountStatus & { identity: Extract<SessionIdentity, { kind: "member" }> });
 
 export interface LoginForm {
   readonly kind: "login-form";
@@ -176,19 +191,27 @@ export function createAccountClient({
   const base = new URL(origin);
   if (base.protocol !== "https:" || base.origin !== origin)
     throw new TypeError("Expected a canonical HTTPS origin.");
+  const statusURL = new URL("/plugin.php?id=tsdmapp%3Aapi&action=status", base);
 
   async function request(
     url: URL,
     expected: string | null,
     effect = false,
     body?: URLSearchParams,
+    deviceId?: string,
   ): Promise<AccountFailure | { kind: "response"; response: HostResponse }> {
     if (!expected || session() !== expected) return { kind: "session-changed" };
     try {
       const response = await transport.request(
         url.href,
         body === undefined
-          ? { method: "GET", fresh: true, session: expected, effect }
+          ? {
+              method: "GET",
+              fresh: true,
+              session: expected,
+              effect,
+              ...(deviceId && { headers: { "X-Tsdmapp-Device": deviceId } }),
+            }
           : {
               method: "POST",
               fresh: true,
@@ -208,16 +231,10 @@ export function createAccountClient({
     }
   }
 
-  async function status(
-    expected: string | null,
-  ): Promise<AccountFailure | { public: AccountStatus; formHash: string }> {
-    const result = await request(
-      new URL("/plugin.php?id=tsdmapp%3Aapi&action=status", base),
-      expected,
-    );
-    if (result.kind !== "response") return result;
-    const { response } = result;
-    const data = json(response.body);
+  function decodeStatus(
+    response: HostResponse,
+    data = json(response.body),
+  ): AccountFailure | { public: AccountStatus; formHash: string } {
     if (response.status === 429 || (data.ok === 0 && data.error === "busy"))
       return { kind: "rate-limited" };
     if (response.status !== 200 || data.ok !== 1)
@@ -270,6 +287,11 @@ export function createAccountClient({
       },
       formHash: token(data.formhash),
     };
+  }
+
+  async function status(expected: string | null) {
+    const result = await request(statusURL, expected);
+    return result.kind === "response" ? decodeStatus(result.response) : result;
   }
 
   async function identity(
@@ -745,6 +767,39 @@ export function createAccountClient({
     async readStatus(): Promise<AccountStatus | AccountFailure> {
       const result = await status(session());
       return "public" in result ? result.public : result;
+    },
+    async readStoredDeviceStatus({
+      memberId,
+      deviceId,
+    }: StoredDeviceStatusInput): Promise<StoredDeviceStatusResult> {
+      if (
+        typeof memberId !== "string" ||
+        !uid(memberId) ||
+        memberId === "0" ||
+        typeof deviceId !== "string" ||
+        !/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(deviceId)
+      )
+        return { kind: "invalid" };
+      const result = await request(statusURL, session(), false, undefined, deviceId);
+      if (result.kind !== "response") return result;
+      const data = json(result.response.body);
+      if (
+        [200, 401, 403].includes(result.response.status) &&
+        data.ok === 0 &&
+        data.error === "device_revoked"
+      ) {
+        return uid(data.uid) === memberId &&
+          typeof data.device === "string" &&
+          data.device.toLowerCase() === deviceId
+          ? { kind: "device-revoked", memberId, deviceId }
+          : { kind: "invalid" };
+      }
+      const decoded = decodeStatus(result.response, data);
+      if ("kind" in decoded) return decoded;
+      const { identity } = decoded.public;
+      return identity.kind === "member" && identity.id === memberId
+        ? { ...decoded.public, identity }
+        : { kind: "invalid" };
     },
   };
 }

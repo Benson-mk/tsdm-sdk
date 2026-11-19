@@ -18,6 +18,46 @@ const response = (type, schema, properties) => ({
 });
 const results = [];
 async function scenario(name, steps, expected, exercise) {
+  steps = steps.flatMap((entry, index) => {
+    if (entry.effect) return [entry];
+    const route = new URLSearchParams(entry.query);
+    if (
+      index > 0 &&
+      steps[index - 1].query.startsWith(entry.query + "&tsdmv=")
+    )
+      return [entry];
+    const op = route.get("operation");
+    const [group, name] =
+      route.get("mod") === "task"
+        ? [
+            "task_pages",
+            route.get("item")
+              ? "task_list"
+              : route.get("do") === "view"
+                ? "task"
+                : "task_parter",
+          ]
+        : op === "buy" || op === "use"
+          ? ["forms", `magic${op}`]
+          : ["magic_pages", `magic_${route.get("action")}`];
+    return [
+      {
+        path: `${origin}/plugin.php`,
+        query: "id=tsdmapp%3Aapi&action=status",
+        data: {
+          ok: 1,
+          uid: 31,
+          api: 1,
+          version: "4.0.0",
+          v4: 1,
+          [group]: route.has("tsdmv") ? [name] : ["neighbor"],
+          ...entry.statusData,
+        },
+        changeSession: entry.changeDuringStatus,
+      },
+      ...(entry.statusOnly ? [] : [entry]),
+    ];
+  });
   const requests = [];
   const options = {
     origin,
@@ -34,6 +74,11 @@ async function scenario(name, steps, expected, exercise) {
         });
         assert.deepEqual(request.session, session);
         assert.equal(request.fresh, true);
+        if (step.changeSession)
+          options.session = () => ({
+            ...session,
+            continuity: "changed-during-status",
+          });
         if (step.drop) throw new Error("Fictitious lost response");
         return {
           url,
@@ -48,7 +93,7 @@ async function scenario(name, steps, expected, exercise) {
   };
   const observed = await exercise(createTaskMagicClient(options), options);
   const expectedRequests = steps.map((step) => ({
-    url: `${home}?${step.query}`,
+    url: `${step.path ?? home}?${step.query}`,
     method: step.post === undefined ? "GET" : "POST",
     effect: step.effect ?? false,
     ...(step.post === undefined ? {} : { body: step.post }),
@@ -377,14 +422,20 @@ await scenario(
   },
   (client) => client.readMagicInventory(),
 );
-const logBase = { magicid: 34, name: "Fictitious Magic", dateline: 1700000000 };
+const logBase = {
+  magicid: 34,
+  name: "Fictitious Magic",
+  dateline: 1700000000,
+};
 const logExpected = { magicId, name: logBase.name, time: 1700000000 };
 const counterparty = { uid: 33, username: "Fictitious Counterparty" };
 for (const [direction, operation, data, expected] of [
   [
     "usage",
     "uselog",
-    { target: { type: "tid", id: 42, url: "forum.php?mod=viewthread&tid=42" } },
+    {
+      target: { type: "tid", id: 42, url: "forum.php?mod=viewthread&tid=42" },
+    },
     {
       target: {
         type: "tid",
@@ -682,6 +733,7 @@ await scenario(
         controls: [...useOffer.data.controls, { name: "tid", type: "text" }],
       },
     },
+    get(useQuery + "&tsdmapp=json", { ok: 0, error: "unknown" }),
   ],
   { kind: "browser-handoff", destination: `${origin}/${use}` },
   (client) => magicForm(client, "use"),
@@ -789,7 +841,10 @@ await scenario(
       html("<p>Legacy participant read</p>"),
     ),
   ],
-  { kind: "browser-handoff", destination: `${home}?mod=task&do=parter&id=42` },
+  {
+    kind: "browser-handoff",
+    destination: `${home}?mod=task&do=parter&id=42`,
+  },
   (client) => client.readTaskParticipants("42"),
 );
 const nativeGrid = (row, mode) =>
@@ -881,7 +936,11 @@ await scenario(
     kind: "task-list",
     tab: "new",
     tasks: [
-      { ...listed, applicants: null, reward: { text: "5 fictional credits" } },
+      {
+        ...listed,
+        applicants: null,
+        reward: { text: "5 fictional credits" },
+      },
     ],
   },
   (client) => client.readTasks("new"),
@@ -915,6 +974,7 @@ await scenario(
         controls: [{ name: "username", type: "number", value: "" }],
       },
     },
+    get(useQuery + "&tsdmapp=json", { ok: 0, error: "unknown" }),
   ],
   { kind: "browser-handoff", destination: `${origin}/${use}` },
   (client) => magicForm(client, "use"),
@@ -977,5 +1037,89 @@ await scenario(
   [readNew],
   { kind: "not-confirmed" },
   (_client, options) => applyExample(options, "42", async () => false),
+);
+for (const [name, route, capability, read] of [
+  [
+    "task detail",
+    "mod=task&do=view&id=42",
+    { task_pages: ["task_list", "task_parter"] },
+    (client) => client.readTask("42"),
+  ],
+  [
+    "task participants",
+    "mod=task&do=parter&id=42",
+    { task_pages: ["task_list", "task"] },
+    (client) => client.readTaskParticipants("42"),
+  ],
+  [
+    "magic log",
+    "mod=magic&action=log&operation=uselog",
+    { magic_pages: ["magic_shop", "magic_mybox"] },
+    (client) => client.readMagicLog("usage"),
+  ],
+]) {
+  await scenario(
+    `unadvertised ${name} hands off without requesting its page`,
+    [get(route, null, { statusOnly: true, statusData: capability })],
+    { kind: "browser-handoff", destination: `${home}?${route}` },
+    read,
+  );
+}
+await scenario(
+  "status from another member stops task discovery",
+  [{ ...readDetail, statusOnly: true, statusData: { uid: 32 } }],
+  { kind: "session-changed" },
+  (client) => client.readTask("42"),
+);
+await scenario(
+  "session switch during status stops task discovery",
+  [{ ...readDetail, statusOnly: true, changeDuringStatus: true }],
+  { kind: "session-changed" },
+  (client) => client.readTask("42"),
+);
+await scenario(
+  "v4 off declines an advertised task list and parses the legacy list",
+  [
+    get(`mod=task&item=new${legacyFlag}`, null, {
+      ...nativeTask,
+      statusData: { task_pages: ["task_list"], v4: 0 },
+    }),
+  ],
+  "task-list",
+  async (client) => (await client.readTasks("new")).kind,
+);
+await scenario(
+  "unadvertised shop parses its native item",
+  [get(`mod=magic&action=shop${legacyFlag}`, null, nativeShop)],
+  "magic-shop",
+  async (client) => (await client.readMagicShop()).kind,
+);
+await scenario(
+  "advertised buy form is independent of a legacy shop page",
+  [get(`mod=magic&action=shop${legacyFlag}`, null, nativeShop), buyOffer],
+  "magic-form",
+  async (client) => (await magicForm(client, "buy")).kind,
+);
+await scenario(
+  "advertised inventory with an unsupported schema falls back to its native list",
+  [
+    { ...boxRead, data: { ...boxRead.data, schema: 99 } },
+    get(`mod=magic&action=mybox${legacyFlag}`, null, nativeBox),
+  ],
+  "magic-inventory",
+  async (client) => (await client.readMagicInventory()).kind,
+);
+await scenario(
+  "advertised use form can fall back to a native form for the same item",
+  [
+    boxRead,
+    { ...useOffer, data: { ok: 0, uid: 31, error: "off" } },
+    get(useQuery + legacyFlag, null, {
+      body: xml(legacyUse),
+      contentType: "text/xml",
+    }),
+  ],
+  "magic-form",
+  async (client) => (await magicForm(client, "use")).kind,
 );
 console.log(JSON.stringify(results));

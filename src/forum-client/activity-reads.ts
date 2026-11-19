@@ -48,6 +48,9 @@ const schemas = {
   payments: [51, "payments"],
   comments: [22, "comments"],
 } as const;
+export function threadListCapability(view: ActivityQuery["view"]) {
+  return view === "warnings" || view === "comments" ? null : schemas[view][1];
+}
 export function addWindow(url: URL, handle: string) {
   url.searchParams.set("infloat", "yes");
   url.searchParams.set("handlekey", handle);

@@ -47,6 +47,7 @@ function scenario(steps) {
           assert.equal(options.fresh, true);
           assert.equal(options.method, step.method ?? "GET");
           assert.equal(options.effect, step.effect ?? false);
+          assert.deepEqual(options.headers, step.headers);
           assert.deepEqual(
             options.body === undefined
               ? undefined
@@ -834,6 +835,65 @@ for (const [change, method, values, refused, succeeded] of [
     "foreign registration link uses canonical forum handoff",
     origin + "/member.php?mod=register",
     (await client.openLoginForm()).registration,
+  );
+  done();
+}
+{
+  const deviceId = "01234567-89ab-4def-8123-456789abcdef";
+  const input = { memberId: "31", deviceId };
+  const headers = { "X-Tsdmapp-Device": deviceId };
+  const revoked = { ok: 0, error: "device_revoked", uid: 31, device: deviceId };
+  const answer = (body, extra = {}) => ({
+    path: statusPath,
+    headers,
+    body: JSON.stringify(body),
+    ...extra,
+  });
+  const { client, done } = scenario([
+    { path: statusPath, headers, body: statusFixture },
+    answer(revoked),
+    answer(revoked, { status: 403 }),
+    answer({ ...revoked, uid: 32 }),
+    answer({ ...revoked, device: "11234567-89ab-4def-8123-456789abcdef" }),
+    answer({ ok: 1, uid: 32, api: 1, version: "4.0.0" }),
+    answer({ ok: 1, uid: 0, api: 1, version: "4.0.0" }),
+    answer({ ok: 0, error: "busy" }, { status: 429 }),
+    answer({}, { status: 503 }),
+    answer(revoked, { redirect: "followed" }),
+    answer(revoked, { rotate: true }),
+  ]);
+  record(
+    "stored-device status verifies the served member",
+    { kind: "status", id: "31" },
+    await client
+      .readStoredDeviceStatus(input)
+      .then((result) => ({ kind: result.kind, id: result.identity?.id })),
+  );
+  for (const code of [200, 403])
+    record(
+      `stored-device revocation binds the member and device on HTTP ${code}`,
+      { kind: "device-revoked", ...input },
+      await client.readStoredDeviceStatus(input),
+    );
+  for (const [label, kind] of [
+    ["wrong revoked member", "invalid"],
+    ["wrong revoked device", "invalid"],
+    ["wrong status member", "invalid"],
+    ["guest status", "invalid"],
+    ["busy", "rate-limited"],
+    ["unavailable", "unavailable"],
+    ["redirect", "invalid"],
+    ["changed session", "session-changed"],
+  ])
+    record(
+      `stored-device status: ${label}`,
+      kind,
+      (await client.readStoredDeviceStatus(input)).kind,
+    );
+  record(
+    "invalid stored-device input sends no request",
+    { kind: "invalid" },
+    await client.readStoredDeviceStatus({ ...input, deviceId: "invalid\r\n" }),
   );
   done();
 }

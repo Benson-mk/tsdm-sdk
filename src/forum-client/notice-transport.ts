@@ -10,7 +10,11 @@ export type NoticeRequest = {
   readonly fresh: true;
   readonly session: NoticeSession;
 } & (
-  | { readonly method: "GET"; readonly body?: never }
+  | {
+      readonly method: "GET";
+      readonly body?: never;
+      readonly effect?: boolean;
+    }
   | { readonly method: "POST"; readonly body: string }
 );
 
@@ -65,14 +69,19 @@ export function noticeHost(options: NoticeClientOptions) {
     const actual = session();
     return actual?.memberId === expected.memberId && actual.continuity === expected.continuity;
   }
-  async function request(url: string, expected: NoticeSession, body?: string) {
+  async function request(
+    url: string,
+    expected: NoticeSession,
+    body?: string,
+    effect?: boolean,
+  ) {
     if (!current(expected)) return { kind: "session-changed" } as const;
     let response;
     try {
       response = await options.transport.request(
         url,
         body === undefined
-          ? { fresh: true, session: expected, method: "GET" }
+          ? { fresh: true, session: expected, method: "GET", ...(effect && { effect }) }
           : { fresh: true, session: expected, method: "POST", body },
       );
     } catch {

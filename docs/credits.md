@@ -75,6 +75,22 @@ Start with a `requests.Session` containing the intended member's forum credentia
 from urllib.parse import parse_qs, urljoin, urlsplit
 
 
+def advertised(session, origin, capability):
+    response = session.get(origin + "/plugin.php", params={"id": "tsdmapp:api", "action": "status"},
+                           allow_redirects=False, timeout=20)
+    if response.status_code == 404:
+        return False
+    if response.status_code != 200:
+        raise RuntimeError("Capability check failed: " + str(response.status_code))
+    try:
+        flags = response.json()
+    except ValueError:
+        return False
+    if flags.get("error") in {"busy", "login"}:
+        raise RuntimeError("Capability check refused: " + flags["error"])
+    return flags.get("ok") == 1 and flags.get("v4") == 1 and capability in flags.get("credit_pages", [])
+
+
 def read_view(session, origin, view, **filters):
     if view == "attendance":
         path, params = "/plugin.php", {"id": "tsdmapp:api", "action": "checkin"}
@@ -98,6 +114,11 @@ def read_view(session, origin, view, **filters):
                 params["gid"] = filters["gid"]
     else:
         raise ValueError("Unsupported read view")
+    if view in {"balance", "group"}:
+        capability = "credit_base" if view == "balance" else "usergroup_info"
+        if not advertised(session, origin, capability):
+            for flag in ("tsdmapp", "tsdmv", "nodoc"):
+                params.pop(flag, None)
     return session.get(origin + path, params=params, allow_redirects=False, timeout=20)
 
 
@@ -145,7 +166,7 @@ For check-in, use the current form hash and one of `kx`, `ng`, `ym`, `wl`, `nu`,
 
 ## curl
 
-Set `FORUM_ORIGIN` and the protected `FORUM_COOKIE_JAR` for the intended account. Select one operation with `CREDITS_MODE`. Use `READ_URL` for one verified read URL from the table. For check-in set `FORMHASH`, `FEELING` and `TODAYSAY` after approval. For a switch set `SWITCH_URL` to the verified returned action with `inajax=1&tsdmapp=json` and `SWITCH_FIELDS` to a protected file containing the exact URL-encoded form fields. Set `CREDITS_APPROVAL` to the relevant effect mode only after consent.
+Set `FORUM_ORIGIN` and the protected `FORUM_COOKIE_JAR` for the intended account. Select one operation with `CREDITS_MODE`. Use `READ_URL` first for `plugin.php?id=tsdmapp:api&action=status` before reading a balance or group. Verify the member, `v4=1` and `credit_pages` containing `credit_base` or `usergroup_info`. Select the corresponding structured URL when advertised. Otherwise use the same native route without the JSON, v4 and document-omission flags. For check-in set `FORMHASH`, `FEELING` and `TODAYSAY` after approval. For a switch set `SWITCH_URL` to the verified returned action with `inajax=1&tsdmapp=json` and `SWITCH_FIELDS` to a protected file containing the exact URL-encoded form fields. Set `CREDITS_APPROVAL` to the relevant effect mode only after consent.
 
 ```sh
 case "${CREDITS_MODE:-}" in

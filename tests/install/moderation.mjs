@@ -15,6 +15,51 @@ const step = (query, body, request = {}, response = {}) => ({
   response,
 });
 async function scenario(name, steps, expected, run) {
+  steps = steps.flatMap((entry, index) => {
+    const route = new URLSearchParams(entry.query);
+    const action = route.get("action");
+    const form =
+      action === "getthreadtypes"
+        ? "threadtypes"
+        : ["stamp", "stamplist", "copy", "merge", "split"].includes(action)
+          ? "moderate"
+          : [
+                "moderate",
+                "delpost",
+                "warn",
+                "banpost",
+                "delcomment",
+                "removerate",
+              ].includes(action)
+            ? action
+            : null;
+    if (
+      !form ||
+      entry.request.effect ||
+      (index > 0 &&
+        steps[index - 1].query.startsWith(entry.query + "&tsdmv="))
+    )
+      return [entry];
+    return [
+      {
+        path: "/plugin.php",
+        query: "id=tsdmapp%3Aapi&action=status",
+        request: {},
+        response: {},
+        body: json({
+          ok: 1,
+          uid: 31,
+          api: 1,
+          version: "4.0.0",
+          v4: 1,
+          forms: route.has("tsdmv") ? [form] : ["poke"],
+          ...entry.statusData,
+        }),
+        changeSession: entry.changeDuringStatus,
+      },
+      ...(entry.statusOnly ? [] : [entry]),
+    ];
+  });
   const requests = [];
   const options = {
     origin,
@@ -24,6 +69,11 @@ async function scenario(name, steps, expected, run) {
         const expectedStep = steps[requests.length];
         requests.push({ url, ...request });
         assert.ok(expectedStep, "unexpected request");
+        if (expectedStep.changeSession)
+          options.session = () => ({
+            ...session,
+            continuity: "changed-during-status",
+          });
         if (expectedStep.response.drop)
           throw new Error("Controlled response loss");
         return {
@@ -37,14 +87,16 @@ async function scenario(name, steps, expected, run) {
     },
   };
   const observed = await run(createModerationClient(options), options);
-  const expectedRequests = steps.map(({ query, request }) => ({
-    url: `${origin}/forum.php?${query}`,
-    method: "GET",
-    effect: false,
-    fresh: true,
-    session,
-    ...request,
-  }));
+  const expectedRequests = steps.map(
+    ({ path = "/forum.php", query, request }) => ({
+      url: `${origin}${path}?${query}`,
+      method: "GET",
+      effect: false,
+      fresh: true,
+      session,
+      ...request,
+    }),
+  );
   assert.deepEqual(requests, expectedRequests, name);
   assert.deepEqual(observed, expected, name);
   results.push({ name, expected, observed, expectedRequests, requests });
@@ -87,7 +139,10 @@ await scenario(
         fid: 13,
         required: 0,
         submit: null,
-        select: { name: "threadtypeid", choices: [{ value: "0", label: "" }] },
+        select: {
+          name: "threadtypeid",
+          choices: [{ value: "0", label: "" }],
+        },
       }),
     ),
   ],
@@ -188,7 +243,11 @@ await scenario(
 await scenario(
   "the moderator must explicitly choose a new batch if the server drops a thread",
   [step(batchQuery, batchForm(["80"]))],
-  { kind: "selection-changed", target: batchTarget, offeredThreadIds: ["80"] },
+  {
+    kind: "selection-changed",
+    target: batchTarget,
+    offeredThreadIds: ["80"],
+  },
   (client) => client.prepareModeration(batchTarget),
 );
 
@@ -285,7 +344,11 @@ for (const [operation, group, asksOperation, controls, changes] of [
         highlight_bgcolor: "",
         expirationhighlight: "",
       },
-      recommend: { isrecommend: "0", expirationrecommend: "", reducetitle: "" },
+      recommend: {
+        isrecommend: "0",
+        expirationrecommend: "",
+        reducetitle: "",
+      },
       close: { expirationclose: "" },
       open: { expirationclose: "" },
       move: { moveto: "12", threadtypeid: "0", type: "normal" },
@@ -436,6 +499,80 @@ for (const [operation, controls, fields, values] of [
       const opened = await client.prepareModeration(target);
       assert.equal(opened.kind, "moderation-form");
       return client.submitModeration(opened.form, values, true);
+    },
+  );
+  const fieldsByOperation = {
+    stamp: {
+      stamp: {
+        name: "stamp",
+        type: "select",
+        choices: [{ value: "1", label: "Stamp" }],
+      },
+    },
+    stamplist: {
+      stamplist: {
+        name: "stamplist",
+        type: "select",
+        choices: [{ value: "9", label: "Icon" }],
+      },
+    },
+    copy: {
+      copyto: { name: "copyto", type: "select" },
+      forums: [{ fid: 13, name: "Destination" }],
+      threadtypeid: { name: "threadtypeid", type: "select", value: "0" },
+    },
+    merge: { othertid: { name: "othertid", type: "text" } },
+    split: {
+      subject: { name: "subject", type: "text" },
+      split: { name: "split", type: "textarea" },
+    },
+  };
+  for (const control of Object.values(fieldsByOperation[operation])) {
+    if (control.choices) control.choices[0].value = values[control.name];
+  }
+  const structuredAsk = steps[0].query.slice(0, -legacy.length) + v4;
+  const structuredForm = smallForm("moderate", {
+    action: operation,
+    fid: 12,
+    tid: 80,
+    submit: {
+      url: "forum.php?" + action,
+      method: "POST",
+      enctype: "application/x-www-form-urlencoded",
+      fields: Object.fromEntries(fixed),
+    },
+    reason: { name: "reason", type: "textarea", value: "" },
+    ...fieldsByOperation[operation],
+  });
+  const write = steps.at(-1);
+  await scenario(
+    `advertised structured standalone ${operation}`,
+    [
+      step(structuredAsk, structuredForm),
+      ...steps.slice(1, -1),
+      { ...write, query: write.query + "&tsdmv=4" },
+    ],
+    { kind: "acknowledged", target, code: "admin_succeed" },
+    async (client) => {
+      const opened = await client.prepareModeration(target);
+      assert.equal(opened.kind, "moderation-form");
+      assert.deepEqual(
+        await client.submitModeration(opened.form, values, false),
+        { kind: "not-confirmed" },
+      );
+      return client.submitModeration(opened.form, values, true);
+    },
+  );
+  await scenario(
+    `advertised standalone ${operation} falls back to its native dialog`,
+    [
+      step(structuredAsk, json({ ok: 1, uid: 31, type: "unsupported" })),
+      steps[0],
+    ],
+    "moderation-form",
+    async (client) => {
+      const opened = await client.prepareModeration(target);
+      return opened.kind;
     },
   );
 }
@@ -656,7 +793,11 @@ await scenario(
         reason: { name: "reason", type: "text" },
         logid: { name: "logidarray[]", type: "checkbox" },
         logs: [
-          { value: "55 1 1234567890", username: "Fictitious rater", score: 2 },
+          {
+            value: "55 1 1234567890",
+            username: "Fictitious rater",
+            score: 2,
+          },
         ],
         submit: {
           url: "forum.php?" + removeRateAction,
@@ -676,7 +817,11 @@ await scenario(
       ]).toString(),
     }),
   ],
-  { kind: "acknowledged", target: removal, code: "thread_rate_removesucceed" },
+  {
+    kind: "acknowledged",
+    target: removal,
+    code: "thread_rate_removesucceed",
+  },
   async (client) => {
     const form = await client.prepareModeration(removal);
     assert.equal(form.kind, "moderation-form");
@@ -830,7 +975,11 @@ for (const [name, reply, response, result] of [
     "one deleted",
     viewerResult({ kind: "page", document: "1" }),
     {},
-    { kind: "acknowledged", target: attachment, code: "deleteattach_succeed" },
+    {
+      kind: "acknowledged",
+      target: attachment,
+      code: "deleteattach_succeed",
+    },
   ],
   [
     "zero deleted",
@@ -992,7 +1141,11 @@ for (const [name, reply, response, verdict] of [
         true,
       );
       assert.deepEqual(
-        await client.submitModeration(preparation.form, { copyto: "13" }, true),
+        await client.submitModeration(
+          preparation.form,
+          { copyto: "13" },
+          true,
+        ),
         { kind: "invalid-input" },
       );
       return effect;
@@ -1154,7 +1307,10 @@ await scenario(
         fid: 12,
         required: 0,
         submit: null,
-        select: { name: "threadtypeid", choices: [{ value: "0", label: "" }] },
+        select: {
+          name: "threadtypeid",
+          choices: [{ value: "0", label: "" }],
+        },
       }),
     ),
     step(copyAction + "&inajax=1&" + legacy, ack, {
@@ -1197,4 +1353,111 @@ await scenario(
   },
 );
 
+await scenario(
+  "moderation status switch off declines an advertised form",
+  [
+    {
+      ...step(copyAsk, copyForm),
+      statusData: { forms: ["moderate"], v4: 0 },
+    },
+  ],
+  "moderation-form",
+  async (client) => (await client.prepareModeration(copy)).kind,
+);
+await scenario(
+  "moderation status for another viewer stops before the form",
+  [
+    {
+      ...step(copyAsk, copyForm),
+      statusOnly: true,
+      statusData: { uid: 33, forms: ["moderate"] },
+    },
+  ],
+  { kind: "session-changed" },
+  (client) => client.prepareModeration(copy),
+);
+await scenario(
+  "moderation session replacement during status stops before the form",
+  [
+    {
+      ...step(copyAsk, copyForm),
+      statusOnly: true,
+      changeDuringStatus: true,
+    },
+  ],
+  { kind: "session-changed" },
+  (client) => client.prepareModeration(copy),
+);
+const sinkTarget = { operation: "down", forumId: "12", threadIds: ["80"] };
+const sinkAction =
+  "mod=topicadmin&action=moderate&optgroup=3&modsubmit=yes&infloat=yes";
+const sinkQuery = `mod=topicadmin&action=moderate&fid=12&moderate%5B%5D=80&${modsWindow}&optgroup=3&inajax=1&`;
+const sinkFixed = Object.fromEntries(common);
+const sinkForm = smallForm("moderate", {
+  fid: 12,
+  tids: [80],
+  optgroup: 3,
+  operations: [
+    { name: "operations[]", value: "down", type: "radio", expiration: null },
+  ],
+  reason: { name: "reason", type: "textarea", value: "" },
+  submit: {
+    url: `forum.php?${sinkAction}`,
+    method: "POST",
+    enctype: "application/x-www-form-urlencoded",
+    fields: sinkFixed,
+    lists: { "moderate[]": ["80"] },
+  },
+});
+for (const [mode, form, flag] of [
+  ["structured", sinkForm, v4],
+  [
+    "XML",
+    xml(
+      `<form id="moderateform" method="post" action="forum.php?${sinkAction.replaceAll("&", "&amp;")}">${common.map(([k, v]) => hidden(k, v)).join("")}${hidden("moderate[]", "80")}<input type="radio" name="operations[]" value="down">${nativeReason}</form>`,
+    ),
+    legacy,
+  ],
+]) {
+  await scenario(
+    `sink accepts ${mode} moderation form without an expiration control`,
+    [
+      step(sinkQuery + flag, form),
+      step(
+        sinkAction +
+          "&inajax=1&" +
+          legacy +
+          (mode === "structured" ? "&tsdmv=4" : ""),
+        ack,
+        {
+          method: "POST",
+          effect: true,
+          body: new URLSearchParams([
+            ...common,
+            ["moderate[]", "80"],
+            ["operations[]", "down"],
+            ["reason", ""],
+          ]).toString(),
+        },
+      ),
+    ],
+    { kind: "acknowledged", target: sinkTarget, code: "admin_succeed" },
+    async (client) => {
+      const opened = await client.prepareModeration(sinkTarget);
+      assert.equal(opened.kind, "moderation-form");
+      assert.ok(
+        !opened.form.fields.some(({ name }) => name === "expirationdown"),
+      );
+      assert.deepEqual(
+        await client.submitModeration(
+          opened.form,
+          { expirationdown: "2026-12-01" },
+          true,
+        ),
+        { kind: "invalid-input" },
+      );
+      return client.submitModeration(opened.form, {}, true);
+    },
+  );
+}
 console.log(JSON.stringify(results));

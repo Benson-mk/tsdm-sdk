@@ -48,13 +48,16 @@ def target(raw):
 
 observed = []
 active = None
+capability = {"ok": 1, "uid": 701, "v4": 1, "announce": 1}
+status_route = api + "status"
+status_request = ("GET", *target(status_route), {}, "controlled=701")
 
 
 class Forum(BaseHTTPRequestHandler):
     def do_GET(self):
         data = self.rfile.read(int(self.headers.get('Content-Length', 0))).decode()
         observed.append((self.command, *target(self.path), parse_qs(data, keep_blank_values=True), self.headers.get('Cookie')))
-        body = expected[active][-1]
+        body = capability if target(self.path) == target(status_route) else expected[active][-1]
         self.send_response(200)
         self.send_header('Content-Type', 'application/json' if isinstance(body, dict) else 'text/plain; charset=utf-8')
         self.end_headers()
@@ -87,10 +90,27 @@ with ThreadingHTTPServer(('127.0.0.1', 0), Forum) as server:
                 assert headers.startswith('HTTP/1.0 200 '), (active, headers)
             result = json.loads(payload) if isinstance(response, dict) else payload
             request = (method, *target(route), fields, 'controlled=701')
-            assert observed[before:] == [request], (lang, active, observed[before:], request)
+            trace = ([status_request] if active in {"broadcasts", "broadcast"} else []) + [request]
+            assert observed[before:] == trace, (lang, active, observed[before:], trace)
             assert result == response, (lang, active, result)
-            rows.append({'client': lang, 'mode': active, 'expected': {'request': request, 'response': response},
-                         'observed': {'request': observed[-1], 'response': result}})
+            rows.append({'client': lang, 'mode': active, 'expected': {'requests': trace, 'response': response},
+                         'observed': {'requests': observed[before:], 'response': result}})
+        for mode, route in [('broadcasts', space + 'filter=announcepm'), ('broadcast', space + 'subop=viewg&pmid=911')]:
+            active = 'broadcasts-native'
+            before = len(observed)
+            capability['announce'] = 0
+            subprocess.run(call, input=blocks[lang], text=True, capture_output=True, check=True,
+                           env={**env, 'MODE': mode})
+            trace = [status_request, ('GET', *target(route), {}, 'controlled=701')]
+            assert observed[before:] == trace
+            rows.append({'client': lang, 'mode': mode + ' without advertisement', 'expected': trace, 'observed': observed[before:]})
+        capability.update(announce=1, uid=702)
+        before = len(observed)
+        wrong_viewer = subprocess.run(call, input=blocks[lang], text=True, capture_output=True,
+                                      env={**env, 'MODE': 'broadcast'})
+        assert wrong_viewer.returncode != 0 and observed[before:] == [status_request]
+        rows.append({'client': lang, 'mode': 'broadcast status wrong viewer', 'expected': [status_request], 'observed': observed[before:]})
+        capability.update(uid=701)
         before = len(observed)
         refused = subprocess.run(call, input=blocks[lang], text=True, capture_output=True,
                                  env={**env, 'MODE': 'send-dialog', 'CONFIRM': '0'})

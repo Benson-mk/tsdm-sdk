@@ -63,7 +63,9 @@ medal = 'dsu_medalCenter:memcp'
 title = 'tsdmtitle:tsdmtitle'
 reads = [(view, {'id': 'tsdmapp:api', 'action': view}) for view in
          ('medals','mymedals','medalgrant','titles','titleshop','titleexchange','titleissue','bggrant')]
-reads += [('achievements', {'id':'tsdmtitle:achi','tsdmapp':'json','tsdmv':'4','nodoc':'1'})]
+reads += [('status', {'id': 'tsdmapp:api', 'action': 'status'}),
+          ('achievements', {'id': 'tsdmtitle:achi'}),
+          ('achievements-v4', {'id':'tsdmtitle:achi','tsdmapp':'json','tsdmv':'4','nodoc':'1'})]
 forms = [
     ('claim', medal, 'action', 'claim', {'medalid':'101','method':'5','credit':'2','dsumcsubmit':'1'}),
     ('sethide', medal, 'action', 'sethide', {'myMedalHide[11]':'1','dsumcsubmit':'1'}),

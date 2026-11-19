@@ -1,3 +1,5 @@
+import type { HostResponse } from "./types.js";
+import { selectV4, unsupportedV4, v4StatusURL } from "./v4-selection.js";
 import {
   noticeJSON,
   numericId,
@@ -21,6 +23,7 @@ export type NoticeIgnoreRulesResult =
   | { kind: "not-dispatched"; reason?: NoticeFailure };
 
 export type NoticeIgnoreFormResult =
+  | { kind: "handoff"; destination: string }
   | {
       kind: "form";
       target: NoticeIgnoreTarget;
@@ -266,6 +269,22 @@ function desiredRule(
   );
 }
 
+function ignoreResponse(response: HostResponse, session: NoticeSession) {
+  const decoded = noticeJSON(response);
+  if (response.status !== 200 || decoded.kind === "rate-limited") return decoded;
+  let data;
+  try {
+    data = object(JSON.parse(response.body));
+  } catch {
+    return { kind: "legacy" } as const;
+  }
+  const viewer = numericId(data?.uid);
+  if (data?.login === 1 || viewer === "0") return { kind: "refused" } as const;
+  if (data?.uid !== undefined && viewer !== session.memberId)
+    return { kind: "session-changed" } as const;
+  return unsupportedV4(data) ? { kind: "legacy" } as const : decoded;
+}
+
 export function noticeIgnore(host: NoticeHost) {
   let changing = false;
 
@@ -301,7 +320,9 @@ export function noticeIgnore(host: NoticeHost) {
       : { kind: "not-dispatched", reason: loaded.kind };
   }
 
-  async function loadNoticeIgnoreForm(target: NoticeIgnoreTarget): Promise<NoticeIgnoreFormResult> {
+  async function loadNoticeIgnoreForm(
+    target: NoticeIgnoreTarget,
+  ): Promise<NoticeIgnoreFormResult> {
     const session = host.session();
     if (
       !session ||
@@ -309,16 +330,59 @@ export function noticeIgnore(host: NoticeHost) {
       !/^(0|[1-9]\d*)$/.test(target.authorId)
     )
       return { kind: "not-dispatched", reason: "refused" };
-    const loaded = await host.request(ignoreFormURL(host.origin, target).href, session);
-    if (loaded.kind !== "response") return { kind: "not-dispatched", reason: loaded.kind };
-    const decoded = noticeJSON(loaded.response);
-    if (decoded.kind !== "json") return { kind: "not-dispatched", reason: decoded.kind };
+    const loaded = await loadIgnore(session, target);
+    return loaded.kind === "structured"
+      ? { kind: "form", target, scopes: loaded.form.scopes }
+      : loaded.kind === "legacy"
+        ? {
+            kind: "handoff",
+            destination: ignoreFormURL(host.origin, target, true).href,
+          }
+        : { kind: "not-dispatched", reason: loaded.kind };
+  }
+
+  async function loadIgnore(
+    session: NoticeSession,
+    target: NoticeIgnoreTarget,
+  ): Promise<
+    | { kind: "structured"; form: IgnoreForm }
+    | { kind: "legacy" | NoticeFailure }
+  > {
+    const statusURL = v4StatusURL(host.origin);
+    const status = await host.request(statusURL, session);
+    if (status.kind !== "response") return status;
+    const statusProblem = ignoreResponse(status.response, session);
+    if (statusProblem.kind === "legacy") return statusProblem;
+    if (statusProblem.kind !== "json") return statusProblem;
+    const selection = selectV4(
+      status.response,
+      statusURL,
+      "forms",
+      "ignore",
+      session.memberId,
+    );
+    if (selection.kind === "limited")
+      return { kind: "rate-limited" } as const;
+    if (selection.kind !== "v4") return { kind: selection.kind };
+    const loaded = await host.request(
+      ignoreFormURL(host.origin, target).href,
+      session,
+    );
+    if (loaded.kind !== "response") return loaded;
+    const decoded = ignoreResponse(loaded.response, session);
+    if (decoded.kind !== "json") return decoded;
     if (numericId(decoded.data.uid) !== session.memberId)
-      return { kind: "not-dispatched", reason: "session-changed" };
+      return { kind: "session-changed" };
+    if (
+      decoded.data.type !== "form" ||
+      decoded.data.schema !== 17 ||
+      decoded.data.form !== "ignore"
+    )
+      return { kind: "legacy" } as const;
     const form = ignoreForm(decoded.data, target, host.origin);
     return form
-      ? { kind: "form", target, scopes: form.scopes }
-      : { kind: "not-dispatched", reason: "invalid-response" };
+      ? ({ kind: "structured", form } as const)
+      : ({ kind: "invalid-response" } as const);
   }
 
   async function addNoticeIgnoreRule(
@@ -337,18 +401,21 @@ export function noticeIgnore(host: NoticeHost) {
     const existing = initial.form.rules.find(
       (rule) => rule.type === target.type && rule.authorId === desiredAuthor,
     );
-    if (existing) return { kind: "already-applied", rules: initial.form.rules };
-    const formLoaded = await host.request(ignoreFormURL(host.origin, target).href, session);
-    if (formLoaded.kind !== "response") return { kind: "not-dispatched" };
-    const decoded = noticeJSON(formLoaded.response);
-    if (decoded.kind !== "json" || numericId(decoded.data.uid) !== session.memberId)
+    if (existing)
+      return { kind: "already-applied", rules: initial.form.rules };
+    const formLoaded = await loadIgnore(session, target);
+    if (
+      formLoaded.kind !== "structured" ||
+      !formLoaded.form.scopes.includes(scope)
+    )
       return { kind: "not-dispatched" };
-    const form = ignoreForm(decoded.data, target, host.origin);
-    if (!form || !form.scopes.includes(scope)) return { kind: "not-dispatched" };
+    const { form } = formLoaded;
     const url = postURL(form.submit.url, host.origin);
     if (!url) return { kind: "not-dispatched" };
     url.search += `&inajax=1&${secret}&${version}`;
-    const fields = form.submit.fields.filter(({ name }) => name !== "authorid");
+    const fields = form.submit.fields.filter(
+      ({ name }) => name !== "authorid",
+    );
     fields.push({ name: "authorid", value: desiredAuthor });
     const sent = await host.request(url.href, session, body(fields));
     if (sent.kind !== "response") return { kind: "unknown-effect" };
@@ -364,7 +431,11 @@ export function noticeIgnore(host: NoticeHost) {
       }
       return { kind: "unknown-effect" };
     }
-    return refusal(result.data, final.kind === "privacy" && !!desiredRule(target, scope, final.form.rules));
+    return refusal(
+      result.data,
+      final.kind === "privacy" &&
+        !!desiredRule(target, scope, final.form.rules),
+    );
   }
 
   async function removeNoticeIgnoreRule(

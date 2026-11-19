@@ -102,7 +102,9 @@ const host = {origin, session:()=>session, transport:{async request(url, options
   requests++;
   effects += Number(options.effect);
   const path = new URL(url);
-  const data = path.searchParams.get("mod") === "viewthread"
+  const data = path.searchParams.get("action") === "status"
+    ? {ok:1,uid:31,v4:1,thread_lists:["ratings"]}
+    : path.searchParams.get("mod") === "viewthread"
     ? {ok:1,type:"thread",schema:23,uid:31,formhash:"fixture",thread:{tid:90},
        recommend:{shown:1,can:1,add:{label:"Support",count:2}}}
     : {ok:1,type:"ratings",schema:48,uid:31,tid:90,pid:302,count:0,logs:[],totals:[]};
@@ -113,7 +115,7 @@ const result = await respond(host,{action:"recommend",threadURL:origin+"/forum.p
   assert.equal(form.evaluation.label,"Support");
   return null;
 });
-const expected = ["ratings",0,"cancelled",2,0];
+const expected = ["ratings",0,"cancelled",3,0];
 const actual = [read.kind,read.rows.length,result.kind,requests,effects];
 assert.deepEqual(actual,expected);
 console.log(JSON.stringify({name:"installed guide read and cancelled approval",expected,actual}));

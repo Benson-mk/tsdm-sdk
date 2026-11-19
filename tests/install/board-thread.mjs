@@ -559,6 +559,252 @@ for (const [name, key] of [
   assert.ok(!JSON.stringify(special).includes("formhash"));
   run.done(result, { type: special.type, [key]: special.details[key] });
 }
+const reviewCases = process.env.TSDM_THREAD_REVIEW_CASE;
+if (reviewCases !== "media") {
+  const cases = [
+    [
+      "thread_v14_plain",
+      14,
+      "9199849",
+      "35",
+      [["4546", "32", "1"]],
+      "原生发帖页。",
+    ],
+    [
+      "thread_v14_attachments",
+      14,
+      "9200046",
+      "35",
+      [
+        ["4989", "32", "1"],
+        ["4990", "35", "2"],
+        ["4991", "32", "3"],
+        ["4992", "35", "4"],
+        ["4993", "32", "5"],
+        ["4994", "32", "6"],
+        ["4995", "35", "7"],
+        ["4996", "32", "8"],
+        ["4997", "35", "9"],
+        ["4998", "32", "10"],
+      ],
+      "表情與各種標籤 282713",
+      "2",
+    ],
+    [
+      "post_comment/thread_api_member",
+      18,
+      "1234567",
+      "31",
+      [
+        ["11262", "31", "1"],
+        ["11263", "35", "2"],
+        ["11264", "35", "3"],
+      ],
+      "CM測試 主樓內容",
+    ],
+    [
+      "moderate/thread_stuck_api",
+      21,
+      "1234567",
+      "30",
+      [
+        ["7654320", "42", "1"],
+        ["7654321", "42", "4"],
+        ["7654322", "31", "2"],
+        ["7654323", "30", "3"],
+      ],
+      "樓層操作測試主題首樓內容。",
+    ],
+    [
+      "tsdmapp_390/thread_viewip",
+      23,
+      "9203116",
+      "32",
+      [["15505", "104", "1"]],
+      "tsdmapp390 reward first",
+    ],
+  ];
+  const reads = await Promise.all(
+    cases.map(async ([fixtureName, schema, id]) => {
+      const body = json(fixtureName);
+      assert.equal(body.schema, schema);
+      assert.equal(body.document, undefined);
+      const requests = [];
+      const client = createForumClient({
+        origin,
+        transport: {
+          async request(url, { fresh }) {
+            assert.equal(fresh, true);
+            const structured = new URL(url).searchParams.has("tsdmapp");
+            requests.push(structured ? "structured" : "native");
+            return {
+              url,
+              status: 200,
+              redirect: "none",
+              contentType: structured ? "application/json" : "text/html",
+              body: structured ? JSON.stringify(body) : "<p>Unavailable</p>",
+            };
+          },
+        },
+      });
+      return {
+        result: await client.readThread(thread(id), structured),
+        requests,
+      };
+    }),
+  );
+  assert.deepEqual(
+    reads.map(({ result }) => result.kind),
+    cases.map(() => "thread"),
+  );
+  for (const [
+    index,
+    [fixtureName, schema, id, viewer, rows, bodyText, total = "1"],
+  ] of cases.entries()) {
+    const { result, requests } = reads[index];
+    const view = resultOf(result, "thread");
+    assert.equal(view.id, id);
+    assert.equal(result.account.id, viewer);
+    assert.deepEqual(
+      view.posts.map(({ id, authorId, floor }) => [id, authorId, floor]),
+      rows,
+    );
+    assert.equal(view.pages.current, "1");
+    assert.equal(view.pages.total, total);
+    assert.ok(visible(view.posts[0].content).includes(bodyText));
+    const details = {};
+    if (fixtureName === "thread_v14_attachments") {
+      const image = `${origin}/data/attachment/forum/202610/16/095551dcacw748nxjowxnk.png`;
+      const images = (nodes) =>
+        nodes.flatMap((node) =>
+          node.kind === "text"
+            ? []
+            : [
+                ...(node.kind === "element" && node.tag === "img"
+                  ? [node.attributes.src]
+                  : []),
+                ...images(node.children),
+              ],
+        );
+      const restricted = view.posts.find((post) => post.id === "4995");
+      assert.ok(images(view.posts[0].content).includes(image));
+      assert.ok(images(restricted.content).includes(image));
+      assert.equal(restricted.restriction, "password");
+      assert.ok(visible(restricted.content).includes("密碼樓的內文 282713"));
+      assert.ok(
+        visible(view.posts[8].content).includes("日本語とemoji 😀 結尾"),
+      );
+      details.attachmentImage = image;
+      details.restriction = restricted.restriction;
+    }
+    assert.equal(view.posts[0].url, exact(rows[0][0], id));
+    assert.deepEqual(requests, ["structured"]);
+    if (schema === 23) assert.equal(view.special?.type, "reward");
+    observations.push({
+      name: `Pinned structured thread schema ${schema}: ${fixtureName}`,
+      observed: { fixtureName, schema, id, viewer, rows, total, ...details },
+      requests,
+    });
+  }
+  const body = json("post_comment/thread_api_member");
+  const run = setup(
+    "Later thread schemas still require TID, PID and an observable body",
+    { body },
+    { body, url: thread(222222), redirect: "followed" },
+    { body, url: thread(1234567), redirect: "followed" },
+    { body: { ...body, thread: { ...body.thread, tid: undefined } } },
+    { body: "<p>Unavailable</p>" },
+    {
+      body: {
+        ...body,
+        posts: [{ ...body.posts[0], body_html: "", message: "" }],
+      },
+    },
+    { body: "<p>Unavailable</p>" },
+  );
+  const wrongThread = await run.client.readThread(thread(222222), structured);
+  assert.equal(wrongThread.kind, "invalid");
+  assert.equal(
+    (await run.client.readThread(thread(1234567), structured)).kind,
+    "invalid",
+  );
+  assert.equal(
+    (await run.client.readThread(exact(999999, 1234567), structured)).kind,
+    "invalid",
+  );
+  assert.equal(
+    (await run.client.readThread(thread(1234567), structured)).kind,
+    "incomplete",
+  );
+  assert.equal(
+    (await run.client.readThread(thread(1234567), structured)).kind,
+    "incomplete",
+  );
+  run.done(wrongThread, {
+    mismatches: "invalid",
+    missingIdentityOrBody: "incomplete",
+  });
+}
+if (reviewCases !== "schemas") {
+  const payload = json("thread_v15_282_hot");
+  const first = payload.posts[0];
+  const cell = 'id="postmessage_6731">';
+  const previewUrl = "https://m.bilibili.com/video/BV123456789A?p=2";
+  const hidden =
+    "<blockquote>https://www.bilibili.com/video/BV123456789B</blockquote><span hidden>https://www.bilibili.com/video/BV123456789C</span>";
+  const unrelated =
+    "<div>https://www.bilibili.com/video/BV123456789D</div><table><tr><td class=t_f id=postmessage_999999>https://www.bilibili.com/video/BV123456789E</td></tr></table>";
+  assert.ok(first.body_html.includes(cell));
+  const withLink = {
+    ...payload,
+    posts: [
+      {
+        ...first,
+        body_html:
+          unrelated +
+          first.body_html.replace(cell, `${cell}${hidden}${previewUrl} `),
+      },
+      ...payload.posts.slice(1),
+    ],
+  };
+  const run = setup(
+    "Structured linked video only from the owning postmessage cell",
+    { body: withLink },
+    {
+      body: {
+        ...payload,
+        posts: [
+          {
+            ...first,
+            message: previewUrl,
+            body_html:
+              unrelated + first.body_html.replace(cell, `${cell}${hidden}`),
+          },
+          ...payload.posts.slice(1),
+        ],
+      },
+    },
+  );
+  const result = await run.client.readThread(thread(9200647), structured);
+  const view = resultOf(result, "thread");
+  const media = (post) =>
+    post.content.flatMap((node) => (node.media ? [node.media] : []));
+  assert.deepEqual(media(view.posts[0]), [
+    { kind: "video", url: "https://www.bilibili.com/video/BV123456789A/?p=2" },
+  ]);
+  assert.ok(visible(view.posts[0].content).includes(previewUrl));
+  assert.equal(view.posts[2].id, "6742");
+  assert.equal(view.posts[2].promoted, true);
+  const control = resultOf(
+    await run.client.readThread(thread(9200647), structured),
+    "thread",
+  );
+  assert.deepEqual(media(control.posts[0]), []);
+  run.done(result, {
+    media: media(view.posts[0]),
+    excludedMedia: media(control.posts[0]),
+  });
+}
 console.log(
   JSON.stringify({ pin: pins.commit, fixtureSha256: pins.files, observations }),
 );

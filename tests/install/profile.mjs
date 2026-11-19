@@ -23,8 +23,25 @@ const plugin = (action) => `/plugin.php?id=tsdmapp%3Aapi&action=${action}`;
 const home = (ac, op = "") =>
   `/home.php?mod=spacecp&ac=${ac}${op ? `&op=${op}` : ""}`;
 const observed = [];
+const capability = (name, extra = {}, response = {}) => ({
+  path: plugin("status"),
+  body: { ok: 1, uid: 501, v4: 1, block_pages: [name], ...extra },
+  ...response,
+});
 function host(name, steps) {
   let session = "jar-1";
+  steps = steps.flatMap((step) => {
+    const query = new URL(step.path, origin).searchParams;
+    const name =
+      query.get("op") === "filter"
+        ? "privacy_filter"
+        : query.get("id") === "blockuser:spacecp"
+          ? "blockuser"
+          : null;
+    return step.method !== "POST" && name && query.get("tsdmv") === "4"
+      ? [capability(name), step]
+      : [step];
+  });
   const requests = [];
   let failure;
   const client = createProfileClient({
@@ -108,7 +125,12 @@ function host(name, steps) {
       if (failure) throw failure;
       assert.equal(requests.length, steps.length, name);
       assert.deepEqual(actual, expected, name);
-      observed.push({ operation: name, expected, observed: actual, requests });
+      observed.push({
+        operation: name,
+        expected,
+        observed: actual,
+        requests,
+      });
     },
   };
 }
@@ -250,7 +272,9 @@ if (!scenario || scenario === "devices") {
     { kind: "uncertain" },
     await drift.client.removeDevice(member, other),
   );
-  const revokedAnswer = JSON.parse(fixture("tsdmapp/device_v20_revoked.json"));
+  const revokedAnswer = JSON.parse(
+    fixture("tsdmapp/device_v20_revoked.json"),
+  );
   const denied = host("revoked device response remains a refusal", [
     { path, body: { ...revokedAnswer, uid: 501, device: other } },
   ]);
@@ -342,7 +366,11 @@ if (!scenario || scenario === "sync") {
       post({ ok: 1, supported: 1, uid: 502, updated: 73 }),
       { kind: "uncertain" },
     ],
-    ["same member with a replaced session", null, { kind: "session-changed" }],
+    [
+      "same member with a replaced session",
+      null,
+      { kind: "session-changed" },
+    ],
   ]) {
     const sync = host(`sync ${name}`, [
       { path, body: empty },
@@ -471,7 +499,10 @@ if (!scenario || scenario === "editors") {
     "base",
     '<textarea name="bio">Fixture before</textarea><textarea name="sightml">Fixture signature</textarea>',
   );
-  assert.match(fixture("profile_edit_form_x5.html"), /target="frame_profile"/);
+  assert.match(
+    fixture("profile_edit_form_x5.html"),
+    /target="frame_profile"/,
+  );
   assert.match(
     fixture("profile_edit/signature_info_x5.html"),
     /name="sightml"/,
@@ -490,9 +521,12 @@ if (!scenario || scenario === "editors") {
   );
   legacy.check(
     { kind: "saved" },
-    await legacy.client.saveSettings(await legacy.client.openProfile(member), {
-      bio: "Fixture after",
-    }),
+    await legacy.client.saveSettings(
+      await legacy.client.openProfile(member),
+      {
+        bio: "Fixture after",
+      },
+    ),
   );
   const nativeSig = host("native signature refusal reports the field", [
     { path: open + flags, body: native },
@@ -624,7 +658,11 @@ if (!scenario || scenario === "editors") {
     { path: path + v4page, body: filter },
     post(
       path + v4post,
-      { formhash: hash, privacy2submit: "true", "privacy[filter_gid][2]": "2" },
+      {
+        formhash: hash,
+        privacy2submit: "true",
+        "privacy[filter_gid][2]": "2",
+      },
       {
         uid: 501,
         ok: 1,
@@ -650,12 +688,64 @@ if (!scenario || scenario === "editors") {
     .map(([form]) => form)
     .find((form) => form.includes("ac=privacy&amp;op=filter"));
   assert.ok(rawFilterForm);
+  for (const [label, status] of [
+    [
+      "privacy-filter absent from block_pages uses the native form",
+      capability("blockuser"),
+    ],
+    [
+      "v4 off uses the native privacy-filter form",
+      capability("privacy_filter", { v4: 0 }),
+    ],
+  ]) {
+    const hostCase = host(label, [
+      status,
+      { path, body: page(hasher(rawFilterForm)) },
+    ]);
+    hostCase.check(
+      "privacy",
+      (await hostCase.client.openPrivacy(member, "filter")).kind,
+    );
+  }
+  for (const [label, status, kind] of [
+    [
+      "wrong status member blocks the privacy filter",
+      capability("privacy_filter", { uid: 502 }),
+      "session-changed",
+    ],
+    [
+      "rotated status session blocks the privacy filter",
+      capability("privacy_filter", {}, { rotate: true }),
+      "session-changed",
+    ],
+    [
+      "rate-limited status blocks the privacy filter",
+      capability("privacy_filter", {}, { status: 429 }),
+      "rate-limited",
+    ],
+    [
+      "refused status blocks the privacy filter",
+      capability("privacy_filter", {}, { status: 403 }),
+      "refused",
+    ],
+  ]) {
+    const hostCase = host(label, [status]);
+    hostCase.check(
+      kind,
+      (await hostCase.client.openPrivacy(member, "filter")).kind,
+    );
+  }
+
   const nativeFilter = host("privacy filter native fallback", [
     { path: path + v4page, body: { ok: 0, error: "unknown", uid: 501 } },
     { path, body: page(hasher(rawFilterForm)) },
     post(
       path + "&tsdmapp=json",
-      { formhash: hash, privacy2submit: "true", "privacy[filter_gid][2]": "2" },
+      {
+        formhash: hash,
+        privacy2submit: "true",
+        "privacy[filter_gid][2]": "2",
+      },
       {
         uid: 501,
         ok: 1,
@@ -756,7 +846,9 @@ if (!scenario || scenario === "avatar") {
       contentType: "application/x-www-form-urlencoded",
       fields: ["avatar1", "avatar2", "avatar3"],
     },
-    handoff.client.prepareAvatarUpload(await handoff.client.openAvatar(member)),
+    handoff.client.prepareAvatarUpload(
+      await handoff.client.openAvatar(member),
+    ),
   );
   const stale = host("stale signed avatar destination withheld from host", [
     open,
@@ -801,7 +893,10 @@ if (!scenario || scenario === "avatar") {
   ]);
   lost.check(
     { kind: "uncertain" },
-    await lost.client.setAvatarUrl(await lost.client.openAvatar(member), after),
+    await lost.client.setAvatarUrl(
+      await lost.client.openAvatar(member),
+      after,
+    ),
   );
 }
 if (!scenario || scenario === "blacklist") {
@@ -833,7 +928,10 @@ if (!scenario || scenario === "blacklist") {
   const empty = data("empty");
   const found = data("lookup");
   const full = { ...empty, count: 1, list: [row] };
-  const get = (body, pathToGet = path + v4page) => ({ path: pathToGet, body });
+  const get = (body, pathToGet = path + v4page) => ({
+    path: pathToGet,
+    body,
+  });
   const change = (op, body, extra = {}) => ({
     path: path + v4post,
     method: "POST",
@@ -878,7 +976,10 @@ if (!scenario || scenario === "blacklist") {
     change("add", redirect),
     get(full),
   ]);
-  add.check(receipt, await add.client.addToBlacklist(member, target, username));
+  add.check(
+    receipt,
+    await add.client.addToBlacklist(member, target, username),
+  );
   const remove = host("website blacklist remove requires complete absence", [
     get(full),
     change("del", redirect),
@@ -890,15 +991,20 @@ if (!scenario || scenario === "blacklist") {
   );
   const incomplete = host(
     "website blacklist removal cannot confirm a partial list",
-    [get(full), change("del", redirect), get({ ...empty, pages: 2, count: 3 })],
+    [
+      get(full),
+      change("del", redirect),
+      get({ ...empty, pages: 2, count: 3 }),
+    ],
   );
   incomplete.check(
     { kind: "uncertain" },
     await incomplete.client.removeFromBlacklist(member, target),
   );
-  const renamed = host("website blacklist changed lookup name prevents POST", [
-    get(found, lookup + v4page),
-  ]);
+  const renamed = host(
+    "website blacklist changed lookup name prevents POST",
+    [get(found, lookup + v4page)],
+  );
   renamed.check(
     { kind: "invalid" },
     await renamed.client.addToBlacklist(
@@ -907,18 +1013,25 @@ if (!scenario || scenario === "blacklist") {
       "Different fictitious name",
     ),
   );
-  const refusal = host("website blacklist redrawn refusal and unchanged list", [
-    get(found, lookup + v4page),
-    change("add", { ...found, error: { code: "full" } }),
-    get(empty),
-  ]);
+  const refusal = host(
+    "website blacklist redrawn refusal and unchanged list",
+    [
+      get(found, lookup + v4page),
+      change("add", { ...found, error: { code: "full" } }),
+      get(empty),
+    ],
+  );
   refusal.check(
     { kind: "refused", reason: "full" },
     await refusal.client.addToBlacklist(member, target, username),
   );
   const lost = host(
     "website blacklist readback after a lost write without resending",
-    [get(found, lookup + v4page), change("add", {}, { lost: true }), get(full)],
+    [
+      get(found, lookup + v4page),
+      change("add", {}, { lost: true }),
+      get(full),
+    ],
   );
   lost.check(
     receipt,
@@ -950,6 +1063,21 @@ if (!scenario || scenario === "blacklist") {
     page(
       `<div id="bu_page"><div id="bu_quota">${used} / 10</div>${body}</div>`,
     );
+  const unadvertised = host("unadvertised blockuser reads native blacklist", [
+    capability("privacy_filter"),
+    get(nativePage(nativeFull, 1), path),
+  ]);
+  unadvertised.check(
+    "blacklist",
+    (await unadvertised.client.listBlacklist(member)).kind,
+  );
+  const refusedLookup = host("wrong status member blocks blockuser lookup", [
+    capability("blockuser", { uid: 502 }),
+  ]);
+  refusedLookup.check(
+    "session-changed",
+    (await refusedLookup.client.lookupBlacklistMember(member, target)).kind,
+  );
   const nativeChange = (op) => ({
     ...change(op, ""),
     path,
@@ -966,11 +1094,15 @@ if (!scenario || scenario === "blacklist") {
     receipt,
     await nativeAdd.client.addToBlacklist(member, target, username),
   );
-  const nativeRemove = host("native website blacklist removal from row form", [
-    get(nativePage(nativeFull, 1)),
-    nativeChange("del"),
-    get(nativePage(nativeEmpty, 0), path),
-  ]);
+  const nativeRemove = host(
+    "native website blacklist removal from row form",
+    [
+      capability("privacy_filter"),
+      get(nativePage(nativeFull, 1), path),
+      nativeChange("del"),
+      get(nativePage(nativeEmpty, 0), path),
+    ],
+  );
   nativeRemove.check(
     receipt,
     await nativeRemove.client.removeFromBlacklist(member, target),

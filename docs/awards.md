@@ -9,7 +9,7 @@ Use `read(catalogue, query)` for one page. The view contains frozen `records` an
 | Browse and acquire medals | `read("medals", { typeid: 3, q: "Event", page: 1 })` shows categories, availability, ownership, pending status and offered methods. Use `prepare(view, { kind: "acquire-medal", id, method })` for method `1` application, `5` purchase, or `6` claim. Method `2` accepts `reason` for manual review when the app API offers a claim form. `openMedalApplication(view, id, reason)` reads the native confirmation form when needed. Present the conditions and price before approval. `pending-review` means the forum reports a queued application. |
 | Own and hide medals | `read("mymedals", { page: 1 })` includes owned medals, hidden flags and activity history. Prepare `hide-medals` with `changes: [{ id, hidden }]`. Show any warning returned by the forum and reread the owned list to observe display state. |
 | Grant or revoke medals | `read("medalgrant")` provides grantable medals, limits and revocable records. `lookupMedalMembers(view, recipients, medals)` returns ownership and missing UIDs. `lookupMedalThread(view, { tid, from, to, noOwner })` returns candidate recipients by floor range. Review both before preparing `grant-medals` with `recipients`, `medals` and `reason`. Prepare `revoke-medal` with the offered record ID or `revoke-medal-batch` with the offered batch ID. Reread grant records to resolve applied or partial changes. |
-| Achievements and display titles | `read("achievements")` keeps the forum's list and activation state. `read("titles", { page: 1 })` lists owned, worn and expired titles. Prepare `wear-title` with the owned title ID or `remove-title` for the default title. `observed` means an independent read established the selected display state. One readback page can leave removal unverified. |
+| Achievements and display titles | `read("achievements")` checks the current member’s advertised `achievement` capability. Schema 68 returns the list and activation state. The native view returns the list’s visible text and progress ratios in `records[0].text`, or `records: []` for its explicit empty message. `read("titles", { page: 1 })` lists owned, worn and expired titles. Prepare `wear-title` with the owned title ID or `remove-title` for the default title. `observed` means an independent read established the selected display state. One readback page can leave removal unverified. |
 | Buy or exchange titles | `read("titleshop")` shows price, balance and buy eligibility. `read("titleexchange", { filter: "ready", q: "Event" })` shows required medals and whether the exchange consumes them. Prepare `buy-title` or `exchange-title` with the displayed ID. Reread titles or the shop to observe ownership after a result. |
 | Issue or revoke titles | `read("titleissue")` exposes permission, titles, limits and logs. Prepare `issue-title` or `revoke-title` with `titles`, `recipients` (UIDs or exact usernames as strings), `days` and `note`. Use `0` days for a permanent issue. Review recipients and duration before submitting and check the returned logs afterward. |
 | Grant a background | `read("bggrant", { keyword: "夜空", page: 1 })` exposes the catalogue, permission, expiry presets and limits. Prepare `grant-background` with an offered `id` or a full HTTPS `image`, UID `recipients`, `expiry` and `notify`. Use `"0"` for permanent, a supported date, duration such as `"7天"`, or UNIX time. A positive returned count can be smaller than the requested count. `partial` keeps the count, choices and forum message for review. |
@@ -43,7 +43,7 @@ Use a session with the intended member's credentials and the exact HTTPS origin.
 | Read or open | Request |
 | --- | --- |
 | Medal and title app catalogues | GET `plugin.php?id=tsdmapp:api&action=medals/mymedals/medalgrant/titles/titleshop/titleexchange/titleissue`. Each slash-separated action is separate. `medals` accepts `typeid`, `q` and `page`. `titleexchange` accepts `filter`, `q` and `page`. `titles` accepts `pp=200` and `page`. Check scope, returned UID, records and permission flags. |
-| Achievements and backgrounds | GET `plugin.php?id=tsdmtitle:achi&tsdmapp=json&tsdmv=4&nodoc=1` for schema 68. GET `plugin.php?id=tsdmapp:api&action=bggrant` with optional `kw` and `page` for schema 31. Use returned `url_field`, `uids_field`, `time_field` and `notify_field` names. |
+| Achievements and backgrounds | Read `status` first and verify the expected UID. With `v4=1` and `achievement=1`, GET `plugin.php?id=tsdmtitle:achi&tsdmapp=json&tsdmv=4&nodoc=1` for schema 68. If the status plugin is missing (HTTP 404) or the structured page is unavailable, GET `plugin.php?id=tsdmtitle:achi`, verify the viewer and inspect the 成就列表 section. Only the explicit 暂无成就 or 暫無成就 message establishes an empty native list. GET `plugin.php?id=tsdmapp:api&action=bggrant` with optional `kw` and `page` for schema 31. Use returned `url_field`, `uids_field`, `time_field` and `notify_field` names. |
 | Grant lookups | GET the `lookup_url` for `dsu_medalCenter:memcp&action=grantlookup` with `uids` and `mids` as comma-separated IDs. GET the `thread_url` for `grantthread` with `tid`, `from`, `to`, `noowner`; use zero for an unbounded floor and `1` to omit the thread author. Check returned recipients and missing IDs. |
 | Native medal application | GET the offered `dsu_medalCenter:memcp&action=apply&medalid=…` without `applytype`, or `dsu_medalCenter:specmedal&action=newapply&applymedalid=…`. Inspect the returned form, matching its ID to the requested medal. A native application without a valid form can show an unmet condition. A legacy `apply` link with `applytype` is already an effect. Open it only after dedicated consent and inspect the resulting message. |
 
@@ -53,9 +53,11 @@ Use a session with the intended member's credentials and the exact HTTPS origin.
 | `sethide` | `dsu_medalCenter:memcp`, `action=sethide`. Use `myMedalHide[ID]=1` to hide and `=2` to show. |
 | `grantgrid`, `grantrevoke`, `grantrevokebatch` | `dsu_medalCenter:memcp`, matching `action`. Grant uses `grant_users`, `grant_medalids` and `grant_reason`. Revoke uses `logid` or `batch`. |
 | `settitle`, `buy`, `exchange`, `issue` | `tsdmtitle:tsdmtitle`, matching `action`. Set `settitleid` or `0` to remove. Buy uses `buyid`, exchange uses `exchangeid`. Issue uses `issueop=grant/revoke`, comma-separated `issuetitles`, newline-separated `issueusers`, `issuedays` and `issuenote`. Keep the plugin's same-origin return path. |
-| `background` | `background:memcp`, `ac=slotadd`. Send the selected file or HTTPS URL, comma-separated UIDs, and expiry. Send the notification field with value `1` if approved and omit it otherwise. |
+| `background` | `background:memcp`, `ac=slotadd`. Send the filename of the selected server-listed background or the approved HTTPS URL, comma-separated UIDs, and expiry. Send the notification field with value `1` if approved and omit it otherwise. |
 
 Inspect schema 13 `kind`, member identity, message and alert, or the native message/form. `ok: 1` can carry a redraw. A successful manual review submission can be pending and a positive background count can be partial. Independently read visible title state, ownership or records when available. An HTTP success or redirect alone leaves the effect unresolved.
+
+For either helper, request `status` and inspect the account and switches above. Choose `achievements-v4` for the advertised form or `achievements` for native HTML. Keep both calls in the same session. Stop on refusal, a different account or a rate limit.
 
 ### Python `requests`
 
@@ -69,7 +71,11 @@ CATALOGUES = {"medals", "mymedals", "medalgrant", "titles", "titleshop",
 def read_awards(session, origin, view, query):
     if set(query) & {"id", "action", "tsdmapp", "tsdmv", "nodoc"}:
         raise ValueError("Reserved route parameter")
-    if view == "achievements":
+    if view == "status":
+        route = {"id": "tsdmapp:api", "action": "status"}
+    elif view == "achievements":
+        route = {"id": "tsdmtitle:achi"}
+    elif view == "achievements-v4":
         route = {"id": "tsdmtitle:achi", "tsdmapp": "json", "tsdmv": "4", "nodoc": "1"}
     elif view in CATALOGUES:
         route = {"id": "tsdmapp:api", "action": view}
@@ -112,7 +118,9 @@ Set `FORUM_ORIGIN` and provide the intended member's `FORUM_COOKIE` privately. S
 awards_read() {
   view=$1; shift
   case "$view" in
-    achievements) route='id=tsdmtitle:achi&tsdmapp=json&tsdmv=4&nodoc=1' ;;
+    status) route='id=tsdmapp:api&action=status' ;;
+    achievements) route='id=tsdmtitle:achi' ;;
+    achievements-v4) route='id=tsdmtitle:achi&tsdmapp=json&tsdmv=4&nodoc=1' ;;
     medals|mymedals|medalgrant|titles|titleshop|titleexchange|titleissue|bggrant)
       route="id=tsdmapp:api&action=$view" ;;
     *) return 2 ;;

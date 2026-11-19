@@ -44,7 +44,8 @@ class Forum(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        self.wfile.write(b'{"fixture":"inert"}')
+        flags = {'ok':1,'v4':1,'uid':31,'thread_lists':['ratings','poll_voters','thread_mod','payments']}
+        self.wfile.write(json.dumps(flags).encode() if request['path'] == '/plugin.php' else b'{"fixture":"inert"}')
 
     do_POST = do_GET
 
@@ -85,7 +86,8 @@ with ThreadingHTTPServer(('127.0.0.1', 0), Forum) as server, TemporaryDirectory(
         ]:
             actual = guide_read(session, orig, action, **ids)
             read_url = route('/forum.php', mod='misc', action=action, **ids, **flags)
-            observe('Python ' + action, [target('GET', read_url)], actual.json() == {'fixture': 'inert'})
+            status = [target('GET','/plugin.php?id=tsdmapp:api&action=status')] if 'tsdmv' in flags else []
+            observe('Python ' + action, [*status, target('GET', read_url)], actual.json() == {'fixture': 'inert'})
         rate_open = '/forum.php?mod=misc&action=rate&tid=90&pid=302'
         rate_post = '/forum.php?mod=misc&action=rate&ratesubmit=yes&infloat=yes'
         rate_open_request = rate_open + '&infloat=yes&handlekey=rate&inajax=1&ajaxtarget=fwin_content_rate&tsdmapp=json&tsdmform=1'
@@ -110,6 +112,7 @@ with ThreadingHTTPServer(('127.0.0.1', 0), Forum) as server, TemporaryDirectory(
                     [target('GET', offered + '&inajax=1&tsdmapp=json')], actual.status_code == 200)
         printed = shell(reads)
         observe('curl reads and form opener', [
+            target('GET', '/plugin.php?id=tsdmapp:api&action=status'),
             target('GET', '/forum.php?mod=misc&action=viewratings&tid=90&pid=302&tsdmapp=json&tsdmv=4&nodoc=1'),
             target('GET', '/forum.php?mod=misc&action=viewwarning&tid=90&uid=31&inajax=1'),
             target('GET', rate_open_request),

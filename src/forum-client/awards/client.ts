@@ -1,4 +1,5 @@
 import { nativeIdentity } from "../account-forms.js";
+import { readAchievements } from "./achievements.js";
 import { nativeMedals } from "./native-medals.js";
 import {
   noticeHost,
@@ -57,16 +58,13 @@ export function createAwardsClient(options: AwardsClientOptions) {
     if (!route) return { kind: "invalid-input" };
     const session = expectedSession ?? host.session();
     if (!session) return { kind: "session-changed" };
+    if (catalogue === "achievements") return readAchievements(host, session, route.structured, route.native);
     const reply = await readReply(host, route.structured, session);
     if (reply.kind !== "decoded") return reply;
     let data = reply.data;
     const available =
       data?.ok === 1 &&
-      (catalogue === "achievements"
-        ? data.type === "achievement" && data.schema === 68
-        : data.installed === 1 &&
-          (catalogue !== "bggrant" ||
-            (data.type === "bggrant" && data.schema === 31)));
+      data.installed === 1 && (catalogue !== "bggrant" || (data.type === "bggrant" && data.schema === 31));
     if (
       available &&
       catalogue === "bggrant" &&

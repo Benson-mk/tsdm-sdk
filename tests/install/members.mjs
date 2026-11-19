@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import * as sdk from "tsdm-sdk";
 
 const origin = "https://forum.test";
@@ -899,6 +901,238 @@ tests.redirectedScope = async () => {
   });
   return check("invalid", () => result.kind);
 };
+
+const fullProfile = {
+  ...profile,
+  user: {
+    ...profile.user,
+    avatar: "/avatar.png",
+    email_verified: 1,
+    customstatus: "A &amp; B",
+    signature_html: "<b>Hello</b><script>bad()</script>",
+  },
+  stats: {
+    friends: 3,
+    credits: 79,
+    extcredits: [{ id: 2, title: "天使币", unit: "枚", value: 5 }],
+  },
+  profiles: [{ id: "bio", title: "自我介绍", value: "<i>About me</i>" }],
+  medals: [
+    { id: "90", name: "Helper", image: "medal.png", description: "Thanks" },
+  ],
+  manage_forums: [{ fid: 12, name: "Games" }],
+  groups: {
+    admin: null,
+    member: { gid: 7, title: "Member", icon: "group.png" },
+    ext: [],
+  },
+  activity: {
+    oltime: 10,
+    regdate: 1700000000,
+    regip: "",
+    timezone_text: "Default",
+  },
+  checkin: {
+    days: 10,
+    mdays: 2,
+    last: 1700000000,
+    reward: 180,
+    lastreward: 18,
+    level: {
+      code: "LV.1",
+      name: "New",
+      next: "LV.2",
+      next_name: "Regular",
+      remain: 2,
+    },
+    today: 0,
+  },
+  unread: { notice: 2, pm: 1 },
+  timeoffset: 8,
+};
+const nativeProfile = `<div id=um><strong><a href="home.php?mod=space&uid=101">Viewer</a></strong></div>
+<div id=ct><div class="bm_c u_profile"><div class="pbm"><h2 class=mbn>Fictional Birch<span class=xw0>(UID: 204)</span></h2>
+<ul><li><em>邮箱状态</em>已验证</li><li><em>个人签名</em><b>Hello</b></li>
+<li><em>统计信息</em><a href="home.php?mod=space&uid=204&do=friend">好友数 3</a></li>
+<li><em>自我介绍</em><i>About me</i></li></ul></div>
+<div class=pbm><ul><li><em>用户组</em><a href="home.php?mod=spacecp&ac=usergroup&gid=7">Member</a></li></ul>
+<ul id=pbbs><li><em>在线时间</em>10 小时</li><li><em>注册时间</em>2023-11-15 06:13</li></ul></div>
+<div id=psts><ul><li><em>积分</em>79</li><li><em>天使币</em>5 枚</li></ul></div></div></div>`;
+function profileReader(bodies) {
+  const requests = [];
+  const client = sdk.createForumClient({
+    origin,
+    transport: {
+      async request(url, options) {
+        assert.deepEqual(options, { fresh: true });
+        requests.push(Object.fromEntries(new URL(url).searchParams));
+        assert.ok(bodies.length);
+        return response(url, bodies.shift());
+      },
+    },
+  });
+  return { client, requests };
+}
+tests.fullProfiles = async () => {
+  const { client, requests } = profileReader([
+    { ...fullProfile, document: "<h2>Wrong document</h2>" },
+    { ok: 1, uid: 101, document: nativeProfile },
+    profile,
+    nativeProfile,
+    fullProfile,
+    { ok: 0, login: 1, error: "message", schema: 4, message: "Sign in" },
+    profile,
+    "<p>Unrecognized profile</p>",
+  ]);
+  const structured = await client.readMemberProfile({ id: "204" });
+  const legacy = await client.readMemberProfile({
+    username: "fictional birch",
+  });
+  const fallback = await client.readMemberProfile({ id: "204" });
+  const wrong = await client.readMemberProfile({ id: "205" });
+  const login = await client.readMemberProfile({ id: "204" });
+  const incomplete = await client.readMemberProfile({ id: "204" });
+  return check(
+    {
+      identity: [
+        "member-profile",
+        "structured",
+        "101",
+        "204",
+        "Fictional Birch",
+      ],
+      structured: [
+        "https://forum.test/avatar.png",
+        true,
+        "A & B",
+        "About me",
+        "Helper",
+        "12",
+        "7",
+        1700000000,
+        2,
+        3,
+        "5 枚",
+        2,
+      ],
+      native: [
+        "member-profile",
+        "native",
+        "204",
+        true,
+        "About me",
+        "7",
+        "2023-11-15 06:13",
+        3,
+        "5 枚",
+      ],
+      outcomes: ["member-profile", "invalid", "login", "incomplete"],
+      routes: [
+        "204/json",
+        "fictional birch/json",
+        "204/json",
+        "204/native",
+        "205/json",
+        "204/json",
+        "204/json",
+        "204/native",
+      ],
+    },
+    () => ({
+      identity: [
+        structured.kind,
+        structured.representation,
+        structured.account.id,
+        structured.member.id,
+        structured.member.name,
+      ],
+      structured: [
+        structured.profile.avatarURL,
+        structured.profile.emailVerified,
+        structured.profile.customTitle,
+        structured.profile.fields[0].text,
+        structured.profile.medals[0].name,
+        structured.profile.managedForums[0].id,
+        structured.profile.groups.member.id,
+        structured.profile.activity.registeredAt,
+        structured.profile.checkin.level.remainingDays,
+        structured.profile.stats.friends,
+        structured.profile.stats.credits[0].text,
+        structured.profile.unread.notices,
+      ],
+      native: [
+        legacy.kind,
+        legacy.representation,
+        legacy.member.id,
+        legacy.profile.emailVerified,
+        legacy.profile.fields[0].text,
+        legacy.profile.groups.member.id,
+        legacy.profile.activity.registeredAt,
+        legacy.profile.stats.friends,
+        legacy.profile.stats.credits[0].text,
+      ],
+      outcomes: [fallback.kind, wrong.kind, login.kind, incomplete.kind],
+      routes: requests.map(
+        (q) => `${q.uid ?? q.username}/${q.tsdmapp ?? "native"}`,
+      ),
+    }),
+  );
+};
+
+if (process.env.TSDM_MEMBERS_UPSTREAM) {
+  tests.pinnedProfiles = async () => {
+    const read = (name) =>
+      readFileSync(
+        join(process.env.TSDM_MEMBERS_UPSTREAM, "test/data", name),
+        "utf8",
+      );
+    const bare = (name) => {
+      const { profile_html, ...rest } = JSON.parse(
+        read(`tsdmapp/${name}.json`),
+      );
+      return rest;
+    };
+    const { client } = profileReader([
+      bare("profile_v4_other_admin"),
+      bare("profile_v4_username"),
+      read("profile_self_x5.html"),
+    ]);
+    const admin = await client.readMemberProfile({ id: "32" });
+    const byName = await client.readMemberProfile({ username: "ag_mid" });
+    const native = await client.readMemberProfile({ username: "Alice" });
+    return check(
+      {
+        admin: ["structured", "35", "32", ["9", "10"], "1"],
+        byName: ["structured", "33", 1809, 25, 1],
+        native: ["native", "1000", "1000", 304, 1, "2013-4-25 09:59"],
+      },
+      () => ({
+        admin: [
+          admin.representation,
+          admin.account.id,
+          admin.member.id,
+          admin.profile.managedForums.map(({ id }) => id),
+          admin.profile.groups.admin.id,
+        ],
+        byName: [
+          byName.representation,
+          byName.member.id,
+          byName.profile.stats.points,
+          byName.profile.activity.onlineHours,
+          byName.profile.checkin.days,
+        ],
+        native: [
+          native.representation,
+          native.account.id,
+          native.member.id,
+          native.profile.stats.points,
+          native.profile.activity.onlineHours,
+          native.profile.activity.registeredAt,
+        ],
+      }),
+    );
+  };
+}
 
 const selected = process.argv.slice(2);
 const results = {};

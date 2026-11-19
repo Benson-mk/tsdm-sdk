@@ -11,7 +11,7 @@ import {
 } from "../html.js";
 import { query } from "../posts/forms.js";
 import { descriptor, operations } from "./operations.js";
-import { forum, jsonWrite, v4Form, validId } from "./protocol.js";
+import { forum, jsonWrite, validId } from "./protocol.js";
 import type {
   ModerationChoice,
   ModerationField,
@@ -64,6 +64,20 @@ const commonFixed = [
 ];
 const collateral = ["banuser", "userdelpost", "crimerecord"];
 const floorActions = ["delpost", "warn", "banpost", "stickreply"];
+const standaloneActions = ["stamp", "stamplist", "copy", "merge", "split"];
+export function moderationCapability(
+  operation: ModerationTarget["operation"],
+) {
+  if (descriptor(operation).group || standaloneActions.includes(operation))
+    return "moderate";
+  if (
+    ["delpost", "warn", "banpost", "delcomment", "removerate"].includes(
+      operation,
+    )
+  )
+    return operation;
+  return null;
+}
 const financialActions = ["removereward", "refund"];
 
 export function selectTarget(
@@ -124,7 +138,7 @@ export function moderationWindow(origin: string, target: ModerationTarget) {
   const tid = target.threadIds[0]!;
   const info = descriptor(operation);
   if (operation === "delcomment")
-    return v4Form(
+    return jsonWrite(
       forum(origin, {
         mod: "topicadmin",
         action: operation,
@@ -137,7 +151,7 @@ export function moderationWindow(origin: string, target: ModerationTarget) {
       }),
     );
   if (operation === "removerate")
-    return v4Form(
+    return jsonWrite(
       forum(origin, {
         mod: "misc",
         action: operation,
@@ -175,10 +189,7 @@ export function moderationWindow(origin: string, target: ModerationTarget) {
     ...(undo && { undo: "1" }),
     inajax: "1",
   });
-  return info.group ||
-    (floorActions.includes(operation) && operation !== "stickreply")
-    ? v4Form(native)
-    : jsonWrite(native);
+  return jsonWrite(native);
 }
 function submissionURL(
   raw: string,
@@ -349,10 +360,10 @@ function fieldsFromStructured(
           : [];
       });
       if (node && logs.length) result.push(field(name, "", logs, true, true));
-    } else if (name === "moveto") {
+    } else if (name === "moveto" || (name === "copyto" && node)) {
       const forums = (rows(data.forums) ?? []).flatMap((item) => {
         const fid = id(item?.fid);
-        return fid && fid !== target.forumId
+        return fid && (name === "copyto" || fid !== target.forumId)
           ? [{ value: fid, label: string(item?.name) }]
           : [];
       });
@@ -456,7 +467,10 @@ function nativeControl(
         : attr(selected, "value");
     const choices =
       name === "highlight_color"
-        ? Array.from({ length: 9 }, (_, i) => ({ value: String(i), label: "" }))
+        ? Array.from({ length: 9 }, (_, i) => ({
+            value: String(i),
+            label: "",
+          }))
         : highlightFields.test(name)
           ? ["0", "1"].map((value) => ({ value, label: "" }))
           : [];
@@ -498,9 +512,13 @@ function finish(
     expected.some(
       (name) =>
         !fields.some((item) => item.name === name) &&
-        !["position", "reducetitle", "selectattach", "threadtypeid"].includes(
-          name,
-        ),
+        ![
+          "position",
+          "reducetitle",
+          "selectattach",
+          "threadtypeid",
+          "expirationdown",
+        ].includes(name),
     )
   )
     return null;
@@ -521,12 +539,16 @@ export function offeredForm(
   const submit = record(data.submit);
   const hidden = record(submit?.fields);
   const financial = financialActions.includes(target.operation);
-  const formName = info.group ? "moderate" : target.operation;
+  const standalone = standaloneActions.includes(target.operation);
+  const formName = info.group || standalone ? "moderate" : target.operation;
   if (
     data.type !== "form" ||
     data.schema !== 17 ||
     data.ok !== 1 ||
     data.form !== formName ||
+    (standalone &&
+      (data.action !== target.operation ||
+        id(data.fid) !== target.forumId)) ||
     (data.fid !== undefined && id(data.fid) !== target.forumId) ||
     submit?.method !== "POST" ||
     submit.enctype !== "application/x-www-form-urlencoded" ||

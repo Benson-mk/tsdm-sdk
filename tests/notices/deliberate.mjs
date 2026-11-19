@@ -9,6 +9,8 @@ const page2 = `${history}&page=2`;
 const formRoute = '/home.php?mod=spacecp&ac=common&op=ignore';
 const privacyRoute = '/home.php?mod=spacecp&ac=privacy&op=filter';
 const post = '/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919';
+const statusGet = 'GET /plugin.php?id=tsdmapp%3Aapi&action=status';
+const advertised = { ok: 1, uid: 34, v4: 1, forms: ['ignore'] };
 const formGet = `${formRoute}&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1`;
 const privacyGet = `${privacyRoute}&tsdmapp=json&tsdmv=4&nodoc=1`;
 const formPost = `${formRoute}&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4`;
@@ -107,22 +109,57 @@ const addRequest = (authorId = '9') => `POST ${formPost} formhash=fixture-ignore
 const removeRequest = `POST ${privacyPost} formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0`;
 
 export async function checkIgnore() {
-  const read = controlled([privacy([keep, remove]), windowForm()]);
+  const destination = origin + `${ignoreLink}&infloat=yes&inajax=1`;
+  for (const [name, status, expected] of [
+    ['unadvertised notice-ignore form gives the native destination', { ...advertised, forms: [] }, { kind: 'handoff', destination }],
+    ['v4 off gives the native notice-ignore destination', { ...advertised, v4: 0 }, { kind: 'handoff', destination }],
+    ['a wrong notice-ignore status viewer stops before the form', { ...advertised, uid: 35 }, { kind: 'not-dispatched', reason: 'session-changed' }],
+    ['a replaced session during notice-ignore status stops before the form', { json: advertised, session: { memberId: '34', continuity: 'session-2' } }, { kind: 'not-dispatched', reason: 'session-changed' }],
+    ['unsupported status naming another viewer cannot hand off', { ok: 0, error: 'off', uid: 35 }, { kind: 'not-dispatched', reason: 'session-changed' }],
+    ['rate-limited notice-ignore status stops before the form', { status: 429, json: { ok: 0 } }, { kind: 'not-dispatched', reason: 'rate-limited' }],
+  ]) {
+    const host = controlled([status]);
+    const observed = await host.client.loadNoticeIgnoreForm(target);
+    record(name, { result: expected, trace: [statusGet] }, { result: observed, trace: host.trace });
+    host.done();
+  }
+  const unsupported = controlled([advertised, { html: '<form>Native window</form>' }]);
+  record('unsupported advertised notice-ignore response gives native handoff',
+    { result: { kind: 'handoff', destination }, trace: [statusGet, `GET ${formGet}`] },
+    { result: await unsupported.client.loadNoticeIgnoreForm(target), trace: unsupported.trace });
+  unsupported.done();
+  const otherViewer = controlled([advertised, { ok: 0, uid: 35, error: 'off' }]);
+  record('unsupported ignore window naming another viewer cannot hand off',
+    { result: { kind: 'not-dispatched', reason: 'session-changed' }, trace: [statusGet, `GET ${formGet}`] },
+    { result: await otherViewer.client.loadNoticeIgnoreForm(target), trace: otherViewer.trace });
+  otherViewer.done();
+  const denied = controlled([advertised, { ok: 0, uid: 34, error: 'message' }]);
+  record('explicit notice-ignore refusal stops without a handoff',
+    { result: { kind: 'not-dispatched', reason: 'refused' }, trace: [statusGet, `GET ${formGet}`] },
+    { result: await denied.client.loadNoticeIgnoreForm(target), trace: denied.trace });
+  denied.done();
+  const unavailableAdd = controlled([privacy([]), { ...advertised, forms: [] }]);
+  record('unadvertised notice-ignore addition sends no form or write',
+    { result: { kind: 'not-dispatched' }, trace: [`GET ${privacyGet}`, statusGet] },
+    { result: await unavailableAdd.client.addNoticeIgnoreRule(target, 'author'), trace: unavailableAdd.trace });
+  unavailableAdd.done();
+
+  const read = controlled([privacy([keep, remove]), advertised, windowForm()]);
   const list = await read.client.loadNoticeIgnoreRules();
   const form = await read.client.loadNoticeIgnoreForm(target);
   record('read notice-ignore rules independently', { kind: 'rules', rules: [retained, rule], request: `GET ${privacyGet}` }, { ...list, request: read.trace[0] });
-  record('load notice-ignore form without submitting', { kind: 'form', target, scopes: ['author', 'everybody'], request: `GET ${formGet}` }, { ...form, request: read.trace[1] });
+  record('load notice-ignore form without submitting', { kind: 'form', target, scopes: ['author', 'everybody'], trace: [statusGet, `GET ${formGet}`] }, { ...form, trace: read.trace.slice(1) });
   read.done();
 
-  const add = controlled([privacy([keep]), windowForm(), success, privacy([keep, remove])]);
+  const add = controlled([privacy([keep]), advertised, windowForm(), success, privacy([keep, remove])]);
   const added = await add.client.addNoticeIgnoreRule(target, 'author');
-  record('add notice-ignore for this author', { kind: 'applied', rules: [retained, rule], trace: [`GET ${privacyGet}`, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`] }, { ...added, trace: add.trace });
+  record('add notice-ignore for this author', { kind: 'applied', rules: [retained, rule], trace: [`GET ${privacyGet}`, statusGet, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`] }, { ...added, trace: add.trace });
   add.done();
 
   const everyone = { type: 'post', authorId: '0', label: 'Replies / Everybody' };
-  const global = controlled([privacy([]), windowForm(), success, privacy([box('note', 'post|0', 'Replies', 'Everybody')])]);
+  const global = controlled([privacy([]), advertised, windowForm(), success, privacy([box('note', 'post|0', 'Replies', 'Everybody')])]);
   const globallyAdded = await global.client.addNoticeIgnoreRule(target, 'everybody');
-  record('add notice-ignore for everybody', { kind: 'applied', rules: [everyone], request: addRequest('0') }, { ...globallyAdded, request: global.trace[2] });
+  record('add notice-ignore for everybody', { kind: 'applied', rules: [everyone], request: addRequest('0') }, { ...globallyAdded, request: global.trace[3] });
   global.done();
 
   const del = controlled([privacy([keep, remove]), success, privacy([keep])]);
@@ -132,14 +169,14 @@ export async function checkIgnore() {
 
   for (const [name, responses, kind, trace] of [
     ['existing rule requires no post', [privacy([remove])], 'already-applied', [`GET ${privacyGet}`]],
-    ['ignore form with mismatched target choices', [privacy([]), windowForm({ authorid: { name: 'authorid', value: '10', choices: [{ value: '10' }, { value: '0' }] } })], 'not-dispatched', [`GET ${privacyGet}`, `GET ${formGet}`]],
-    ['ignore form posts to another origin', [privacy([]), windowForm({ submit: submit('https://other.example.invalid' + formRoute, { formhash: 'fixture', ignoresubmit: 'true' }) })], 'not-dispatched', [`GET ${privacyGet}`, `GET ${formGet}`]],
-    ['ignore form posts to another operation on the same origin', [privacy([]), windowForm({ submit: submit(privacyRoute, { formhash: 'fixture', ignoresubmit: 'true' }) })], 'not-dispatched', [`GET ${privacyGet}`, `GET ${formGet}`]],
-    ['ignore form missing its submit flag', [privacy([]), windowForm({ submit: submit(`${formRoute}&type=post&id=919`, { formhash: 'fixture' }) })], 'not-dispatched', [`GET ${privacyGet}`, `GET ${formGet}`]],
-    ['ignore result names another member', [privacy([]), windowForm(), { ...success, uid: 35 }], 'unknown-effect', [`GET ${privacyGet}`, `GET ${formGet}`, addRequest()]],
-    ['ignore refusal', [privacy([]), windowForm(), refusal, privacy([])], 'refused', [`GET ${privacyGet}`, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`]],
-    ['redrawn ignore form is not proof of change', [privacy([]), windowForm(), windowForm(), privacy([])], 'unknown-effect', [`GET ${privacyGet}`, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`]],
-    ['lost ignore write has no automatic resend', [privacy([]), windowForm(), { lost: true }], 'unknown-effect', [`GET ${privacyGet}`, `GET ${formGet}`, addRequest()]],
+    ['ignore form with mismatched target choices', [privacy([]), advertised, windowForm({ authorid: { name: 'authorid', value: '10', choices: [{ value: '10' }, { value: '0' }] } })], 'not-dispatched', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`]],
+    ['ignore form posts to another origin', [privacy([]), advertised, windowForm({ submit: submit('https://other.example.invalid' + formRoute, { formhash: 'fixture', ignoresubmit: 'true' }) })], 'not-dispatched', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`]],
+    ['ignore form posts to another operation on the same origin', [privacy([]), advertised, windowForm({ submit: submit(privacyRoute, { formhash: 'fixture', ignoresubmit: 'true' }) })], 'not-dispatched', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`]],
+    ['ignore form missing its submit flag', [privacy([]), advertised, windowForm({ submit: submit(`${formRoute}&type=post&id=919`, { formhash: 'fixture' }) })], 'not-dispatched', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`]],
+    ['ignore result names another member', [privacy([]), advertised, windowForm(), { ...success, uid: 35 }], 'unknown-effect', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`, addRequest()]],
+    ['ignore refusal', [privacy([]), advertised, windowForm(), refusal, privacy([])], 'refused', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`]],
+    ['redrawn ignore form is not proof of change', [privacy([]), advertised, windowForm(), windowForm(), privacy([])], 'unknown-effect', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`, addRequest(), `GET ${privacyGet}`]],
+    ['lost ignore write has no automatic resend', [privacy([]), advertised, windowForm(), { lost: true }], 'unknown-effect', [`GET ${privacyGet}`, statusGet, `GET ${formGet}`, addRequest()]],
   ]) {
     const h = controlled(responses);
     const change = await h.client.addNoticeIgnoreRule(target, 'author');
@@ -163,7 +200,7 @@ export async function checkIgnore() {
 
   const systemTarget = { type: 'system', authorId: '0' };
   const native = controlled([
-    windowForm({ type_key: 'system', authorid: { name: 'authorid', value: '0', choices: [{ value: '0' }, { value: '0' }] }, submit: submit(`${formRoute}&type=system&id=0`, { formhash: 'fixture', ignoresubmit: 'true' }) }),
+    advertised, windowForm({ type_key: 'system', authorid: { name: 'authorid', value: '0', choices: [{ value: '0' }, { value: '0' }] }, submit: submit(`${formRoute}&type=system&id=0`, { formhash: 'fixture', ignoresubmit: 'true' }) }),
   ]);
   const systemForm = await native.client.loadNoticeIgnoreForm(systemTarget);
   record('system notices offer everybody scope only', { kind: 'form', scopes: ['everybody'] }, { kind: systemForm.kind, scopes: systemForm.scopes });

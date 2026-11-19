@@ -1,3 +1,10 @@
+import { numericId } from "../notice-transport.js";
+import {
+  selectV4,
+  unsupportedV4,
+  v4StatusURL,
+  type V4CapabilityGroup,
+} from "../v4-selection.js";
 import { unwrap } from "../account-forms.js";
 import { byId, descendants, documentFrom, label, text } from "../html.js";
 import { accountFrom } from "../read-thread.js";
@@ -19,7 +26,7 @@ import type {
 import { spaceEffects, type SpaceObservation } from "./effects.js";
 import { documentScripts, named, nativePage } from "./native.js";
 import { spaceRoute } from "./routes.js";
-import { str, structuredPage, supportsStructuredSpace } from "./structured.js";
+import { str, structuredPage, structuredSpaceName } from "./structured.js";
 
 export type * from "./model.js";
 
@@ -38,11 +45,23 @@ function spaceAccount(doc: Parameters<typeof accountFrom>[0], base: string) {
   const head = descendants(doc, (node) => node.tagName === "head")[0];
   const uid =
     head &&
-    /\bdiscuz_uid\s*=\s*['"](0|[1-9]\d*)['"]/.exec(documentScripts(head))?.[1];
+    /\bdiscuz_uid\s*=\s*['"](0|[1-9]\d*)['"]/.exec(
+      documentScripts(head),
+    )?.[1];
   if (account.kind !== "unknown" || uid === undefined) return account;
   return uid === "0"
     ? { kind: "guest" as const }
     : { kind: "member" as const, id: uid, name: `Member ${uid}` };
+}
+
+function viewerChanged(
+  payload: Record<string, unknown> | null,
+  status: { kind: string },
+) {
+  const returned = numericId(payload?.uid);
+  return (
+    "viewer" in status && returned !== null && status.viewer !== returned
+  );
 }
 
 function json(response: HostResponse) {
@@ -64,6 +83,32 @@ export function createSpaceClient({
   transport,
 }: SpaceClientOptions): SpaceClient {
   const base = new URL(origin).origin;
+  async function capability(
+    group: V4CapabilityGroup,
+    name: string,
+    continuity: string,
+    memberId?: string,
+  ) {
+    const url = v4StatusURL(base);
+    try {
+      const response = await transport.request(url, {
+        fresh: true,
+        session: continuity,
+        method: "GET",
+        effect: false,
+      });
+      if (session() !== continuity)
+        return { kind: "session-changed" } as const;
+      return selectV4(response, url, group, name, memberId);
+    } catch {
+      return {
+        kind:
+          session() === continuity
+            ? ("legacy" as const)
+            : ("session-changed" as const),
+      };
+    }
+  }
   const pages = new WeakMap<
     SpacePage,
     {
@@ -101,7 +146,9 @@ export function createSpaceClient({
       message,
     });
     if (route.view === "photo" || route.view === "member")
-      return handoff("Open the native member space in the same forum session.");
+      return handoff(
+        "Open the native member space in the same forum session.",
+      );
     const continuity = session();
     if (!continuity)
       return {
@@ -123,7 +170,15 @@ export function createSpaceClient({
     ): SpaceRead => ({ kind, url, message });
     const selected = new URL(url);
     selected.searchParams.set("tsdmapp", "json");
-    if (supportsStructuredSpace(route)) {
+    const name = structuredSpaceName(route);
+    const status = name
+      ? await capability("space_pages", name, continuity)
+      : ({ kind: "legacy" } as const);
+    if (status.kind === "session-changed")
+      return failure("session-changed", "The forum session changed.");
+    if (status.kind === "limited")
+      return failure("limited", "The forum is limiting requests.");
+    if (status.kind === "v4") {
       selected.searchParams.set("tsdmv", "4");
       selected.searchParams.set("nodoc", "1");
     }
@@ -158,10 +213,17 @@ export function createSpaceClient({
         );
       const payload = json(response);
       const viewer = readAccount(payload ?? {});
+      if (payload?.login !== 1 && viewerChanged(payload, status))
+        return failure(
+          "session-changed",
+          "The returned space viewer changed.",
+        );
       const refusal = structuredFailure(payload ?? {}, response, viewer);
       if (
         refusal &&
-        ["login", "missing", "permission", "limited"].includes(refusal.kind) &&
+        ["login", "missing", "permission", "limited"].includes(
+          refusal.kind,
+        ) &&
         "message" in refusal
       ) {
         if (refusal.kind === "login") return failure("login", refusal.message);
@@ -182,12 +244,19 @@ export function createSpaceClient({
       if (messageKey === "to_login") return failure("login", message);
       if (/does_not_exist|not_found/.test(messageKey))
         return failure("missing", message);
-      if (payload?.ok === 0 && (messageKey || message))
+      if (
+        payload?.ok === 0 &&
+        !unsupportedV4(payload) &&
+        (messageKey || message)
+      )
         return failure("permission", message || messageKey);
-      if (payload) {
+      if (payload && status.kind === "v4" && requestURL === selected) {
         const result = structuredPage(payload, route, viewer);
         if (result === "mismatch")
-          return failure("invalid", "The returned space scope did not match.");
+          return failure(
+            "invalid",
+            "The returned space scope did not match.",
+          );
         if (result) {
           capture?.({ payload, doc: null, route });
           return remember(result, continuity);
@@ -226,6 +295,17 @@ export function createSpaceClient({
           "The response contains conflicting viewer identities.",
         );
       const account = viewer.kind === "unknown" ? nativeAccount : viewer;
+      if (
+        account.kind !== "unknown" &&
+        viewerChanged(
+          { uid: account.kind === "member" ? account.id : "0" },
+          status,
+        )
+      )
+        return failure(
+          "session-changed",
+          "The returned space viewer changed.",
+        );
       if (route.view === "greetings" && account.kind === "guest")
         return failure("login", "Sign in to read received greetings.");
       const result = nativePage(doc, route, account, source);
@@ -287,6 +367,7 @@ export function createSpaceClient({
       read,
       json,
       spaceAccount,
+      capability,
     ),
   };
 }

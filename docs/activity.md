@@ -60,6 +60,22 @@ The direct endpoints use the same forum session. Create a `requests.Session` wit
 from urllib.parse import parse_qs, urljoin, urlsplit
 
 
+def advertised(session, origin, capability):
+    response = session.get(origin + "/plugin.php", params={"id": "tsdmapp:api", "action": "status"},
+                           allow_redirects=False, timeout=20)
+    if response.status_code == 404:
+        return False
+    if response.status_code != 200:
+        raise RuntimeError("Capability check failed: " + str(response.status_code))
+    try:
+        flags = response.json()
+    except ValueError:
+        return False
+    if flags.get("error") in {"busy", "login"}:
+        raise RuntimeError("Capability check refused: " + flags["error"])
+    return flags.get("ok") == 1 and flags.get("v4") == 1 and capability in flags.get("thread_lists", [])
+
+
 def activity(session, origin, action, **ids):
     params = {"mod": "misc", "action": action, **ids}
     if action == "viewwarning":
@@ -67,7 +83,15 @@ def activity(session, origin, action, **ids):
     elif action == "commentmore":
         params.update(inajax=1, tsdmapp="json", tsdmform=1)
     elif action in {"viewratings", "viewvote", "viewthreadmod", "viewpayments"}:
-        params.update(tsdmapp="json", tsdmv=4, nodoc=1)
+        capabilities = {"viewratings": "ratings", "viewvote": "poll_voters",
+                        "viewthreadmod": "thread_mod", "viewpayments": "payments"}
+        if advertised(session, origin, capabilities[action]):
+            params.update(tsdmapp="json", tsdmv=4, nodoc=1)
+        elif action == "viewvote":
+            params.update(inajax=1)
+        else:
+            handle = "pay" if action == "viewpayments" else action
+            params.update(infloat="yes", handlekey=handle, inajax=1, ajaxtarget="fwin_content_" + handle)
     else:
         raise ValueError("Select a read view from the table")
     return session.get(origin + "/forum.php", params=params, allow_redirects=False, timeout=20)
@@ -131,15 +155,21 @@ After deliberate confirmation for a recommendation, call `evaluate_once(session,
 
 ### curl
 
-Set `FORUM_ORIGIN`, `FORUM_COOKIE_JAR`, `TID` and the IDs needed below. Use a protected host cookie jar for the intended session. Add `--cookie "$FORUM_COOKIE_JAR"` to requests that require it. Each invocation below makes one request and displays the response headers and body. The native AJAX options for a fallback are `inajax=1` for voters and comments, or `infloat=yes&inajax=1&handlekey=…&ajaxtarget=fwin_content_…` for ratings (`viewratings`), moderation (`viewthreadmod`) and payments (`pay`).
+Set `FORUM_ORIGIN`, `FORUM_COOKIE_JAR`, `TID` and the IDs needed below. Use a protected host cookie jar for the intended session. Add `--cookie "$FORUM_COOKIE_JAR"` to requests that require it. Use the intended account throughout the status and list reads. The ratings example uses `jq` to check `thread_lists`. The native AJAX options for a fallback are `inajax=1` for voters and comments, or `infloat=yes&inajax=1&handlekey=…&ajaxtarget=fwin_content_…` for ratings (`viewratings`), moderation (`viewthreadmod`) and payments (`pay`).
 
 ```sh
 # Structured read. For the other views change ACTION and supply the IDs in the table.
 ACTION=viewratings
+# Query the capability before choosing the structured flags or the native window.
+flags=$(curl -q -fsS --retry 0 --cookie "$FORUM_COOKIE_JAR" "$FORUM_ORIGIN/plugin.php?id=tsdmapp:api&action=status") || exit 1
+if printf '%s' "$flags" | jq -e '.ok == 1 and .v4 == 1 and (.thread_lists | arrays | index("ratings") != null)' >/dev/null; then
+  set -- --data-urlencode tsdmapp=json --data-urlencode tsdmv=4 --data-urlencode nodoc=1
+else
+  set -- --data-urlencode infloat=yes --data-urlencode handlekey=viewratings --data-urlencode inajax=1 --data-urlencode ajaxtarget=fwin_content_viewratings
+fi
 curl -sS -i --retry 0 --cookie "$FORUM_COOKIE_JAR" -G "$FORUM_ORIGIN/forum.php" \
   --data-urlencode mod=misc --data-urlencode "action=$ACTION" \
-  --data-urlencode "tid=$TID" --data-urlencode "pid=$PID" \
-  --data-urlencode tsdmapp=json --data-urlencode tsdmv=4 --data-urlencode nodoc=1
+  --data-urlencode "tid=$TID" --data-urlencode "pid=$PID" "$@"
 
 # Native warnings. For commentmore send pid/page instead of uid and add tsdmapp=json&tsdmform=1.
 curl -sS -i --retry 0 --cookie "$FORUM_COOKIE_JAR" -G "$FORUM_ORIGIN/forum.php" \

@@ -32,18 +32,18 @@
 - [Manage moderator access and forum settings](docs/moderator-settings.md)
 - [Use the administrator API under its own session](docs/admin.md)
 
-## Install a local candidate
+## Install version 0.1.0
 
-Use Node.js 26.x and npm. From a new project directory, install the local `0.1.0` tarball and import the ESM entry from `tsdm-sdk`.
+Use Node.js 26.x and npm. From a new project directory, install the versioned GitHub Release asset and import the ESM entry from `tsdm-sdk`.
 
 ```sh
 npm init -y
-npm install /absolute/path/to/tsdm-sdk-0.1.0.tgz
+npm install --save-exact --engine-strict https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz
 ```
 
 The tarball includes TypeScript declarations usable without DOM types, this README, and the notices for bundled `parse5` and `entities`. To build the tarball from the SDK checkout, run `npm ci` and `npm run pack:sdk`. The build writes `dist/tsdm-sdk-0.1.0.tgz`. The installed fixture replay and archive digest are recorded under `evidence/install/` in the SDK repository.
 
-The first public release is planned for immutable GitHub Releases. Its `release.json` will record the release tag, source commit and archive SHA-256. Compare it with `shasum -a 256 tsdm-sdk-0.1.0.tgz` before installing an archived download. Commit the consumer's `package.json` and `package-lock.json` to pin a published release. [Installation and distribution decision](https://github.com/Benson-mk/tsdm-sdk/issues/6#issuecomment-6977558151)
+The immutable release includes `release.json`, which records the release tag, source commit and archive SHA-256. Compare it with `shasum -a 256 tsdm-sdk-0.1.0.tgz` before installing an archived download. Commit the consumer's `package.json` and `package-lock.json` to pin a published release. [Installation and distribution decision](https://github.com/Benson-mk/tsdm-sdk/issues/6#issuecomment-6977558151)
 
 ## License
 
@@ -153,6 +153,8 @@ The receipt includes the date, deployment, board ID, selected thread ID, visible
 `readHomepage()` exposes board groups and favorite-board links when supplied. Follow a group’s `sourceURL` to read its section. Request `{ representation: "native" }` to read homepage activity links. `readBoard(url)` exposes subforums, category and filter destinations, thread rows and pagination. For monitoring, read the same board with `orderby=dateline&forumdefstyle=yes` and compare returned thread IDs between calls. Pass `{ previews: true }` to request listing excerpts when the deployment supports them.
 
 Read a thread row’s `url`, its `lastPost.url` when available, or an exact post’s `url` with `readThread`. For updates in reverse order, use `ordertype=1`. An author filter uses `authorid`. Returned pagination may wrap or clamp. An empty `pages.current` or absent `pages.total` means the response did not establish that value. Promoted rows can repeat, so count distinct posts by `post.id`. A post can include visible content and a restriction. Poll, activity, debate, reward and trade responses can carry special-thread display data.
+
+The SDK reads structured thread schemas 3 and later when the returned thread ID and post rows establish the view. Rendered post bodies can carry image attachments and media destinations. A visible Bilibili link in the post’s message cell can also yield a video destination in either representation. The SDK leaves opening that destination to the host.
 
 The host supplies the origin and the session-bound GET transport. Keep the session continuous across the read, honor `fresh`, and supply the actual response URL. Report a redirect as `followed` after the host has resolved it, or `opaque` when the destination is unavailable. A `document-navigation` result offers the original destination to the host for deliberate navigation. `account.kind` can be `unknown`.
 

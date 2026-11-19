@@ -25,13 +25,7 @@ import {
   taskOperation,
   taskParticipants,
 } from "./tasks.js";
-import {
-  handoff,
-  home,
-  pageMode,
-  taskMagicHost,
-  writeMode,
-} from "./protocol.js";
+import { handoff, home, taskMagicHost, writeMode } from "./protocol.js";
 
 export function createTaskMagicClient(
   options: TaskMagicClientOptions,
@@ -51,9 +45,15 @@ export function createTaskMagicClient(
     const owner = host.session();
     if (!owner) return { kind: "refused", code: "login" };
     const base = home(host.origin, { mod: "task", item: tab });
-    const loaded = await host.readCompatible(base, owner);
+    const loaded = await host.readCompatible(
+      base,
+      owner,
+      "task_pages",
+      "task_list",
+      65,
+    );
     if (loaded.kind !== "page") return loaded;
-    const legacy = loaded.page.data?.type !== "task_list";
+    const legacy = !loaded.v4 || loaded.page.data?.type !== "task_list";
     const tasks =
       loaded.identified &&
       (legacy
@@ -69,7 +69,7 @@ export function createTaskMagicClient(
     const owner = host.session();
     if (!owner) return { kind: "refused", code: "login" };
     const base = home(host.origin, { mod: "task", do: "view", id: taskId });
-    const loaded = await host.read(query(base, pageMode), owner);
+    const loaded = await host.readV4Only(base, owner, "task_pages", "task");
     if (loaded.kind !== "page") return loaded;
     const data = loaded.page.data;
     if (data?.type !== "task") return handoff(base);
@@ -117,7 +117,12 @@ export function createTaskMagicClient(
     const owner = host.session();
     if (!owner) return { kind: "refused", code: "login" };
     const base = home(host.origin, { mod: "task", do: "parter", id: taskId });
-    const loaded = await host.read(query(base, pageMode), owner);
+    const loaded = await host.readV4Only(
+      base,
+      owner,
+      "task_pages",
+      "task_parter",
+    );
     if (loaded.kind !== "page") return loaded;
     const data = loaded.page.data;
     if (data?.type !== "task_parter") return handoff(base);

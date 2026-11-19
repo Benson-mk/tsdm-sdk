@@ -1,9 +1,10 @@
 {
   "repository": "Carinoasd/tsdm_client",
   "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
-  "basis": "These upstream sources establish protocol shapes. Installed and direct controls were authored with fictitious member data.",
+  "basis": "These upstream sources establish protocol shapes. The installed consumer uses authored controls and, when the pinned checkout is provided, replays bounded excerpts of pinned profiles.",
   "sha256": {
     "test/data/tsdmapp/profile_v4_self.json": "3d2845fe6508a8295797baa15d6d0d89e4ec3c829cd047a54ce593d35c29ee79",
+    "test/data/tsdmapp/profile_v4_other_admin.json": "e9baa1e808d511517f07e8592cb1b6581a21d0d982b6cf652ced55e4b2a5e70c",
     "test/data/tsdmapp/profile_v4_username.json": "15f8be62e29d4b05c1e12771c15fd9d484c47aa560d3b649dce191b35a1a06e7",
     "test/data/tsdmapp/profile_v4_nouser.json": "08c5eb059817ad1692ff77471d31fd07896df84894391ff25c67d21dc7032510",
     "test/data/profile_self_x5.html": "8bf988e7c3ff3e8047f520b0fcc7c2fbe54736cbb7d39014c2e48df18989b6f4",

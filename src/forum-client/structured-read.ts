@@ -1,4 +1,5 @@
-import { content, descendants, fragmentFrom, hasClass } from "./html.js";
+import { attr, content, descendants, fragmentFrom, hasClass } from "./html.js";
+import { linkedPostVideo } from "./linked-post-video.js";
 import { readable } from "./read-thread.js";
 import { cleanURL, routeFor } from "./routes.js";
 import type {
@@ -466,6 +467,12 @@ function post(row: Payload, origin: string, threadId: string): Post | null {
       ? [{ kind: "text" as const, text: message }]
       : [];
   if (!readable(body) && !restriction) return null;
+  const messageCells = descendants(
+    fragment,
+    (node) => node.tagName === "td" && attr(node, "id") === `postmessage_${id}`,
+  );
+  if (messageCells.length === 1 && messageCells[0])
+    body.push(...linkedPostVideo(messageCells[0]));
   return {
     id,
     author: string(row.author) ?? "Anonymous",
@@ -725,7 +732,9 @@ export function decodeStructured(
     (actual.kind === "thread" ||
       (actual.kind === "redirect" && requested.kind === "redirect")) &&
     payload.type === "thread" &&
-    (payload.schema === 3 || payload.schema === 15)
+    typeof payload.schema === "number" &&
+    Number.isSafeInteger(payload.schema) &&
+    payload.schema >= 3
   )
     return thread(payload, response, requested, actual, viewer);
   return null;
