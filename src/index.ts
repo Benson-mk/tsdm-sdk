@@ -546,4 +546,12 @@ export type {
   PokemonSkills,
   PokemonTransport,
   PokemonValue,
+  PokemonBattleItemResult,
+  PokemonBattleScene,
+  PokemonBattleSkillSelection,
+  PokemonGameRow,
+  PokemonShopItemPurchase,
+  PokemonShopPage,
+  PokemonShopPetPurchase,
+  PokemonShopPetsPage,
 } from "./forum-client/pokemon/types.js";

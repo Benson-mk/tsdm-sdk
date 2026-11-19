@@ -1,0 +1,945 @@
+{
+  "archiveSHA256": "8a60eae997cd9866df5ce7893cd007730d38e02716bdfaf95cc6dbeb9d86399a",
+  "integrationBaseCommit": "f8a34174d3b27bbe5b5edc5ab4f46f77e3de6542",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "inventorySource": "SDK #4 section 6",
+  "inventorySHA256": "a19cd3e8b86b05cd95ca78c81dfdab08da5c92c22af16cd0bed92b9360f8a6bf",
+  "command": "sh evidence/pokemon-battles/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\" \"$BASE\"",
+  "expected": [
+    [
+      "GET",
+      "battle",
+      "get_battle_items"
+    ],
+    [
+      "GET",
+      "battle",
+      "maps"
+    ],
+    [
+      "GET",
+      "battle",
+      "recover"
+    ],
+    [
+      "GET",
+      "config",
+      "global_config"
+    ],
+    [
+      "GET",
+      "evolution",
+      "evolution_path"
+    ],
+    [
+      "GET",
+      "pokemon",
+      "detail"
+    ],
+    [
+      "GET",
+      "pokemon",
+      "equipment"
+    ],
+    [
+      "GET",
+      "pokemon",
+      "learnable_skills"
+    ],
+    [
+      "GET",
+      "pokemon",
+      "list"
+    ],
+    [
+      "GET",
+      "shop",
+      "list"
+    ],
+    [
+      "GET",
+      "shop",
+      "pets"
+    ],
+    [
+      "GET",
+      "user",
+      "badge_status"
+    ],
+    [
+      "GET",
+      "user",
+      "inventory"
+    ],
+    [
+      "GET",
+      "user",
+      "profile"
+    ],
+    [
+      "POST",
+      "battle",
+      "capture"
+    ],
+    [
+      "POST",
+      "battle",
+      "flee"
+    ],
+    [
+      "POST",
+      "battle",
+      "start"
+    ],
+    [
+      "POST",
+      "battle",
+      "switch_pokemon"
+    ],
+    [
+      "POST",
+      "battle",
+      "turn"
+    ],
+    [
+      "POST",
+      "battle",
+      "use_item"
+    ],
+    [
+      "POST",
+      "battle",
+      "use_item_on_skill"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "equip_item"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "forget_skill"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "learn_skill"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "move_pokemon"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "release"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "rename"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "set_first"
+    ],
+    [
+      "POST",
+      "pokemon",
+      "unequip_item"
+    ],
+    [
+      "POST",
+      "shop",
+      "buy"
+    ],
+    [
+      "POST",
+      "shop",
+      "buy_pet"
+    ],
+    [
+      "POST",
+      "user",
+      "heal"
+    ],
+    [
+      "POST",
+      "user",
+      "heal_and_flee"
+    ],
+    [
+      "POST",
+      "user",
+      "refresh_badge"
+    ],
+    [
+      "POST",
+      "user",
+      "use_item"
+    ]
+  ],
+  "actual": {
+    "SDK": [
+      [
+        "GET",
+        "battle",
+        "get_battle_items"
+      ],
+      [
+        "GET",
+        "battle",
+        "maps"
+      ],
+      [
+        "GET",
+        "battle",
+        "recover"
+      ],
+      [
+        "GET",
+        "config",
+        "global_config"
+      ],
+      [
+        "GET",
+        "evolution",
+        "evolution_path"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "detail"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "equipment"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "learnable_skills"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "pets"
+      ],
+      [
+        "GET",
+        "user",
+        "badge_status"
+      ],
+      [
+        "GET",
+        "user",
+        "inventory"
+      ],
+      [
+        "GET",
+        "user",
+        "profile"
+      ],
+      [
+        "POST",
+        "battle",
+        "capture"
+      ],
+      [
+        "POST",
+        "battle",
+        "flee"
+      ],
+      [
+        "POST",
+        "battle",
+        "start"
+      ],
+      [
+        "POST",
+        "battle",
+        "switch_pokemon"
+      ],
+      [
+        "POST",
+        "battle",
+        "turn"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item_on_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "equip_item"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "forget_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "learn_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "move_pokemon"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "release"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "rename"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "set_first"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "unequip_item"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy_pet"
+      ],
+      [
+        "POST",
+        "user",
+        "heal"
+      ],
+      [
+        "POST",
+        "user",
+        "heal_and_flee"
+      ],
+      [
+        "POST",
+        "user",
+        "refresh_badge"
+      ],
+      [
+        "POST",
+        "user",
+        "use_item"
+      ]
+    ],
+    "requests": [
+      [
+        "GET",
+        "battle",
+        "get_battle_items"
+      ],
+      [
+        "GET",
+        "battle",
+        "maps"
+      ],
+      [
+        "GET",
+        "battle",
+        "recover"
+      ],
+      [
+        "GET",
+        "config",
+        "global_config"
+      ],
+      [
+        "GET",
+        "evolution",
+        "evolution_path"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "detail"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "equipment"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "learnable_skills"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "pets"
+      ],
+      [
+        "GET",
+        "user",
+        "badge_status"
+      ],
+      [
+        "GET",
+        "user",
+        "inventory"
+      ],
+      [
+        "GET",
+        "user",
+        "profile"
+      ],
+      [
+        "POST",
+        "battle",
+        "capture"
+      ],
+      [
+        "POST",
+        "battle",
+        "flee"
+      ],
+      [
+        "POST",
+        "battle",
+        "start"
+      ],
+      [
+        "POST",
+        "battle",
+        "switch_pokemon"
+      ],
+      [
+        "POST",
+        "battle",
+        "turn"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item_on_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "equip_item"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "forget_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "learn_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "move_pokemon"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "release"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "rename"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "set_first"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "unequip_item"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy_pet"
+      ],
+      [
+        "POST",
+        "user",
+        "heal"
+      ],
+      [
+        "POST",
+        "user",
+        "heal_and_flee"
+      ],
+      [
+        "POST",
+        "user",
+        "refresh_badge"
+      ],
+      [
+        "POST",
+        "user",
+        "use_item"
+      ]
+    ],
+    "curl": [
+      [
+        "GET",
+        "battle",
+        "get_battle_items"
+      ],
+      [
+        "GET",
+        "battle",
+        "maps"
+      ],
+      [
+        "GET",
+        "battle",
+        "recover"
+      ],
+      [
+        "GET",
+        "config",
+        "global_config"
+      ],
+      [
+        "GET",
+        "evolution",
+        "evolution_path"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "detail"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "equipment"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "learnable_skills"
+      ],
+      [
+        "GET",
+        "pokemon",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "list"
+      ],
+      [
+        "GET",
+        "shop",
+        "pets"
+      ],
+      [
+        "GET",
+        "user",
+        "badge_status"
+      ],
+      [
+        "GET",
+        "user",
+        "inventory"
+      ],
+      [
+        "GET",
+        "user",
+        "profile"
+      ],
+      [
+        "POST",
+        "battle",
+        "capture"
+      ],
+      [
+        "POST",
+        "battle",
+        "flee"
+      ],
+      [
+        "POST",
+        "battle",
+        "start"
+      ],
+      [
+        "POST",
+        "battle",
+        "switch_pokemon"
+      ],
+      [
+        "POST",
+        "battle",
+        "turn"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item"
+      ],
+      [
+        "POST",
+        "battle",
+        "use_item_on_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "equip_item"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "forget_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "learn_skill"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "move_pokemon"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "release"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "rename"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "set_first"
+      ],
+      [
+        "POST",
+        "pokemon",
+        "unequip_item"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy"
+      ],
+      [
+        "POST",
+        "shop",
+        "buy_pet"
+      ],
+      [
+        "POST",
+        "user",
+        "heal"
+      ],
+      [
+        "POST",
+        "user",
+        "heal_and_flee"
+      ],
+      [
+        "POST",
+        "user",
+        "refresh_badge"
+      ],
+      [
+        "POST",
+        "user",
+        "use_item"
+      ]
+    ]
+  },
+  "suites": {
+    "pokemon-installed": {
+      "receiptSHA256": "4d1d96fb28f7a1a22e17197ee521b0035e7992a53e881e9798509ba24c768a9e",
+      "observationGroups": 40
+    },
+    "pokemon-battles-installed": {
+      "receiptSHA256": "2156fc5afe21b131270217bd495364c99005aadf442cdda13af1d08753ae8ac8",
+      "observationGroups": 63
+    },
+    "pokemon-direct": {
+      "receiptSHA256": "0ff06e2a5c4a5b5a83daa06fb9a2a453e2bb527763da92b06b1e82c103f91299",
+      "observationGroups": 56
+    },
+    "pokemon-battles-direct": {
+      "receiptSHA256": "8f7575f5513e70f9022667e37ec71f59040b3a9b44730a56f3ed004812e6fc19",
+      "observationGroups": 42
+    },
+    "pokemon-regressions": {
+      "receiptSHA256": "75a1359129d0896ec3c2715d4d462d29f3a98c27f2b2083dde2f808f5068c50c"
+    }
+  },
+  "regressions": {
+    "expected": {
+      "passingSuites": [
+        "account",
+        "activity-direct",
+        "activity-installed",
+        "collections",
+        "historical-drafts",
+        "historical-replies",
+        "media-direct",
+        "media-installed",
+        "members",
+        "messages",
+        "notices",
+        "posts-direct",
+        "posts-installed",
+        "profile",
+        "replies-direct",
+        "replies-installed",
+        "sdk",
+        "spaces",
+        "special-direct",
+        "special-installed",
+        "trades-direct",
+        "trades-installed",
+        "credits-installed",
+        "credits-direct",
+        "tasks-installed",
+        "tasks-direct",
+        "awards-installed",
+        "awards-direct",
+        "batch-ratings-installed",
+        "batch-ratings-direct",
+        "packets-installed",
+        "packets-direct",
+        "bank-installed",
+        "bank-direct",
+        "pokemon-installed",
+        "pokemon-direct"
+      ]
+    },
+    "actual": {
+      "account": {
+        "status": "passed",
+        "receiptSHA256": "39d9780c295fcaf5acec8094d46abe41333c138449c1ee834af76cd26eb503b2"
+      },
+      "activity-direct": {
+        "status": "passed",
+        "receiptSHA256": "ed3a5f5cd517eb575eeed04a8bf416ec782c89fd55a6ff491ad9a4bf74e23d86"
+      },
+      "activity-installed": {
+        "status": "passed",
+        "receiptSHA256": "4071151771985a9fb90fc28e36751c4259e801697bf7c51fe6e1e211aff0f7f5"
+      },
+      "collections": {
+        "status": "passed",
+        "receiptSHA256": "19adb64ab376c9b7a327ceb9a67af4faba5823a4849e7af82d1bb6d82f988928"
+      },
+      "historical-drafts": {
+        "status": "passed",
+        "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e"
+      },
+      "historical-replies": {
+        "status": "passed",
+        "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f"
+      },
+      "media-direct": {
+        "status": "passed",
+        "receiptSHA256": "2c2c9507eaa7e7d5ddaba0c5fbdeebfeec6fc76d64139394260757e03c0be814"
+      },
+      "media-installed": {
+        "status": "passed",
+        "receiptSHA256": "3a0e80c4c74e2ccf4c680ada24900280d9b62799d83cc10f87f20c39ee072768"
+      },
+      "members": {
+        "status": "passed",
+        "receiptSHA256": "57ba4cc536c914e6637484347a02531e424203ff9595ec2a345d8d476a5884be"
+      },
+      "messages": {
+        "status": "passed",
+        "receiptSHA256": "269ce01a049b316c73d6f93aba72d45ddf56f077966b1577348fa2622e43f52c"
+      },
+      "notices": {
+        "status": "passed",
+        "receiptSHA256": "c3b8c73465a77708748fccf8d8e0eda3d4d08c96032cd06c36c0413aec12b5b8"
+      },
+      "posts-direct": {
+        "status": "passed",
+        "receiptSHA256": "21de138ee125ba227f38c8e71d433cabe832945788ca239474a0e8b4245d04f4"
+      },
+      "posts-installed": {
+        "status": "passed",
+        "receiptSHA256": "b4651cdd6d591d1da4007e880a38d614ca5da5b1690ec1fe55373cfb2b812009"
+      },
+      "profile": {
+        "status": "passed",
+        "receiptSHA256": "d97085d3aaac45c1f9e689c3a6e1a3d8eb1bc4da29560abb016df9f4ba56d1a9"
+      },
+      "replies-direct": {
+        "status": "passed",
+        "receiptSHA256": "0c147bcb4e2cc23700c341175b2210145f0b7b767a20b988b1f7d25193d3085b"
+      },
+      "replies-installed": {
+        "status": "passed",
+        "receiptSHA256": "aff41182375d07d9bc1e07d04477a6344ddc2a8b34d0889fde53b8839446b2de"
+      },
+      "sdk": {
+        "status": "passed",
+        "receiptSHA256": "902c69df6f12cef9ea40630990e91787c4d02673136465050db126def9ec0aae"
+      },
+      "spaces": {
+        "status": "passed",
+        "receiptSHA256": "71202142dbaea8a8f76d1e0d8f5780eeee5430d3e7aa6299c18f4dfe18fe10d7"
+      },
+      "special-direct": {
+        "status": "passed",
+        "receiptSHA256": "1f07e941530535009c4506d590f8c8eb4c09b40391612b70a304dedd413d78ca"
+      },
+      "special-installed": {
+        "status": "passed",
+        "receiptSHA256": "880b8d31f0d80c8176f5b484a53ddf541abe2de205f73de0ec8aeec8a32e1ade"
+      },
+      "trades-direct": {
+        "status": "passed",
+        "receiptSHA256": "21f87d23ea3a9d552425da2396f066126b09d18f015443e14bdb8810222e62ae"
+      },
+      "trades-installed": {
+        "status": "passed",
+        "receiptSHA256": "7470be29be8b28f26f661fff37008b85df5d694259a5f729fd97fbabb1db2d1b"
+      },
+      "credits-installed": {
+        "status": "passed",
+        "observationGroups": 37,
+        "receiptSHA256": "a53d5b3c21043776ee6ca69ac971886c1b4f7bcdd18d22c41b61fc683dbf943d"
+      },
+      "credits-direct": {
+        "status": "passed",
+        "observationGroups": 18,
+        "receiptSHA256": "f4319d1e0b444b18fdf916941d86942c840d4916e19a7581b54e7e229fb9cbb2"
+      },
+      "tasks-installed": {
+        "status": "passed",
+        "observationGroups": 45,
+        "receiptSHA256": "34615f497befa33cac27408555907866643eaa8e7ef351d592082a0882b586dd"
+      },
+      "tasks-direct": {
+        "status": "passed",
+        "observationGroups": 39,
+        "receiptSHA256": "b61b85d7d501265c30d7e5dacfb0e34851eb1c5a453fddd94e4741a660f40cb4"
+      },
+      "awards-installed": {
+        "status": "passed",
+        "observationGroups": 34,
+        "receiptSHA256": "357c88dc653c792be599014edace6e251a1bdc26a3b51267419bc2196c41aedd"
+      },
+      "awards-direct": {
+        "status": "passed",
+        "observationGroups": 46,
+        "receiptSHA256": "4e47d16c6420f118fc6f2c8d7896b1a6e1759ca34bd646b3bec44f0ed09ba27e"
+      },
+      "batch-ratings-installed": {
+        "status": "passed",
+        "observationGroups": 42,
+        "receiptSHA256": "6656db87293008f57cf03c4e6cab6209f260b5a4cf96de7b0471c2a6b27cc73c"
+      },
+      "batch-ratings-direct": {
+        "status": "passed",
+        "observationGroups": 28,
+        "receiptSHA256": "95f7421285cd120c1223955720255ccd80c7f304e38b7965cf1bd497ba235181"
+      },
+      "packets-installed": {
+        "status": "passed",
+        "observationGroups": 37,
+        "receiptSHA256": "7a097cac4cd1f571b1d5411dadc25e655c125631241e38e66188e4f2c1ef0944"
+      },
+      "packets-direct": {
+        "status": "passed",
+        "observationGroups": 26,
+        "receiptSHA256": "5bf8a5ddb4a8e6292a538da90a4ed8aa049513b55f0620a1976f5b529eaf1cad"
+      },
+      "bank-installed": {
+        "status": "passed",
+        "observationGroups": 49,
+        "receiptSHA256": "024d3e0cf158f4c3f647631be342f096179a69a6aee3e5ab6e3565f63a1bef0c"
+      },
+      "bank-direct": {
+        "status": "passed",
+        "observationGroups": 40,
+        "receiptSHA256": "d1e2a2e8c62359912e0f01e7852299c2b1b8750226f808047738739ebe9b754a"
+      },
+      "pokemon-installed": {
+        "status": "passed",
+        "observationGroups": 40,
+        "receiptSHA256": "4d1d96fb28f7a1a22e17197ee521b0035e7992a53e881e9798509ba24c768a9e"
+      },
+      "pokemon-direct": {
+        "status": "passed",
+        "observationGroups": 56,
+        "receiptSHA256": "0ff06e2a5c4a5b5a83daa06fb9a2a453e2bb527763da92b06b1e82c103f91299"
+      }
+    }
+  },
+  "limitations": [
+    "Separate bootstrap traces qualify both #35 paths outside the 35 operations",
+    "Controlled hosts only. Deployment, permissions and game effects unobserved."
+  ]
+}

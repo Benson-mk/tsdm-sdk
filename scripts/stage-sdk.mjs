@@ -92,6 +92,7 @@ const manifest = {
     "docs/awards.md",
     "docs/packets.md",
     "docs/pokemon.md",
+    "docs/pokemon-battles.md",
     "notices/",
   ],
 };
@@ -143,6 +144,7 @@ copyFileSync(new URL("docs/batch-ratings.md", root), new URL("docs/batch-ratings
 copyFileSync(new URL("docs/packets.md", root), new URL("docs/packets.md", stage));
 copyFileSync(new URL("docs/bank.md", root), new URL("docs/bank.md", stage));
 copyFileSync(new URL("docs/pokemon.md", root), new URL("docs/pokemon.md", stage));
+copyFileSync(new URL("docs/pokemon-battles.md", root), new URL("docs/pokemon-battles.md", stage));
 mkdirSync(new URL("forum-client/", stage));
 mkdirSync(new URL("forum-client/pokemon/", stage));
 mkdirSync(new URL("forum-client/packets/", stage));

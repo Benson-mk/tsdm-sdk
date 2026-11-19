@@ -1,3 +1,4 @@
+import { pokemonGame } from "./game.js";
 import { pokemonRoster } from "./roster.js";
 import type { PokemonClientOptions } from "./types.js";
 import { createPokemonWire } from "./wire.js";
@@ -9,6 +10,7 @@ export function createPokemonClient(options: PokemonClientOptions) {
     bootstrapFromStatus: () => wire.bootstrap("status"),
     bootstrapFromGamePage: () => wire.bootstrap("game-page"),
     ...pokemonRoster(wire),
+    ...pokemonGame(wire),
   };
 }
 export type PokemonClient = ReturnType<typeof createPokemonClient>;

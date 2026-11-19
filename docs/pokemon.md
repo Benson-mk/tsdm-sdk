@@ -70,11 +70,14 @@ READS = {
     "config": {"global_config"}, "evolution": {"evolution_path"},
     "pokemon": {"list", "detail", "learnable_skills", "equipment"},
     "user": {"profile", "inventory", "badge_status"},
+    "shop": {"list", "pets"}, "battle": {"maps", "recover", "get_battle_items"},
 }
 WRITES = {
     "pokemon": {"set_first", "move_pokemon", "rename", "release", "learn_skill",
                 "forget_skill", "equip_item", "unequip_item"},
     "user": {"heal", "heal_and_flee", "refresh_badge", "use_item"},
+    "shop": {"buy", "buy_pet"},
+    "battle": {"start", "turn", "flee", "capture", "switch_pokemon", "use_item", "use_item_on_skill"},
 }
 
 
@@ -211,6 +214,8 @@ pm_call() {
     GET:config:global_config|GET:evolution:evolution_path|GET:pokemon:list|GET:pokemon:detail|GET:pokemon:learnable_skills|GET:pokemon:equipment) ;;
     GET:user:profile|GET:user:inventory|GET:user:badge_status) ;;
     POST:pokemon:set_first|POST:pokemon:move_pokemon|POST:pokemon:rename|POST:pokemon:release|POST:pokemon:learn_skill|POST:pokemon:forget_skill|POST:pokemon:equip_item|POST:pokemon:unequip_item) ;;
+    GET:shop:list|GET:shop:pets|GET:battle:maps|GET:battle:recover|GET:battle:get_battle_items) ;;
+    POST:shop:buy|POST:shop:buy_pet|POST:battle:start|POST:battle:turn|POST:battle:flee|POST:battle:capture|POST:battle:switch_pokemon|POST:battle:use_item|POST:battle:use_item_on_skill) ;;
     POST:user:heal|POST:user:heal_and_flee|POST:user:refresh_badge|POST:user:use_item) ;;
     *) return 2 ;;
   esac

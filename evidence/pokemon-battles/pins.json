@@ -1,0 +1,15 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "files": {
+    "lib/features/pokemon/repository/pokemon_repository.dart": "486ef659e2f19ccf399c61a8ed1a5c049c66180dcaf6358b404234f2dc5ba363",
+    "lib/features/pokemon/cubit/battle_cubit.dart": "b85a28c507302a973a08c6a48382436348c7e2ef697b8b3535c6128396ff67bc",
+    "lib/features/pokemon/README.md": "1dd49b623b724d6c91edb9e9ed5b5ed433aa7b3e1c3690ea310eaa8eecc17501",
+    "lib/features/pokemon/models/adventure.dart": "d85091e84edee938ed6e660880303a0df0cf0c327e10b3bc32e965d498b57a58",
+    "lib/features/pokemon/models/battle.dart": "55ade8d39084f4db83bab9ee21d6d8159438a3d511a0274723e3f35f91d11c69",
+    "lib/features/pokemon/models/shop_item.dart": "043cc1870b395003b8b30ec8f5e70aca3e8a39691e9bb466d2275ffce770d5cc",
+    "lib/features/pokemon/models/shop_pet.dart": "38af87b2ea4bccd40aa99b660f72fd3b6bfd58ab71ac42ae56ad7eca4857a601",
+    "test/regression/test_176_pokemon_test.dart": "55a3e228dab800a242fdd4f4b4339449682e5a96d99a01b18a54c40367824d8b",
+    "test/regression/test_177_pokemon_adventure_battle_test.dart": "9622dd657a2ed2a5d2694abcc9d5c126e32f7287f94fec266894f708671641f9",
+    "test/regression/test_178_pokemon_skills_equipment_test.dart": "44d80ae4a6cae39673fe4ffca697d1bfeade56e080789dc7b4c6399a79329abf"
+  }
+}

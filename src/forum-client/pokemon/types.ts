@@ -93,3 +93,37 @@ export interface PokemonHeal extends PokemonData {
   readonly max_hp: number;
   readonly cost: number;
 }
+
+export interface PokemonGameRow extends PokemonData {
+  readonly id: number;
+}
+export interface PokemonShopPage extends PokemonData {
+  readonly page: number;
+  readonly items: readonly PokemonGameRow[];
+}
+export interface PokemonShopPetsPage extends PokemonData {
+  readonly page: number;
+  readonly pets: readonly PokemonGameRow[];
+}
+export interface PokemonShopItemPurchase extends PokemonData {
+  readonly total_cost: number;
+  readonly remaining_money: number;
+  readonly items_purchased: number;
+}
+export interface PokemonShopPetPurchase extends PokemonData {
+  readonly total_cost: number;
+  readonly remaining_money: number;
+  readonly pokemon_type_id: number;
+  readonly quantity: number;
+}
+export interface PokemonBattleScene extends PokemonData {
+  readonly status: string;
+  readonly battle_id?: string | null;
+}
+export interface PokemonBattleSkillSelection extends PokemonData {
+  readonly requires_skill_selection: true;
+  readonly available_skills: readonly PokemonGameRow[];
+}
+export type PokemonBattleItemResult =
+  | PokemonResult<PokemonBattleScene>
+  | { kind: "skill-selection"; data: PokemonBattleSkillSelection };

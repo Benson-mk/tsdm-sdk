@@ -26,6 +26,7 @@
 - [Acquire, display and grant medals, titles and backgrounds](docs/awards.md)
 - [Claim and manage red packets](docs/packets.md)
 - [Open a Pokémon session and manage a roster](docs/pokemon.md)
+- [Shop and battle in Pokémon](docs/pokemon-battles.md)
 
 ## Install a local candidate
 
