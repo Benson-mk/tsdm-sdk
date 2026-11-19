@@ -1,0 +1,135 @@
+{
+  "archiveSHA256": "eae3ff3b3c92afa5370dd0186f884ecc03454efdc88fb7180a356652424579b0",
+  "curl": "8.7.1",
+  "evidence": "controlled direct guide over loopback",
+  "guideSHA256": "fa1a4fc06bd27005cf01ec7c929694bd1ac369be795531d732f57b958df3115c",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "requestsObserved": [
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "do": [
+          "wall"
+        ],
+        "mod": [
+          "space"
+        ],
+        "nodoc": [
+          "1"
+        ],
+        "tsdmapp": [
+          "json"
+        ],
+        "tsdmv": [
+          "4"
+        ],
+        "uid": [
+          "502"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "do": [
+          "wall"
+        ],
+        "mod": [
+          "space"
+        ],
+        "nodoc": [
+          "1"
+        ],
+        "tsdmapp": [
+          "json"
+        ],
+        "tsdmv": [
+          "4"
+        ],
+        "uid": [
+          "502"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/home.php",
+      "query": {
+        "do": [
+          "wall"
+        ],
+        "mod": [
+          "space"
+        ],
+        "nodoc": [
+          "1"
+        ],
+        "tsdmapp": [
+          "json"
+        ],
+        "tsdmv": [
+          "4"
+        ],
+        "uid": [
+          "502"
+        ]
+      }
+    }
+  ],
+  "results": [
+    {
+      "example": "Python wall read",
+      "expected": [
+        94
+      ],
+      "observed": [
+        94
+      ]
+    },
+    {
+      "example": "curl wall read",
+      "expected": {
+        "comments": [
+          {
+            "cid": 94,
+            "message": "Fictitious wall note"
+          }
+        ],
+        "ok": 1,
+        "owner": {
+          "uid": 502,
+          "username": "Fictional Cedar"
+        },
+        "page": 1,
+        "schema": 63,
+        "type": "space_wall",
+        "uid": 0
+      },
+      "observed": {
+        "comments": [
+          {
+            "cid": 94,
+            "message": "Fictitious wall note"
+          }
+        ],
+        "ok": 1,
+        "owner": {
+          "uid": 502,
+          "username": "Fictional Cedar"
+        },
+        "page": 1,
+        "schema": 63,
+        "type": "space_wall",
+        "uid": 0
+      }
+    },
+    {
+      "example": "Python refuses login requirement",
+      "expected": "Sign in to read this wall",
+      "observed": "Sign in to read this wall"
+    }
+  ]
+}

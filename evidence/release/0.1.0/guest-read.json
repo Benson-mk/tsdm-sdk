@@ -1,0 +1,25 @@
+{
+  "sha256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "lockIntegrity": "sha512-6mEvLiJwZlLrCHr7cWA2e4/Ge53lG/zSfpR3AhO+RpTCWNbyLGpRCjDyGyewh9/SR6CHQbltzMQZvZ++BzYiVg==",
+  "command": "node --use-env-proxy check-live-guest.ts https://www.tsdm39.com 17",
+  "expected": "Two guest GETs, the requested board and a matching listed thread with visible posts.",
+  "observedAt": "2026-11-19T14:38:16.667Z",
+  "origin": "https://www.tsdm39.com",
+  "board": "17",
+  "thread": "1106488",
+  "rows": 61,
+  "session": "signed-out",
+  "boardViewer": "guest",
+  "threadViewer": "guest",
+  "posts": 10,
+  "requests": [
+    {
+      "url": "https://www.tsdm39.com/forum.php?mod=forumdisplay&fid=17",
+      "status": 200
+    },
+    {
+      "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1106488&extra=page%3D1",
+      "status": 200
+    }
+  ]
+}

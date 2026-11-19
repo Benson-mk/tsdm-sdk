@@ -1,0 +1,1127 @@
+[
+  {
+    "path": "LICENSE",
+    "mode": "100644",
+    "sha256": "fd73cac186a6517d15262642007f2542a0f03bb1083eddff873e71b7bb5ebf1d"
+  },
+  {
+    "path": "README.md",
+    "mode": "100644",
+    "sha256": "ca3df30c5b1adc8ab98593981b1e069b2ef7c0cae5b6c7109502959f4f0ba369"
+  },
+  {
+    "path": "docs/account.md",
+    "mode": "100644",
+    "sha256": "94fe278e34d2999568b4ef622a954b5c044453f22fb83019724ad5c2c00dc14d"
+  },
+  {
+    "path": "docs/activity.md",
+    "mode": "100644",
+    "sha256": "f493a52ff92aca0a54845c24b9a29b8b440e222fa9827e63c360ba14a7f5a8b5"
+  },
+  {
+    "path": "docs/admin.md",
+    "mode": "100644",
+    "sha256": "826b177619aaf3c0a43dde055621f202f6147a673f1ba43f6f96bac2bc4584e5"
+  },
+  {
+    "path": "docs/awards.md",
+    "mode": "100644",
+    "sha256": "ff24b171eaadb1059532ca46868d161e1d8abbf310b3f167d0d0307ad5651cf5"
+  },
+  {
+    "path": "docs/bank.md",
+    "mode": "100644",
+    "sha256": "193050a1ef393dd8164337eebf0627d90182ffee2449bea11ecbd478aa556e94"
+  },
+  {
+    "path": "docs/batch-ratings.md",
+    "mode": "100644",
+    "sha256": "31b3eacaf6cc1874f33e9e6cb4c9e28095e0639e56782f4084adc8dc68fd9358"
+  },
+  {
+    "path": "docs/collections.md",
+    "mode": "100644",
+    "sha256": "2dd89a6d71b64f2a8d65340ac03c0f2d4e8431e10fdcd4d1bcf83ead8192b2e9"
+  },
+  {
+    "path": "docs/credits.md",
+    "mode": "100644",
+    "sha256": "88064790f02107b6f16f2124d55cb07d5de6571eedd71711a5b4e4c96b780c93"
+  },
+  {
+    "path": "docs/discovery.md",
+    "mode": "100644",
+    "sha256": "0231d3b87b3c77518400adaeb14b7d5728b42150096383091abff5d909c2a966"
+  },
+  {
+    "path": "docs/media.md",
+    "mode": "100644",
+    "sha256": "5e898ba8f53195459e0f2688fc969767f9eaa4e39d8c177bf9ef1c8967b406bb"
+  },
+  {
+    "path": "docs/members.md",
+    "mode": "100644",
+    "sha256": "e542609f7327708453802be87ebe7a3c5560aa546e97a1059ab9236549892949"
+  },
+  {
+    "path": "docs/messages.md",
+    "mode": "100644",
+    "sha256": "08502a1e9612e751f8ef7dde4fcf365a60777c6f4ecb86f7306c3d9b9165f702"
+  },
+  {
+    "path": "docs/moderation.md",
+    "mode": "100644",
+    "sha256": "49999de61e0cb029d3d6acf57c8f2cfdf14f46f173b47d943b35bddda1b31434"
+  },
+  {
+    "path": "docs/moderator-queues.md",
+    "mode": "100644",
+    "sha256": "4b5a94a4a785d7fb1714b3513635de7b5c79aa012f31230a430d811d23b2fe97"
+  },
+  {
+    "path": "docs/moderator-settings.md",
+    "mode": "100644",
+    "sha256": "81dcd8f48dcd176207dd9669c6b833566b44c9af82e733e97eeee8cef7167670"
+  },
+  {
+    "path": "docs/notices.md",
+    "mode": "100644",
+    "sha256": "38cd21146d9fa759ef53361fdd4012b3c0df6486cee9bb219e0a97834d17ed0c"
+  },
+  {
+    "path": "docs/packets.md",
+    "mode": "100644",
+    "sha256": "91551ec3d01ea096c7875d16ecce8c08c25bd527853b93e45ccafe8c2c82d204"
+  },
+  {
+    "path": "docs/pokemon-battles.md",
+    "mode": "100644",
+    "sha256": "a261913aa15a1266da90ee74b7ecffea43834184cbac18369bf5bbe84930f393"
+  },
+  {
+    "path": "docs/pokemon.md",
+    "mode": "100644",
+    "sha256": "dc24947d6464c63b38be02494aa46be6ebc002526f7539bd076f08dfa585399e"
+  },
+  {
+    "path": "docs/posts.md",
+    "mode": "100644",
+    "sha256": "f70c0c7262a304ec2c3e21e03572cbd016228fcac72c8584e1c9460eab3bf269"
+  },
+  {
+    "path": "docs/profile.md",
+    "mode": "100644",
+    "sha256": "e5ac16e2c99aedf7adbdd0c3e14da596370dcf3b9e45f15ebb4fe09a29b8381f"
+  },
+  {
+    "path": "docs/replies.md",
+    "mode": "100644",
+    "sha256": "773987196b6b118e1862752b1e4bc5ccf7a632a82f7f28d0f1b206c000c3c439"
+  },
+  {
+    "path": "docs/spaces.md",
+    "mode": "100644",
+    "sha256": "9fd025aa8f8c8fe886906a90dd1b35c5d36d82d8d18c9a2327d5da2fa52d266a"
+  },
+  {
+    "path": "docs/special-threads.md",
+    "mode": "100644",
+    "sha256": "674e2e7b96da6d21c8dbcc2827ecde21d980664e77efb6f1d9b1397549c8214c"
+  },
+  {
+    "path": "docs/tasks.md",
+    "mode": "100644",
+    "sha256": "0e74fee96d4dceefd6734a4dd6e6ca72a0221ad1f4e101f3953bbbd026a53ca7"
+  },
+  {
+    "path": "docs/trades.md",
+    "mode": "100644",
+    "sha256": "47cabadcc80ac41d8d6e7889ec3d545a3701b4d706c60a679e14ff737b5ee01e"
+  },
+  {
+    "path": "evidence/history/notices/entities-8.1.0.LICENSE",
+    "mode": "100644",
+    "sha256": "cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164"
+  },
+  {
+    "path": "evidence/history/notices/parse5-8.0.1.LICENSE",
+    "mode": "100644",
+    "sha256": "8c535800331e1e4439835555b3f9edc7fe9dee2fab0d8bbbd5a982e8b8343d4d"
+  },
+  {
+    "path": "package-lock.json",
+    "mode": "100644",
+    "sha256": "b6b4274a729b3e7608951896861c18e5b56f30910aa8dc4ef7188f2807aec6cf"
+  },
+  {
+    "path": "package.json",
+    "mode": "100644",
+    "sha256": "7593bf297ca74bcd9aa2a15a7b813cbaad20203a4587d7f11ee679489dc948d3"
+  },
+  {
+    "path": "scripts/stage-sdk.mjs",
+    "mode": "100644",
+    "sha256": "c942887a1c5b4d95aaff3592d6a9a97cab905214fab045ae96e719d9ce11993e"
+  },
+  {
+    "path": "src/forum-client/account-client.ts",
+    "mode": "100644",
+    "sha256": "5ba97449139adaa42154f496d21db106ef879fa1e1b90304cb306ef0440327d3"
+  },
+  {
+    "path": "src/forum-client/account-forms.ts",
+    "mode": "100644",
+    "sha256": "23f251c1cd30ee9d71c0faa67dd654691d3af4d006a0df2b86477a219ab97166"
+  },
+  {
+    "path": "src/forum-client/activity-authority.ts",
+    "mode": "100644",
+    "sha256": "922278a2dbe15cc45406f870d428963a4e1a1e22323aa12bf936518d74ba204b"
+  },
+  {
+    "path": "src/forum-client/activity-client.ts",
+    "mode": "100644",
+    "sha256": "f9bcc659a782070687e098b2e6b7c19da74b9886866a5c689add475502821cd9"
+  },
+  {
+    "path": "src/forum-client/activity-effects.ts",
+    "mode": "100644",
+    "sha256": "779c44547ea168c0aa02cd4cadbbe84f09c95aa905cea2b2f11ddac6a05d35fe"
+  },
+  {
+    "path": "src/forum-client/activity-forms.ts",
+    "mode": "100644",
+    "sha256": "387a21cfef97cab0e85f1fffcab3320a77891db6157d9e9ebc63007a3f878862"
+  },
+  {
+    "path": "src/forum-client/activity-protocol.ts",
+    "mode": "100644",
+    "sha256": "404e36bbb8cd80f2da8175bb24e55e8171af2fb6604150cca5014aeaeef36e91"
+  },
+  {
+    "path": "src/forum-client/activity-read-types.ts",
+    "mode": "100644",
+    "sha256": "130560f6493368b0aaf3b84574a4f9c500c6ce8423df738677e964649b767444"
+  },
+  {
+    "path": "src/forum-client/activity-reads.ts",
+    "mode": "100644",
+    "sha256": "88778186e89890aa5842b38e0620be3b3f65ff9ebc8c4d5d4472bc8179441960"
+  },
+  {
+    "path": "src/forum-client/activity-receipts.ts",
+    "mode": "100644",
+    "sha256": "e966a7c2ee2c9928e5ef5b45a388d0bc65ef89037e996a30b7e152c4f0661bd2"
+  },
+  {
+    "path": "src/forum-client/admin/bans.ts",
+    "mode": "100644",
+    "sha256": "a8acfb06ae129c7ba7a01b3418eee03bad4154fd794f5ed174f7a47c2c4b3476"
+  },
+  {
+    "path": "src/forum-client/admin/client.ts",
+    "mode": "100644",
+    "sha256": "a2f5d4de383d654e22284f8a108f8bdc04f7d610bc7dd1704975908419473345"
+  },
+  {
+    "path": "src/forum-client/admin/credits.ts",
+    "mode": "100644",
+    "sha256": "701d8e2389d226b00d4142773756f4281eb2116d778216a1a8d546fe55a08697"
+  },
+  {
+    "path": "src/forum-client/admin/groups.ts",
+    "mode": "100644",
+    "sha256": "57a06393d5a471714f4820dd8f612416bbdadb2deeec32756059b63e3476dd7f"
+  },
+  {
+    "path": "src/forum-client/admin/reports.ts",
+    "mode": "100644",
+    "sha256": "b68056c3f61f3ddabd82f7c573efbf054414c20aff73f1a1d296e962ed474aeb"
+  },
+  {
+    "path": "src/forum-client/admin/types.ts",
+    "mode": "100644",
+    "sha256": "57fe09db1ec848dae18767eaed201323da43bc5a97cd5f70ae9dc684908d9da2"
+  },
+  {
+    "path": "src/forum-client/admin/wire.ts",
+    "mode": "100644",
+    "sha256": "1c30f456f041b02a1faef4b2ca64fcde517fa2bdf2be7f0694ad45c4d4eca51a"
+  },
+  {
+    "path": "src/forum-client/attachments.ts",
+    "mode": "100644",
+    "sha256": "e3e5c5d46eda175a70b3c33e6b5c23321add3deaa1bfb665d15447b41aecada3"
+  },
+  {
+    "path": "src/forum-client/awards/achievements.ts",
+    "mode": "100644",
+    "sha256": "9807685af51b9f22d4713e86c668bb054666f0e0200d24f35440a93ae57b6bc5"
+  },
+  {
+    "path": "src/forum-client/awards/backgrounds.ts",
+    "mode": "100644",
+    "sha256": "1ceb0a408570e2704ffa32b3af7b211bb938b59afbd10dd715e2c4d888e6fb75"
+  },
+  {
+    "path": "src/forum-client/awards/client.ts",
+    "mode": "100644",
+    "sha256": "6c0a5654888bc563cc4f611a807d429f6e8ee0a0b68fbc54ae18c929235cad03"
+  },
+  {
+    "path": "src/forum-client/awards/medals.ts",
+    "mode": "100644",
+    "sha256": "cd36f931e603e19571c2e350d60a0b3ca6a7352104ad0b4bba3ad7f0782871bc"
+  },
+  {
+    "path": "src/forum-client/awards/native-medals.ts",
+    "mode": "100644",
+    "sha256": "9d1b8bb28ecbf9c9d9c1a585e2a78cafdd8f85b2db305fc3ccc39b3bee00c503"
+  },
+  {
+    "path": "src/forum-client/awards/protocol.ts",
+    "mode": "100644",
+    "sha256": "5cf65d0ca439397ec996c64a4e9f51f7741f7c75e0818ec1c26c872af484d3aa"
+  },
+  {
+    "path": "src/forum-client/awards/result.ts",
+    "mode": "100644",
+    "sha256": "a50ca84f1abc95d40edda5ca10f3daf4d72fd87fb679b08f163b558efb241524"
+  },
+  {
+    "path": "src/forum-client/awards/titles.ts",
+    "mode": "100644",
+    "sha256": "984df41cbbe7dc2219012f8f1d4f05007a3d145cadf5dc3e4e4f050839604723"
+  },
+  {
+    "path": "src/forum-client/awards/types.ts",
+    "mode": "100644",
+    "sha256": "e64fab462d8631bb5ab071433702e1a76a304ed2916546415fc04df1597ea887"
+  },
+  {
+    "path": "src/forum-client/bank/client.ts",
+    "mode": "100644",
+    "sha256": "89873f2b5bbe143bba31ac7bf4b40e328c5c5058f1e1fb39c7752d2e5dc81e89"
+  },
+  {
+    "path": "src/forum-client/bank/effects.ts",
+    "mode": "100644",
+    "sha256": "25e8633671080b8d8520dd5fbb07a3ed63d11745e52fa3743f9444af0584e692"
+  },
+  {
+    "path": "src/forum-client/bank/forms.ts",
+    "mode": "100644",
+    "sha256": "65b66228a3d0a23f83e2c574ea33dab41609d7a44bb583a5ae186b81a9ec7750"
+  },
+  {
+    "path": "src/forum-client/bank/protocol.ts",
+    "mode": "100644",
+    "sha256": "2ea68d334d7d2751c5692ed065cecc02c0e1377ac7e19d8bf22c1607fd20bfbb"
+  },
+  {
+    "path": "src/forum-client/bank/reads.ts",
+    "mode": "100644",
+    "sha256": "5ea12b4f4b408441a7950dfc419cd496bb3fc8defe1b9c223fa16cb4b3e94362"
+  },
+  {
+    "path": "src/forum-client/bank/records.ts",
+    "mode": "100644",
+    "sha256": "15fbb18a5e66ece2533a4679785ed999f2ec68c9e234240d4beb0454ac107b22"
+  },
+  {
+    "path": "src/forum-client/bank/types.ts",
+    "mode": "100644",
+    "sha256": "8ed804bff9d9eeb10ba81559e7246b3f7aca303d072f6e2deebd6d3d0374fdaf"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/batches.ts",
+    "mode": "100644",
+    "sha256": "bb5e7fb2f8d783a9eec4799a65c93638109398c3e5b5202e1f0429c900643d8d"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/client.ts",
+    "mode": "100644",
+    "sha256": "49356b0517cbbbe2287a6ab6c5d215a8c5fb9190acb6f0cc659befe292421df5"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/preview.ts",
+    "mode": "100644",
+    "sha256": "97225ec0361d516738840bb4a579b34aad8c67c3720ad12ff6b5d34fc7053589"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/protocol.ts",
+    "mode": "100644",
+    "sha256": "c2d054a7d8dd23ae6ecffdb78ad36097a92560b3067def5b00fee8dbe3a421c7"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/steps.ts",
+    "mode": "100644",
+    "sha256": "0602649490e4aa6fb69f701d6a6d88644b1f62ec4d6d16a3e5ce7c1ca7a43dc7"
+  },
+  {
+    "path": "src/forum-client/batch-ratings/types.ts",
+    "mode": "100644",
+    "sha256": "e19f585ab3a8e89e3014d4783a67b62847bdb1df1ac29f5da446902c87a74fc2"
+  },
+  {
+    "path": "src/forum-client/collection-client.ts",
+    "mode": "100644",
+    "sha256": "8de4d13ea00be7a1745f30b8d1f28211addba7b5375884e7a8c0c996cd044eeb"
+  },
+  {
+    "path": "src/forum-client/collection-pages.ts",
+    "mode": "100644",
+    "sha256": "3c3fa0cc39ba582ce3c396b4a6fc07748b0059f04d1330d536f78eae598b9551"
+  },
+  {
+    "path": "src/forum-client/collection-protocol.ts",
+    "mode": "100644",
+    "sha256": "ce2defb50a21e626ff7969ad09ca0bb70ef2010f83652859e3231c7233a78012"
+  },
+  {
+    "path": "src/forum-client/collection-types.ts",
+    "mode": "100644",
+    "sha256": "64313cec5112609ae864f890f138b3643f4365d95c050d156f091c569758fbde"
+  },
+  {
+    "path": "src/forum-client/credits/attendance.ts",
+    "mode": "100644",
+    "sha256": "60482abc5584ceb6ff4b3b20e545f7d9fa246f651d976f0f26ace4fd3fd8e162"
+  },
+  {
+    "path": "src/forum-client/credits/client.ts",
+    "mode": "100644",
+    "sha256": "ab9ee91f5cafa1f06f00b680ba2d20f029245ac1a6b0d24db874292c669ef629"
+  },
+  {
+    "path": "src/forum-client/credits/groups.ts",
+    "mode": "100644",
+    "sha256": "66bd6fd22152cf6e441fc424221ba6ae41f52263dffbec26c3a1189a80e9bd1f"
+  },
+  {
+    "path": "src/forum-client/credits/ledger.ts",
+    "mode": "100644",
+    "sha256": "d974049a2edf63faf0c89e1ad38f5b7446d75ddd9f8315293af681d773486135"
+  },
+  {
+    "path": "src/forum-client/credits/protocol.ts",
+    "mode": "100644",
+    "sha256": "cda9eb450a44b4a8d1eeac70a728e0d00e7a81a42ed2e7ce616b8eaa1851999a"
+  },
+  {
+    "path": "src/forum-client/credits/switch.ts",
+    "mode": "100644",
+    "sha256": "224c5e1ec64d932cc0b154cda9d501a5845d63e9dce21966166f5f220476195b"
+  },
+  {
+    "path": "src/forum-client/credits/types.ts",
+    "mode": "100644",
+    "sha256": "afd80b99366ef77bacf8994780066b362a385e6b849716bfce3b4c1c9351dc8f"
+  },
+  {
+    "path": "src/forum-client/discovery/activity.ts",
+    "mode": "100644",
+    "sha256": "cd6464c9058c7441d93ffaebc774f63044b28a1a28962d28726cb21587173185"
+  },
+  {
+    "path": "src/forum-client/discovery/lists.ts",
+    "mode": "100644",
+    "sha256": "cd4d750dee66fb128c75dbf5db2764a5d03792b55a349b9f99b876c5339f4359"
+  },
+  {
+    "path": "src/forum-client/discovery/search.ts",
+    "mode": "100644",
+    "sha256": "08ee64274995c62beb671c5d98b8715b2baeb0d174a33c769d0451441a000abf"
+  },
+  {
+    "path": "src/forum-client/discovery/shared.ts",
+    "mode": "100644",
+    "sha256": "537d5a598757915ab85d03856c850f4c22ee5fd1ea45ef5702ef1e53bb2c3232"
+  },
+  {
+    "path": "src/forum-client/discovery/statistics.ts",
+    "mode": "100644",
+    "sha256": "9fc138c8177a3050c316ef0867d5baa52647e975b9c36430dba997cf9bf83c5d"
+  },
+  {
+    "path": "src/forum-client/discovery/types.ts",
+    "mode": "100644",
+    "sha256": "66a29de2b08de016f179b89f9fe945bdc4b1d28daaae36bb46179cec7f8a7c31"
+  },
+  {
+    "path": "src/forum-client/discovery.ts",
+    "mode": "100644",
+    "sha256": "6683f87611fca5a9bea11c195496f7caceed96d056b70d7a24c47f6a3fe21169"
+  },
+  {
+    "path": "src/forum-client/download.ts",
+    "mode": "100644",
+    "sha256": "00e157ea81ebaf49427276c67e5ad88e6b4344a793e77952f5fa58992b7e07be"
+  },
+  {
+    "path": "src/forum-client/draft-operations.ts",
+    "mode": "100644",
+    "sha256": "acfff94adc1ff8697f5a94d8b31da33d9d087e7027c8c4830d925e7f2d580f05"
+  },
+  {
+    "path": "src/forum-client/drafts.ts",
+    "mode": "100644",
+    "sha256": "76fc762fa775a4c0b5fa8272873ba66d26e53aa4f7c1e0817e2e1f7ba86aafd3"
+  },
+  {
+    "path": "src/forum-client/edit-attachments.ts",
+    "mode": "100644",
+    "sha256": "a3cada5087cfab05da3a78165d17c34b56fc6e8e276f5bc7495ca16be761b213"
+  },
+  {
+    "path": "src/forum-client/edit-post.ts",
+    "mode": "100644",
+    "sha256": "e4fcb8d566997f6d321a2d1c03d3839703ced1e4c2f83d080e312a959d89cbc0"
+  },
+  {
+    "path": "src/forum-client/favorite-command.ts",
+    "mode": "100644",
+    "sha256": "e6b062005d94019597a9c193cc6dae496198c34b58187dc5a688e363f4604ee0"
+  },
+  {
+    "path": "src/forum-client/favorites.ts",
+    "mode": "100644",
+    "sha256": "df388229362d84732d246d45f66e7d4cc673d8607eeaabc9cd31d2cdb30926b2"
+  },
+  {
+    "path": "src/forum-client/hongbao.ts",
+    "mode": "100644",
+    "sha256": "653a7794091ab6c00bb7c67f414db84982366e3678a3d7a9ae4104b7b7439fe0"
+  },
+  {
+    "path": "src/forum-client/html.ts",
+    "mode": "100644",
+    "sha256": "8051b93f0973d839611f32b9af94363c331b5c2f3ebace4c09d5276047201d7b"
+  },
+  {
+    "path": "src/forum-client/index.ts",
+    "mode": "100644",
+    "sha256": "591902793c3984fbeb80d9d15becd748a01734ca6404a10f031dea87535873c0"
+  },
+  {
+    "path": "src/forum-client/linked-post-video.ts",
+    "mode": "100644",
+    "sha256": "3414dcdbdf0c1146d677ade1877cff840c45e21d5d94b09512a6f6922ea89715"
+  },
+  {
+    "path": "src/forum-client/media/albums.ts",
+    "mode": "100644",
+    "sha256": "c2e289584c8ac66f08f20258459eea81cf8bc2ef4891f20e9eb6e09782daf3f7"
+  },
+  {
+    "path": "src/forum-client/media/client.ts",
+    "mode": "100644",
+    "sha256": "a584218db625c7888df3ef5896f5869cf3649c0c0fa86c91edf0e6c9f3bde0da"
+  },
+  {
+    "path": "src/forum-client/media/host.ts",
+    "mode": "100644",
+    "sha256": "960c60870c2912ba80a250e5160b3cf36432e8280f683d0d12909b4561c12aae"
+  },
+  {
+    "path": "src/forum-client/media/resources.ts",
+    "mode": "100644",
+    "sha256": "b126cd0c10faa8dbdb3502db6f9e75b54597edd0f41bc88e8dbe3c91059f7a47"
+  },
+  {
+    "path": "src/forum-client/media/retrieval.ts",
+    "mode": "100644",
+    "sha256": "4809789564cbe80eb661a0685e1675b3580ca19cbafe6824aa7e5316d1a0aa4b"
+  },
+  {
+    "path": "src/forum-client/media/types.ts",
+    "mode": "100644",
+    "sha256": "7af3fbd0a44325d7c1e96679c79463b7c8442f3904013d5081b1ba34ad65a53b"
+  },
+  {
+    "path": "src/forum-client/media/uploads.ts",
+    "mode": "100644",
+    "sha256": "66fee5d28a539831ceb4cd4988201a05b8a76924336fdb89e9524ac23adbb552"
+  },
+  {
+    "path": "src/forum-client/member-client.ts",
+    "mode": "100644",
+    "sha256": "0e94d34d7cdff065452c7603b460f3a58c98db383df1ef0d80f0504e5263697b"
+  },
+  {
+    "path": "src/forum-client/member-effects.ts",
+    "mode": "100644",
+    "sha256": "9a22a593e6a0b28c6fcffe54711fde77697ba25b620587e1a0bd00798ce7e208"
+  },
+  {
+    "path": "src/forum-client/member-favorites.ts",
+    "mode": "100644",
+    "sha256": "2177b94a1da7c81801f691ad753da833c057f2d7453b3cfd838f3e042255c618"
+  },
+  {
+    "path": "src/forum-client/member-forms.ts",
+    "mode": "100644",
+    "sha256": "a06563b3ec9608ee03fa0c87567968a237417f354da47347cae51f489cfc48a2"
+  },
+  {
+    "path": "src/forum-client/member-profile-types.ts",
+    "mode": "100644",
+    "sha256": "386ae9a404b5ada46883deae720c0f5d10a0df4d9aaf6915a282b3c6a96e8582"
+  },
+  {
+    "path": "src/forum-client/member-profile.ts",
+    "mode": "100644",
+    "sha256": "99e1b9960adda2db9cc4192f4b236dafdb510268b2246a316f83a93a0679f577"
+  },
+  {
+    "path": "src/forum-client/member-reads.ts",
+    "mode": "100644",
+    "sha256": "db7a1f90b96de6ba70cc9172cc0d935cde4a50199622ffb0bc6fda644fcaee3b"
+  },
+  {
+    "path": "src/forum-client/mentions.ts",
+    "mode": "100644",
+    "sha256": "885ed1ed144f56ede84c97d2c58daf7f123080c4aded171d5c79c39737a725b4"
+  },
+  {
+    "path": "src/forum-client/message-client.ts",
+    "mode": "100644",
+    "sha256": "3cece7d78ef9a8f5cd76a679e38ed668e9bab608f7067f55147c0b920c2e0014"
+  },
+  {
+    "path": "src/forum-client/message-effects.ts",
+    "mode": "100644",
+    "sha256": "4a1cd8cca943305ea304895787958b2947a70f0e5359628cc8cdf7be46d4fdb2"
+  },
+  {
+    "path": "src/forum-client/message-forms.ts",
+    "mode": "100644",
+    "sha256": "d967a00cc01154315871d696bd6f0b0f70895c04be3fe828283860ea3b73d883"
+  },
+  {
+    "path": "src/forum-client/message-pages.ts",
+    "mode": "100644",
+    "sha256": "d0e1dba9500ffae59d6d1c317a1b1586438246ccc30260c352a7acb2aa28702e"
+  },
+  {
+    "path": "src/forum-client/messages.ts",
+    "mode": "100644",
+    "sha256": "d4848d868efae68ab75ea85356a7332dc200d23a0a51c27f38fc510d92b8fd14"
+  },
+  {
+    "path": "src/forum-client/moderation/client.ts",
+    "mode": "100644",
+    "sha256": "51580e2b95638ae5d416e987d49a3608b432dfe12ec9b655b54ff9a767cb2640"
+  },
+  {
+    "path": "src/forum-client/moderation/forms.ts",
+    "mode": "100644",
+    "sha256": "946352109c4880798a9ac52ec1b940b9b0c759c1f89ae2ee34e3cdb348d8238f"
+  },
+  {
+    "path": "src/forum-client/moderation/operations.ts",
+    "mode": "100644",
+    "sha256": "ee6111fe71e1196b2d43207cbe21fd7c71a998982ddfad9b9aaeb02af8be3544"
+  },
+  {
+    "path": "src/forum-client/moderation/permissions.ts",
+    "mode": "100644",
+    "sha256": "0dd54e964174f1173dee3521c649a1b29cfbf68e37fe04b25bcbc105cd5c6e38"
+  },
+  {
+    "path": "src/forum-client/moderation/protocol.ts",
+    "mode": "100644",
+    "sha256": "b2ff3b6fb16028c1b34c7e73df48c24e50e2ea719ea06c9843533fd9fd565340"
+  },
+  {
+    "path": "src/forum-client/moderation/receipts.ts",
+    "mode": "100644",
+    "sha256": "530868ca0a5509bd5ec8ddf28184feae2c5c2c312383023f18707913fd116489"
+  },
+  {
+    "path": "src/forum-client/moderation/types.ts",
+    "mode": "100644",
+    "sha256": "e79fe416f8fab434289e11112255be2a48e3e07cb092cc9ce365d06333701a78"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/client.ts",
+    "mode": "100644",
+    "sha256": "0df436eb232760015e9337bb58c292ba94b1a2e003a284be03b96bd9670b53d1"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/native.ts",
+    "mode": "100644",
+    "sha256": "c6a93d1c1a5590c8719c652f63bbb7a2af3daadbd52699e8b29040085277b1c2"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/protocol.ts",
+    "mode": "100644",
+    "sha256": "312f4f2a45ff2a50a44260f5e8c5e9f6878db00772fecf1e336d90c6b4b79e96"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/queue.ts",
+    "mode": "100644",
+    "sha256": "26c6cf2afe7b564d1317af7319b5f7019c76ce96921cb66e385e8501f5ac593a"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/recycle.ts",
+    "mode": "100644",
+    "sha256": "a161acb3564fe2e38cf0bcac62d674a9e398c134e3ae8c6c83ff4e1ee6d835c4"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/reports.ts",
+    "mode": "100644",
+    "sha256": "79152a357c7b6ab9151497ad9fa4a8d41529505828b655a93c567b2ac00af95b"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/search.ts",
+    "mode": "100644",
+    "sha256": "7edbdd0c64d7242cccf3c79855abe1d8cb4e558efc45437deee94fb8f9af37a0"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/access.ts",
+    "mode": "100644",
+    "sha256": "cd1281642523c2eb85170b0c8bdd94d13f92270ce87ef8c5c3fc4ee3bf09f5b2"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/announcements.ts",
+    "mode": "100644",
+    "sha256": "dd809dce254aef19c0ee84e2f8665086d55a03dbe4df797e48684f941f4a6470"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/common.ts",
+    "mode": "100644",
+    "sha256": "1e0d8ec70798ae241d3f540a774a50dfe29d7d9c71ac8e34d7b085e8c4e989cd"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/forum.ts",
+    "mode": "100644",
+    "sha256": "13a4711c95d74ae82d324b375ed4c7daf168d3b4f9eddae830b6dfc53e37316c"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/members.ts",
+    "mode": "100644",
+    "sha256": "54b51c9dfb8bba0685a0e51ce0b103ad6bae81e9fc855c2b702f31c0a19038e7"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings/records.ts",
+    "mode": "100644",
+    "sha256": "2371c46f13559793aa3ed8b2fdbb922702e76a9460e44c0bec2b520b315171a5"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/settings-types.ts",
+    "mode": "100644",
+    "sha256": "2eba9665db539ddb6912ea6c790c848f2e91d4ef1562f596e2519654e873a570"
+  },
+  {
+    "path": "src/forum-client/moderator-panel/types.ts",
+    "mode": "100644",
+    "sha256": "feeace6ca1500a140a744c9c8d17f916a7cad08b4c40a063a72f4eff63aaf085"
+  },
+  {
+    "path": "src/forum-client/native-message-lists.ts",
+    "mode": "100644",
+    "sha256": "52c4e4edabb6b1024d84992ced9fea416929e74edef64c558cf0c809c089ea50"
+  },
+  {
+    "path": "src/forum-client/native-notices.ts",
+    "mode": "100644",
+    "sha256": "812bd1b60a17de4b706688dbbb66430c70513d1497ac8bdac2bcd018143af8ae"
+  },
+  {
+    "path": "src/forum-client/notice-client.ts",
+    "mode": "100644",
+    "sha256": "45927abb2dd9ae6b994d56bae49b7540e2fbd07c4f2ce259282f294ae19c4478"
+  },
+  {
+    "path": "src/forum-client/notice-ignore.ts",
+    "mode": "100644",
+    "sha256": "5f1604724cddd1fb1ebc1123b21c7a265e06ed8a2939d86e6b3b1ba9dc78e856"
+  },
+  {
+    "path": "src/forum-client/notice-links.ts",
+    "mode": "100644",
+    "sha256": "79364b15a81abe687a4185b0e9e963d1ce334682a3934e9e9668bc925beba545"
+  },
+  {
+    "path": "src/forum-client/notice-poll.ts",
+    "mode": "100644",
+    "sha256": "2a58027af822f03c59451ebfc20e3e65c2863b5f1960f7bd6046db68f52000d0"
+  },
+  {
+    "path": "src/forum-client/notice-transport.ts",
+    "mode": "100644",
+    "sha256": "1e5376abe05ee34742f43113c0aed24f149f471b2d3f26318252f6739d4f6169"
+  },
+  {
+    "path": "src/forum-client/notices.ts",
+    "mode": "100644",
+    "sha256": "42a793e4d5ea72336c9f0aea776af5d11a72998c5544a4633d5c888c7a5a5d74"
+  },
+  {
+    "path": "src/forum-client/packets/awards.ts",
+    "mode": "100644",
+    "sha256": "8461f344e3dbf7749feb932ce15f6e1c2d8ab2ee4ed2fa788aed4d79f15f75bc"
+  },
+  {
+    "path": "src/forum-client/packets/client.ts",
+    "mode": "100644",
+    "sha256": "c1446a8d3f7e261f223c59574197c3b6ef8cd9585727736d2e499ef2ceb914b5"
+  },
+  {
+    "path": "src/forum-client/packets/daily.ts",
+    "mode": "100644",
+    "sha256": "24323c76247de83fdca69ebc6b164992d4a31836050e54196d3f353635f7b529"
+  },
+  {
+    "path": "src/forum-client/packets/effects.ts",
+    "mode": "100644",
+    "sha256": "1b8d37c1018f200735957e61ac9cb8dd2dd5f0c200eda2095bdca49db23e5dc6"
+  },
+  {
+    "path": "src/forum-client/packets/protocol.ts",
+    "mode": "100644",
+    "sha256": "6168f51fa7bee18d164cbdaa77fa45311d08955abc6552ca7fe366569ab9c8cc"
+  },
+  {
+    "path": "src/forum-client/packets/records.ts",
+    "mode": "100644",
+    "sha256": "7c15acbd11f09bc3ecda5e112fe1a6d7e472aefb5a08dd477ee76308a9536b90"
+  },
+  {
+    "path": "src/forum-client/packets/thread.ts",
+    "mode": "100644",
+    "sha256": "47c4f662581503b2296015ef838aeb60c9c888b5e0003d9c94b4e48f68cebbb9"
+  },
+  {
+    "path": "src/forum-client/packets/types.ts",
+    "mode": "100644",
+    "sha256": "bad8f2cd6788e118ffba054a38ee13512d5d4c6c30f3bcd461960147d258443a"
+  },
+  {
+    "path": "src/forum-client/pokemon/client.ts",
+    "mode": "100644",
+    "sha256": "0b2a0de78602d1e25667f79d2ff6dcbec52aeccbed6b9f45eaf593e63ddb171c"
+  },
+  {
+    "path": "src/forum-client/pokemon/game.ts",
+    "mode": "100644",
+    "sha256": "c376cc048da0f76b3e96c2fb05bcfb516212d504077dfed5bbb2e22c93f9ffd2"
+  },
+  {
+    "path": "src/forum-client/pokemon/roster.ts",
+    "mode": "100644",
+    "sha256": "fba412f93a574106ad17bd55fae4a9f68a6adb2fe8cc38d54f47a1e97bdcd433"
+  },
+  {
+    "path": "src/forum-client/pokemon/session.ts",
+    "mode": "100644",
+    "sha256": "ee01530521cd010efdfc6cd79e49020f87b655f1d7cb0e1a857963cf900c060b"
+  },
+  {
+    "path": "src/forum-client/pokemon/types.ts",
+    "mode": "100644",
+    "sha256": "7cbfc8f73c05efa23f9d6663d2aa3d9954f11e31e5797f3625a53382e7d14835"
+  },
+  {
+    "path": "src/forum-client/pokemon/wire.ts",
+    "mode": "100644",
+    "sha256": "3d9f75caf472ace3f6929ed6274a38b3b491d9d60f9b16aaf77a92aeae24001b"
+  },
+  {
+    "path": "src/forum-client/post-permalink.ts",
+    "mode": "100644",
+    "sha256": "6762b874a57295d7e60fbe8842050d9c0409d9cd168bd0dcc49b383adce4f689"
+  },
+  {
+    "path": "src/forum-client/post-response.ts",
+    "mode": "100644",
+    "sha256": "d8adf64313e16745718d8e56278d870f8ee1fce05d98eb074ac4dd2856e0589a"
+  },
+  {
+    "path": "src/forum-client/posts/client.ts",
+    "mode": "100644",
+    "sha256": "f8ebfd059bdf71c9cc0ea04bde1d5975af5ad9d8506de6eaa03d4768425ec5ca"
+  },
+  {
+    "path": "src/forum-client/posts/editor-client.ts",
+    "mode": "100644",
+    "sha256": "c1b043b827ad3d53cf0c08bfe7211ba6e5c0463f69055d5eb08a1e05de56aac0"
+  },
+  {
+    "path": "src/forum-client/posts/forms.ts",
+    "mode": "100644",
+    "sha256": "33a25b2c0e50522f7079ef71ee0af31acdc36389aef88f64cf25a0ab7f1b20c0"
+  },
+  {
+    "path": "src/forum-client/posts/native.ts",
+    "mode": "100644",
+    "sha256": "4af1ac6637b6ec7d6b585bf34068f488b705e26d830fb9269032bd01da40b1bc"
+  },
+  {
+    "path": "src/forum-client/posts/results.ts",
+    "mode": "100644",
+    "sha256": "37b0ff4ead9ce417f06a351c5b2bf911700e6a33f0ad3757de76602413d5f42c"
+  },
+  {
+    "path": "src/forum-client/prepare-writing.ts",
+    "mode": "100644",
+    "sha256": "cb3d4f9a58372dace9f27d7d2d72794b0aef0c7b3d7ac934a23d779d4b1fed9f"
+  },
+  {
+    "path": "src/forum-client/private-conversation.ts",
+    "mode": "100644",
+    "sha256": "7f2608201307e51b37dc96423e651d9edcf15fc755e9cb85078ac95b92065848"
+  },
+  {
+    "path": "src/forum-client/private-writing.ts",
+    "mode": "100644",
+    "sha256": "a7df38e47926fd0e5fd928a321c624da8746dbdf5cc3223333e690ed9d3ef611"
+  },
+  {
+    "path": "src/forum-client/profile-blacklist.ts",
+    "mode": "100644",
+    "sha256": "0f3475ac8b40c2a138c586cbe779ffe42e68f802ef77a7ead3c90aa98bdd9df8"
+  },
+  {
+    "path": "src/forum-client/profile-client.ts",
+    "mode": "100644",
+    "sha256": "ee9e7a59885e3b6065cfa726a9679ba87efb162359f766ca1ef6ad35317e5c24"
+  },
+  {
+    "path": "src/forum-client/profile-forms.ts",
+    "mode": "100644",
+    "sha256": "df62cdd7c8391bc309ee73db5f1b27da70e41d38f4105a20cb4c0223ac0e338f"
+  },
+  {
+    "path": "src/forum-client/public-read.ts",
+    "mode": "100644",
+    "sha256": "bbe79cc671a5fc6c19287d0de1c0913c8df21c0a48501ee11042d26c352048dc"
+  },
+  {
+    "path": "src/forum-client/publish-thread.ts",
+    "mode": "100644",
+    "sha256": "fd6ff70ea7708eb7b8731167f6034cc1085e71b877c62af12db8eba0a7b64fbd"
+  },
+  {
+    "path": "src/forum-client/rating.ts",
+    "mode": "100644",
+    "sha256": "3333bec07d64d12e4e250c8318ea366b115d2324caed2a39a000e5ec2d399b5a"
+  },
+  {
+    "path": "src/forum-client/read-board.ts",
+    "mode": "100644",
+    "sha256": "9d8e5084325b04481246c4d6bfc54a78d4de65ef32e371c7d6ea26b143ce9b26"
+  },
+  {
+    "path": "src/forum-client/read-thread.ts",
+    "mode": "100644",
+    "sha256": "5d96b38f55fe6cc09e6ed5b303e24413222a0d1028961f25bf0b30c7ed9d1224"
+  },
+  {
+    "path": "src/forum-client/replies.ts",
+    "mode": "100644",
+    "sha256": "f3c7f614bc00813904e1454a44727a1940d6c4a61b05ef5406299bf6c8ed6323"
+  },
+  {
+    "path": "src/forum-client/reply-forms.ts",
+    "mode": "100644",
+    "sha256": "59683884bdfd3fe573c5dbd427a49ea21bdeb080d5d1bd42b87a0e5cb1eef346"
+  },
+  {
+    "path": "src/forum-client/reply-readback.ts",
+    "mode": "100644",
+    "sha256": "a0820dba5de8f392bfc23acdf927243503d67af56bc7ee92761019556adb4fa3"
+  },
+  {
+    "path": "src/forum-client/reply-verification.ts",
+    "mode": "100644",
+    "sha256": "950f156b7772b4508be1df4a3dc751441d2eb1cb36166df6251d25173fea4665"
+  },
+  {
+    "path": "src/forum-client/report.ts",
+    "mode": "100644",
+    "sha256": "a398ed9340ec20d2b1e1c1ca74ef0d6a283b0bf756c23d7bdebee1fba35a1f59"
+  },
+  {
+    "path": "src/forum-client/routes.ts",
+    "mode": "100644",
+    "sha256": "cde07c02692379a0d3bf7d03345d55a80cc021b3b6eb322ff7307864a63f9455"
+  },
+  {
+    "path": "src/forum-client/search.ts",
+    "mode": "100644",
+    "sha256": "05532d5fbfb5043f35e0629b17dd612a72f6467a0bb9797c15f3894a20a2718e"
+  },
+  {
+    "path": "src/forum-client/spaces/client.ts",
+    "mode": "100644",
+    "sha256": "2af72e4e3ff9ef0c09f26dc3e43bb5533801b65bbed299ab9dccfefff9b94ec5"
+  },
+  {
+    "path": "src/forum-client/spaces/effects.ts",
+    "mode": "100644",
+    "sha256": "762204252fe781876df3a9957a4c8a14031936057f746b36fa53fd94c0119a50"
+  },
+  {
+    "path": "src/forum-client/spaces/model.ts",
+    "mode": "100644",
+    "sha256": "d8f8b170be5c313311837463d06399269eafc2f05d7e985146232fc8fe17db97"
+  },
+  {
+    "path": "src/forum-client/spaces/native.ts",
+    "mode": "100644",
+    "sha256": "8c20fe8d3c16ac47a62ea73c47f6d6107a69f1480a461d40b2e63bb661a2c21b"
+  },
+  {
+    "path": "src/forum-client/spaces/routes.ts",
+    "mode": "100644",
+    "sha256": "888e80d2ffc6620279e5f04ae0efbfdf43c6cf2447b32cc652b7dd68051e314f"
+  },
+  {
+    "path": "src/forum-client/spaces/structured.ts",
+    "mode": "100644",
+    "sha256": "a9a91f3dec36fdb3abf0715ba3e37497ed128cab77040a28ba8161fb453f807c"
+  },
+  {
+    "path": "src/forum-client/special/client.ts",
+    "mode": "100644",
+    "sha256": "552dd4b18baebfde7098bbd87c31c5fd725896e0cb19442edd908c8eb2a4b254"
+  },
+  {
+    "path": "src/forum-client/special/creation.ts",
+    "mode": "100644",
+    "sha256": "a892338b28f47926d290fced8cfc9b064a1fd6ac62e3b62c78a146e5a97c15a7"
+  },
+  {
+    "path": "src/forum-client/special/packet-editor.ts",
+    "mode": "100644",
+    "sha256": "571bbcf68a08c0f2a5fffd71cfa1bb7b3d85c6f092de10e53db80dd202aebac4"
+  },
+  {
+    "path": "src/forum-client/special/participation.ts",
+    "mode": "100644",
+    "sha256": "db342a875960cd21c84061eb22b0eec9bead2f8a9977587e66dac64f1835740f"
+  },
+  {
+    "path": "src/forum-client/special/types.ts",
+    "mode": "100644",
+    "sha256": "c7eedccff0a8518f89c1bdd7005e03c73fe76fdc36e5b9d7544b568e97f73c27"
+  },
+  {
+    "path": "src/forum-client/structured-read.ts",
+    "mode": "100644",
+    "sha256": "c38f6c65f14f2a687d467c4eb24b8d850f2ec8471bb138c870cb73b1836968ce"
+  },
+  {
+    "path": "src/forum-client/tasks/client.ts",
+    "mode": "100644",
+    "sha256": "b104fe366be4aad4bb2a8b537ea130f5b1a6edf628d440fda0bd87e56b3f2698"
+  },
+  {
+    "path": "src/forum-client/tasks/magic-form.ts",
+    "mode": "100644",
+    "sha256": "270e3e3100440f290d123a4eb1f5ae0749af01dfe46d3e55af62cd770a8e67e2"
+  },
+  {
+    "path": "src/forum-client/tasks/magic.ts",
+    "mode": "100644",
+    "sha256": "11f55e47d6cf5dcd5670e5448f115a52e20c4514601ccb10bba334af1225817b"
+  },
+  {
+    "path": "src/forum-client/tasks/native.ts",
+    "mode": "100644",
+    "sha256": "5b9842222ecec15fa7b0447f7c4e31ba74f908c8745940474e9dc77cf1f7f1d0"
+  },
+  {
+    "path": "src/forum-client/tasks/protocol.ts",
+    "mode": "100644",
+    "sha256": "d71675a3f3bca4762075ee1ea7e47817fcfd97d22b209bc54ffccf52b3b381c2"
+  },
+  {
+    "path": "src/forum-client/tasks/task-result.ts",
+    "mode": "100644",
+    "sha256": "4d00e90ac0fd72d8aced84307fa99ea9032064ebbb27564c095ec41aa2b85a38"
+  },
+  {
+    "path": "src/forum-client/tasks/tasks.ts",
+    "mode": "100644",
+    "sha256": "911aa2b9266edfa5d1767f075f9e7c8f47d98e8606c94353998b52d348b38bbe"
+  },
+  {
+    "path": "src/forum-client/tasks/types.ts",
+    "mode": "100644",
+    "sha256": "ec88ab82a3aa646e5b18a71e98bba8491dc1a6072b54f22bfa000726833f194d"
+  },
+  {
+    "path": "src/forum-client/thread-verification.ts",
+    "mode": "100644",
+    "sha256": "22e229cdb8f78152df8fbc4d98ad5df9ffcb766e37af4b3a882204ab3305157c"
+  },
+  {
+    "path": "src/forum-client/trades/client.ts",
+    "mode": "100644",
+    "sha256": "942f443504be48495931c6dcba1991a3b84cb2551f2f520680c854de6aa5a3fa"
+  },
+  {
+    "path": "src/forum-client/trades/goods.ts",
+    "mode": "100644",
+    "sha256": "5284f0319b36931c501af06e1e308ab5f14b9d4470863d732f591685cb887775"
+  },
+  {
+    "path": "src/forum-client/trades/native.ts",
+    "mode": "100644",
+    "sha256": "dd2e37f6f2e904b51413929c73b4edf5d7b7835b3d296b17b5808e467766121b"
+  },
+  {
+    "path": "src/forum-client/trades/orders.ts",
+    "mode": "100644",
+    "sha256": "fe021ce78933b052668bcd000c386b4f9b8b105292daf2168f8c6cdd8928fc2d"
+  },
+  {
+    "path": "src/forum-client/trades/paid.ts",
+    "mode": "100644",
+    "sha256": "5fe43c74295573753323f98a3c9b659529347717b51cc5981dcb590c84884b38"
+  },
+  {
+    "path": "src/forum-client/trades/protocol.ts",
+    "mode": "100644",
+    "sha256": "ddc5518c3d5904ed0df49c8987d691d6ac2945a6fa87a940ad7796ecbfc5321e"
+  },
+  {
+    "path": "src/forum-client/types.ts",
+    "mode": "100644",
+    "sha256": "b73be52375aa5ff22dc5043e02b1da6193704293d0f122e9fb4ff5016fa26c7b"
+  },
+  {
+    "path": "src/forum-client/upload-authoring.ts",
+    "mode": "100644",
+    "sha256": "de6b6a46d498b7a68197d622d064e3f32d0d5e048134199b93297de24033c7b6"
+  },
+  {
+    "path": "src/forum-client/v4-selection.ts",
+    "mode": "100644",
+    "sha256": "4094851582bf86578cb432577f5bc59704a2685e07115ac3228b81f2296db6c6"
+  },
+  {
+    "path": "src/forum-client/writing-validation.ts",
+    "mode": "100644",
+    "sha256": "931d1c2cd5db61729dc569b1b9f658bbd58dab2d42229165de105a1ba039f969"
+  },
+  {
+    "path": "src/index.ts",
+    "mode": "100644",
+    "sha256": "a1f30752b1e21262ea461b7e9fded6aedeac2dcb57a342fb37699bb9d32f8ffd"
+  },
+  {
+    "path": "tsconfig.sdk.json",
+    "mode": "100644",
+    "sha256": "c67088ff42e22765c5a7f404b1fbc035af52292dd1d70b9da9c2b5828af55950"
+  },
+  {
+    "path": "vite.sdk.config.ts",
+    "mode": "100644",
+    "sha256": "08592a6513360162e37313b4f87efaf2df3b8e93e04ed6f6097f4c8e82ed1b23"
+  }
+]

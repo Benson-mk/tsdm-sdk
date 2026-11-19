@@ -1,0 +1,1079 @@
+{
+  "evidence": "controlled loopback HTTP using snippets from the exact SDK archive",
+  "archiveSHA256": "ed3d6d73128e478dce3a0a35cdf2e146e6cc67fa4b2d4a8e44c0f82672f0c1cf",
+  "inputSHA256": "e9690a5e46800aa00112259183cda664cca0740550211d085a122cfc8aef6030",
+  "snippetsSHA256": {
+    "python": "0175a067068af8820b9b3b003d11d050198537c8707e7a05da2c6af311b8d673",
+    "sh": "c8237aa5cde596df4aea54fda454d7da0ac492a9c1dda670c381cac3583341f1"
+  },
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "jq": "jq-1.7.1-apple",
+  "results": {
+    "python": {
+      "poll": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      },
+      "deliberate acknowledgement": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "cleared"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "cleared"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "newer unread": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "newer-unread"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "newer-unread"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "lost acknowledgement": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "wrong acknowledgement account": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "rate-limited continuation": {
+        "expected": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      },
+      "wrong continuation account": {
+        "expected": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      }
+    },
+    "sh": {
+      "poll": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      },
+      "deliberate acknowledgement": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "cleared"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "cleared"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "newer unread": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "newer-unread"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "newer-unread"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "lost acknowledgement": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "wrong acknowledgement account": {
+        "expected": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        },
+        "observed": {
+          "success": true,
+          "stdout": [
+            "26771 26545",
+            "unknown-effect"
+          ],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            },
+            {
+              "method": "POST",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "seen"
+              },
+              "fields": {
+                "formhash": "fixture-first",
+                "notice": "1794534229"
+              }
+            }
+          ]
+        }
+      },
+      "rate-limited continuation": {
+        "expected": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      },
+      "wrong continuation account": {
+        "expected": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        },
+        "observed": {
+          "success": false,
+          "stdout": [],
+          "trace": [
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "since": "1793491200",
+                "limit": "200"
+              },
+              "fields": {}
+            },
+            {
+              "method": "GET",
+              "path": "/plugin.php",
+              "query": {
+                "id": "tsdmapp:api",
+                "action": "notify",
+                "limit": "200",
+                "before": "1794278273_26771"
+              },
+              "fields": {}
+            }
+          ]
+        }
+      }
+    }
+  }
+}

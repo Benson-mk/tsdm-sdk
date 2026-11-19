@@ -1,0 +1,39 @@
+# SDK #18 members, friends and favourites
+
+The [installed receipt](installed.json) and [direct HTTP receipt](direct.json) cover the same `tsdm-sdk@0.1.0` tarball. They record controlled results for fictitious members, cookie jars, forum records and dialogs. No deployed member requests, writes, or personal-data capture were used. The immutable upstream pin defines the protocol and response shapes. [Pinned upstream tree](https://github.com/Carinoasd/tsdm_client/tree/02df67e39ded906def5b868e8f8311ba735b316c) · [SDK #18](https://github.com/Benson-mk/tsdm-sdk/issues/18)
+
+## Replay
+
+Use Node.js 26.x, npm, Python 3 with `requests`, and curl. `TSDM_MEMBERS_UPSTREAM` verifies the original inputs against the [source digests](upstream-pins.json) and enables the pinned profile replay. The [authored controls](../../tests/install/members.mjs) can run without the upstream checkout. The direct checker extracts and executes the Python and curl helpers from the tarball. Its loopback forum records each method, route, form, fixture session and redirect. The installed checker validates npm integrity, imports the package root in a clean project and compiles the packaged TypeScript example with strict `NodeNext`, `ES2023`, and no DOM or ambient types.
+
+```sh
+export TSDM_MEMBERS_UPSTREAM=/absolute/path/to/pinned-tsdm_client
+npm ci
+npm run pack:sdk
+shasum -a 256 dist/tsdm-sdk-0.1.0.tgz
+node scripts/check-installed-members.mjs dist/tsdm-sdk-0.1.0.tgz > /tmp/sdk18-installed.json
+python3 evidence/members/check-direct-guide.py dist/tsdm-sdk-0.1.0.tgz > /tmp/sdk18-direct.json
+```
+
+Pass a scenario name after the archive to run one controlled group. The lookup, list, mention and effect checks were written against the installed package before their implementation. The clean declaration check also caught leakage of internal URL types. The incomplete-list regression first reproduced a false absence and now verifies that no removal is dispatched.
+
+## #42 full profile read
+
+Select `fullProfiles` to replay authored controls for a document-free schema-4 profile, a supplied legacy document, and a single fresh native fallback. The control also checks owner mismatch, login refusal and unresolved data. Select `pinnedProfiles` with `TSDM_MEMBERS_UPSTREAM` to replay schema 4 by UID and username from the pinned checkout, with `profile_html` removed, plus the unchanged `profile_self_x5.html` by username. The receipt records reduced identity and profile observations. Both installed scenarios fail at the missing `readMemberProfile` method on the pre-implementation tarball.
+
+## Operation evidence
+
+| Pinned operation                                              | Protocol basis                                                                                             | Receipt observations                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Profile by UID and username                                   | `profile/repository/profile_repository.dart`, schema 4 self/username/no-user and `profile_self_x5.html`    | `lookup` checks UID, URL encoding, viewer versus target, wrong-target rejection and missing member. `native` checks fallback to the native UID heading.                                                                                                                                                        |
+| Own friends, another member, group, visitors and online       | `friend/repository/friend_repository.dart`, schema 10, `site_stats/online_v10.json` and native buddy lists | `lists` checks page 1 and 2, group metadata, a separate member owner, anonymous visitor, online-member scope, privacy denial and viewer mismatch. `native` checks group, visitors and online rows.                                                                                                             |
+| Recent and friend candidates, site search, stock mention list | `editor/repository/mention_repository.dart`, `editor/utils/mention.dart`, regression 022 and 275           | `mentions` checks distinct ATPLUS POST bodies and stock XML GET, plugin absence and a session change in flight. POST queries carry `effect: false`.                                                                                                                                                            |
+| Send and approve friendship                                   | `friend/repository`, v4 `g3_friendadd_add` and `g3_friendadd_approve`, native dialogs and callbacks        | `friendEffects` checks form modes, fields and new-request versus approval receipts. It rejects a foreign notice URL, mismatched actor and self-request, recognizes a pending request and reports uncertainty after a lost or mismatched response. `native` checks independent XML send and approval callbacks. |
+| List favourite forums and threads                             | `favorite/repository/favorite_repository.dart`, schema 8 forum and thread, native `favorite_ul`            | `lists` and `native` assert each kind and keep record and target IDs separate. `redirectedScope` rejects a redirect to a different account’s list.                                                                                                                                                             |
+| Add favourite forum and thread                                | Favourite schema 17 contract and schema 13 write results, native add form                                  | `favoriteEffects` checks forum v4 and thread legacy submissions separately, confirms via kind-matched fresh list readback, distinguishes repeat and disabled states, and handles lost response and missing readback. The successful forum schema 17 control follows the pinned Dart form decoder.              |
+| Remove favourite forum and thread                             | Native delete form, forum XML success callback and schema 13 delete result                                 | `favoriteEffects` checks both record IDs, rejects a crossed ID and confirms each list independently. `unprovenAbsence` rejects a malformed empty list before dispatch.                                                                                                                                         |
+| README and portable direct guidance                           | [Packaged guide](../../docs/members.md)                                                                    | `guide` executes the compiled example. The direct receipt verifies 50 exchanges across the route matrix, with zero redirects followed.                                                                                                                                                                         |
+
+## Regression checks
+
+The clean 0.1.0 install passed with the pinned board/thread and discovery inputs enabled. The earlier account and profile installed suites passed against this archive. All five direct guides passed on loopback. The immutable 0.26.0 reference consumer also replayed with its recorded Node 24.22.0, npm 11.21.1 and TypeScript 6.0.3 toolchain.

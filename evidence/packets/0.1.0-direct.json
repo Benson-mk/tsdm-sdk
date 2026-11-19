@@ -1,0 +1,1164 @@
+{
+  "archiveSHA256": "5237a29e8eb947c26a69dc136ca959859516b8b1f778c4502a7c4ce29ad966f7",
+  "guideSHA256": "91551ec3d01ea096c7875d16ecce8c08c25bd527853b93e45ccafe8c2c82d204",
+  "limitations": [
+    "Inert loopback HTTP with fictional credentials",
+    "No deployed forum requests or account effects"
+  ],
+  "results": [
+    {
+      "name": "requests reads open",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:open"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:open"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads open",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:open"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:open"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads thread",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": [
+                "viewthread"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": [
+                "viewthread"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads thread",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": [
+                "viewthread"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "mod": [
+                "viewthread"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads record",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:record"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:record"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads record",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:record"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:record"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads daily",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads daily",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": {
+              "tsdmapp": [
+                "json"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads award-details",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "showaward"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "showaward"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads award-details",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "showaward"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "showaward"
+              ],
+              "tid": [
+                "1265042"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests sends grab structured",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                "fixture-passphrase-33"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                "fixture-passphrase-33"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl sends grab structured",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                "fixture-passphrase-33"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                "fixture-passphrase-33"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests sends grab legacy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                ""
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                ""
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl sends grab legacy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                ""
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:grab"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ],
+              "password": [
+                ""
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests sends withdraw structured",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:withdraw"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:withdraw"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl sends withdraw structured",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:withdraw"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:withdraw"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "tid": [
+                "1265042"
+              ],
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests sends daily legacy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:daily"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:daily"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl sends daily legacy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:daily"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "hongbao:daily"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declined POST",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declined POST",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests exact award GET HTTP 200",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "11"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "11"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl exact award GET HTTP 200",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "11"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "11"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests exact award GET HTTP 302",
+      "expected": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "99"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "99"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl exact award GET HTTP 302",
+      "expected": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "99"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmbet:awardPacket"
+              ],
+              "action": [
+                "getaward"
+              ],
+              "tid": [
+                "1265042"
+              ],
+              "awardid": [
+                "99"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declined award GET",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declined award GET",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    }
+  ]
+}

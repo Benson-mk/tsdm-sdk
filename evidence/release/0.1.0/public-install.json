@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "mode": "public",
+  "name": "tsdm-sdk",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "sourceCommit": "edbabcedfe03c5d8da817ec1a1aa7ed3ac98ccd8",
+  "assetUrl": "https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+  "manifestUrl": "https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/release.json",
+  "archiveSHA256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "archiveBytes": 423256,
+  "manifestSHA256": "edeebebbfa66e2e967ba16afacf132b9029a748b77b96f43cc80ce77ecac3ba6",
+  "lockfileIntegrity": "sha512-6mEvLiJwZlLrCHr7cWA2e4/Ge53lG/zSfpR3AhO+RpTCWNbyLGpRCjDyGyewh9/SR6CHQbltzMQZvZ++BzYiVg==",
+  "installCommand": "npm install --save-exact --engine-strict https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "typescript": "6.0.3",
+  "esm": "passed",
+  "declarations": "strict NodeNext ES2023 without DOM types"
+}

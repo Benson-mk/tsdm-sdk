@@ -1,0 +1,7010 @@
+{
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "6592d85ecedee749b8ca6d075e825ed0cbb1c00d6f66daceb5699db64ab25762",
+  "lockfileIntegrity": "sha512-sa78LB3iy+3ebBJERPxCLnuOTeXmISuEeUqiFD+H4PjCkD+eK4pPrkEzovZUezmssIFHhdut0mz2VLi4hZKubA==",
+  "consumerSHA256": "bf23f9c368b062df376619341c8c155f814ac9718cc31c9399ebb5d75592bdfc",
+  "guideSHA256": "826b177619aaf3c0a43dde055621f202f6147a673f1ba43f6f96bac2bc4584e5",
+  "results": [
+    {
+      "name": "deployment switch off stops before entry",
+      "expected": {
+        "kind": "admin-access",
+        "enabled": false,
+        "eligible": false,
+        "founder": false,
+        "capabilities": {},
+        "sessionActive": false,
+        "login": null
+      },
+      "observed": {
+        "kind": "admin-access",
+        "enabled": false,
+        "eligible": false,
+        "founder": false,
+        "capabilities": {},
+        "sessionActive": false,
+        "login": null
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "discovers only this viewer’s permissions",
+      "expected": {
+        "kind": "admin-access",
+        "enabled": true,
+        "eligible": true,
+        "founder": false,
+        "sessionActive": false,
+        "capabilities": {
+          "admincredit": {
+            "read": true,
+            "write": true
+          },
+          "admingroup": {
+            "read": true,
+            "write": true
+          },
+          "adminreport": {
+            "read": true,
+            "write": true
+          },
+          "adminban": {
+            "read": true,
+            "write": true
+          }
+        },
+        "login": {
+          "locked": false,
+          "retryAfter": 0,
+          "triesLeft": 4,
+          "securityQuestion": false
+        }
+      },
+      "observed": {
+        "kind": "admin-access",
+        "enabled": true,
+        "eligible": true,
+        "founder": false,
+        "capabilities": {
+          "admincredit": {
+            "read": true,
+            "write": true
+          },
+          "admingroup": {
+            "read": true,
+            "write": true
+          },
+          "adminreport": {
+            "read": true,
+            "write": true
+          },
+          "adminban": {
+            "read": true,
+            "write": true
+          }
+        },
+        "sessionActive": false,
+        "login": {
+          "locked": false,
+          "retryAfter": 0,
+          "triesLeft": 4,
+          "securityQuestion": false
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "declining the separate login does not send credentials",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "login retains the token in memory and logout sends it only in the header",
+      "expected": {
+        "kind": "admin-closed"
+      },
+      "observed": {
+        "kind": "admin-closed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "honors the served security question requirement",
+      "expected": {
+        "kind": "admin-opened"
+      },
+      "observed": {
+        "kind": "admin-opened"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "questionid",
+              "3"
+            ],
+            [
+              "answer",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "questionid",
+              "3"
+            ],
+            [
+              "answer",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "an expired local token is discarded with no logout request",
+      "expected": {
+        "kind": "admin-closed"
+      },
+      "observed": {
+        "kind": "admin-closed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a replaced viewer drops old authorization without sending the token",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reads credit terms and independently qualifies an approved adjustment",
+      "expected": {
+        "kind": "credits-adjusted",
+        "operationId": "fictional-credit-0001",
+        "changed": {
+          "2": -3
+        },
+        "notified": 1,
+        "members": [
+          {
+            "member": {
+              "memberId": "71",
+              "username": "Fictional member 71",
+              "groupId": "10",
+              "group": "Fictional base group",
+              "adminId": 0,
+              "locked": false,
+              "self": false,
+              "founder": false
+            },
+            "balances": {
+              "2": 7
+            }
+          }
+        ]
+      },
+      "observed": {
+        "kind": "credits-adjusted",
+        "operationId": "fictional-credit-0001",
+        "changed": {
+          "2": -3
+        },
+        "notified": 1,
+        "members": [
+          {
+            "member": {
+              "memberId": "71",
+              "username": "Fictional member 71",
+              "groupId": "10",
+              "group": "Fictional base group",
+              "adminId": 0,
+              "locked": false,
+              "self": false,
+              "founder": false
+            },
+            "balances": {
+              "2": 7
+            }
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "server-level action refusal",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "perm",
+        "action": "admincredit"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "perm",
+        "action": "admincredit"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lost credit receipt",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "duplicate is distinct from a new credit receipt",
+      "expected": {
+        "kind": "duplicate",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "observed": {
+        "kind": "duplicate",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "the actor UID cannot stand in for the adjusted member",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "reward",
+        "operationId": "fictional-credit-0001"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a read-only credit capability does not authorize mutation",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "perm",
+        "action": "admincredit"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "action": "admincredit",
+        "why": "perm"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an expired token blocks the private data read locally",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_login",
+        "action": "admincredit"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_login",
+        "action": "admincredit"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "server token expiry invalidates only the held admin authorization",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_login",
+        "action": "admincredit"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_login",
+        "action": "admincredit"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "reads current group state and confirms the approved full replacement",
+      "expected": {
+        "kind": "group-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-group-0001"
+      },
+      "observed": {
+        "kind": "group-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-group-0001"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "groupid",
+              "22"
+            ],
+            [
+              "adminid",
+              "2"
+            ],
+            [
+              "expiry",
+              "2030-02-28"
+            ],
+            [
+              "expgroupid",
+              "22"
+            ],
+            [
+              "expadminid",
+              "3"
+            ],
+            [
+              "extgroupids[0]",
+              "15"
+            ],
+            [
+              "extgroupids[1]",
+              "16"
+            ],
+            [
+              "extexpiry[16]",
+              "2030-02-27"
+            ],
+            [
+              "reason",
+              "Fictional reclassification"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-group-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "groupid",
+              "22"
+            ],
+            [
+              "adminid",
+              "2"
+            ],
+            [
+              "expiry",
+              "2030-02-28"
+            ],
+            [
+              "expgroupid",
+              "22"
+            ],
+            [
+              "expadminid",
+              "3"
+            ],
+            [
+              "extgroupids[0]",
+              "15"
+            ],
+            [
+              "extgroupids[1]",
+              "16"
+            ],
+            [
+              "extexpiry[16]",
+              "2030-02-27"
+            ],
+            [
+              "reason",
+              "Fictional reclassification"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-group-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a protected member has a viewable group but no group mutation",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "founder_only",
+        "action": "admingroup"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "action": "admingroup",
+        "why": "founder_only"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a mismatched member cannot supply group choices",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admingroup&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "lists pending reports and keeps explicitly skipped resolutions distinct",
+      "expected": {
+        "kind": "reports-resolved",
+        "resolved": [
+          "91"
+        ],
+        "skipped": [
+          "92"
+        ],
+        "unreported": [],
+        "operationId": "fictional-report-0001"
+      },
+      "observed": {
+        "kind": "reports-resolved",
+        "operationId": "fictional-report-0001",
+        "resolved": [
+          "91"
+        ],
+        "skipped": [
+          "92"
+        ],
+        "unreported": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "resolve"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "credits[91]",
+              "3"
+            ],
+            [
+              "msg[91]",
+              "Fictitious finding"
+            ],
+            [
+              "ids[1]",
+              "92"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "resolve"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "credits[91]",
+              "3"
+            ],
+            [
+              "msg[91]",
+              "Fictitious finding"
+            ],
+            [
+              "ids[1]",
+              "92"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reads the resolved tab and deletes only the confirmed report IDs",
+      "expected": {
+        "kind": "reports-deleted",
+        "deleted": [
+          "93"
+        ],
+        "unreported": [],
+        "operationId": "fictional-report-0001"
+      },
+      "observed": {
+        "kind": "reports-deleted",
+        "operationId": "fictional-report-0001",
+        "deleted": [
+          "93"
+        ],
+        "unreported": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=resolved&page=2",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "93"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=resolved&page=2",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "93"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a report-only administrator lacks group access and report write permission",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "perm",
+        "action": "adminreport"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "action": "adminreport",
+        "why": "perm"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "report success with no per-record result cannot prove the selected reports were changed",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "delete",
+        "operationId": "fictional-report-0001"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "delete",
+        "operationId": "fictional-report-0001"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ban, immediate cleanup, continued batches and explicit completion have distinct outcomes",
+      "expected": {
+        "kind": "cleanup-complete",
+        "memberId": "71",
+        "remaining": 0,
+        "posts": 2,
+        "threads": 0
+      },
+      "observed": {
+        "kind": "cleanup-complete",
+        "memberId": "71",
+        "posts": 2,
+        "threads": 0,
+        "remaining": 0
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "post"
+            ],
+            [
+              "banexpirynew",
+              "7"
+            ],
+            [
+              "reason",
+              "Fictional moderation reason"
+            ],
+            [
+              "clear[0]",
+              "post"
+            ],
+            [
+              "clear[1]",
+              "postcomment"
+            ],
+            [
+              "clear[2]",
+              "avatar"
+            ],
+            [
+              "clear[3]",
+              "profile"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-5"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "post"
+            ],
+            [
+              "banexpirynew",
+              "7"
+            ],
+            [
+              "reason",
+              "Fictional moderation reason"
+            ],
+            [
+              "clear[0]",
+              "post"
+            ],
+            [
+              "clear[1]",
+              "postcomment"
+            ],
+            [
+              "clear[2]",
+              "avatar"
+            ],
+            [
+              "clear[3]",
+              "profile"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-5"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a protected member state explains why a ban is unavailable",
+      "expected": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "why": "protected",
+        "action": "adminban"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "admin_noperm",
+        "action": "adminban",
+        "why": "protected"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cleanup resumes from fresh server state",
+      "expected": {
+        "kind": "cleanup-complete",
+        "memberId": "71",
+        "remaining": 0,
+        "posts": 2,
+        "threads": 0
+      },
+      "observed": {
+        "kind": "cleanup-complete",
+        "memberId": "71",
+        "posts": 2,
+        "threads": 0,
+        "remaining": 0
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cleanup refusal to continue is visible",
+      "expected": {
+        "kind": "refused",
+        "code": "clear_start",
+        "action": "adminban"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "clear_start",
+        "action": "adminban"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cleanup nonadvancing cursor cannot confirm progress",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "clear"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "clear"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cleanup cleanup must identify the distinct target UID",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "clear"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "clear"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "clear"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "cursor",
+              "0-0"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "visit restriction",
+      "expected": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "observed": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "visit"
+            ],
+            [
+              "banexpirynew",
+              "7"
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "visit"
+            ],
+            [
+              "banexpirynew",
+              "7"
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "member status restriction",
+      "expected": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "observed": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "status"
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              "status"
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lift ban",
+      "expected": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "observed": {
+        "kind": "ban-acknowledged",
+        "memberId": "71",
+        "operationId": "fictional-ban-0001",
+        "cleared": [],
+        "cleanup": null
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              ""
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban&uid=71",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminban",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "ban"
+            ],
+            [
+              "uid",
+              "71"
+            ],
+            [
+              "bannew",
+              ""
+            ],
+            [
+              "reason",
+              "Fictional reason"
+            ],
+            [
+              "opid",
+              "fictional-ban-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript reads reports and closes the separate session",
+      "expected": {
+        "kind": "admin-reports",
+        "reportIds": [
+          "91",
+          "92"
+        ]
+      },
+      "observed": {
+        "kind": "admin-reports",
+        "reportIds": [
+          "91",
+          "92"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a server-requested security question becomes a local login requirement",
+      "expected": {
+        "kind": "admin-opened"
+      },
+      "observed": {
+        "kind": "admin-opened"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "questionid",
+              "3"
+            ],
+            [
+              "answer",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "questionid",
+              "3"
+            ],
+            [
+              "answer",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rate-limit response is never retried without an explicit new call",
+      "expected": {
+        "kind": "refused",
+        "code": "busy",
+        "retryAfter": 4,
+        "action": "admincredit"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "busy",
+        "retryAfter": 4,
+        "action": "admincredit"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "an action permission refusal keeps other actions and the separate token usable",
+      "expected": {
+        "kind": "admin-reports",
+        "ids": [
+          "91",
+          "92"
+        ]
+      },
+      "observed": {
+        "kind": "admin-reports",
+        "ids": [
+          "91",
+          "92"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit&uids=71&usernames=Missing+fictitious+member",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admincredit",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "uids",
+              "71"
+            ],
+            [
+              "credits[2]",
+              "-3"
+            ],
+            [
+              "reason",
+              "Fictional correction"
+            ],
+            [
+              "notify",
+              "1"
+            ],
+            [
+              "opid",
+              "fictional-credit-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        }
+      ]
+    },
+    {
+      "name": "moderator report selection contains no credential or effect",
+      "expected": {
+        "kind": "admin-report-deletion",
+        "origin": "https://admin.example",
+        "forumId": "12",
+        "reportIds": [
+          "91"
+        ]
+      },
+      "observed": {
+        "kind": "admin-report-deletion",
+        "origin": "https://admin.example",
+        "forumId": "12",
+        "reportIds": [
+          "91"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/forum.php?mod=modcp&action=report&fid=12&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "44",
+            "continuity": "separate-fictional-moderator"
+          }
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/forum.php?mod=modcp&action=report&fid=12&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false,
+          "fresh": true,
+          "session": {
+            "memberId": "44",
+            "continuity": "separate-fictional-moderator"
+          }
+        }
+      ]
+    },
+    {
+      "name": "the installed administrator independently confirms and deletes the moderator’s exact selection under a distinct member session",
+      "expected": {
+        "kind": "reports-deleted",
+        "deleted": [
+          "91"
+        ],
+        "unreported": [],
+        "operationId": "fictional-report-0001"
+      },
+      "observed": {
+        "kind": "reports-deleted",
+        "operationId": "fictional-report-0001",
+        "deleted": [
+          "91"
+        ],
+        "unreported": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "delete"
+            ],
+            [
+              "ids[0]",
+              "91"
+            ],
+            [
+              "opid",
+              "fictional-report-0001"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "same report ID in a different forum cannot complete a moderator handoff",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "declined administrator report deletion still closes the separately opened session",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {},
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "method": "POST",
+          "effect": true,
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "GET",
+          "effect": false,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {},
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "login"
+            ],
+            [
+              "password",
+              "[masked]"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=adminreport&op=new",
+          "method": "GET",
+          "effect": false,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          }
+        },
+        {
+          "url": "https://admin.example/plugin.php?id=tsdmapp%3Aapi&action=admin",
+          "method": "POST",
+          "effect": true,
+          "headers": {
+            "X-Tsdmapp-Admin": "[masked]"
+          },
+          "fresh": true,
+          "session": {
+            "memberId": "31",
+            "continuity": "fictional-admin-viewer"
+          },
+          "body": [
+            [
+              "op",
+              "logout"
+            ],
+            [
+              "formhash",
+              "[masked]"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "another origin’s handoff opens no administrator session",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [],
+      "requests": []
+    }
+  ]
+}

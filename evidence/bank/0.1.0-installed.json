@@ -1,0 +1,3073 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "13767238cdca9c836714e84f686c4d74ff5909faa81890fb96b4669c8529d085",
+  "archiveBytes": 334313,
+  "lockfileIntegrity": "sha512-eWEAwCCfy9rijNwTgfA+S1cmVaxee6WrP8ntwGqn+VsioHnW/QD5NW4+aXyhMFzuO9MA2/I2HKyKv3Ia3PW1MA==",
+  "guideSHA256": "193050a1ef393dd8164337eebf0627d90182ffee2449bea11ecbd478aa556e94",
+  "consumerSHA256": "ff258de4f21e0569b1f72be01e1a04e25e45e221cf29bd3a06a2e00daed5a2e2",
+  "results": [
+    {
+      "name": "directory reads only bank entries and preserves the selected account marker",
+      "expected": {
+        "kind": "bank-directory",
+        "banks": [
+          {
+            "id": "1",
+            "name": "Fictional Branch",
+            "description": "Fictitious directory",
+            "hasAccount": true,
+            "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1"
+          }
+        ]
+      },
+      "observed": {
+        "kind": "bank-directory",
+        "banks": [
+          {
+            "id": "1",
+            "name": "Fictional Branch",
+            "description": "Fictitious directory",
+            "hasAccount": true,
+            "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1"
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "another viewer cannot supply bank data",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "directory rejects an offered foreign link",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "current savings preserve original balance, interest and notice text",
+      "expected": {
+        "kind": "bank-service",
+        "bankId": "1",
+        "currency": "Fictional coins",
+        "wallet": "800",
+        "summary": "您当前的存款金额为 200 ，活期利率为0.1‰，计息时间从虚构日期开始。",
+        "interest": "您当前可得利息 3",
+        "notices": [
+          "Fictitious conditions"
+        ]
+      },
+      "observed": {
+        "kind": "bank-service",
+        "bankId": "1",
+        "currency": "Fictional coins",
+        "wallet": "800",
+        "summary": "您当前的存款金额为 200 ，活期利率为0.1‰，计息时间从虚构日期开始。",
+        "interest": "您当前可得利息 3",
+        "notices": [
+          "Fictitious conditions"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read lobby without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "lobby",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "lobby",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read fixed without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "fixed",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "fixed",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read transfer without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "transfer",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "transfer",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read loans without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "loans",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "loans",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read account without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "account",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "account",
+        "bankId": "1",
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "read overview without a transaction",
+      "expected": {
+        "kind": "bank-service",
+        "service": "overview",
+        "bankId": null,
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "observed": {
+        "kind": "bank-service",
+        "service": "overview",
+        "bankId": null,
+        "blocks": [
+          {
+            "text": "Fictitious service data",
+            "heading": false
+          }
+        ],
+        "forms": [],
+        "handoffs": []
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "rankings include the plugin’s following table and qualify its next page",
+      "expected": {
+        "blocks": [
+          "Fictitious ranking A",
+          "Fictitious ranking B"
+        ],
+        "hasNext": true
+      },
+      "observed": {
+        "blocks": [
+          "Fictitious ranking A",
+          "Fictitious ranking B"
+        ],
+        "hasNext": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=list",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=list",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "points trading returns the documented same-origin browser destination",
+      "expected": {
+        "kind": "bank-service",
+        "handoffs": [
+          {
+            "operation": "trade-points",
+            "destination": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy"
+          }
+        ]
+      },
+      "observed": {
+        "kind": "bank-service",
+        "handoffs": [
+          {
+            "operation": "trade-points",
+            "destination": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy"
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "disabled trading preserves the forum reason without a handoff",
+      "expected": {
+        "kind": "refused",
+        "message": "Fictitious exchange unavailable"
+      },
+      "observed": {
+        "kind": "refused",
+        "message": "Fictitious exchange unavailable"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&mode=other&action=buy",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "own records discard IP and qualify exact next tab and bank",
+      "expected": {
+        "kind": "bank-logs",
+        "bankId": "1",
+        "received": false,
+        "page": 1,
+        "entries": [
+          {
+            "message": "Fictitious deposit",
+            "time": "Fictitious time"
+          }
+        ],
+        "hasNext": true
+      },
+      "observed": {
+        "kind": "bank-logs",
+        "bankId": "1",
+        "received": false,
+        "page": 1,
+        "entries": [
+          {
+            "message": "Fictitious deposit",
+            "time": "Fictitious time"
+          }
+        ],
+        "hasNext": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=0&page=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=0&page=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "received records have their own pagination and explicit empty marker",
+      "expected": {
+        "kind": "bank-logs",
+        "bankId": "1",
+        "received": true,
+        "page": 2,
+        "entries": [],
+        "hasNext": false
+      },
+      "observed": {
+        "kind": "bank-logs",
+        "bankId": "1",
+        "received": true,
+        "page": 2,
+        "entries": [],
+        "hasNext": false
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=1&page=2",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=1&page=2",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "unrecognized records do not masquerade as an empty log",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=0&page=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=log&show=0&page=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "global service forbids an invented selected bank",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [],
+      "requests": []
+    },
+    {
+      "name": "deposit-current explicitly sends the matching current-savings radio value",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "999999999999999999"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "999999999999999999"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "withdraw-current explicitly sends the matching current-savings radio value",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "banknum",
+              "11"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "banknum",
+              "11"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "open-account distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "open-account",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "open-account",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "open"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "bankpass2",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "open"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "bankpass2",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deposit-fixed distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "deposit-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "deposit-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "100"
+            ],
+            [
+              "daynum",
+              "30"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "100"
+            ],
+            [
+              "daynum",
+              "30"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "transfer distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "transfer",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "transfer",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "chg"
+            ],
+            [
+              "op",
+              "ok"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "101"
+            ],
+            [
+              "touser",
+              "Fictitious Recipient"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "chg"
+            ],
+            [
+              "op",
+              "ok"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "101"
+            ],
+            [
+              "touser",
+              "Fictitious Recipient"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "change-password distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "change-password",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "change-password",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "pas"
+            ],
+            [
+              "op",
+              "cg"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "newbankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "newbankpass2",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "pas"
+            ],
+            [
+              "op",
+              "cg"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "newbankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "newbankpass2",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "close-account distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "close-account",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "close-account",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "pas"
+            ],
+            [
+              "op",
+              "cl"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=pas",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "pas"
+            ],
+            [
+              "op",
+              "cl"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "apply-loan distinguishes inspected terms, approval and a single fresh POST",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "apply-loan",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "apply-loan",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "len"
+            ],
+            [
+              "op",
+              "try"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "100"
+            ],
+            [
+              "daynum",
+              "5"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "len"
+            ],
+            [
+              "op",
+              "try"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "banknum",
+              "100"
+            ],
+            [
+              "daynum",
+              "5"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "interest settlement uses a separate offered form with no guessed password or hash",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "settle-interest",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "settle-interest",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "op",
+              "ok"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "op",
+              "ok"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "noninteger and oversized amounts and unexpected fields are refused before revalidation",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "generic success text and a 200 do not establish a ledger movement",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "an explicit native wrong-password refusal has its own outcome",
+      "expected": {
+        "kind": "refused",
+        "code": "bank-rejected",
+        "message": "银行密码错误，请返回修改。"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "bank-rejected",
+        "message": "银行密码错误，请返回修改。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a lost response is uncertain and never replays the same effect",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a changed savings balance stops before any POST",
+      "expected": {
+        "kind": "terms-changed"
+      },
+      "observed": {
+        "kind": "terms-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a response that looks like a new form remains uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a form with an off-origin POST or secret default is unavailable",
+      "expected": {
+        "forms": 0,
+        "unsupported": true
+      },
+      "observed": {
+        "forms": 0,
+        "unsupported": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "fixed withdrawal shows record context and confirmation before any effect",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "fixed withdrawal rechecks the record and terms and sends the confirmation form only once",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "noid",
+              "7"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "noid",
+              "7"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a confirmed withdrawal cannot switch record IDs",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a withdrawal with a changed confirmation notice sends nothing",
+      "expected": {
+        "kind": "terms-changed"
+      },
+      "observed": {
+        "kind": "terms-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "changed interest on the listed record stops before re-opening its confirmation",
+      "expected": {
+        "kind": "terms-changed"
+      },
+      "observed": {
+        "kind": "terms-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a vanished term record may return a forum refusal during preparation",
+      "expected": {
+        "kind": "refused",
+        "message": "参数传递错误，请返回。"
+      },
+      "observed": {
+        "kind": "refused",
+        "message": "参数传递错误，请返回。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix&op=out&noid=7",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "repayment and cancellation return exact separate browser destinations without GETs to those links",
+      "expected": {
+        "forms": [
+          "apply-loan"
+        ],
+        "handoffs": [
+          {
+            "operation": "repay-loan",
+            "destination": "https://bank.example/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gb&noid=8",
+            "bankId": "1",
+            "recordId": "8",
+            "context": "Fictitious repayment due"
+          },
+          {
+            "operation": "cancel-loan",
+            "destination": "https://bank.example/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gu&noid=9",
+            "bankId": "1",
+            "recordId": "9",
+            "context": "Fictitious application pending"
+          }
+        ]
+      },
+      "observed": {
+        "forms": [
+          "apply-loan"
+        ],
+        "handoffs": [
+          {
+            "operation": "repay-loan",
+            "destination": "https://bank.example/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gb&noid=8",
+            "bankId": "1",
+            "recordId": "8",
+            "context": "Fictitious repayment due"
+          },
+          {
+            "operation": "cancel-loan",
+            "destination": "https://bank.example/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gu&noid=9",
+            "bankId": "1",
+            "recordId": "9",
+            "context": "Fictitious application pending"
+          }
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "lookalike loan links from another bank or a notice authorize no handoff",
+      "expected": {
+        "handoffs": [],
+        "unsupported": true
+      },
+      "observed": {
+        "handoffs": [],
+        "unsupported": true
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=len",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "changed session before submission prevents even the revalidation GET",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a password-reflecting error is classified without returning its raw text",
+      "expected": {
+        "kind": "refused",
+        "code": "bank-rejected"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "bank-rejected"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "structured write result still leaves ledger movement unconfirmed",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reflected password equal to a known reply stays out of the result",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "deposit-current"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "changed transfer fee prevents a POST",
+      "expected": {
+        "kind": "terms-changed"
+      },
+      "observed": {
+        "kind": "terms-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=chg",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "locked savings reply cannot authorize following a redirect",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "deposit-current"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "cur"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "op",
+              "in"
+            ],
+            [
+              "banknum",
+              "12"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "inline fixed-record form preserves its served fixid and row context",
+      "expected": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "observed": {
+        "kind": "unconfirmed",
+        "operation": "withdraw-fixed",
+        "message": "恭喜您，操作成功。"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "fixid",
+              "7"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=fix",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "bankid",
+              "1"
+            ],
+            [
+              "action",
+              "fix"
+            ],
+            [
+              "op",
+              "out"
+            ],
+            [
+              "fixid",
+              "7"
+            ],
+            [
+              "formhash",
+              "fictitious-fresh-token"
+            ],
+            [
+              "bankpass",
+              "[fictitious password supplied]"
+            ],
+            [
+              "banksubmit",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "packaged TypeScript decline reads one page and neither collects a password nor sends a POST",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://bank.example/plugin.php?id=bank_ane%3Abank&bankid=1&action=cur",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    }
+  ]
+}

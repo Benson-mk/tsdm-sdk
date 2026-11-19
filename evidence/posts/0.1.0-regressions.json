@@ -1,0 +1,2766 @@
+{
+  "evidence": "combined controlled checks on November 19, 2026",
+  "integrationParent": "dbb136988da99c38783117ca6d7436b88a5a15fa",
+  "archiveSHA256": "52a6b92e2fe8678ac0c3d7748097a52a80fcfba811d3db6396d0cafe1e1a9bf7",
+  "archiveBytes": 205212,
+  "checks": {
+    "account": {
+      "status": "passed",
+      "fullReceiptSHA256": "9eeaa14e872b9c1431d720131e9b9421574e7a895339792ee68f849f15d06c36"
+    },
+    "collections": {
+      "status": "passed",
+      "fullReceiptSHA256": "cdfc9bfd5c131bdb158556ccc8891daa3e9943e14b598a8dead210751bbbdebd"
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "fullReceiptSHA256": "4373f87a0b9e749c649ee033c79df7cc2d799f88fbe25320f9563e54fd768f0b"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "fullReceiptSHA256": "2bdf8f28f670320c8660c51f9df379a16c1f20e4911f3e141f3820cd6b8d88c6"
+    },
+    "members": {
+      "status": "passed",
+      "fullReceiptSHA256": "ce699112c17ab81635932eabd806770f73ab2679bbdc3096877810ffa9075dad"
+    },
+    "messages": {
+      "status": "passed",
+      "fullReceiptSHA256": "0b8c68203a9ab35220d226e7beb6063247309cad87c4bb1892aa413a4e253e6c"
+    },
+    "notices": {
+      "status": "passed",
+      "fullReceiptSHA256": "a804bd94aa022bdb3ea0a28c35c705324a290310686901690dec78c84777d8bd"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "fullReceiptSHA256": "2ff20012e793ba5366ad911c53cf0b7a1dea74e1dbbd5ae9fc4eb864be76e986",
+      "scenarios": 16
+    },
+    "posts-installed": {
+      "status": "passed",
+      "fullReceiptSHA256": "5a24967e2fb129504e64a1c6df952aaa2ff41154f4467e3a0857ba4c0d2faa41",
+      "scenarios": 31
+    },
+    "profile": {
+      "status": "passed",
+      "fullReceiptSHA256": "5b049246e6a03d13f80f15a0ad98cc3f52e6a44f7b5fbae392d870450f56883f"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "fullReceiptSHA256": "f2142f438e30e957af3624d62dbd68896a28d3486578da3c243e9b5a53e987cf",
+      "scenarios": 18
+    },
+    "replies-installed": {
+      "status": "passed",
+      "fullReceiptSHA256": "e6f402ca25577626c83ab4b69a6e7bf32143038cd2c5e42d3a0e2a1fad451afb",
+      "scenarios": 20,
+      "hostRequests": 58
+    },
+    "sdk": {
+      "status": "passed",
+      "fullReceiptSHA256": "07e86813df1f94cd5f9a3e813ac28e7311b6a8b38e137549da7ad1537999d0e5"
+    },
+    "spaces": {
+      "status": "passed",
+      "fullReceiptSHA256": "2822fcccbf746c2205cc635214e2bfe8d4c5ae008b358514e24b84de11bd5956"
+    }
+  },
+  "repliesInstalled": {
+    "node": "v26.0.0",
+    "package": "0.1.0",
+    "archiveSHA256": "52a6b92e2fe8678ac0c3d7748097a52a80fcfba811d3db6396d0cafe1e1a9bf7",
+    "syntheticInputsSHA256": "c9fdf2e2809d456831b3f487c7cd82d20d95020b187e0fdb9a7210dd85678d1e",
+    "guideSHA256": "773987196b6b118e1862752b1e4bc5ccf7a632a82f7f28d0f1b206c000c3c439",
+    "guides": [
+      "replies"
+    ],
+    "typescript": "Version 6.0.3",
+    "ambientTypes": [],
+    "sourcePin": {
+      "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+      "verifiedFiles": 20
+    },
+    "evidence": "controlled installed SDK and host boundary",
+    "results": {
+      "results": [
+        {
+          "expected": "published with exact PID 303 and one POST",
+          "observed": "published",
+          "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+        },
+        {
+          "expected": "published for quote with forum fields and single-use form",
+          "observed": "published",
+          "reuse": "unavailable"
+        },
+        {
+          "expected": "moderation for quote with forum fields and single-use form",
+          "observed": "moderation",
+          "reuse": "unavailable"
+        },
+        {
+          "expected": "refused for quote with forum fields and single-use form",
+          "observed": "refused",
+          "reuse": "unavailable"
+        },
+        {
+          "expected": "redisplayed for quote with forum fields and single-use form",
+          "observed": "redisplayed",
+          "reuse": "unavailable"
+        },
+        {
+          "expected": "human image and question refresh/check with no auto-submit, unnamed verification to browser",
+          "observed": [
+            "image",
+            "question",
+            "accepted",
+            "rejected",
+            "published",
+            "browser-handoff"
+          ]
+        },
+        {
+          "expected": "native form fallback and literal AJAX acknowledgement",
+          "observed": "published",
+          "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+        },
+        {
+          "expected": "inconclusive (author)",
+          "observed": "inconclusive",
+          "fixture": {
+            "authorid": 44
+          }
+        },
+        {
+          "expected": "inconclusive (exact-post)",
+          "observed": "inconclusive",
+          "fixture": {
+            "pid": 304
+          }
+        },
+        {
+          "expected": "inconclusive (account)",
+          "observed": "inconclusive",
+          "fixture": {
+            "editUid": 44
+          }
+        },
+        {
+          "expected": "inconclusive (stored-evidence)",
+          "observed": "inconclusive",
+          "fixture": {
+            "renderedOnly": true
+          }
+        },
+        {
+          "expected": "inconclusive (content)",
+          "observed": "inconclusive",
+          "fixture": {
+            "stored": "A different source"
+          }
+        },
+        {
+          "expected": "inconclusive (options)",
+          "observed": "inconclusive",
+          "fixture": {
+            "usesig": 0
+          }
+        },
+        {
+          "expected": "inconclusive (account)",
+          "observed": "inconclusive",
+          "fixture": {
+            "switchOnEdit": true
+          }
+        },
+        {
+          "expected": "two separate lost sends, independent matches, attribution unresolved and only two POSTs",
+          "observed": "confirmed",
+          "attribution": "unresolved",
+          "writes": 2,
+          "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+        },
+        {
+          "expected": "no write for foreign action, wrong quote or replaced session; generic redirect is only a candidate",
+          "observed": "uncertain",
+          "candidate": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+        },
+        {
+          "expected": "quoted stored source includes the forum quote, loss still one dispatch",
+          "observed": "confirmed"
+        },
+        {
+          "expected": "pinned schema 16 form, supplied destination and flood refusal",
+          "observed": "refused",
+          "fixture": "reply"
+        },
+        {
+          "expected": "pinned schema 16 form, supplied destination and flood refusal",
+          "observed": "refused",
+          "fixture": "reply_quote"
+        },
+        {
+          "expected": "pinned schema 16 form, supplied destination and flood refusal",
+          "observed": "refused",
+          "fixture": "reply_float"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/misc.php?mod=seccode&action=update&idhash=cFixture&modid=forum%3A%3Apost&fixture-clock=",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/misc.php?mod=secqaa&action=update&idhash=qFixture&inajax=1&fixture-clock=",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/misc.php?mod=seccode&action=check&idhash=cFixture&modid=forum%3A%3Apost&inajax=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/misc.php?mod=secqaa&action=check&idhash=qFixture&inajax=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/misc.php?mod=secqaa&action=check&idhash=qFixture&inajax=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&tsdmapp=json",
+          "member": "35",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&extra=&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "35",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&reppost=9700002&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&extra=&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "GET",
+          "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&reppost=9700002&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        },
+        {
+          "method": "POST",
+          "url": "https://forum.invalid/forum.php?mod=post&infloat=yes&action=reply&fid=2&extra=&tid=9600001&replysubmit=yes&inajax=1&tsdmapp=json",
+          "member": "31",
+          "fresh": true
+        }
+      ]
+    }
+  },
+  "repliesDirect": {
+    "evidence": "controlled loopback, packed direct guide",
+    "archiveSHA256": "52a6b92e2fe8678ac0c3d7748097a52a80fcfba811d3db6396d0cafe1e1a9bf7",
+    "guideSHA256": "773987196b6b118e1862752b1e4bc5ccf7a632a82f7f28d0f1b206c000c3c439",
+    "fixtureSHA256": "c485a7b35bd10221cedd4378ad4abb5382f97763ed2a4bf199370b4344c33e34",
+    "python": "3.12.10",
+    "requests": "2.34.2",
+    "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+    "results": [
+      {
+        "client": "requests",
+        "mode": "open quote",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "reply",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "submit": {
+              "method": "POST",
+              "url": "/forum.php?mod=post&action=reply&fid=2&tid=90&replysubmit=yes&extra=fixture",
+              "fields": {
+                "formhash": "fakehash",
+                "reppid": "302",
+                "reppost": "302",
+                "noticeauthor": "fake",
+                "noticeauthormsg": "Original post",
+                "noticetrimstr": "[quote]Original post[/quote]",
+                "replysubmit": "true"
+              }
+            },
+            "subject": {
+              "shown": 1,
+              "value": ""
+            },
+            "message": {
+              "json": 0,
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ],
+            "seccheck": {
+              "seccode": 1,
+              "seccode_hash": "cFixture",
+              "modid": "forum::post",
+              "secqaa": 1,
+              "secqaa_hash": "qFixture"
+            }
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "reply",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "submit": {
+              "method": "POST",
+              "url": "/forum.php?mod=post&action=reply&fid=2&tid=90&replysubmit=yes&extra=fixture",
+              "fields": {
+                "formhash": "fakehash",
+                "reppid": "302",
+                "reppost": "302",
+                "noticeauthor": "fake",
+                "noticeauthormsg": "Original post",
+                "noticetrimstr": "[quote]Original post[/quote]",
+                "replysubmit": "true"
+              }
+            },
+            "subject": {
+              "shown": 1,
+              "value": ""
+            },
+            "message": {
+              "json": 0,
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ],
+            "seccheck": {
+              "seccode": 1,
+              "seccode_hash": "cFixture",
+              "modid": "forum::post",
+              "secqaa": 1,
+              "secqaa_hash": "qFixture"
+            }
+          }
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "seccode update",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "action": [
+                  "update"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "src=\"misc.php?mod=seccode&idhash=cFixture&update=opaque\""
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "action": [
+                  "update"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "src=\"misc.php?mod=seccode&idhash=cFixture&update=opaque\""
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "seccode check",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "action": [
+                  "check"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "action": [
+                  "check"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "secqaa update",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "action": [
+                  "update"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[Fixture question?]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "action": [
+                  "update"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[Fixture question?]]></root>"
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "secqaa check",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "action": [
+                  "check"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "action": [
+                  "check"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "deliberate send",
+        "expected": {
+          "requests": [
+            {
+              "method": "POST",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "replysubmit": [
+                  "yes"
+                ],
+                "extra": [
+                  "fixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {
+                "formhash": [
+                  "fakehash"
+                ],
+                "reppid": [
+                  "302"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "noticeauthor": [
+                  "fake"
+                ],
+                "noticeauthormsg": [
+                  "Original post"
+                ],
+                "noticetrimstr": [
+                  "[quote]Original post[/quote]"
+                ],
+                "replysubmit": [
+                  "true"
+                ],
+                "message": [
+                  "A direct & + fixture reply"
+                ],
+                "subject": [
+                  ""
+                ],
+                "usesig": [
+                  "1"
+                ],
+                "seccodeverify": [
+                  "human input"
+                ],
+                "secanswer": [
+                  "human input"
+                ],
+                "seccodehash": [
+                  "cFixture"
+                ],
+                "secqaahash": [
+                  "qFixture"
+                ],
+                "seccodemodid": [
+                  "forum::post"
+                ]
+              },
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "result",
+            "schema": 13,
+            "kind": "handle",
+            "ok": 1,
+            "uid": 31,
+            "message_key": "post_reply_mod_succeed",
+            "values": {
+              "reply_mod": "1"
+            }
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "POST",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "replysubmit": [
+                  "yes"
+                ],
+                "extra": [
+                  "fixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {
+                "formhash": [
+                  "fakehash"
+                ],
+                "reppid": [
+                  "302"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "noticeauthor": [
+                  "fake"
+                ],
+                "noticeauthormsg": [
+                  "Original post"
+                ],
+                "noticetrimstr": [
+                  "[quote]Original post[/quote]"
+                ],
+                "replysubmit": [
+                  "true"
+                ],
+                "message": [
+                  "A direct & + fixture reply"
+                ],
+                "subject": [
+                  ""
+                ],
+                "usesig": [
+                  "1"
+                ],
+                "seccodeverify": [
+                  "human input"
+                ],
+                "seccodehash": [
+                  "cFixture"
+                ],
+                "seccodemodid": [
+                  "forum::post"
+                ],
+                "secanswer": [
+                  "human input"
+                ],
+                "secqaahash": [
+                  "qFixture"
+                ]
+              },
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "result",
+            "schema": 13,
+            "kind": "handle",
+            "ok": 1,
+            "uid": 31,
+            "message_key": "post_reply_mod_succeed",
+            "values": {
+              "reply_mod": "1"
+            }
+          }
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "exact readback",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            },
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "confirmed, attribution unresolved"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            },
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "confirmed, attribution unresolved"
+        }
+      },
+      {
+        "client": "requests",
+        "mode": "mismatched readback",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            },
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "inconclusive"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            },
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "inconclusive"
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "open",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "reply",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "submit": {
+              "method": "POST",
+              "url": "/forum.php?mod=post&action=reply&fid=2&tid=90&replysubmit=yes&extra=fixture",
+              "fields": {
+                "formhash": "fakehash",
+                "reppid": "302",
+                "reppost": "302",
+                "noticeauthor": "fake",
+                "noticeauthormsg": "Original post",
+                "noticetrimstr": "[quote]Original post[/quote]",
+                "replysubmit": "true"
+              }
+            },
+            "subject": {
+              "shown": 1,
+              "value": ""
+            },
+            "message": {
+              "json": 0,
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ],
+            "seccheck": {
+              "seccode": 1,
+              "seccode_hash": "cFixture",
+              "modid": "forum::post",
+              "secqaa": 1,
+              "secqaa_hash": "qFixture"
+            }
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "reply",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "submit": {
+              "method": "POST",
+              "url": "/forum.php?mod=post&action=reply&fid=2&tid=90&replysubmit=yes&extra=fixture",
+              "fields": {
+                "formhash": "fakehash",
+                "reppid": "302",
+                "reppost": "302",
+                "noticeauthor": "fake",
+                "noticeauthormsg": "Original post",
+                "noticetrimstr": "[quote]Original post[/quote]",
+                "replysubmit": "true"
+              }
+            },
+            "subject": {
+              "shown": 1,
+              "value": ""
+            },
+            "message": {
+              "json": 0,
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ],
+            "seccheck": {
+              "seccode": 1,
+              "seccode_hash": "cFixture",
+              "modid": "forum::post",
+              "secqaa": 1,
+              "secqaa_hash": "qFixture"
+            }
+          }
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "native",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "<form id=\"postform\">Fixture form</form>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "reppost": [
+                  "302"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": "<form id=\"postform\">Fixture form</form>"
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "submit",
+        "expected": {
+          "requests": [
+            {
+              "method": "POST",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "replysubmit": [
+                  "yes"
+                ],
+                "extra": [
+                  "fixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {
+                "formhash": [
+                  "fakehash"
+                ],
+                "reppid": [
+                  "302"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "noticeauthor": [
+                  "fake"
+                ],
+                "noticeauthormsg": [
+                  "Original post"
+                ],
+                "noticetrimstr": [
+                  "[quote]Original post[/quote]"
+                ],
+                "replysubmit": [
+                  "true"
+                ],
+                "message": [
+                  "A direct & + fixture reply"
+                ],
+                "subject": [
+                  ""
+                ],
+                "usesig": [
+                  "1"
+                ],
+                "seccodeverify": [
+                  "human input"
+                ],
+                "secanswer": [
+                  "human input"
+                ],
+                "seccodehash": [
+                  "cFixture"
+                ],
+                "secqaahash": [
+                  "qFixture"
+                ],
+                "seccodemodid": [
+                  "forum::post"
+                ]
+              },
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "result",
+            "schema": 13,
+            "kind": "handle",
+            "ok": 1,
+            "uid": 31,
+            "message_key": "post_reply_mod_succeed",
+            "values": {
+              "reply_mod": "1"
+            }
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "POST",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "reply"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "replysubmit": [
+                  "yes"
+                ],
+                "extra": [
+                  "fixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {
+                "formhash": [
+                  "fakehash"
+                ],
+                "reppid": [
+                  "302"
+                ],
+                "reppost": [
+                  "302"
+                ],
+                "noticeauthor": [
+                  "fake"
+                ],
+                "noticeauthormsg": [
+                  "Original post"
+                ],
+                "noticetrimstr": [
+                  "[quote]Original post[/quote]"
+                ],
+                "replysubmit": [
+                  "true"
+                ],
+                "message": [
+                  "A direct & + fixture reply"
+                ],
+                "subject": [
+                  ""
+                ],
+                "usesig": [
+                  "1"
+                ],
+                "seccodeverify": [
+                  "human input"
+                ],
+                "secanswer": [
+                  "human input"
+                ],
+                "seccodehash": [
+                  "cFixture"
+                ],
+                "secqaahash": [
+                  "qFixture"
+                ],
+                "seccodemodid": [
+                  "forum::post"
+                ]
+              },
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "result",
+            "schema": 13,
+            "kind": "handle",
+            "ok": 1,
+            "uid": 31,
+            "message_key": "post_reply_mod_succeed",
+            "values": {
+              "reply_mod": "1"
+            }
+          }
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "exact",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "thread",
+            "schema": 15,
+            "ok": 1,
+            "uid": 31,
+            "thread": {
+              "tid": 90
+            },
+            "posts": [
+              {
+                "pid": 303,
+                "authorid": 31,
+                "body_html": "Rendered"
+              }
+            ]
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "redirect"
+                ],
+                "goto": [
+                  "findpost"
+                ],
+                "ptid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ],
+                "nodoc": [
+                  "1"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "thread",
+            "schema": 15,
+            "ok": 1,
+            "uid": 31,
+            "thread": {
+              "tid": 90
+            },
+            "posts": [
+              {
+                "pid": 303,
+                "authorid": 31,
+                "body_html": "Rendered"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "stored",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "edit",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "pid": 303,
+            "first": 0,
+            "message": {
+              "json": 0,
+              "value": "[quote]Original post[/quote]\nA direct & + fixture reply"
+            },
+            "subject": {
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ]
+          }
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/forum.php",
+              "query": {
+                "mod": [
+                  "post"
+                ],
+                "action": [
+                  "edit"
+                ],
+                "fid": [
+                  "2"
+                ],
+                "tid": [
+                  "90"
+                ],
+                "pid": [
+                  "303"
+                ],
+                "tsdmapp": [
+                  "json"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": ""
+            }
+          ],
+          "result": {
+            "type": "post",
+            "schema": 16,
+            "action": "edit",
+            "ok": 1,
+            "uid": 31,
+            "fid": 2,
+            "tid": 90,
+            "pid": 303,
+            "first": 0,
+            "message": {
+              "json": 0,
+              "value": "[quote]Original post[/quote]\nA direct & + fixture reply"
+            },
+            "subject": {
+              "value": ""
+            },
+            "options": [
+              {
+                "name": "usesig",
+                "type": "checkbox",
+                "checked": 1,
+                "disabled": 0,
+                "value": "1"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "seccode refresh",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "action": [
+                  "update"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "src=\"misc.php?mod=seccode&idhash=cFixture&update=opaque\""
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "action": [
+                  "update"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "src=\"misc.php?mod=seccode&idhash=cFixture&update=opaque\""
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "seccode check",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "action": [
+                  "check"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "seccode"
+                ],
+                "action": [
+                  "check"
+                ],
+                "idhash": [
+                  "cFixture"
+                ],
+                "modid": [
+                  "forum::post"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "secqaa refresh",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "action": [
+                  "update"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[Fixture question?]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "action": [
+                  "update"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "fixture-clock": [
+                  ""
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[Fixture question?]]></root>"
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "secqaa check",
+        "expected": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "action": [
+                  "check"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        },
+        "observed": {
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/misc.php",
+              "query": {
+                "mod": [
+                  "secqaa"
+                ],
+                "action": [
+                  "check"
+                ],
+                "idhash": [
+                  "qFixture"
+                ],
+                "inajax": [
+                  "1"
+                ],
+                "secverify": [
+                  "human input"
+                ]
+              },
+              "fields": {},
+              "cookie": "fixture=31",
+              "referer": "/forum.php"
+            }
+          ],
+          "result": "<root><![CDATA[succeed]]></root>"
+        }
+      },
+      {
+        "client": "curl",
+        "mode": "submit without confirmation",
+        "expected": {
+          "requests": [],
+          "result": 0
+        },
+        "observed": {
+          "requests": [],
+          "result": 0
+        }
+      }
+    ]
+  },
+  "historicalRepliesAndEdits": {
+    "node": "v26.0.0",
+    "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6",
+    "results": [
+      {
+        "name": "publication",
+        "inputSHA256": "6eb06555112976bcf50d952403fa642c0b006ad2e0ead75924f344ae22450045",
+        "observations": [
+          {
+            "name": "literal native true submitter preserves ordinary action and exact body",
+            "status": "passed"
+          },
+          {
+            "name": "complete immutable source/options and independent confirmation",
+            "status": "passed"
+          },
+          {
+            "name": "superseded same-context preparation cannot send",
+            "status": "passed"
+          },
+          {
+            "name": "fresh clients never reuse serializable preparation identity",
+            "status": "passed"
+          },
+          {
+            "name": "caller edits while preparation waits cannot change submitted snapshot",
+            "status": "passed"
+          },
+          {
+            "name": "caller edits while publication waits cannot change original attempt",
+            "status": "passed"
+          },
+          {
+            "name": "fresh preparation after recovery establishes same actor immediately",
+            "status": "passed"
+          },
+          {
+            "name": "mutated public submission refuses without POST",
+            "status": "passed"
+          },
+          {
+            "name": "duplicate pending activation has one effectful request",
+            "status": "passed"
+          },
+          {
+            "name": "preflight transport failure is known not sent",
+            "status": "passed"
+          },
+          {
+            "name": "delayed prepare cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed preflight cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed result cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed source cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "changed actor while POST pending retains uncertainty",
+            "status": "passed"
+          },
+          {
+            "name": "disabled blank price omitted from command with stored \"0\"",
+            "status": "passed"
+          },
+          {
+            "name": "disabled blank price omitted from command with stored \"\"",
+            "status": "passed"
+          },
+          {
+            "name": "qualified stored proof preserves normalization and independent unknown effects",
+            "status": "passed"
+          },
+          {
+            "name": "checked disabled creation instruction is requested but not included or verified",
+            "status": "passed"
+          },
+          {
+            "name": "legacy uncertain original upgrades by GET-only check and failed recheck retains prior proof",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing price",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide unexplained price",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing signature",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed source",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing permission",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed category",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed parsing",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses unguarded empty suffix",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses mismatched guard",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses arbitrary suffix",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses extra script",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses dynamic argument",
+            "status": "passed"
+          },
+          {
+            "name": "UX60 local refusal is serializable and invalidates older same-context send approval without HTTP",
+            "status": "passed"
+          },
+          {
+            "name": "UX60 multiline title is a local field refusal rather than account expiry",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "name": "replies",
+        "inputSHA256": "bbb16a9749d3ebbe78d7f1963f6ba34b42eae1a561dd13c0abec9433306e0925",
+        "observations": [
+          {
+            "name": "reply-public-prepare-send-source-readback-and-check",
+            "status": "passed",
+            "posts": 1,
+            "postId": "303"
+          },
+          {
+            "name": "reply-public-native-supplement-read-only-check",
+            "status": "passed",
+            "posts": 1,
+            "postId": "303"
+          }
+        ]
+      },
+      {
+        "name": "editing",
+        "inputSHA256": "e2e166e2a5009f079560da590447004fac1414f4d8bc88169b5ab26412bee144",
+        "observations": [
+          {
+            "name": "owned-edit-complete-source-conflict-save-independent-readback-and-reference-change",
+            "status": "passed",
+            "posts": 1,
+            "postId": "101"
+          }
+        ]
+      }
+    ]
+  },
+  "historicalDrafts": {
+    "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6",
+    "inputSHA256": "2f98b7afec9929953df213c07227d601bbd96600809946a20be8721c1ea55aa4",
+    "results": [
+      {
+        "name": "packaged-client ordinary same-record save/resume/publication and operation isolation",
+        "status": "passed",
+        "requests": [
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&topicsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tsdmapp=json&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=ajax&action=attachlist&aids=88&fid=5&inajax=1&ajaxtarget=attachlist",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&tid=42&pid=101&editsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          }
+        ],
+        "posts": 2
+      },
+      {
+        "name": "packaged-client funded same-record save/resume/publication and operation isolation",
+        "status": "passed",
+        "requests": [
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&topicsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tsdmapp=json&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=ajax&action=attachlist&aids=88&fid=5&inajax=1&ajaxtarget=attachlist",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&tid=42&pid=101&editsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          }
+        ],
+        "posts": 2
+      }
+    ]
+  }
+}

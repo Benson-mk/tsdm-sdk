@@ -1,0 +1,4835 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "8a60eae997cd9866df5ce7893cd007730d38e02716bdfaf95cc6dbeb9d86399a",
+  "guideSHA256": "a261913aa15a1266da90ee74b7ecffea43834184cbac18369bf5bbe84930f393",
+  "guideTestSHA256": "6913883c9e54ca08d38a5e85dab41990c8a99c4c01d3695a5c18fdb04716eb53",
+  "typescript": "Version 6.0.3",
+  "consumerSHA256": "e82897fb841e5b336c71281a44686c4d3764658e9995fb04202e1fab33f731fa",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "pinsSHA256": "f3a08e090712f220e98606d21dbda80279c420f8fa951a5ff2df437ce355302b",
+  "fixturesVerified": 10,
+  "results": [
+    {
+      "name": "GET shop/list",
+      "expected": [
+        "ready",
+        "success",
+        {
+          "page": 1,
+          "total": 1,
+          "items": [
+            {
+              "id": 30,
+              "name": "PP restore",
+              "price": 60,
+              "stock": 5,
+              "can_buy": true
+            }
+          ]
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "ready",
+        "success",
+        {
+          "page": 1,
+          "total": 1,
+          "items": [
+            {
+              "id": 30,
+              "name": "PP restore",
+              "price": 60,
+              "stock": 5,
+              "can_buy": true
+            }
+          ]
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST shop/buy",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "total_cost": 60,
+            "remaining_money": 940,
+            "items_purchased": 1
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "total_cost": 60,
+            "remaining_money": 940,
+            "items_purchased": 1
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "shop/buy",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "shop/buy",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST shop/buy_pet",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "total_cost": 800,
+            "remaining_money": 140,
+            "pokemon_type_id": 25,
+            "pokemon_name": "Pikachu",
+            "site": 2,
+            "quantity": 1
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "total_cost": 800,
+            "remaining_money": 140,
+            "pokemon_type_id": 25,
+            "pokemon_name": "Pikachu",
+            "site": 2,
+            "quantity": 1
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy_pet preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "shop/buy_pet",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "shop/buy_pet",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy_pet lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "shop/buy_pet empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/start",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/start preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/start",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/start",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/start lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/start empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3,
+            "boss_pokemon_type_id": 149
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/turn",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "defeat",
+            "my_pokemon": {
+              "hp": 0
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "defeat",
+            "my_pokemon": {
+              "hp": 0
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/turn preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/turn",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/turn",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/turn lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/turn",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/turn",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/turn empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/turn",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/turn",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "turn"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/flee",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "fled"
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "fled"
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/flee preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/flee",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/flee",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/flee lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/flee empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/capture",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "captured",
+            "message": "Captured"
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "status": "captured",
+            "message": "Captured"
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/capture preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/capture",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/capture",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/capture lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/capture",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/capture",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/capture empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/capture",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/capture",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "capture"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "ball_id": 18
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/switch_pokemon",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/switch_pokemon preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/switch_pokemon",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/switch_pokemon",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/switch_pokemon lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/switch_pokemon",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/switch_pokemon",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/switch_pokemon empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/switch_pokemon",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/switch_pokemon",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456",
+            "pokemon_id": 7
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/use_item",
+      "expected": [
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0,
+                "max_pp": 5
+              }
+            ]
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0,
+                "max_pp": 5
+              }
+            ]
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/use_item",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/use_item",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "POST battle/use_item_on_skill",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item_on_skill preserves refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/use_item_on_skill",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/use_item_on_skill",
+          "code": 403,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item_on_skill lost reply sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item_on_skill",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item_on_skill",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "battle/use_item_on_skill empty acknowledgement sends once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item_on_skill",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item_on_skill",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item_on_skill"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "skill_id": 15
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "GET shop/pets",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "pets": [
+              {
+                "id": 25,
+                "name": "Pikachu",
+                "price": 800,
+                "can_buy": true
+              }
+            ]
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "pets",
+            "page": "2"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "pets": [
+              {
+                "id": 25,
+                "name": "Pikachu",
+                "price": 800,
+                "can_buy": true
+              }
+            ]
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "pets",
+            "page": "2"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "shop/pets reports malformed reads",
+      "expected": [
+        {
+          "kind": "invalid-response",
+          "operation": "shop/pets"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "pets",
+            "page": "2"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-response",
+          "operation": "shop/pets"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "pets",
+            "page": "2"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "GET battle/maps",
+      "expected": [
+        {
+          "kind": "success",
+          "data": [
+            {
+              "id": 3,
+              "is_enabled": true,
+              "bosses": [
+                {
+                  "pokemon_type_id": 149
+                }
+              ]
+            }
+          ]
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": [
+            {
+              "id": 3,
+              "is_enabled": true,
+              "bosses": [
+                {
+                  "pokemon_type_id": 149
+                }
+              ]
+            }
+          ]
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "battle/maps reports malformed reads",
+      "expected": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/maps"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/maps"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "GET battle/recover",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "battle/recover reports malformed reads",
+      "expected": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/recover"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/recover"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "GET battle/get_battle_items",
+      "expected": [
+        {
+          "kind": "success",
+          "data": [
+            {
+              "id": 30,
+              "nums": 2,
+              "item_type": 4
+            }
+          ]
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "get_battle_items"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": [
+            {
+              "id": 30,
+              "nums": 2,
+              "item_type": 4
+            }
+          ]
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "get_battle_items"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "battle/get_battle_items reports malformed reads",
+      "expected": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/get_battle_items"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "get_battle_items"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/get_battle_items"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "get_battle_items"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "recovery alone interprets plugin 404 as absence",
+      "expected": [
+        {
+          "kind": "success",
+          "data": null
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": null
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "bare HTTP 404 is not absence",
+      "expected": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/recover"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-response",
+          "operation": "battle/recover"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "recover"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "maps plugin 404 is a refusal",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "battle/maps",
+          "code": 404,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "battle/maps",
+          "code": 404,
+          "message": "Game refused"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "maps"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "item can return scene immediately",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "skill selection needs identifiable choices",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/use_item",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "use_item"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "optional boss is omitted",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "optional switch selection is omitted",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "battle_id": "battle_123.456",
+            "map_id": 3,
+            "turn": 2,
+            "status": "active",
+            "my_pokemon": {
+              "instance_id": 7
+            },
+            "wild_pokemon": {
+              "id": 25
+            }
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "switch_pokemon"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "different echoed battle cannot establish effect",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/flee",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "flee"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "battle_id": "battle_123.456"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "active result needs an identifiable battle",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "different echoed map cannot establish effect",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "battle",
+            "action": "start"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "map_id": 3
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "different species receipt cannot establish effect",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy_pet",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy_pet"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "pokemon_type_id": 25,
+            "quantity": 1
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "invalid battle choice sends nothing",
+      "expected": [
+        {
+          "kind": "invalid-input",
+          "operation": "battle/turn"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "invalid-input",
+          "operation": "battle/turn"
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "capture requires the original session",
+      "expected": [
+        {
+          "kind": "session-required",
+          "operation": "battle/capture"
+        },
+        {
+          "kind": "session-changed",
+          "operation": "battle/capture"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "session-required",
+          "operation": "battle/capture"
+        },
+        {
+          "kind": "session-changed",
+          "operation": "battle/capture"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "login lost after dispatch yields uncertainty once",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "map_id": 3
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "battle/start",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "map_id": 3
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "excess purchase quantity cannot establish requested effect",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "shop/buy",
+          "message": "The plugin did not establish the effect. Reconcile the original account before considering another submission."
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "POST",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "buy"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4",
+            "Content-Type": "application/json"
+          },
+          {
+            "item_id": 30,
+            "quantity": 2
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "type filter zero and empty availability are meaningful",
+      "expected": [
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "items": []
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "list",
+            "page": "1",
+            "type": "0"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "items": []
+          }
+        },
+        [
+          "GET",
+          {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          {},
+          null,
+          false
+        ],
+        [
+          "GET",
+          {
+            "id": "pokemon:pokemon",
+            "endpoint": "shop",
+            "action": "list",
+            "page": "1",
+            "type": "0"
+          },
+          {
+            "X-Pm-Formhash": "f1f2f3f4"
+          },
+          null,
+          false
+        ]
+      ]
+    },
+    {
+      "name": "native bootstrap shares its binding across shop, roster item and battle item",
+      "expected": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "total": 1,
+            "items": [
+              {
+                "id": 30,
+                "name": "PP restore",
+                "price": 60,
+                "stock": 5,
+                "can_buy": true
+              }
+            ]
+          }
+        },
+        "success",
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0,
+                "max_pp": 5
+              }
+            ]
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "1"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 30,
+              "pokemon_id": 7
+            },
+            true
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 30
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "total": 1,
+            "items": [
+              {
+                "id": 30,
+                "name": "PP restore",
+                "price": 60,
+                "stock": 5,
+                "can_buy": true
+              }
+            ]
+          }
+        },
+        "success",
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0,
+                "max_pp": 5
+              }
+            ]
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "1"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 30,
+              "pokemon_id": 7
+            },
+            true
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 30
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "packaged TypeScript checks consent and active encounter and stops at skill choice",
+      "expected": [
+        {
+          "kind": "cancelled"
+        },
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15
+              }
+            ]
+          }
+        },
+        {
+          "kind": "unavailable"
+        },
+        [
+          {
+            "uid": 31,
+            "battleId": "battle_123.456",
+            "itemId": 30
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "use_item",
+            true,
+            {
+              "item_id": 30
+            }
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "cancelled"
+        },
+        {
+          "kind": "skill-selection",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15
+              }
+            ]
+          }
+        },
+        {
+          "kind": "unavailable"
+        },
+        [
+          {
+            "uid": 31,
+            "battleId": "battle_123.456",
+            "itemId": 30
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "use_item",
+            true,
+            {
+              "item_id": 30
+            }
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "get_battle_items",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recover",
+            false,
+            null
+          ]
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed requests or account effects"
+  ]
+}

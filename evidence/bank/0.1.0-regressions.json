@@ -1,0 +1,193 @@
+{
+  "integrationBaseCommit": "71e5b5f58842b2f7df08e344555a33b34b2d8074",
+  "archiveSHA256": "13767238cdca9c836714e84f686c4d74ff5909faa81890fb96b4669c8529d085",
+  "command": "sh evidence/bank/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "passingSuites": [
+      "account",
+      "activity-direct",
+      "activity-installed",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "media-direct",
+      "media-installed",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces",
+      "special-direct",
+      "special-installed",
+      "trades-direct",
+      "trades-installed",
+      "credits-installed",
+      "credits-direct",
+      "tasks-installed",
+      "tasks-direct",
+      "awards-installed",
+      "awards-direct",
+      "batch-ratings-installed",
+      "batch-ratings-direct",
+      "packets-installed",
+      "packets-direct",
+      "bank-installed",
+      "bank-direct"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "36f6ae1b03175a0e7f1f937f5be688f7a42126cfb6dd0bb898dbbd1fac8c3109"
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "7be91581baa8391058f0ca89e0cd13ad823d25fee0483f33ea3b95ce3a2f14ce"
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "83efd9fd867450b721028f72d8efbf005c5d92c6d0563002a5ae0bcbe5b9023f"
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "e63f7db19991f25b0499a8c2a3f5dc24ef65c333f2972f2b7562537053d80183"
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f"
+    },
+    "media-direct": {
+      "status": "passed",
+      "receiptSHA256": "5db1c99b64d1b15d7799e0dfd0addc882193e97464c9342af09d0c54ddf820bf"
+    },
+    "media-installed": {
+      "status": "passed",
+      "receiptSHA256": "001bd6dabbd1b0f12dfde8c62e9b0c31f8daaad801478bdb82801bb5bacb8bd8"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "80f22978c6fcff0ffb4aee9fae130cd9b784c9bfb7f2caefc62d4834c8688261"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "bc549f1643a794c1f652d0b05243221ee3781743f462a45ffb6f53e25ea351c6"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "dc254c4436bb092b96dcd80288cd93ce786f8f1ef1af0288c5440dd5c4693945"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "a549a47e6f4630beeb9ae1f6065396814db2cd1b2747251a7a6a883770840c60"
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "f1564634f5cf6c8b0bccf010aec0b49743338c4d76e9b8c7489bfa82965f086d"
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "f374bf79b1eefa13571c0563f8a3c59786591e4eb781acf9666ccc625e3e9574"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "300e60c8ccac3ae73f7241e65e5e4babae485f1b8ee45527e68dbe6cb1dea23a"
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "da5ce576a85ad412b2fc9b7496b9afbc65ec9390ff1efd4caaefb90098974abb"
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "fffec05c0f6a6e8c13c4994b426a2580fa9bc2d40f1f594a4bc5ea210ff37e86"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "9049d4a76656687933d54963758b9bc0f472ca97bb70dff144bf5f0f44351ee7"
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "e540a44218a8f77edf0cff75dd2ee8b33f73b15ac7f5ed31a53e123a246d4448"
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "f99f65fbe9e9f41b9e34134a418bb197d6910785bd34e554f3a7fc8d8c76571e"
+    },
+    "trades-direct": {
+      "status": "passed",
+      "receiptSHA256": "02c2de365a2d521f7176c4e1da2cd877217475c1a2d572713c64f6d355fffa71"
+    },
+    "trades-installed": {
+      "status": "passed",
+      "receiptSHA256": "712b0fd1576329872eded4854f41c153a0068c8182e8b312d253c0627d8d44e9"
+    },
+    "credits-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "05e541152dcc0f936ab6988c7999bdcf70cb9322e6e16c66402aba0b2d20f558"
+    },
+    "credits-direct": {
+      "status": "passed",
+      "observationGroups": 18,
+      "receiptSHA256": "ffea2e3233b56c4f6933473021ed1ada50e4c2739eda3991d70ef89e75d92687"
+    },
+    "tasks-installed": {
+      "status": "passed",
+      "observationGroups": 45,
+      "receiptSHA256": "e034e8c394863849fca9afda43c649654edf65888ac9c479d928413fd25ae87d"
+    },
+    "tasks-direct": {
+      "status": "passed",
+      "observationGroups": 39,
+      "receiptSHA256": "02b63eed88a505ee8338736c92a9750422b4666e0e48d44ae75f4dcb1e4201af"
+    },
+    "awards-installed": {
+      "status": "passed",
+      "observationGroups": 34,
+      "receiptSHA256": "67c445baa782e0b2be826d45cf4ad28fe0f48b8ace91f83405a89d02d9dcc74e"
+    },
+    "awards-direct": {
+      "status": "passed",
+      "observationGroups": 46,
+      "receiptSHA256": "25bdf24083c9037eef7a7a0af7f0a97612eb0383bbbd8427767a7521960aad2f"
+    },
+    "batch-ratings-installed": {
+      "status": "passed",
+      "observationGroups": 42,
+      "receiptSHA256": "a1d29c286a6954dfb239fe59532b51c8fe9a41fda97f8a7d52f184ab7b23a0b6"
+    },
+    "batch-ratings-direct": {
+      "status": "passed",
+      "observationGroups": 28,
+      "receiptSHA256": "5777ef6c3e7aeb03501274055a34371c6179fe246d6759ede3ab0f657c2f2fba"
+    },
+    "packets-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "f8b460b4cf5395eed8559945ec1ac6870d71eb3dc433e3eefd8318b271d30815"
+    },
+    "packets-direct": {
+      "status": "passed",
+      "observationGroups": 26,
+      "receiptSHA256": "7d50d3f7b9bec2908580ba35cae50e8e901a1e1ae6821fdb25f7bd84ee2eb1e0"
+    },
+    "bank-installed": {
+      "status": "passed",
+      "observationGroups": 49,
+      "receiptSHA256": "c90f37274c9e9433e9e1e47c1846a6fd2a36e25a971f1ad6052a33b33d0bf203"
+    },
+    "bank-direct": {
+      "status": "passed",
+      "observationGroups": 40,
+      "receiptSHA256": "260c7713dafbc453e01bc7a29e6ed82a2ebee8280f5b7f230f1eeb1d2ad9c61d"
+    }
+  }
+}

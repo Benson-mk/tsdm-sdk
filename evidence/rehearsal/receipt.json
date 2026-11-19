@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Local release rehearsal using loopback HTTP",
+  "package": {
+    "name": "tsdm-sdk",
+    "version": "0.1.0",
+    "tag": "v0.1.0",
+    "sourceCommit": "ad6d841d9d02c1a6a2ce52431e07242906656597",
+    "filename": "tsdm-sdk-0.1.0.tgz",
+    "sha256": "583d449b42dd22a4970efee67849f8f97466f10a383bf72a99bed8448d654f05",
+    "assetUrl": "https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+    "integrity": "sha512-7a9S/uW9PRpFTEQAI716jnwJSkkJDVDH2lRfSZNxodMgOKIEq2y5M/QIorPOOK2QxISY+JnLM7HLLSrDoSS4CA=="
+  },
+  "newerAsset": {
+    "version": "0.1.1",
+    "filename": "tsdm-sdk-0.1.1.tgz",
+    "sha256": "c76b3740b1e136dc7bc5b7a9fd81a7dda1935e2ad304cbf52545155e8c1a2c3e"
+  },
+  "prerequisites": {
+    "node": "v26.0.0",
+    "npm": "11.12.1",
+    "typescript": "Version 6.0.3",
+    "typecheck": "strict NodeNext, ES2023, types: [], noEmit"
+  },
+  "commands": [
+    "sh tests/rehearsal/build-source.sh <full-source-commit> <output>",
+    "npm run test:rehearsal -- <output>/tsdm-sdk-0.1.0.tgz <output>/release.json <output>/receipt.json",
+    "npm install --cache <empty> --ignore-scripts --engine-strict --no-audit --no-fund --fetch-retries=0 --fetch-timeout=10000 --save-exact <loopback>/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+    "node consume.mjs",
+    "node <repo>/node_modules/typescript/bin/tsc --project tsconfig.json",
+    "npm install --cache <empty> --ignore-scripts --engine-strict --no-audit --no-fund --fetch-retries=0 --fetch-timeout=10000 --save-exact <loopback>/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+    "npm ci --cache <empty> --ignore-scripts --engine-strict --no-audit --no-fund --fetch-retries=0 --fetch-timeout=10000",
+    "node consume.mjs",
+    "npm ci --cache <empty> --ignore-scripts --engine-strict --no-audit --no-fund --fetch-retries=0 --fetch-timeout=10000"
+  ],
+  "steps": [
+    {
+      "name": "manifest",
+      "expected": "The manifest names tsdm-sdk 0.1.0, tag v0.1.0, full source commit, exact filename and archive SHA-256.",
+      "observed": "The versioned manifest matched the local manifest and its SHA-256 matched the archive bytes."
+    },
+    {
+      "name": "initial-versioned-install",
+      "expected": "An empty-cache install from the loopback v0.1.0 URL creates a lock entry for that URL and its integrity hash.",
+      "observed": {
+        "version": "0.1.0",
+        "resolved": "<loopback>/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+        "integrity": "sha512-7a9S/uW9PRpFTEQAI716jnwJSkkJDVDH2lRfSZNxodMgOKIEq2y5M/QIorPOOK2QxISY+JnLM7HLLSrDoSS4CA==",
+        "import": {
+          "import": "tsdm-sdk",
+          "method": "readThread"
+        }
+      }
+    },
+    {
+      "name": "declarations",
+      "expected": "The package-root ESM consumer and declarations compile without DOM types.",
+      "observed": "Runtime import and no-emit TypeScript check both passed."
+    },
+    {
+      "name": "newer-version",
+      "expected": "Changing the dependency to a newer versioned URL installs 0.1.1.",
+      "observed": {
+        "version": "0.1.1",
+        "resolved": "<loopback>/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+        "integrity": "sha512-CYL/Hh8oUVGz7+rlB7qxD5uUKOVioAoNdpmB4sOW40stmuMT9ZDaoqRsYSDNOf0GK3IlO2SbpSKZrV1reLbz0A=="
+      }
+    },
+    {
+      "name": "lockfile-restore",
+      "expected": "Restoring the original package.json and lockfile, then running npm ci with an empty cache, installs 0.1.0 again.",
+      "observed": {
+        "version": "0.1.0",
+        "resolved": "<loopback>/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+        "integrity": "sha512-7a9S/uW9PRpFTEQAI716jnwJSkkJDVDH2lRfSZNxodMgOKIEq2y5M/QIorPOOK2QxISY+JnLM7HLLSrDoSS4CA==",
+        "manifestRestored": true,
+        "lockRestored": true,
+        "import": {
+          "import": "tsdm-sdk",
+          "method": "readThread"
+        },
+        "newerAssetStillAvailable": true
+      }
+    },
+    {
+      "name": "altered-byte-integrity",
+      "expected": "A one-byte change at the pinned v0.1.0 URL fails the empty-cache npm ci with EINTEGRITY.",
+      "observed": {
+        "error": "EINTEGRITY",
+        "exitStatus": 1,
+        "alteredSHA256": "ad14976ca894a43db587fb4eefeaba4f2271758b2602d65d15eba0ad780cc28a",
+        "sameUncompressedPayload": true
+      }
+    }
+  ],
+  "loopback": {
+    "expectedPaths": {
+      "manifest": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/release.json",
+      "install": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+      "upgrade": "/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+      "restore": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+      "verify-newer": "/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+      "altered": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz"
+    },
+    "observedPaths": {
+      "manifest": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/release.json",
+      "install": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+      "upgrade": "/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+      "restore": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz",
+      "verify-newer": "/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz",
+      "altered": "/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz"
+    }
+  }
+}

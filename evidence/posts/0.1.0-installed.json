@@ -1,0 +1,1690 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "52a6b92e2fe8678ac0c3d7748097a52a80fcfba811d3db6396d0cafe1e1a9bf7",
+  "archiveBytes": 205212,
+  "lockfileIntegrity": "sha512-P4JH92Eas0opVnjDTFl2GKMF4Iuzd8w4/eupp1hdkxJWYDb6VKmmKiKMUTtfKLRH8O6xNlrz2xpcq0/JtAVmIQ==",
+  "guideSHA256": "f70c0c7262a304ec2c3e21e03572cbd016228fcac72c8584e1c9460eab3bf269",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "upstream": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "filesVerified": 17
+  },
+  "consumerSHA256": "af9e3a967e61527e76a2a374381d299c626830b3588761c20e061802cdc277e0",
+  "results": [
+    {
+      "name": "ordinary new thread",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "edit first post",
+      "expected": {
+        "kind": "edited",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "edited",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&extra=&editsubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "fid",
+              "7"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "editsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "attachnew[301][description]",
+              "Fictitious attachment label"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "edit existing reply on page two",
+      "expected": {
+        "kind": "edited",
+        "post": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=102"
+        }
+      },
+      "observed": {
+        "kind": "edited",
+        "post": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=102"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=102&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=102&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&extra=&editsubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "fid",
+              "7"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "102"
+            ],
+            [
+              "page",
+              "2"
+            ],
+            [
+              "editsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "attachnew[301][description]",
+              "Fictitious attachment label"
+            ],
+            [
+              "subject",
+              "Fictitious reply subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "concurrent edit leaves current form untouched",
+      "expected": {
+        "kind": "conflict"
+      },
+      "observed": {
+        "kind": "conflict"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "save a new draft",
+      "expected": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              "1"
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "publish an existing draft",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&extra=&editsubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "fid",
+              "7"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "editsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "attachnew[301][description]",
+              "Fictitious attachment label"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "schedule a new thread",
+      "expected": {
+        "kind": "scheduled",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        },
+        "forumDate": "2099-04-03 14:05"
+      },
+      "observed": {
+        "kind": "scheduled",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        },
+        "forumDate": "2099-04-03 14:05"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "cronpublishdate",
+              "2099-04-03 14:05"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ],
+            [
+              "cronpublish",
+              "true"
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "scheduling expired before dispatch and the forum published immediately",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "cronpublishdate",
+              "2099-04-03 14:05"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ],
+            [
+              "cronpublish",
+              "true"
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "impossible calendar time never dispatches",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "native form and manual HTTP redirect with native stored readback",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "topiclabel",
+              "fixture"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "native draft save recognizes the embedded publish action without requesting it",
+      "expected": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ],
+            [
+              "save",
+              "1"
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "topiclabel",
+              "fixture"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "native hook inputs carried to structured destination",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "fpbt_book",
+              "Fictitious Book"
+            ],
+            [
+              "fpbt_author",
+              "Fictitious Author"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "schema 13 redisplays the same editor after validation",
+      "expected": {
+        "kind": "redisplayed",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+      },
+      "observed": {
+        "kind": "redisplayed",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "explicit moderation remains pending",
+      "expected": {
+        "kind": "moderation"
+      },
+      "observed": {
+        "kind": "moderation"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "explicit forum refusal",
+      "expected": {
+        "kind": "refused"
+      },
+      "observed": {
+        "kind": "refused"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lost response retains uncertainty and consumes the form",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "host switched session during dispatch",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a redirect and readonly visible page with different content remain uncertain",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "image and question handoffs and same-session human checks",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/misc.php?mod=seccode&action=update&idhash=fakeImage&modid=forum%3A%3Apost",
+          "method": "GET",
+          "referer": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+        },
+        {
+          "url": "https://posts.example/misc.php?mod=secqaa&action=update&idhash=fakeQuestion&inajax=1",
+          "method": "GET",
+          "referer": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+        },
+        {
+          "url": "https://posts.example/misc.php?mod=secqaa&action=check&idhash=fakeQuestion&inajax=1&secverify=wrong",
+          "method": "GET",
+          "referer": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+        },
+        {
+          "url": "https://posts.example/misc.php?mod=secqaa&action=check&idhash=fakeQuestion&inajax=1&secverify=fiction",
+          "method": "GET",
+          "referer": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ],
+            [
+              "seccodehash",
+              "fakeImage"
+            ],
+            [
+              "seccodemodid",
+              "forum::post"
+            ],
+            [
+              "seccodeverify",
+              "faux"
+            ],
+            [
+              "secqaahash",
+              "fakeQuestion"
+            ],
+            [
+              "secanswer",
+              "fiction"
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "dynamic challenge refusal never resubmits",
+      "expected": {
+        "kind": "challenge-refused"
+      },
+      "observed": {
+        "kind": "challenge-refused"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unidentified challenge hands off the editor",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "required category validates against served choices",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "typeid",
+              "9"
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "unsupported challenge image hands off without following its destination",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7",
+        "message": "Complete verification in the forum editor."
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=newthread&fid=7",
+        "message": "Complete verification in the forum editor."
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/misc.php?mod=seccode&action=update&idhash=fakeImage&modid=forum%3A%3Apost",
+          "method": "GET",
+          "referer": "https://posts.example/forum.php?mod=post&action=newthread&fid=7"
+        }
+      ]
+    },
+    {
+      "name": "native saved draft continues in the browser",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "editing a scheduled draft continues in the browser",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "save changes to an existing draft",
+      "expected": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "draft-saved",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&fid=7&tid=42&pid=101&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=edit&extra=&editsubmit=yes&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "fid",
+              "7"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "page",
+              "1"
+            ],
+            [
+              "editsubmit",
+              "true"
+            ],
+            [
+              "save",
+              "1"
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "attachnew[301][description]",
+              "Fictitious attachment label"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "wrong exact post in the creation acknowledgement leaves uncertainty",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "wrong account on the editor never dispatches",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "unexpected target hidden in a supplied control never dispatches",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "packaged guide leaves unapproved form undispatched",
+      "expected": {
+        "kind": "post-form"
+      },
+      "observed": {
+        "kind": "post-form"
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "packaged guide submits after deliberate approval",
+      "expected": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "observed": {
+        "kind": "published",
+        "post": {
+          "threadId": "42",
+          "postId": "101",
+          "url": "https://posts.example/forum.php?mod=redirect&goto=findpost&ptid=42&pid=101"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=post&action=newthread&fid=7&topicsubmit=yes&fixture=destination&tsdmapp=json",
+          "method": "POST",
+          "fields": [
+            [
+              "formhash",
+              "fakehash"
+            ],
+            [
+              "posttime",
+              "1700000000"
+            ],
+            [
+              "wysiwyg",
+              "1"
+            ],
+            [
+              "topicsubmit",
+              "true"
+            ],
+            [
+              "save",
+              ""
+            ],
+            [
+              "usesig",
+              "1"
+            ],
+            [
+              "subject",
+              "Fictitious subject"
+            ],
+            [
+              "message",
+              "Fictitious body for a controlled post."
+            ]
+          ]
+        },
+        {
+          "url": "https://posts.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    }
+  ]
+}

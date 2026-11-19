@@ -1,0 +1,25 @@
+{
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "sha256": "e9b82588453d6da4988d5963221ac17799e4457e992b645746cd958beaa12349",
+  "observedBy": "coordinator",
+  "command": "node --use-env-proxy check-live-guest.ts https://www.tsdm39.com 17",
+  "observedAt": "2026-11-19T06:23:02.582Z",
+  "origin": "https://www.tsdm39.com",
+  "board": "17",
+  "thread": "1271440",
+  "rows": 61,
+  "session": "signed-out",
+  "boardViewer": "guest",
+  "threadViewer": "guest",
+  "posts": 10,
+  "requests": [
+    {
+      "url": "https://www.tsdm39.com/forum.php?mod=forumdisplay&fid=17",
+      "status": 200
+    },
+    {
+      "url": "https://www.tsdm39.com/forum.php?mod=viewthread&tid=1271440&extra=page%3D1",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,1736 @@
+{
+  "evidence": "controlled clean installed consumer and packed TypeScript guide",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "ed3d6d73128e478dce3a0a35cdf2e146e6cc67fa4b2d4a8e44c0f82672f0c1cf",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "verifiedSources": [
+    "LICENSE",
+    "lib/constants/url.dart",
+    "lib/features/notification/repository/notification_repository.dart",
+    "lib/features/tsdmapp/tsdmapp_api.dart",
+    "lib/features/tsdmapp/small_form.dart",
+    "lib/features/tsdmapp/v4.dart",
+    "test/regression/test_092_notice_ignore_rules_test.dart",
+    "test/regression/test_1002_notify_paging_test.dart",
+    "test/regression/test_1022_small_dialogs_v4_test.dart",
+    "test/regression/test_1150_notify_busy_no_pages_test.dart",
+    "test/regression/test_211_notify_api_lists_test.dart",
+    "test/regression/test_390_notification_categories_test.dart",
+    "test/data/tsdmapp/v4/notify_paged_p1.json",
+    "test/data/tsdmapp/v4/notify_paged_p2.json",
+    "test/data/tsdmapp/v4/g3_ignore_form_system_v4.json",
+    "test/data/tsdmapp/v4/g3_privacy_filter_v55.json",
+    "test/data/notice_unread_x5.html",
+    "test/data/notice_read_x5.html",
+    "test/data/notice_friend_request_x5.html",
+    "lib/features/blocking/repository/website_blocklist_repository.dart",
+    "lib/features/blocking/repository/user_block_repository.dart",
+    "lib/features/blocking/repository/notice_ignore_repository.dart"
+  ],
+  "inputs": {
+    "run.mjs": "6ce471696166eb7c8a0fdcbbfdd96e1bcc6ba1cc71a1d77b9ae56a6e42e7b648",
+    "consume.mjs": "612875737cdbe6cfc368403eb0161fe3c2be981c3a19a138b446f3c02c2f86c0",
+    "deliberate.mjs": "6fe645de82a8078f01a075ac9ff4beecd39e102310b619b694afddb06bf3bf30"
+  },
+  "archivedPagesSHA256": "b9675e42a0888c8edf6fc70c68f698d156c5790cf8d735aa39ed151b43d4a365",
+  "guides": [
+    "docs/discovery.md",
+    "docs/account.md",
+    "docs/profile.md",
+    "docs/members.md",
+    "docs/notices.md"
+  ],
+  "typescript": "Version 6.0.3",
+  "guideOutput": {
+    "pollOnly": "[ '26771' ] complete exhausted",
+    "acknowledged": [
+      "[ '26771' ] complete exhausted",
+      "cleared"
+    ]
+  },
+  "results": {
+    "pinned window and older unread backlog": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "complete",
+          "accountCoverage": "unproven",
+          "stop": "window-boundary",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "complete",
+          "accountCoverage": "unproven",
+          "stop": "window-boundary",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "continuation 429 preserves rows and bound, retry can repeat IDs": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "repeated": [
+          "26771",
+          "26769",
+          "26767"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "repeated": [
+          "26771",
+          "26769",
+          "26767"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "first-page 429": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "first-page busy envelope": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "rate-limited",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "plugin unavailable": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "unsupported",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "unsupported",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "login required": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "refused",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "unknown",
+          "accountCoverage": "unproven",
+          "stop": "refused",
+          "nextSince": 1793491200,
+          "forumUnreadCount": null
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "missing continuation": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "stuck cursor": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "rewound cursor with a different token": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "same-second continuation must move past its incoming cursor": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26772"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26772"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-cursor",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "different member page": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "session-changed",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "session-changed",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "same member re-login during continuation": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "session-changed",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "session-changed",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "other origin page": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "newest-first order violated": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "invalid-response",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "acknowledgement": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "same-second continuation and repeated ID": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "complete",
+          "accountCoverage": "exhausted",
+          "stop": "exhausted",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1794278273&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767",
+            "26766"
+          ],
+          "window": "complete",
+          "accountCoverage": "exhausted",
+          "stop": "exhausted",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1794278273&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767"
+        ]
+      }
+    },
+    "empty window with older backlog": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "complete",
+          "accountCoverage": "unproven",
+          "stop": "window-boundary",
+          "nextSince": 1794534246,
+          "forumUnreadCount": null
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [],
+          "window": "complete",
+          "accountCoverage": "unproven",
+          "stop": "window-boundary",
+          "nextSince": 1794534246,
+          "forumUnreadCount": null
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "structured notice post and ignore destinations": {
+      "expected": {
+        "posts": [
+          "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        ],
+        "handoff": {
+          "kind": "handoff",
+          "destination": "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        },
+        "ignore": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "posts": [
+          "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        ],
+        "handoff": {
+          "kind": "handoff",
+          "destination": "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        },
+        "ignore": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "request limit cannot prove exhaustion": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "page-limit",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "partial",
+          "accountCoverage": "unproven",
+          "stop": "page-limit",
+          "nextSince": 1793491200,
+          "forumUnreadCount": 221
+        },
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "legacy truncated": {
+      "expected": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "legacy duplicates": {
+      "expected": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "legacy demonstrably exhaustive": {
+      "expected": {
+        "coverage": "exhausted",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "exhausted",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "legacy count without a list": {
+      "expected": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "unproven",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "legacy explicit empty list": {
+      "expected": {
+        "coverage": "exhausted",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "exhausted",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "account-wide deliberate notice-only acknowledgement": {
+      "expected": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "complete",
+          "accountCoverage": "exhausted",
+          "stop": "exhausted",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "outcomes": [
+          "cleared",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1793114173_26539",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "poll": {
+          "account": "34",
+          "ids": [
+            "26771",
+            "26769",
+            "26767"
+          ],
+          "window": "complete",
+          "accountCoverage": "exhausted",
+          "stop": "exhausted",
+          "nextSince": 1794534229,
+          "forumUnreadCount": 221
+        },
+        "outcomes": [
+          "cleared",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1794278273_26767",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&limit=200&before=1793114173_26539",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "newer notice": {
+      "expected": {
+        "outcomes": [
+          "newer-unread",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "newer-unread",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "newer notice with explicit notice success": {
+      "expected": {
+        "outcomes": [
+          "newer-unread",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "newer-unread",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "lost acknowledgement": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "ambiguous acknowledgement": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "response lacks account": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "response names another member": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "same member re-login after dispatch": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "exhaustion without a form hash does not authorize dispatch": {
+      "expected": {
+        "coverage": "exhausted",
+        "outcome": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "coverage": "exhausted",
+        "outcome": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "lost effect, fresh deliberate retry and re-flagged ID at the bound": {
+      "expected": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched",
+          "newer-unread"
+        ],
+        "ids": [
+          "26771"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1794534229&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-fresh&notice=1794534246"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "unknown-effect",
+          "not-dispatched",
+          "newer-unread"
+        ],
+        "ids": [
+          "26771"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229",
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1794534229&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-fresh&notice=1794534246"
+        ]
+      }
+    },
+    "same member re-login before acknowledgement": {
+      "expected": {
+        "outcome": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      },
+      "observed": {
+        "outcome": "not-dispatched",
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200"
+        ]
+      }
+    },
+    "concurrent deliberate calls send once": {
+      "expected": {
+        "outcomes": [
+          "cleared",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "cleared",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /plugin.php?id=tsdmapp%3Aapi&action=notify&since=1793491200&limit=200",
+          "POST /plugin.php?id=tsdmapp%3Aapi&action=seen formhash=fixture-first&notice=1794534229"
+        ]
+      }
+    },
+    "native notice warning precedes dispatch": {
+      "expected": {
+        "destination": "https://controlled.example.invalid/home.php?mod=space&do=notice",
+        "trace": []
+      },
+      "observed": {
+        "destination": "https://controlled.example.invalid/home.php?mod=space&do=notice",
+        "trace": []
+      }
+    },
+    "native notice page": {
+      "expected": {
+        "id": "51",
+        "post": [
+          "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        ],
+        "ignore": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "effect": "possible",
+        "trace": [
+          "GET /home.php?mod=space&do=notice"
+        ]
+      },
+      "observed": {
+        "id": "51",
+        "post": [
+          "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919"
+        ],
+        "ignore": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "effect": "possible",
+        "trace": [
+          "GET /home.php?mod=space&do=notice"
+        ]
+      }
+    },
+    "notice-to-post handoff": {
+      "expected": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919",
+        "trace": [
+          "GET /home.php?mod=space&do=notice"
+        ]
+      },
+      "observed": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/forum.php?mod=redirect&goto=findpost&ptid=81&pid=919",
+        "trace": [
+          "GET /home.php?mod=space&do=notice"
+        ]
+      }
+    },
+    "native notice category dispatch": {
+      "expected": {
+        "id": "52",
+        "current": "System",
+        "request": "GET /home.php?mod=space&do=notice&view=system"
+      },
+      "observed": {
+        "id": "52",
+        "current": "System",
+        "request": "GET /home.php?mod=space&do=notice&view=system"
+      }
+    },
+    "native read history": {
+      "expected": {
+        "id": "49",
+        "offered": "https://controlled.example.invalid/home.php?mod=space&do=notice&view=system&isread=1&page=2",
+        "request": "GET /home.php?mod=space&do=notice&view=system&isread=1"
+      },
+      "observed": {
+        "id": "49",
+        "offered": "https://controlled.example.invalid/home.php?mod=space&do=notice&view=system&isread=1&page=2",
+        "request": "GET /home.php?mod=space&do=notice&view=system&isread=1"
+      }
+    },
+    "native history page two": {
+      "expected": {
+        "id": "47",
+        "current": "2",
+        "request": "GET /home.php?mod=space&do=notice&view=system&isread=1&page=2"
+      },
+      "observed": {
+        "id": "47",
+        "current": "2",
+        "request": "GET /home.php?mod=space&do=notice&view=system&isread=1&page=2"
+      }
+    },
+    "failed native decode after deliberate dispatch": {
+      "expected": {
+        "kind": "unavailable",
+        "reason": "invalid-response",
+        "readEffect": "unknown",
+        "request": "GET /home.php?mod=space&do=notice"
+      },
+      "observed": {
+        "kind": "unavailable",
+        "reason": "invalid-response",
+        "readEffect": "unknown",
+        "request": "GET /home.php?mod=space&do=notice"
+      }
+    },
+    "native mypost category": {
+      "expected": {
+        "id": "50",
+        "selected": "mypost",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=mypost"
+        ]
+      },
+      "observed": {
+        "id": "50",
+        "selected": "mypost",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=mypost"
+        ]
+      }
+    },
+    "native interactive category": {
+      "expected": {
+        "id": "50",
+        "selected": "interactive",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=interactive"
+        ]
+      },
+      "observed": {
+        "id": "50",
+        "selected": "interactive",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=interactive"
+        ]
+      }
+    },
+    "native app category": {
+      "expected": {
+        "id": "50",
+        "selected": "app",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=app"
+        ]
+      },
+      "observed": {
+        "id": "50",
+        "selected": "app",
+        "trace": [
+          "GET /home.php?mod=space&do=notice",
+          "GET /home.php?mod=space&do=notice&view=app"
+        ]
+      }
+    },
+    "lost native history response": {
+      "expected": {
+        "kind": "unavailable",
+        "reason": "network",
+        "readEffect": "unknown",
+        "trace": [
+          "GET /home.php?mod=space&do=notice&isread=1"
+        ]
+      },
+      "observed": {
+        "kind": "unavailable",
+        "reason": "network",
+        "readEffect": "unknown",
+        "trace": [
+          "GET /home.php?mod=space&do=notice&isread=1"
+        ]
+      }
+    },
+    "native page preparation expires on re-login": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": []
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": []
+      }
+    },
+    "read notice-ignore rules independently": {
+      "expected": {
+        "kind": "rules",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          },
+          {
+            "type": "post",
+            "authorId": "9",
+            "label": "Replies / Fixture author"
+          }
+        ],
+        "request": "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+      },
+      "observed": {
+        "kind": "rules",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          },
+          {
+            "type": "post",
+            "authorId": "9",
+            "label": "Replies / Fixture author"
+          }
+        ],
+        "request": "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+      }
+    },
+    "load notice-ignore form without submitting": {
+      "expected": {
+        "kind": "form",
+        "target": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "scopes": [
+          "author",
+          "everybody"
+        ],
+        "request": "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+      },
+      "observed": {
+        "kind": "form",
+        "target": {
+          "type": "post",
+          "authorId": "9"
+        },
+        "scopes": [
+          "author",
+          "everybody"
+        ],
+        "request": "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+      }
+    },
+    "add notice-ignore for this author": {
+      "expected": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          },
+          {
+            "type": "post",
+            "authorId": "9",
+            "label": "Replies / Fixture author"
+          }
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          },
+          {
+            "type": "post",
+            "authorId": "9",
+            "label": "Replies / Fixture author"
+          }
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "add notice-ignore for everybody": {
+      "expected": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "post",
+            "authorId": "0",
+            "label": "Replies / Everybody"
+          }
+        ],
+        "request": "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=0"
+      },
+      "observed": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "post",
+            "authorId": "0",
+            "label": "Replies / Everybody"
+          }
+        ],
+        "request": "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=0"
+      }
+    },
+    "remove one notice-ignore and preserve other checked filters": {
+      "expected": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          }
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "applied",
+        "rules": [
+          {
+            "type": "system",
+            "authorId": "0",
+            "label": "System / Everybody"
+          }
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "existing rule requires no post": {
+      "expected": {
+        "kind": "already-applied",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "already-applied",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "ignore form with mismatched target choices": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      }
+    },
+    "ignore form posts to another origin": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      }
+    },
+    "ignore form posts to another operation on the same origin": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      }
+    },
+    "ignore form missing its submit flag": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1"
+        ]
+      }
+    },
+    "ignore result names another member": {
+      "expected": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9"
+        ]
+      },
+      "observed": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9"
+        ]
+      }
+    },
+    "ignore refusal": {
+      "expected": {
+        "kind": "refused",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "refused",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "redrawn ignore form is not proof of change": {
+      "expected": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "lost ignore write has no automatic resend": {
+      "expected": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9"
+        ]
+      },
+      "observed": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "GET /home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1&tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=common&op=ignore&type=post&id=919&inajax=1&tsdmapp=json&tsdmv=4 formhash=fixture-ignore&ignoresubmit=true&handlekey=noticeignore&feedignoresubmit=true&authorid=9"
+        ]
+      }
+    },
+    "remove with lost feed filter remains uncertain": {
+      "expected": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "unknown-effect",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "removal keeps a feed filter with the same value": {
+      "expected": {
+        "kind": "applied",
+        "request": "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bpost%7C9%5D=post%7C9"
+      },
+      "observed": {
+        "kind": "applied",
+        "request": "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bpost%7C9%5D=post%7C9"
+      }
+    },
+    "absent removal target sends nothing": {
+      "expected": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "kind": "not-dispatched",
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "system notices offer everybody scope only": {
+      "expected": {
+        "kind": "form",
+        "scopes": [
+          "everybody"
+        ]
+      },
+      "observed": {
+        "kind": "form",
+        "scopes": [
+          "everybody"
+        ]
+      }
+    },
+    "concurrent filter changes on one client send once": {
+      "expected": {
+        "outcomes": [
+          "applied",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      },
+      "observed": {
+        "outcomes": [
+          "applied",
+          "not-dispatched"
+        ],
+        "trace": [
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1",
+          "POST /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4 formhash=fixture-privacy&privacy2submit=true&hook_extra=kept&privacy%5Bfilter_gid%5D%5B1%5D=1&privacy%5Bfilter_icon%5D%5Bdoing%7C6%5D=doing%7C6&privacy%5Bfilter_note%5D%5Bsystem%7C0%5D=system%7C0",
+          "GET /home.php?mod=spacecp&ac=privacy&op=filter&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      }
+    },
+    "legacy native ignore add form handoff": {
+      "expected": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1",
+        "trace": []
+      },
+      "observed": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/home.php?mod=spacecp&ac=common&op=ignore&authorid=9&type=post&handlekey=noticeignore&infloat=yes&inajax=1",
+        "trace": []
+      }
+    },
+    "legacy native privacy removal handoff": {
+      "expected": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/home.php?mod=spacecp&ac=privacy&op=filter",
+        "trace": []
+      },
+      "observed": {
+        "kind": "handoff",
+        "destination": "https://controlled.example.invalid/home.php?mod=spacecp&ac=privacy&op=filter",
+        "trace": []
+      }
+    }
+  }
+}

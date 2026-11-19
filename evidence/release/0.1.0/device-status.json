@@ -1,0 +1,39 @@
+{
+  "archiveSHA256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "observations": [
+    {
+      "status": 200,
+      "expected": "device-revoked",
+      "observed": {
+        "kind": "device-revoked",
+        "memberId": "42",
+        "deviceId": "01234567-89ab-4def-8123-456789abcdef"
+      },
+      "requests": [
+        {
+          "url": "https://forum.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "headers": {
+            "X-Tsdmapp-Device": "01234567-89ab-4def-8123-456789abcdef"
+          }
+        }
+      ]
+    },
+    {
+      "status": 503,
+      "expected": "unavailable",
+      "observed": {
+        "kind": "unavailable"
+      },
+      "requests": [
+        {
+          "url": "https://forum.test/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "headers": {
+            "X-Tsdmapp-Device": "01234567-89ab-4def-8123-456789abcdef"
+          }
+        }
+      ]
+    }
+  ]
+}

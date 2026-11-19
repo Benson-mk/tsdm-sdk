@@ -1,0 +1,1253 @@
+{
+  "evidence": "controlled loopback, packaged guide",
+  "archiveSHA256": "bbd4c087e681cc9241c11b65a6f7f0bc86a2e46bf0378074fc72e27e5dd897c4",
+  "guideSHA256": "31b3eacaf6cc1874f33e9e6cb4c9e28095e0639e56782f4084adc8dc68fd9358",
+  "results": [
+    {
+      "name": "Python discover status",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python discover batchrate",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "batchrate",
+            "fid": "2",
+            "tid": "42"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "batchrate",
+            "fid": "2",
+            "tid": "42"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read list",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "page": "2",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "page": "2",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read detail",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "detail",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "detail",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read resume",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "continue",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "continue",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read result",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "result",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "result",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl discovers and reads every records route",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "batchrate",
+            "fid": "2",
+            "tid": "42"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "page": "2",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "detail",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "continue",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "result",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "status"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "tsdmapp:api",
+            "action": "batchrate",
+            "fid": "2",
+            "tid": "42"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "page": "2",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "detail",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "continue",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "result",
+            "batchid": "52",
+            "tsdmapp": "json",
+            "nodoc": "1"
+          },
+          "fields": [],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python sends preview",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends preview",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python sends recalc",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends recalc",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined create",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl declined create",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python sends create",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends create",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:rate",
+            "brmode": "3",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious & reason"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "mult[101]",
+              "2"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined run",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl declined run",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python sends run",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:run",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:run",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends run",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:run",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:run",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined revoke-item",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl declined revoke-item",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python sends revoke-item",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_item",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_item",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends revoke-item",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_item",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_item",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined revoke-batch",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl declined revoke-batch",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python sends revoke-batch",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_batch",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_batch",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl sends revoke-batch",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_batch",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/plugin.php",
+          "query": {
+            "id": "batchrate:list",
+            "bract": "undo_batch",
+            "tsdmapp": "json"
+          },
+          "fields": [
+            [
+              "formhash",
+              "fictitious-hash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ],
+          "cookie": "[fictitious member cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python recalc rejects a creation field before HTTP",
+      "expected": [],
+      "observed": []
+    }
+  ]
+}

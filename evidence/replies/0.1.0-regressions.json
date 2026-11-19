@@ -1,0 +1,248 @@
+{
+  "base": "d40df0df736b6a3ef32bf8142f0f81f390f668d8",
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "archiveSHA256": "8d3aae8604a41b2541bceeee7cac241d4788be107835d49d5ba33b83f8e600ce",
+  "node": "v26.0.0",
+  "controlledInstalledRegressions": {
+    "sdk": {
+      "receiptSHA256": "fc5b703d0b9a240cd904c16a2722afe6c6ce22d3427561ce195b3518f0cbc6ed",
+      "status": "passed",
+      "viewerId": "31",
+      "thread": {
+        "id": "9199345",
+        "title": "[Rulebot multi fixture 20260930-101846] FID2 版規問答測試",
+        "page": "1"
+      },
+      "typecheck": "strict NodeNext, ES2023, types: [], noEmit",
+      "documentation": {
+        "guide": "docs/discovery.md",
+        "checkedLinks": [
+          "README.md#read-a-public-board-and-open-a-thread",
+          "docs/discovery.md",
+          "README.md#tasks"
+        ],
+        "example": "compiled and executed from installed guide"
+      },
+      "postCount": 9,
+      "pinnedReadAndDiscovery": true
+    },
+    "collections": {
+      "receiptSHA256": "150127894ce521dea874df0ee6ccf0741eec32075de47627d36936ab6f5d4716",
+      "status": "passed",
+      "caseCount": 56,
+      "packagedGuides": [
+        "docs/replies.md",
+        "docs/discovery.md",
+        "docs/account.md",
+        "docs/profile.md",
+        "docs/members.md",
+        "docs/notices.md",
+        "docs/messages.md",
+        "docs/spaces.md",
+        "docs/collections.md"
+      ]
+    },
+    "spaces": {
+      "receiptSHA256": "e6a677631b9ade882743b33838ecf6acf1d7de18530598dff60aafc7653860c5",
+      "status": "passed",
+      "caseCount": 73
+    },
+    "messages": {
+      "receiptSHA256": "799b9082160e564095db5ac13d22d29d54a02fba4f83850b2c0c4a1945add9fe",
+      "status": "passed",
+      "caseCount": 7,
+      "areas": [
+        "lists",
+        "details",
+        "chat",
+        "sends",
+        "prompt",
+        "homepage",
+        "legacy"
+      ]
+    },
+    "notices": {
+      "receiptSHA256": "795dd2cbc09545ae24a4115a0898f19d4eadc01d7dc542a9ae597f2a729ce330",
+      "status": "passed",
+      "caseCount": 68
+    }
+  },
+  "historicalClient": {
+    "node": "v26.0.0",
+    "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6",
+    "results": [
+      {
+        "name": "publication",
+        "inputSHA256": "6eb06555112976bcf50d952403fa642c0b006ad2e0ead75924f344ae22450045",
+        "observations": [
+          {
+            "name": "literal native true submitter preserves ordinary action and exact body",
+            "status": "passed"
+          },
+          {
+            "name": "complete immutable source/options and independent confirmation",
+            "status": "passed"
+          },
+          {
+            "name": "superseded same-context preparation cannot send",
+            "status": "passed"
+          },
+          {
+            "name": "fresh clients never reuse serializable preparation identity",
+            "status": "passed"
+          },
+          {
+            "name": "caller edits while preparation waits cannot change submitted snapshot",
+            "status": "passed"
+          },
+          {
+            "name": "caller edits while publication waits cannot change original attempt",
+            "status": "passed"
+          },
+          {
+            "name": "fresh preparation after recovery establishes same actor immediately",
+            "status": "passed"
+          },
+          {
+            "name": "mutated public submission refuses without POST",
+            "status": "passed"
+          },
+          {
+            "name": "duplicate pending activation has one effectful request",
+            "status": "passed"
+          },
+          {
+            "name": "preflight transport failure is known not sent",
+            "status": "passed"
+          },
+          {
+            "name": "delayed prepare cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed preflight cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed result cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "delayed source cannot overwrite a newer actor observation",
+            "status": "passed"
+          },
+          {
+            "name": "changed actor while POST pending retains uncertainty",
+            "status": "passed"
+          },
+          {
+            "name": "disabled blank price omitted from command with stored \"0\"",
+            "status": "passed"
+          },
+          {
+            "name": "disabled blank price omitted from command with stored \"\"",
+            "status": "passed"
+          },
+          {
+            "name": "qualified stored proof preserves normalization and independent unknown effects",
+            "status": "passed"
+          },
+          {
+            "name": "checked disabled creation instruction is requested but not included or verified",
+            "status": "passed"
+          },
+          {
+            "name": "legacy uncertain original upgrades by GET-only check and failed recheck retains prior proof",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing price",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide unexplained price",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing signature",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed source",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide missing permission",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed category",
+            "status": "passed"
+          },
+          {
+            "name": "stored normalization cannot hide changed parsing",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses unguarded empty suffix",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses mismatched guard",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses arbitrary suffix",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses extra script",
+            "status": "passed"
+          },
+          {
+            "name": "callback refuses dynamic argument",
+            "status": "passed"
+          },
+          {
+            "name": "UX60 local refusal is serializable and invalidates older same-context send approval without HTTP",
+            "status": "passed"
+          },
+          {
+            "name": "UX60 multiline title is a local field refusal rather than account expiry",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "name": "replies",
+        "inputSHA256": "bbb16a9749d3ebbe78d7f1963f6ba34b42eae1a561dd13c0abec9433306e0925",
+        "observations": [
+          {
+            "name": "reply-public-prepare-send-source-readback-and-check",
+            "status": "passed",
+            "posts": 1,
+            "postId": "303"
+          },
+          {
+            "name": "reply-public-native-supplement-read-only-check",
+            "status": "passed",
+            "posts": 1,
+            "postId": "303"
+          }
+        ]
+      },
+      {
+        "name": "editing",
+        "inputSHA256": "e2e166e2a5009f079560da590447004fac1414f4d8bc88169b5ab26412bee144",
+        "observations": [
+          {
+            "name": "owned-edit-complete-source-conflict-save-independent-readback-and-reference-change",
+            "status": "passed",
+            "posts": 1,
+            "postId": "101"
+          }
+        ]
+      }
+    ]
+  }
+}

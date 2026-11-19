@@ -1,0 +1,5458 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "bbd4c087e681cc9241c11b65a6f7f0bc86a2e46bf0378074fc72e27e5dd897c4",
+  "archiveBytes": 314582,
+  "lockfileIntegrity": "sha512-EUPUAsVGMsIog+tsQquEOd+j+8f/cO57wCQ5p7nJ20pR4tCfzEqO6gpBBWFA7oX3cLQ7HpCcZI14KjbedIkxxQ==",
+  "guideSHA256": "31b3eacaf6cc1874f33e9e6cb4c9e28095e0639e56782f4084adc8dc68fd9358",
+  "protocolSource": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "sourceCount": 37
+  },
+  "consumerSHA256": "ce59a85425c788d42bf37d95186235f8dbfd3b6c170d2a695eb6431f45499b1d",
+  "results": [
+    {
+      "name": "discover same-account capability and offered modes and limits",
+      "expected": {
+        "kind": "batch-rating-access",
+        "access": {
+          "forumId": "2",
+          "threadId": "42",
+          "version": "1.3.2",
+          "modes": [
+            "threads",
+            "posts",
+            "floors"
+          ],
+          "canList": true,
+          "why": "",
+          "limits": {
+            "maxTotal": 20,
+            "chunk": 2,
+            "maxMultiplier": 3,
+            "floorSegments": 4
+          },
+          "credits": [
+            {
+              "id": "6",
+              "name": "Fictional credit",
+              "unit": "",
+              "min": -10,
+              "max": 10,
+              "left": 25,
+              "score": 0,
+              "condition": ""
+            }
+          ],
+          "reasonRequired": true,
+          "notifyForced": false,
+          "reasonChoices": [],
+          "antispam": {
+            "rated": true,
+            "same": true,
+            "locked": false
+          }
+        }
+      },
+      "observed": {
+        "kind": "batch-rating-access",
+        "access": {
+          "forumId": "2",
+          "threadId": "42",
+          "version": "1.3.2",
+          "modes": [
+            "threads",
+            "posts",
+            "floors"
+          ],
+          "canList": true,
+          "why": "",
+          "limits": {
+            "maxTotal": 20,
+            "chunk": 2,
+            "maxMultiplier": 3,
+            "floorSegments": 4
+          },
+          "credits": [
+            {
+              "id": "6",
+              "name": "Fictional credit",
+              "unit": "",
+              "min": -10,
+              "max": 10,
+              "left": 25,
+              "score": 0,
+              "condition": ""
+            }
+          ],
+          "reasonRequired": true,
+          "notifyForced": false,
+          "reasonChoices": [],
+          "antispam": {
+            "rated": true,
+            "same": true,
+            "locked": false
+          }
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "disabled plugin stops before the capability probe",
+      "expected": {
+        "kind": "unavailable"
+      },
+      "observed": {
+        "kind": "unavailable"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "wrong viewer cannot authorize batch operations",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "floor selection opens a preview through the offered POST without an effect",
+      "expected": {
+        "mode": "floors",
+        "floors": "2~3 4",
+        "total": 3,
+        "eligible": 2,
+        "canCreate": false,
+        "skipped": "skip_same",
+        "errors": [
+          "no_score"
+        ]
+      },
+      "observed": {
+        "mode": "floors",
+        "floors": "2~3 4",
+        "total": 3,
+        "eligible": 2,
+        "canCreate": false,
+        "skipped": "skip_same",
+        "errors": [
+          "no_score"
+        ]
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "selected thread first posts and exact post IDs use separate selection fields",
+      "expected": [
+        "threads",
+        "posts"
+      ],
+      "observed": [
+        "threads",
+        "posts"
+      ],
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "1"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tids",
+              "42"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "2"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pids",
+              "101"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "1"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tids",
+              "42"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "2"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pids",
+              "101"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "malformed floor spans cannot reach the selection form",
+      "expected": {
+        "kind": "invalid-input"
+      },
+      "observed": {
+        "kind": "invalid-input"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a preview cannot substitute an out-of-range post",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recalculate uses returned destination and exposes quota and configured values",
+      "expected": {
+        "canCreate": true,
+        "quota": [
+          {
+            "id": "6",
+            "need": 12,
+            "left": 25,
+            "ok": true
+          }
+        ],
+        "settings": {
+          "scores": {
+            "6": 4
+          },
+          "conditions": {
+            "1": ">= 2"
+          },
+          "multipliers": {
+            "103": 2
+          },
+          "reason": "Fictitious reward",
+          "notify": true,
+          "exclude": "Fictitious Excluded",
+          "rated": true,
+          "same": true
+        }
+      },
+      "observed": {
+        "canCreate": true,
+        "quota": [
+          {
+            "id": "6",
+            "need": 12,
+            "left": 25,
+            "ok": true
+          }
+        ],
+        "settings": {
+          "scores": {
+            "6": 4
+          },
+          "conditions": {
+            "1": ">= 2"
+          },
+          "multipliers": {
+            "103": 2
+          },
+          "reason": "Fictitious reward",
+          "notify": true,
+          "exclude": "Fictitious Excluded",
+          "rated": true,
+          "same": true
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recalculation accepts the requested floor edit and preserves a quota block",
+      "expected": {
+        "canCreate": false,
+        "floors": "2~4",
+        "code": "quota"
+      },
+      "observed": {
+        "canCreate": false,
+        "floors": "2~4",
+        "code": "quota"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "effect flags hidden in a preview form cannot be replayed during recalculation",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create exactly the reviewed batch at its supplied destination without running a chunk",
+      "expected": {
+        "kind": "batch-rating-created",
+        "id": "52",
+        "run": true,
+        "resultURL": "https://ratings.example/plugin.php?id=batchrate:rate&brmode=result&batchid=52"
+      },
+      "observed": {
+        "kind": "batch-rating-created",
+        "id": "52",
+        "run": true,
+        "resultURL": "https://ratings.example/plugin.php?id=batchrate:rate&brmode=result&batchid=52"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a zero-score preview cannot create a batch",
+      "expected": {
+        "kind": "refused",
+        "code": "preview-blocked"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "preview-blocked"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "changed quota returns a new preview that still cannot create",
+      "expected": {
+        "kind": "batch-rating-preview",
+        "canCreate": false,
+        "code": "quota"
+      },
+      "observed": {
+        "kind": "batch-rating-preview",
+        "canCreate": false,
+        "code": "quota"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "creation transport loss is uncertain and cannot replay that preview",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "create"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "create"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a creation receipt with a mismatched subject scope is uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "create"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "create"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "batch list is read by page and shows the owner separately from the current viewer",
+      "expected": {
+        "kind": "batch-rating-list",
+        "page": 2,
+        "pages": 2,
+        "count": 8,
+        "owner": "37",
+        "id": "52"
+      },
+      "observed": {
+        "kind": "batch-rating-list",
+        "page": 2,
+        "pages": 2,
+        "count": 8,
+        "owner": "37",
+        "id": "52"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&page=2&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "batch detail reads exact items and the same moderator can have permission for a different owner’s batch",
+      "expected": {
+        "kind": "batch-rating-page",
+        "id": "52",
+        "itemIds": [
+          "70",
+          "71",
+          "72"
+        ],
+        "run": false
+      },
+      "observed": {
+        "kind": "batch-rating-page",
+        "id": "52",
+        "itemIds": [
+          "70",
+          "71",
+          "72"
+        ],
+        "run": false
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "resume is a read and does not run a batch by itself",
+      "expected": {
+        "kind": "batch-rating-page",
+        "run": true,
+        "owner": "37"
+      },
+      "observed": {
+        "kind": "batch-rating-page",
+        "run": true,
+        "owner": "37"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "completed resume may redirect to the same exact read-only result",
+      "expected": {
+        "kind": "batch-rating-page",
+        "run": false,
+        "status": 1
+      },
+      "observed": {
+        "kind": "batch-rating-page",
+        "run": false,
+        "status": 1
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=result&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=result&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "qualified run sends one approved chunk per call and reads the returned result separately",
+      "expected": {
+        "steps": [
+          {
+            "kind": "advanced",
+            "operation": "run",
+            "batchId": "52",
+            "done": 1,
+            "total": 2,
+            "remaining": 1
+          },
+          {
+            "kind": "finished",
+            "operation": "run",
+            "batchId": "52",
+            "done": 2,
+            "total": 2,
+            "remaining": 0
+          }
+        ],
+        "result": "batch-rating-page"
+      },
+      "observed": {
+        "steps": [
+          {
+            "kind": "advanced",
+            "operation": "run",
+            "batchId": "52",
+            "done": 1,
+            "total": 2,
+            "remaining": 1
+          },
+          {
+            "kind": "finished",
+            "operation": "run",
+            "batchId": "52",
+            "done": 2,
+            "total": 2,
+            "remaining": 0
+          }
+        ],
+        "result": "batch-rating-page"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=result&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "ratesubmit",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=result&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a resumed batch stops on a non-advancing receipt",
+      "expected": {
+        "kind": "no-progress",
+        "operation": "run",
+        "batchId": "52",
+        "done": 1,
+        "total": 2,
+        "remaining": 1
+      },
+      "observed": {
+        "kind": "no-progress",
+        "operation": "run",
+        "batchId": "52",
+        "done": 1,
+        "total": 2,
+        "remaining": 1
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a lost run receipt needs a fresh resume before any more steps",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "run refuses a server rejection as a distinct outcome",
+      "expected": {
+        "kind": "refused",
+        "message": "Fictitious run refusal"
+      },
+      "observed": {
+        "kind": "refused",
+        "message": "Fictitious run refusal"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a resume redirect to a different batch is not followed",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "a resume payload for another batch cannot establish authority",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "an original raw plugin run reply is accepted with explicit counters",
+      "expected": {
+        "kind": "finished",
+        "operation": "run",
+        "batchId": "52",
+        "done": 2,
+        "total": 2,
+        "remaining": 0
+      },
+      "observed": {
+        "kind": "finished",
+        "operation": "run",
+        "batchId": "52",
+        "done": 2,
+        "total": 2,
+        "remaining": 0
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "single revocation sends item ID rather than post or batch ID",
+      "expected": {
+        "kind": "revoked",
+        "operation": "revoke-item",
+        "batchId": "52",
+        "itemId": "70"
+      },
+      "observed": {
+        "kind": "revoked",
+        "operation": "revoke-item",
+        "batchId": "52",
+        "itemId": "70"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "batch revocation uses its own form and counts down independently",
+      "expected": [
+        {
+          "kind": "advanced",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 1,
+          "total": null,
+          "remaining": 1
+        },
+        {
+          "kind": "finished",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 1,
+          "total": null,
+          "remaining": 0
+        }
+      ],
+      "observed": [
+        {
+          "kind": "advanced",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 1,
+          "total": null,
+          "remaining": 1
+        },
+        {
+          "kind": "finished",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 1,
+          "total": null,
+          "remaining": 0
+        }
+      ],
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "single revocation rejects a batch undo acknowledgement",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "revoke-item",
+        "batchId": "52",
+        "itemId": "70"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "revoke-item",
+        "batchId": "52",
+        "itemId": "70"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a session switch before dispatch prevents a resumed step",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "legacy string true is a qualified finished flag",
+      "expected": {
+        "kind": "finished",
+        "operation": "run",
+        "batchId": "52",
+        "done": 2,
+        "total": 2,
+        "remaining": 0
+      },
+      "observed": {
+        "kind": "finished",
+        "operation": "run",
+        "batchId": "52",
+        "done": 2,
+        "total": 2,
+        "remaining": 0
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reconcile lost step through fresh detail and resume before another deliberate chunk",
+      "expected": {
+        "before": {
+          "kind": "uncertain",
+          "operation": "run",
+          "batchId": "52"
+        },
+        "observedApplied": 1,
+        "after": {
+          "kind": "finished",
+          "operation": "run",
+          "batchId": "52",
+          "done": 2,
+          "total": 2,
+          "remaining": 0
+        }
+      },
+      "observed": {
+        "before": {
+          "kind": "uncertain",
+          "operation": "run",
+          "batchId": "52"
+        },
+        "observedApplied": 1,
+        "after": {
+          "kind": "finished",
+          "operation": "run",
+          "batchId": "52",
+          "done": 2,
+          "total": 2,
+          "remaining": 0
+        }
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "an offered run URL fixed to another batch cannot dispatch",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "contradictory step counters cannot finish a batch",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "an effect acknowledgement from another member stays uncertain",
+      "expected": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "observed": {
+        "kind": "uncertain",
+        "operation": "run",
+        "batchId": "52"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a recalc alias cannot bind to the creation field",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "a resumed run with the same observed pending count stops after its first receipt",
+      "expected": {
+        "kind": "no-progress",
+        "operation": "run",
+        "batchId": "52",
+        "done": 1,
+        "total": 3,
+        "remaining": 2
+      },
+      "observed": {
+        "kind": "no-progress",
+        "operation": "run",
+        "batchId": "52",
+        "done": 1,
+        "total": 3,
+        "remaining": 2
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "projected pinned schema 33 keeps eligibility, quota and skipped statuses",
+      "expected": {
+        "canCreate": true,
+        "total": 5,
+        "eligible": 2,
+        "need": 20,
+        "lastMultiplier": 3,
+        "excluded": "skip_excluded"
+      },
+      "observed": {
+        "canCreate": true,
+        "total": 5,
+        "eligible": 2,
+        "need": 20,
+        "lastMultiplier": 3,
+        "excluded": "skip_excluded"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4 7 9~"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~4 7 9~"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pinned spec-shaped run receipts advance and finish with their exact counters",
+      "expected": [
+        {
+          "kind": "advanced",
+          "operation": "run",
+          "batchId": "52",
+          "done": 2,
+          "total": 4,
+          "remaining": 2
+        },
+        {
+          "kind": "finished",
+          "operation": "run",
+          "batchId": "52",
+          "done": 4,
+          "total": 4,
+          "remaining": 0
+        }
+      ],
+      "observed": [
+        {
+          "kind": "advanced",
+          "operation": "run",
+          "batchId": "52",
+          "done": 2,
+          "total": 4,
+          "remaining": 2
+        },
+        {
+          "kind": "finished",
+          "operation": "run",
+          "batchId": "52",
+          "done": 4,
+          "total": 4,
+          "remaining": 0
+        }
+      ],
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=continue&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arun&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pinned spec-shaped single undo is reconciled by a fresh detail read",
+      "expected": {
+        "result": {
+          "kind": "revoked",
+          "operation": "revoke-item",
+          "batchId": "52",
+          "itemId": "70"
+        },
+        "reconciled": "undone"
+      },
+      "observed": {
+        "result": {
+          "kind": "revoked",
+          "operation": "revoke-item",
+          "batchId": "52",
+          "itemId": "70"
+        },
+        "reconciled": "undone"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_item&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "itemid",
+              "70"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        }
+      ]
+    },
+    {
+      "name": "pinned spec-shaped batch undo keeps per-chunk done distinct from remaining",
+      "expected": [
+        {
+          "kind": "advanced",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 2,
+          "total": null,
+          "remaining": 2
+        },
+        {
+          "kind": "finished",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 2,
+          "total": null,
+          "remaining": 0
+        }
+      ],
+      "observed": [
+        {
+          "kind": "advanced",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 2,
+          "total": null,
+          "remaining": 2
+        },
+        {
+          "kind": "finished",
+          "operation": "revoke-batch",
+          "batchId": "52",
+          "done": 2,
+          "total": null,
+          "remaining": 0
+        }
+      ],
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=detail&batchid=52&tsdmapp=json&nodoc=1",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Alist&bract=undo_batch&tsdmapp=json",
+          "method": "POST",
+          "effect": true,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "batchid",
+              "52"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "the packed TypeScript walkthrough stops when creation is declined",
+      "expected": {
+        "kind": "not-confirmed"
+      },
+      "observed": {
+        "kind": "not-confirmed"
+      },
+      "expectedRequests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=status",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=tsdmapp%3Aapi&action=batchrate&fid=2&tid=42",
+          "method": "GET",
+          "effect": false
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ]
+          ]
+        },
+        {
+          "url": "https://ratings.example/plugin.php?id=batchrate%3Arate&brmode=3&tsdmapp=json",
+          "method": "POST",
+          "effect": false,
+          "fields": [
+            [
+              "formhash",
+              "fictitious-formhash"
+            ],
+            [
+              "brmode",
+              "3"
+            ],
+            [
+              "fid",
+              "2"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tids",
+              ""
+            ],
+            [
+              "pids",
+              ""
+            ],
+            [
+              "floors",
+              "2~3 4"
+            ],
+            [
+              "recalc",
+              "1"
+            ],
+            [
+              "score6",
+              "4"
+            ],
+            [
+              "reason",
+              "Fictitious reward"
+            ],
+            [
+              "sendreasonpm",
+              "1"
+            ],
+            [
+              "exclude",
+              "Fictitious Excluded"
+            ],
+            [
+              "as_rated",
+              "1"
+            ],
+            [
+              "as_same",
+              "1"
+            ],
+            [
+              "cond[1]",
+              ">= 2"
+            ],
+            [
+              "mult[103]",
+              "2"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2474 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "583d449b42dd22a4970efee67849f8f97466f10a383bf72a99bed8448d654f05",
+  "consumerSHA256": "4e3b8d6f61f0d1b7888cc4d2a05d14741422c5df2a5a070a87b5e1cccf5cec11",
+  "guideSHA256": "81dcd8f48dcd176207dd9669c6b833566b44c9af82e733e97eeee8cef7167670",
+  "typescript": "Version 6.0.3",
+  "results": [
+    {
+      "name": "access list, scoped search, complete deny set and group restoration",
+      "expected": [
+        -1,
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "set-forum-access"
+        },
+        {
+          "kind": "acknowledged",
+          "operation": "set-forum-access"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fictional_member"
+            },
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fictional_member",
+              "new_view": "-1",
+              "new_post": "-1",
+              "new_reply": "-1",
+              "new_getattach": "-1",
+              "new_getimage": "-1",
+              "new_postattach": "-1",
+              "new_postimage": "-1"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fictional_member",
+              "deleteaccess": "1"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        -1,
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "set-forum-access"
+        },
+        {
+          "kind": "acknowledged",
+          "operation": "set-forum-access"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "searchsubmit": "true",
+              "fid": "10",
+              "suser": "fictional_member"
+            },
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fictional_member",
+              "new_view": "-1",
+              "new_post": "-1",
+              "new_reply": "-1",
+              "new_getattach": "-1",
+              "new_getimage": "-1",
+              "new_postattach": "-1",
+              "new_postimage": "-1"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "",
+              "addsubmit": "true",
+              "fid": "10",
+              "new_user": "fictional_member",
+              "deleteaccess": "1"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "access protected staff attributed to one attempted change",
+      "expected": [
+        "refused",
+        "set-forum-access",
+        "staff",
+        "stale",
+        2
+      ],
+      "actual": [
+        "refused",
+        "set-forum-access",
+        "staff",
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "access whitelist attributed to one attempted change",
+      "expected": [
+        "refused",
+        "set-forum-access",
+        "whitelist",
+        "stale",
+        2
+      ],
+      "actual": [
+        "refused",
+        "set-forum-access",
+        "whitelist",
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "access wrong forum attributed to one attempted change",
+      "expected": [
+        "uncertain",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ],
+      "actual": [
+        "uncertain",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "access expired panel attributed to one attempted change",
+      "expected": [
+        "refused",
+        "set-forum-access",
+        "panel-login",
+        "stale",
+        2
+      ],
+      "actual": [
+        "refused",
+        "set-forum-access",
+        "panel-login",
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "access lost reply attributed to one attempted change",
+      "expected": [
+        "uncertain",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ],
+      "actual": [
+        "uncertain",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "access silent redraw attributed to one attempted change",
+      "expected": [
+        "redrawn",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ],
+      "actual": [
+        "redrawn",
+        "set-forum-access",
+        null,
+        "stale",
+        2
+      ]
+    },
+    {
+      "name": "re-login as same moderator invalidates opened access form",
+      "expected": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forumaccess",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "member ban confirms offered target and separate action",
+      "expected": [
+        "71",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "ban-member",
+          "code": "modcp_member_ban_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "username": "",
+              "uid": "71",
+              "bannew": "4",
+              "banexpirynew": "7",
+              "reason": "fictional reason",
+              "bansubmit": "true"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "71",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "ban-member",
+          "code": "modcp_member_ban_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "username": "",
+              "uid": "71",
+              "bannew": "4",
+              "banexpirynew": "7",
+              "reason": "fictional reason",
+              "bansubmit": "true"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "member edit confirms offered target and separate action",
+      "expected": [
+        "71",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "edit-member",
+          "code": "members_edit_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fictional_member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "username": "",
+              "uid": "71",
+              "bionew": "new",
+              "signaturenew": "signed",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "71",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "edit-member",
+          "code": "members_edit_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "username": "fictional_member",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "username": "",
+              "uid": "71",
+              "bionew": "new",
+              "signaturenew": "signed",
+              "clearavatar": "1",
+              "editsubmit": "true"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "protected staff refusal identifies the attempted lookup",
+      "expected": [
+        {
+          "kind": "refused",
+          "code": "modcp_member_ban_illegal",
+          "operation": "lookup-member-ban"
+        },
+        2
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "code": "modcp_member_ban_illegal",
+          "operation": "lookup-member-ban"
+        },
+        2
+      ]
+    },
+    {
+      "name": "IP bans list, add and permission-checked deletion",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "delete-ip-bans",
+          "code": "ip-ban-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "operation": "add-ip-ban"
+        },
+        {
+          "kind": "completed",
+          "operation": "delete-ip-bans",
+          "confirmedIds": [
+            "44"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "delete[0]": "44"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "delete-ip-bans",
+          "code": "ip-ban-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "operation": "add-ip-ban"
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "44"
+          ],
+          "remainingIds": [],
+          "unknownIds": [],
+          "operation": "delete-ip-bans"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "ipnew": "192.0.2.7",
+              "validitynew": "3"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "delete[0]": "44"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "IP range refusal overrides a redrawn response with ok 1",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "add-ip-ban",
+          "code": "cidr"
+        },
+        3
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "add-ip-ban",
+          "code": "cidr"
+        },
+        3
+      ]
+    },
+    {
+      "name": "operator log preserves supplied route and obeys IP visibility",
+      "expected": [
+        "panel-log",
+        true,
+        "fictional moderator",
+        null,
+        [
+          "71"
+        ],
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fixture",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "panel-log",
+        true,
+        "fictional moderator",
+        null,
+        [
+          "71"
+        ],
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "fixture",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native log preserves independent action and operation text",
+      "expected": [
+        "panel-log",
+        "forum",
+        "editforum",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "panel-log",
+        "forum",
+        "editforum",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "management notes show selection, audience and expiration and confirm deletion",
+      "expected": [
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "add-note",
+          "confirmedIds": [
+            "91"
+          ]
+        },
+        {
+          "kind": "refused",
+          "operation": "delete-notes",
+          "code": "note-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "operation": "delete-notes",
+          "confirmedIds": [
+            "91"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "add-note",
+          "confirmedIds": [
+            "91"
+          ]
+        },
+        {
+          "kind": "refused",
+          "operation": "delete-notes",
+          "code": "note-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "91"
+          ],
+          "remainingIds": [],
+          "unknownIds": [],
+          "operation": "delete-notes"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "addnote",
+              "submit": "true",
+              "newmessage": "Fixture note",
+              "newaccess[2]": "1",
+              "newexpiration": "5"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "delete",
+              "notlistsubmit": "yes",
+              "delete[0]": "91"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "a concurrently created different note cannot confirm this addition",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "add-note"
+        },
+        2
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "add-note"
+        },
+        2
+      ]
+    },
+    {
+      "name": "forum rules are read and saved only on the selected forum",
+      "expected": [
+        "Original",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "save-rules"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "editsubmit": "true",
+              "rulesnew": "Updated"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "Original",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "save-rules"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "editsubmit": "true",
+              "rulesnew": "Updated"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "a native locked rule editor overrides the generic success caption",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "save-rules",
+          "code": "rules-locked"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "editsubmit": "true",
+              "rulesnew": "Updated"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "save-rules",
+          "code": "rules-locked"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "editforum"
+            },
+            {
+              "formhash": "abcdef12",
+              "fid": "10",
+              "editsubmit": "true",
+              "rulesnew": "Updated"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "recommendations preserve untouched fields while editing and removing exact selected rows",
+      "expected": [
+        [
+          "801",
+          "802"
+        ],
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "save-recommendations",
+          "confirmedIds": [
+            "801",
+            "802"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "page": "1",
+              "fid": "10",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "New",
+              "expirationrecommend[801]": "2027-1-2 03:04",
+              "order[802]": "2",
+              "subject[802]": "Other",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          "801",
+          "802"
+        ],
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "operation": "save-recommendations",
+          "confirmedIds": [
+            "801",
+            "802"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "forum"
+            },
+            {
+              "formhash": "abcdef12",
+              "op": "recommend",
+              "page": "1",
+              "fid": "10",
+              "check": "",
+              "delete[0]": "802",
+              "order[801]": "3",
+              "subject[801]": "New",
+              "expirationrecommend[801]": "2027-1-2 03:04",
+              "order[802]": "2",
+              "subject[802]": "Other",
+              "expirationrecommend[802]": "",
+              "editsubmit": "yes"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "automatically ordered recommendations are read-only",
+      "expected": [
+        false,
+        {
+          "kind": "refused",
+          "operation": "save-recommendations",
+          "code": "recommendations-locked"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        false,
+        {
+          "kind": "refused",
+          "operation": "save-recommendations",
+          "code": "recommendations-locked"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "forum",
+              "op": "recommend",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "announcement list, create, edit text to link and delete are separately scoped",
+      "expected": [
+        [
+          "65"
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "create-announcement"
+        },
+        "66",
+        {
+          "kind": "completed",
+          "operation": "edit-announcement"
+        },
+        {
+          "kind": "refused",
+          "operation": "delete-announcements",
+          "code": "announcement-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "operation": "delete-announcements",
+          "confirmedIds": [
+            "66"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "submit": "true",
+              "subject": "Fictional board notice",
+              "type": "0",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "[b]Fixture[/b]",
+              "message[1]": ""
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "submit": "true",
+              "subject": "Fictional link",
+              "type": "1",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "",
+              "message[1]": "https://example.test/notice"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          "65"
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "operation": "create-announcement"
+        },
+        "66",
+        {
+          "kind": "completed",
+          "operation": "edit-announcement"
+        },
+        {
+          "kind": "refused",
+          "operation": "delete-announcements",
+          "code": "announcement-delete-unavailable"
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "66"
+          ],
+          "remainingIds": [],
+          "unknownIds": [],
+          "operation": "delete-announcements"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "add",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "",
+              "displayorder": "",
+              "submit": "true",
+              "subject": "Fictional board notice",
+              "type": "0",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "[b]Fixture[/b]",
+              "message[1]": ""
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "submit": "true",
+              "subject": "Fictional link",
+              "type": "1",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "",
+              "message[1]": "https://example.test/notice"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "manage",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            {
+              "formhash": "abcdef12",
+              "submit": "true",
+              "delete[0]": "66"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native announcement edit uses fresh readback of the exact announcement",
+      "expected": [
+        {
+          "kind": "completed",
+          "operation": "edit-announcement"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "submit": "true",
+              "subject": "Fictional link",
+              "type": "1",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "",
+              "message[1]": "https://example.test/notice"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "completed",
+          "operation": "edit-announcement"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit"
+            },
+            {
+              "formhash": "abcdef12",
+              "id": "66",
+              "displayorder": "7",
+              "submit": "true",
+              "subject": "Fictional link",
+              "type": "1",
+              "starttime": "2099-01-03",
+              "endtime": "2099-02-03",
+              "message[0]": "",
+              "message[1]": "https://example.test/notice"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "announcement",
+              "op": "edit",
+              "id": "66"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "announcement expired panel preserves attempted operation and sends once",
+      "expected": [
+        "refused",
+        "edit-announcement",
+        "panel-login",
+        3
+      ],
+      "actual": [
+        "refused",
+        "edit-announcement",
+        "panel-login",
+        3
+      ]
+    },
+    {
+      "name": "announcement server rejected link preserves attempted operation and sends once",
+      "expected": [
+        "refused",
+        "edit-announcement",
+        "modcp_ann_urlerror",
+        3
+      ],
+      "actual": [
+        "refused",
+        "edit-announcement",
+        "modcp_ann_urlerror",
+        3
+      ]
+    },
+    {
+      "name": "announcement lost response preserves attempted operation and sends once",
+      "expected": [
+        "uncertain",
+        "edit-announcement",
+        null,
+        3
+      ],
+      "actual": [
+        "uncertain",
+        "edit-announcement",
+        null,
+        3
+      ]
+    },
+    {
+      "name": "announcement mismatched edit preserves attempted operation and sends once",
+      "expected": [
+        "uncertain",
+        "edit-announcement",
+        null,
+        3
+      ],
+      "actual": [
+        "uncertain",
+        "edit-announcement",
+        null,
+        3
+      ]
+    },
+    {
+      "name": "native IP ban list keeps disabled rows visible and verifies selected deletion",
+      "expected": [
+        [
+          [
+            "44",
+            true
+          ],
+          [
+            "45",
+            false
+          ]
+        ],
+        {
+          "kind": "completed",
+          "operation": "delete-ip-bans",
+          "confirmedIds": [
+            "44"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "delete[0]": "44"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          [
+            "44",
+            true
+          ],
+          [
+            "45",
+            false
+          ]
+        ],
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "44"
+          ],
+          "remainingIds": [],
+          "unknownIds": [],
+          "operation": "delete-ip-bans"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ipban"
+            },
+            {
+              "formhash": "abcdef12",
+              "ipbansubmit": "true",
+              "delete[0]": "44"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native IP refusal uses the redrawn invalid target and caption",
+      "expected": [
+        {
+          "kind": "refused",
+          "operation": "add-ip-ban",
+          "code": "ip-ban-refused"
+        },
+        3
+      ],
+      "actual": [
+        {
+          "kind": "refused",
+          "operation": "add-ip-ban",
+          "code": "ip-ban-refused"
+        },
+        3
+      ]
+    },
+    {
+      "name": "member unban is a distinct offered choice and omits expiry",
+      "expected": [
+        "invalid-input",
+        "acknowledged",
+        [
+          "POST",
+          {
+            "mod": "modcp",
+            "action": "member",
+            "op": "ban",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          {
+            "formhash": "abcdef12",
+            "username": "",
+            "uid": "71",
+            "bannew": "0",
+            "banexpirynew": "",
+            "reason": "fictional lift",
+            "bansubmit": "true"
+          },
+          true
+        ]
+      ],
+      "actual": [
+        "invalid-input",
+        "acknowledged",
+        [
+          "POST",
+          {
+            "mod": "modcp",
+            "action": "member",
+            "op": "ban",
+            "tsdmapp": "json",
+            "tsdmv": "4"
+          },
+          {
+            "formhash": "abcdef12",
+            "username": "",
+            "uid": "71",
+            "bannew": "0",
+            "banexpirynew": "",
+            "reason": "fictional lift",
+            "bansubmit": "true"
+          },
+          true
+        ]
+      ]
+    },
+    {
+      "name": "native member edit requires offered avatar clearing and recognizes only the known verdict",
+      "expected": [
+        "invalid-input",
+        {
+          "kind": "acknowledged",
+          "operation": "edit-member",
+          "code": "members_edit_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "uid": "71"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "username": "",
+              "uid": "71",
+              "bionew": "New",
+              "signaturenew": "[b]Signature[/b]",
+              "editsubmit": "true"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "invalid-input",
+        {
+          "kind": "acknowledged",
+          "operation": "edit-member",
+          "code": "members_edit_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "uid": "71"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "member",
+              "op": "edit",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcdef12",
+              "uid": "71",
+              "username": "",
+              "bionew": "New",
+              "signaturenew": "[b]Signature[/b]",
+              "editsubmit": "true"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "a replaced panel login after dispatch leaves the original effect uncertain",
+      "expected": [
+        {
+          "kind": "uncertain",
+          "operation": "save-rules"
+        },
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "uncertain",
+          "operation": "save-rules"
+        },
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "native panel can offer a log form without a log table",
+      "expected": [
+        {
+          "kind": "panel-log",
+          "page": {
+            "page": 1,
+            "keyword": "",
+            "hasNext": false,
+            "enabled": null,
+            "entries": []
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "panel-log",
+          "page": {
+            "page": 1,
+            "keyword": "",
+            "hasNext": false,
+            "enabled": null,
+            "entries": []
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "deleting multiple notes preserves confirmed and remaining IDs",
+      "expected": [
+        {
+          "kind": "partial",
+          "operation": "delete-notes",
+          "confirmedIds": [
+            "90"
+          ],
+          "remainingIds": [
+            "91"
+          ],
+          "unknownIds": []
+        },
+        2
+      ],
+      "actual": [
+        {
+          "kind": "partial",
+          "confirmedIds": [
+            "90"
+          ],
+          "remainingIds": [
+            "91"
+          ],
+          "unknownIds": [],
+          "operation": "delete-notes"
+        },
+        2
+      ]
+    },
+    {
+      "name": "legacy log storage selects one scoped native read",
+      "expected": [
+        "panel-log",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "Fiction",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "Fiction",
+              "page": "2"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "panel-log",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "Fiction",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "log",
+              "keyword": "Fiction",
+              "page": "2"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "packaged TypeScript confirms shown rule change before one scoped dispatch",
+      "expected": [
+        {
+          "kind": "not-confirmed",
+          "operation": "save-rules"
+        },
+        {
+          "kind": "completed",
+          "operation": "save-rules"
+        },
+        [
+          {
+            "forumId": "10",
+            "before": "Original",
+            "after": "Updated"
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "forum",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "forum",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "forum",
+            true,
+            "formhash=abcdef12&fid=10&editsubmit=true&rulesnew=Updated"
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "not-confirmed",
+          "operation": "save-rules"
+        },
+        {
+          "kind": "completed",
+          "operation": "save-rules"
+        },
+        [
+          {
+            "forumId": "10",
+            "before": "Original",
+            "after": "Updated"
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "forum",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "forum",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "forum",
+            true,
+            "formhash=abcdef12&fid=10&editsubmit=true&rulesnew=Updated"
+          ]
+        ]
+      ]
+    }
+  ]
+}

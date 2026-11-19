@@ -1,0 +1,30 @@
+{
+  "source": "Carinoasd/tsdm_client",
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "use": "Protocol references; installed tests use independently written fictitious examples",
+  "sha256": {
+    "lib/features/purchase/repository/purchase_repository.dart": "3bf6051072d44d654226b2fc8ee5ce5b020d29977657edae39d751f529b7f838",
+    "lib/features/trade/models/trade_models.dart": "e01ba8b09466ab6f62cc968e0440e4a4f05919d53033ab5c5151d6e379b60215",
+    "lib/features/trade/repository/trade_repository.dart": "b7763ff248adcf6f326f21ab157ffb4a2c142d6613eeed78aa268736a037ec70",
+    "lib/features/trade/view/trade_goods_page.dart": "6e5ef81f51077efaa8693604cc5b9e43d9a06457a04a505d21858b664622dcd4",
+    "test/data/locked_purchase_x5.html": "9c549219dbef47529c5aaf271a64da2738ffbb92a5c066420ecd36a1ff69b108",
+    "test/data/pay_dialog_x5.xml": "e94e281ae4432cce0e0364aa94beac634db237817bc58fe2be786886ca9d4ceb",
+    "test/data/trade/buyform_cash.html": "89598df7bda1e602dd05efba6de487eaee966f4ff14af62178435b1eb8c8df81",
+    "test/data/trade/buyform_physical.html": "9f1dc0f73a496831d798032ae65e02a4146d6bb10341860be33d497f6ae887f2",
+    "test/data/trade/buyform_virtual.html": "c278ccd03d9a45ea855aed7873de4d6143c95375d7245ed999c2616f18234541",
+    "test/data/trade/goods_credit.html": "bbf60b3f0e56f9324f8dc4a36dd038c4754ef2f359e0d787f6d055c5f91fb7b2",
+    "test/data/trade/goods_soldout.html": "ab94dc3accbbdf97c1b85f9cd473ad7c8b1e063667ee27efb28734911afb67da",
+    "test/data/trade/order_created.json": "73ebc474db5c0f0eda7ad212dda796d7e14b1d28159c7c91bc271fc01005f9e7",
+    "test/data/trade/order_created_web.html": "7df479af67587af3bec54d2d4a8561519c9092a71e499aeccfc0c1839726fba1",
+    "test/data/trade/order_lack.json": "aec14c51f785ca490030d4b307c6e38ed96fd3464861f76f3c57767c89966257",
+    "test/data/trade/pay_credit_lack.json": "af9d0b56d8fe325f2e6415f33ab6209ab5ff071c4af7dc1d72b73b0b5155b92e",
+    "test/data/trade/pay_done.json": "f1850d3b208d67aeb7f0495c41aedbd6e63781d79688c45ab091fece21a55701",
+    "test/data/trade/pay_password_error.json": "c948a53cae1500de54da2836b4d5ace51f12f03c110dca1b68182c19babd773a",
+    "test/data/trade/pay_replayed.json": "f42413045597bba0bc0c54f6febfa0fe69b7d2ec2c9c89be036bc7f62b1a6865",
+    "test/data/tsdmapp/form_v17_buy.json": "db93f2cda8e0ef590df93d2410da59a17f70cba08ccb9e362a184ca993e016dd",
+    "test/data/tsdmapp/form_v17_buy_anonymous.json": "2fcb859eed7ddbc99a27e22614da536dcb996ccf08c4683ab0a4c70aba859fd7",
+    "test/data/tsdmapp/form_v17_buy_msg_poor.json": "136e146e72dcf33d058e0ef1d26cf8a70650846b78a1510f1608107e6c5a99ff",
+    "test/data/tsdmapp/thread_v14_free_paid.json": "4e01b1fff51a8437f4176d345f5c778751a7dd08c81d413ccf7b67abcfcd2385",
+    "test/data/tsdmapp/thread_v3_paid.json": "aa5a9ca0a97c5299a234543c91d6efd41aaeba2b3f0523845afd5f72ec9576b9"
+  }
+}

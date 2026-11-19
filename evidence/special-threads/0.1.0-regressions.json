@@ -1,0 +1,110 @@
+{
+  "evidence": "combined controlled checks, November 19, 2026",
+  "integrationParent": "8b0b839720477d508b5096736755aa174289d3b7",
+  "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+  "archiveBytes": 235209,
+  "checks": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "cb5fc63b63279039715f8b82d2ba3afe65ea30fc9e141de3784aba094aa3e756",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "e4be5151e67a2faf97bd252fb1fa2573e21d2530dcec8b20ff795b8f61d89d32",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 17
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "a17e4965719dee753cb828b365e76fef1149230347bc79c7c0e49c6587d0382b",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 53
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "f524b83aed3f0a1d976f4deeb33c0134cf7cdbedc1019b898ac59986834dff2d",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 56
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "4373f87a0b9e749c649ee033c79df7cc2d799f88fbe25320f9563e54fd768f0b",
+      "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6",
+      "scenarioRows": 2
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "2bdf8f28f670320c8660c51f9df379a16c1f20e4911f3e141f3820cd6b8d88c6",
+      "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6",
+      "scenarioRows": 3
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "c24d2d8827099c98475f288f3cffcb0c71ec96b6143838902430747f7280d5df",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "66754a9306bbc8c088c86a9f19c4131f5021138dd49ffbab7a1171129b7ea08b",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "4deaf58b049055aacfda0c58dfde9d9eac106e9029a1fa50d23224df91bc80a7",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "acb9889f3240e46f41235b3915ab1be7bc5dc4ca40ec1d5849bf309eb37251b9",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 16
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "1912e19ed95c8b9622df43d985d4cd6c5241707ea22eb9a964e944a618c52d67",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 31
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "0442df95557eb18c454129634132d2506305db78a84e8840b9cbee026506a821",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "f4732258ccd1d7f3d7b1182b470940914e9f1d0ffde0ed52c23f758b9f6ee35d",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 18
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "2d665780fc45c1cc8fc3aca1f42bd8a283d538334f3e7b87bba110c52d2b30fd",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 20
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "e315b69c90f80a0a3ea2ba50e905a215b2ba095e54926ca62f17cd6dc068f28c",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "1a1786e3508ec1f5d7193e7c3d5f012a7d2260a6f91b055192b2859c26e4b499",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 73
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "d955b23dcb5139ffe360b4fa53b6062f99191e3698ee3c0a6a61733e0e9660cb",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 24
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "3bf7e578ac3ac749385abf51c091fcd0b61b29a210eee131a756c01e7567ed64",
+      "archiveSHA256": "0b13b5b3c98f7c1f3c32b25a2233d46f26fb6cf93303020373130f77539595a9",
+      "scenarioRows": 33
+    }
+  }
+}

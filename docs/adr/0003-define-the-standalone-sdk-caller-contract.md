@@ -1,0 +1,7 @@
+# Define the standalone SDK caller contract from 0.1.0
+
+The independently installable TypeScript SDK starts at **0.1.0**. It interprets the forum’s responses and exposes portable typed results. Hosts supply the origin, session and transport, honor fresh reads, report redirects accurately and invoke effects deliberately. The companion direct HTTP guide shows Python `requests` and `curl` callers how to use the same forum interfaces, decode supported structured JSON and parse native HTML where a fallback applies.
+
+Public post results expose the exact post URL. A public check can confirm an uncertain reply by independently reading the exact post under its original account and matching the author, submitted content and relevant options. A lost response after dispatch leaves the draft with the host and the outcome uncertain. Checking never resends. Cross-tab and restart coordination are host choices.
+
+Compatibility starts with the documented operations, result meanings, transport requirements and accepted record formats of 0.1.0. Breaking changes require a minor-version bump during `0.x` and a major-version bump from `1.0.0`. Release notes describe each break and give a migration path where applicable. The retained `@tsdm/forum-client` 0.26.0 package is a test reference. The issue records the internal helper boundary, trade-offs and replay evidence. [Maintainer resolution](https://github.com/Benson-mk/tsdm-sdk/issues/5#issuecomment-6976774591)

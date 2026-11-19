@@ -1,0 +1,2305 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "bf1134551be164fde3c9c045c49b28012f0f5946778978f3b9c1b02d3caae4fb",
+  "guideSHA256": "0a4bac035949519ffaad8b14bb6dd285c9e6458d1f969252c10f04e61d40df2e",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "scenarioSHA256": "bbff86400596c0e69a601e8a4bba6f7dfbdc5722af451c55ee47ae99e2d9b987",
+  "consumerSHA256": "a8099aa87de7614e91dfbd4309596db73c7c422cc875b5fa04df2eea4b82c2d8",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "pinsSHA256": "914834474cbd1d8c6ee4fe4ef42e8be166b909cbd12bb865dae5f7adf5296cfa",
+  "fixturesVerified": 5,
+  "results": [
+    {
+      "name": "status bootstrap verifies host account and keeps plugin hash private",
+      "expected": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "status"
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "status"
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET config/global_config",
+      "expected": [
+        "success",
+        {
+          "is_open": true,
+          "version": "3.0.0",
+          "medical_price": 10
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "config",
+              "action": "global_config"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        {
+          "is_open": true,
+          "version": "3.0.0",
+          "medical_price": 10
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "config",
+              "action": "global_config"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET evolution/evolution_path",
+      "expected": [
+        "success",
+        25,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "evolution",
+              "action": "evolution_path",
+              "pmid": "25"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        25,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "evolution",
+              "action": "evolution_path",
+              "pmid": "25"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET pokemon/list",
+      "expected": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "list"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "list"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET pokemon/detail",
+      "expected": [
+        "success",
+        44,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "detail",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        44,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "detail",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET pokemon/learnable_skills",
+      "expected": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "learnable_skills",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "learnable_skills",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET pokemon/equipment",
+      "expected": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "equipment",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        7,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "equipment",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET user/profile",
+      "expected": [
+        "success",
+        31,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        31,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET user/inventory",
+      "expected": [
+        "success",
+        1,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "inventory",
+              "page": "2",
+              "type": "4"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        1,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "inventory",
+              "page": "2",
+              "type": "4"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "GET user/badge_status",
+      "expected": [
+        "success",
+        false,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "badge_status"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        false,
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "badge_status"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/set_first",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "set_first",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "set_first",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/move_pokemon",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "move_pokemon",
+              "pokemon_id": "7",
+              "site": "2"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "move_pokemon",
+              "pokemon_id": "7",
+              "site": "2"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/rename",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/release",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/learn_skill",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "learn_skill"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "skill_id": 15,
+              "slot_index": 1
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "learn_skill"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "skill_id": 15,
+              "slot_index": 1
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/forget_skill",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "forget_skill"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "skill_id": 15
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "forget_skill"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "skill_id": 15
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/equip_item",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "equip_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "myitem_id": 99,
+              "slot_index": 0
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "equip_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "myitem_id": 99,
+              "slot_index": 0
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST pokemon/unequip_item",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "unequip_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "slot_index": 0
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "unequip_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "pokemon_id": 7,
+              "slot_index": 0
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST user/heal",
+      "expected": [
+        "success",
+        44,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "heal",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        44,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "heal",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST user/heal_and_flee",
+      "expected": [
+        "success",
+        "fled",
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "heal_and_flee",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        "fled",
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "heal_and_flee",
+              "pokemon_id": "7"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {},
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST user/refresh_badge",
+      "expected": [
+        "success",
+        true,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "refresh_badge"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "hide": true
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        true,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "refresh_badge"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "hide": true
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "POST user/use_item",
+      "expected": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 12,
+              "pokemon_id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        null,
+        [
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 12,
+              "pokemon_id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "unavailable status falls back to the native game's hidden formhash",
+      "expected": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        {
+          "kind": "success",
+          "data": {
+            "hidden": false
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "badge_status"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        {
+          "kind": "success",
+          "data": {
+            "hidden": false
+          }
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "badge_status"
+            },
+            {
+              "X-Pm-Formhash": "a1b2c3d4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native inline value is parsed as data and omitted item target stays omitted",
+      "expected": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "43749fab",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 12
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        {
+          "kind": "ready",
+          "session": {
+            "uid": 31,
+            "source": "game-page"
+          }
+        },
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "use_item"
+            },
+            {
+              "X-Pm-Formhash": "43749fab",
+              "Content-Type": "application/json"
+            },
+            {
+              "item_id": 12
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "explicit pre-execution formhash refusal refreshes once and reuses the exact authorized write",
+      "expected": [
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "deadbeef",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "deadbeef",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "ordinary refusal dispatches no second write",
+      "expected": [
+        "refused",
+        402,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        402,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "plugin login refusal dispatches no second write",
+      "expected": [
+        "refused",
+        401,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        401,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "response lost dispatches no second write",
+      "expected": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "malformed success dispatches no second write",
+      "expected": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "redirect dispatches no second write",
+      "expected": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        null,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "unqualified formhash wording dispatches no second write",
+      "expected": [
+        "refused",
+        422,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        422,
+        "pokemon/release",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "same UID after re-login cannot reuse the old binding",
+      "expected": [
+        "session-changed",
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "abba4321"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "session-changed",
+        "success",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "abba4321"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "conflicting status identity stops fallback and gameplay",
+      "expected": [
+        "session-changed",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "session-changed",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "account change with a write in flight leaves old effect uncertain",
+      "expected": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "release"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "unchanged refresh hash keeps original refusal and requires a new bootstrap",
+      "expected": [
+        "refused",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ],
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "a redirect with a formhash-looking body is uncertain and does not refresh",
+      "expected": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ],
+      "actual": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "pokemon",
+              "action": "rename"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4",
+              "Content-Type": "application/json"
+            },
+            {
+              "id": 7,
+              "name": "Blue"
+            },
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "conflicting game-page identities cannot grant a binding",
+      "expected": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "id": "pokemon:game"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "concurrent bootstraps for one login share one status read",
+      "expected": [
+        [
+          {
+            "kind": "ready",
+            "session": {
+              "uid": 31,
+              "source": "status"
+            }
+          },
+          {
+            "kind": "ready",
+            "session": {
+              "uid": 31,
+              "source": "status"
+            }
+          }
+        ],
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          {
+            "kind": "ready",
+            "session": {
+              "uid": 31,
+              "source": "status"
+            }
+          },
+          {
+            "kind": "ready",
+            "session": {
+              "uid": 31,
+              "source": "status"
+            }
+          }
+        ],
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "another account's profile invalidates the binding before later effects",
+      "expected": [
+        "session-changed",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "session-changed",
+        "session-required",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            {},
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "id": "pokemon:pokemon",
+              "endpoint": "user",
+              "action": "profile"
+            },
+            {
+              "X-Pm-Formhash": "f1f2f3f4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "packaged TypeScript honors consent and same-login boundary",
+      "expected": [
+        "cancelled",
+        "success",
+        "session-changed",
+        [
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "POST",
+            true
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ]
+        ]
+      ],
+      "actual": [
+        "cancelled",
+        "success",
+        "session-changed",
+        [
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "POST",
+            true
+          ],
+          [
+            "GET",
+            false
+          ],
+          [
+            "GET",
+            false
+          ]
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed requests or account effects"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "archiveSHA256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "guides": {
+    "board-thread": {
+      "status": "passed",
+      "receiptSHA256": "4dd57ce0ceba33cb6db20d1516e63afb38bcb50c4781ee48f6e24798ae521b65"
+    },
+    "discovery": {
+      "status": "passed",
+      "receiptSHA256": "f83a9f686b5a7730da033213fc01828e505d9c8b31e72345b21180a97c1f3e1e"
+    },
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "862ace9ebe85055fca8657daa22902fee49e5f299d51c6a323e958f6f5d1d6b4"
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "32b95c81cefd2912857e6968e0c64cbbe7096674ced858fb1d030d43bbb36d11"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "bc0b305e51a81a575acd4ad212e4816f149f34192d11aa55d943732f4e805653"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "abd0691477e4f84e482ae3588acd523d8def35cc77d5d36a2d617e6a6bc95d90"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "a77507f456307be5ad9a1d2e24140a349de7a93d48068626e28739c85c43df5e"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "c19cf65d3650bc67a7fdf428cc4a875aa5109c0bdfead945fa81833866ed5a91"
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "37e95183398d2de2dbe19644cd63f1c140ac2c071dfc0b9cee7303b172236b0e"
+    }
+  }
+}

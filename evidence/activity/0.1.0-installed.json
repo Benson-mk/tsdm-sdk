@@ -1,0 +1,890 @@
+{
+  "integrationBaseCommit": "a2729bf834416c9b619922b501e3ae461a8f8b37",
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "278abafbae7c513c194b9c32f739657eda5e9d0a8d789bc6be936f82263e0889",
+  "consumerSHA256": "c293bb5b16430df57132b4e972e7a3888f37594416805e05a4424b557696b321",
+  "pinsSHA256": "4743a20a2b70a7ba84bb621f63eb2e9d7676165e5673091676d4a6a64a6f9d6f",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "fixturesVerified": 31,
+  "guideSHA256": "e923423a4bbd826c9e22a17d06549f30fa01d96b715ded9691a7f63189d88ab6",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "results": [
+    {
+      "name": "rating ledger",
+      "expected": [
+        "ratings",
+        5,
+        [
+          -500,
+          -500,
+          -10,
+          -9000,
+          -50
+        ],
+        5
+      ],
+      "actual": [
+        "ratings",
+        5,
+        [
+          -500,
+          -500,
+          -10,
+          -9000,
+          -50
+        ],
+        5
+      ]
+    },
+    {
+      "name": "rating ledger requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewratings&tid=9199193&pid=3400&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewratings&tid=9199193&pid=3400&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ]
+    },
+    {
+      "name": "visible voters",
+      "expected": [
+        "voters",
+        "3",
+        [
+          "6",
+          "7",
+          "9",
+          "11"
+        ],
+        10,
+        1,
+        1
+      ],
+      "actual": [
+        "voters",
+        "3",
+        [
+          "6",
+          "7",
+          "9",
+          "11"
+        ],
+        10,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "visible voters requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewvote&tid=1019&polloptionid=3&page=1&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewvote&tid=1019&polloptionid=3&page=1&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ]
+    },
+    {
+      "name": "private voters",
+      "expected": [
+        "refused",
+        "thread_poll_nopermission"
+      ],
+      "actual": [
+        "refused",
+        "thread_poll_nopermission"
+      ]
+    },
+    {
+      "name": "private voters requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewvote&tid=1019&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewvote&tid=1019&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ]
+    },
+    {
+      "name": "moderation history",
+      "expected": [
+        "moderation",
+        63,
+        false,
+        "UDG",
+        "32"
+      ],
+      "actual": [
+        "moderation",
+        63,
+        false,
+        "UDG",
+        "32"
+      ]
+    },
+    {
+      "name": "moderation history requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewthreadmod&tid=9199453&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewthreadmod&tid=9199453&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ]
+    },
+    {
+      "name": "payments",
+      "expected": [
+        "payments",
+        7,
+        "天使币",
+        "35",
+        5
+      ],
+      "actual": [
+        "payments",
+        7,
+        "天使币",
+        "35",
+        5
+      ]
+    },
+    {
+      "name": "payments requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewpayments&tid=9202665&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewpayments&tid=9202665&tsdmapp=json&tsdmv=4&nodoc=1"
+        ]
+      ]
+    },
+    {
+      "name": "warning history",
+      "expected": [
+        "warnings",
+        2,
+        "管理团队",
+        "BU區警告46626"
+      ],
+      "actual": [
+        "warnings",
+        2,
+        "管理团队",
+        "BU區警告46626"
+      ]
+    },
+    {
+      "name": "warning history requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewwarning&tid=9199072&uid=31&inajax=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewwarning&tid=9199072&uid=31&inajax=1"
+        ]
+      ]
+    },
+    {
+      "name": "warning empty",
+      "expected": [
+        "warnings",
+        0
+      ],
+      "actual": [
+        "warnings",
+        0
+      ]
+    },
+    {
+      "name": "warning empty requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewwarning&tid=9199072&uid=31&inajax=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=viewwarning&tid=9199072&uid=31&inajax=1"
+        ]
+      ]
+    },
+    {
+      "name": "additional comments",
+      "expected": [
+        "comments",
+        2,
+        2,
+        [
+          "38",
+          "37",
+          "31"
+        ],
+        "CM測試 ag_t02 點評 & <tag> \"q\""
+      ],
+      "actual": [
+        "comments",
+        2,
+        2,
+        [
+          "38",
+          "37",
+          "31"
+        ],
+        "CM測試 ag_t02 點評 & <tag> \"q\""
+      ]
+    },
+    {
+      "name": "additional comments requests",
+      "expected": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=commentmore&tid=1234567&pid=11263&page=2&inajax=1&tsdmapp=json&tsdmform=1"
+        ]
+      ],
+      "actual": [
+        [
+          "GET",
+          false,
+          "/forum.php?mod=misc&action=commentmore&tid=1234567&pid=11263&page=2&inajax=1&tsdmapp=json&tsdmform=1"
+        ]
+      ]
+    },
+    {
+      "name": "one native read after missing rows",
+      "expected": [
+        "ratings",
+        -500,
+        2
+      ],
+      "actual": [
+        "ratings",
+        -500,
+        2
+      ]
+    },
+    {
+      "name": "rate permission, remaining credits and default notification",
+      "expected": [
+        {
+          "name": "score6",
+          "label": "精灵",
+          "minimum": -20,
+          "maximum": 100,
+          "remaining": 494,
+          "choices": [
+            100,
+            88,
+            76,
+            64,
+            52,
+            40,
+            28,
+            16,
+            4,
+            -8,
+            -20
+          ]
+        }
+      ],
+      "actual": [
+        {
+          "name": "score6",
+          "label": "精灵",
+          "minimum": -20,
+          "maximum": 100,
+          "remaining": 494,
+          "choices": [
+            100,
+            88,
+            76,
+            64,
+            52,
+            40,
+            28,
+            16,
+            4,
+            -8,
+            -20
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rate invalid choice remains local",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "rate accepted",
+      "expected": [
+        "accepted",
+        "POST",
+        "/forum.php?mod=misc&action=rate&ratesubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+        "12",
+        "exact & reason",
+        false,
+        "9900001",
+        "9910002"
+      ],
+      "actual": [
+        "accepted",
+        "POST",
+        "/forum.php?mod=misc&action=rate&ratesubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+        "12",
+        "exact & reason",
+        false,
+        "9900001",
+        "9910002"
+      ]
+    },
+    {
+      "name": "rate prepared action cannot dispatch twice",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "duplicate rate refusal",
+      "expected": [
+        "refused",
+        "thread_rate_duplicate",
+        "POST"
+      ],
+      "actual": [
+        "refused",
+        "thread_rate_duplicate",
+        "POST"
+      ]
+    },
+    {
+      "name": "lost rate keeps supplied choices and dispatches once",
+      "expected": [
+        "unknown",
+        {
+          "action": "rate",
+          "scores": {
+            "score6": 12
+          },
+          "reason": "exact & reason",
+          "notify": false
+        },
+        "POST"
+      ],
+      "actual": [
+        "unknown",
+        {
+          "action": "rate",
+          "scores": {
+            "score6": 12
+          },
+          "reason": "exact & reason",
+          "notify": false
+        },
+        "POST"
+      ]
+    },
+    {
+      "name": "lost attempt cannot be replayed",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "unsupported rating form hands off safe thread",
+      "expected": [
+        "handoff",
+        "https://www.tsdm39.com/forum.php?mod=viewthread&tid=9900001#pid9910002",
+        0
+      ],
+      "actual": [
+        "handoff",
+        "https://www.tsdm39.com/forum.php?mod=viewthread&tid=9900001#pid9910002",
+        0
+      ]
+    },
+    {
+      "name": "same UID with a new session cannot dispatch",
+      "expected": [
+        "session-changed",
+        0
+      ],
+      "actual": [
+        "session-changed",
+        0
+      ]
+    },
+    {
+      "name": "report accepted with supplied text and exact floor",
+      "expected": [
+        "accepted",
+        "POST",
+        "/misc.php",
+        "Reason exactly & <supplied>",
+        "9910002",
+        "7",
+        5
+      ],
+      "actual": [
+        "accepted",
+        "POST",
+        "/misc.php",
+        "Reason exactly & <supplied>",
+        "9910002",
+        "7",
+        5
+      ]
+    },
+    {
+      "name": "redrawn report retains supplied text",
+      "expected": [
+        "redrawn",
+        {
+          "action": "report",
+          "message": "Reason exactly & <supplied>"
+        },
+        "POST"
+      ],
+      "actual": [
+        "redrawn",
+        {
+          "action": "report",
+          "message": "Reason exactly & <supplied>"
+        },
+        "POST"
+      ]
+    },
+    {
+      "name": "comment accepted with explicit score and abstention",
+      "expected": [
+        "accepted",
+        "11263",
+        "Comment & 原文",
+        "4",
+        ""
+      ],
+      "actual": [
+        "accepted",
+        "11263",
+        "Comment & 原文",
+        "4",
+        ""
+      ]
+    },
+    {
+      "name": "mismatched comment receipt remains unknown",
+      "expected": [
+        "unknown",
+        {
+          "action": "comment",
+          "message": "Comment & 原文",
+          "items": {
+            "commentitem[画质]": "4",
+            "commentitem[剧情]": ""
+          }
+        },
+        "POST"
+      ],
+      "actual": [
+        "unknown",
+        {
+          "action": "comment",
+          "message": "Comment & 原文",
+          "items": {
+            "commentitem[画质]": "4",
+            "commentitem[剧情]": ""
+          }
+        },
+        "POST"
+      ]
+    },
+    {
+      "name": "evaluation recommend/result_add_succeed.json",
+      "expected": [
+        "accepted",
+        null,
+        1,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ],
+      "actual": [
+        "accepted",
+        null,
+        1,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ]
+    },
+    {
+      "name": "evaluation recommend/web_subtract_succeed.xml",
+      "expected": [
+        "accepted",
+        null,
+        -1,
+        "GET",
+        "subtract",
+        "f1f2f3f4"
+      ],
+      "actual": [
+        "accepted",
+        null,
+        -1,
+        "GET",
+        "subtract",
+        "f1f2f3f4"
+      ]
+    },
+    {
+      "name": "evaluation recommend/result_duplicate.json",
+      "expected": [
+        "refused",
+        "recommend_duplicate",
+        null,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ],
+      "actual": [
+        "refused",
+        "recommend_duplicate",
+        null,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ]
+    },
+    {
+      "name": "evaluation recommend/result_outoftimes.json",
+      "expected": [
+        "refused",
+        "recommend_outoftimes",
+        null,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ],
+      "actual": [
+        "refused",
+        "recommend_outoftimes",
+        null,
+        "GET",
+        "add",
+        "f1f2f3f4"
+      ]
+    },
+    {
+      "name": "evaluation recommend/web_self_disallow.xml",
+      "expected": [
+        "refused",
+        "",
+        null,
+        "GET",
+        "subtract",
+        "f1f2f3f4"
+      ],
+      "actual": [
+        "refused",
+        "",
+        null,
+        "GET",
+        "subtract",
+        "f1f2f3f4"
+      ]
+    },
+    {
+      "name": "disabled evaluation sends no effect",
+      "expected": [
+        "refused",
+        1,
+        false
+      ],
+      "actual": [
+        "refused",
+        1,
+        false
+      ]
+    },
+    {
+      "name": "native voters in same response",
+      "expected": [
+        "voters",
+        4,
+        1
+      ],
+      "actual": [
+        "voters",
+        4,
+        1
+      ]
+    },
+    {
+      "name": "native moderation in same response",
+      "expected": [
+        "moderation",
+        63,
+        1
+      ],
+      "actual": [
+        "moderation",
+        63,
+        1
+      ]
+    },
+    {
+      "name": "native payments in same response",
+      "expected": [
+        "payments",
+        7,
+        1
+      ],
+      "actual": [
+        "payments",
+        7,
+        1
+      ]
+    },
+    {
+      "name": "document-free comments page 2",
+      "expected": [
+        "comments",
+        2,
+        8,
+        3,
+        false
+      ],
+      "actual": [
+        "comments",
+        2,
+        8,
+        3,
+        false
+      ]
+    },
+    {
+      "name": "document-free comments page 3",
+      "expected": [
+        "comments",
+        3,
+        8,
+        0,
+        false
+      ],
+      "actual": [
+        "comments",
+        3,
+        8,
+        0,
+        false
+      ]
+    },
+    {
+      "name": "explicit empty rating ledger",
+      "expected": [
+        "ratings",
+        0,
+        0
+      ],
+      "actual": [
+        "ratings",
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wrong read target ends without fallback",
+      "expected": [
+        "invalid",
+        1
+      ],
+      "actual": [
+        "invalid",
+        1
+      ]
+    },
+    {
+      "name": "native rate form and success callback",
+      "expected": [
+        "accepted",
+        "on"
+      ],
+      "actual": [
+        "accepted",
+        "on"
+      ]
+    },
+    {
+      "name": "native comment form",
+      "expected": [
+        "accepted",
+        "true"
+      ],
+      "actual": [
+        "accepted",
+        "true"
+      ]
+    },
+    {
+      "name": "comment flood refusal",
+      "expected": [
+        "refused",
+        "post_flood_ctrl",
+        "POST"
+      ],
+      "actual": [
+        "refused",
+        "post_flood_ctrl",
+        "POST"
+      ]
+    },
+    {
+      "name": "write continuation is a host handoff",
+      "expected": [
+        "handoff",
+        "unknown",
+        "https://www.tsdm39.com/forum.php?mod=viewthread&tid=9900001#pid9910002",
+        "POST"
+      ],
+      "actual": [
+        "handoff",
+        "unknown",
+        "https://www.tsdm39.com/forum.php?mod=viewthread&tid=9900001#pid9910002",
+        "POST"
+      ]
+    },
+    {
+      "name": "session drift after dispatch stays unknown",
+      "expected": [
+        "unknown",
+        {
+          "action": "report",
+          "message": "Reason exactly & <supplied>"
+        },
+        "POST"
+      ],
+      "actual": [
+        "unknown",
+        {
+          "action": "report",
+          "message": "Reason exactly & <supplied>"
+        },
+        "POST"
+      ]
+    },
+    {
+      "name": "opaque HTTP redirect stays unknown",
+      "expected": [
+        "unknown",
+        1
+      ],
+      "actual": [
+        "unknown",
+        1
+      ]
+    },
+    {
+      "name": "schema 13 native rate callback",
+      "expected": [
+        "accepted",
+        "POST"
+      ],
+      "actual": [
+        "accepted",
+        "POST"
+      ]
+    },
+    {
+      "name": "native report dialog and exact recipient floor",
+      "expected": [
+        "accepted",
+        "Report accepted",
+        "9910002"
+      ],
+      "actual": [
+        "accepted",
+        "Report accepted",
+        "9910002"
+      ]
+    },
+    {
+      "name": "closed voter visibility is terminal",
+      "expected": [
+        "refused",
+        1
+      ],
+      "actual": [
+        "refused",
+        1
+      ]
+    },
+    {
+      "name": "installed guide read and cancelled approval",
+      "expected": [
+        "ratings",
+        0,
+        "cancelled",
+        2,
+        0
+      ],
+      "actual": [
+        "ratings",
+        0,
+        "cancelled",
+        2,
+        0
+      ]
+    }
+  ],
+  "limitations": [
+    "Recorded bodies and synthetic host responses only",
+    "No forum network traffic or account effects"
+  ]
+}

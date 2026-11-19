@@ -1,0 +1,233 @@
+{
+  "integrationBaseCommit": "9078f9cafb29e962bc79b6010d597dd7edf76dff",
+  "archiveSHA256": "30e11df946bb32eaa9b577f6beefb2356d36b65de6a0865e45fc4cb82d880790",
+  "command": "sh evidence/moderation/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "passingSuites": [
+      "account",
+      "activity-direct",
+      "activity-installed",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "media-direct",
+      "media-installed",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces",
+      "special-direct",
+      "special-installed",
+      "trades-direct",
+      "trades-installed",
+      "credits-installed",
+      "credits-direct",
+      "tasks-installed",
+      "tasks-direct",
+      "awards-installed",
+      "awards-direct",
+      "batch-ratings-installed",
+      "batch-ratings-direct",
+      "packets-installed",
+      "packets-direct",
+      "bank-installed",
+      "bank-direct",
+      "pokemon-installed",
+      "pokemon-direct",
+      "pokemon-battles-installed",
+      "pokemon-battles-direct",
+      "moderation-installed",
+      "moderation-direct"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "40d0df3a7dac80329d0acf78ad84a62a5ffa92bb607d64a72e9c35bd57f7830c"
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "f18fd9818cfa66f0436527a168e4e6e788495f8bf4a475952f17656c65ec1120"
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "3671be9c8d8c85338f5cc2ff20d2b581fe1622e1cd8db496aac500af5d016b82"
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "08c77f3a21b0b6cd194b254da8164b26b06859c8c7ce0c3cc3f263aa19094622"
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f"
+    },
+    "media-direct": {
+      "status": "passed",
+      "receiptSHA256": "f8d1345ea1c042b65b516357c49416607cb43dae9e29190c0e251b588f0daa40"
+    },
+    "media-installed": {
+      "status": "passed",
+      "receiptSHA256": "e8fb5bdac1d9c6c3e68bbaa56cc9533bf0179fe9827081f7e5c8784074c417b3"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "aa8e9a610c0e2c370fbcf79f3c6968aa05f78ada5d7949f9b5b60336e1ca5410"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "82f00d9010c26d84a5c2874afbef90a5a687f7c75412d7a341075498123d9501"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "d8c12ba72ad80eaa630feaf04bd23d560f7094edd45f268c3053454386c03ac5"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "c7ce638a6e60c894283636fd849d9d6a64024d4b7f9a274f95fe5eb27a3e4c2f"
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "24e573fdd599c08de180cb0e1ede388335d01b78132aa289506bc93539ab5f27"
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "10288c828f4bcc972fbbce4b1ccc89c06121c8c5740c73223ecce22ba99fb5d6"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "e69d0560b668d0aba939091587f80ca6c487b7dff6915a532e0c1705a076308d"
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "79ddede333889472d5333d02a2b3c0a70c30c3db8c6dc36d3e6047e1488bee1a"
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "8fb015bc2b2145e3ad12864f0db17b6da763c0340ffd0fee884f04a1d119be66"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "539d2ba2dca18f43da414902c0c8daf5a5ac67f54c38f2b468bd87d2741b3de8"
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "9e73cce5e97019e4b5503e517c00a6692372c8e43fbbc107107524c3ea1080b0"
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "ada3be7d6a93cbed913e671fa7a77b4cdac6690d3492fd3722474750bc5167fd"
+    },
+    "trades-direct": {
+      "status": "passed",
+      "receiptSHA256": "664afaaaf30c8ce27ccaddad8a9c51c8ef76b8ca4c7dcc69b35fe69f73aa8fa7"
+    },
+    "trades-installed": {
+      "status": "passed",
+      "receiptSHA256": "40ce7f420d025d1a5409596595bef3cb9d31bc1206d14ef6cb999ff37161f162"
+    },
+    "credits-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "f61b0cd3ba90f46f1bb4db7da218a96a4066b66d7b0cac6bedf62740c719563e"
+    },
+    "credits-direct": {
+      "status": "passed",
+      "observationGroups": 18,
+      "receiptSHA256": "b74a0f08a7e19217a644254ae521b1a650eb61666c393695fa2a29020e7ba30b"
+    },
+    "tasks-installed": {
+      "status": "passed",
+      "observationGroups": 45,
+      "receiptSHA256": "4c9925e8372370ef5958f3559d9c057347da2fdd1ab91be1395cc6e33a87fab3"
+    },
+    "tasks-direct": {
+      "status": "passed",
+      "observationGroups": 39,
+      "receiptSHA256": "ca3c8f8dfb1050680900a6c3f1386b92cfc8fe78f31d5bd3d134f305de654632"
+    },
+    "awards-installed": {
+      "status": "passed",
+      "observationGroups": 34,
+      "receiptSHA256": "381b642007a2919f08ad44ce20a35230f5f9319c76ad5d49c659f57813c30cfd"
+    },
+    "awards-direct": {
+      "status": "passed",
+      "observationGroups": 46,
+      "receiptSHA256": "20da4c839293b2c10d161747295674f9519a109f915772317143f23415b1073b"
+    },
+    "batch-ratings-installed": {
+      "status": "passed",
+      "observationGroups": 42,
+      "receiptSHA256": "7b4e54d1dd2e3a3b4937b2f77a9309feb85b34abc78febe550c1694c3de00315"
+    },
+    "batch-ratings-direct": {
+      "status": "passed",
+      "observationGroups": 28,
+      "receiptSHA256": "7561bd41144976c7ac00a1de394fb7003ea872f80675197e213ca7a971799165"
+    },
+    "packets-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "b81344c17b2905a1be505e55896e933e86fb13e4f31945eee0760c28ac9d4b5d"
+    },
+    "packets-direct": {
+      "status": "passed",
+      "observationGroups": 26,
+      "receiptSHA256": "1b3bbbe073151aa95f297ec5c47d692aa7f036fe98997081f9adad94cb214327"
+    },
+    "bank-installed": {
+      "status": "passed",
+      "observationGroups": 49,
+      "receiptSHA256": "5f4d5e4fa45e6d3674c0d6083ccfb640a19033db3f3757bb7dd5fab4cfb40c33"
+    },
+    "bank-direct": {
+      "status": "passed",
+      "observationGroups": 40,
+      "receiptSHA256": "3494d8530779a6f5d9b932249836c00cc0d140fffede95f95e2ca32f0c83f394"
+    },
+    "pokemon-installed": {
+      "status": "passed",
+      "observationGroups": 40,
+      "receiptSHA256": "ab436789b16124480384cfae339f3fdae3a1875b9d0d9ad53fb48f7fedb6cc22"
+    },
+    "pokemon-direct": {
+      "status": "passed",
+      "observationGroups": 56,
+      "receiptSHA256": "22a80a640a6bf9a62e5f7284e53405948a20a3da32526df317a75dc04d8ef8d4"
+    },
+    "pokemon-battles-installed": {
+      "status": "passed",
+      "observationGroups": 63,
+      "receiptSHA256": "528275d18f6382edbb36b845ddb64aa0e0f805da9d981ab277136bf04658f979"
+    },
+    "pokemon-battles-direct": {
+      "status": "passed",
+      "observationGroups": 42,
+      "receiptSHA256": "8e58f968c3a412c1ded0dec84f456ba2a3c174077816cde8a0a3983d54f7fe12"
+    },
+    "moderation-installed": {
+      "status": "passed",
+      "observationGroups": 67,
+      "receiptSHA256": "e5b5abfcbb5aa138e6155332b98aa21e278408c2a2a1afec83ee993c6249175a"
+    },
+    "moderation-direct": {
+      "status": "passed",
+      "observationGroups": 76,
+      "receiptSHA256": "7c9012a786273d10f837dba940c8009503d5b075bae5ba3b6670b3f35af26b31"
+    }
+  },
+  "pokemonInventoryReceipt": {
+    "operationsPerDriver": 35,
+    "receiptSHA256": "06d1f912f523792377427944e95d8bec54923be99e94e06e70c3bc26f469c7e8"
+  }
+}

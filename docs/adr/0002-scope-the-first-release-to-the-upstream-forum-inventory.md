@@ -1,0 +1,3 @@
+# Cover the pinned upstream forum inventory in the first SDK release
+
+The maintainer chose the complete forum-facing operation inventory used by `Carinoasd/tsdm_client` v1.59.0 as the scope of the first independently installable SDK release. The checklist is pinned to `02df67e39ded906def5b868e8f8311ba735b316c` so implementers can identify each operation, its legacy and structured representations, and any browser or host handoff. This commits the release to qualifying the full inventory across the applicable permissions, sessions and capabilities. Production availability and account-specific effects remain open evidence questions. [Maintainer decision and coverage checklist](https://github.com/Benson-mk/tsdm-sdk/issues/4#issuecomment-6973144922)

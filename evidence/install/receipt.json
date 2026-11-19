@@ -1,0 +1,83 @@
+{
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "sha256": "76790dd5ff10f67f59f7e6600982f0967aa72995d4a45d1f6f353be794a2a6c6",
+  "integrity": "sha512-2moQuMY8qrbS21XO/xknnmApJSZFOPs8LhXHdb3J/bNY1HXbwpEAWT+cUAZ9/tSrwrMfK9daj6jNwPib2V1PMA==",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "typescript": "Version 6.0.3",
+  "typecheck": "strict NodeNext, ES2023, types: [], noEmit",
+  "notices": [
+    "parse5-8.0.1.LICENSE",
+    "entities-8.1.0.LICENSE"
+  ],
+  "fixtureSha256": "4c315c9baa628790c74c0eed3c477cea13fc6ef961b4fe78cef8080a2e01e1b1",
+  "requests": [
+    {
+      "url": "https://forum.test/forum.php?mod=viewthread&tid=9199345&tsdmapp=json",
+      "session": "fixture-member-31",
+      "fresh": true
+    }
+  ],
+  "thread": {
+    "id": "9199345",
+    "title": "[Rulebot multi fixture 20260930-101846] FID2 版規問答測試",
+    "page": "1"
+  },
+  "viewerId": "31",
+  "posts": [
+    [
+      "3938",
+      "32",
+      "ag_admin",
+      "此主題僅供 Rulebot 1.1 多版塊隔離驗證，透過 Discuz 原生流程建立；驗證完畢保留測試證據。"
+    ],
+    [
+      "3954",
+      "33",
+      "ag_mid",
+      "NC984059ag_mid 粗體 廣告連結 紅字 @ag_low2"
+    ],
+    [
+      "3940",
+      "31",
+      "ag_low",
+      "多版驗收怎麼算？"
+    ],
+    [
+      "3942",
+      "35",
+      "ag_low2",
+      "此帖仅作者可见"
+    ],
+    [
+      "3950",
+      "31",
+      "ag_low",
+      "NC650591ag_low 編輯 [​i]斜體[​/i] [​size=7]大字[​/size]"
+    ],
+    [
+      "3951",
+      "33",
+      "ag_mid",
+      "NC650591ag_mid 粗體 廣告連結 紅字 @ag_low2"
+    ],
+    [
+      "3952",
+      "31",
+      "ag_low",
+      "NC912001off 粗體"
+    ],
+    [
+      "3953",
+      "31",
+      "ag_low",
+      "NC984059ag_low 編輯 [​i]斜體[​/i] [​size=7]大字[​/size]"
+    ],
+    [
+      "3955",
+      "31",
+      "ag_low",
+      "NC048829off 粗體"
+    ]
+  ]
+}

@@ -1,0 +1,1061 @@
+{
+  "integrationBaseCommit": "cdaca1d53ccc173d4930f63d9597658920a972bb",
+  "archiveSHA256": "33861d31f1deece3568a719f32eb27cbabbb65271a6cb44b53fa264dcb350e46",
+  "guideSHA256": "38e695b7dcfbabac5de309acc075f6486a99125c51f83ae2a7cd51e0fe32d7fe",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "limitations": [
+    "Two inert HTTPS loopback origins",
+    "No deployed forum traffic or effects"
+  ],
+  "results": [
+    {
+      "name": "Python multipart upload",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "upload"
+            ],
+            "fid": [
+              "7"
+            ],
+            "type": [
+              "image"
+            ],
+            "simple": [
+              "2"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "upload"
+            ],
+            "fid": [
+              "7"
+            ],
+            "type": [
+              "image"
+            ],
+            "simple": [
+              "2"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python multipart album",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "album"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "album"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python approved album filing",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "upload"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "albumsubmit": [
+              "true"
+            ],
+            "title[42]": [
+              ""
+            ],
+            "albumop": [
+              "selectalbum"
+            ],
+            "albumid": [
+              "1"
+            ]
+          },
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "upload"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "albumsubmit": [
+              "true"
+            ],
+            "title[42]": [
+              ""
+            ],
+            "albumop": [
+              "selectalbum"
+            ],
+            "albumid": [
+              "1"
+            ]
+          },
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python deliberate credit GET",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "attachcredit"
+            ],
+            "aid": [
+              "36"
+            ],
+            "formhash": [
+              "fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "attachcredit"
+            ],
+            "aid": [
+              "36"
+            ],
+            "formhash": [
+              "fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python credit without approval",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "Python ordinary read /plugin.php?id=tsdmapp%3Aapi&action=smilies",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "smilies"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/plugin.php",
+          "query": {
+            "id": [
+              "tsdmapp:api"
+            ],
+            "action": [
+              "smilies"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python ordinary read /data/cache/common_smilies_var.js",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/data/cache/common_smilies_var.js",
+          "query": {},
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/data/cache/common_smilies_var.js",
+          "query": {},
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python ordinary read /data/avatar/noavatar.svg",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/data/avatar/noavatar.svg",
+          "query": {},
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/data/avatar/noavatar.svg",
+          "query": {},
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python ordinary read /forum.php?mod=image&aid=36&size=300x300",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "image"
+            ],
+            "aid": [
+              "36"
+            ],
+            "size": [
+              "300x300"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "image"
+            ],
+            "aid": [
+              "36"
+            ],
+            "size": [
+              "300x300"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python ordinary read /forum.php?mod=attachment&aid=36",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python forum redirect stops before external request",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ],
+            "ck": [
+              "frozen"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ],
+            "ck": [
+              "frozen"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback",
+            "Authorization": "Bearer fixture",
+            "Referer": "https://forum.invalid/",
+            "X-Tsdmapp-Device": "fixture-device",
+            "X-Tsdmapp-Client": "fixture-app"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Python external handoff sends no forum credentials",
+      "expected": [
+        {
+          "destination": "storage",
+          "method": "GET",
+          "path": "/blob/file.jpg",
+          "query": {
+            "sign": [
+              "storage-fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {}
+        }
+      ],
+      "actual": [
+        {
+          "destination": "storage",
+          "method": "GET",
+          "path": "/blob/file.jpg",
+          "query": {
+            "sign": [
+              "storage-fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {}
+        }
+      ]
+    },
+    {
+      "name": "curl multipart post",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "upload"
+            ],
+            "fid": [
+              "7"
+            ],
+            "type": [
+              "image"
+            ],
+            "simple": [
+              "2"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "upload"
+            ],
+            "fid": [
+              "7"
+            ],
+            "type": [
+              "image"
+            ],
+            "simple": [
+              "2"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ]
+    },
+    {
+      "name": "curl multipart album",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "album"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/misc.php",
+          "query": {
+            "mod": [
+              "swfupload"
+            ],
+            "action": [
+              "swfupload"
+            ],
+            "operation": [
+              "album"
+            ]
+          },
+          "fields": {
+            "uid": [
+              "31"
+            ],
+            "hash": [
+              "fixture-account-hash"
+            ]
+          },
+          "file": {
+            "field": "Filedata",
+            "filename": "photo.jpg",
+            "mime": "image/jpeg",
+            "sha256": "a1ff1a17dae6377a74bd12d158b28c3e7dffe895f13042d83c5c4a303fb1a5d3"
+          },
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ]
+    },
+    {
+      "name": "curl approved album filing",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "upload"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "albumsubmit": [
+              "true"
+            ],
+            "title[42]": [
+              ""
+            ],
+            "albumop": [
+              "selectalbum"
+            ],
+            "albumid": [
+              "1"
+            ]
+          },
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "POST",
+          "path": "/home.php",
+          "query": {
+            "mod": [
+              "spacecp"
+            ],
+            "ac": [
+              "upload"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "fields": {
+            "formhash": [
+              "fixture"
+            ],
+            "albumsubmit": [
+              "true"
+            ],
+            "title[42]": [
+              ""
+            ],
+            "albumop": [
+              "selectalbum"
+            ],
+            "albumid": [
+              "1"
+            ]
+          },
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ]
+    },
+    {
+      "name": "curl credit without approval",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "name": "curl deliberate credit GET",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "attachcredit"
+            ],
+            "aid": [
+              "36"
+            ],
+            "formhash": [
+              "fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "misc"
+            ],
+            "action": [
+              "attachcredit"
+            ],
+            "aid": [
+              "36"
+            ],
+            "formhash": [
+              "fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ]
+    },
+    {
+      "name": "curl forum redirect stops before external request",
+      "expected": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ],
+            "ck": [
+              "frozen"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ],
+      "actual": [
+        {
+          "destination": "forum",
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "attachment"
+            ],
+            "aid": [
+              "36"
+            ],
+            "ck": [
+              "frozen"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {
+            "Cookie": "fixture_media_session=loopback"
+          }
+        }
+      ]
+    },
+    {
+      "name": "curl external handoff sends no forum credentials",
+      "expected": [
+        {
+          "destination": "storage",
+          "method": "GET",
+          "path": "/blob/file.jpg",
+          "query": {
+            "sign": [
+              "storage-fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {}
+        }
+      ],
+      "actual": [
+        {
+          "destination": "storage",
+          "method": "GET",
+          "path": "/blob/file.jpg",
+          "query": {
+            "sign": [
+              "storage-fixture"
+            ]
+          },
+          "fields": {},
+          "file": null,
+          "credentialHeaders": {}
+        }
+      ]
+    }
+  ]
+}

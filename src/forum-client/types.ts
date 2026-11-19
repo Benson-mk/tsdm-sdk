@@ -1,0 +1,999 @@
+export interface HostResponse {
+  status: number;
+  url: string;
+  contentType: string;
+  body: string;
+  redirect?: "opaque" | "followed" | "none";
+}
+export interface FileResponse {
+  status: number;
+  url: string;
+  contentType: string;
+  contentLength: string | null;
+  contentEncoding: string;
+  disposition: string;
+  redirected: boolean;
+  bytes: Uint8Array;
+}
+export interface Attachment {
+  id: string;
+  name: string;
+  url: string;
+  details: string;
+}
+export type AttachmentResult =
+  | {
+      kind: "file";
+      name: string;
+      contentType: string;
+      bytes: Uint8Array;
+      generation: number;
+    }
+  | { kind: FailureKind; message: string };
+export interface AttachmentRequest {
+  threadURL: string;
+  postId: string;
+  attachmentId: string;
+  account: Account;
+}
+export interface UploadCancellation {
+  readonly aborted: boolean;
+  addEventListener(
+    type: "abort",
+    listener: () => void,
+    options?: { once?: boolean },
+  ): void;
+  removeEventListener(type: "abort", listener: () => void): void;
+}
+export interface UploadFile {
+  name: string;
+  type: string;
+  bytes: Uint8Array;
+}
+export interface WritingUpload {
+  key: string;
+  name: string;
+  type: string;
+  size: number;
+  status:
+    | "selected"
+    | "uploading"
+    | "uploaded"
+    | "uncertain"
+    | "rejected"
+    | "reselect"
+    | "associated"
+    | "removing"
+    | "removal-uncertain"
+    | "removed";
+  /** Captured uploader provenance; null is explicitly unknown, absence is legacy. */
+  ownerId?: string | null;
+  serverId?: string;
+  referenceKind?: "attach" | "attachimg";
+  originalSha256?: string;
+  storedPost?: { threadURL: string; postId: string };
+  fields?: { name: string; value: string; disabled: boolean }[];
+  message: string;
+  loaded: number;
+}
+export type UploadResult =
+  | {
+      kind: "uploaded";
+      referenceKind: "attach" | "attachimg";
+      sha256: string;
+      id: string;
+      fields: { name: string; value: string; disabled: boolean }[];
+    }
+  | {
+      kind: "not-sent" | "rejected" | "uncertain";
+      message: string;
+      id?: string;
+    };
+export interface ReplyAttachmentCheck {
+  account: Account;
+  generation: number;
+  accountVerified: boolean;
+  usableKeys: string[];
+  message: string;
+}
+export interface ForumTransport {
+  upload?(
+    url: string,
+    fields: { name: string; value: string }[],
+    file: UploadFile,
+    progress: (loaded: number) => void,
+    signal: UploadCancellation,
+  ): Promise<HostResponse>;
+  requestFile?(url: string): Promise<FileResponse>;
+  request(
+    url: string,
+    request?: { fresh?: boolean } & (
+      | { method: "POST"; body: string }
+      | { method?: undefined; body?: undefined }
+    ),
+  ): Promise<HostResponse>;
+}
+export type Account =
+  | { kind: "member"; id: string; name: string }
+  | { kind: "guest" }
+  | { kind: "unknown" };
+export type ContentNode =
+  | { kind: "text"; text: string }
+  | {
+      kind: "element";
+      tag: string;
+      attributes: Record<string, string>;
+      children: readonly ContentNode[];
+    }
+  | {
+      kind: "unsupported";
+      description: string;
+      /** Inert address for a host-approved player handoff. */
+      media?: { kind: "audio" | "video"; url: string };
+      children: readonly ContentNode[];
+    };
+export interface Post {
+  rateURL?: string;
+  reportURL?: string;
+  redPacketThreadId?: string;
+  restriction?: string;
+  promoted?: boolean;
+  id: string;
+  author: string;
+  authorId: string | null;
+  floor: string;
+  date: string;
+  url: string;
+  content: ContentNode[];
+  attachments?: Attachment[];
+}
+export interface ForumLink {
+  label: string;
+  url: string;
+}
+export interface Pagination {
+  current: string;
+  links: ForumLink[];
+  total?: string;
+}
+export interface Notice {
+  id: string;
+  time: string;
+  body: ContentNode[];
+}
+export interface Notices {
+  url: string;
+  categories: (ForumLink & { current: boolean })[];
+  entries: Notice[];
+  pages: Pagination;
+  empty: string;
+  unread: { kind: "observed"; count: number } | { kind: "absent" | "unknown" };
+}
+export interface MessagePeer {
+  id: string;
+  peerId: string;
+  name: string;
+  url: string;
+  preview: string;
+  time: string;
+  unread: boolean;
+}
+export interface PrivateMessage {
+  id: string;
+  senderId: string;
+  sender: string;
+  time: string;
+  body: ContentNode[];
+  url: string;
+}
+export interface PrivateConversation {
+  url: string;
+  peerId: string;
+  peerName: string;
+  totalCount: number;
+  messages: PrivateMessage[];
+  pages: Pagination;
+  earlier: ForumLink | null;
+  later: ForumLink | null;
+  beginning: boolean;
+  end: boolean;
+  target: string | null;
+  targetMissing: boolean;
+  empty: string;
+}
+export interface Messages {
+  url: string;
+  peers: MessagePeer[];
+  pages: Pagination;
+  empty: string;
+}
+export interface BoardLink extends ForumLink {
+  id: string;
+  description: string;
+  stats: string;
+}
+export interface DirectoryGroup {
+  title: string;
+  boards: BoardLink[];
+  /** Optional native provenance added in 0.20.0; absent in legacy models. */
+  sourceId?: string;
+  sourceURL?: string;
+}
+export interface Homepage {
+  url: string;
+  groups: DirectoryGroup[];
+  favoriteBoards: BoardLink[];
+  activities: ForumLink[];
+}
+
+export interface Directory {
+  groups: DirectoryGroup[];
+  url: string;
+  pages: Pagination;
+}
+export interface ThreadRow extends ForumLink {
+  id: string;
+  rowId: string;
+  pinned: boolean;
+  moved: boolean;
+  restriction?: string;
+  category: string;
+  author: string;
+  date: string;
+  replies: string;
+  views: string;
+  lastPost: ForumLink | null;
+  preview?: {
+    excerpt: string | null;
+    reason: string | null;
+    imageTotal: number;
+  };
+  /** Native latest-reply cell metadata; absent on legacy or unsupported sources. */
+  latestReply?: { author: string | null; time: string | null };
+}
+/** Native source-menu provenance; semantics never inferred from link labels. */
+export interface BoardFilterGroup {
+  kind: "category" | "order" | "type" | "time" | "unclassified";
+  sourceId: string;
+  /** Actual native subgroup label, without its choice links or separators. */
+  sourceLabel?: string;
+  links: ForumLink[];
+}
+export interface Board {
+  id: string;
+  title: string;
+  /** Native heading statistics, separate from its board-name anchor. */
+  statistics?: string;
+  /** Same-board native heading destination, only when it clears criteria. */
+  clearFilter?: ForumLink;
+  /** Exact returned destinations and their complete criteria; never compose URLs. */
+  filterChoices?: {
+    url: string;
+    criteria: ForumLink[];
+    removed: ForumLink[];
+  }[];
+  url: string;
+  boards: BoardLink[];
+  threads: ThreadRow[];
+  filters: ForumLink[];
+  /** Added in 0.14.0. Legacy models omit this and retain flat filters. */
+  filterGroups?: BoardFilterGroup[];
+  criteria: ForumLink[];
+  pages: Pagination;
+  empty: string;
+  count?: number;
+  query?: Record<string, string>;
+}
+/** Native pager provenance added in 0.16.0; absence means unqualified boundaries. */
+export interface ThreadHistory {
+  earlier: ForumLink | null;
+  later: ForumLink | null;
+  beginning: boolean;
+  end: boolean;
+  latest: ForumLink | null;
+  order: "ascending" | "descending";
+}
+export type ThreadSpecial =
+  | { type: "poll"; choices: { id: string; text: string; votes?: number }[]; resultsVisible: boolean }
+  | { type: "activity" | "debate" | "reward" | "trade"; details: Record<string, string | number | boolean | null> };
+export interface Thread {
+  history?: ThreadHistory;
+  /** Optional native numeric jump capability, added in 0.21.0. Never infer it from visible links. */
+  pageJump?: { url: string; total: number };
+  id: string;
+  title: string;
+  url: string;
+  posts: Post[];
+  pages: Pagination;
+  authorId?: string | null;
+  special?: ThreadSpecial;
+  order?: "ascending" | "descending";
+  filters: ForumLink[];
+  parent: ForumLink | null;
+  target: string | null;
+  notices: string[];
+}
+export type FailureKind =
+  | "cost"
+  | "throttle"
+  | "expired"
+  | "limited"
+  | "login"
+  | "permission"
+  | "missing"
+  | "challenge"
+  | "incomplete"
+  | "invalid"
+  | "network"
+  | "stale";
+export type FavoriteKind = "thread" | "forum";
+export interface FavoriteRecord {
+  id: string;
+  kind: FavoriteKind;
+  targetId: string;
+  url: string | null;
+  title: string;
+  time: string;
+  note: string;
+  removable: boolean;
+  unavailableText?: string;
+}
+export interface Favorites {
+  kind: FavoriteKind;
+  url: string;
+  records: FavoriteRecord[];
+  pages: { current: string; links: ForumLink[] };
+}
+export type ReadResult =
+  | {
+      kind: "private-conversation";
+      conversation: PrivateConversation;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "messages";
+      messages: Messages;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "favorites";
+      favorites: Favorites;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "notices";
+      notices: Notices;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "search";
+      search: Search;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "document-navigation";
+      message: string;
+      destination: string;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "directory";
+      directory: Directory;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "board";
+      board: Board;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: "thread";
+      thread: Thread;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: FailureKind;
+      message: string;
+      /** Native fragment in an authored wrapper; null means an authored fallback. Absent on older snapshots. */
+      nativeText?: string | null;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    };
+export type SearchCriteria = Record<string, string[]>;
+export interface SearchField {
+  name: string;
+  label: string;
+  /** Absent on older snapshots; only explicit false permits fallback translation. */
+  labelFromForum?: boolean;
+  kind: "text" | "select" | "choices";
+  multiple: boolean;
+  disabled: boolean;
+  readOnly: boolean;
+  maxLength: number | null;
+  options: { value: string; label: string; disabled: boolean }[];
+  values: string[];
+}
+export interface SearchForm {
+  url: string;
+  fields: SearchField[];
+  restrictions: string[];
+}
+export interface SearchRow extends ForumLink {
+  id: string;
+  author: ForumLink;
+  board: ForumLink;
+  date: string;
+  snippet: string;
+  stats: string;
+}
+export interface SearchResults {
+  id: string;
+  url: string;
+  summary: string;
+  rows: SearchRow[];
+  pages: Pagination;
+}
+export interface Search {
+  form: SearchForm;
+  edited: SearchCriteria;
+  effective: SearchCriteria | null;
+  submitted: SearchCriteria | null;
+  results: SearchResults | null;
+}
+export type AttachmentRemovalResult = {
+  kind: "removed" | "uncertain" | "not-sent";
+  message: string;
+  latest?: PreparedWriting;
+};
+/** Transient caller validity, checked after native preflight and before an effect.
+ * Never serialize this guard or treat it as forum authority. */
+export interface EffectGuard {
+  check(): Promise<boolean>;
+  current(): boolean;
+}
+export interface ForumClient {
+  prepareReport(target: ReportTarget): Promise<ReportPreparation>;
+  submitReport(form: ReportForm, intent: ReportIntent): Promise<ReportResult>;
+  prepareRating(target: RatingTarget): Promise<RatingPreparation>;
+  submitRating(form: RatingForm, intent: RatingIntent): Promise<RatingResult>;
+  sendPrivateMessage(
+    review: PrivateReview,
+    attempt: PrivateAttempt,
+    retain: (pending: PrivateAttempt) => Promise<boolean>,
+  ): Promise<PrivateAttempt>;
+  checkPrivateMessage(attempt: PrivateAttempt): Promise<PrivateAttempt>;
+  preparePrivateWriting(
+    destination: string,
+    expectedAccount: Account,
+  ): Promise<PrivateWritingPreparation>;
+  preparePrivateReview(
+    submission: PrivateSubmission,
+  ): Promise<PrivateReviewPreparation>;
+  removeUploadedAttachment(
+    writing: PreparedWriting,
+    id: string,
+    checkOnly?: boolean,
+    guard?: EffectGuard,
+  ): Promise<AttachmentRemovalResult>;
+  checkReplyAttachments?(
+    writing: PreparedWriting,
+  ): Promise<ReplyAttachmentCheck>;
+  uploadAttachment(
+    writing: PreparedWriting,
+    file: UploadFile,
+    progress: (loaded: number) => void,
+    signal: UploadCancellation,
+    guard?: EffectGuard,
+  ): Promise<UploadResult>;
+  resumeDraft(
+    row: DraftRow,
+    expectedAccount: Account,
+  ): Promise<PrepareWritingResult>;
+  prepareDraftSave(attempt: DraftAttempt): Promise<DraftAttempt>;
+  saveDraft(attempt: DraftAttempt): Promise<DraftAttempt>;
+  publishDraft(attempt: DraftAttempt): Promise<DraftAttempt>;
+  checkDraft(attempt: DraftAttempt, row?: DraftRow): Promise<DraftAttempt>;
+
+  readDrafts(
+    destination?: string,
+    prior?: DraftList,
+    expectedAccount?: Account,
+  ): Promise<DraftListResult>;
+  prepareFavorite(
+    intent: FavoriteIntent,
+    previousAttemptId?: string,
+  ): Promise<FavoritePreparation>;
+  changeFavorite(attempt: FavoriteAttempt): Promise<FavoriteAttempt>;
+  checkFavoriteResult(attempt: FavoriteAttempt): Promise<FavoriteAttempt>;
+  readPrivateConversation(
+    destination: string,
+    prior?: PrivateConversation,
+    expectedAccount?: Account,
+  ): Promise<ReadResult>;
+  readMessages(
+    destination: string,
+    prior?: Messages,
+    expectedAccount?: Account,
+  ): Promise<ReadResult>;
+  readNotices(
+    destination: string,
+    prior?: Notices,
+    expectedAccount?: Account,
+  ): Promise<ReadResult>;
+  cancelDownload(): void;
+  downloadAttachment(request: AttachmentRequest): Promise<AttachmentResult>;
+  readSearchPage(
+    url: string,
+    prior: Search,
+    expectedAccount: Account,
+  ): Promise<ReadResult>;
+  search(
+    criteria: SearchCriteria,
+    form: SearchForm,
+    expectedAccount: Account,
+  ): Promise<ReadResult>;
+  findMention(writing: PreparedWriting, query: string): Promise<MentionResult>;
+  preparePostEdit(
+    threadURL: string,
+    postId: string,
+  ): Promise<PrepareWritingResult>;
+  prepareEditPublication(
+    submission: ThreadSubmission,
+  ): Promise<PublicationPreparationResult>;
+  savePostEdit(attempt: ThreadAttempt): Promise<ThreadAttempt>;
+  checkEditResult(attempt: ThreadAttempt): Promise<ThreadAttempt>;
+  prepareNewThread(
+    boardId: string,
+    redPacket?: boolean,
+  ): Promise<PrepareWritingResult>;
+  prepareReply(
+    boardId: string,
+    target: ReplyTarget,
+  ): Promise<PrepareWritingResult>;
+  prepareThreadPublication(
+    submission: ThreadSubmission,
+  ): Promise<PublicationPreparationResult>;
+  publishThread(
+    attempt: ThreadAttempt,
+    guard?: EffectGuard,
+  ): Promise<ThreadAttempt>;
+  checkThreadResult(
+    attempt: ThreadAttempt,
+    candidateURL?: string,
+  ): Promise<ThreadAttempt>;
+  readThread(url: string): Promise<ReadResult>;
+  readPage(url: string, options?: { fresh?: boolean }): Promise<ReadResult>;
+  readonly account: Account;
+  readonly generation: number;
+}
+
+export interface WritingOption {
+  minimum?: string;
+  maximum?: string;
+  step?: string;
+  name: string;
+  label: string;
+  kind: "checkbox" | "select" | "text";
+  value: string;
+  checked: boolean;
+  disabled: boolean;
+  choices: { value: string; label: string; disabled: boolean }[];
+  maxLength: number | null;
+}
+export interface MentionIdentity {
+  id: string;
+  name: string;
+}
+export type MentionResult =
+  | {
+      kind: "people";
+      people: MentionIdentity[];
+      generation: number;
+      account: Account;
+    }
+  | {
+      kind: FailureKind;
+      message: string;
+      generation: number;
+      account: Account;
+    };
+export interface ReplyTarget {
+  threadId: string;
+  postId: string | null;
+  author: string;
+  authorId: string | null;
+}
+export interface WritingBaseline {
+  title: string;
+  titleAvailable?: boolean;
+  source: string;
+  category: WritingOption | null;
+  options: WritingOption[];
+  uploadedReferences: string[];
+  attachmentFields?: { name: string; value: string; disabled: boolean }[];
+}
+/** Qualified one-to-one plaintext writing; no public-post capabilities are implied. */
+export interface PreparedPrivateWriting {
+  action: "private-message";
+  account: Extract<Account, { kind: "member" }>;
+  recipient: { id: string; name: string; url: string };
+  source: string;
+  maxLength: number | null;
+}
+export interface PrivateSubmission {
+  contextId: string;
+  revision: number;
+  writing: PreparedPrivateWriting;
+}
+export interface PrivateReview {
+  id: string;
+  generation: number;
+  submission: PrivateSubmission;
+}
+export interface PrivateAttempt {
+  id: string;
+  submission: PrivateSubmission;
+  before: string[];
+  status: "pending" | "not-sent" | "uncertain" | "confirmed";
+  checked: boolean;
+  message: string;
+  result: {
+    messageId: string;
+    url: string;
+    senderId: string;
+    recipientId: string;
+    source: string;
+  } | null;
+}
+export type PrivateWritingPreparation =
+  | {
+      kind: "prepared";
+      prepared: PreparedPrivateWriting;
+      account: Account;
+      generation: number;
+    }
+  | { kind: "refused"; message: string; account: Account; generation: number };
+export type PrivateReviewPreparation =
+  | {
+      kind: "ready";
+      review: PrivateReview;
+      account: Account;
+      generation: number;
+    }
+  | {
+      kind: "refused";
+      issue?: WritingValidationIssue;
+      message: string;
+      account: Account;
+      generation: number;
+    };
+
+export interface PreparedWriting {
+  uploads?: WritingUpload[];
+  action: "new-thread" | "reply" | "quick-quote" | "edit-post";
+  replyTarget?: ReplyTarget;
+  mentions?: MentionIdentity[];
+  existingRedPacket?: boolean;
+  redPacket?: { hints: string[] };
+  editTarget?: {
+    threadId: string;
+    postId: string;
+    threadURL: string;
+    baseline: WritingBaseline;
+  };
+  draftSaveAvailable?: boolean;
+  draft?: DraftIdentity;
+  board: { id: string; label: string; url: string };
+  account: Extract<Account, { kind: "member" }>;
+  title: string;
+  titleAvailable?: boolean;
+  source: string;
+  category: WritingOption | null;
+  options: WritingOption[];
+  uploadedReferences: string[];
+  attachmentFields?: { name: string; value: string; disabled: boolean }[];
+}
+export type PrepareWritingResult =
+  | {
+      kind: "prepared";
+      prepared: PreparedWriting;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    }
+  | {
+      kind: FailureKind;
+      message: string;
+      account: Account;
+      generation: number;
+      sourceURL: string;
+    };
+
+/** An immutable submitted revision, separate from subsequently edited writing. */
+export interface ThreadSubmission {
+  contextId: string;
+  revision: number;
+  writing: PreparedWriting;
+}
+export interface ReplyBefore {
+  /** Observed page only; this is not a complete census or a predicted merge target. */
+  pageURL: string;
+  postIds: string[];
+  owned: { postId: string; writing: PreparedWriting }[];
+}
+export interface ThreadPublication {
+  id: string;
+  generation: number;
+  submission: ThreadSubmission;
+  replyBefore?: ReplyBefore;
+}
+export interface WritingValidationIssue {
+  field: "title" | "source" | "category" | "option";
+  name?: string;
+  code:
+    | "required"
+    | "unavailable"
+    | "too-long"
+    | "single-line"
+    | "native-limit"
+    | "packet-minimum";
+  limit?: number;
+}
+export type PublicationPreparationResult =
+  | {
+      kind: "ready";
+      publication: ThreadPublication;
+      account: Account;
+      generation: number;
+    }
+  | {
+      kind: "conflict";
+      latest: PreparedWriting;
+      message: string;
+      account: Account;
+      generation: number;
+    }
+  | {
+      kind: FailureKind | "validation";
+      validation?: {
+        source: "local" | "form";
+        issues: WritingValidationIssue[];
+      };
+      /** A fresh response identified the original actor; this is not send approval. */
+      accountVerified?: boolean;
+      message: string;
+      account: Account;
+      generation: number;
+    };
+/** A command instruction, independent of the verified stored thread. */
+export type ThreadCreationEffect = {
+  name: "addfeed" | "adddynamic" | "adddynamic_doing";
+} & (
+  | { requested: true; included: boolean; outcome: "unknown" }
+  | { requested: false; included: false; outcome: "not-requested" }
+);
+/** A qualified enabled attachment-price default; the submitted field stays exact. */
+export interface AttachmentNormalization {
+  name: string;
+  submitted: "";
+  stored: "0";
+}
+/** Fresh complete stored-source/options verification, not effect-delivery proof. */
+export interface ThreadVerification {
+  stored: "verified";
+  normalizations: { name: "price"; submitted: ""; stored: "0" }[];
+  attachmentNormalizations?: AttachmentNormalization[];
+  creationEffects: ThreadCreationEffect[];
+}
+export interface RedPacketLedger {
+  state: "observed" | "unavailable";
+  rows: {
+    operation: "HBS" | "HBR" | "HBG";
+    change: string;
+    details: string;
+    time: string;
+  }[];
+}
+export interface RedPacketObservation {
+  ledger?: RedPacketLedger;
+  state: string;
+  conditions: string[];
+  credit: "unknown";
+}
+export interface ThreadAttempt {
+  redPacket?: RedPacketObservation;
+  id: string;
+  publication: ThreadPublication;
+  status:
+    | "pending"
+    | "uncertain"
+    | "rejected"
+    | "moderation"
+    | "confirmed"
+    | "not-sent";
+  message: string;
+  checked: boolean;
+  candidateURL: string | null;
+  replyComparison?: {
+    postId: string;
+    before: PreparedWriting | null;
+    observed: PreparedWriting;
+  };
+  result: {
+    threadId: string;
+    postId: string;
+    url: string;
+    /** Absent only on compatible legacy confirmations. New readbacks supply it. */
+    verification?: ThreadVerification;
+  } | null;
+}
+
+export interface DraftRow {
+  threadId: string;
+  boardId: string;
+  title: string;
+  url: string;
+}
+export interface DraftList {
+  url: string;
+  rows: DraftRow[];
+  pages: Pagination;
+  empty: string;
+}
+export type DraftListResult = (
+  { kind: "drafts"; drafts: DraftList } | { kind: FailureKind; message: string }
+) & { account: Account; generation: number; sourceURL: string };
+
+export interface DraftIdentity {
+  threadId: string;
+  postId: string;
+  url: string;
+  version: string;
+}
+export interface DraftAttempt {
+  redPacket?: RedPacketObservation;
+  fundingReviewed?: true;
+  observation?: {
+    packetMarker?: true;
+    state: "draft" | "published";
+    content: "confirmed" | "unknown";
+    attachments: "confirmed" | "unknown";
+    /** Independently observed native free-price defaults; submission stays exact. */
+    attachmentNormalizations?: AttachmentNormalization[];
+  };
+  checked?: boolean;
+  resendOf?: string;
+  priorDraftIds?: string[];
+  operation?: "save" | "publish";
+  publishedURL?: string;
+  id: string;
+  generation: number;
+  submission: ThreadSubmission;
+  status:
+    | "pending"
+    | "uncertain"
+    | "rejected"
+    | "not-sent"
+    | "confirmed"
+    | "published"
+    | "remaining-draft"
+    | "moderation";
+  message: string;
+  result: DraftIdentity | null;
+}
+export interface FavoriteIntent {
+  action: "add" | "remove";
+  kind: FavoriteKind;
+  targetId: string;
+  recordId: string | null;
+  accountId: string;
+}
+export interface FavoriteCommand {
+  id: string;
+  generation: number;
+  intent: FavoriteIntent;
+}
+export interface FavoriteAttempt {
+  id: string;
+  command: FavoriteCommand;
+  status: "pending" | "confirmed" | "uncertain" | "not-sent";
+  checked: boolean;
+  message: string;
+  pages: Favorites[] | null;
+}
+export type FavoritePreparation =
+  | { kind: "ready"; command: FavoriteCommand }
+  | { kind: "already"; message: string; pages: Favorites[] }
+  | { kind: "unavailable"; message: string };
+
+/** Current native rating controls; opaque authority is kept inside the client. */
+export interface RatingTarget {
+  url: string;
+  threadURL: string;
+  threadId: string;
+  postId: string;
+  author: string;
+  accountId: string;
+}
+export interface RatingForm {
+  reasons: string[];
+  id: string;
+  target: RatingTarget;
+  scores: {
+    name: string;
+    label: string;
+    minimum: number;
+    maximum: number;
+    remaining: number;
+  }[];
+  notify: boolean;
+  notice: string;
+  generation: number;
+}
+export type RatingPreparation =
+  | { kind: "ready"; form: RatingForm }
+  | { kind: "unavailable"; message: string };
+
+export interface RatingIntent {
+  scores: Record<string, number>;
+  reason: string;
+  notify: boolean;
+}
+export interface RatingResult {
+  kind: "confirmed" | "rejected" | "uncertain" | "not-sent";
+  message: string;
+  intent: RatingIntent;
+  target: RatingTarget;
+}
+
+/** Source-qualified post reporting; authority tokens remain inside the client. */
+export interface ReportTarget {
+  url: string;
+  threadURL: string;
+  threadId: string;
+  postId: string;
+  boardId: string;
+  author: string;
+  accountId: string;
+}
+export interface ReportForm {
+  id: string;
+  target: ReportTarget;
+  reasons: string[];
+  maximum: number;
+  generation: number;
+}
+export type ReportPreparation =
+  | { kind: "ready"; form: ReportForm }
+  | { kind: "unavailable"; message: string };
+
+export interface ReportIntent {
+  reason: string;
+  message: string;
+}
+/** No confirmed variant until an independent report-status source is qualified. */
+export interface ReportResult {
+  kind: "rejected" | "uncertain" | "not-sent";
+  message: string;
+  intent: ReportIntent;
+  target: ReportTarget;
+}

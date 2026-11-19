@@ -1,0 +1,24 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "files": {
+    "test/data/tsdmapp/v4/achievement_v68_empty.json": "e1dcbddc05abfe557bb011b6778ecd657e32ff7ab53fefdb7035846b76b4441c",
+    "test/data/medal_apply_form_v3_x5.html": "90c1209d4870a38ef3c3523ecf5346507d91787130de0f5e88b6625c221c4fb5",
+    "test/data/medal_apply_unmet_v3_x5.html": "ef9ab2dbff37950c1dafda79a5f358e42ec0ff12c692843eb82bf324bc513259",
+    "test/data/medal_claim_success_v3_x5.html": "330711e63962cf9f19811f26375ac5392bd069cf8c753cfdd960d812432eea2c",
+    "test/data/medal_catalog_v3_x5.html": "f7e2e34c99832c4f9953b871671195820b1435c479d20131d5830e7ef0ad4ebe",
+    "test/data/medal_catalog_x5.html": "568e8df9f64228c249fcdc4a62e649fd6d320ba9e460951984c37cd64b5f5087",
+    "test/data/tsdmapp/s3_title.json": "937fec895841faedd139aba55982f61c2941f79c899ff63493030a7dbe7a47ba",
+    "test/data/tsdmapp/s3_shop.json": "0cf464653e1b9292f9ba552505d2333deb25b6e735a11fa101c0091d5dad1993",
+    "test/data/tsdmapp/s3_medal.json": "02d26bf1cce106359187dc1e8ba3a3e350902370366a87473f92a762a99adb47",
+    "test/data/tsdmapp_390/bggrant_can.json": "f9e5403a0a6e1e80baf79b4472fdb2443685723e1bbc72f14bbbf4d06f7250f0",
+    "test/data/tsdmapp_390/bggrant_keyword.json": "60e46bfcf80026229081369b9f92cb26a87fa1e8370ea40591ce24ea0f21da86",
+    "test/data/tsdmapp_390/bggrant_result_success.json": "87653d886e32f164b35e3a96e2ccfc45e3ad818752fb6bc42eed53f92ebbdeb5",
+    "test/data/tsdmapp_390/bggrant_result_noperm.json": "1b1a57db6d8117b109a6339f9bf8a45d86280962760cb71dcc059e69da1ed8c0",
+    "test/data/tsdmapp_390/bggrant_cannot.json": "b0752fcbd29ce945576643e9001752f4dbc48f08c8d92bea8b2e458168fe884e",
+    "test/regression/test_1122_feedback_android_version_test.dart": "324f1fe70357d359969712754438237a68d5844ff4d9d65b4ee88decb92a79d7",
+    "test/regression/test_1270_emoji_new_group_host_test.dart": "4351142ea8e101bf407df5558ddd7dfad1f78baf153e109846fe8c9db9e371cc",
+    "test/regression/test_197_tsdmapp_medal_title_test.dart": "daad9d939adec383ad75e999b0776c5754cc6237d609d5578ee0589af156c42b",
+    "test/regression/test_198_medal_title_tools_pages_test.dart": "900be54a0f91d562a6ae8e17dd2321efdd2484b5a9b75a77694a45140de8a0ba",
+    "test/regression/test_890_background_grant_test.dart": "260c7a31aeabaf40a5ea3a3eea771d46e40f84949135e70ae2bbcfd2aa0300c6"
+  }
+}

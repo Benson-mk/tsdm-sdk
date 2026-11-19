@@ -1,0 +1,10 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "files": {
+    "test/data/tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+    "lib/features/pokemon/repository/pokemon_repository.dart": "486ef659e2f19ccf399c61a8ed1a5c049c66180dcaf6358b404234f2dc5ba363",
+    "test/regression/test_176_pokemon_test.dart": "55a3e228dab800a242fdd4f4b4339449682e5a96d99a01b18a54c40367824d8b",
+    "test/regression/test_178_pokemon_skills_equipment_test.dart": "44d80ae4a6cae39673fe4ffca697d1bfeade56e080789dc7b4c6399a79329abf",
+    "test/regression/test_180_pokemon_party_healing_test.dart": "762614541e7e1147388196ae6ebc9539584bb767c9957bfd258bb327ef29ef54"
+  }
+}

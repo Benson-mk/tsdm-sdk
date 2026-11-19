@@ -1,0 +1,67 @@
+{
+  "evidence": "controlled loopback HTTP",
+  "archiveSHA256": "ea6ccd10ec61ba38bcd8bbb450e2563c95cf820d3aa8524c92e21e1b77b69bdb",
+  "pythonRequests": [
+    {
+      "method": "GET",
+      "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+      "fields": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/home.php?mod=spacecp&ac=profile&op=info&tsdmapp=json",
+      "fields": {
+        "sightml": "[b]Fixture caf\u00e9[/b]",
+        "formhash": "fixturehash",
+        "profilesubmit": "true",
+        "profilesubmitbtn": "true"
+      },
+      "status": 302
+    },
+    {
+      "method": "POST",
+      "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+      "fields": {
+        "formhash": "fixturehash",
+        "op": "register",
+        "device": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "platform": "linux",
+        "app_version": "0.1.0"
+      },
+      "status": 200
+    }
+  ],
+  "curl": [
+    {
+      "method": "GET",
+      "path": "/plugin.php?id=tsdmapp%3Aapi&action=sync",
+      "fields": null,
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/home.php?mod=spacecp&ac=profile&op=info&tsdmapp=json",
+      "fields": {
+        "sightml": "[b]Fixture caf\u00e9[/b]",
+        "formhash": "fixturehash",
+        "profilesubmit": "true",
+        "profilesubmitbtn": "true"
+      },
+      "status": 302
+    },
+    {
+      "method": "POST",
+      "path": "/plugin.php?id=tsdmapp%3Aapi&action=device",
+      "fields": {
+        "formhash": "fixturehash",
+        "op": "register",
+        "device": "8ff19e8b-e328-4d40-843d-c79267d29701",
+        "platform": "linux",
+        "app_version": "0.1.0"
+      },
+      "status": 200
+    }
+  ],
+  "redirectFollowed": false
+}

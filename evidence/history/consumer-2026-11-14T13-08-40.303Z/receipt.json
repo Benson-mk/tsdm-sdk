@@ -1,0 +1,660 @@
+{
+  "schema": 1,
+  "runId": "2026-11-14T13:08:40.303Z",
+  "timezone": "Asia/Hong_Kong",
+  "mode": "clean-public-node-consumer",
+  "status": "passed",
+  "runtime": {
+    "node": "v24.22.0",
+    "npm": "11.21.1",
+    "typescript": "6.0.3",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "package": {
+    "name": "@tsdm/forum-client",
+    "version": "0.26.0",
+    "file": "tsdm-forum-client-0.26.0.tgz",
+    "bytes": 115363,
+    "sha256": "1e0d15a313cd8aee8d08e6a596beda67225de9796fdb808c051dd5f5546457fe"
+  },
+  "artifact": {
+    "README.md": {
+      "bytes": 12457,
+      "sha256": "0004987bfae8744542ee784b4c138b7a76e901354eaab08e5f07df4b63f5793a"
+    },
+    "edit-post.d.ts": {
+      "bytes": 749,
+      "sha256": "d75bdf486755b15456cb39db74dd4685bf4c9afaa6436a420f0cdaebbb6a68b0"
+    },
+    "index.d.ts": {
+      "bytes": 608,
+      "sha256": "23cca59862cd36f45ce2ce5dea295bddac59c6dd45879843b2d1278d6793b83e"
+    },
+    "index.js": {
+      "bytes": 427774,
+      "sha256": "b3ae6e33252324981b953a4c35fd0e96b31f70c4e5ee4da622568588775fadf0"
+    },
+    "package.json": {
+      "bytes": 369,
+      "sha256": "c3d0e4c11c6e2a83e61b0ea94194a21166ba82022869ef8f116a8f9526ade0d0"
+    },
+    "prepare-writing.d.ts": {
+      "bytes": 953,
+      "sha256": "7143ade1a9b1f41060591cfd7a2051bc4ac29cdd146d01ca231024ef2c4d928a"
+    },
+    "types.d.ts": {
+      "bytes": 25544,
+      "sha256": "65af03d955223487ddf4fc0aed5c2fe2ae5fc1e6770f71b2b56842bca16e04eb"
+    }
+  },
+  "caseInputs": {
+    "consumer": {
+      "bytes": 107416,
+      "sha256": "5a63a1c0a1b047175c89d0d3af4feec4d376942bf9f9a55cdc9f79cac416eb9f"
+    },
+    "declarations": {
+      "bytes": 11885,
+      "sha256": "861aab2a59c335deb0c8a455022ce3246dde4743064d391921d623781ca65bce"
+    }
+  },
+  "commands": [
+    "npm run build",
+    "npm run test:consumer",
+    "npm exec -- node replay-consumer.mjs ."
+  ],
+  "packageSha256": "1e0d15a313cd8aee8d08e6a596beda67225de9796fdb808c051dd5f5546457fe",
+  "checks": {
+    "install": "passed",
+    "import": "passed",
+    "declarationsWithoutDOM": "passed",
+    "serializablePopulatedResult": "passed",
+    "searchAndReturnedPageContract": "passed",
+    "freshAttachmentAndBinaryContract": "passed",
+    "portablePreparedWriting": "passed",
+    "portableWritingReferences": "passed",
+    "deliberateCompleteNotices": "passed",
+    "completePublicationBindingAndRecovery": "passed",
+    "ordinaryDraftPublicFlow": "passed",
+    "replyFullSourceAndMergedReadOnlyRecovery": "passed",
+    "ownedEditSourceConflictAndIndependentReferenceReadback": "passed",
+    "fundedAndDirectPacketConsentAndIndependentOutcomes": "passed",
+    "favoriteOneUseAndUncertainAuthorization": "passed",
+    "noRuntimeDependencies": "passed",
+    "privateSubpathsRejected": "passed",
+    "isolatedCompiler": "passed",
+    "exactInstalledArtifact": "passed",
+    "inputsUnchangedDuringRun": "passed"
+  },
+  "observed": {
+    "status": "passed",
+    "version": "0.26.0",
+    "threadId": "42",
+    "searchId": "581",
+    "resultTitle": "External result",
+    "downloadName": "portable.bin",
+    "downloadBytes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "requests": [
+      {
+        "url": "https://fixture.example/forum.php?mod=viewthread&tid=42&tsdmapp=json"
+      },
+      {
+        "url": "https://fixture.example/search.php?mod=forum&adv=yes&tsdmapp=json"
+      },
+      {
+        "url": "https://fixture.example/search.php?mod=forum&adv=yes&tsdmapp=json"
+      },
+      {
+        "url": "https://fixture.example/search.php?mod=forum&tsdmapp=json",
+        "options": {
+          "method": "POST",
+          "body": "formhash=current-token&searchsubmit=yes&srchtxt=autumn&srchuname="
+        }
+      },
+      {
+        "url": "https://fixture.example/search.php?mod=forum&searchid=581&page=2&tsdmapp=json"
+      },
+      {
+        "url": "https://fixture.example/forum.php?mod=viewthread&tid=42&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      }
+    ],
+    "fileRequests": [
+      "https://fixture.example/forum.php?mod=attachment&aid=authored-token"
+    ],
+    "preparedBoard": "5",
+    "preparationRequests": [
+      "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&tsdmapp=json"
+    ],
+    "noticeRequests": [
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      },
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&view=all&type=&isread=1&page=2&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      },
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&view=system&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      },
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&view=system&page=2&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      },
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&view=system&page=2&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      },
+      {
+        "url": "https://fixture.example/home.php?mod=space&do=notice&tsdmapp=json",
+        "options": {
+          "fresh": true
+        }
+      }
+    ],
+    "noticeId": "73",
+    "noticePage": "2",
+    "publicationCases": [
+      {
+        "name": "literal native true submitter preserves ordinary action and exact body",
+        "status": "passed"
+      },
+      {
+        "name": "complete immutable source/options and independent confirmation",
+        "status": "passed"
+      },
+      {
+        "name": "superseded same-context preparation cannot send",
+        "status": "passed"
+      },
+      {
+        "name": "fresh clients never reuse serializable preparation identity",
+        "status": "passed"
+      },
+      {
+        "name": "caller edits while preparation waits cannot change submitted snapshot",
+        "status": "passed"
+      },
+      {
+        "name": "caller edits while publication waits cannot change original attempt",
+        "status": "passed"
+      },
+      {
+        "name": "fresh preparation after recovery establishes same actor immediately",
+        "status": "passed"
+      },
+      {
+        "name": "mutated public submission refuses without POST",
+        "status": "passed"
+      },
+      {
+        "name": "duplicate pending activation has one effectful request",
+        "status": "passed"
+      },
+      {
+        "name": "preflight transport failure is known not sent",
+        "status": "passed"
+      },
+      {
+        "name": "delayed prepare cannot overwrite a newer actor observation",
+        "status": "passed"
+      },
+      {
+        "name": "delayed preflight cannot overwrite a newer actor observation",
+        "status": "passed"
+      },
+      {
+        "name": "delayed result cannot overwrite a newer actor observation",
+        "status": "passed"
+      },
+      {
+        "name": "delayed source cannot overwrite a newer actor observation",
+        "status": "passed"
+      },
+      {
+        "name": "changed actor while POST pending retains uncertainty",
+        "status": "passed"
+      },
+      {
+        "name": "disabled blank price omitted from command with stored \"0\"",
+        "status": "passed"
+      },
+      {
+        "name": "disabled blank price omitted from command with stored \"\"",
+        "status": "passed"
+      },
+      {
+        "name": "qualified stored proof preserves normalization and independent unknown effects",
+        "status": "passed"
+      },
+      {
+        "name": "checked disabled creation instruction is requested but not included or verified",
+        "status": "passed"
+      },
+      {
+        "name": "legacy uncertain original upgrades by GET-only check and failed recheck retains prior proof",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide missing price",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide unexplained price",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide missing signature",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide changed source",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide missing permission",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide changed category",
+        "status": "passed"
+      },
+      {
+        "name": "stored normalization cannot hide changed parsing",
+        "status": "passed"
+      },
+      {
+        "name": "callback refuses unguarded empty suffix",
+        "status": "passed"
+      },
+      {
+        "name": "callback refuses mismatched guard",
+        "status": "passed"
+      },
+      {
+        "name": "callback refuses arbitrary suffix",
+        "status": "passed"
+      },
+      {
+        "name": "callback refuses extra script",
+        "status": "passed"
+      },
+      {
+        "name": "callback refuses dynamic argument",
+        "status": "passed"
+      },
+      {
+        "name": "UX60 local refusal is serializable and invalidates older same-context send approval without HTTP",
+        "status": "passed"
+      },
+      {
+        "name": "UX60 multiline title is a local field refusal rather than account expiry",
+        "status": "passed"
+      }
+    ],
+    "replyCases": [
+      {
+        "name": "reply-public-prepare-send-source-readback-and-check",
+        "status": "passed",
+        "posts": 1,
+        "postId": "303"
+      },
+      {
+        "name": "reply-public-native-supplement-read-only-check",
+        "status": "passed",
+        "posts": 1,
+        "postId": "303"
+      }
+    ],
+    "editingCases": [
+      {
+        "name": "owned-edit-complete-source-conflict-save-independent-readback-and-reference-change",
+        "status": "passed",
+        "posts": 1,
+        "postId": "101"
+      }
+    ],
+    "draftCases": [
+      {
+        "name": "packaged-client ordinary same-record save/resume/publication and operation isolation",
+        "status": "passed",
+        "requests": [
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&topicsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tsdmapp=json&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=ajax&action=attachlist&aids=88&fid=5&inajax=1&ajaxtarget=attachlist",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&tid=42&pid=101&editsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          }
+        ],
+        "posts": 2
+      },
+      {
+        "name": "packaged-client funded same-record save/resume/publication and operation isolation",
+        "status": "passed",
+        "requests": [
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&fid=5&specialextra=hongbao",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=newthread&topicsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tsdmapp=json&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=ajax&action=attachlist&aids=88&fid=5&inajax=1&ajaxtarget=attachlist",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&tid=42&pid=101&editsubmit=yes&fid=5&inajax=1",
+            "method": "POST"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save&tsdmapp=json",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=space&do=thread&view=me&type=thread&filter=save",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=viewthread&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/forum.php?mod=post&action=edit&fid=5&tid=42&pid=101",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/plugin.php?id=hongbao%3Aopen&tid=42",
+            "method": "GET"
+          },
+          {
+            "url": "https://fixture.example/home.php?mod=spacecp&ac=credit&op=log",
+            "method": "GET"
+          }
+        ],
+        "posts": 2
+      }
+    ],
+    "favoriteCases": [
+      "altered-preparation-refused",
+      "native-add-independent-presence",
+      "used-attempt-refused",
+      "uncertain-attempt-blocks-unwarned-resend",
+      "fresh-client-check-no-replay",
+      "stale-preparation-cannot-bypass-uncertainty",
+      "retry-authority-excludes-newer-uncertainty",
+      "preparation-await-does-not-import-resend-authority",
+      "execution-await-rechecks-imported-uncertainty",
+      "unrelated-target-retains-preparation-authority"
+    ],
+    "packetCases": [
+      {
+        "name": "packet-direct-public-consent-and-independent-observations",
+        "status": "passed",
+        "posts": 1,
+        "fundingCommands": 1,
+        "credit": "unknown"
+      },
+      {
+        "name": "packet-funded-draft-public-consent-and-independent-observations",
+        "status": "passed",
+        "posts": 2,
+        "fundingCommands": 1,
+        "credit": "unknown"
+      }
+    ],
+    "boundaryCases": [
+      {
+        "name": "public package hides private exports and needs no browser globals",
+        "status": "passed"
+      },
+      {
+        "name": "HTML and JSON source filter groups are portable with exact destinations",
+        "status": "passed"
+      },
+      {
+        "name": "mixed native menu preserves source subgroup labels without guessed semantic kinds",
+        "status": "passed"
+      }
+    ],
+    "privateWritingCases": [
+      "one-use approval, acknowledged original attempt, prior identical message excluded and exact independent readback",
+      "storage refusal consumes approval and cannot replay",
+      "serialized uncertain attempt independently checked after restart, with no command replay",
+      "new refused preparation invalidates the older private approval",
+      "a delayed older preparation cannot revive approval after a newer refusal",
+      "a new private context preparation invalidates a send still awaiting recovery",
+      "mutable caller input cannot change the private snapshot after validation begins"
+    ]
+  },
+  "limitations": [
+    "This run qualifies the recorded artifact and existing public read/prepare/write/check-result contracts. Later integrated APIs require a final-candidate rerun; browser behavior is qualified separately.",
+    "Synthetic transport is not live forum evidence."
+  ]
+}

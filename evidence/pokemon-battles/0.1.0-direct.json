@@ -1,0 +1,2337 @@
+{
+  "archiveSHA256": "8a60eae997cd9866df5ce7893cd007730d38e02716bdfaf95cc6dbeb9d86399a",
+  "rosterGuideSHA256": "dc24947d6464c63b38be02494aa46be6ebc002526f7539bd076f08dfa585399e",
+  "battleGuideSHA256": "a261913aa15a1266da90ee74b7ecffea43834184cbac18369bf5bbe84930f393",
+  "results": [
+    {
+      "name": "requests status bootstrap",
+      "expected": {
+        "result": "status",
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "json": null,
+            "hash": null,
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": "status",
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "json": null,
+            "hash": null,
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl status bootstrap",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "uid": 31,
+            "ok": 1,
+            "formhash": "f1f2f3f4"
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "json": null,
+            "hash": null,
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "uid": 31,
+            "ok": 1,
+            "formhash": "f1f2f3f4"
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "json": null,
+            "hash": null,
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests GET shop/list",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "page": 2,
+            "items": [
+              {
+                "id": 30
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "page": 2,
+            "items": [
+              {
+                "id": 30
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl GET shop/list",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "page": 2,
+              "items": [
+                {
+                  "id": 30
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "page": 2,
+              "items": [
+                {
+                  "id": 30
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "list",
+              "page": "2",
+              "type": "4"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests GET shop/pets",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "pets": [
+              {
+                "id": 25
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "pets",
+              "page": "1"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "page": 1,
+            "pets": [
+              {
+                "id": 25
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "pets",
+              "page": "1"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl GET shop/pets",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "page": 1,
+              "pets": [
+                {
+                  "id": 25
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "pets",
+              "page": "1"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "page": 1,
+              "pets": [
+                {
+                  "id": 25
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "pets",
+              "page": "1"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST shop/buy",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "total_cost": 60,
+            "remaining_money": 940,
+            "items_purchased": 1
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy"
+            },
+            "json": {
+              "item_id": 30,
+              "quantity": 2
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "total_cost": 60,
+            "remaining_money": 940,
+            "items_purchased": 1
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy"
+            },
+            "json": {
+              "item_id": 30,
+              "quantity": 2
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST shop/buy",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "total_cost": 60,
+              "remaining_money": 940,
+              "items_purchased": 1
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy"
+            },
+            "json": {
+              "item_id": 30,
+              "quantity": 2
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "total_cost": 60,
+              "remaining_money": 940,
+              "items_purchased": 1
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy"
+            },
+            "json": {
+              "item_id": 30,
+              "quantity": 2
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST shop/buy_pet",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "total_cost": 800,
+            "remaining_money": 140,
+            "pokemon_type_id": 25,
+            "quantity": 1,
+            "site": 2
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy_pet"
+            },
+            "json": {
+              "pokemon_type_id": 25,
+              "quantity": 1
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "total_cost": 800,
+            "remaining_money": 140,
+            "pokemon_type_id": 25,
+            "quantity": 1,
+            "site": 2
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy_pet"
+            },
+            "json": {
+              "pokemon_type_id": 25,
+              "quantity": 1
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST shop/buy_pet",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "total_cost": 800,
+              "remaining_money": 140,
+              "pokemon_type_id": 25,
+              "quantity": 1,
+              "site": 2
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy_pet"
+            },
+            "json": {
+              "pokemon_type_id": 25,
+              "quantity": 1
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "total_cost": 800,
+              "remaining_money": 140,
+              "pokemon_type_id": 25,
+              "quantity": 1,
+              "site": 2
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "shop",
+              "action": "buy_pet"
+            },
+            "json": {
+              "pokemon_type_id": 25,
+              "quantity": 1
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests GET battle/maps",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "maps": [
+              {
+                "id": 3
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "maps": [
+              {
+                "id": 3
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl GET battle/maps",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "maps": [
+                {
+                  "id": 3
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "maps": [
+                {
+                  "id": 3
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests GET battle/recover",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl GET battle/recover",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests GET battle/get_battle_items",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "items": [
+              {
+                "id": 30,
+                "nums": 2
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "get_battle_items"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "items": [
+              {
+                "id": 30,
+                "nums": 2
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "get_battle_items"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl GET battle/get_battle_items",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "items": [
+                {
+                  "id": 30,
+                  "nums": 2
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "get_battle_items"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "items": [
+                {
+                  "id": 30,
+                  "nums": 2
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "get_battle_items"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/start",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            "json": {
+              "map_id": 3,
+              "boss_pokemon_type_id": 149
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            "json": {
+              "map_id": 3,
+              "boss_pokemon_type_id": 149
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/start",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            "json": {
+              "map_id": 3,
+              "boss_pokemon_type_id": 149
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "start"
+            },
+            "json": {
+              "map_id": 3,
+              "boss_pokemon_type_id": 149
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/turn",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "defeat"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "turn"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "defeat"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "turn"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/turn",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "defeat"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "turn"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "defeat"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "turn"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/flee",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "fled"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "flee"
+            },
+            "json": {
+              "battle_id": "battle_123.456"
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "fled"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "flee"
+            },
+            "json": {
+              "battle_id": "battle_123.456"
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/flee",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "fled"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "flee"
+            },
+            "json": {
+              "battle_id": "battle_123.456"
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "fled"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "flee"
+            },
+            "json": {
+              "battle_id": "battle_123.456"
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/capture",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "captured"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "captured"
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/capture",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "captured"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "captured"
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/switch_pokemon",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "switch_pokemon"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "pokemon_id": 7
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "switch_pokemon"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "pokemon_id": 7
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/switch_pokemon",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "switch_pokemon"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "pokemon_id": 7
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "switch_pokemon"
+            },
+            "json": {
+              "battle_id": "battle_123.456",
+              "pokemon_id": 7
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/use_item",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            "json": {
+              "item_id": 30
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "requires_skill_selection": true,
+            "available_skills": [
+              {
+                "id": 15,
+                "pp": 0
+              }
+            ]
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            "json": {
+              "item_id": 30
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/use_item",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "requires_skill_selection": true,
+              "available_skills": [
+                {
+                  "id": 15,
+                  "pp": 0
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            "json": {
+              "item_id": 30
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "requires_skill_selection": true,
+              "available_skills": [
+                {
+                  "id": 15,
+                  "pp": 0
+                }
+              ]
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item"
+            },
+            "json": {
+              "item_id": 30
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests POST battle/use_item_on_skill",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item_on_skill"
+            },
+            "json": {
+              "item_id": 30,
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": {
+            "status": "active",
+            "battle_id": "battle_123.456",
+            "map_id": 3
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item_on_skill"
+            },
+            "json": {
+              "item_id": 30,
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl POST battle/use_item_on_skill",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item_on_skill"
+            },
+            "json": {
+              "item_id": 30,
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "data": {
+              "status": "active",
+              "battle_id": "battle_123.456",
+              "map_id": 3
+            },
+            "error": null,
+            "code": 0
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "use_item_on_skill"
+            },
+            "json": {
+              "item_id": 30,
+              "skill_id": 15
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests explicit recovery absence",
+      "expected": {
+        "result": {
+          "kind": "success",
+          "data": null
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "success",
+          "data": null
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl explicit recovery absence",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 404
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 404
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "recover"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests code 404 on another route",
+      "expected": {
+        "result": {
+          "kind": "refused",
+          "code": 404,
+          "message": "Game refused"
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "refused",
+          "code": 404,
+          "message": "Game refused"
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl code 404 on another route",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 404
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 404
+          }
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "maps"
+            },
+            "json": null,
+            "hash": "f1f2f3f4",
+            "contentType": null,
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests battle refusal",
+      "expected": {
+        "result": {
+          "kind": "refused",
+          "code": 403,
+          "message": "Game refused"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "refused",
+          "code": 403,
+          "message": "Game refused"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl battle refusal",
+      "expected": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 403
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 200,
+          "body": {
+            "success": false,
+            "data": null,
+            "error": "Game refused",
+            "code": 403
+          }
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests lost reply sends once",
+      "expected": {
+        "result": {
+          "kind": "uncertain"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "kind": "uncertain"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl lost reply sends once",
+      "expected": {
+        "result": {
+          "exit": 52
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "exit": 52
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "pokemon:pokemon",
+              "endpoint": "battle",
+              "action": "capture"
+            },
+            "json": {
+              "ball_id": 18
+            },
+            "hash": "f1f2f3f4",
+            "contentType": "application/json",
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests decline sends nothing",
+      "expected": {
+        "result": {
+          "kind": "cancelled"
+        },
+        "requests": []
+      },
+      "actual": {
+        "result": {
+          "kind": "cancelled"
+        },
+        "requests": []
+      }
+    },
+    {
+      "name": "curl decline sends nothing",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests stale login sends nothing",
+      "expected": {
+        "result": {
+          "kind": "session-changed"
+        },
+        "requests": []
+      },
+      "actual": {
+        "result": {
+          "kind": "session-changed"
+        },
+        "requests": []
+      }
+    },
+    {
+      "name": "curl stale login sends nothing",
+      "expected": {
+        "result": {
+          "exit": 3
+        },
+        "requests": []
+      },
+      "actual": {
+        "result": {
+          "exit": 3
+        },
+        "requests": []
+      }
+    }
+  ],
+  "limitations": [
+    "Inert HTTP listener and synthetic responses",
+    "No deployment observations or account effects"
+  ]
+}

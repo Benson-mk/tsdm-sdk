@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "digest": "sha256:edeebebbfa66e2e967ba16afacf132b9029a748b77b96f43cc80ce77ecac3ba6",
+      "id": 768055041,
+      "name": "release.json",
+      "size": 343,
+      "state": "uploaded"
+    },
+    {
+      "digest": "sha256:33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+      "id": 768055038,
+      "name": "tsdm-sdk-0.1.0.tgz",
+      "size": 423256,
+      "state": "uploaded"
+    }
+  ],
+  "draft": false,
+  "html_url": "https://github.com/Benson-mk/tsdm-sdk/releases/tag/v0.1.0",
+  "id": 451481314,
+  "immutable": true,
+  "published_at": "2026-11-19T14:45:30Z",
+  "tag_name": "v0.1.0"
+}

@@ -1,0 +1,82 @@
+{
+  "integrationBaseCommit": "a2729bf834416c9b619922b501e3ae461a8f8b37",
+  "archiveSHA256": "278abafbae7c513c194b9c32f739657eda5e9d0a8d789bc6be936f82263e0889",
+  "command": "sh evidence/posts/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "suitesPassing": [
+      "account",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "rows": 66
+    },
+    "collections": {
+      "status": "passed",
+      "rows": 56
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "rows": 2,
+      "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "rows": 3,
+      "historicalBundleSHA256": "e94c7d96ef5a514cb08238302ee553909b32e50d17586c5b258ee5e9c70370e6"
+    },
+    "members": {
+      "status": "passed",
+      "rows": 9
+    },
+    "messages": {
+      "status": "passed",
+      "rows": 7
+    },
+    "notices": {
+      "status": "passed",
+      "rows": 68
+    },
+    "posts-direct": {
+      "status": "passed",
+      "rows": 16
+    },
+    "posts-installed": {
+      "status": "passed",
+      "rows": 31
+    },
+    "profile": {
+      "status": "passed",
+      "rows": 54
+    },
+    "replies-direct": {
+      "status": "passed",
+      "rows": 18
+    },
+    "replies-installed": {
+      "status": "passed",
+      "rows": 2
+    },
+    "sdk": {
+      "status": "passed"
+    },
+    "spaces": {
+      "status": "passed",
+      "rows": 73
+    }
+  }
+}

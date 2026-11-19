@@ -1,0 +1,3046 @@
+{
+  "archiveSHA256": "13767238cdca9c836714e84f686c4d74ff5909faa81890fb96b4669c8529d085",
+  "guideSHA256": "193050a1ef393dd8164337eebf0627d90182ffee2449bea11ecbd478aa556e94",
+  "limitations": [
+    "Inert loopback with fictional member, password and transactions",
+    "No deployed forum requests or account effects"
+  ],
+  "results": [
+    {
+      "name": "requests reads directory",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads lobby",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads savings",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "cur"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "cur"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads fixed",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads transfer",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "chg"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "chg"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads loans",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "len"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "len"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads account",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "pas"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "pas"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads logs own",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "0",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "0",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads logs received",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "1",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "1",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads overview",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads rankings",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "list"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "list"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads trading",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "buy"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "buy"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads withdrawal-confirmation",
+      "expected": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix",
+              "op": "out",
+              "noid": "7"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix",
+              "op": "out",
+              "noid": "7"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads all 13 exact routes",
+      "expected": {
+        "result": 13,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "cur"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "chg"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "len"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "pas"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "0",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "1",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "list"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "buy"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix",
+              "op": "out",
+              "noid": "7"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      },
+      "actual": {
+        "result": 13,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "cur"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "chg"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "len"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "pas"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "0",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "log",
+              "show": "1",
+              "page": "1"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "list"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "mode": "other",
+              "action": "buy"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          },
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "bankid": "1",
+              "action": "fix",
+              "op": "out",
+              "noid": "7"
+            },
+            "body": [],
+            "cookieMatched": true,
+            "formEncoding": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "repay-loan leaves an exact browser destination",
+      "expected": {
+        "result": "/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gb&noid=7",
+        "requests": []
+      },
+      "actual": {
+        "result": "/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gb&noid=7",
+        "requests": []
+      }
+    },
+    {
+      "name": "cancel-loan leaves an exact browser destination",
+      "expected": {
+        "result": "/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gu&noid=7",
+        "requests": []
+      },
+      "actual": {
+        "result": "/plugin.php?id=bank_ane:bank&bankid=1&action=len&op=gu&noid=7",
+        "requests": []
+      }
+    },
+    {
+      "name": "requests posts open-account",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "open"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "bankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "open"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "bankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts open-account",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "open"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "bankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "open"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "bankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts close-account",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cl"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cl"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts close-account",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cl"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cl"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts change-password",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cg"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cg"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts change-password",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cg"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "pas"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass",
+                "<masked>"
+              ],
+              [
+                "newbankpass2",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "cg"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts deposit-current",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "200"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "200"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts deposit-current",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "200"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "200"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts withdraw-current",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "55"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "55"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts withdraw-current",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "55"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "55"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts settle-interest",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts settle-interest",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "cur"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts deposit-fixed",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "31"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "31"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts deposit-fixed",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "31"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "31"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "in"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts withdraw-fixed (noid)",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "noid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "noid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts withdraw-fixed (noid)",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "noid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "noid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts withdraw-fixed (fixid)",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "fixid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "fixid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts withdraw-fixed (fixid)",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "fixid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "fix"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "out"
+              ],
+              [
+                "fixid",
+                "7"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts transfer",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "chg"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "10"
+              ],
+              [
+                "touser",
+                "Fictitious recipient"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "chg"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "10"
+              ],
+              [
+                "touser",
+                "Fictitious recipient"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts transfer",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "chg"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "10"
+              ],
+              [
+                "touser",
+                "Fictitious recipient"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "chg"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "10"
+              ],
+              [
+                "touser",
+                "Fictitious recipient"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "ok"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests posts apply-loan",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "len"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "2"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "try"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "len"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "2"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "try"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl posts apply-loan",
+      "expected": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "len"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "2"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "try"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      },
+      "actual": {
+        "result": {
+          "status": 302,
+          "location": "/must-not-follow"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": "bank_ane:bank",
+              "tsdmapp": "json"
+            },
+            "body": [
+              [
+                "bankid",
+                "1"
+              ],
+              [
+                "action",
+                "len"
+              ],
+              [
+                "formhash",
+                "controlled-token"
+              ],
+              [
+                "banknum",
+                "100"
+              ],
+              [
+                "daynum",
+                "2"
+              ],
+              [
+                "bankpass",
+                "<masked>"
+              ],
+              [
+                "banksubmit",
+                "true"
+              ],
+              [
+                "op",
+                "try"
+              ]
+            ],
+            "cookieMatched": true,
+            "formEncoding": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declined POST",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declined POST",
+      "expected": {
+        "result": "",
+        "requests": []
+      },
+      "actual": {
+        "result": "",
+        "requests": []
+      }
+    }
+  ]
+}

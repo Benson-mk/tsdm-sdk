@@ -1,0 +1,3705 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "2954f182716a9f69868e72b15b07c837f1139c2a88fbe45f94029ac465f963ae",
+  "consumerSHA256": "431e6d9b599587dfa19b95232b146ae67f737783d13c7dab387235b69d02171d",
+  "guideSHA256": "4b5a94a4a785d7fb1714b3513635de7b5c79aa012f31230a430d811d23b2fe97",
+  "typescript": "Version 6.0.3",
+  "results": [
+    {
+      "name": "login requires confirmation, single-use form and observed dashboard",
+      "actual": [
+        "not-confirmed",
+        "dashboard",
+        {
+          "moderate": 3,
+          "notes": 0,
+          "forums": 1
+        },
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "not-confirmed",
+        "dashboard",
+        {
+          "moderate": 3,
+          "notes": 0,
+          "forums": 1
+        },
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "redrawn password form reports refusal after one attempt",
+      "actual": [
+        "refused",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "refused",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "another login as the same member cannot use the panel form",
+      "actual": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "session-changed",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "lost login reply is uncertain without resending",
+      "actual": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "uncertain",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "login"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "0"
+              ],
+              [
+                "submit",
+                "yes"
+              ],
+              [
+                "login_panel",
+                "yes"
+              ],
+              [
+                "cppwd",
+                "fictional-password"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "threads search opens, retains results and invalidates old pagination",
+      "actual": [
+        "not-confirmed",
+        [
+          "801"
+        ],
+        2,
+        "search-page",
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "search",
+              "submit": "true",
+              "fid": "10",
+              "keywords": "fiction",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "list",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "search",
+              "submit": "true",
+              "fid": "10",
+              "keywords": "new",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "not-confirmed",
+        [
+          "801"
+        ],
+        2,
+        "search-page",
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "search",
+              "submit": "true",
+              "fid": "10",
+              "keywords": "fiction",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "list",
+              "fid": "10",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "thread",
+              "do": "search",
+              "submit": "true",
+              "fid": "10",
+              "keywords": "new",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "posts search opens, retains results and invalidates old pagination",
+      "actual": [
+        "not-confirmed",
+        [
+          "901",
+          "902"
+        ],
+        2,
+        "search-page",
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "fid": "10",
+              "keywords": "fiction",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "list",
+              "fid": "10",
+              "posttableid": "0",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "fid": "10",
+              "keywords": "new",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "not-confirmed",
+        [
+          "901",
+          "902"
+        ],
+        2,
+        "search-page",
+        "stale",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "fid": "10",
+              "keywords": "fiction",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "list",
+              "fid": "10",
+              "posttableid": "0",
+              "page": "2",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "do": "search",
+              "searchsubmit": "true",
+              "posttableid": "0",
+              "fid": "10",
+              "keywords": "new",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "post deletion is selected, confirmed and reports a partial result",
+      "actual": [
+        "invalid-input",
+        "not-confirmed",
+        {
+          "kind": "partial",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [
+            "902"
+          ],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "invalid-input",
+        "not-confirmed",
+        {
+          "kind": "partial",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [
+            "902"
+          ],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "tsdmapp": "json"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "do",
+                "delete"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "deletesubmit",
+                "true"
+              ],
+              [
+                "delete[0]",
+                "901"
+              ],
+              [
+                "delete[1]",
+                "902"
+              ],
+              [
+                "nocredit",
+                "1"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "post deletion needs returned permission",
+      "actual": [
+        "refused",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "refused",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "thread",
+              "op": "post",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "report read, unsupported panel deletion, validation and confirmed resolution",
+      "actual": [
+        [
+          [
+            "501",
+            "77"
+          ],
+          [
+            "502",
+            null
+          ]
+        ],
+        {
+          "kind": "refused",
+          "code": "panel-report-delete-unavailable"
+        },
+        "invalid-input",
+        "invalid-input",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "501",
+          "code": "modcp_report_success"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            "501",
+            "77"
+          ],
+          [
+            "502",
+            null
+          ]
+        ],
+        {
+          "kind": "refused",
+          "code": "panel-report-delete-unavailable"
+        },
+        "invalid-input",
+        "invalid-input",
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "501",
+          "code": "modcp_report_success"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "reportsubmit",
+                "true"
+              ],
+              [
+                "reportids[0]",
+                "501"
+              ],
+              [
+                "reportuids[501]",
+                "77"
+              ],
+              [
+                "creditsvalue[501]",
+                "2"
+              ],
+              [
+                "msg[501]",
+                "reviewed"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "report resolution server denial sends once",
+      "actual": [
+        "refused",
+        2
+      ],
+      "expected": [
+        "refused",
+        2
+      ]
+    },
+    {
+      "name": "report resolution redrawn panel login sends once",
+      "actual": [
+        "refused",
+        2
+      ],
+      "expected": [
+        "refused",
+        2
+      ]
+    },
+    {
+      "name": "report resolution blank acknowledgement sends once",
+      "actual": [
+        "uncertain",
+        2
+      ],
+      "expected": [
+        "uncertain",
+        2
+      ]
+    },
+    {
+      "name": "report resolution lost response sends once",
+      "actual": [
+        "uncertain",
+        2
+      ],
+      "expected": [
+        "uncertain",
+        2
+      ]
+    },
+    {
+      "name": "threads queue read, confirmation and distinct outcome",
+      "actual": [
+        [
+          [
+            "801",
+            "99"
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "801",
+          "code": "modcp_mod_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            "801",
+            "99"
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "801",
+          "code": "modcp_mod_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "replies queue read, confirmation and distinct outcome",
+      "actual": [
+        [
+          [
+            "901",
+            null
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "901",
+          "code": "modcp_mod_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            "901",
+            null
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "acknowledged",
+          "id": "901",
+          "code": "modcp_mod_succeed"
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "members queue read, confirmation and distinct outcome",
+      "actual": [
+        [
+          [
+            "105",
+            null
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "105"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          [
+            "105",
+            null
+          ]
+        ],
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "105"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fixture reason"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "filter": "0",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "registration account deletion requires per-item permission",
+      "actual": [
+        "refused",
+        2
+      ],
+      "expected": [
+        "refused",
+        2
+      ]
+    },
+    {
+      "name": "native reply queue preserves missing author identity and uses AJAX verdict",
+      "actual": [
+        null,
+        "acknowledged",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1"
+            },
+            [
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                ""
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        "acknowledged",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "filter": "0"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1"
+            },
+            [
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                ""
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "threads bin search, restore and permanent deletion use distinct selected requests",
+      "actual": [
+        [
+          "801"
+        ],
+        "not-confirmed",
+        "refused",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "801"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "801"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "801"
+        ],
+        "not-confirmed",
+        "refused",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "801"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "801"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "op": "search"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "801"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebin",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "posts bin search, restore and permanent deletion use distinct selected requests",
+      "actual": [
+        [
+          "901"
+        ],
+        "not-confirmed",
+        "refused",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "901"
+        ],
+        "not-confirmed",
+        "refused",
+        "not-confirmed",
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "restore"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "post bin wrong forum reply",
+      "actual": [
+        "uncertain",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "uncertain",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "post bin reply lost",
+      "actual": [
+        "uncertain",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "uncertain",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "post bin selection remains listed",
+      "actual": [
+        "redrawn",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ],
+      "expected": [
+        "redrawn",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ]
+    },
+    {
+      "name": "post bin incomplete follow-up",
+      "actual": [
+        "uncertain",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ],
+      "expected": [
+        "uncertain",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ]
+    },
+    {
+      "name": "post bin panel session ended",
+      "actual": [
+        "refused",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "refused",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "v4 post bin searches and verifies selected permanent deletion",
+      "actual": [
+        "801",
+        "completed",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "801",
+        "completed",
+        [
+          [
+            "GET",
+            {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            null,
+            false
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "op": "search",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "keywords",
+                "fiction"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "searchsubmit",
+                "true"
+              ]
+            ],
+            true
+          ],
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "page": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "posttableid",
+                "0"
+              ],
+              [
+                "op",
+                "delete"
+              ],
+              [
+                "oldop",
+                "list"
+              ],
+              [
+                "dosubmit",
+                "submit"
+              ],
+              [
+                "moderate[0]",
+                "901"
+              ]
+            ],
+            true
+          ],
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "recyclebinpost",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "report deletion hands only the scoped selection to a separate administrator host",
+      "actual": [
+        {
+          "kind": "not-confirmed"
+        },
+        {
+          "kind": "admin-report-deletion",
+          "origin": "https://forum.test",
+          "forumId": "10",
+          "reportIds": [
+            "501"
+          ]
+        },
+        {
+          "kind": "invalid-input"
+        },
+        {
+          "kind": "session-changed"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        {
+          "kind": "not-confirmed"
+        },
+        {
+          "kind": "admin-report-deletion",
+          "origin": "https://forum.test",
+          "forumId": "10",
+          "reportIds": [
+            "501"
+          ]
+        },
+        {
+          "kind": "invalid-input"
+        },
+        {
+          "kind": "session-changed"
+        },
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "report",
+              "fid": "10",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "threads queue independently submits ignore",
+      "actual": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "threads queue independently submits delete",
+      "actual": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "threads",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "801"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "replies queue independently submits validate",
+      "actual": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "replies queue independently submits delete",
+      "actual": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "acknowledged",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "replies",
+              "fid": "10",
+              "infloat": "yes",
+              "inajax": "1",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "fid",
+                "10"
+              ],
+              [
+                "modact",
+                "delete"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "handlekey",
+                "mods"
+              ],
+              [
+                "moderate[]",
+                "901"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "members queue independently submits validate",
+      "actual": [
+        "completed",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "completed",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "validate"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "members queue independently submits ignore",
+      "actual": [
+        "completed",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ],
+      "expected": [
+        "completed",
+        [
+          [
+            "POST",
+            {
+              "mod": "modcp",
+              "action": "moderate",
+              "op": "members",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            [
+              [
+                "formhash",
+                "abcdef12"
+              ],
+              [
+                "filter",
+                "0"
+              ],
+              [
+                "modact",
+                "ignore"
+              ],
+              [
+                "modsubmit",
+                "1"
+              ],
+              [
+                "moderate[0]",
+                "105"
+              ],
+              [
+                "reason",
+                "fictional reason"
+              ]
+            ],
+            true
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "queue explicit denial dispatches only once",
+      "actual": [
+        "refused",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "refused",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "queue panel expiry dispatches only once",
+      "actual": [
+        "refused",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "refused",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "queue redrawn queue dispatches only once",
+      "actual": [
+        "redrawn",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "redrawn",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "queue lost reply dispatches only once",
+      "actual": [
+        "uncertain",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        "uncertain",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "cross-origin login form sends no password and cannot be prepared",
+      "actual": [
+        "invalid-response",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "invalid-response",
+        [
+          [
+            "GET",
+            {
+              "mod": "modcp",
+              "action": "home",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "post row disappearance without the deletion verdict stays uncertain",
+      "actual": [
+        {
+          "kind": "uncertain",
+          "confirmedIds": [],
+          "remainingIds": [],
+          "unknownIds": [
+            "901"
+          ]
+        },
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "expected": [
+        {
+          "kind": "uncertain",
+          "confirmedIds": [],
+          "remainingIds": [],
+          "unknownIds": [
+            "901"
+          ]
+        },
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "post bin cannot verify absence on another or unidentified post table",
+      "actual": [
+        "uncertain",
+        3
+      ],
+      "expected": [
+        "uncertain",
+        3
+      ]
+    },
+    {
+      "name": "packaged TypeScript approves one selected reply and observes scoped readback",
+      "actual": [
+        {
+          "kind": "not-confirmed"
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "unavailable"
+        },
+        [
+          {
+            "forumId": "10",
+            "postId": "901"
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "recyclebinpost",
+            true,
+            "formhash=abcdef12&posttableid=0&op=restore&oldop=list&dosubmit=submit&moderate%5B0%5D=901"
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ]
+        ]
+      ],
+      "expected": [
+        {
+          "kind": "not-confirmed"
+        },
+        {
+          "kind": "completed",
+          "confirmedIds": [
+            "901"
+          ],
+          "remainingIds": [],
+          "unknownIds": []
+        },
+        {
+          "kind": "unavailable"
+        },
+        [
+          {
+            "forumId": "10",
+            "postId": "901"
+          }
+        ],
+        [
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "POST",
+            "recyclebinpost",
+            true,
+            "formhash=abcdef12&posttableid=0&op=restore&oldop=list&dosubmit=submit&moderate%5B0%5D=901"
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "status",
+            false,
+            null
+          ],
+          [
+            "GET",
+            "recyclebinpost",
+            false,
+            null
+          ]
+        ]
+      ]
+    }
+  ]
+}

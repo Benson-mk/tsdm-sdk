@@ -1,0 +1,4427 @@
+{
+  "archiveSHA256": "30e11df946bb32eaa9b577f6beefb2356d36b65de6a0865e45fc4cb82d880790",
+  "guideSHA256": "2551c3d4c46e3f4dd9bd173bac2cfa6b7a3e6d6f4e2dc0efa2fb2e377ef8b439",
+  "scope": "Fictional requests and inert loopback responses. No moderation state transitions.",
+  "results": [
+    {
+      "name": "requests reads thread permission",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "viewthread"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "viewthread"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads thread permission",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "viewthread"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "viewthread"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads batch window",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "operation",
+                "delete"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "moderate[]",
+                "80"
+              ],
+              [
+                "moderate[]",
+                "81"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "operation",
+                "delete"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "moderate[]",
+                "80"
+              ],
+              [
+                "moderate[]",
+                "81"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads batch window",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "operation",
+                "delete"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "moderate[]",
+                "80"
+              ],
+              [
+                "moderate[]",
+                "81"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "operation",
+                "delete"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "moderate[]",
+                "80"
+              ],
+              [
+                "moderate[]",
+                "81"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads reply form",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "topiclist[]",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "topiclist[]",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads reply form",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "topiclist[]",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "topiclist[]",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads private IP",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "getip"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "getip"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads private IP",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "getip"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "getip"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads type select",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "getthreadtypes"
+              ],
+              [
+                "fid",
+                "13"
+              ],
+              [
+                "inajax",
+                "1"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "getthreadtypes"
+              ],
+              [
+                "fid",
+                "13"
+              ],
+              [
+                "inajax",
+                "1"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads type select",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "getthreadtypes"
+              ],
+              [
+                "fid",
+                "13"
+              ],
+              [
+                "inajax",
+                "1"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "getthreadtypes"
+              ],
+              [
+                "fid",
+                "13"
+              ],
+              [
+                "inajax",
+                "1"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads attachment editor",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "post"
+              ],
+              [
+                "action",
+                "edit"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "post"
+              ],
+              [
+                "action",
+                "edit"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads attachment editor",
+      "expected": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "post"
+              ],
+              [
+                "action",
+                "edit"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          200,
+          null
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "post"
+              ],
+              [
+                "action",
+                "edit"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves stick",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves stick",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=stick&sticklevel=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves digest",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves digest",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=digest&digestlevel=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves highlight",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves highlight",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=highlight&highlight_color=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves recommend",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves recommend",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "1"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=recommend&isrecommend=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves move",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves move",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=move&moveto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves type",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves type",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "2"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=type&typeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves delete",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves delete",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=delete",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines delete",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines delete",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests preview rejects effect delete",
+      "expected": {
+        "result": true,
+        "requests": []
+      },
+      "actual": {
+        "result": true,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl preview rejects effect delete",
+      "expected": {
+        "result": 2,
+        "requests": []
+      },
+      "actual": {
+        "result": 2,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves bump",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves bump",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=bump",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves down",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves down",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "3"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=down",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves close",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves close",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=close",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves open",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves open",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "moderate"
+              ],
+              [
+                "optgroup",
+                "4"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&fid=12&moderate%5B%5D=80&moderate%5B%5D=81&operations%5B%5D=open",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves stamp",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamp"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamp=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamp"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamp=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves stamp",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamp"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamp=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamp"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamp=2",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves stamplist",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamplist"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamplist=4",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamplist"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamplist=4",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves stamplist",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamplist"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamplist=4",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stamplist"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&stamplist=4",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves copy",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "copy"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&copyto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "copy"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&copyto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves copy",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "copy"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&copyto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "copy"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&copyto=13&threadtypeid=8",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves merge",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "merge"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&othertid=85",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "merge"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&othertid=85",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves merge",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "merge"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&othertid=85",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "merge"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&othertid=85",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves split",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "split"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&subject=Fictional+split&split=2%2C3",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "split"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&subject=Fictional+split&split=2%2C3",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves split",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "split"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&subject=Fictional+split&split=2%2C3",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "split"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&subject=Fictional+split&split=2%2C3",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves removereward",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "removereward"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "removereward"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves removereward",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "removereward"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "removereward"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves refund",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "refund"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "refund"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves refund",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "refund"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "refund"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves delpost",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves delpost",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves warn",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "warn"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&warned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "warn"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&warned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves warn",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "warn"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&warned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "warn"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&warned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves banpost",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "banpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&banned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "banpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&banned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves banpost",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "banpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&banned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "banpost"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&banned=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves stickreply",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stickreply"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&stickreply=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stickreply"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&stickreply=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves stickreply",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stickreply"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&stickreply=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "stickreply"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist%5B%5D=90&stickreply=1",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves delcomment",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delcomment"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist=72",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delcomment"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist=72",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves delcomment",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delcomment"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist=72",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "delcomment"
+              ],
+              [
+                "modsubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&topiclist=72",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves removerate",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "misc"
+              ],
+              [
+                "action",
+                "removerate"
+              ],
+              [
+                "ratesubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&pid=90&logidarray%5B%5D=55+1+1234567890",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "misc"
+              ],
+              [
+                "action",
+                "removerate"
+              ],
+              [
+                "ratesubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&pid=90&logidarray%5B%5D=55+1+1234567890",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves removerate",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "misc"
+              ],
+              [
+                "action",
+                "removerate"
+              ],
+              [
+                "ratesubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&pid=90&logidarray%5B%5D=55+1+1234567890",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "misc"
+              ],
+              [
+                "action",
+                "removerate"
+              ],
+              [
+                "ratesubmit",
+                "yes"
+              ]
+            ],
+            "body": "formhash=fictional-form-token&tid=80&pid=90&logidarray%5B%5D=55+1+1234567890",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests approves repair",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "repair"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "repair"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves repair",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "repair"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "topicadmin"
+              ],
+              [
+                "action",
+                "repair"
+              ],
+              [
+                "fid",
+                "12"
+              ],
+              [
+                "tid",
+                "80"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines repair",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines repair",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests preview rejects effect repair",
+      "expected": {
+        "result": true,
+        "requests": []
+      },
+      "actual": {
+        "result": true,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl preview rejects effect repair",
+      "expected": {
+        "result": 2,
+        "requests": []
+      },
+      "actual": {
+        "result": 2,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests approves deleteattach",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "deleteattach"
+              ],
+              [
+                "inajax",
+                "yes"
+              ],
+              [
+                "formhash",
+                "fictional-form-token"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ],
+              [
+                "aids[]",
+                "96"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "deleteattach"
+              ],
+              [
+                "inajax",
+                "yes"
+              ],
+              [
+                "formhash",
+                "fictional-form-token"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ],
+              [
+                "aids[]",
+                "96"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl approves deleteattach",
+      "expected": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "deleteattach"
+              ],
+              [
+                "inajax",
+                "yes"
+              ],
+              [
+                "formhash",
+                "fictional-form-token"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ],
+              [
+                "aids[]",
+                "96"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      },
+      "actual": {
+        "result": [
+          302,
+          "/must-not-follow"
+        ],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/forum.php",
+            "query": [
+              [
+                "mod",
+                "ajax"
+              ],
+              [
+                "action",
+                "deleteattach"
+              ],
+              [
+                "inajax",
+                "yes"
+              ],
+              [
+                "formhash",
+                "fictional-form-token"
+              ],
+              [
+                "tid",
+                "80"
+              ],
+              [
+                "pid",
+                "90"
+              ],
+              [
+                "aids[]",
+                "96"
+              ]
+            ],
+            "body": "",
+            "credentialMatched": true,
+            "ajax": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declines deleteattach",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines deleteattach",
+      "expected": {
+        "result": null,
+        "requests": []
+      },
+      "actual": {
+        "result": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests preview rejects effect deleteattach",
+      "expected": {
+        "result": true,
+        "requests": []
+      },
+      "actual": {
+        "result": true,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl preview rejects effect deleteattach",
+      "expected": {
+        "result": 2,
+        "requests": []
+      },
+      "actual": {
+        "result": 2,
+        "requests": []
+      }
+    }
+  ]
+}

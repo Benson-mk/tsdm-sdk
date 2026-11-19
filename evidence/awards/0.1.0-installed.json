@@ -1,0 +1,2386 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "987a1953089715659233aaf3ccdc99d1a008280165f2b9b4168ac3bcf0733848",
+  "guideSHA256": "1195f1ce26f673785756aa2eaba8ff9d7339686a768ccac83238fe649d18cebe",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "consumerSHA256": "0a5b48a935fbb9915ccda4d5d7dfbbb9c1a040c0a84dc883e12718eb9e8504ac",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "pinsSHA256": "92729c0d50b64199d7ce5ada9aac532f17f917bc50a9c44aafe52011bf219c46",
+  "fixturesVerified": 19,
+  "results": [
+    {
+      "name": "medal catalogue keeps category, search, page, pending state and purchase terms",
+      "expected": [
+        "awards-view",
+        [
+          {
+            "id": 101,
+            "name": "Event medal",
+            "pending": 0,
+            "price_text": "300 credits"
+          },
+          {
+            "id": 102,
+            "name": "Pending medal",
+            "pending": 1
+          }
+        ],
+        2,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "typeid": "3",
+              "filter": "all",
+              "sort": "order",
+              "q": "Event",
+              "page": "2"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        [
+          {
+            "id": 101,
+            "name": "Event medal",
+            "pending": 0,
+            "price_text": "300 credits"
+          },
+          {
+            "id": 102,
+            "name": "Pending medal",
+            "pending": 1
+          }
+        ],
+        2,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "2",
+              "typeid": "3",
+              "filter": "all",
+              "sort": "order",
+              "q": "Event"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "medal method 5 is deliberate and single-use",
+      "expected": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 101,
+          "method": 5
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "101",
+              "method": "5",
+              "credit": "2"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 101,
+          "method": 5
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "101",
+              "method": "5",
+              "credit": "2"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "medal method 1 is deliberate and single-use",
+      "expected": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 7,
+          "method": 1
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "7",
+              "method": "1",
+              "credit": "0"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 7,
+          "method": 1
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "7",
+              "method": "1",
+              "credit": "0"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "medal method 6 is deliberate and single-use",
+      "expected": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 8,
+          "method": 6
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "8",
+              "method": "6",
+              "credit": "0"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-ready",
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 8,
+          "method": 6
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "8",
+              "method": "6",
+              "credit": "0"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "medal method 2 is deliberate and single-use",
+      "expected": [
+        "awards-ready",
+        "pending-review",
+        {
+          "kind": "acquire-medal",
+          "id": 6,
+          "method": 2,
+          "reason": "Please review"
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "6",
+              "method": "2",
+              "credit": "0",
+              "reason": "Please review"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-ready",
+        "pending-review",
+        {
+          "kind": "acquire-medal",
+          "id": 6,
+          "method": 2,
+          "reason": "Please review"
+        },
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "medalid": "6",
+              "method": "2",
+              "credit": "0",
+              "reason": "Please review"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "owned medals, history and hide changes",
+      "expected": [
+        0,
+        "bought",
+        "acknowledged",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "mymedals",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "sethide",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "myMedalHide[11]": "1"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        0,
+        "bought",
+        "acknowledged",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "mymedals",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "sethide",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "myMedalHide[11]": "1"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "grant catalogue, member and thread lookups, grant and single and batch revoke",
+      "expected": [
+        5,
+        [
+          44,
+          45
+        ],
+        [
+          "999"
+        ],
+        {
+          "uids": [
+            45
+          ],
+          "total": 1,
+          "subject": "Fixture thread"
+        },
+        [
+          "acknowledged",
+          "acknowledged",
+          "acknowledged"
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medalgrant",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantlookup",
+              "uids": "44,45,999",
+              "mids": "21"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantthread",
+              "tid": "1120",
+              "from": "2",
+              "to": "8",
+              "noowner": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantgrid",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "grantconfirm": "1",
+              "grant_users": "45",
+              "grant_medalids": "21",
+              "grant_reason": "Event"
+            }
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantrevoke",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "logid": "6"
+            }
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantrevokebatch",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "batch": "5"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        5,
+        [
+          44,
+          45
+        ],
+        [
+          "999"
+        ],
+        {
+          "uids": [
+            45
+          ],
+          "total": 1,
+          "subject": "Fixture thread"
+        },
+        [
+          "acknowledged",
+          "acknowledged",
+          "acknowledged"
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medalgrant",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantlookup",
+              "uids": "44,45,999",
+              "mids": "21"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantthread",
+              "tid": "1120",
+              "from": "2",
+              "to": "8",
+              "noowner": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantgrid",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "grantconfirm": "1",
+              "grant_users": "45",
+              "grant_medalids": "21",
+              "grant_reason": "Event"
+            }
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantrevoke",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "logid": "6"
+            }
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "grantrevokebatch",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "dsumcsubmit": "1",
+              "batch": "5"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "structured achievements independently establish unactivated empty list",
+      "expected": [
+        "awards-view",
+        [],
+        0,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:achi",
+              "tsdmapp": "json",
+              "tsdmv": "4",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        [],
+        0,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:achi",
+              "tsdmapp": "json",
+              "tsdmv": "4",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "owned titles and independently observed wear-title",
+      "expected": [
+        [
+          1,
+          0,
+          0
+        ],
+        "observed",
+        {
+          "kind": "wear-title",
+          "id": 3
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "settitle",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "settitlesubmit": "true",
+              "settitleid": "3",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&app=plugin"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          0,
+          0
+        ],
+        "observed",
+        {
+          "kind": "wear-title",
+          "id": 3
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "settitle",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "settitlesubmit": "true",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&app=plugin",
+              "settitleid": "3"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "owned titles and independently observed remove-title",
+      "expected": [
+        [
+          0,
+          1,
+          0
+        ],
+        "observed",
+        {
+          "kind": "remove-title"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "settitle",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "settitlesubmit": "true",
+              "settitleid": "0",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&app=plugin"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          0,
+          1,
+          0
+        ],
+        "observed",
+        {
+          "kind": "remove-title"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "settitle",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "settitlesubmit": "true",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&app=plugin",
+              "settitleid": "0"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titles",
+              "page": "1",
+              "pp": "200"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "titleshop discovery and buy-title",
+      "expected": [
+        "awards-view",
+        "Title for purchase",
+        "acknowledged",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleshop",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "buy",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "buysubmit": "true",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&action=shop",
+              "buyid": "11"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "Title for purchase",
+        "acknowledged",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleshop",
+              "page": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "buy",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "buysubmit": "true",
+              "tsdmtitle_return": "plugin.php?id=tsdmtitle:tsdmtitle&action=shop",
+              "buyid": "11"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "titleexchange discovery and exchange-title",
+      "expected": [
+        "awards-view",
+        "Event exchange",
+        "acknowledged",
+        {
+          "kind": "exchange-title",
+          "id": 7
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleexchange",
+              "page": "1",
+              "filter": "ready",
+              "q": "Event"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "exchange",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "exchangesubmit": "true",
+              "tsdmtitle_return": "x",
+              "exchangeid": "7"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "Event exchange",
+        "acknowledged",
+        {
+          "kind": "exchange-title",
+          "id": 7
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleexchange",
+              "page": "1",
+              "filter": "ready",
+              "q": "Event"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "exchange",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "exchangesubmit": "true",
+              "tsdmtitle_return": "x",
+              "exchangeid": "7"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "titleissue discovery and issue-title",
+      "expected": [
+        "awards-view",
+        "Event title",
+        "acknowledged",
+        {
+          "kind": "issue-title",
+          "titles": [
+            31
+          ],
+          "recipients": [
+            "45",
+            "fixture recipient"
+          ],
+          "days": 7,
+          "note": "Event"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "issue",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "issuesubmit": "true",
+              "issueop": "grant",
+              "issuetitles": "31",
+              "issueusers": "45\nfixture recipient",
+              "issuedays": "7",
+              "issuenote": "Event"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "Event title",
+        "acknowledged",
+        {
+          "kind": "issue-title",
+          "titles": [
+            31
+          ],
+          "recipients": [
+            "45",
+            "fixture recipient"
+          ],
+          "days": 7,
+          "note": "Event"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "issue",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "issuesubmit": "true",
+              "issueop": "grant",
+              "issuetitles": "31",
+              "issueusers": "45\nfixture recipient",
+              "issuedays": "7",
+              "issuenote": "Event"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "titleissue discovery and revoke-title",
+      "expected": [
+        "awards-view",
+        "Event title",
+        "acknowledged",
+        {
+          "kind": "revoke-title",
+          "titles": [
+            31
+          ],
+          "recipients": [
+            "45",
+            "fixture recipient"
+          ],
+          "days": 7,
+          "note": "Event"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "issue",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "issuesubmit": "true",
+              "issueop": "revoke",
+              "issuetitles": "31",
+              "issueusers": "45\nfixture recipient",
+              "issuedays": "7",
+              "issuenote": "Event"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "Event title",
+        "acknowledged",
+        {
+          "kind": "revoke-title",
+          "titles": [
+            31
+          ],
+          "recipients": [
+            "45",
+            "fixture recipient"
+          ],
+          "days": 7,
+          "note": "Event"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "tsdmtitle:tsdmtitle",
+              "action": "issue",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "abcd1234",
+              "issuesubmit": "true",
+              "issueop": "revoke",
+              "issuetitles": "31",
+              "issueusers": "45\nfixture recipient",
+              "issuedays": "7",
+              "issuenote": "Event"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "background grant preserves recipient, expiry and notify (partial, notify true)",
+      "expected": [
+        "夜空",
+        "1209-1.jpg",
+        "partial",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45,
+            999999
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": true
+        },
+        1,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45,999999",
+              "slotaddtime": "2026-11-19 23:59",
+              "slotaddnotify": "1"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "夜空",
+        "1209-1.jpg",
+        "partial",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45,
+            999999
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": true
+        },
+        1,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45,999999",
+              "slotaddtime": "2026-11-19 23:59",
+              "slotaddnotify": "1"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "background grant preserves recipient, expiry and notify (acknowledged, notify false)",
+      "expected": [
+        "夜空",
+        "1209-1.jpg",
+        "acknowledged",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": false
+        },
+        1,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "2026-11-19 23:59"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "夜空",
+        "1209-1.jpg",
+        "acknowledged",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": false
+        },
+        1,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "2026-11-19 23:59"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "background grant preserves recipient, expiry and notify (refused, notify false)",
+      "expected": [
+        "夜空",
+        "1209-1.jpg",
+        "refused",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": false
+        },
+        null,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "2026-11-19 23:59"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "夜空",
+        "1209-1.jpg",
+        "refused",
+        {
+          "kind": "grant-background",
+          "id": 1,
+          "recipients": [
+            45
+          ],
+          "expiry": "2026-11-19 23:59",
+          "notify": false
+        },
+        null,
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant",
+              "kw": "夜空"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "1209-1.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "2026-11-19 23:59"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native manual application opens offered item before sending the reason",
+      "expected": [
+        "awards-ready",
+        "pending-review",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "6"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "XXXXXXXX",
+              "dsumcsubmit": "1",
+              "medalid": "6",
+              "method": "2",
+              "reason": "Please review"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-ready",
+        "pending-review",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "6"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "XXXXXXXX",
+              "dsumcsubmit": "1",
+              "medalid": "6",
+              "method": "2",
+              "reason": "Please review"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native medal catalogue and deliberate claim POST",
+      "expected": [
+        "awards-view",
+        "【端午节】粽子勋章",
+        2,
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 593,
+          "method": 5
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "XXXXXXXX",
+              "dsumcsubmit": "1",
+              "medalid": "593",
+              "method": "5",
+              "credit": "0",
+              "typeid": "0"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "【端午节】粽子勋章",
+        2,
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 593,
+          "method": 5
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "claim",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "XXXXXXXX",
+              "dsumcsubmit": "1",
+              "medalid": "593",
+              "method": "5",
+              "credit": "0",
+              "typeid": "0"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native medal catalogue and deliberate legacy acquisition GET",
+      "expected": [
+        "awards-view",
+        "【端午节】粽子勋章",
+        2,
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 593,
+          "method": 5
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "593",
+              "applytype": "5"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "【端午节】粽子勋章",
+        2,
+        "acknowledged",
+        {
+          "kind": "acquire-medal",
+          "id": 593,
+          "method": 5
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "593",
+              "applytype": "5"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "native manual application with unmet prerequisites sends no effect",
+      "expected": [
+        "refused",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "6"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp",
+              "action": "apply",
+              "medalid": "6"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "title purchase lost response preserves choice and is never repeated",
+      "expected": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "title purchase form redraw preserves choice and is never repeated",
+      "expected": [
+        "redrawn",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "redrawn",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "title purchase unqualified message preserves choice and is never repeated",
+      "expected": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "title purchase mismatched member preserves choice and is never repeated",
+      "expected": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "forged, unaffordable and stale approvals cause no effect",
+      "expected": [
+        "invalid-input",
+        "refused",
+        "session-changed",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleshop",
+              "page": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "invalid-input",
+        "refused",
+        "session-changed",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "titleshop",
+              "page": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "background catalogue with no grant permission refuses before dispatch",
+      "expected": [
+        "awards-view",
+        "refused",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "awards-view",
+        "refused",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "custom background URL is supplied as data and zero granted is a refusal",
+      "expected": [
+        "refused",
+        {
+          "kind": "grant-background",
+          "image": "https://images.test/background.jpg",
+          "recipients": [
+            45
+          ],
+          "expiry": "0",
+          "notify": false
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "https://images.test/background.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "0"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        {
+          "kind": "grant-background",
+          "image": "https://images.test/background.jpg",
+          "recipients": [
+            45
+          ],
+          "expiry": "0",
+          "notify": false
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "bggrant"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "background:memcp",
+              "ac": "slotadd",
+              "tsdmapp": "json"
+            },
+            {
+              "formhash": "f1f2f3f4",
+              "slotaddsubmit": "true",
+              "slotaddurl": "https://images.test/background.jpg",
+              "slotadduid": "45",
+              "slotaddtime": "0"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "titles legacy page hands off to its own native surface",
+      "expected": [
+        "awards-handoff",
+        "https://forum.test",
+        "/plugin.php",
+        {
+          "id": "tsdmtitle:tsdmtitle"
+        },
+        1
+      ],
+      "actual": [
+        "awards-handoff",
+        "https://forum.test",
+        "/plugin.php",
+        {
+          "id": "tsdmtitle:tsdmtitle"
+        },
+        1
+      ]
+    },
+    {
+      "name": "titleshop legacy page hands off to its own native surface",
+      "expected": [
+        "awards-handoff",
+        "https://forum.test",
+        "/plugin.php",
+        {
+          "id": "tsdmtitle:tsdmtitle",
+          "action": "shop"
+        },
+        1
+      ],
+      "actual": [
+        "awards-handoff",
+        "https://forum.test",
+        "/plugin.php",
+        {
+          "id": "tsdmtitle:tsdmtitle",
+          "action": "shop"
+        },
+        1
+      ]
+    },
+    {
+      "name": "legacy manual apply opens specmedal and posts the exact returned reason form",
+      "expected": [
+        "pending-review",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:specmedal",
+              "action": "newapply",
+              "applymedalid": "6"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:specmedal",
+              "action": "newapply",
+              "applymedalid": "6"
+            },
+            {
+              "formhash": "abcd1234",
+              "applyreason": "Legacy reason"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "pending-review",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmapp:api",
+              "action": "medals",
+              "page": "1",
+              "typeid": "0",
+              "filter": "all",
+              "sort": "order"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:memcp"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:specmedal",
+              "action": "newapply",
+              "applymedalid": "6"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "dsu_medalCenter:specmedal",
+              "action": "newapply",
+              "applymedalid": "6"
+            },
+            {
+              "formhash": "abcd1234",
+              "applyreason": "Legacy reason"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "partial title readback cannot establish removal",
+      "expected": [
+        "unknown",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        [
+          "GET",
+          "POST",
+          "GET"
+        ]
+      ]
+    },
+    {
+      "name": "followed redirect is not a purchase result and is never retried",
+      "expected": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        {
+          "kind": "buy-title",
+          "id": 11
+        },
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "packaged TypeScript declines and approves a title purchase",
+      "expected": [
+        "cancelled",
+        "acknowledged",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "cancelled",
+        "acknowledged",
+        [
+          "GET",
+          "GET",
+          "POST"
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed requests or account effects"
+  ]
+}

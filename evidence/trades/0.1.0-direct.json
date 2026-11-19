@@ -1,0 +1,1237 @@
+{
+  "evidence": "controlled loopback, packaged guide",
+  "archiveSHA256": "4a1dd2049f620fc9ba43daeedd6d93a94efb372d26124a1d42ea8cd47aa1353d",
+  "guideSHA256": "47cabadcc80ac41d8d6e7889ec3d545a3701b4d706c60a679e14ff737b5ee01e",
+  "results": [
+    {
+      "name": "Python read thread",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "nodoc",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "nodoc",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read purchase-form",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "ajaxtarget",
+              "fwin_content_pay"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "tsdmform",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "ajaxtarget",
+              "fwin_content_pay"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "tsdmform",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read goods",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "do",
+              "tradeinfo"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "do",
+              "tradeinfo"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read order-form",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python read order",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl reads",
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "nodoc",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "ajaxtarget",
+              "fwin_content_pay"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "tsdmform",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "do",
+              "tradeinfo"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "nodoc",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "ajaxtarget",
+              "fwin_content_pay"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ],
+            [
+              "tsdmform",
+              "1"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "viewthread"
+            ],
+            [
+              "do",
+              "tradeinfo"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        },
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ]
+          ],
+          "body": [],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined purchase",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved purchase",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "yes"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-purchase-hash"
+            ],
+            [
+              "referer",
+              "/forum.php?mod=viewthread&tid=42"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "yes"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-purchase-hash"
+            ],
+            [
+              "referer",
+              "/forum.php?mod=viewthread&tid=42"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined purchase",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved purchase",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "yes"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-purchase-hash"
+            ],
+            [
+              "referer",
+              "/forum.php?mod=viewthread&tid=42"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "misc"
+            ],
+            [
+              "action",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "yes"
+            ],
+            [
+              "infloat",
+              "yes"
+            ],
+            [
+              "inajax",
+              "1"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-purchase-hash"
+            ],
+            [
+              "referer",
+              "/forum.php?mod=viewthread&tid=42"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "handlekey",
+              "pay"
+            ],
+            [
+              "paysubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined order",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved order",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "action",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "number",
+              "2"
+            ],
+            [
+              "offline",
+              "1"
+            ],
+            [
+              "transport",
+              "3"
+            ],
+            [
+              "buyermsg",
+              "Fictional & note"
+            ],
+            [
+              "tradesubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "action",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "number",
+              "2"
+            ],
+            [
+              "offline",
+              "1"
+            ],
+            [
+              "transport",
+              "3"
+            ],
+            [
+              "buyermsg",
+              "Fictional & note"
+            ],
+            [
+              "tradesubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined order",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved order",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "action",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "number",
+              "2"
+            ],
+            [
+              "offline",
+              "1"
+            ],
+            [
+              "transport",
+              "3"
+            ],
+            [
+              "buyermsg",
+              "Fictional & note"
+            ],
+            [
+              "tradesubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "action",
+              "trade"
+            ],
+            [
+              "tid",
+              "42"
+            ],
+            [
+              "pid",
+              "101"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "number",
+              "2"
+            ],
+            [
+              "offline",
+              "1"
+            ],
+            [
+              "transport",
+              "3"
+            ],
+            [
+              "buyermsg",
+              "Fictional & note"
+            ],
+            [
+              "tradesubmit",
+              "true"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "Python declined payment",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "Python approved payment",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "offlinestatus",
+              "4"
+            ],
+            [
+              "offlinesubmit",
+              "true"
+            ],
+            [
+              "message",
+              ""
+            ],
+            [
+              "password",
+              "[fictitious password supplied]"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "offlinestatus",
+              "4"
+            ],
+            [
+              "offlinesubmit",
+              "true"
+            ],
+            [
+              "message",
+              ""
+            ],
+            [
+              "password",
+              "[fictitious password supplied]"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    },
+    {
+      "name": "curl declined payment",
+      "expected": [],
+      "observed": []
+    },
+    {
+      "name": "curl approved payment",
+      "expected": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "offlinestatus",
+              "4"
+            ],
+            [
+              "offlinesubmit",
+              "true"
+            ],
+            [
+              "message",
+              ""
+            ],
+            [
+              "password",
+              "[fictitious password supplied]"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ],
+      "observed": [
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": [
+            [
+              "mod",
+              "trade"
+            ],
+            [
+              "orderid",
+              "FictitiousOrder01"
+            ],
+            [
+              "tsdmapp",
+              "json"
+            ]
+          ],
+          "body": [
+            [
+              "formhash",
+              "fictional-order-hash"
+            ],
+            [
+              "offlinestatus",
+              "4"
+            ],
+            [
+              "offlinesubmit",
+              "true"
+            ],
+            [
+              "message",
+              ""
+            ],
+            [
+              "password",
+              "[fictitious password supplied]"
+            ]
+          ],
+          "cookie": "[fictional session cookie supplied]"
+        }
+      ]
+    }
+  ]
+}

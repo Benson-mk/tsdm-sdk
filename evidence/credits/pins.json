@@ -1,0 +1,18 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "files": {
+    "tsdmapp/credit_v12_checkin_month.json": "0d03aba6afb958ac638b4eaa6f799a78b3594b4a8c623ebfb27c494b08795194",
+    "tsdmapp/credit_v12_log_filter.json": "af532ccada0adff628aa48f7f14fb4d3be0046c9868c82f1d7bef153dad9cac5",
+    "tsdmapp/form_v17_usergroup.json": "7db4ca808eeb4d2024a3fbb4a95c8c2a59755d95e26afb91dee817f5843e91a2",
+    "tsdmapp/form_v17_usergroup_switch.json": "b1a951bcfdef5bbc90014858f649292e5969fe10071f22e8459afb0ff658588d",
+    "tsdmapp/v4/g3_credit_base_v52.json": "b6c8f1d4dcb484bf4d9b88467431ccff20e0c8a6b3b191bcb500315d1864093c",
+    "tsdmapp/v4/g3_credit_base_web.html": "17c04359a34566e29f1ffad7cf8bbc624b84cd3429141cb2c45f062285cf1435",
+    "tsdmapp/v4/g3_usergroup_v54.json": "c4fd01707b591e07b4a881d1f8f3495af593c9f704c53e81b67adb01942219e8",
+    "tsdmapp/v4/g3_usergroup_v54_gid15.json": "7ce51a553958aa5d8e6a3d4444866a8542d446143c309022ae45db485b2480ce",
+    "tsdmapp/write_by_key/checkin_after.json": "fecf32b824ac365d0f9500866d86f9f43e96a2df214de97b411caf8b3c17e8f9",
+    "tsdmapp/write_by_key/checkin_post.json": "186249200e245f9505d87b22229b5ac84a013eb5166dff9eddb510ceec3d6b03",
+    "tsdmapp/write_by_key/checkin_post_again.json": "161d9231f6cf1534906fcdc9c3591a159d9acc74027692d4e72b2fa63ec05fa1",
+    "usergroup_progress/default_member_mid.html": "c3cecad90f5472937789af86de9dead7f98f67163ec0b251c8bec4385ee1c733",
+    "usergroup_progress/gid_15.html": "e7abf6e0b2a1a7fd0860ff73fc372c42ba7bc2ad0b037399974618290ccc06ca"
+  }
+}

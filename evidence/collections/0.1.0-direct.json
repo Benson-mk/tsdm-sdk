@@ -1,0 +1,40 @@
+{
+  "evidence": "packaged examples against a loopback read fixture",
+  "archiveSHA256": "64560d2d4033c5524f0167162e847fcc84b1a6d03953d0c6ae395d160a170357",
+  "guideSHA256": "2dd89a6d71b64f2a8d65340ac03c0f2d4e8431e10fdcd4d1bcf83ead8192b2e9",
+  "tools": {
+    "python": "3.12.10",
+    "requests": "2.34.2",
+    "curl": "8.7.1"
+  },
+  "results": [
+    {
+      "example": "python",
+      "expected": {
+        "method": "GET",
+        "path": "/forum.php?mod=collection&action=view&ctid=91",
+        "cache": "no-cache"
+      },
+      "observed": {
+        "method": "GET",
+        "path": "/forum.php?mod=collection&action=view&ctid=91",
+        "cache": "no-cache"
+      },
+      "returnedHeading": "Example Archive"
+    },
+    {
+      "example": "sh",
+      "expected": {
+        "method": "GET",
+        "path": "/forum.php?mod=collection&action=view&ctid=91",
+        "cache": "no-cache"
+      },
+      "observed": {
+        "method": "GET",
+        "path": "/forum.php?mod=collection&action=view&ctid=91",
+        "cache": "no-cache"
+      },
+      "returnedHeading": "Example Archive"
+    }
+  ]
+}

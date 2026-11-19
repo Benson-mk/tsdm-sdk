@@ -1,0 +1,694 @@
+{
+  "integrationBaseCommit": "cdaca1d53ccc173d4930f63d9597658920a972bb",
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "33861d31f1deece3568a719f32eb27cbabbb65271a6cb44b53fa264dcb350e46",
+  "consumerSHA256": "2d135d93e281c86ae94d0f1981fc5f921b31eb236096dd18c4509e6ac089a0b7",
+  "guideSHA256": "38e695b7dcfbabac5de309acc075f6486a99125c51f83ae2a7cd51e0fe32d7fe",
+  "pinsSHA256": "678d3d2f1bdd804eddf2c0a508e8350ef85f2fae27fa16c0888536e396298166",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "fixturesVerified": 9,
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "results": [
+    {
+      "name": "post form limits",
+      "expected": [
+        [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ],
+        2048000
+      ],
+      "actual": [
+        [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ],
+        2048000
+      ]
+    },
+    {
+      "name": "bad extension stays local",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "post upload and multipart authority",
+      "expected": [
+        {
+          "kind": "uploaded",
+          "attachmentId": "975",
+          "bbcode": "[attachimg]975[/attachimg]"
+        },
+        "POST",
+        true,
+        "/misc.php",
+        "?mod=swfupload&action=swfupload&operation=upload&fid=7&type=image&simple=2",
+        "31",
+        "00000000000000000000000000000000",
+        "Filedata",
+        "photo.jpg",
+        true
+      ],
+      "actual": [
+        {
+          "kind": "uploaded",
+          "attachmentId": "975",
+          "bbcode": "[attachimg]975[/attachimg]"
+        },
+        "POST",
+        true,
+        "/misc.php",
+        "?mod=swfupload&action=swfupload&operation=upload&fid=7&type=image&simple=2",
+        "31",
+        "00000000000000000000000000000000",
+        "Filedata",
+        "photo.jpg",
+        true
+      ]
+    },
+    {
+      "name": "one use per post upload approval",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "lost post upload",
+      "expected": [
+        "unknown",
+        1
+      ],
+      "actual": [
+        "unknown",
+        1
+      ]
+    },
+    {
+      "name": "explicit upload rejection",
+      "expected": [
+        "refused",
+        "1"
+      ],
+      "actual": [
+        "refused",
+        "1"
+      ]
+    },
+    {
+      "name": "same UID new login cannot use an old uploader",
+      "expected": [
+        "session-changed",
+        1
+      ],
+      "actual": [
+        "session-changed",
+        1
+      ]
+    },
+    {
+      "name": "album controls from native form",
+      "expected": [
+        [
+          {
+            "value": "1",
+            "label": "测试相册"
+          }
+        ],
+        [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        false
+      ],
+      "actual": [
+        [
+          {
+            "value": "1",
+            "label": "测试相册"
+          }
+        ],
+        [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        false
+      ]
+    },
+    {
+      "name": "album uploads run independently from filing",
+      "expected": [
+        "uploaded",
+        "12",
+        "refused",
+        3,
+        "?mod=swfupload&action=swfupload&operation=album",
+        "31",
+        "0123456789abcdef0123456789abcdef",
+        "Filedata"
+      ],
+      "actual": [
+        "uploaded",
+        "12",
+        "refused",
+        3,
+        "?mod=swfupload&action=swfupload&operation=album",
+        "31",
+        "0123456789abcdef0123456789abcdef",
+        "Filedata"
+      ]
+    },
+    {
+      "name": "unoffered album sends nothing",
+      "expected": [
+        "invalid",
+        3
+      ],
+      "actual": [
+        "invalid",
+        3
+      ]
+    },
+    {
+      "name": "file only the uploaded picture after approval",
+      "expected": [
+        "filed",
+        "1",
+        [
+          "12"
+        ],
+        "?mod=spacecp&ac=upload&tsdmapp=json",
+        {
+          "formhash": "f1f2f3f4",
+          "albumsubmit": "true",
+          "title[12]": "",
+          "albumop": "selectalbum",
+          "albumid": "1"
+        }
+      ],
+      "actual": [
+        "filed",
+        "1",
+        [
+          "12"
+        ],
+        "?mod=spacecp&ac=upload&tsdmapp=json",
+        {
+          "formhash": "f1f2f3f4",
+          "albumsubmit": "true",
+          "title[12]": "",
+          "albumop": "selectalbum",
+          "albumid": "1"
+        }
+      ]
+    },
+    {
+      "name": "filed upload cannot be sent twice",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "create a protected album using offered controls",
+      "expected": [
+        "filed",
+        "4",
+        {
+          "formhash": "f1f2f3f4",
+          "albumsubmit": "true",
+          "title[16]": "",
+          "albumop": "creatalbum",
+          "albumname": "A & B",
+          "depict": "",
+          "friend": "4",
+          "password": "fixture"
+        }
+      ],
+      "actual": [
+        "filed",
+        "4",
+        {
+          "formhash": "f1f2f3f4",
+          "albumsubmit": "true",
+          "title[16]": "",
+          "albumop": "creatalbum",
+          "albumname": "A & B",
+          "depict": "",
+          "friend": "4",
+          "password": "fixture"
+        }
+      ]
+    },
+    {
+      "name": "ambiguous filing retains acknowledged picture IDs",
+      "expected": [
+        "unknown",
+        [
+          "12"
+        ],
+        3
+      ],
+      "actual": [
+        "unknown",
+        [
+          "12"
+        ],
+        3
+      ]
+    },
+    {
+      "name": "ambiguous filing cannot replay",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "restricted attachment bytes use the signed member session",
+      "expected": [
+        "delivered",
+        "read me.jpg",
+        true,
+        "31",
+        false
+      ],
+      "actual": [
+        "delivered",
+        "read me.jpg",
+        true,
+        "31",
+        false
+      ]
+    },
+    {
+      "name": "permission page is denial, no bytes",
+      "expected": [
+        "refused",
+        "undefined",
+        1
+      ],
+      "actual": [
+        "refused",
+        "undefined",
+        1
+      ]
+    },
+    {
+      "name": "unpaid page and offered purchase hand off without loading purchase",
+      "expected": [
+        "browser-handoff",
+        "purchase",
+        "https://forum.test/forum.php?mod=misc&action=attachpay&aid=37&tid=1000",
+        "browser-handoff",
+        "https://forum.test/forum.php?mod=misc&action=attachpay&aid=37&tid=1000",
+        1
+      ],
+      "actual": [
+        "browser-handoff",
+        "purchase",
+        "https://forum.test/forum.php?mod=misc&action=attachpay&aid=37&tid=1000",
+        "browser-handoff",
+        "https://forum.test/forum.php?mod=misc&action=attachpay&aid=37&tid=1000",
+        1
+      ]
+    },
+    {
+      "name": "credit redirect awaits approval",
+      "expected": [
+        "credit-required",
+        "36",
+        1
+      ],
+      "actual": [
+        "credit-required",
+        "36",
+        1
+      ]
+    },
+    {
+      "name": "charge receipt and download are separate",
+      "expected": [
+        "credit-confirmed",
+        "36",
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "credit-confirmed",
+        "36",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "external storage handoff carries no forum credentials or referrer",
+      "expected": [
+        {
+          "kind": "external-handoff",
+          "destination": "https://cdn.example.test/a.zip?sig=storage",
+          "method": "GET",
+          "credentials": "omit",
+          "referrerPolicy": "no-referrer",
+          "redirect": "manual"
+        },
+        "c1c2c3c4",
+        false,
+        3
+      ],
+      "actual": [
+        {
+          "kind": "external-handoff",
+          "destination": "https://cdn.example.test/a.zip?sig=storage",
+          "method": "GET",
+          "credentials": "omit",
+          "referrerPolicy": "no-referrer",
+          "redirect": "manual"
+        },
+        "c1c2c3c4",
+        false,
+        3
+      ]
+    },
+    {
+      "name": "credit approval is consumed",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "lost charge response sends one effect",
+      "expected": [
+        "unknown",
+        "invalid",
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "unknown",
+        "invalid",
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "credit continuation cannot auto-charge again",
+      "expected": [
+        "invalid",
+        1
+      ],
+      "actual": [
+        "invalid",
+        1
+      ]
+    },
+    {
+      "name": "wrong-member token and bare credit URL are rejected locally",
+      "expected": [
+        "session-changed",
+        "invalid",
+        0
+      ],
+      "actual": [
+        "session-changed",
+        "invalid",
+        0
+      ]
+    },
+    {
+      "name": "partial response never delivers bytes",
+      "expected": [
+        "invalid",
+        "undefined"
+      ],
+      "actual": [
+        "invalid",
+        "undefined"
+      ]
+    },
+    {
+      "name": "document-free smiley table",
+      "expected": [
+        "smileys",
+        "plugin",
+        156,
+        4,
+        ":bangbangtang:",
+        "https://forum.test/static/image/smiley/qq/bangbangtang.gif",
+        "?id=tsdmapp%3Aapi&action=smilies"
+      ],
+      "actual": [
+        "smileys",
+        "plugin",
+        156,
+        4,
+        ":bangbangtang:",
+        "https://forum.test/static/image/smiley/qq/bangbangtang.gif",
+        "?id=tsdmapp%3Aapi&action=smilies"
+      ]
+    },
+    {
+      "name": "smiley image retrieval",
+      "expected": [
+        "delivered",
+        true,
+        false
+      ],
+      "actual": [
+        "delivered",
+        true,
+        false
+      ]
+    },
+    {
+      "name": "native smiley script fallback and safe literal parsing",
+      "expected": [
+        "smileys",
+        "script",
+        788,
+        13,
+        "{:20_984:}",
+        "https://forum.test/static/image/smiley/deepseek/d%20(1).gif",
+        "/data/cache/common_smilies_var.js"
+      ],
+      "actual": [
+        "smileys",
+        "script",
+        788,
+        13,
+        "{:20_984:}",
+        "https://forum.test/static/image/smiley/deepseek/d%20(1).gif",
+        "/data/cache/common_smilies_var.js"
+      ]
+    },
+    {
+      "name": "read exact raw script without execution",
+      "expected": [
+        "script",
+        true,
+        1
+      ],
+      "actual": [
+        "script",
+        true,
+        1
+      ]
+    },
+    {
+      "name": "avatar and explicit missing fallback",
+      "expected": [
+        "delivered",
+        "https://forum.test/data/avatar/000/00/00/31_avatar_big.jpg?ts=1700000000",
+        "delivered",
+        "https://forum.test/data/avatar/noavatar.svg",
+        [
+          "/data/avatar/000/00/00/31_avatar_big.jpg",
+          "/data/avatar/000/00/00/31_avatar_big.jpg",
+          "/data/avatar/noavatar.svg"
+        ]
+      ],
+      "actual": [
+        "delivered",
+        "https://forum.test/data/avatar/000/00/00/31_avatar_big.jpg?ts=1700000000",
+        "delivered",
+        "https://forum.test/data/avatar/noavatar.svg",
+        [
+          "/data/avatar/000/00/00/31_avatar_big.jpg",
+          "/data/avatar/000/00/00/31_avatar_big.jpg",
+          "/data/avatar/noavatar.svg"
+        ]
+      ]
+    },
+    {
+      "name": "forum post and album media, reject charge route",
+      "expected": [
+        "delivered",
+        "delivered",
+        "invalid",
+        2
+      ],
+      "actual": [
+        "delivered",
+        "delivered",
+        "invalid",
+        2
+      ]
+    },
+    {
+      "name": "signed avatar crops are a host upload handoff",
+      "expected": [
+        "avatar-upload",
+        "rectavatar",
+        [
+          "avatar1",
+          "avatar2",
+          "avatar3"
+        ],
+        1,
+        "GET",
+        false
+      ],
+      "actual": [
+        "avatar-upload",
+        "rectavatar",
+        [
+          "avatar1",
+          "avatar2",
+          "avatar3"
+        ],
+        1,
+        "GET",
+        false
+      ]
+    },
+    {
+      "name": "native album acknowledgement",
+      "expected": [
+        "filed",
+        "https://forum.test/home.php?mod=space&uid=31&do=album&quickforward=1&id=1",
+        [
+          "19"
+        ]
+      ],
+      "actual": [
+        "filed",
+        "https://forum.test/home.php?mod=space&uid=31&do=album&quickforward=1&id=1",
+        [
+          "19"
+        ]
+      ]
+    },
+    {
+      "name": "album redirect provides a continuation with unknown effect",
+      "expected": [
+        "filing-handoff",
+        "unknown",
+        "https://forum.test/home.php?mod=space&uid=31&do=album&quickforward=1&id=1",
+        [
+          "20"
+        ],
+        3
+      ],
+      "actual": [
+        "filing-handoff",
+        "unknown",
+        "https://forum.test/home.php?mod=space&uid=31&do=album&quickforward=1&id=1",
+        [
+          "20"
+        ],
+        3
+      ]
+    },
+    {
+      "name": "automatically followed attachment response is rejected",
+      "expected": "invalid",
+      "actual": "invalid"
+    },
+    {
+      "name": "length mismatch never hands out the partial body",
+      "expected": [
+        "invalid",
+        "undefined"
+      ],
+      "actual": [
+        "invalid",
+        "undefined"
+      ]
+    },
+    {
+      "name": "legacy forum alias is canonicalized and same-attachment hops retain the session",
+      "expected": [
+        "delivered",
+        [
+          [
+            "https://forum.test",
+            "31"
+          ],
+          [
+            "https://forum.test",
+            "31"
+          ]
+        ],
+        "yes"
+      ],
+      "actual": [
+        "delivered",
+        [
+          [
+            "https://forum.test",
+            "31"
+          ],
+          [
+            "https://forum.test",
+            "31"
+          ]
+        ],
+        "yes"
+      ]
+    },
+    {
+      "name": "packaged TypeScript stops a declined credit action",
+      "actual": [
+        "credit-required",
+        [
+          "36"
+        ],
+        [
+          [
+            "GET",
+            false
+          ]
+        ]
+      ],
+      "expected": [
+        "credit-required",
+        [
+          "36"
+        ],
+        [
+          [
+            "GET",
+            false
+          ]
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed forum requests or account effects"
+  ]
+}

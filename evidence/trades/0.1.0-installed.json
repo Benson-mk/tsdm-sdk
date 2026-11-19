@@ -1,0 +1,1304 @@
+{
+  "evidence": "controlled installed SDK and host",
+  "node": "v26.0.0",
+  "package": "tsdm-sdk@0.1.0",
+  "archiveSHA256": "4a1dd2049f620fc9ba43daeedd6d93a94efb372d26124a1d42ea8cd47aa1353d",
+  "archiveBytes": 261964,
+  "lockfileIntegrity": "sha512-fsM2Ry9WK8GOTbqNjps1Y0wAgZlRgwv6Mjsjg1Qef9BZ6wXdHnpsEbzHg38ldx4pCE+YQFn6nSL8ZhDizxSIbw==",
+  "guideSHA256": "47cabadcc80ac41d8d6e7889ec3d545a3701b4d706c60a679e14ff737b5ee01e",
+  "consumerSHA256": "a0ad189e373a67b371aa841cfa9bca7e930303b4f615267e5d439baa0d6c619b",
+  "results": [
+    {
+      "name": "read the locked paid thread and its exact opening post",
+      "expected": {
+        "kind": "paid-thread",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 2,
+          "access": "requires-purchase",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "observed": {
+        "kind": "paid-thread",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 2,
+          "access": "requires-purchase",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "inspect structured terms, decline, then explicitly confirm and observe access",
+      "expected": {
+        "kind": "purchased",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 3,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "observed": {
+        "kind": "purchased",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 3,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&paysubmit=yes&infloat=yes&extra=offer&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-hash",
+            "referer": "https://trades.example/forum.php?mod=viewthread&tid=42",
+            "tid": "42",
+            "handlekey": "pay",
+            "paysubmit": "true",
+            "preserved": "form-field"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "poor balance response is a refusal before any debit",
+      "expected": {
+        "kind": "refused",
+        "code": "credits_balance_insufficient_and_charge",
+        "message": "Fictitious insufficient balance"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "credits_balance_insufficient_and_charge",
+        "message": "Fictitious insufficient balance"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "lost paid-thread response remains uncertain without a repeated payment",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&paysubmit=yes&infloat=yes&extra=offer&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-hash",
+            "referer": "https://trades.example/forum.php?mod=viewthread&tid=42",
+            "tid": "42",
+            "handlekey": "pay",
+            "paysubmit": "true",
+            "preserved": "form-field"
+          }
+        }
+      ]
+    },
+    {
+      "name": "purchase acknowledgement with the wrong exact opening post remains uncertain",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&paysubmit=yes&infloat=yes&extra=offer&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-hash",
+            "referer": "https://trades.example/forum.php?mod=viewthread&tid=42",
+            "tid": "42",
+            "handlekey": "pay",
+            "paysubmit": "true",
+            "preserved": "form-field"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "already purchased is a separate receipt",
+      "expected": {
+        "kind": "already-accessible",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 3,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "observed": {
+        "kind": "already-accessible",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": 3,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&paysubmit=yes&infloat=yes&extra=offer&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-hash",
+            "referer": "https://trades.example/forum.php?mod=viewthread&tid=42",
+            "tid": "42",
+            "handlekey": "pay",
+            "paysubmit": "true",
+            "preserved": "form-field"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "read trade item details and its read-only order form destination",
+      "expected": {
+        "kind": "trade-goods",
+        "goods": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "subject": "Fictitious badge",
+          "seller": {
+            "id": "33",
+            "name": "Fictitious Seller"
+          },
+          "prices": [
+            "10 Fictional credits"
+          ],
+          "originalPrices": [
+            "15 Fictional credits"
+          ],
+          "stock": 2,
+          "soldOut": false,
+          "details": [
+            {
+              "label": "商品数量",
+              "value": "2"
+            },
+            {
+              "label": "地点",
+              "value": "Fictitious location"
+            }
+          ],
+          "description": "Fictitious goods description",
+          "thumbnailURL": null,
+          "imageURL": null,
+          "orderFormURL": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+        }
+      },
+      "observed": {
+        "kind": "trade-goods",
+        "goods": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "subject": "Fictitious badge",
+          "seller": {
+            "id": "33",
+            "name": "Fictitious Seller"
+          },
+          "prices": [
+            "10 Fictional credits"
+          ],
+          "originalPrices": [
+            "15 Fictional credits"
+          ],
+          "stock": 2,
+          "soldOut": false,
+          "details": [
+            {
+              "label": "商品数量",
+              "value": "2"
+            },
+            {
+              "label": "地点",
+              "value": "Fictitious location"
+            }
+          ],
+          "description": "Fictitious goods description",
+          "thumbnailURL": null,
+          "imageURL": null,
+          "orderFormURL": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "sold-out trade item has no order form link",
+      "expected": {
+        "kind": "trade-goods",
+        "goods": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "subject": "Fictitious badge",
+          "seller": {
+            "id": "33",
+            "name": "Fictitious Seller"
+          },
+          "prices": [
+            "10 Fictional credits"
+          ],
+          "originalPrices": [
+            "15 Fictional credits"
+          ],
+          "stock": 0,
+          "soldOut": true,
+          "details": [
+            {
+              "label": "商品数量",
+              "value": "0"
+            },
+            {
+              "label": "地点",
+              "value": "Fictitious location"
+            }
+          ],
+          "description": "Fictitious goods description",
+          "thumbnailURL": null,
+          "imageURL": null,
+          "orderFormURL": null
+        }
+      },
+      "observed": {
+        "kind": "trade-goods",
+        "goods": {
+          "threadId": "42",
+          "postId": "102",
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "subject": "Fictitious badge",
+          "seller": {
+            "id": "33",
+            "name": "Fictitious Seller"
+          },
+          "prices": [
+            "10 Fictional credits"
+          ],
+          "originalPrices": [
+            "15 Fictional credits"
+          ],
+          "stock": 0,
+          "soldOut": true,
+          "details": [
+            {
+              "label": "商品数量",
+              "value": "0"
+            },
+            {
+              "label": "地点",
+              "value": "Fictitious location"
+            }
+          ],
+          "description": "Fictitious goods description",
+          "thumbnailURL": null,
+          "imageURL": null,
+          "orderFormURL": null
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "a different item page cannot supply a buy link",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "trade history has a browser destination and no HTTP request",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/home.php?mod=space&do=trade&view=tradelog"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/home.php?mod=space&do=trade&view=tradelog"
+      },
+      "requests": []
+    },
+    {
+      "name": "inspect a physical credit order form and create only the order",
+      "expected": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "manual order redirect identifies only the new order",
+      "expected": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "cash order continues at the read-only browser form",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "trade form targeting another item is refused before dispatch",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "trade order stock refusal is distinct",
+      "expected": {
+        "kind": "refused",
+        "code": "trade_lack",
+        "message": "Fictitious inventory shortage"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "trade_lack",
+        "message": "Fictitious inventory shortage"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "lost trade order acknowledgement does not create a repeat order",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "read an exact individual order and its current payment terms",
+      "expected": {
+        "kind": "trade-order",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "status": "awaiting-payment",
+          "buyerId": "31",
+          "credit": {
+            "amount": 20,
+            "name": "Fictional credits"
+          }
+        }
+      },
+      "observed": {
+        "kind": "trade-order",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "status": "awaiting-payment",
+          "buyerId": "31",
+          "credit": {
+            "amount": 20,
+            "name": "Fictional credits"
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "place an order and explicitly pay that returned order in a separate request",
+      "expected": {
+        "kind": "paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrong password can be refused with ok=1",
+      "expected": {
+        "kind": "refused",
+        "code": "trade_password_error"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "trade_password_error"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a success key on a different order cannot establish payment",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "legacy redirect from a payment does not establish the result",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "payment inputs are refused when the order belongs to a different buyer",
+      "expected": {
+        "kind": "refused",
+        "code": "wrong-buyer"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "wrong-buyer"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "already paid order is returned without a new payment",
+      "expected": {
+        "kind": "already-paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "status": "paid",
+          "buyerId": "31",
+          "credit": {
+            "amount": 20,
+            "name": "Fictional credits"
+          }
+        }
+      },
+      "observed": {
+        "kind": "already-paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "status": "paid",
+          "buyerId": "31",
+          "credit": {
+            "amount": 20,
+            "name": "Fictional credits"
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "a payment form aimed at a different order is invalid",
+      "expected": {
+        "kind": "invalid-response"
+      },
+      "observed": {
+        "kind": "invalid-response"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "lost payment response does not send a second payment",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "pay from the original order receipt using the same authorized buy form hash",
+      "expected": {
+        "kind": "paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "paid",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "offlinestatus": "4",
+            "offlinesubmit": "true",
+            "message": "Fictitious payment note",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "native order acknowledgement identifies creation only",
+      "expected": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "1",
+            "offline": "1",
+            "buyername": "Fictitious Buyer",
+            "buyercontact": "Imaginary Address",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "native locked post and XML offer, acknowledgement and exact readable opening post",
+      "expected": {
+        "kind": "purchased",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": null,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "observed": {
+        "kind": "purchased",
+        "thread": {
+          "threadId": "42",
+          "postId": "101",
+          "title": "Fictitious paid discussion",
+          "price": 5,
+          "payers": null,
+          "access": "accessible",
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&paysubmit=yes&infloat=yes&inajax=1&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-hash",
+            "referer": "https://trades.example/forum.php?mod=viewthread&tid=42",
+            "tid": "42",
+            "handlekey": "pay",
+            "paysubmit": "true"
+          }
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "nonliteral cash terms require the browser",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&tid=42&pid=102"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "virtual order has no recipient fields and remains separate from payment",
+      "expected": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "observed": {
+        "kind": "order-created",
+        "order": {
+          "orderId": "FictionalOrder0123",
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&action=trade&tid=42&pid=102&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-order-hash",
+            "number": "2",
+            "transport": "3",
+            "offline": "1",
+            "buyerzip": "",
+            "buyerphone": "",
+            "buyermobile": "",
+            "buyermsg": "Fictitious note",
+            "tradesubmit": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an order page without qualified details remains a browser handoff",
+      "expected": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+      },
+      "observed": {
+        "kind": "browser-handoff",
+        "destination": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "replayed payment system-error page remains uncertain",
+      "expected": {
+        "kind": "uncertain"
+      },
+      "observed": {
+        "kind": "uncertain"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "insufficient credit cannot be mistaken for a payment",
+      "expected": {
+        "kind": "refused",
+        "code": "trade_credit_lack"
+      },
+      "observed": {
+        "kind": "refused",
+        "code": "trade_credit_lack"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&orderid=FictionalOrder0123&tsdmapp=json",
+          "method": "POST",
+          "fields": {
+            "formhash": "fictional-payment-hash",
+            "offlinestatus": "4",
+            "message": "Fictitious payment note",
+            "offlinesubmit": "true",
+            "password": "[fictitious password supplied]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a changed session cannot use the prior trade order form",
+      "expected": {
+        "kind": "session-changed"
+      },
+      "observed": {
+        "kind": "session-changed"
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "an older plugin can serve the native dialog on a second read-only request",
+      "expected": {
+        "kind": "purchase-form",
+        "form": {
+          "threadId": "42",
+          "postId": "101",
+          "terms": {
+            "author": {
+              "id": "33",
+              "name": "Fictitious Author"
+            },
+            "price": 5,
+            "authorReceives": 4,
+            "balanceAfterPurchase": 95,
+            "credit": {
+              "id": null,
+              "name": "Fictional credits",
+              "unit": ""
+            }
+          }
+        }
+      },
+      "observed": {
+        "kind": "purchase-form",
+        "form": {
+          "threadId": "42",
+          "postId": "101",
+          "terms": {
+            "author": {
+              "name": "Fictitious Author",
+              "id": "33"
+            },
+            "price": 5,
+            "authorReceives": 4,
+            "balanceAfterPurchase": 95,
+            "credit": {
+              "id": null,
+              "name": "Fictional credits",
+              "unit": ""
+            }
+          }
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "name": "the packed TypeScript guide declines purchase and order creation independently",
+      "expected": {
+        "purchase": {
+          "kind": "not-confirmed"
+        },
+        "order": {
+          "kind": "not-confirmed"
+        },
+        "history": {
+          "kind": "browser-handoff",
+          "destination": "https://trades.example/home.php?mod=space&do=trade&view=tradelog"
+        }
+      },
+      "observed": {
+        "purchase": {
+          "kind": "not-confirmed"
+        },
+        "order": {
+          "kind": "not-confirmed"
+        },
+        "history": {
+          "kind": "browser-handoff",
+          "destination": "https://trades.example/home.php?mod=space&do=trade&view=tradelog"
+        }
+      },
+      "requests": [
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&tid=42&tsdmapp=json&nodoc=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=misc&action=pay&tid=42&pid=101&infloat=yes&handlekey=pay&inajax=1&ajaxtarget=fwin_content_pay&tsdmapp=json&tsdmform=1",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=viewthread&do=tradeinfo&tid=42&pid=102",
+          "method": "GET"
+        },
+        {
+          "url": "https://trades.example/forum.php?mod=trade&tid=42&pid=102",
+          "method": "GET"
+        }
+      ]
+    }
+  ]
+}

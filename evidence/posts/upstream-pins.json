@@ -1,0 +1,22 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "sha256": {
+    "lib/features/post/models/post_form.dart": "e356c53f7880a8319fab921b1228f44067e30b60544b6b9e53500df03080a6a9",
+    "lib/features/post/repository/post_edit_repository.dart": "da863e8f2da5a2506c850bc6a6fe77dc7d3e61bd191a35edb1df8a904de6eae5",
+    "lib/features/post/repository/sec_check_repository.dart": "6c678c9868b7c1e07d3c6e74b2843a16cd002e77d5b457d6094b82e9f299dd44",
+    "lib/features/post/utils/draft_marker.dart": "2a04b2b38aedc0d43fb5879629a9dae2a41c957fcfd3a034c269953ff9502b48",
+    "lib/features/post/utils/new_thread_status.dart": "0bfd8f409105ede64c93483b773c328424345ebe123445985f5fcf9d2fd03d79",
+    "lib/features/post/utils/submission_result.dart": "71eb999214c56cfb2ccd441630dd5ee16465f49a0d87c85cc4199c981df9b0fa",
+    "lib/shared/models/sec_check.dart": "55a0fb9f1e9f55e4d586c376ed78fcb5649ba99a4fc2fe76d9a4676f121cdd99",
+    "test/data/tsdmapp/mythread_v9_draft.json": "85dd1b981db263df12e1b6aba6e8a43afc4652e503d454083095082b8c4de2e0",
+    "test/data/tsdmapp/post_v16_edit_draft.json": "95b6eb433ab55717385bd066ad1f002b48422c54241bc0f57aa454b1da7899f9",
+    "test/data/tsdmapp/post_v16_edit_first.json": "a9bc7c957d8639e3f0e6d5e76c0b44b367a3fb6f3a7abb5fae7352a525681823",
+    "test/data/tsdmapp/post_v16_edit_reply.json": "d34d23d93474ecd7cf49f0ff6f40943aa2c32b85dc2ca994d5ca3c3df33c5979",
+    "test/data/tsdmapp/post_v16_newthread.json": "20fd0799a76efd9af112ac3fbcdb4e6cd0607022d63b28de1e3e1073675e0d8b",
+    "test/data/tsdmapp/post_v16_newthread_cronpublish.json": "3b0d4b9252bf25b684ee29749047928bc8b21c2ce7b082cce68f0e10a4ddec08",
+    "test/data/tsdmapp/post_v16_newthread_hook.json": "e6b00b0a80aa97836b387db0398f886e0b0ee0c5ff157e6881e08bba2a50745a",
+    "test/data/tsdmapp/write_v13_page_case.json": "0efda709eeb8df0bc934c30ff6df42590e62d353db8db87286ffd498a6b6bc67",
+    "test/data/tsdmapp/write_v13_page_case.orig.txt": "6aa6c9cc86487a268a6aa7f3c20f7009d9f012a321fc367817cfdb32a3f19915",
+    "test/regression/draft_fixtures.dart": "bbe7c43df37498bd66621dce68f371dcbea848ddabb4522e1f4cac3eb965f362"
+  }
+}

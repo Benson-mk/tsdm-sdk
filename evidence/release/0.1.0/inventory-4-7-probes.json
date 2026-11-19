@@ -1,0 +1,1008 @@
+{
+  "archive": "tsdm-sdk-0.1.0.tgz",
+  "archiveSHA256": "33d50e8ad2b77241312d7fcd9eea53849a46315a70e022437a5cac70661625d7",
+  "integrity": "sha512-6mEvLiJwZlLrCHr7cWA2e4/Ge53lG/zSfpR3AhO+RpTCWNbyLGpRCjDyGyewh9/SR6CHQbltzMQZvZ++BzYiVg==",
+  "packageInputsSHA256": "b65a7b7fecf6ea9123828a1d9a8057dbc55994754280c708294ab2b1f4265684",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "scriptSHA256": "272d5a77b32f9ad41dde81991189a6787a8f53d17528627dc0e37489680a8d3e",
+  "evidence": "clean offline installed consumer using only synthetic transport responses",
+  "results": [
+    {
+      "name": "native mymedals returns its exact browser destination",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "mymedals",
+          "url": "https://forum.test/plugin.php?id=dsu_medalCenter%3Amemcp&action=mymedal"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "mymedals",
+              "page": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "mymedals",
+          "url": "https://forum.test/plugin.php?id=dsu_medalCenter%3Amemcp&action=mymedal"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "mymedals",
+              "page": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "native medalgrant returns its exact browser destination",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "medalgrant",
+          "url": "https://forum.test/plugin.php?id=dsu_medalCenter%3Amemcp&action=grant"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "medalgrant",
+              "page": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "medalgrant",
+          "url": "https://forum.test/plugin.php?id=dsu_medalCenter%3Amemcp&action=grant"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "medalgrant",
+              "page": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "native titleexchange returns its exact browser destination",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "titleexchange",
+          "url": "https://forum.test/plugin.php?id=tsdmtitle%3Atsdmtitle&action=exchange"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "titleexchange",
+              "page": "1",
+              "filter": "all"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "titleexchange",
+          "url": "https://forum.test/plugin.php?id=tsdmtitle%3Atsdmtitle&action=exchange"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "titleexchange",
+              "page": "1",
+              "filter": "all"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "native titleissue returns its exact browser destination",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "titleissue",
+          "url": "https://forum.test/plugin.php?id=tsdmtitle%3Atsdmtitle&action=issue"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "awards-handoff",
+          "catalogue": "titleissue",
+          "url": "https://forum.test/plugin.php?id=tsdmtitle%3Atsdmtitle&action=issue"
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "titleissue"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "structured achievement preserves populated progress and reward",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "awards-view",
+          "memberId": "31",
+          "activated": 1,
+          "records": [
+            {
+              "name": "Synthetic Contributor",
+              "description": "Make three contributions",
+              "requirements": 3,
+              "progress": 2,
+              "percent": 66,
+              "reward": {
+                "value": 5,
+                "unit": "points"
+              }
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmtitle:achi",
+              "tsdmapp": "json",
+              "tsdmv": "4",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "awards-view",
+          "memberId": "31",
+          "activated": 1,
+          "records": [
+            {
+              "name": "Synthetic Contributor",
+              "description": "Make three contributions",
+              "requirements": 3,
+              "progress": 2,
+              "percent": 66,
+              "reward": {
+                "value": 5,
+                "unit": "points"
+              }
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmtitle:achi",
+              "tsdmapp": "json",
+              "tsdmv": "4",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "atplus init returns distinct recent member and friend",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "atplus",
+          "recent": [
+            {
+              "id": "104",
+              "name": "Synthetic Recent"
+            }
+          ],
+          "friends": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend"
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "init"
+            },
+            "fieldCount": 1
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "atplus",
+          "recent": [
+            {
+              "id": "104",
+              "name": "Synthetic Recent"
+            }
+          ],
+          "friends": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend"
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "init"
+            },
+            "fieldCount": 1
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "atplus search returns a member for a numeric UID query",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "kind": "members",
+          "members": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend"
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "search",
+              "q": "205"
+            },
+            "fieldCount": 2
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "kind": "members",
+          "members": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend"
+            }
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "search",
+              "q": "205"
+            },
+            "fieldCount": 2
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "host combines stock mention names with the intended member's friends",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "stockKind": "native",
+          "friendsKind": "friends",
+          "ownerId": "31",
+          "friends": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend",
+              "groupId": "1"
+            }
+          ],
+          "others": [
+            "Synthetic Stock"
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "init"
+            },
+            "fieldCount": 1
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/misc.php",
+            "query": {
+              "mod": "getatuser",
+              "inajax": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/home.php",
+            "query": {
+              "mod": "space",
+              "do": "friend",
+              "uid": "31",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": null,
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "stockKind": "native",
+          "friendsKind": "friends",
+          "ownerId": "31",
+          "friends": [
+            {
+              "id": "205",
+              "name": "Synthetic Friend",
+              "groupId": "1"
+            }
+          ],
+          "others": [
+            "Synthetic Stock"
+          ]
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "atplus:search"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": {
+              "op": "init"
+            },
+            "fieldCount": 1
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/misc.php",
+            "query": {
+              "mod": "getatuser",
+              "inajax": "1"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": "synthetic-login",
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/home.php",
+            "query": {
+              "mod": "space",
+              "do": "friend",
+              "uid": "31",
+              "nodoc": "1",
+              "tsdmapp": "json"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": null,
+            "effect": null,
+            "fields": null,
+            "fieldCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "moderator panel submits offered visit restriction 5 once after approval",
+      "status": "passed",
+      "expected": {
+        "result": {
+          "target": "71",
+          "offered": [
+            "4",
+            "5"
+          ],
+          "declined": {
+            "kind": "not-confirmed",
+            "operation": "ban-member"
+          },
+          "requestsAfterDecline": 2,
+          "acknowledged": {
+            "kind": "acknowledged",
+            "operation": "ban-member",
+            "code": "modcp_member_ban_succeed"
+          }
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": true,
+            "fields": {
+              "formhash": "a1b2c3d4",
+              "uid": "71",
+              "username": "",
+              "bansubmit": "true",
+              "bannew": "5",
+              "banexpirynew": "7",
+              "reason": "Synthetic reason"
+            },
+            "fieldCount": 7
+          }
+        ]
+      },
+      "observed": {
+        "result": {
+          "target": "71",
+          "offered": [
+            "4",
+            "5"
+          ],
+          "declined": {
+            "kind": "not-confirmed",
+            "operation": "ban-member"
+          },
+          "requestsAfterDecline": 2,
+          "acknowledged": {
+            "kind": "acknowledged",
+            "operation": "ban-member",
+            "code": "modcp_member_ban_succeed"
+          }
+        },
+        "requests": [
+          {
+            "origin": "https://forum.test",
+            "path": "/plugin.php",
+            "query": {
+              "id": "tsdmapp:api",
+              "action": "status"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "uid": "71",
+              "tsdmapp": "json",
+              "nodoc": "1",
+              "tsdmv": "4"
+            },
+            "method": "GET",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": false,
+            "fields": null,
+            "fieldCount": 0
+          },
+          {
+            "origin": "https://forum.test",
+            "path": "/forum.php",
+            "query": {
+              "mod": "modcp",
+              "action": "member",
+              "op": "ban",
+              "tsdmapp": "json",
+              "tsdmv": "4"
+            },
+            "method": "POST",
+            "fresh": true,
+            "session": {
+              "memberId": "31",
+              "continuity": "synthetic-login"
+            },
+            "effect": true,
+            "fields": {
+              "formhash": "a1b2c3d4",
+              "uid": "71",
+              "username": "",
+              "bannew": "5",
+              "banexpirynew": "7",
+              "reason": "Synthetic reason",
+              "bansubmit": "true"
+            },
+            "fieldCount": 7
+          }
+        ]
+      }
+    }
+  ]
+}

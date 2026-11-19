@@ -1,0 +1,15 @@
+{
+  "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "files": {
+    "test/data/forum_index_x5.html": "7cfe662d1be3c6f6164538bf5f696b7586fcf0a90b184c0fbb12b11319d37adb",
+    "test/data/red_packet_post_x5.html": "2f40a0ad76e1164623976655d0c420041aefdc97dd35b206cbb9c7dd96bd738b",
+    "test/data/tsdmapp/hongbao/records.json": "712bb8cb7d555ca3931bbf471e39d3b1290f24a12c5e4034b261745f7b7e0195",
+    "test/data/tsdmapp/hongbao/results.json": "dede7faf89cde7cc9cee41b11b73f3ee43f1135c21603c62f7b25f2b7c6ac869",
+    "test/data/tsdmapp/hongbao/specials.json": "df69624c0e5f67a363b6432460ea95abbdb3788c9382509636ee112b8de2f315",
+    "test/data/tsdmapp/hongbao/thread_password_active.json": "9b2da5f0c4037e31dd4c865cfa17488d521a9b2e8a89840461e65c799e332dc0",
+    "test/data/tsdmapp/hongbao/thread_sender_active.json": "44da1be8b858e96de73577cad96dfd46f559c80374986bee9925c25b29654463",
+    "test/regression/test_025_red_packet_x5_test.dart": "75a4cc6696f2ee0e9775719716df5809c46052eb706d5803f68d92b10e66481b",
+    "test/regression/test_110_daily_rewards_test.dart": "19dd47329f038de46f542a1d574c0dc5bf9e057fb81ea2e6f4847195e681ddc7",
+    "test/regression/test_299_hongbao_thread_card_test.dart": "cf9f20ff71ebdf57aa7a4cf58c6de7c78cae8f5d508978e9cd0b22d3234d1a12"
+  }
+}
