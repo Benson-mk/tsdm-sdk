@@ -4,6 +4,7 @@
 
 ## Tasks
 
+- [Publish an ordinary reply and check an uncertain send](docs/replies.md)
 - [Read a public board and open a thread](#read-a-public-board-and-open-a-thread)
 - [Find threads and explore forum activity](docs/discovery.md)
 - [Sign in and manage account security](docs/account.md)

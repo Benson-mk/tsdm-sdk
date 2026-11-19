@@ -1,7 +1,10 @@
 import { attr, children, descendants, documentFrom } from "./html.js";
 import type { HostResponse } from "./types.js";
 /** A bounded grammar for native literal callbacks. Script bytes are never evaluated. */
-export function postCallback(response: HostResponse): {
+export function postCallback(
+  response: HostResponse,
+  replyHandler?: "reply" | "fastpost",
+): {
   success: boolean;
   values: string[];
   fields: Record<string, string>;
@@ -104,15 +107,16 @@ export function postCallback(response: HostResponse): {
       take("{");
     }
     const name = identifier();
+    const names = replyHandler
+      ? [`succeedhandle_${replyHandler}`, `errorhandle_${replyHandler}`]
+      : ["succeedhandle_post", "errorhandle_post", "succeedhandle_"];
     if (
-      !["succeedhandle_post", "errorhandle_post", "succeedhandle_"].includes(
-        name,
-      ) ||
+      !names.includes(name) ||
       (name === "succeedhandle_" && guarded !== name) ||
       (guarded && guarded !== name)
     )
       return null;
-    const success = name !== "errorhandle_post";
+    const success = !name.startsWith("errorhandle_");
     take("(");
     const values = [string()];
     take(",");

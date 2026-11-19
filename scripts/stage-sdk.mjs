@@ -27,6 +27,8 @@ const manifest = {
     "index.d.ts",
     "forum-client/types.d.ts",
     ...noticeDeclarations,
+    "forum-client/replies.d.ts",
+    "forum-client/reply-verification.d.ts",
     ...collectionDeclarations,
     "forum-client/message-client.d.ts",
     "forum-client/message-effects.d.ts",
@@ -38,6 +40,7 @@ const manifest = {
     "forum-client/discovery/",
     "forum-client/spaces/",
     "README.md",
+    "docs/replies.md",
     "docs/discovery.md",
     "docs/account.md",
     "docs/profile.md",
@@ -55,6 +58,7 @@ writeFileSync(
 );
 copyFileSync(new URL("README.md", root), new URL("README.md", stage));
 mkdirSync(new URL("docs/", stage));
+copyFileSync(new URL("docs/replies.md", root), new URL("docs/replies.md", stage));
 copyFileSync(
   new URL("docs/discovery.md", root),
   new URL("docs/discovery.md", stage),
@@ -83,6 +87,8 @@ mkdirSync(new URL("forum-client/discovery/", stage));
 mkdirSync(new URL("forum-client/spaces/", stage));
 for (const declaration of [
   "index.d.ts",
+  "forum-client/replies.d.ts",
+  "forum-client/reply-verification.d.ts",
   "forum-client/message-client.d.ts",
   "forum-client/message-effects.d.ts",
   "forum-client/account-client.d.ts",

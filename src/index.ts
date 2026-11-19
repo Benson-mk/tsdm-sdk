@@ -1,3 +1,22 @@
+export { createReplyClient } from "./forum-client/replies.js";
+export type {
+  ReplyClientOptions,
+  ReplyRequest,
+  ReplyCheck,
+  ReplyForm,
+  ReplyDraft,
+  ReplyOption,
+  ReplyOptionName,
+  ReplyAttempt,
+  ReplyPreparation,
+  ReplyPublication,
+} from "./forum-client/replies.js";
+export type {
+  ReplyVerification,
+  ReplyVerificationCheck,
+  ReplyVerificationPrompt,
+} from "./forum-client/reply-verification.js";
+
 import { createMemberReads } from "./forum-client/member-reads.js";
 export type {
   MemberIdentity,

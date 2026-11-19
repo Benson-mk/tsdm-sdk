@@ -1,0 +1,492 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "8d3aae8604a41b2541bceeee7cac241d4788be107835d49d5ba33b83f8e600ce",
+  "syntheticInputsSHA256": "c9fdf2e2809d456831b3f487c7cd82d20d95020b187e0fdb9a7210dd85678d1e",
+  "guideSHA256": "773987196b6b118e1862752b1e4bc5ccf7a632a82f7f28d0f1b206c000c3c439",
+  "guides": [
+    "replies"
+  ],
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "sourcePin": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "verifiedFiles": 20
+  },
+  "evidence": "controlled installed SDK and host boundary",
+  "results": {
+    "results": [
+      {
+        "expected": "published with exact PID 303 and one POST",
+        "observed": "published",
+        "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+      },
+      {
+        "expected": "published for quote with forum fields and single-use form",
+        "observed": "published",
+        "reuse": "unavailable"
+      },
+      {
+        "expected": "moderation for quote with forum fields and single-use form",
+        "observed": "moderation",
+        "reuse": "unavailable"
+      },
+      {
+        "expected": "refused for quote with forum fields and single-use form",
+        "observed": "refused",
+        "reuse": "unavailable"
+      },
+      {
+        "expected": "redisplayed for quote with forum fields and single-use form",
+        "observed": "redisplayed",
+        "reuse": "unavailable"
+      },
+      {
+        "expected": "human image and question refresh/check with no auto-submit, unnamed verification to browser",
+        "observed": [
+          "image",
+          "question",
+          "accepted",
+          "rejected",
+          "published",
+          "browser-handoff"
+        ]
+      },
+      {
+        "expected": "native form fallback and literal AJAX acknowledgement",
+        "observed": "published",
+        "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+      },
+      {
+        "expected": "inconclusive (author)",
+        "observed": "inconclusive",
+        "fixture": {
+          "authorid": 44
+        }
+      },
+      {
+        "expected": "inconclusive (exact-post)",
+        "observed": "inconclusive",
+        "fixture": {
+          "pid": 304
+        }
+      },
+      {
+        "expected": "inconclusive (account)",
+        "observed": "inconclusive",
+        "fixture": {
+          "editUid": 44
+        }
+      },
+      {
+        "expected": "inconclusive (stored-evidence)",
+        "observed": "inconclusive",
+        "fixture": {
+          "renderedOnly": true
+        }
+      },
+      {
+        "expected": "inconclusive (content)",
+        "observed": "inconclusive",
+        "fixture": {
+          "stored": "A different source"
+        }
+      },
+      {
+        "expected": "inconclusive (options)",
+        "observed": "inconclusive",
+        "fixture": {
+          "usesig": 0
+        }
+      },
+      {
+        "expected": "inconclusive (account)",
+        "observed": "inconclusive",
+        "fixture": {
+          "switchOnEdit": true
+        }
+      },
+      {
+        "expected": "two separate lost sends, independent matches, attribution unresolved and only two POSTs",
+        "observed": "confirmed",
+        "attribution": "unresolved",
+        "writes": 2,
+        "postURL": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+      },
+      {
+        "expected": "no write for foreign action, wrong quote or replaced session; generic redirect is only a candidate",
+        "observed": "uncertain",
+        "candidate": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303"
+      },
+      {
+        "expected": "quoted stored source includes the forum quote, loss still one dispatch",
+        "observed": "confirmed"
+      },
+      {
+        "expected": "pinned schema 16 form, supplied destination and flood refusal",
+        "observed": "refused",
+        "fixture": "reply"
+      },
+      {
+        "expected": "pinned schema 16 form, supplied destination and flood refusal",
+        "observed": "refused",
+        "fixture": "reply_quote"
+      },
+      {
+        "expected": "pinned schema 16 form, supplied destination and flood refusal",
+        "observed": "refused",
+        "fixture": "reply_float"
+      }
+    ],
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/misc.php?mod=seccode&action=update&idhash=cFixture&modid=forum%3A%3Apost&fixture-clock=",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/misc.php?mod=secqaa&action=update&idhash=qFixture&inajax=1&fixture-clock=",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/misc.php?mod=seccode&action=check&idhash=cFixture&modid=forum%3A%3Apost&inajax=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/misc.php?mod=secqaa&action=check&idhash=qFixture&inajax=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/misc.php?mod=secqaa&action=check&idhash=qFixture&inajax=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&reppost=302&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=90&extra=forum-value&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=redirect&goto=findpost&ptid=90&pid=303&tsdmapp=json&nodoc=1",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=edit&fid=2&tid=90&pid=303&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&tsdmapp=json",
+        "member": "35",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&extra=&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "35",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&reppost=9700002&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&extra=&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "GET",
+        "url": "https://forum.invalid/forum.php?mod=post&action=reply&fid=2&tid=9600001&reppost=9700002&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      },
+      {
+        "method": "POST",
+        "url": "https://forum.invalid/forum.php?mod=post&infloat=yes&action=reply&fid=2&extra=&tid=9600001&replysubmit=yes&inajax=1&tsdmapp=json",
+        "member": "31",
+        "fresh": true
+      }
+    ]
+  }
+}
