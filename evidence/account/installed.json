@@ -1,0 +1,521 @@
+{
+  "evidence": "controlled installed consumer and host handoffs",
+  "node": "v26.0.0",
+  "npm": "11.12.1",
+  "typescript": "Version 6.0.3",
+  "documentation": {
+    "guide": "docs/account.md",
+    "links": "checked in tarball",
+    "example": "compiled against installed declarations without DOM types and executed"
+  },
+  "archiveSHA256": "1b97a1636d11db3d1c4fcf7ccca38cc7582f6814d4803ac673147d80c019047c",
+  "upstream": {
+    "commit": "02df67e39ded906def5b868e8f8311ba735b316c",
+    "sha256": {
+      "tsdmapp/v4/status_v400.json": "3f05b0681ef6461e995901897ccb7d11f773c7eeef2bdc9dd7b05e8fc5b4d160",
+      "login_form.xml": "fa4f7ecac25401c2e45e55c80a94e5340abde052aa8c0dbebc57699a16a93f05",
+      "account/account_center_x5.html": "b08be214b6984faa1b95dd16fe481f84e7e73dab85cd4e132ff484d4abb6068f",
+      "account/choose_password_x5.xml": "f48e1b7431c86ae9e6caf412469025661b48fdd3e994c702a2e274e62da54de3",
+      "account/verify_password_x5.xml": "b964ac474dbe25a87bcd9b4298b8ca9626a848ea8dc5f23db7ba542c15491de3",
+      "account/verify_ok_x5.xml": "dc2b44470d8c763693877f49b4054e09a9d216b7745910e7db4d55c6aebab4a3",
+      "account/verify_wrong_x5.xml": "b502ee18279783cd6290d11c02d6970f49c184e85c846a91cfbcf34711001719",
+      "account/open_signed_x5.xml": "8c1bd86c0cedbc15b6e16545b63a72f7a185ac9355ab69789e9bf5e5c6c5674f",
+      "account/form_password_x5.xml": "8031d9fa5ff51fa16f2bc05f4713b85c0439db5f705b70bb28eb20a54a03d721",
+      "account/form_email_x5.xml": "921948adc4f36665fbe215ede23b0a52e29111ea8c5cc86be11753e286a7a844",
+      "account/form_question_x5.xml": "5e29fe5015dc4570df9b2b9273994d3a33d67db4dd21a8aef05e8a5f53527445",
+      "account/result_password_done_v13.json": "a45577acb7386b2e81c424ed870e70d49331796cdec8597d54459647eb6a3370",
+      "account/result_password_mismatch_v13.json": "b7391df2f34110524b7bffd6b2d4bea76e29a066ab256d5974c4c1351bd395a3",
+      "account/result_email_invalid_v13.json": "81abafc5c942a4941559165d1b532e0643076fa1edd0d0e2ae99d4ae410f2caa",
+      "account/result_question_done_x5.xml": "9c938a7db38df6849164922ac7d06ba4a5cdca01f1c7214a3c472fac3d55a899"
+    }
+  },
+  "requestCounts": {
+    "readGET": 92,
+    "logoutGET": 4,
+    "POST": 31
+  },
+  "observations": [
+    {
+      "operation": "member status and feature switches",
+      "expected": {
+        "identity": {
+          "kind": "member",
+          "id": "31"
+        },
+        "version": "4.0.0",
+        "v4": true,
+        "admin": false,
+        "paging": true,
+        "statusAction": true,
+        "magicForm": true
+      },
+      "observed": {
+        "identity": {
+          "kind": "member",
+          "id": "31"
+        },
+        "version": "4.0.0",
+        "v4": true,
+        "admin": false,
+        "paging": true,
+        "statusAction": true,
+        "magicForm": true
+      }
+    },
+    {
+      "operation": "guest status with disabled v4",
+      "expected": [
+        {
+          "kind": "guest"
+        },
+        false
+      ],
+      "observed": [
+        {
+          "kind": "guest"
+        },
+        false
+      ]
+    },
+    {
+      "operation": "busy status",
+      "expected": "rate-limited",
+      "observed": "rate-limited"
+    },
+    {
+      "operation": "registration and lost-password browser destinations",
+      "expected": [
+        "https://forum.test/member.php?mod=register",
+        "https://forum.test/member.php?mod=lostpasswd"
+      ],
+      "observed": [
+        "https://forum.test/member.php?mod=register",
+        "https://forum.test/member.php?mod=lostpasswd"
+      ]
+    },
+    {
+      "operation": "verification image handed to host using the form jar",
+      "expected": [
+        "https://forum.test/misc.php",
+        "seccode",
+        true
+      ],
+      "observed": [
+        "https://forum.test/misc.php",
+        "seccode",
+        true
+      ]
+    },
+    {
+      "operation": "missing challenge answer prevents dispatch",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "deliberate login returns the served account",
+      "expected": {
+        "kind": "signed-in",
+        "identity": {
+          "kind": "member",
+          "id": "31",
+          "name": "fictional-member"
+        }
+      },
+      "observed": {
+        "kind": "signed-in",
+        "identity": {
+          "kind": "member",
+          "id": "31",
+          "name": "fictional-member"
+        }
+      }
+    },
+    {
+      "operation": "login form consumed",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "superseded login form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "login without an image",
+      "expected": "no-image",
+      "observed": "no-image"
+    },
+    {
+      "operation": "explicit login refusal",
+      "expected": "refused",
+      "observed": "refused"
+    },
+    {
+      "operation": "fresh session identity",
+      "expected": {
+        "kind": "member",
+        "id": "31"
+      },
+      "observed": {
+        "kind": "member",
+        "id": "31"
+      }
+    },
+    {
+      "operation": "logout verified by returned guest identity",
+      "expected": "signed-out",
+      "observed": "signed-out"
+    },
+    {
+      "operation": "already signed out, zero logout dispatches",
+      "expected": "already-guest",
+      "observed": "already-guest"
+    },
+    {
+      "operation": "wrong account cannot be logged out",
+      "expected": "session-changed",
+      "observed": "session-changed"
+    },
+    {
+      "operation": "logout message with unchanged identity",
+      "expected": "unverified",
+      "observed": "unverified"
+    },
+    {
+      "operation": "lost logout response",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "native identity fallback when status unavailable",
+      "expected": {
+        "kind": "guest"
+      },
+      "observed": {
+        "kind": "guest"
+      }
+    },
+    {
+      "operation": "open password verification form via choice GETs",
+      "expected": "verify-password",
+      "observed": "verify-password"
+    },
+    {
+      "operation": "verify current password and load its signed form",
+      "expected": [
+        "account-change-form",
+        [
+          "newpassword",
+          "renewpassword"
+        ],
+        true
+      ],
+      "observed": [
+        "account-change-form",
+        [
+          "newpassword",
+          "renewpassword"
+        ],
+        true
+      ]
+    },
+    {
+      "operation": "password result key signals forum-reported effect despite ok=0",
+      "expected": "changed",
+      "observed": "changed"
+    },
+    {
+      "operation": "signed password form consumed",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "wrong current password is refused",
+      "expected": "refused",
+      "observed": "refused"
+    },
+    {
+      "operation": "lost password verification",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "lost verification consumes original form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "other verification is handed to account center",
+      "expected": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      },
+      "observed": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      }
+    },
+    {
+      "operation": "already signed password form from the server",
+      "expected": "account-change-form",
+      "observed": "account-change-form"
+    },
+    {
+      "operation": "lost password change is uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "lost password change is not replayed",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "password effect unverified on bare redirect result",
+      "expected": "unverified",
+      "observed": "unverified"
+    },
+    {
+      "operation": "email verified form fields",
+      "expected": [
+        "email"
+      ],
+      "observed": [
+        "email"
+      ]
+    },
+    {
+      "operation": "email final submission refused",
+      "expected": "refused",
+      "observed": "refused"
+    },
+    {
+      "operation": "email refused consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "email final submission changed",
+      "expected": "changed",
+      "observed": "changed"
+    },
+    {
+      "operation": "email changed consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "email final submission uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "email uncertain consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "email final submission unverified",
+      "expected": "unverified",
+      "observed": "unverified"
+    },
+    {
+      "operation": "email unverified consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "email other check handoff",
+      "expected": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      },
+      "observed": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      }
+    },
+    {
+      "operation": "security-question verified form fields",
+      "expected": [
+        "questionidnew",
+        "answernew"
+      ],
+      "observed": [
+        "questionidnew",
+        "answernew"
+      ]
+    },
+    {
+      "operation": "question choices, default and hidden answer display",
+      "expected": [
+        9,
+        "",
+        "0",
+        true
+      ],
+      "observed": [
+        9,
+        "",
+        "0",
+        true
+      ]
+    },
+    {
+      "operation": "unoffered security question cannot dispatch",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "security-question final submission refused",
+      "expected": "refused",
+      "observed": "refused"
+    },
+    {
+      "operation": "security-question refused consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "security-question final submission changed",
+      "expected": "changed",
+      "observed": "changed"
+    },
+    {
+      "operation": "security-question changed consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "security-question final submission uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "security-question uncertain consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "security-question final submission unverified",
+      "expected": "unverified",
+      "observed": "unverified"
+    },
+    {
+      "operation": "security-question unverified consumes the signed form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "security-question other check handoff",
+      "expected": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      },
+      "observed": {
+        "kind": "browser",
+        "reason": "other-check",
+        "destination": "https://forum.test/home.php?mod=spacecp&ac=account"
+      }
+    },
+    {
+      "operation": "external signed links are rejected before GET",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "password field must be obscured in the returned form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "account center for another member never opens a form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "same-UID session replacement invalidates a signed form",
+      "expected": "session-changed",
+      "observed": "session-changed"
+    },
+    {
+      "operation": "session replacement during dispatch leaves effect uncertain",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "server refuses mismatched password",
+      "expected": "refused",
+      "observed": "refused"
+    },
+    {
+      "operation": "empty generic error envelope leaves effect unverified",
+      "expected": "unverified",
+      "observed": "unverified"
+    },
+    {
+      "operation": "unrecognized login challenge hands off to login page",
+      "expected": {
+        "kind": "browser",
+        "reason": "login",
+        "destination": "https://forum.test/member.php?mod=logging&action=login"
+      },
+      "observed": {
+        "kind": "browser",
+        "reason": "login",
+        "destination": "https://forum.test/member.php?mod=logging&action=login"
+      }
+    },
+    {
+      "operation": "lost login may have created a session",
+      "expected": "uncertain",
+      "observed": "uncertain"
+    },
+    {
+      "operation": "lost login consumes its original form",
+      "expected": "invalid",
+      "observed": "invalid"
+    },
+    {
+      "operation": "native layout without a member header still exposes returned UID",
+      "expected": {
+        "kind": "member",
+        "id": "31"
+      },
+      "observed": {
+        "kind": "member",
+        "id": "31"
+      }
+    },
+    {
+      "operation": "packaged TypeScript guide from guest through change and logout",
+      "expected": [
+        "guest",
+        "signed-in",
+        "changed",
+        "signed-out"
+      ],
+      "observed": [
+        "guest",
+        "signed-in",
+        "changed",
+        "signed-out"
+      ]
+    },
+    {
+      "operation": "configured registration destination from login form",
+      "expected": "https://forum.test/member.php?mod=joinforum",
+      "observed": "https://forum.test/member.php?mod=joinforum"
+    },
+    {
+      "operation": "foreign registration link uses canonical forum handoff",
+      "expected": "https://forum.test/member.php?mod=register",
+      "observed": "https://forum.test/member.php?mod=register"
+    }
+  ]
+}

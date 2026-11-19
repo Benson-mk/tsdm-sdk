@@ -164,3 +164,24 @@ export function createForumClient({
     },
   };
 }
+
+export { createAccountClient } from "./forum-client/account-client.js";
+export type {
+  AccountBrowserHandoff,
+  AccountChange,
+  AccountChangeField,
+  AccountChangeForm,
+  AccountVerificationForm,
+  AccountChangeOpenResult,
+  AccountChangeResult,
+  AccountClientOptions,
+  AccountEffectFailure,
+  AccountFailure,
+  AccountRequest,
+  AccountStatus,
+  LoginCredentials,
+  LoginForm,
+  LoginResult,
+  LogoutResult,
+  SessionIdentity,
+} from "./forum-client/account-client.js";

@@ -1,0 +1,170 @@
+{
+  "evidence": "controlled loopback server with synthetic responses and jar",
+  "archiveSHA256": "1b97a1636d11db3d1c4fcf7ccca38cc7582f6814d4803ac673147d80c019047c",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "curl": "curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0",
+  "bothClients": [
+    {
+      "operation": "guest status",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "login form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "verification image",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "deliberate login",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "returned identity",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgpassword own account center",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgpassword verification form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgpassword deliberate verification",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgpassword signed form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgpassword deliberate submit",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgemail own account center",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgemail verification form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgemail deliberate verification",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgemail signed form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgemail deliberate submit",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgquestion own account center",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgquestion verification form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgquestion deliberate verification",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgquestion signed form",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "chgquestion deliberate submit",
+      "method": "POST",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "logout effect",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "logout readback",
+      "method": "GET",
+      "expectedStatus": 200,
+      "observedStatus": 200,
+      "responseMatched": true
+    },
+    {
+      "operation": "redirect stays with the caller",
+      "method": "POST",
+      "expectedStatus": 303,
+      "observedStatus": 303,
+      "responseMatched": true
+    }
+  ]
+}
