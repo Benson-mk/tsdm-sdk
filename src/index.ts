@@ -480,3 +480,15 @@ export type {
   AwardsView,
   MedalThreadQuery,
 } from "./forum-client/awards/types.js";
+
+export { createBatchRatingClient } from "./forum-client/batch-ratings/client.js";
+export type {
+  BatchRatingAccess, BatchRatingAntispam, BatchRatingClient,
+  BatchRatingClientOptions, BatchRatingCreation, BatchRatingCredit,
+  BatchRatingDiscovery, BatchRatingEffect, BatchRatingFailure,
+  BatchRatingIssue, BatchRatingItem, BatchRatingLimits, BatchRatingList,
+  BatchRatingMode, BatchRatingPage, BatchRatingPreview, BatchRatingPreviewResult,
+  BatchRatingQuota, BatchRatingRead, BatchRatingRecord, BatchRatingRequest,
+  BatchRatingScope, BatchRatingSelection, BatchRatingSettings,
+  BatchRatingStepResult, BatchRatingUncertain,
+} from "./forum-client/batch-ratings/types.js";
