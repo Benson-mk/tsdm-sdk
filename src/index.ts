@@ -462,3 +462,21 @@ export type {
   MagicLogResult, MagicOperation, MagicField, MagicPurchaseTerms, PreparedMagicForm,
   MagicPreparation, MagicEffectResult,
 } from "./forum-client/tasks/types.js";
+
+export { createAwardsClient } from "./forum-client/awards/client.js";
+export type {
+  AwardLookup,
+  AwardsCatalogue,
+  AwardsChoice,
+  AwardsClientOptions,
+  AwardsFailure,
+  AwardsForm,
+  AwardsHandoff,
+  AwardsPreparation,
+  AwardsQuery,
+  AwardsRecord,
+  AwardsResult,
+  AwardsValue,
+  AwardsView,
+  MedalThreadQuery,
+} from "./forum-client/awards/types.js";

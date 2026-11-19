@@ -1,0 +1,2488 @@
+{
+  "archiveSHA256": "987a1953089715659233aaf3ccdc99d1a008280165f2b9b4168ac3bcf0733848",
+  "guideSHA256": "1195f1ce26f673785756aa2eaba8ff9d7339686a768ccac83238fe649d18cebe",
+  "limitations": [
+    "Inert loopback HTTP, fictional cookie and controls",
+    "No deployment observations"
+  ],
+  "results": [
+    {
+      "name": "requests reads medals",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads medals",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads mymedals",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "mymedals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "mymedals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads mymedals",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "mymedals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "mymedals"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads medalgrant",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medalgrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medalgrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads medalgrant",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medalgrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "medalgrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads titles",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads titles",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads titleshop",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleshop"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleshop"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads titleshop",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleshop"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleshop"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads titleexchange",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleexchange"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleexchange"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads titleexchange",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleexchange"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleexchange"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads titleissue",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleissue"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleissue"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads titleissue",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleissue"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titleissue"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads bggrant",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "bggrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "bggrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads bggrant",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "bggrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "bggrant"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests reads achievements",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:achi"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "tsdmv": [
+                "4"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:achi"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "tsdmv": [
+                "4"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl reads achievements",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:achi"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "tsdmv": [
+                "4"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:achi"
+              ],
+              "tsdmapp": [
+                "json"
+              ],
+              "tsdmv": [
+                "4"
+              ],
+              "nodoc": [
+                "1"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits claim",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "claim"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "medalid": [
+                "101"
+              ],
+              "method": [
+                "5"
+              ],
+              "credit": [
+                "2"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "claim"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "medalid": [
+                "101"
+              ],
+              "method": [
+                "5"
+              ],
+              "credit": [
+                "2"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits claim",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "claim"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "medalid": [
+                "101"
+              ],
+              "method": [
+                "5"
+              ],
+              "credit": [
+                "2"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "claim"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "medalid": [
+                "101"
+              ],
+              "method": [
+                "5"
+              ],
+              "credit": [
+                "2"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits sethide",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "sethide"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "myMedalHide[11]": [
+                "1"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "sethide"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "myMedalHide[11]": [
+                "1"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits sethide",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "sethide"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "myMedalHide[11]": [
+                "1"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "sethide"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "myMedalHide[11]": [
+                "1"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits grantgrid",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantgrid"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "grant_users": [
+                "45"
+              ],
+              "grant_medalids": [
+                "21"
+              ],
+              "grant_reason": [
+                "Event"
+              ],
+              "grantconfirm": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantgrid"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "grant_users": [
+                "45"
+              ],
+              "grant_medalids": [
+                "21"
+              ],
+              "grant_reason": [
+                "Event"
+              ],
+              "grantconfirm": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits grantgrid",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantgrid"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "grant_users": [
+                "45"
+              ],
+              "grant_medalids": [
+                "21"
+              ],
+              "grant_reason": [
+                "Event"
+              ],
+              "grantconfirm": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantgrid"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "grant_users": [
+                "45"
+              ],
+              "grant_medalids": [
+                "21"
+              ],
+              "grant_reason": [
+                "Event"
+              ],
+              "grantconfirm": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits grantrevoke",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevoke"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "logid": [
+                "6"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevoke"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "logid": [
+                "6"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits grantrevoke",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevoke"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "logid": [
+                "6"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevoke"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "logid": [
+                "6"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits grantrevokebatch",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevokebatch"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "batch": [
+                "5"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevokebatch"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "batch": [
+                "5"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits grantrevokebatch",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevokebatch"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "batch": [
+                "5"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "grantrevokebatch"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "batch": [
+                "5"
+              ],
+              "dsumcsubmit": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits settitle",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "settitle"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "settitlesubmit": [
+                "true"
+              ],
+              "settitleid": [
+                "0"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "settitle"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "settitlesubmit": [
+                "true"
+              ],
+              "settitleid": [
+                "0"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits settitle",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "settitle"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "settitlesubmit": [
+                "true"
+              ],
+              "settitleid": [
+                "0"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "settitle"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "settitlesubmit": [
+                "true"
+              ],
+              "settitleid": [
+                "0"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits buy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "buy"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "buysubmit": [
+                "true"
+              ],
+              "buyid": [
+                "11"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "buy"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "buysubmit": [
+                "true"
+              ],
+              "buyid": [
+                "11"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits buy",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "buy"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "buysubmit": [
+                "true"
+              ],
+              "buyid": [
+                "11"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "buy"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "buysubmit": [
+                "true"
+              ],
+              "buyid": [
+                "11"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits exchange",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "exchange"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "exchangesubmit": [
+                "true"
+              ],
+              "exchangeid": [
+                "7"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "exchange"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "exchangesubmit": [
+                "true"
+              ],
+              "exchangeid": [
+                "7"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits exchange",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "exchange"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "exchangesubmit": [
+                "true"
+              ],
+              "exchangeid": [
+                "7"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "exchange"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "exchangesubmit": [
+                "true"
+              ],
+              "exchangeid": [
+                "7"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits issue",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "issue"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "issuesubmit": [
+                "true"
+              ],
+              "issueop": [
+                "revoke"
+              ],
+              "issueusers": [
+                "45\nfixture recipient"
+              ],
+              "issuetitles": [
+                "31"
+              ],
+              "issuedays": [
+                "0"
+              ],
+              "issuenote": [
+                "Event"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "issue"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "issuesubmit": [
+                "true"
+              ],
+              "issueop": [
+                "revoke"
+              ],
+              "issueusers": [
+                "45\nfixture recipient"
+              ],
+              "issuetitles": [
+                "31"
+              ],
+              "issuedays": [
+                "0"
+              ],
+              "issuenote": [
+                "Event"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits issue",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "issue"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "issuesubmit": [
+                "true"
+              ],
+              "issueop": [
+                "revoke"
+              ],
+              "issueusers": [
+                "45\nfixture recipient"
+              ],
+              "issuetitles": [
+                "31"
+              ],
+              "issuedays": [
+                "0"
+              ],
+              "issuenote": [
+                "Event"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmtitle:tsdmtitle"
+              ],
+              "action": [
+                "issue"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "issuesubmit": [
+                "true"
+              ],
+              "issueop": [
+                "revoke"
+              ],
+              "issueusers": [
+                "45\nfixture recipient"
+              ],
+              "issuetitles": [
+                "31"
+              ],
+              "issuedays": [
+                "0"
+              ],
+              "issuenote": [
+                "Event"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests submits background",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "background:memcp"
+              ],
+              "ac": [
+                "slotadd"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "slotaddsubmit": [
+                "true"
+              ],
+              "slotadduid": [
+                "45,999999"
+              ],
+              "slotaddtime": [
+                "7天"
+              ],
+              "slotaddurl": [
+                "1209-1.jpg"
+              ],
+              "slotaddnotify": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "background:memcp"
+              ],
+              "ac": [
+                "slotadd"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "slotaddsubmit": [
+                "true"
+              ],
+              "slotadduid": [
+                "45,999999"
+              ],
+              "slotaddtime": [
+                "7天"
+              ],
+              "slotaddurl": [
+                "1209-1.jpg"
+              ],
+              "slotaddnotify": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl submits background",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "background:memcp"
+              ],
+              "ac": [
+                "slotadd"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "slotaddsubmit": [
+                "true"
+              ],
+              "slotadduid": [
+                "45,999999"
+              ],
+              "slotaddtime": [
+                "7天"
+              ],
+              "slotaddurl": [
+                "1209-1.jpg"
+              ],
+              "slotaddnotify": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "background:memcp"
+              ],
+              "ac": [
+                "slotadd"
+              ],
+              "tsdmapp": [
+                "json"
+              ]
+            },
+            "fields": {
+              "formhash": [
+                "abcd1234"
+              ],
+              "slotaddsubmit": [
+                "true"
+              ],
+              "slotadduid": [
+                "45,999999"
+              ],
+              "slotaddtime": [
+                "7天"
+              ],
+              "slotaddurl": [
+                "1209-1.jpg"
+              ],
+              "slotaddnotify": [
+                "1"
+              ]
+            },
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests declined sends zero calls",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declined sends zero calls",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests declines effectful legacy GET",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "curl declines effectful legacy GET",
+      "expected": {
+        "status": null,
+        "requests": []
+      },
+      "actual": {
+        "status": null,
+        "requests": []
+      }
+    },
+    {
+      "name": "requests deliberately sends legacy GET",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "apply"
+              ],
+              "medalid": [
+                "593"
+              ],
+              "applytype": [
+                "5"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "apply"
+              ],
+              "medalid": [
+                "593"
+              ],
+              "applytype": [
+                "5"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl deliberately sends legacy GET",
+      "expected": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "apply"
+              ],
+              "medalid": [
+                "593"
+              ],
+              "applytype": [
+                "5"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 200,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "dsu_medalCenter:memcp"
+              ],
+              "action": [
+                "apply"
+              ],
+              "medalid": [
+                "593"
+              ],
+              "applytype": [
+                "5"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "requests preserves a redirect as a response",
+      "expected": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ],
+              "page": [
+                "2"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ],
+              "page": [
+                "2"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "curl preserves a redirect as a response",
+      "expected": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ],
+              "page": [
+                "2"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      },
+      "actual": {
+        "status": 302,
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/plugin.php",
+            "query": {
+              "id": [
+                "tsdmapp:api"
+              ],
+              "action": [
+                "titles"
+              ],
+              "page": [
+                "2"
+              ]
+            },
+            "fields": {},
+            "fixtureCookie": true
+          }
+        ]
+      }
+    }
+  ]
+}
