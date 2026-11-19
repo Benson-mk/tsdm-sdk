@@ -10,6 +10,7 @@ assert.deepEqual(Object.keys(sdk), [
   "createMemberClient",
   "createMessageClient",
   "createNoticeClient",
+  "createPostClient",
   "createProfileClient",
   "createReplyClient",
   "createSpaceClient",

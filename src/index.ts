@@ -324,3 +324,18 @@ export type {
   CollectionThread,
   CollectionWrite,
 } from "./forum-client/collection-types.js";
+
+export { createPostClient } from "./forum-client/posts/client.js";
+export type {
+  PostClientOptions,
+  PostRequest,
+  PostEditorTarget,
+  PostEditorForm,
+  PostInput,
+  WrittenPost,
+  PostOpenResult,
+  PostWriteResult,
+  PostVerification,
+  PostVerificationCheck,
+  PostVerificationPrompt,
+} from "./forum-client/posts/client.js";

@@ -4,6 +4,7 @@
 
 ## Tasks
 
+- [Create, edit, save and schedule posts](docs/posts.md)
 - [Publish an ordinary reply and check an uncertain send](docs/replies.md)
 - [Read a public board and open a thread](#read-a-public-board-and-open-a-thread)
 - [Find threads and explore forum activity](docs/discovery.md)

@@ -1,0 +1,2579 @@
+{
+  "evidence": "controlled loopback HTTP",
+  "archiveSHA256": "52a6b92e2fe8678ac0c3d7748097a52a80fcfba811d3db6396d0cafe1e1a9bf7",
+  "guideSHA256": "f70c0c7262a304ec2c3e21e03572cbd016228fcac72c8584e1c9460eab3bf269",
+  "results": [
+    {
+      "language": "Python requests",
+      "operation": "new-thread",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "edit-first",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "edit-reply",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious reply subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious reply subject"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "save-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              "1"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "save": [
+              "1"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "save-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              "1"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "save": [
+              "1"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "publish-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "schedule",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              "2099-04-03 14:05"
+            ],
+            "cronpublish": [
+              "true"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "cronpublish": [
+              "true"
+            ],
+            "cronpublishdate": [
+              "2099-04-03 14:05"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "Python requests",
+      "operation": "new-thread",
+      "approved": false,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        }
+      ],
+      "wireResult": null
+    },
+    {
+      "language": "curl",
+      "operation": "new-thread",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "edit-first",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "101"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "edit-reply",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious reply subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "102"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious reply subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "save-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              "1"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "cronpublishdate": [
+              ""
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "save": [
+              "1"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "save-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              "1"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "save": [
+              "1"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "publish-draft",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "edit"
+            ],
+            "extra": [
+              ""
+            ],
+            "editsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "fid": [
+              "7"
+            ],
+            "tid": [
+              "42"
+            ],
+            "pid": [
+              "103"
+            ],
+            "editsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "attachnew[301][description]": [
+              "Fictitious attachment label"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "schedule",
+      "approved": true,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "save": [
+              ""
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "cronpublishdate": [
+              "2099-04-03 14:05"
+            ],
+            "cronpublish": [
+              "true"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ]
+          }
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        },
+        {
+          "method": "POST",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "topicsubmit": [
+              "yes"
+            ],
+            "tsdmapp": [
+              "json"
+            ]
+          },
+          "cookie": "fixture_session=fake",
+          "fields": {
+            "formhash": [
+              "fakehash"
+            ],
+            "posttime": [
+              "1700000000"
+            ],
+            "save": [
+              ""
+            ],
+            "topicsubmit": [
+              "true"
+            ],
+            "usesig": [
+              "1"
+            ],
+            "subject": [
+              "Fictitious subject"
+            ],
+            "message": [
+              "Fictitious controlled message."
+            ],
+            "cronpublish": [
+              "true"
+            ],
+            "cronpublishdate": [
+              "2099-04-03 14:05"
+            ]
+          }
+        }
+      ],
+      "wireResult": {
+        "type": "result",
+        "schema": 13,
+        "ok": 1,
+        "uid": 31,
+        "kind": "redirect",
+        "login": 0,
+        "url": "forum.php?mod=viewthread&tid=42"
+      }
+    },
+    {
+      "language": "curl",
+      "operation": "new-thread",
+      "approved": false,
+      "expected": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        }
+      ],
+      "observed": [
+        {
+          "method": "GET",
+          "path": "/forum.php",
+          "query": {
+            "mod": [
+              "post"
+            ],
+            "action": [
+              "newthread"
+            ],
+            "fid": [
+              "7"
+            ],
+            "tsdmapp": [
+              "json"
+            ],
+            "nodoc": [
+              "1"
+            ]
+          },
+          "cookie": "fixture_session=fake"
+        }
+      ],
+      "wireResult": null
+    }
+  ]
+}
