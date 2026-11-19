@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
   copyFileSync,
+  existsSync,
   mkdtempSync,
   readFileSync,
   writeFileSync,
@@ -47,6 +48,8 @@ for (const [source, target] of [
 }
 const exec = (command, args) =>
   execFileSync(command, args, { cwd, encoding: "utf8" });
+const sha256 = (contents) =>
+  createHash("sha256").update(contents).digest("hex");
 const npmVersion = exec("npm", ["--version"]).trim();
 execFileSync(
   "npm",
@@ -155,23 +158,74 @@ assert.match(
   /unofficial TypeScript SDK for the TSDM forum/,
 );
 const notices = ["parse5-8.0.1.LICENSE", "entities-8.1.0.LICENSE"];
+const noticeSha256 = {};
 for (const notice of notices) {
+  const bytes = readFileSync(join(installed, "notices", notice));
   assert.deepEqual(
-    readFileSync(join(installed, "notices", notice)),
+    bytes,
     readFileSync(join(root, "evidence/history/notices", notice)),
+    `Installed ${notice} matches the retained upstream notice byte-for-byte`,
+  );
+  noticeSha256[notice] = sha256(bytes);
+}
+
+// SHA-256 of the standard MIT permission and warranty text with whitespace
+// collapsed to single spaces, excluding the title and copyright notice.
+const mitTermsSha256 =
+  "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5";
+const licensePath = join(installed, "LICENSE");
+const readmeLicenseTarget =
+  readme.match(/(?<!!)\[[^\]\n]+\]\(((?:\.\/)?LICENSE)\)/)?.[1];
+const licenseFailures = [];
+if (packageJson.license !== "MIT") {
+  licenseFailures.push(
+    `package.json license expected "MIT", got ${JSON.stringify(packageJson.license)}`,
   );
 }
+if (!readmeLicenseTarget) {
+  licenseFailures.push("README.md is missing a relative link to LICENSE");
+}
+if (!existsSync(licensePath)) {
+  licenseFailures.push("LICENSE is missing from the installed package");
+}
+assert.deepEqual(licenseFailures, [], "Installed first-party distribution terms");
+
+const license = readFileSync(licensePath);
+const terms = license
+  .toString("utf8")
+  .trim()
+  .match(
+    /^(?:MIT License[ \t]*\r?\n\s*)?Copyright \(c\) [^\r\n]+\r?\n([\s\S]+)$/,
+  )?.[1];
+assert.equal(
+  terms && sha256(terms.trim().replace(/\s+/g, " ")),
+  mitTermsSha256,
+  "Installed LICENSE must contain a copyright notice and the standard MIT terms",
+);
+assert.ok(
+  license.equals(readFileSync(join(root, "LICENSE"))),
+  "Installed LICENSE must match the repository LICENSE byte-for-byte",
+);
+
 console.log(
   JSON.stringify(
     {
       archive: basename(archive),
-      sha256: createHash("sha256").update(bytes).digest("hex"),
+      sha256: sha256(bytes),
       integrity,
       node: process.version,
       npm: npmVersion,
       typescript,
       typecheck: "strict NodeNext, ES2023, types: [], noEmit",
       notices,
+      noticeSha256,
+      license: {
+        identifier: packageJson.license,
+        readmeTarget: readmeLicenseTarget,
+        sha256: sha256(license),
+        terms: "standard MIT",
+        matchesRepository: true,
+      },
       ...observed,
       ...(boardThread ? { boardThread } : {}),
       documentation,

@@ -45,6 +45,10 @@ The tarball includes TypeScript declarations usable without DOM types, this READ
 
 The first public release is planned for immutable GitHub Releases. Its `release.json` will record the release tag, source commit and archive SHA-256. Compare it with `shasum -a 256 tsdm-sdk-0.1.0.tgz` before installing an archived download. Commit the consumer's `package.json` and `package-lock.json` to pin a published release. [Installation and distribution decision](https://github.com/Benson-mk/tsdm-sdk/issues/6#issuecomment-6977558151)
 
+## License
+
+The SDK's first-party code is licensed under the [MIT License](./LICENSE). Bundled `parse5` and `entities` retain their own licenses and copyright notices in the package's `notices/` directory.
+
 ## Read a public board and open a thread
 
 Use a signed-out session and a public board. This journey sends two GETs on the same HTTPS origin and records the IDs of the board and the thread it opened from that listing. The forum may count the thread view. The example omits credentials and stops at redirects, access refusals and verification challenges.

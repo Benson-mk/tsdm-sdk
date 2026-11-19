@@ -12,7 +12,7 @@ The fixture and its accompanying license are byte-for-byte copies of `test/data/
 
 ## Repeat the run
 
-Use Node.js 26.x, npm and a writable temporary directory. The build dependencies come from `package-lock.json`. Run `npm ci` with a populated cache in offline mode when required. The build and replay for this receipt both used an offline cache. From the SDK checkout, run:
+Use the source and harness at commit `603d273ab6153b3ca1087251477e15377995875d` to reproduce the #13 receipt. Use Node.js 26.x, npm and a writable temporary directory. The build dependencies come from `package-lock.json`. Run `npm ci` with a populated cache in offline mode when required. The build and replay for this receipt both used an offline cache. From a checkout of that commit, run:
 
 ```sh
 npm ci --ignore-scripts --no-audit --no-fund
@@ -30,4 +30,20 @@ Before any SDK implementation, the same installed-consumer harness installed the
 
 ```sh
 node scripts/check-installed-sdk.mjs evidence/history/consumer-2026-11-14T13-08-40.303Z/tsdm-forum-client-0.26.0.tgz
+```
+
+## Distribution terms evidence for #12
+
+The [distribution terms receipt](distribution-terms.json) records a local 0.1.0 archive built from integration base `3d8e52efbaa0328e5585d53a561e6376a6a9fba4` with the #12 distribution changes applied. The archive installed offline in a clean Node.js 26.0.0 project with npm 11.12.1. The installed manifest declared `MIT`, and the installed README linked to `./LICENSE`. The linked file matched the repository `LICENSE` byte-for-byte and contained the standard MIT permission and warranty text. Both bundled dependency notices matched their retained upstream files byte-for-byte. The receipt also records the passing public import, fixture replay and TypeScript 6.0.3 declaration check.
+
+Before the distribution changes, the saved integration archive with SHA-256 `583d449b42dd22a4970efee67849f8f97466f10a383bf72a99bed8448d654f05` installed successfully and passed both notice comparisons. The new check exited with code 1 because the installed package lacked the MIT metadata, the README link and the `LICENSE` file. To replay that observation, pass the retained archive with that digest to the current harness.
+
+To reproduce the passing receipt, use the recorded toolchain and the source with the #12 changes applied:
+
+```sh
+npm ci --ignore-scripts --no-audit --no-fund
+npm run pack:sdk
+shasum -a 256 dist/tsdm-sdk-0.1.0.tgz
+node scripts/check-installed-sdk.mjs dist/tsdm-sdk-0.1.0.tgz > /tmp/tsdm-sdk-12-replay.json
+cmp evidence/install/distribution-terms.json /tmp/tsdm-sdk-12-replay.json
 ```

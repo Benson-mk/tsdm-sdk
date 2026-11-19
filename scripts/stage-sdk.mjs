@@ -37,6 +37,7 @@ const manifest = {
   name: "tsdm-sdk",
   version: "0.1.0",
   description: "Unofficial TypeScript SDK for the TSDM forum",
+  license: "MIT",
   private: true,
   type: "module",
   engines: { node: "26.x" },
@@ -74,6 +75,7 @@ const manifest = {
     "forum-client/moderator-panel/",
     "forum-client/admin/",
     "README.md",
+    "LICENSE",
     "docs/replies.md",
     "docs/posts.md",
     "docs/special-threads.md",
@@ -108,6 +110,7 @@ writeFileSync(
   JSON.stringify(manifest, null, 2) + "\n",
 );
 copyFileSync(new URL("README.md", root), new URL("README.md", stage));
+copyFileSync(new URL("LICENSE", root), new URL("LICENSE", stage));
 mkdirSync(new URL("docs/", stage));
 copyFileSync(new URL("docs/replies.md", root), new URL("docs/replies.md", stage));
 copyFileSync(new URL("docs/posts.md", root), new URL("docs/posts.md", stage));
