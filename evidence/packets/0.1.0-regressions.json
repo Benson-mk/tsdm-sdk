@@ -1,0 +1,181 @@
+{
+  "integrationBaseCommit": "8faa1c1563e058ae0dd43b09f00081f6dfa475ec",
+  "archiveSHA256": "5237a29e8eb947c26a69dc136ca959859516b8b1f778c4502a7c4ce29ad966f7",
+  "command": "sh evidence/packets/check-candidate.sh \"$UPSTREAM\" \"$archive\" \"$OUTPUT\"",
+  "expected": {
+    "passingSuites": [
+      "account",
+      "activity-direct",
+      "activity-installed",
+      "collections",
+      "historical-drafts",
+      "historical-replies",
+      "media-direct",
+      "media-installed",
+      "members",
+      "messages",
+      "notices",
+      "posts-direct",
+      "posts-installed",
+      "profile",
+      "replies-direct",
+      "replies-installed",
+      "sdk",
+      "spaces",
+      "special-direct",
+      "special-installed",
+      "trades-direct",
+      "trades-installed",
+      "credits-installed",
+      "credits-direct",
+      "tasks-installed",
+      "tasks-direct",
+      "awards-installed",
+      "awards-direct",
+      "batch-ratings-installed",
+      "batch-ratings-direct",
+      "packets-installed",
+      "packets-direct"
+    ]
+  },
+  "actual": {
+    "account": {
+      "status": "passed",
+      "receiptSHA256": "f83f058419614d1ed4bdd1a5f8b0029bfd4158e27ab75f191141f655c8d12827"
+    },
+    "activity-direct": {
+      "status": "passed",
+      "receiptSHA256": "7c8596e929b674dbf7369ca4097ce54ebab851e89a9d50bb7a56f861619ed8fa"
+    },
+    "activity-installed": {
+      "status": "passed",
+      "receiptSHA256": "43c5bd398fa24ff1e4c3b786ce905d0702a6590b60660ede5e3d7a15ee6fcb47"
+    },
+    "collections": {
+      "status": "passed",
+      "receiptSHA256": "0c295c6e7e94c1a2808c3208f575e2672d676e837ace247ec57f053cab231bff"
+    },
+    "historical-drafts": {
+      "status": "passed",
+      "receiptSHA256": "e4cad781749714ed5c10ec97cc792c48703df23e94d95e89d070db7af493823e"
+    },
+    "historical-replies": {
+      "status": "passed",
+      "receiptSHA256": "3b12efefccff80cefae017d59ec0c2be7b4c075eb797579cac0eef1348d2182f"
+    },
+    "media-direct": {
+      "status": "passed",
+      "receiptSHA256": "dfcf870373af7a8e85eaa59719792feac9b13df0c5a1596001ccbb4de2d983ca"
+    },
+    "media-installed": {
+      "status": "passed",
+      "receiptSHA256": "d05b127a42ab36beadcc7a62f3157634cfc990e38af0570d44664f065e775cc1"
+    },
+    "members": {
+      "status": "passed",
+      "receiptSHA256": "a6182e5e99e1594f5670c506e7e712ee6a4305ab893fd4a40d09b1cfc8ba7001"
+    },
+    "messages": {
+      "status": "passed",
+      "receiptSHA256": "68802c02a81454a6fe672aa554da5996a802a87d5170cb248b23554ba2dee8b7"
+    },
+    "notices": {
+      "status": "passed",
+      "receiptSHA256": "13371dbcad9ba8b9270297383a9f5b490f0282b94e4724a7252f7cf37517d904"
+    },
+    "posts-direct": {
+      "status": "passed",
+      "receiptSHA256": "abfc005733411740ee74d1fba3639ec268a375a48f3ab4684eed2eb2f4f06606"
+    },
+    "posts-installed": {
+      "status": "passed",
+      "receiptSHA256": "a451ea51c94e0836f1c871a3837e177fdb68a9d0291e4ce882ecc4c0da03694d"
+    },
+    "profile": {
+      "status": "passed",
+      "receiptSHA256": "ab4546afe9fa8bb4318ad9f127383dc1f90c97af316c198647104e04e405b953"
+    },
+    "replies-direct": {
+      "status": "passed",
+      "receiptSHA256": "65cc64100bd075b21c44723d51e948fe896ee9a11d486f8a936ba459826ad1aa"
+    },
+    "replies-installed": {
+      "status": "passed",
+      "receiptSHA256": "481142af4ce14d62b50ed94f7cf694008baa58f86c1dae2b9cbfa0d31b3212b6"
+    },
+    "sdk": {
+      "status": "passed",
+      "receiptSHA256": "02cda65b33bb929706d69096d2d9004e94b883c09f298d323975b190f28afddf"
+    },
+    "spaces": {
+      "status": "passed",
+      "receiptSHA256": "5e109c49c6dbe05f227ac24f6d6c29c0df16e0110ad20c6b95098917753a7ea3"
+    },
+    "special-direct": {
+      "status": "passed",
+      "receiptSHA256": "901c84e2599e10a1c210572bfc2c16d67e21fe734fd1d7102ff8e51ef341bfe0"
+    },
+    "special-installed": {
+      "status": "passed",
+      "receiptSHA256": "328c9a5ec2efbb1025d25c06018ef05c860343b66dee3c0cd6ae7334fef640e7"
+    },
+    "trades-direct": {
+      "status": "passed",
+      "receiptSHA256": "08b97b273d1e56449987b759d4b1f11339d8fc34101dc018838e5923dfc25fc3"
+    },
+    "trades-installed": {
+      "status": "passed",
+      "receiptSHA256": "259c0c93a69de4526d6ef065681cc9f429ea2d05e8750c22cfaabec05b856df4"
+    },
+    "credits-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "9b4833295076b4e33dfb73020a794a0ade3fb646e060fae5034d217deea35528"
+    },
+    "credits-direct": {
+      "status": "passed",
+      "observationGroups": 18,
+      "receiptSHA256": "118f0865de3152cc771f239ebbef7a07372c827f9e236b4fb6c39f56b2e35426"
+    },
+    "tasks-installed": {
+      "status": "passed",
+      "observationGroups": 45,
+      "receiptSHA256": "be9b90cdfad098c2a0d5b20d87a53d83c91250b673875eeb27f0f809704a8c62"
+    },
+    "tasks-direct": {
+      "status": "passed",
+      "observationGroups": 39,
+      "receiptSHA256": "d517ce8ca69e4f21a7360fa73413a8decce184dffa088f405f784bfb1884a729"
+    },
+    "awards-installed": {
+      "status": "passed",
+      "observationGroups": 34,
+      "receiptSHA256": "d2ef40950095590bb7758f341e0f4fe4acdb96ec03dd70c6dcf62b6aeee8720c"
+    },
+    "awards-direct": {
+      "status": "passed",
+      "observationGroups": 46,
+      "receiptSHA256": "fe45ea95ae089cd2eddab5bb6560a756616a29e8cc3b4b6b438cac659388bc5f"
+    },
+    "batch-ratings-installed": {
+      "status": "passed",
+      "observationGroups": 42,
+      "receiptSHA256": "6e703d8dd6da803af5835bf3e129d34400c133319bb6d5b3ffa496b2a2ba75b2"
+    },
+    "batch-ratings-direct": {
+      "status": "passed",
+      "observationGroups": 28,
+      "receiptSHA256": "a820959f5065a40c96060282b749a56c648d993997a7556389dfbdc7c58b197f"
+    },
+    "packets-installed": {
+      "status": "passed",
+      "observationGroups": 37,
+      "receiptSHA256": "2a387e26d1db073bf7ea0a5d027cc40b3d820a027334d663ddc4f71a42be1b5a"
+    },
+    "packets-direct": {
+      "status": "passed",
+      "observationGroups": 26,
+      "receiptSHA256": "e3a8dae3ee4cd10b8e05a03d86adf815c059b5a3ff52b48403f8ccd1d197bfb5"
+    }
+  }
+}

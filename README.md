@@ -23,6 +23,7 @@
 - [Run and reconcile a batch rating](docs/batch-ratings.md)
 - [Check in and manage credits and group membership](docs/credits.md)
 - [Acquire, display and grant medals, titles and backgrounds](docs/awards.md)
+- [Claim and manage red packets](docs/packets.md)
 
 ## Install a local candidate
 

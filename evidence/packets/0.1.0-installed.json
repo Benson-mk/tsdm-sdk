@@ -1,0 +1,1925 @@
+{
+  "node": "v26.0.0",
+  "package": "0.1.0",
+  "archiveSHA256": "5237a29e8eb947c26a69dc136ca959859516b8b1f778c4502a7c4ce29ad966f7",
+  "guideSHA256": "91551ec3d01ea096c7875d16ecce8c08c25bd527853b93e45ccafe8c2c82d204",
+  "typescript": "Version 6.0.3",
+  "ambientTypes": [],
+  "consumerSHA256": "db879cb783dc71ea739bdb70aab6675b6f3c99d30ade3ea1b1b39692a6f26dbc",
+  "upstreamCommit": "02df67e39ded906def5b868e8f8311ba735b316c",
+  "pinsSHA256": "ca92c493c938cfb63bd0f81dc80d2eb8d1ff7a5020d54384ba68a9aa1f353676",
+  "fixturesVerified": 10,
+  "results": [
+    {
+      "name": "opening exposes status and is distinct from claiming",
+      "expected": [
+        "packet-open",
+        "1265042",
+        "open",
+        "Good luck",
+        false,
+        "packet-absent",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265043"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "packet-open",
+        "1265042",
+        "open",
+        "Good luck",
+        false,
+        "packet-absent",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265043"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "password claim, prior consent, single POST, separate observed share and denied records",
+      "expected": [
+        "thread-packet",
+        "102",
+        true,
+        true,
+        "invalid-input",
+        {
+          "kind": "claimed",
+          "operation": "claim",
+          "threadId": "9202761",
+          "packetId": "102",
+          "amount": "1",
+          "unit": "威望",
+          "best": true
+        },
+        "invalid-input",
+        {
+          "amount": "1",
+          "best": true
+        },
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:grab",
+              "tsdmapp": "json"
+            },
+            {
+              "tid": "9202761",
+              "formhash": "f1f2f3f4",
+              "password": "fixture-passphrase-33"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "9202761"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "thread-packet",
+        "102",
+        true,
+        true,
+        "invalid-input",
+        {
+          "kind": "claimed",
+          "operation": "claim",
+          "threadId": "9202761",
+          "packetId": "102",
+          "amount": "1",
+          "unit": "威望",
+          "best": true
+        },
+        "invalid-input",
+        {
+          "amount": "1",
+          "best": true
+        },
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:grab",
+              "tsdmapp": "json"
+            },
+            {
+              "tid": "9202761",
+              "formhash": "f1f2f3f4",
+              "password": "fixture-passphrase-33"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "9202761"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "sender withdrawal reports refunded amount and a separate read observes withdrawal",
+      "expected": [
+        true,
+        {
+          "kind": "withdrawn",
+          "operation": "withdraw",
+          "threadId": "9202754",
+          "packetId": "100",
+          "refunded": "1"
+        },
+        "withdrawn",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202754",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:withdraw",
+              "tsdmapp": "json"
+            },
+            {
+              "tid": "9202754",
+              "formhash": "f1f2f3f4"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "9202754"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        true,
+        {
+          "kind": "withdrawn",
+          "operation": "withdraw",
+          "threadId": "9202754",
+          "packetId": "100",
+          "refunded": "1"
+        },
+        "withdrawn",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202754",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:withdraw",
+              "tsdmapp": "json"
+            },
+            {
+              "tid": "9202754",
+              "formhash": "f1f2f3f4"
+            }
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "9202754"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "incorrect phrase stays distinct and consumes the approval",
+      "expected": [
+        "refused",
+        "badpw",
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "refused",
+        "badpw",
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "already claimed stays distinct and consumes the approval",
+      "expected": [
+        "already-claimed",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "already-claimed",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "lost response stays distinct and consumes the approval",
+      "expected": [
+        "unknown",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "unrelated callback stays distinct and consumes the approval",
+      "expected": [
+        "unknown",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "unknown",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "redrawn form stays distinct and consumes the approval",
+      "expected": [
+        "redrawn",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ],
+      "actual": [
+        "redrawn",
+        null,
+        "9202761",
+        "invalid-input",
+        [
+          "GET",
+          "POST"
+        ]
+      ]
+    },
+    {
+      "name": "foreign, forged and stale packet forms do not authorize an effect",
+      "expected": [
+        "refused",
+        "invalid-input",
+        "session-changed",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "refused",
+        "invalid-input",
+        "session-changed",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "structured records preserve packet target, total and share details",
+      "expected": [
+        "packet-records",
+        "102",
+        3,
+        1,
+        true,
+        [
+          [
+            "1033",
+            "1",
+            true,
+            1794058956
+          ]
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "packet-records",
+        "102",
+        3,
+        1,
+        true,
+        [
+          [
+            "1033",
+            "1",
+            true,
+            1794058956
+          ]
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "legacy records keep server times and unknown member IDs without another request",
+      "expected": [
+        "packet-records",
+        {
+          "username": "Fixture member",
+          "memberId": null,
+          "amount": "17",
+          "best": true,
+          "epochSeconds": null,
+          "serverTime": "9-6 03:45"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "1265042",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "packet-records",
+        {
+          "username": "Fixture member",
+          "memberId": null,
+          "amount": "17",
+          "best": true,
+          "epochSeconds": null,
+          "serverTime": "9-6 03:45"
+        },
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:record",
+              "tid": "1265042",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "legacy marker and open status qualify a raw plugin claim but no withdrawal",
+      "expected": [
+        "thread-packet",
+        false,
+        "claimed",
+        "17",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1265042",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:grab"
+            },
+            {
+              "tid": "1265042",
+              "formhash": "abcd1234",
+              "password": ""
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "thread-packet",
+        false,
+        "claimed",
+        "17",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1265042",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1265042"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:grab"
+            },
+            {
+              "tid": "1265042",
+              "formhash": "abcd1234",
+              "password": ""
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "daily inspection and claimed are separate from homepage login-credit action",
+      "expected": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "claimed",
+        "5",
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "claimed",
+        "5",
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "daily inspection and already-claimed are separate from homepage login-credit action",
+      "expected": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "already-claimed",
+        "5",
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "already-claimed",
+        "5",
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "daily inspection and refused are separate from homepage login-credit action",
+      "expected": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "refused",
+        null,
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "refused",
+        null,
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "daily inspection and unknown are separate from homepage login-credit action",
+      "expected": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "unknown",
+        null,
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ],
+      "actual": [
+        "daily-packet",
+        "20260906",
+        "天使币",
+        "unknown",
+        null,
+        "20260906",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ]
+        ],
+        [
+          false,
+          true
+        ]
+      ]
+    },
+    {
+      "name": "daily native homepage literal config is read without executing scripts",
+      "expected": [
+        "daily-packet",
+        "20260909",
+        "claimed",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {},
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "XXXXXXXX"
+            }
+          ]
+        ]
+      ],
+      "actual": [
+        "daily-packet",
+        "20260909",
+        "claimed",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {},
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "XXXXXXXX"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "absent daily offer establishes unavailable rather than claimed",
+      "expected": [
+        "daily-unavailable",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "daily-unavailable",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "award detail table is a separate read with server wall time",
+      "expected": [
+        "award-details",
+        "1265042",
+        [
+          {
+            "id": "8",
+            "memberId": "1033",
+            "username": "Fixture member",
+            "coins": "17",
+            "serverTime": "2026-09-06 03:45:00"
+          }
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "showaward",
+              "tid": "1265042"
+            },
+            null
+          ]
+        ],
+        [
+          false
+        ]
+      ],
+      "actual": [
+        "award-details",
+        "1265042",
+        [
+          {
+            "id": "8",
+            "memberId": "1033",
+            "username": "Fixture member",
+            "coins": "17",
+            "serverTime": "2026-09-06 03:45:00"
+          }
+        ],
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "showaward",
+              "tid": "1265042"
+            },
+            null
+          ]
+        ],
+        [
+          false
+        ]
+      ]
+    },
+    {
+      "name": "award arrival qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "award-arrived",
+        "unknown",
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "award-arrived",
+        "unknown",
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award plugin confirmation qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "claimed",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "claimed",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award duplicate qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "already-claimed",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "already-claimed",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award taken away qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "refused",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "refused",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award failed success wording qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "refused",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "refused",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award redirect qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "unknown",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "unknown",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "award response lost qualifies exact supplied destination and no automatic replay",
+      "expected": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "unknown",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ],
+      "actual": [
+        "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=1265042&awardid=11",
+        0,
+        "unknown",
+        null,
+        "1265042",
+        "invalid-input",
+        [
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "tsdmbet:awardPacket",
+              "action": "getaward",
+              "tid": "1265042",
+              "awardid": "11"
+            },
+            null
+          ]
+        ],
+        [
+          true
+        ]
+      ]
+    },
+    {
+      "name": "foreign, mismatched, duplicate or read-only award routes produce no GET",
+      "expected": [
+        [
+          "invalid-input",
+          "invalid-input",
+          "invalid-input",
+          "invalid-input"
+        ],
+        []
+      ],
+      "actual": [
+        [
+          "invalid-input",
+          "invalid-input",
+          "invalid-input",
+          "invalid-input"
+        ],
+        []
+      ]
+    },
+    {
+      "name": "returned needreply status cannot authorize claim or withdrawal",
+      "expected": [
+        "open",
+        "refused",
+        "needreply",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202762",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "open",
+        "refused",
+        "needreply",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202762",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "returned expired status cannot authorize claim or withdrawal",
+      "expected": [
+        "expired",
+        "refused",
+        "expired",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202762",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "expired",
+        "refused",
+        "expired",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202762",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "returned closed status cannot authorize claim or withdrawal",
+      "expected": [
+        "closed",
+        "refused",
+        "closed",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202756",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "closed",
+        "refused",
+        "closed",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202756",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "returned claimed_password status cannot authorize claim or withdrawal",
+      "expected": [
+        "claimed",
+        "refused",
+        "claimed",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "claimed",
+        "refused",
+        "claimed",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202761",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "returned sender_withdrawn status cannot authorize claim or withdrawal",
+      "expected": [
+        "withdrawn",
+        "refused",
+        "withdrawn",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202753",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "withdrawn",
+        "refused",
+        "withdrawn",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "9202753",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "credited row count may be partial and a mismatched target is rejected",
+      "expected": [
+        false,
+        1,
+        3,
+        "invalid-response",
+        2
+      ],
+      "actual": [
+        false,
+        1,
+        3,
+        "invalid-response",
+        2
+      ]
+    },
+    {
+      "name": "captured native packet marker still needs a fresh open result to qualify claim",
+      "expected": [
+        "thread-packet",
+        "done",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1264928",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1264928"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1264928"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "thread-packet",
+        "done",
+        "refused",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1264928",
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "mod": "viewthread",
+              "tid": "1264928"
+            },
+            null
+          ],
+          [
+            "GET",
+            "/plugin.php",
+            {
+              "id": "hongbao:open",
+              "tid": "1264928"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "daily loss and subsequent missing offer leave attribution unknown",
+      "expected": [
+        "unknown",
+        "daily-unavailable",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ],
+      "actual": [
+        "unknown",
+        "daily-unavailable",
+        [
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ],
+          [
+            "POST",
+            "/plugin.php",
+            {
+              "id": "hongbao:daily"
+            },
+            {
+              "formhash": "f1f2f3f4"
+            }
+          ],
+          [
+            "GET",
+            "/forum.php",
+            {
+              "tsdmapp": "json",
+              "nodoc": "1"
+            },
+            null
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "daily login refusal takes precedence over old claimed data",
+      "expected": [
+        "refused",
+        "login",
+        2
+      ],
+      "actual": [
+        "refused",
+        "login",
+        2
+      ]
+    },
+    {
+      "name": "packaged TypeScript requires approval and distinguishes award arrival",
+      "expected": [
+        "cancelled",
+        "award-arrived",
+        "unknown",
+        [
+          [
+            "GET",
+            true,
+            "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=8"
+          ]
+        ]
+      ],
+      "actual": [
+        "cancelled",
+        "award-arrived",
+        "unknown",
+        [
+          [
+            "GET",
+            true,
+            "https://forum.test/plugin.php?id=tsdmbet:awardPacket&action=getaward&tid=8"
+          ]
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Controlled host transport only",
+    "No deployed requests or account effects"
+  ]
+}

@@ -492,3 +492,25 @@ export type {
   BatchRatingScope, BatchRatingSelection, BatchRatingSettings,
   BatchRatingStepResult, BatchRatingUncertain,
 } from "./forum-client/batch-ratings/types.js";
+
+export { createPacketClient } from "./forum-client/packets/client.js";
+export type {
+  AwardDetails,
+  AwardRecord,
+  DailyPacket,
+  DailyPacketResult,
+  OpenPacket,
+  PacketClientOptions,
+  PacketFailure,
+  PacketForm,
+  PacketHandoff,
+  PacketOpenResult,
+  PacketOperation,
+  PacketPreparation,
+  PacketRecord,
+  PacketRecords,
+  PacketRequest,
+  PacketResult,
+  PacketState,
+  ThreadPacket,
+} from "./forum-client/packets/types.js";
