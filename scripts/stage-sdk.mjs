@@ -10,6 +10,10 @@ const noticeDeclarations = [
     (name) => `forum-client/notice-${name}.d.ts`,
   ),
 ];
+const pokemonDeclarations = [
+  "forum-client/pokemon/client.d.ts",
+  "forum-client/pokemon/types.d.ts",
+];
 const packetDeclarations = [
   "forum-client/packets/client.d.ts",
   "forum-client/packets/types.d.ts",
@@ -44,6 +48,7 @@ const manifest = {
     ...noticeDeclarations,
     ...awardsDeclarations,
     ...packetDeclarations,
+    ...pokemonDeclarations,
     ...creditsDeclarations,
     ...activityDeclarations,
     ...mediaDeclarations,
@@ -86,6 +91,7 @@ const manifest = {
     "docs/credits.md",
     "docs/awards.md",
     "docs/packets.md",
+    "docs/pokemon.md",
     "notices/",
   ],
 };
@@ -136,7 +142,9 @@ copyFileSync(new URL("docs/awards.md", root), new URL("docs/awards.md", stage));
 copyFileSync(new URL("docs/batch-ratings.md", root), new URL("docs/batch-ratings.md", stage));
 copyFileSync(new URL("docs/packets.md", root), new URL("docs/packets.md", stage));
 copyFileSync(new URL("docs/bank.md", root), new URL("docs/bank.md", stage));
+copyFileSync(new URL("docs/pokemon.md", root), new URL("docs/pokemon.md", stage));
 mkdirSync(new URL("forum-client/", stage));
+mkdirSync(new URL("forum-client/pokemon/", stage));
 mkdirSync(new URL("forum-client/packets/", stage));
 mkdirSync(new URL("forum-client/awards/", stage));
 mkdirSync(new URL("forum-client/credits/", stage));
@@ -170,6 +178,7 @@ for (const declaration of [
   ...noticeDeclarations,
   ...awardsDeclarations,
   ...packetDeclarations,
+  ...pokemonDeclarations,
   ...creditsDeclarations,
   ...activityDeclarations,
   ...mediaDeclarations,

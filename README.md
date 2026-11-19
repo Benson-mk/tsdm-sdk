@@ -25,6 +25,7 @@
 - [Check in and manage credits and group membership](docs/credits.md)
 - [Acquire, display and grant medals, titles and backgrounds](docs/awards.md)
 - [Claim and manage red packets](docs/packets.md)
+- [Open a Pokémon session and manage a roster](docs/pokemon.md)
 
 ## Install a local candidate
 

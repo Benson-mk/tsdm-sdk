@@ -523,3 +523,27 @@ export type {
   BankOperation, BankService, BankServicePage, BankServiceResult, BankValues,
   BankWithdrawal, ForumBank,
 } from "./forum-client/bank/types.js";
+
+export { createPokemonClient, type PokemonClient } from "./forum-client/pokemon/client.js";
+export type {
+  PokemonAccount,
+  PokemonBadge,
+  PokemonBootstrapResult,
+  PokemonClientOptions,
+  PokemonConfig,
+  PokemonData,
+  PokemonEquipment,
+  PokemonEvolution,
+  PokemonFailure,
+  PokemonHeal,
+  PokemonInventory,
+  PokemonPet,
+  PokemonPetDetail,
+  PokemonProfile,
+  PokemonRequest,
+  PokemonResult,
+  PokemonSession,
+  PokemonSkills,
+  PokemonTransport,
+  PokemonValue,
+} from "./forum-client/pokemon/types.js";
