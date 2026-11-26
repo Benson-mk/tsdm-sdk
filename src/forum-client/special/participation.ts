@@ -1,4 +1,5 @@
 import { operationURL } from "../account-forms.js";
+import { requiresStructuredLogin } from "../activity-protocol.js";
 import {
   integer,
   noticeHost,
@@ -17,6 +18,7 @@ import {
   structured,
 } from "../posts/forms.js";
 import { resultThread } from "../posts/native.js";
+import { decodeStructuredThread } from "../structured-thread.js";
 
 export type SpecialThreadRequest = PostRequest & { readonly effect: boolean };
 export interface SpecialThreadClientOptions extends Omit<
@@ -504,19 +506,25 @@ export function createSpecialParticipation(
     if ([401, 403, 429].includes(response.response.status))
       return { kind: "refused" };
     if (response.response.status !== 200) return { kind: "invalid-response" };
-    const data = json(response.response.body);
-    if (data?.uid !== undefined && numericId(data.uid) !== session.memberId)
-      return { kind: "session-changed" };
+    const payload = json(response.response.body);
     if (
-      data?.ok === 0 &&
-      !["off", "unknown", "action"].includes(String(data.error))
+      payload?.uid !== undefined &&
+      numericId(payload.uid) !== session.memberId
+    )
+      return { kind: "session-changed" };
+    if (requiresStructuredLogin(payload)) return { kind: "refused" };
+    if (
+      payload?.ok === 0 &&
+      !["off", "unknown", "action"].includes(String(payload.error))
     )
       return { kind: "refused" };
-    if (!data || data.type !== "thread" || data.schema !== 15)
+    if (payload?.type === "thread" && payload.ok !== 1)
+      return { kind: "invalid-response" };
+    const data = decodeStructuredThread(payload);
+    if (!data)
       return { kind: "browser-handoff", destination: source.href };
     const thread = object(data.thread);
     if (
-      data.ok !== 1 ||
       numericId(data.uid) !== session.memberId ||
       positive(thread?.tid) !== selected.threadId ||
       positive(thread?.fid) !== selected.boardId
@@ -672,15 +680,16 @@ export function createSpecialParticipation(
         return { kind: "uncertain" };
       const message = typeof data.message === "string" ? data.message : "";
       const code = typeof data.message_key === "string" ? data.message_key : "";
+      const needsLogin = requiresStructuredLogin(data);
       if (
-        data.login !== 1 &&
+        !needsLogin &&
         action.key === "debate_poll_succeed" &&
         code === "debate_poll_voted"
       )
         return { kind: "already-voted", message };
       if (
         data.ok === 0 ||
-        data.login === 1 ||
+        needsLogin ||
         data.alert === "error" ||
         (action.key === "debate_poll_succeed" && code === "debate_poll_myself")
       )

@@ -20,3 +20,33 @@ archive=dist/tsdm-sdk-0.1.0.tgz
 shasum -a 256 "$archive"
 sh evidence/special-threads/check-candidate.sh "$UPSTREAM" "$archive" "$OUT"
 ```
+
+## Participation compatibility replay (#47)
+
+With Node.js 26 and the locked build dependencies installed (`npm ci --offline`
+when cached), run from the repository root:
+
+```sh
+npm_config_cache="$PWD/dist/npm-cache" npm run pack:sdk
+node scripts/check-installed-special.mjs dist/tsdm-sdk-0.1.0.tgz > dist/issue-47-installed.json
+```
+
+The runner installs the archive in a temporary consumer using offline npm.
+The schema 23 replay uses the same fictional poll and form as the schema 15
+control, changing only the thread envelope version. The runner needs no
+credentials, upstream checkout, network access, or live participation.
+The JSON receipt records the archive and replay digests, expected and observed
+results, and every request's method, destination and effect flag.
+
+Before the fix the schema 23 poll returned `browser-handoff` rather than an
+`action-form`. Both versions now send one POST for an allowed selection and
+still require a matching account, result target and poll acknowledgement.
+Wrong or missing identity, mismatched board or thread, absent or ineligible
+offers, and invalid forms send no effects. A lost or mismatched result remains
+`uncertain` after one dispatch. Reusing the submitted form cannot send again.
+The replay verifies the SDK's acknowledgement handling, not stored votes or
+other live forum state.
+
+An otherwise eligible schema 23 offer does not open a form if `login: 1` or
+`message_key: "to_login"` is present. Either marker in an otherwise matching
+result is a refusal after one dispatch; the submitted form remains consumed.

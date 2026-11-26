@@ -184,23 +184,99 @@ const pollFields = {
   subject,
   message,
 };
-await scenario(
-  "create a poll and observe its choices",
-  [
-    get(`${opening}&${mode}&nodoc=1`, poll),
-    post(`${submit}&${mode}`, pollFields, write),
-    get(
-      `${view}&${mode}&nodoc=1`,
-      page(1, {
-        type: "poll",
-        choices: [{ text: "Amber" }, { text: "Violet" }],
-      }),
-    ),
-  ],
-  { kind: "created", threadType: "poll", post: located },
-  (client) =>
-    create(client, "poll", { kind: "poll", choices: ["Amber", "Violet"] }),
+const pollPage = page(1, {
+  type: "poll",
+  choices: [{ text: "Amber" }, { text: "Violet" }],
+});
+const pollEditor = {
+  ...poll,
+  action: "edit",
+  tid: 42,
+  pid: 101,
+  thread: { tid: 42, special: 1, draft: 0 },
+  subject: { ...poll.subject, value: subject },
+  message: { ...poll.message, value: message, json: 0 },
+  submit: {
+    ...poll.submit,
+    url: `${forum}?mod=post&action=edit&extra=&editsubmit=yes`,
+    fields: {
+      formhash: "fakehash",
+      fid: "7",
+      tid: "42",
+      pid: "101",
+      special: "1",
+    },
+  },
+};
+const pollEditorRead = get(
+  `${forum}?mod=post&action=edit&fid=7&tid=42&pid=101&${mode}&nodoc=1`,
+  pollEditor,
 );
+const newerPoll = { ...pollPage, schema: 23 };
+const omittedPollSource = {
+  ...newerPoll,
+  posts: [
+    {
+      ...newerPoll.posts[0],
+      message: null,
+      message_reason: "",
+      deleted: 0,
+      body_html: `<p>${message}</p>`,
+    },
+  ],
+};
+for (const { name, visible, extra = [], exact = true } of [
+  {
+    name: "create a poll and observe its choices on schema 15",
+    visible: pollPage,
+  },
+  {
+    name: "create a poll and observe its choices on schema 23",
+    visible: newerPoll,
+  },
+  {
+    name: "read the exact stored text in the poll editor on schema 23",
+    visible: omittedPollSource,
+    extra: [pollEditorRead],
+  },
+  {
+    name: "rendered poll text is inconclusive without a matching editor",
+    visible: omittedPollSource,
+    extra: [
+      {
+        ...pollEditorRead,
+        value: {
+          ...pollEditor,
+          message: { ...pollEditor.message, value: `${message}\n` },
+        },
+      },
+    ],
+    exact: false,
+  },
+  {
+    name: "a poll editor cannot substitute for mismatching choices",
+    visible: {
+      ...omittedPollSource,
+      special: { type: "poll", choices: [{ text: "Amber" }] },
+    },
+    exact: false,
+  },
+]) {
+  await scenario(
+    name,
+    [
+      get(`${opening}&${mode}&nodoc=1`, poll),
+      post(`${submit}&${mode}`, pollFields, write),
+      get(`${view}&${mode}&nodoc=1`, visible),
+      ...extra,
+    ],
+    exact
+      ? { kind: "created", threadType: "poll", post: located }
+      : { kind: "uncertain" },
+    (client) =>
+      create(client, "poll", { kind: "poll", choices: ["Amber", "Violet"] }),
+  );
+}
 const bounty = form(3, "reward", {
   state: "new",
   min: 1,
@@ -489,65 +565,174 @@ async function participate(client, target, input) {
   assert.equal(prepared.kind, "action-form");
   return client.submitSpecialAction(prepared.form, input);
 }
+const pollSelection = { choices: ["201", "202"] };
+const pollAcknowledgement = {
+  ...write,
+  message_key: "thread_poll_succeed",
+  message: "",
+};
+for (const schema of [15, 23]) {
+  await scenario(
+    `schema ${schema}: vote on a poll with offered choices`,
+    [
+      get(viewStructured, { ...page(1, pollVote), schema }),
+      post(`${pollAction}&${mode}`, pollPost, pollAcknowledgement),
+    ],
+    { kind: "poll-voted", message: "" },
+    async (client) => {
+      const prepared = await client.prepareSpecialAction(pollTarget);
+      assert.equal(prepared.kind, "action-form", `schema ${schema} poll offer`);
+      assert.deepEqual(prepared.form.choices, [
+        { id: "201", label: "Amber" },
+        { id: "202", label: "Violet" },
+      ]);
+      assert.deepEqual(
+        await client.submitSpecialAction(prepared.form, { choices: ["999"] }),
+        { kind: "invalid-input" },
+      );
+      const result = await client.submitSpecialAction(
+        prepared.form,
+        pollSelection,
+      );
+      assert.deepEqual(
+        await client.submitSpecialAction(prepared.form, pollSelection),
+        { kind: "invalid-input" },
+      );
+      return result;
+    },
+  );
+}
+const newerPollPage = { ...page(1, pollVote), schema: 23 };
 await scenario(
-  "vote on a poll with an offered multiple choice",
+  "no authenticated session prevents poll preparation",
+  [],
+  { kind: "refused" },
+  (_, host) =>
+    createSpecialThreadClient({
+      ...host,
+      session: () => null,
+    }).prepareSpecialAction(pollTarget),
+);
+for (const [description, patch, expected] of [
+  ["guest viewer", { uid: 0 }, { kind: "session-changed" }],
+  ["different viewer", { uid: 32 }, { kind: "session-changed" }],
+  ["missing viewer", { uid: undefined }, { kind: "invalid-response" }],
+  ["login flag on an eligible offer", { login: 1 }, { kind: "refused" }],
   [
-    get(viewStructured, page(1, pollVote)),
-    post(`${pollAction}&${mode}`, pollPost, {
-      ...write,
-      message_key: "thread_poll_succeed",
-      message: "",
-    }),
+    "login message key on an eligible offer",
+    { message_key: "to_login" },
+    { kind: "refused" },
   ],
-  { kind: "poll-voted", message: "" },
-  async (client) => {
-    const prepared = await client.prepareSpecialAction(pollTarget);
-    assert.deepEqual(prepared.form.choices, [
-      { id: "201", label: "Amber" },
-      { id: "202", label: "Violet" },
-    ]);
-    assert.deepEqual(
-      await client.submitSpecialAction(prepared.form, { choices: ["999"] }),
-      { kind: "invalid-input" },
-    );
-    const result = await client.submitSpecialAction(prepared.form, {
-      choices: ["201", "202"],
-    });
-    assert.deepEqual(
-      await client.submitSpecialAction(prepared.form, {
-        choices: ["201", "202"],
+  [
+    "different returned thread",
+    { thread: { ...newerPollPage.thread, tid: 43 } },
+    { kind: "invalid-response" },
+  ],
+  [
+    "different returned board",
+    { thread: { ...newerPollPage.thread, fid: 8 } },
+    { kind: "invalid-response" },
+  ],
+  [
+    "absent offer",
+    { special: null },
+    { kind: "browser-handoff", destination: view },
+  ],
+  [
+    "ineligible offer",
+    { special: { ...pollVote, can_vote: 0 } },
+    { kind: "refused" },
+  ],
+  [
+    "closed poll",
+    { thread: { ...newerPollPage.thread, closed: 1 } },
+    { kind: "refused" },
+  ],
+]) {
+  await scenario(
+    `schema 23: ${description} does not dispatch a poll vote`,
+    [get(viewStructured, { ...newerPollPage, ...patch })],
+    expected,
+    (client) => client.prepareSpecialAction(pollTarget),
+  );
+}
+for (const [description, patch, code] of [
+  ["login flag", { login: 1 }, "thread_poll_succeed"],
+  ["login message key", { message_key: "to_login" }, "to_login"],
+]) {
+  await scenario(
+    `schema 23: ${description} refuses an otherwise matching poll result without retry`,
+    [
+      get(viewStructured, newerPollPage),
+      post(`${pollAction}&${mode}`, pollPost, {
+        ...pollAcknowledgement,
+        ...patch,
       }),
-      { kind: "invalid-input" },
-    );
-    return result;
-  },
-);
-await scenario(
-  "a lost poll vote response sends just once",
-  [
-    get(viewStructured, page(1, pollVote)),
-    post(`${pollAction}&${mode}`, pollPost, undefined, { drop: true }),
-  ],
-  { kind: "uncertain" },
-  (client) => participate(client, pollTarget, { choices: ["201", "202"] }),
-);
-await scenario(
-  "poll form targeting a different thread is invalid",
-  [
-    get(
-      viewStructured,
-      page(1, {
-        ...pollVote,
-        form: {
-          ...pollVote.form,
-          action: pollAction.replace("tid=42", "tid=43"),
-        },
+    ],
+    { kind: "refused", message: "", code },
+    async (client) => {
+      const prepared = await client.prepareSpecialAction(pollTarget);
+      assert.equal(prepared.kind, "action-form");
+      const result = await client.submitSpecialAction(
+        prepared.form,
+        pollSelection,
+      );
+      assert.deepEqual(
+        await client.submitSpecialAction(prepared.form, pollSelection),
+        { kind: "invalid-input" },
+      );
+      return result;
+    },
+  );
+}
+for (const [description, patch] of [
+  ["different thread", { action: pollAction.replace("tid=42", "tid=43") }],
+  ["different board", { action: pollAction.replace("fid=7", "fid=8") }],
+  ["incorrect method", { method: "GET" }],
+]) {
+  await scenario(
+    `schema 23: poll form with ${description} is invalid`,
+    [
+      get(viewStructured, {
+        ...newerPollPage,
+        special: { ...pollVote, form: { ...pollVote.form, ...patch } },
       }),
-    ),
+    ],
+    { kind: "invalid-response" },
+    (client) => client.prepareSpecialAction(pollTarget),
+  );
+}
+for (const [description, receipt, options] of [
+  ["a lost response", undefined, { drop: true }],
+  ["another thread in the receipt", { ...pollAcknowledgement, url: view + "0" }],
+  ["another viewer in the receipt", { ...pollAcknowledgement, uid: 32 }],
+  [
+    "a different acknowledgement key",
+    { ...pollAcknowledgement, message_key: "activity_completion" },
   ],
-  { kind: "invalid-response" },
-  (client) => client.prepareSpecialAction(pollTarget),
-);
+]) {
+  await scenario(
+    `schema 23: ${description} leaves one dispatch uncertain`,
+    [
+      get(viewStructured, newerPollPage),
+      post(`${pollAction}&${mode}`, pollPost, receipt, options),
+    ],
+    { kind: "uncertain" },
+    async (client) => {
+      const prepared = await client.prepareSpecialAction(pollTarget);
+      assert.equal(prepared.kind, "action-form");
+      const result = await client.submitSpecialAction(
+        prepared.form,
+        pollSelection,
+      );
+      assert.deepEqual(
+        await client.submitSpecialAction(prepared.form, pollSelection),
+        { kind: "invalid-input" },
+      );
+      return result;
+    },
+  );
+}
 const activityAction = `${forum}?mod=misc&action=activityapplies&fid=7&tid=42&pid=101`;
 const selectControl = (name, type, value, required, choices = []) => ({
   name,

@@ -68,15 +68,18 @@ export function answer(response: HostResponse): {
   return { data, html, doc, failure };
 }
 
+export function requiresStructuredLogin(data: Record<string, unknown> | null) {
+  return data?.login === 1 || data?.message_key === "to_login";
+}
+
 export function responseIssue(
   response: HostResponse,
   data: Record<string, unknown> | null,
 ) {
-  const code = string(data?.message_key);
   const message = string(data?.message);
   if (response.status === 429 || data?.error === "busy")
     return { kind: "refused", code: "rate-limited", message } as const;
-  if (response.status === 401 || data?.login === 1 || code === "to_login")
+  if (response.status === 401 || requiresStructuredLogin(data))
     return { kind: "refused", code: "login", message } as const;
   if ([403, 404].includes(response.status))
     return { kind: "refused", code: String(response.status), message } as const;

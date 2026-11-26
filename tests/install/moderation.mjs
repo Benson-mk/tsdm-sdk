@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { isDeepStrictEqual } from "node:util";
 import { createModerationClient } from "tsdm-sdk";
 
 const origin = "https://moderation.example";
@@ -98,8 +99,18 @@ async function scenario(name, steps, expected, run) {
     }),
   );
   assert.deepEqual(requests, expectedRequests, name);
-  assert.deepEqual(observed, expected, name);
-  results.push({ name, expected, observed, expectedRequests, requests });
+  if (expected?.kind === "poster-ip" || observed?.kind === "poster-ip")
+    assert.ok(isDeepStrictEqual(observed, expected), name);
+  else assert.deepEqual(observed, expected, name);
+  const recordResult = (result) =>
+    result?.kind === "poster-ip" ? { ...result, ip: "[redacted]" } : result;
+  results.push({
+    name,
+    expected: recordResult(expected),
+    observed: recordResult(observed),
+    expectedRequests,
+    requests,
+  });
 }
 
 const v4 = "tsdmapp=json&tsdmv=4&tsdmform=1&nodoc=1";
@@ -859,37 +870,60 @@ const ipPage = (url) =>
     { allow_viewip: 1 },
     { can: { viewip: 1 }, urls: { viewip: url } },
   );
-await scenario(
-  "reads only the offered poster IP and omits supplied administrator links",
-  [
-    step(threadRead, ipPage("forum.php?" + ipURL)),
-    step(
-      ipURL + "&" + legacy + "&tsdmform=1&nodoc=1",
-      smallForm("getip", {
-        tid: 80,
-        pid: 90,
-        authorid: 55,
-        ip: "203.0.113.8",
-        port: 1234,
-        location: "Documentation network",
-        submit: null,
-        admincp: {
-          ban_ip: "admin.php?action=members&operation=ipban&ip=203.0.113.8",
-        },
-      }),
-    ),
+const scopedIpURL = "mod=topicadmin&action=getip&fid=12&tid=80&pid=90";
+const ipThread23 = {
+  ok: 1,
+  uid: 31,
+  type: "thread",
+  schema: 23,
+  page: 1,
+  thread: { fid: 12, tid: 80, subject: "Fictional thread" },
+  perms: { allow_viewip: 1 },
+  posts: [
+    {
+      pid: 90,
+      authorid: 55,
+      can: { viewip: 1 },
+      urls: { viewip: "forum.php?" + scopedIpURL },
+    },
   ],
-  {
-    kind: "poster-ip",
-    forumId: "12",
-    threadId: "80",
-    postId: "90",
+};
+const ipForm = (overrides = {}) =>
+  smallForm("getip", {
+    tid: 80,
+    pid: 90,
+    authorid: 55,
     ip: "203.0.113.8",
     port: 1234,
     location: "Documentation network",
-  },
-  (client) => client.readPosterIp(sourceTarget),
-);
+    submit: null,
+    admincp: {
+      ban_ip: "admin.php?action=members&operation=ipban&ip=203.0.113.8",
+    },
+    ...overrides,
+  });
+for (const [schema, query, response] of [
+  [21, ipURL, ipPage("forum.php?" + ipURL)],
+  [23, scopedIpURL, json(ipThread23)],
+]) {
+  await scenario(
+    `schema ${schema} reads only the offered poster IP and omits administrator links`,
+    [
+      step(threadRead, response),
+      step(query + "&" + legacy + "&tsdmform=1&nodoc=1", ipForm()),
+    ],
+    {
+      kind: "poster-ip",
+      forumId: "12",
+      threadId: "80",
+      postId: "90",
+      ip: "203.0.113.8",
+      port: 1234,
+      location: "Documentation network",
+    },
+    (client) => client.readPosterIp(sourceTarget),
+  );
+}
 await scenario(
   "poster-IP authority cannot substitute another post",
   [step(threadRead, ipPage("forum.php?mod=topicadmin&action=getip&pid=92"))],
@@ -952,7 +986,7 @@ const attachThread = threadPage(
   { allow_delattach: 1 },
   { can: { edit: 1 }, urls: { edit: "forum.php?" + editURL } },
 );
-const editForm = (aid) =>
+const editForm = (aid, overrides = {}) =>
   json({
     ok: 1,
     uid: 31,
@@ -964,6 +998,7 @@ const editForm = (aid) =>
     pid: 90,
     formhash: "fictional-edit-form",
     attach: { used: [{ aid, filename: "fictional.zip" }], unused: [] },
+    ...overrides,
   });
 const attachmentRead = [
   step(threadRead, attachThread),
@@ -1028,6 +1063,244 @@ await scenario(
   ],
   { kind: "refused", code: "attachment-not-offered" },
   (client) => client.prepareModeration(attachment),
+);
+
+const moderate23 = (perms, post = {}, overrides = {}) =>
+  json({
+    ...ipThread23,
+    perms,
+    posts: [{ ...ipThread23.posts[0], ...post }],
+    ...overrides,
+  });
+const edit23 = { can: { edit: 1 }, urls: { edit: "forum.php?" + editURL } };
+const editReadURL = editURL + "&" + legacy + "&nodoc=1";
+const scopedIpReadURL = scopedIpURL + "&" + legacy + "&tsdmform=1&nodoc=1";
+const denied = { kind: "refused", code: "permission-not-offered" };
+const invalid = { kind: "invalid-response" };
+const login = { kind: "refused", code: "login" };
+const sessionChanged = { kind: "session-changed" };
+const attachmentNotOffered = { kind: "refused", code: "attachment-not-offered" };
+const readIp = (client) => client.readPosterIp(sourceTarget);
+const prepareRepair = (client) => client.prepareModeration(repair);
+const prepareDelete = (client) => client.prepareModeration(attachment);
+const attachmentAuthority23 = step(
+  threadRead,
+  moderate23({ allow_delattach: 1 }, edit23),
+);
+for (const [target, steps, method, code, context] of [
+  [
+    repair,
+    [
+      step(threadRead, moderate23({ allow_repair: 1 })),
+      step(repairURL, repairAck, { method: "POST", effect: true, body: "" }),
+    ],
+    "POST",
+    "admin_repair_succeed",
+    ["Fictional thread"],
+  ],
+  [
+    attachment,
+    [
+      attachmentAuthority23,
+      step(editReadURL, editForm(96)),
+      step(deleteURL, viewerResult({ kind: "page", document: "1" }), {
+        effect: true,
+      }),
+    ],
+    "GET",
+    "deleteattach_succeed",
+    ["Fictional thread", "fictional.zip"],
+  ],
+]) {
+  await scenario(
+    `schema 23 ${target.operation} dispatches only once after explicit approval`,
+    steps,
+    { kind: "acknowledged", target, code },
+    async (client) => {
+      const ready = await client.prepareModeration(target);
+      assert.equal(ready.kind, "moderation-form");
+      assert.equal(ready.form.method, method);
+      assert.deepEqual(ready.form.context, context);
+      assert.deepEqual(await client.submitModeration(ready.form, {}, false), {
+        kind: "not-confirmed",
+      });
+      const result = await client.submitModeration(ready.form, {}, true);
+      assert.deepEqual(await client.submitModeration(ready.form, {}, true), {
+        kind: "invalid-input",
+      });
+      return result;
+    },
+  );
+}
+
+const requireIp = { allow_viewip: 1 };
+const requireDelete = { allow_delattach: 1 };
+const requireRepair = { allow_repair: 1 };
+const withEditURL = (query) => ({
+  ...edit23,
+  urls: { edit: "forum.php?" + query },
+});
+const viewIpPost = ipThread23.posts[0];
+const editAndViewIpPost = {
+  can: { ...viewIpPost.can, ...edit23.can },
+  urls: { ...viewIpPost.urls, ...edit23.urls },
+};
+const withIpURL = (query) => ({ urls: { viewip: "forum.php?" + query } });
+for (const [name, response, expected, run] of [
+  [
+    "repair cannot use a poster-IP or attachment grant",
+    moderate23({ ...requireIp, ...requireDelete }, editAndViewIpPost),
+    denied,
+    prepareRepair,
+  ],
+  [
+    "attachment cannot use a repair or poster-IP grant",
+    moderate23({ ...requireIp, ...requireRepair }, editAndViewIpPost),
+    denied,
+    prepareDelete,
+  ],
+  [
+    "poster-IP cannot use repair or attachment grants",
+    moderate23({ ...requireDelete, ...requireRepair }, editAndViewIpPost),
+    denied,
+    readIp,
+  ],
+  [
+    "repair cannot use a string flag",
+    moderate23({ allow_repair: "1" }),
+    denied,
+    prepareRepair,
+  ],
+  [
+    "poster-IP needs both permission flags",
+    moderate23(requireIp, { can: {} }),
+    denied,
+    readIp,
+  ],
+  [
+    "attachment deletion needs the post edit flag",
+    moderate23(requireDelete, { ...edit23, can: { edit: 0 } }),
+    denied,
+    prepareDelete,
+  ],
+  [
+    "unknown permission structure is not a grant",
+    moderate23([requireRepair]),
+    invalid,
+    prepareRepair,
+  ],
+  [
+    "guest viewer cannot accept a repair grant",
+    moderate23(requireRepair, {}, { uid: 0 }),
+    login,
+    prepareRepair,
+  ],
+  [
+    "another account cannot accept a delete grant",
+    moderate23(requireDelete, edit23, { uid: 33 }),
+    sessionChanged,
+    prepareDelete,
+  ],
+  [
+    "missing viewer cannot accept a poster-IP grant",
+    moderate23(requireIp, {}, { uid: undefined }),
+    invalid,
+    readIp,
+  ],
+  [
+    "repair rejects the wrong returned thread",
+    moderate23(requireRepair, {}, { thread: { ...ipThread23.thread, tid: 81 } }),
+    invalid,
+    prepareRepair,
+  ],
+  [
+    "attachment deletion rejects the wrong returned forum",
+    moderate23(requireDelete, edit23, { thread: { ...ipThread23.thread, fid: 13 } }),
+    invalid,
+    prepareDelete,
+  ],
+  [
+    "attachment deletion rejects a different returned post",
+    moderate23(requireDelete, { ...edit23, pid: 91 }),
+    invalid,
+    prepareDelete,
+  ],
+  [
+    "poster-IP rejects a duplicate returned post",
+    moderate23(requireIp, {}, { posts: [viewIpPost, viewIpPost] }),
+    invalid,
+    readIp,
+  ],
+  [
+    "poster-IP rejects an offered route for the wrong thread",
+    moderate23(requireIp, withIpURL(scopedIpURL.replace("tid=80", "tid=81"))),
+    invalid,
+    readIp,
+  ],
+  [
+    "attachment deletion rejects an offered edit for the wrong post",
+    moderate23(requireDelete, withEditURL(editURL.replace("pid=90", "pid=91"))),
+    invalid,
+    prepareDelete,
+  ],
+  [
+    "poster-IP rejects an ambiguous offered route",
+    moderate23(requireIp, withIpURL(scopedIpURL + "&pid=90")),
+    invalid,
+    readIp,
+  ],
+]) {
+  await scenario(`schema 23 ${name}`, [step(threadRead, response)], expected, run);
+}
+await scenario(
+  "a guest host cannot dispatch repair or read poster IP",
+  [],
+  [login, login],
+  async (client, options) => {
+    options.session = () => null;
+    return [await prepareRepair(client), await readIp(client)];
+  },
+);
+await scenario(
+  "schema 23 attachment approval cannot outlive its moderator session",
+  [attachmentAuthority23, step(editReadURL, editForm(96))],
+  sessionChanged,
+  async (client, options) => {
+    const ready = await prepareDelete(client);
+    assert.equal(ready.kind, "moderation-form");
+    options.session = () => ({ ...session, continuity: "fictional-replacement" });
+    return client.submitModeration(ready.form, {}, true);
+  },
+);
+for (const [name, edit, expected] of [
+  ["wrong editor post", editForm(96, { pid: 91 }), invalid],
+  ["wrong editor action", editForm(96, { action: "newthread" }), invalid],
+  ["unlisted attachment", editForm(97), attachmentNotOffered],
+  [
+    "ambiguous attachment",
+    editForm(96, {
+      attach: {
+        used: [
+          { aid: 96, filename: "first.zip" },
+          { aid: 96, filename: "second.zip" },
+        ],
+      },
+    }),
+    attachmentNotOffered,
+  ],
+]) {
+  await scenario(
+    `schema 23 attachment deletion rejects ${name}`,
+    [attachmentAuthority23, step(editReadURL, edit)],
+    expected,
+    prepareDelete,
+  );
+}
+await scenario(
+  "schema 23 poster-IP rejects a lookup form for a different post",
+  [step(threadRead, json(ipThread23)), step(scopedIpReadURL, ipForm({ pid: 91 }))],
+  invalid,
+  readIp,
 );
 
 const xml = (fragment) => ({
@@ -1250,12 +1523,12 @@ const offeredSplit = step(
       nativeReason,
   ),
 );
-const splitPage = (page, posts) =>
+const splitPage = (page, posts, schema = 21) =>
   json({
     ok: 1,
     uid: 31,
     type: "thread",
-    schema: 21,
+    schema,
     page,
     pages: 2,
     thread: { tid: 80, fid: 12 },
@@ -1286,6 +1559,36 @@ await scenario(
     return client.submitModeration(
       opened.form,
       { subject: "Fictional split", split: "1,2,3" },
+      true,
+    );
+  },
+);
+await scenario(
+  "split does not use a schema 23 thread to qualify the selected floor",
+  [
+    offeredSplit,
+    step(
+      threadRead,
+      splitPage(
+        1,
+        [
+          { pid: 89, position: 1 },
+          { pid: 90, position: 2 },
+        ],
+        23,
+      ),
+    ),
+  ],
+  { kind: "invalid-response" },
+  async (client) => {
+    const opened = await client.prepareModeration({
+      ...splitWhole,
+      splitPages: [1],
+    });
+    assert.equal(opened.kind, "moderation-form");
+    return client.submitModeration(
+      opened.form,
+      { subject: "Fictional split", split: "2" },
       true,
     );
   },

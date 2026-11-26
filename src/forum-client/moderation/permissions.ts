@@ -2,6 +2,7 @@ import { operationURL } from "../account-forms.js";
 import { id, record, rows, string } from "../activity-protocol.js";
 import type { NoticeSession } from "../notice-transport.js";
 import { query } from "../posts/forms.js";
+import { decodeStructuredThread } from "../structured-thread.js";
 import { forum, jsonWrite, type moderationHost, validId } from "./protocol.js";
 import type {
   ModerationFailure,
@@ -38,13 +39,11 @@ async function readThread(
   );
   const reply = await host.exchange(url, owner);
   if (reply.kind !== "answer") return reply;
-  const { data } = reply;
+  const data = decodeStructuredThread(reply.data);
   const thread = record(data?.thread);
   if (
-    data?.type !== "thread" ||
-    data.ok !== 1 ||
+    !data ||
     id(data.uid) !== owner.memberId ||
-    data.schema !== 21 ||
     id(thread?.tid) !== threadId ||
     id(thread?.fid) !== forumId
   )
@@ -62,6 +61,7 @@ async function readThread(
     post,
     posts,
     page: data.page,
+    schema: data.schema,
   };
 }
 function offeredURL(
@@ -286,7 +286,8 @@ export async function qualifySplit(
       page,
     );
     if (read.kind !== "source") return read;
-    if (read.page !== page || !read.posts.length) return invalid;
+    if (read.schema !== 21 || read.page !== page || !read.posts.length)
+      return invalid;
     if (read.perms.allow_split !== 1) return unavailable;
     for (const post of read.posts) {
       const pid = id(post?.pid);

@@ -21,3 +21,31 @@ sh evidence/moderation/check-candidate.sh "$UPSTREAM" "$archive" "$OUTPUT"
 ```
 
 Installed red probes reached the missing public export, individual and batch forms, reply and financial windows, private and immediate effects, receipt classification, the missing packaged guide, split validation and cross-session destination preflight. The final receipt records the corrected behavior.
+
+## Structured-thread compatibility replay (#46)
+
+Use Node.js 26.x and the locked build dependencies (`npm ci --offline` when
+cached). Build a local archive and replay it through a clean offline install:
+
+```sh
+npm_config_cache="$PWD/dist/npm-cache" npm run pack:sdk
+node scripts/check-installed-moderation.mjs dist/tsdm-sdk-0.1.0.tgz > dist/issue-46-installed.json
+```
+
+The schema 23 poster-IP case preserves only the permission and target shape
+from `Carinoasd/tsdm_client` commit `56a3f5ffe6dbd3e959b907ac4074b5d2feceabb0`,
+`test/data/tsdmapp_390/thread_viewip.json` (SHA-256
+`32bddf762b1228ed67ed221279fb89874d0f4b56b58857f464461f5bdd8ce476`).
+All identifiers and response data are fictional. The original capture is not
+needed. The suite checks the returned address in memory, omits administrator
+links, and redacts the address from the JSON receipt.
+
+Before the fix, schema 21 passed but schema 23 stopped before the offered
+lookup. The receipt binds the expected and observed requests and results to
+the installed archive's digest. It also verifies operation-specific grants,
+one approved repair or deletion per form, and refusal without dispatch for
+inadequate authority, session changes, or mismatched targets. The transport
+is in-process; this replay needs no credentials and never contacts the forum.
+The split controls confirm that schema 21 still qualifies observed floors,
+while an equivalent schema 23 response does not dispatch a split. Split was
+not included in the newer-schema permission qualification.

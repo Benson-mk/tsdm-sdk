@@ -7,11 +7,46 @@ import {
   label,
   type Node,
 } from "../html.js";
-import { readable } from "../read-thread.js";
-import { submittedControls, unique } from "./native.js";
 import { object } from "../notice-transport.js";
+import { readable } from "../read-thread.js";
+import { decodeStructuredThreadPost } from "../structured-read.js";
+import type { ContentNode } from "../types.js";
+import { submittedControls, unique } from "./native.js";
 import { formFields, forumRoute, id, text, token, whole } from "./protocol.js";
 import type { PaidThread, PaidThreadTerms } from "./client.js";
+
+function visibleBody(nodes: readonly ContentNode[]): boolean {
+  return nodes.some((node) => {
+    if (node.kind === "text") return Boolean(node.text.trim());
+    if (node.kind === "element") {
+      if (node.attributes.class === "permission-notice") return false;
+      if (node.tag === "img") return true;
+    }
+    return visibleBody(node.children);
+  });
+}
+
+export function readablePaidOpening(
+  row: Record<string, unknown>,
+  origin: string,
+  threadId: string,
+) {
+  if (
+    (row.deleted != null && row.deleted !== 0) ||
+    (row.invisible != null && row.invisible !== 0)
+  )
+    return false;
+  const reason = row.message_reason;
+  const sourceOmitted =
+    row.message == null && (reason === "html" || reason === "bbcodeoff");
+  if (reason != null && reason !== "" && !sourceOmitted) return false;
+  const post = decodeStructuredThreadPost(
+    sourceOmitted ? { ...row, message_reason: "" } : row,
+    origin,
+    threadId,
+  );
+  return post !== null && !post.restriction && visibleBody(post.content);
+}
 
 export function purchaseDestination(
   raw: string,
