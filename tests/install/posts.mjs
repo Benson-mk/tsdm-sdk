@@ -109,7 +109,7 @@ async function exercise({ name, steps, run, expected }) {
     requests,
     steps.map((step) => step.request),
   );
-  assert.deepEqual(observed, expected);
+  assert.deepEqual(observed, expected, name);
   assert.equal(requests.length, steps.length);
   results.push({ name, expected, observed, requests });
 }
@@ -141,16 +141,18 @@ async function openAndSubmit(
   return client.submitPost(prepared.form, input);
 }
 const located = { threadId: "42", postId: "101", url: permalink };
-await exercise({
-  name: "ordinary new thread",
-  steps: [
-    get(editorURL, form),
-    post(submitURL, submitFields, writeResult),
-    read(),
-  ],
-  run: (client) => openAndSubmit(client),
-  expected: { kind: "published", post: located },
-});
+for (const schema of [15, 23]) {
+  await exercise({
+    name: `ordinary new thread with exact stored text on schema ${schema}`,
+    steps: [
+      get(editorURL, form),
+      post(submitURL, submitFields, writeResult),
+      read({ ...visible, schema }),
+    ],
+    run: (client) => openAndSubmit(client),
+    expected: { kind: "published", post: located },
+  });
+}
 const editURL = (pid) =>
   `${origin}/forum.php?mod=post&action=edit&fid=7&tid=42&pid=${pid}&${jsonMode}&nodoc=1`;
 const editSubmit = `${origin}/forum.php?mod=post&action=edit&extra=&editsubmit=yes&${jsonMode}`;
@@ -186,6 +188,125 @@ const edit = (pid, first, content = "Fictitious original content.") => ({
   },
   draft: { field: 1, can_save: 0, publish: 0 },
 });
+const rendered = {
+  pid: 101,
+  first: 1,
+  authorid: 31,
+  invisible: 0,
+  deleted: 0,
+  message_reason: "",
+  body_html: `<p>${source}</p>`,
+};
+const readonly = (posts = [rendered], changes = {}) => ({
+  ...visible,
+  schema: 23,
+  posts,
+  ...changes,
+});
+const exactEditor = {
+  ...edit(101, true, source),
+  message: { ...form.message, value: source, json: 0 },
+};
+const editRead = (value = exactEditor, rest) => get(editURL(101), value, rest);
+for (const { name, page = readonly(), result = writeResult, extra = [], exact } of [
+  {
+    name: "reads the exact editor for absent stored source",
+    extra: [editRead()],
+    exact: true,
+  },
+  {
+    name: "reads the exact editor for an unrestricted source omission",
+    page: readonly([{ ...rendered, message: null, message_reason: "bbcodeoff" }]),
+    extra: [editRead()],
+    exact: true,
+  },
+  {
+    name: "does not use rendered HTML when the editor is unavailable",
+    extra: [editRead({ ok: 0, error: "message" })],
+  },
+  {
+    name: "does not accept different stored editor source",
+    extra: [
+      editRead({
+        ...exactEditor,
+        message: { ...exactEditor.message, value: `${source}\n` },
+      }),
+    ],
+  },
+  {
+    name: "does not accept a different editor subject",
+    extra: [
+      editRead({
+        ...exactEditor,
+        subject: { ...exactEditor.subject, value: `${subject}!` },
+      }),
+    ],
+  },
+  {
+    name: "does not accept an unproven editor account",
+    extra: [editRead({ ...exactEditor, uid: undefined })],
+  },
+  {
+    name: "does not accept another editor account",
+    extra: [editRead({ ...exactEditor, uid: 32 })],
+  },
+  {
+    name: "does not accept a different editor post",
+    extra: [editRead({ ...exactEditor, pid: 102 })],
+  },
+  {
+    name: "does not accept another session's same-account editor",
+    extra: [editRead(exactEditor, { switchSession: true })],
+  },
+  {
+    name: "does not ask the editor for a different thread",
+    page: readonly([rendered], { thread: { ...visible.thread, tid: 99 } }),
+  },
+  {
+    name: "does not ask the editor for another viewer",
+    page: readonly([rendered], { uid: 32 }),
+  },
+  {
+    name: "does not ask the editor about another author",
+    page: readonly([{ ...rendered, authorid: 32 }]),
+  },
+  {
+    name: "does not ask the editor for a deleted post",
+    page: readonly([{ ...rendered, deleted: 1 }]),
+  },
+  {
+    name: "does not ask the editor for a restricted post",
+    page: readonly([{ ...rendered, message_reason: "password" }]),
+  },
+  {
+    name: "does not ask the editor when the thread disallows editing the post",
+    page: readonly([{ ...rendered, can: { edit: 0 } }]),
+  },
+  {
+    name: "does not ask the editor for a duplicated post identity",
+    page: readonly([rendered, { ...rendered, first: 0 }]),
+  },
+  {
+    name: "does not override a conflicting receipt post with an editor read",
+    result: { ...writeResult, url: `${threadURL}&pid=999#pid999` },
+  },
+  {
+    name: "does not override mismatching stored thread source with an editor read",
+    page: readonly([{ ...rendered, message: `${source}\n` }]),
+  },
+]) {
+  await exercise({
+    name: `schema 23: ${name}`,
+    steps: [
+      get(editorURL, form),
+      post(submitURL, submitFields, result),
+      read(page),
+      ...extra,
+    ],
+    run: (client) => openAndSubmit(client),
+    expected: exact ? { kind: "published", post: located } : { kind: "uncertain" },
+  });
+}
 for (const [pid, isFirst] of [
   [101, true],
   [102, false],
@@ -314,34 +435,46 @@ await exercise({
     }),
   expected: { kind: "published", post: located },
 });
-await exercise({
-  name: "schedule a new thread",
-  steps: [
-    get(editorURL, { ...form, cronpublish: cron(0, "") }),
-    post(
-      submitURL,
-      {
-        ...form.submit.fields,
-        usesig: "1",
-        cronpublishdate: date,
+for (const [name, page] of [
+  ["schedule a new thread", draftPage],
+  [
+    "schedule with one editor read for both source and date",
+    readonly([{ ...rendered, message: null }], { thread: draftPage.thread }),
+  ],
+]) {
+  await exercise({
+    name,
+    steps: [
+      get(editorURL, { ...form, cronpublish: cron(0, "") }),
+      post(
+        submitURL,
+        {
+          ...form.submit.fields,
+          usesig: "1",
+          cronpublishdate: date,
+          subject,
+          message: source,
+          cronpublish: "true",
+        },
+        writeResult,
+      ),
+      read(page),
+      get(editURL(101), {
+        ...draftForm,
+        message: exactEditor.message,
+        cronpublish: cron(1, date),
+      }),
+    ],
+    run: (client) =>
+      openAndSubmit(client, target, {
         subject,
         message: source,
-        cronpublish: "true",
-      },
-      writeResult,
-    ),
-    read(draftPage),
-    get(editURL(101), { ...draftForm, cronpublish: cron(1, date) }),
-  ],
-  run: (client) =>
-    openAndSubmit(client, target, {
-      subject,
-      message: source,
-      intent: "schedule",
-      forumDate: date,
-    }),
-  expected: { kind: "scheduled", post: located, forumDate: date },
-});
+        intent: "schedule",
+        forumDate: date,
+      }),
+    expected: { kind: "scheduled", post: located, forumDate: date },
+  });
+}
 await exercise({
   name: "scheduling expired before dispatch and the forum published immediately",
   steps: [

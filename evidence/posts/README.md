@@ -22,3 +22,19 @@ sh evidence/posts/check-candidate.sh "$UPSTREAM" "$archive" "$OUT"
 ```
 
 The preimplementation clean install failed on the missing `createPostClient` export. Subsequent tracer runs exposed missing edit preflight, draft capability, native handling and challenge dispatch, as well as mismatched target and reply-subject fields. The final run verifies those paths through the installed package.
+
+## Exact-text compatibility replay (#48)
+
+With Node 26, build a local archive and run both installed consumers. These tests use only a controlled host transport: no credentials, upstream checkout, or live forum are needed. Each command emits a JSON receipt with the archive checksum, expected and observed results, and request sequences.
+
+```sh
+# With the project's locked build dependencies already installed.
+npm run pack:sdk
+archive=dist/tsdm-sdk-0.1.0.tgz
+out=$(mktemp -d)
+node scripts/check-installed-posts.mjs "$archive" > "$out/posts.json"
+node scripts/check-installed-special.mjs "$archive" > "$out/special.json"
+printf '%s\n' "$out"
+```
+
+The fixtures replay ordinary thread and poll creation with schema 23 and schema 15 readback. Exact source can be verified directly or with one same-session editor GET when the source is absent and the thread has established the target and author. A scheduled draft can use the same GET to verify the retained date. The request traces check one submission, no retries, and no editor read on a contradictory thread, post, author, or poll. Rendered text alone, permission failures, and mismatched editor evidence leave the result uncertain.
