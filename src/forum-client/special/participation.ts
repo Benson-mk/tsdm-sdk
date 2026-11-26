@@ -17,6 +17,7 @@ import {
   structured,
 } from "../posts/forms.js";
 import { resultThread } from "../posts/native.js";
+import { decodeStructuredThread } from "../structured-thread.js";
 
 export type SpecialThreadRequest = PostRequest & { readonly effect: boolean };
 export interface SpecialThreadClientOptions extends Omit<
@@ -504,19 +505,24 @@ export function createSpecialParticipation(
     if ([401, 403, 429].includes(response.response.status))
       return { kind: "refused" };
     if (response.response.status !== 200) return { kind: "invalid-response" };
-    const data = json(response.response.body);
-    if (data?.uid !== undefined && numericId(data.uid) !== session.memberId)
+    const payload = json(response.response.body);
+    if (
+      payload?.uid !== undefined &&
+      numericId(payload.uid) !== session.memberId
+    )
       return { kind: "session-changed" };
     if (
-      data?.ok === 0 &&
-      !["off", "unknown", "action"].includes(String(data.error))
+      payload?.ok === 0 &&
+      !["off", "unknown", "action"].includes(String(payload.error))
     )
       return { kind: "refused" };
-    if (!data || data.type !== "thread" || data.schema !== 15)
+    if (payload?.type === "thread" && payload.ok !== 1)
+      return { kind: "invalid-response" };
+    const data = decodeStructuredThread(payload);
+    if (!data)
       return { kind: "browser-handoff", destination: source.href };
     const thread = object(data.thread);
     if (
-      data.ok !== 1 ||
       numericId(data.uid) !== session.memberId ||
       positive(thread?.tid) !== selected.threadId ||
       positive(thread?.fid) !== selected.boardId
