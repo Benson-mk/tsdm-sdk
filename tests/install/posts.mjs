@@ -208,6 +208,36 @@ const exactEditor = {
   message: { ...form.message, value: source, json: 0 },
 };
 const editRead = (value = exactEditor, rest) => get(editURL(101), value, rest);
+for (const [description, patch] of [
+  ["login flag", { login: 1 }],
+  ["login message key", { message_key: "to_login" }],
+]) {
+  for (const [sourceState, page, extra] of [
+    ["rejects exact thread source", { ...visible, schema: 23, ...patch }, []],
+    [
+      "ends the thread read before opening the editor",
+      readonly([rendered], patch),
+      [],
+    ],
+    [
+      "rejects exact editor source",
+      readonly(),
+      [editRead({ ...exactEditor, ...patch })],
+    ],
+  ]) {
+    await exercise({
+      name: `schema 23: ${description} ${sourceState}`,
+      steps: [
+        get(editorURL, form),
+        post(submitURL, submitFields, writeResult),
+        read(page),
+        ...extra,
+      ],
+      run: (client) => openAndSubmit(client),
+      expected: { kind: "uncertain" },
+    });
+  }
+}
 for (const { name, page = readonly(), result = writeResult, extra = [], exact } of [
   {
     name: "reads the exact editor for absent stored source",

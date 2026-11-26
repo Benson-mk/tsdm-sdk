@@ -61,6 +61,7 @@ async function readThread(
     post,
     posts,
     page: data.page,
+    schema: data.schema,
   };
 }
 function offeredURL(
@@ -285,7 +286,8 @@ export async function qualifySplit(
       page,
     );
     if (read.kind !== "source") return read;
-    if (read.page !== page || !read.posts.length) return invalid;
+    if (read.schema !== 21 || read.page !== page || !read.posts.length)
+      return invalid;
     if (read.perms.allow_split !== 1) return unavailable;
     for (const post of read.posts) {
       const pid = id(post?.pid);

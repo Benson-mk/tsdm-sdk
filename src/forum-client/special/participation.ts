@@ -1,4 +1,5 @@
 import { operationURL } from "../account-forms.js";
+import { requiresStructuredLogin } from "../activity-protocol.js";
 import {
   integer,
   noticeHost,
@@ -511,6 +512,7 @@ export function createSpecialParticipation(
       numericId(payload.uid) !== session.memberId
     )
       return { kind: "session-changed" };
+    if (requiresStructuredLogin(payload)) return { kind: "refused" };
     if (
       payload?.ok === 0 &&
       !["off", "unknown", "action"].includes(String(payload.error))
@@ -678,15 +680,16 @@ export function createSpecialParticipation(
         return { kind: "uncertain" };
       const message = typeof data.message === "string" ? data.message : "";
       const code = typeof data.message_key === "string" ? data.message_key : "";
+      const needsLogin = requiresStructuredLogin(data);
       if (
-        data.login !== 1 &&
+        !needsLogin &&
         action.key === "debate_poll_succeed" &&
         code === "debate_poll_voted"
       )
         return { kind: "already-voted", message };
       if (
         data.ok === 0 ||
-        data.login === 1 ||
+        needsLogin ||
         data.alert === "error" ||
         (action.key === "debate_poll_succeed" && code === "debate_poll_myself")
       )

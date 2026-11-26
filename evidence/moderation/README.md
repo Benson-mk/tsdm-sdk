@@ -46,3 +46,6 @@ the installed archive's digest. It also verifies operation-specific grants,
 one approved repair or deletion per form, and refusal without dispatch for
 inadequate authority, session changes, or mismatched targets. The transport
 is in-process; this replay needs no credentials and never contacts the forum.
+The split controls confirm that schema 21 still qualifies observed floors,
+while an equivalent schema 23 response does not dispatch a split. Split was
+not included in the newer-schema permission qualification.

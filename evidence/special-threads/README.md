@@ -46,3 +46,7 @@ offers, and invalid forms send no effects. A lost or mismatched result remains
 `uncertain` after one dispatch. Reusing the submitted form cannot send again.
 The replay verifies the SDK's acknowledgement handling, not stored votes or
 other live forum state.
+
+An otherwise eligible schema 23 offer does not open a form if `login: 1` or
+`message_key: "to_login"` is present. Either marker in an otherwise matching
+result is a refusal after one dispatch; the submitted form remains consumed.

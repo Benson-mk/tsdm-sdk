@@ -44,6 +44,13 @@ readable exact opening post. Other cases cover schemas 14 and 15, a schema 78
 projection based on upstream `56a3f5f`'s `thread_v78_backgrounds.json`, and
 refusals, already-accessible threads, and inconclusive readbacks.
 
+The correction replay uses the `html` and `bbcodeoff` source-omission shapes
+from the pinned schema 14 guest-thumbnail and attachment fixtures. When
+`need_pay` is zero, readable rendered content on the exact opening post can
+verify the unlock without the raw text. Unknown reasons, locked markup, hidden
+or deleted posts, and empty or placeholder-only bodies still leave the purchase
+uncertain without retrying.
+
 ## Trade-offs
 
 - A dedicated client uses the SDK's existing member-session transport and leaves the historical APIs intact. The host owns authentication, form encoding, manual redirects, redirect provenance and single-attempt transport behavior.

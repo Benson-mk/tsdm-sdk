@@ -1,4 +1,5 @@
 import { noticeHost, numericId, object } from "../notice-transport.js";
+import { requiresStructuredLogin } from "../activity-protocol.js";
 import {
   ajaxText,
   verificationFields,
@@ -485,7 +486,7 @@ export function createPostEditorClient<T>(
       return { kind: "uncertain" };
     const data = json(read.response.body);
     if (
-      data?.login === 1 ||
+      requiresStructuredLogin(data) ||
       (data?.uid !== undefined && numericId(data.uid) !== session.memberId)
     )
       return { kind: "uncertain" };
@@ -594,7 +595,7 @@ export function createPostEditorClient<T>(
           data?.ok !== 1 ||
           data.type !== "post" ||
           data.schema !== 16 ||
-          data.login === 1 ||
+          requiresStructuredLogin(data) ||
           numericId(data.uid) !== session.memberId ||
           data.first !== Number(editor.first) ||
           (messageFormat != null && messageFormat !== 0)

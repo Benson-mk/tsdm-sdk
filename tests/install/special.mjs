@@ -617,6 +617,12 @@ for (const [description, patch, expected] of [
   ["guest viewer", { uid: 0 }, { kind: "session-changed" }],
   ["different viewer", { uid: 32 }, { kind: "session-changed" }],
   ["missing viewer", { uid: undefined }, { kind: "invalid-response" }],
+  ["login flag on an eligible offer", { login: 1 }, { kind: "refused" }],
+  [
+    "login message key on an eligible offer",
+    { message_key: "to_login" },
+    { kind: "refused" },
+  ],
   [
     "different returned thread",
     { thread: { ...newerPollPage.thread, tid: 43 } },
@@ -648,6 +654,35 @@ for (const [description, patch, expected] of [
     [get(viewStructured, { ...newerPollPage, ...patch })],
     expected,
     (client) => client.prepareSpecialAction(pollTarget),
+  );
+}
+for (const [description, patch, code] of [
+  ["login flag", { login: 1 }, "thread_poll_succeed"],
+  ["login message key", { message_key: "to_login" }, "to_login"],
+]) {
+  await scenario(
+    `schema 23: ${description} refuses an otherwise matching poll result without retry`,
+    [
+      get(viewStructured, newerPollPage),
+      post(`${pollAction}&${mode}`, pollPost, {
+        ...pollAcknowledgement,
+        ...patch,
+      }),
+    ],
+    { kind: "refused", message: "", code },
+    async (client) => {
+      const prepared = await client.prepareSpecialAction(pollTarget);
+      assert.equal(prepared.kind, "action-form");
+      const result = await client.submitSpecialAction(
+        prepared.form,
+        pollSelection,
+      );
+      assert.deepEqual(
+        await client.submitSpecialAction(prepared.form, pollSelection),
+        { kind: "invalid-input" },
+      );
+      return result;
+    },
   );
 }
 for (const [description, patch] of [

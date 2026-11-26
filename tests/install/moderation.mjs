@@ -1523,12 +1523,12 @@ const offeredSplit = step(
       nativeReason,
   ),
 );
-const splitPage = (page, posts) =>
+const splitPage = (page, posts, schema = 21) =>
   json({
     ok: 1,
     uid: 31,
     type: "thread",
-    schema: 21,
+    schema,
     page,
     pages: 2,
     thread: { tid: 80, fid: 12 },
@@ -1559,6 +1559,36 @@ await scenario(
     return client.submitModeration(
       opened.form,
       { subject: "Fictional split", split: "1,2,3" },
+      true,
+    );
+  },
+);
+await scenario(
+  "split does not use a schema 23 thread to qualify the selected floor",
+  [
+    offeredSplit,
+    step(
+      threadRead,
+      splitPage(
+        1,
+        [
+          { pid: 89, position: 1 },
+          { pid: 90, position: 2 },
+        ],
+        23,
+      ),
+    ),
+  ],
+  { kind: "invalid-response" },
+  async (client) => {
+    const opened = await client.prepareModeration({
+      ...splitWhole,
+      splitPages: [1],
+    });
+    assert.equal(opened.kind, "moderation-form");
+    return client.submitModeration(
+      opened.form,
+      { subject: "Fictional split", split: "2" },
       true,
     );
   },

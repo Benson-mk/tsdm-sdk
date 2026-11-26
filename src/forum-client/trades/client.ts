@@ -8,7 +8,6 @@ import {
 import { query, sameOrigin, structured } from "../posts/forms.js";
 import { answer } from "../activity-protocol.js";
 import { nativeIdentity } from "../account-forms.js";
-import { decodeStructuredThreadPost } from "../structured-read.js";
 import { decodeStructuredThread } from "../structured-thread.js";
 import {
   nativeOrderCreated,
@@ -25,6 +24,7 @@ import {
   nativePaidThread,
   nativePurchase,
   nativePurchaseSucceeded,
+  readablePaidOpening,
   structuredPurchase,
 } from "./paid.js";
 import {
@@ -274,10 +274,11 @@ export function createTradeClient(options: TradeClientOptions) {
       (pay.need_pay === 1 && opening.message_reason !== "pay")
     )
       return { kind: "invalid-response" };
-    if (pay.need_pay === 0) {
-      const post = decodeStructuredThreadPost(opening, host.origin, threadId);
-      if (!post || post.restriction) return { kind: "invalid-response" };
-    }
+    if (
+      pay.need_pay === 0 &&
+      !readablePaidOpening(opening, host.origin, threadId)
+    )
+      return { kind: "invalid-response" };
     return {
       kind: "paid-thread",
       thread: {

@@ -350,12 +350,59 @@ await scenario(
   { kind: "already-accessible", thread: purchased },
   (client) => client.preparePaidThread("42"),
 );
+const renderedPaid = {
+  pid: 101,
+  first: 1,
+  deleted: 0,
+  invisible: 0,
+  message: null,
+  message_reason: "html",
+  body_html: "<p>Fictitious unlocked content.</p>",
+};
+for (const messageReason of ["html", "bbcodeoff"]) {
+  await scenario(
+    `schema 23: readable ${messageReason} opening post verifies without raw source`,
+    [
+      get(view, { ...locked, schema: 23 }),
+      offerRead(),
+      post(purchasePOST, purchaseFields, acknowledgement),
+      get(view, {
+        ...paid,
+        schema: 23,
+        posts: [{ ...renderedPaid, message_reason: messageReason }],
+      }),
+    ],
+    { kind: "purchased", thread: purchased },
+    confirm,
+  );
+}
 for (const [name, readback, extra] of [
   ["still locked", locked],
   ["unlock without a readable opening post", {
     ...paid,
     posts: [{ pid: 101, first: 1, message_reason: "" }],
   }],
+  ...[
+    ["unknown restriction on a rendered opening", { message_reason: "unknown" }],
+    [
+      "rendered opening with a raw-source contradiction",
+      { message: "Fictitious raw content." },
+    ],
+    [
+      "visible teaser beside locked markup",
+      { body_html: '<p>Teaser</p><div class="locked">Fictitious lock</div>' },
+    ],
+    ["rendered opening with no visible content", { body_html: "<p> </p>" }],
+    [
+      "rendered opening with only hidden content",
+      { body_html: "<p hidden>Fictitious hidden content.</p>" },
+    ],
+    ["invisible opening with renderable HTML", { invisible: -2 }],
+    ["deleted opening with renderable HTML", { deleted: 1 }],
+  ].map(([name, patch]) => [
+    name,
+    { ...paid, posts: [{ ...renderedPaid, ...patch }] },
+  ]),
   ["account continuity changed", paid, { switchSession: true }],
 ]) {
   await scenario(

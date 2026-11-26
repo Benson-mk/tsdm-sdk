@@ -38,3 +38,7 @@ printf '%s\n' "$out"
 ```
 
 The fixtures replay ordinary thread and poll creation with schema 23 and schema 15 readback. Exact source can be verified directly or with one same-session editor GET when the source is absent and the thread has established the target and author. A scheduled draft can use the same GET to verify the retained date. The request traces check one submission, no retries, and no editor read on a contradictory thread, post, author, or poll. Rendered text alone, permission failures, and mismatched editor evidence leave the result uncertain.
+
+Both `login: 1` and `message_key: "to_login"` disqualify an otherwise matching
+thread or editor response. In the thread response, either marker ends the
+readback before any editor GET. Neither marker triggers a resubmission.
