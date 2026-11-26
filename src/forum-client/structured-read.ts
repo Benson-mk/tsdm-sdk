@@ -2,6 +2,7 @@ import { attr, content, descendants, fragmentFrom, hasClass } from "./html.js";
 import { linkedPostVideo } from "./linked-post-video.js";
 import { readable } from "./read-thread.js";
 import { cleanURL, routeFor } from "./routes.js";
+import { decodeStructuredThread } from "./structured-thread.js";
 import type {
   Account,
   Board,
@@ -446,7 +447,11 @@ function board(
   };
 }
 
-function post(row: Payload, origin: string, threadId: string): Post | null {
+export function decodeStructuredThreadPost(
+  row: Payload,
+  origin: string,
+  threadId: string,
+): Post | null {
   const id = positive(row.pid);
   if (!id) return null;
   const bodyHTML = typeof row.body_html === "string" ? row.body_html : "";
@@ -536,7 +541,9 @@ function thread(
     );
   const posts = payload.posts
     .map((row) => object(row))
-    .map((row) => (row ? post(row, requested.url.origin, id) : null));
+    .map((row) =>
+      row ? decodeStructuredThreadPost(row, requested.url.origin, id) : null,
+    );
   if (posts.some((row) => row === null))
     return failure(
       "incomplete",
@@ -730,12 +737,10 @@ export function decodeStructured(
   if (
     (requested.kind === "thread" || requested.kind === "redirect") &&
     (actual.kind === "thread" ||
-      (actual.kind === "redirect" && requested.kind === "redirect")) &&
-    payload.type === "thread" &&
-    typeof payload.schema === "number" &&
-    Number.isSafeInteger(payload.schema) &&
-    payload.schema >= 3
-  )
-    return thread(payload, response, requested, actual, viewer);
+      (actual.kind === "redirect" && requested.kind === "redirect"))
+  ) {
+    const page = decodeStructuredThread(payload);
+    if (page) return thread(page, response, requested, actual, viewer);
+  }
   return null;
 }

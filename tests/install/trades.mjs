@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { createTradeClient } from "tsdm-sdk";
+import { createForumClient, createTradeClient } from "tsdm-sdk";
 
 const origin = "https://trades.example";
 const forum = origin + "/forum.php";
@@ -157,10 +157,8 @@ const offer = {
   hook_fields: [],
   unsupported: [],
 };
-const preparePurchase = [
-  get(view, locked),
-  get(`${dialog}&${mode}&tsdmform=1`, offer),
-];
+const offerRead = (value = offer) => get(`${dialog}&${mode}&tsdmform=1`, value);
+const preparePurchase = [get(view, locked), offerRead()];
 const acknowledgement = {
   type: "result",
   schema: 13,
@@ -175,11 +173,12 @@ const acknowledgement = {
 };
 const purchased = { ...paidThread, access: "accessible", payers: 3 };
 await scenario(
-  "inspect structured terms, decline, then explicitly confirm and observe access",
+  "schema 23: review the schema 17 form, decline, then submit once and verify the unlock",
   [
-    ...preparePurchase,
+    get(view, { ...locked, schema: 23 }),
+    offerRead(),
     post(purchasePOST, purchaseFields, acknowledgement),
-    get(view, paid),
+    get(view, { ...paid, schema: 23 }),
   ],
   { kind: "purchased", thread: purchased },
   async (client) => {
@@ -227,6 +226,157 @@ async function confirm(client) {
   const result = await client.preparePaidThread("42");
   assert.equal(result.kind, "purchase-form");
   return client.confirmPaidThread(result.form, true);
+}
+for (const schema of [14, 15, 78]) {
+  await scenario(
+    `schema ${schema}: prepare and confirm the purchase with a fresh readback`,
+    [
+      get(view, { ...locked, schema }),
+      offerRead(),
+      post(purchasePOST, purchaseFields, acknowledgement),
+      get(view, { ...paid, schema }),
+    ],
+    { kind: "purchased", thread: purchased },
+    confirm,
+  );
+}
+{
+  const requests = [];
+  const client = createForumClient({
+    origin,
+    transport: {
+      async request(url, { fresh }) {
+        assert.equal(fresh, true);
+        requests.push(url);
+        return {
+          url,
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({
+            ok: 1,
+            uid: 31,
+            type: "thread",
+            schema: 78,
+            page: 1,
+            pages: 1,
+            thread: { tid: 42, subject: "Fictitious thread", price: 0, pay: null },
+            posts: [{
+              pid: 101,
+              first: 1,
+              position: 1,
+              background: 1,
+              message_reason: "",
+              message: "Fictitious opening post.",
+              body_html: "<p>Fictitious opening post.</p>",
+            }],
+          }),
+        };
+      },
+    },
+  });
+  const observed = await client.readThread(thread, {
+    representation: "structured",
+  });
+  assert.equal(observed.kind, "thread");
+  assert.equal(observed.thread.id, "42");
+  assert.equal(observed.thread.posts[0].id, "101");
+  assert.equal(requests.length, 1);
+  assert.equal(new URL(requests[0]).searchParams.get("nodoc"), "1");
+  results.push({
+    name: "schema 78: ordinary structured thread read and exact post",
+    observed: { thread: observed.thread.id, post: observed.thread.posts[0].id },
+    requests,
+  });
+}
+for (const [name, owner] of [
+  ["no member session", null],
+  ["only a member ID", { memberId: session.memberId }],
+]) {
+  await scenario(name, [], { kind: "refused" }, (client, options) => {
+    options.session = () => owner;
+    return client.preparePaidThread("42");
+  });
+}
+for (const [name, response, outcome = "invalid-response"] of [
+  ["guest read", { ...locked, uid: 0 }, "session-changed"],
+  ["another member's read", { ...locked, uid: 99 }, "session-changed"],
+  ["read without a viewer ID", { ...locked, uid: undefined }],
+  ["login required despite a matching UID", { ...locked, login: 1 }, "refused"],
+  ["another thread", { ...locked, thread: { ...locked.thread, tid: 99 } }],
+  ["missing purchase offer", { ...locked, thread: { ...locked.thread, pay: undefined } }],
+  ["invalid purchase offer", {
+    ...locked,
+    thread: { ...locked.thread, pay: { ...locked.thread.pay, price: 7 } },
+  }],
+]) {
+  await scenario(
+    `${name} cannot open a purchase form`,
+    [get(view, { ...response, schema: 23 })],
+    { kind: outcome },
+    (client) => client.preparePaidThread("42"),
+  );
+}
+for (const [name, response, expected = { kind: "browser-handoff", destination: thread }] of [
+  ["missing purchase form", { ok: 1, uid: 31 }],
+  ["purchase form with no auth identity", { ...offer, uid: undefined }],
+  ["another member's purchase form", { ...offer, uid: 99 }, { kind: "session-changed" }],
+  ["another thread's purchase form", { ...offer, tid: 99 }],
+  ["invalid purchase action", {
+    ...offer,
+    submit: { ...offer.submit, url: "https://untrusted.example/forum.php" },
+  }],
+]) {
+  await scenario(
+    `${name} cannot dispatch a purchase`,
+    [get(view, { ...locked, schema: 23 }), offerRead(response)],
+    expected,
+    (client) => client.preparePaidThread("42"),
+  );
+}
+await scenario(
+  "a form cannot be confirmed after a same-member session changes",
+  [get(view, { ...locked, schema: 23 }), offerRead()],
+  { kind: "session-changed" },
+  async (client, options) => {
+    const prepared = await client.preparePaidThread("42");
+    assert.equal(prepared.kind, "purchase-form");
+    options.session = () => ({ ...session, continuity: "different-session" });
+    return client.confirmPaidThread(prepared.form, true);
+  },
+);
+await scenario(
+  "already accessible at preparation does not open a form or submit",
+  [get(view, { ...paid, schema: 23 })],
+  { kind: "already-accessible", thread: purchased },
+  (client) => client.preparePaidThread("42"),
+);
+for (const [name, readback, extra] of [
+  ["still locked", locked],
+  ["unlock without a readable opening post", {
+    ...paid,
+    posts: [{ pid: 101, first: 1, message_reason: "" }],
+  }],
+  ["account continuity changed", paid, { switchSession: true }],
+]) {
+  await scenario(
+    `${name} after acknowledgement remains uncertain without a retry`,
+    [
+      get(view, { ...locked, schema: 23 }),
+      offerRead(),
+      post(purchasePOST, purchaseFields, acknowledgement),
+      get(view, { ...readback, schema: 23 }, extra),
+    ],
+    { kind: "uncertain" },
+    async (client) => {
+      const prepared = await client.preparePaidThread("42");
+      assert.equal(prepared.kind, "purchase-form");
+      const outcome = await client.confirmPaidThread(prepared.form, true);
+      assert.deepEqual(await client.confirmPaidThread(prepared.form, true), {
+        kind: "invalid-input",
+      });
+      return outcome;
+    },
+  );
 }
 await scenario(
   "lost paid-thread response remains uncertain without a repeated payment",

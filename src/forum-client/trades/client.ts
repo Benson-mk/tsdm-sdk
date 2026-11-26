@@ -8,6 +8,8 @@ import {
 import { query, sameOrigin, structured } from "../posts/forms.js";
 import { answer } from "../activity-protocol.js";
 import { nativeIdentity } from "../account-forms.js";
+import { decodeStructuredThreadPost } from "../structured-read.js";
+import { decodeStructuredThread } from "../structured-thread.js";
 import {
   nativeOrderCreated,
   orderDetails,
@@ -217,12 +219,19 @@ export function createTradeClient(options: TradeClientOptions) {
     const data = parsed(loaded.response.body);
     if ([401, 403, 404, 429].includes(loaded.response.status))
       return { kind: "refused" };
+    if (
+      data?.login === 1 ||
+      data?.message_key === "to_login" ||
+      (data?.ok === 0 && data.error === "message")
+    )
+      return refusal(data);
     if (data?.uid !== undefined && numericId(data.uid) !== owner.memberId)
       return { kind: "session-changed" };
+    const structuredPage = decodeStructuredThread(data);
     if (
       loaded.response.status === 200 &&
       (!data || typeof data.document === "string") &&
-      !(data?.type === "thread" && [14, 15].includes(Number(data.schema)))
+      !structuredPage
     ) {
       const page = answer(loaded.response);
       const viewer = nativeIdentity(page.html, new URL(url));
@@ -239,24 +248,22 @@ export function createTradeClient(options: TradeClientOptions) {
     }
     if (
       loaded.response.status !== 200 ||
-      !data ||
-      data.ok !== 1 ||
-      data.type !== "thread" ||
-      (data.schema !== 14 && data.schema !== 15) ||
-      numericId(data.uid) !== owner.memberId
+      !structuredPage ||
+      numericId(structuredPage.uid) !== owner.memberId
     )
       return { kind: "invalid-response" };
-    const thread = object(data.thread);
+    const thread = object(structuredPage.thread);
     if (id(thread?.tid) !== threadId) return { kind: "invalid-response" };
     const pay = object(thread?.pay);
     if (thread?.price === 0 && !pay) return { kind: "not-paid-thread" };
-    const openings = Array.isArray(data.posts)
-      ? data.posts.map(object).filter((post) => post?.first === 1)
+    const openings = Array.isArray(structuredPage.posts)
+      ? structuredPage.posts.map(object).filter((post) => post?.first === 1)
       : [];
     const opening = openings.length === 1 ? openings[0] : null;
     const postId = id(opening?.pid);
     const title = text(thread?.subject);
     if (
+      !opening ||
       !postId ||
       !title ||
       !pay ||
@@ -264,10 +271,13 @@ export function createTradeClient(options: TradeClientOptions) {
       pay.price < 1 ||
       (thread?.price !== undefined && thread.price !== pay.price) ||
       (pay.need_pay !== 0 && pay.need_pay !== 1) ||
-      (pay.need_pay === 1 && opening?.message_reason !== "pay") ||
-      (pay.need_pay === 0 && opening?.message_reason === "pay")
+      (pay.need_pay === 1 && opening.message_reason !== "pay")
     )
       return { kind: "invalid-response" };
+    if (pay.need_pay === 0) {
+      const post = decodeStructuredThreadPost(opening, host.origin, threadId);
+      if (!post || post.restriction) return { kind: "invalid-response" };
+    }
     return {
       kind: "paid-thread",
       thread: {
@@ -324,6 +334,7 @@ export function createTradeClient(options: TradeClientOptions) {
       if (
         [401, 403, 404, 429].includes(loaded.response.status) ||
         data?.login === 1 ||
+        data?.message_key === "to_login" ||
         (data?.ok === 0 && data.error === "message")
       )
         return refusal(data);

@@ -23,11 +23,32 @@ sh evidence/trades/check-candidate.sh "$UPSTREAM" "$archive" "$OUTPUT"
 
 The installed red probes reached the missing root export and the missing payment and receipt operations. Later probes caught the unsupported native dialog, absent packaged guide, a nonliteral cash price treated as credit-only, and the pinned structured dialog's nullable post ID. All of those probes pass against the archive above.
 
+## Paid-thread compatibility replay (#45)
+
+This replay builds a local archive from the checkout and installs it offline in
+a clean Node.js 26 consumer. It uses fictional session and form values and an
+in-process transport: it needs no credentials, forum connection, or live purchase.
+With the locked build dependencies installed (`npm ci --offline` when cached),
+run from the repository root:
+
+```sh
+npm_config_cache="$PWD/dist/npm-cache" npm run pack:sdk
+node scripts/check-installed-trades.mjs dist/tsdm-sdk-0.1.0.tgz > dist/issue-45-installed.json
+```
+
+The JSON artifact includes the archive digest and the expected and observed
+results and request sequences. Before the fix, schema 23 failed with
+`invalid-response` before requesting the schema 17 form. The successful replay
+requires exactly one POST, followed by a fresh read with the same session and a
+readable exact opening post. Other cases cover schemas 14 and 15, a schema 78
+projection based on upstream `56a3f5f`'s `thread_v78_backgrounds.json`, and
+refusals, already-accessible threads, and inconclusive readbacks.
+
 ## Trade-offs
 
 - A dedicated client uses the SDK's existing member-session transport and leaves the historical APIs intact. The host owns authentication, form encoding, manual redirects, redirect provenance and single-attempt transport behavior.
 - Preparation returns immutable same-client, same-session handles. Paid-thread confirmation needs literal `true`; trade creation and payment require separate calls. A dispatched handle is consumed even after refusal or response loss, so reconciliation takes a new read or a browser visit. This prevents reusing a handle and leaves independent client instances and deliberate new preparations to the caller.
-- The paid-thread flow recognizes schema 14/15 reads, schema 17 terms and qualified native lock and AJAX layouts. Native confirmation requires the exact opening post and readable content after a positive acknowledgement. Unsupported layouts need the browser, and a native thread with no prior lock receipt cannot establish earlier purchase from the absence of a lock alone.
+- The original paid-thread flow recognized schema 14/15 reads, schema 17 terms and qualified native lock and AJAX layouts. As of #45, ordinary and trade reads share a minimum schema version rather than a version allowlist; each caller still checks the returned evidence it needs. Schema 17 form validation and native layout requirements stay independent. Verification requires a readable exact opening post; absent or restricted content leaves a submitted purchase uncertain. A native thread with no prior lock receipt cannot establish earlier purchase from the absence of a lock alone.
 - Sale mode, shipping and recipient inputs come from the offered controls. The credit-only qualification reads the known literal price block without executing forum scripts. Physical trades with seller-paid freight and virtual goods can proceed. Cash, buyer-paid freight and unsupported controls or price layouts go to the browser. Stock and balance checks use the visible snapshots and the forum still decides at dispatch.
 - Structured creation, a qualified native acknowledgement, and an original manual redirect can identify the new order. Payment requires the exact selected order and structured acknowledgement. Legacy payment redirects, generic pages and lost responses leave the payment uncertain. This favors identifying an applied effect conservatively over more automatic continuations.
 - An original creation receipt provides the order form hash and approved quantity-based amount once. Its status records creation and its credit name is unknown. An existing order instead needs a recognized buyer, credit amount, status and matching payment action. Unknown order layouts need the browser. This supports the pinned client's payment route while preserving a separate preparation step for a selected pre-existing order.
