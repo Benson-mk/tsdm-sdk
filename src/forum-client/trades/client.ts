@@ -6,7 +6,7 @@ import {
   type NoticeSession,
 } from "../notice-transport.js";
 import { query, sameOrigin, structured } from "../posts/forms.js";
-import { answer } from "../activity-protocol.js";
+import { answer, requiresStructuredLogin } from "../activity-protocol.js";
 import { nativeIdentity } from "../account-forms.js";
 import { decodeStructuredThread } from "../structured-thread.js";
 import {
@@ -220,8 +220,7 @@ export function createTradeClient(options: TradeClientOptions) {
     if ([401, 403, 404, 429].includes(loaded.response.status))
       return { kind: "refused" };
     if (
-      data?.login === 1 ||
-      data?.message_key === "to_login" ||
+      requiresStructuredLogin(data) ||
       (data?.ok === 0 && data.error === "message")
     )
       return refusal(data);
@@ -334,8 +333,7 @@ export function createTradeClient(options: TradeClientOptions) {
         return { kind: "session-changed" } as const;
       if (
         [401, 403, 404, 429].includes(loaded.response.status) ||
-        data?.login === 1 ||
-        data?.message_key === "to_login" ||
+        requiresStructuredLogin(data) ||
         (data?.ok === 0 && data.error === "message")
       )
         return refusal(data);
