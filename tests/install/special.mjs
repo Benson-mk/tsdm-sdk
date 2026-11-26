@@ -184,23 +184,99 @@ const pollFields = {
   subject,
   message,
 };
-await scenario(
-  "create a poll and observe its choices",
-  [
-    get(`${opening}&${mode}&nodoc=1`, poll),
-    post(`${submit}&${mode}`, pollFields, write),
-    get(
-      `${view}&${mode}&nodoc=1`,
-      page(1, {
-        type: "poll",
-        choices: [{ text: "Amber" }, { text: "Violet" }],
-      }),
-    ),
-  ],
-  { kind: "created", threadType: "poll", post: located },
-  (client) =>
-    create(client, "poll", { kind: "poll", choices: ["Amber", "Violet"] }),
+const pollPage = page(1, {
+  type: "poll",
+  choices: [{ text: "Amber" }, { text: "Violet" }],
+});
+const pollEditor = {
+  ...poll,
+  action: "edit",
+  tid: 42,
+  pid: 101,
+  thread: { tid: 42, special: 1, draft: 0 },
+  subject: { ...poll.subject, value: subject },
+  message: { ...poll.message, value: message, json: 0 },
+  submit: {
+    ...poll.submit,
+    url: `${forum}?mod=post&action=edit&extra=&editsubmit=yes`,
+    fields: {
+      formhash: "fakehash",
+      fid: "7",
+      tid: "42",
+      pid: "101",
+      special: "1",
+    },
+  },
+};
+const pollEditorRead = get(
+  `${forum}?mod=post&action=edit&fid=7&tid=42&pid=101&${mode}&nodoc=1`,
+  pollEditor,
 );
+const newerPoll = { ...pollPage, schema: 23 };
+const omittedPollSource = {
+  ...newerPoll,
+  posts: [
+    {
+      ...newerPoll.posts[0],
+      message: null,
+      message_reason: "",
+      deleted: 0,
+      body_html: `<p>${message}</p>`,
+    },
+  ],
+};
+for (const { name, visible, extra = [], exact = true } of [
+  {
+    name: "create a poll and observe its choices on schema 15",
+    visible: pollPage,
+  },
+  {
+    name: "create a poll and observe its choices on schema 23",
+    visible: newerPoll,
+  },
+  {
+    name: "read the exact stored text in the poll editor on schema 23",
+    visible: omittedPollSource,
+    extra: [pollEditorRead],
+  },
+  {
+    name: "rendered poll text is inconclusive without a matching editor",
+    visible: omittedPollSource,
+    extra: [
+      {
+        ...pollEditorRead,
+        value: {
+          ...pollEditor,
+          message: { ...pollEditor.message, value: `${message}\n` },
+        },
+      },
+    ],
+    exact: false,
+  },
+  {
+    name: "a poll editor cannot substitute for mismatching choices",
+    visible: {
+      ...omittedPollSource,
+      special: { type: "poll", choices: [{ text: "Amber" }] },
+    },
+    exact: false,
+  },
+]) {
+  await scenario(
+    name,
+    [
+      get(`${opening}&${mode}&nodoc=1`, poll),
+      post(`${submit}&${mode}`, pollFields, write),
+      get(`${view}&${mode}&nodoc=1`, visible),
+      ...extra,
+    ],
+    exact
+      ? { kind: "created", threadType: "poll", post: located }
+      : { kind: "uncertain" },
+    (client) =>
+      create(client, "poll", { kind: "poll", choices: ["Amber", "Violet"] }),
+  );
+}
 const bounty = form(3, "reward", {
   state: "new",
   min: 1,

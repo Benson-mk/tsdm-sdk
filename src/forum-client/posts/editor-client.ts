@@ -7,7 +7,8 @@ import {
   type VerificationField,
 } from "../reply-verification.js";
 import { nativeIdentity } from "../account-forms.js";
-import type { Node } from "../html.js";
+import { descendants, fragmentFrom, hasClass, type Node } from "../html.js";
+import { decodeStructuredThread } from "../structured-thread.js";
 import { writeOutcome } from "./results.js";
 import {
   documentBody,
@@ -463,13 +464,15 @@ export function createPostEditorClient<T>(
     const { destination: location, threadId } = outcome;
     const queryPost = location.searchParams.get("pid");
     const anchorPost = /^#pid([1-9]\d*)$/.exec(location.hash)?.[1];
+    const receiptPost = queryPost ?? anchorPost;
     if (
       (target.kind !== "new-thread" && target.threadId !== threadId) ||
       (queryPost !== null && !positive(queryPost)) ||
+      (location.hash.startsWith("#pid") && !anchorPost) ||
       (queryPost && anchorPost && queryPost !== anchorPost) ||
       (target.kind !== "new-thread" &&
-        (queryPost ?? anchorPost) &&
-        (queryPost ?? anchorPost) !== target.postId)
+        receiptPost &&
+        receiptPost !== target.postId)
     )
       return { kind: "uncertain" };
     let threadURL = `${host.origin}/forum.php?mod=viewthread&tid=${threadId}`;
@@ -480,15 +483,19 @@ export function createPostEditorClient<T>(
     const read = await host.request(structured(threadURL), session);
     if (read.kind !== "response" || read.response.status !== 200)
       return { kind: "uncertain" };
-    const page = json(read.response.body);
-    if (page?.uid !== undefined && numericId(page.uid) !== session.memberId)
+    const data = json(read.response.body);
+    if (
+      data?.login === 1 ||
+      (data?.uid !== undefined && numericId(data.uid) !== session.memberId)
+    )
       return { kind: "uncertain" };
+    const page = decodeStructuredThread(data);
     let postId: string | null;
     let isDraft: boolean;
-    if (page?.type === "thread" && page.schema === 15) {
+    let readEditor: "structured" | "native" | null = null;
+    if (page) {
       const thread = object(page.thread);
       if (
-        page.ok !== 1 ||
         numericId(page.uid) !== session.memberId ||
         positive(thread?.tid) !== threadId ||
         positive(thread?.fid) !== target.boardId
@@ -505,35 +512,55 @@ export function createPostEditorClient<T>(
           thread.displayorder < 0)
       )
         return { kind: "uncertain" };
-      const posts = Array.isArray(page.posts)
-        ? page.posts
-            .map(object)
-            .filter((post) =>
-              target.kind === "edit-reply"
-                ? positive(post?.pid) === target.postId && post?.first === 0
-                : post?.first === 1,
-            )
-        : [];
-      const found = posts.length === 1 ? posts[0] : null;
+      const posts = Array.isArray(page.posts) ? page.posts.map(object) : [];
+      const matching = posts.filter((post) =>
+        target.kind === "edit-reply"
+          ? positive(post?.pid) === target.postId
+          : post?.first === 1,
+      );
+      const found = matching.length === 1 ? matching[0] : null;
       postId = positive(found?.pid);
       if (
-        (editor.first && thread?.subject !== subject) ||
+        !found ||
         !postId ||
         (target.kind !== "new-thread" && postId !== target.postId) ||
-        numericId(found?.authorid) !== session.memberId ||
-        found?.message !== message ||
+        (receiptPost && receiptPost !== postId) ||
+        posts.filter((post) => positive(post?.pid) === postId).length !== 1 ||
+        found.first !== Number(editor.first) ||
+        numericId(found.authorid) !== session.memberId ||
+        (found.deleted != null && found.deleted !== 0) ||
+        (editor.first &&
+          (thread?.subject !== subject || object(thread?.pay)?.need_pay === 1)) ||
         (found.invisible !== 0 &&
-          !(isDraft && (found.invisible === -4 || found.invisible === -3)))
+          !(isDraft && (found.invisible === -4 || found.invisible === -3))) ||
+        (typeof found.body_html === "string" &&
+          descendants(fragmentFrom(found.body_html), (node) =>
+            hasClass(node, "locked"),
+          ).length)
       )
         return { kind: "uncertain" };
-    } else {
-      if (extension) return { kind: "uncertain" };
-      let doc = documentBody(read.response.body, page);
+      const reason = found.message_reason;
+      const missingSource = found.message == null;
       if (
-        !doc &&
-        page?.ok === 0 &&
-        ["off", "action", "unknown"].includes(String(page.error))
-      ) {
+        reason != null &&
+        reason !== "" &&
+        !(missingSource && (reason === "bbcodeoff" || reason === "html"))
+      )
+        return { kind: "uncertain" };
+      if (missingSource) {
+        const canEdit = object(found.can)?.edit;
+        if (canEdit !== undefined && canEdit !== 1)
+          return { kind: "uncertain" };
+        readEditor = "structured";
+      } else if (found.message !== message) return { kind: "uncertain" };
+    } else {
+      if (extension || data?.type === "thread") return { kind: "uncertain" };
+      const unsupported =
+        data?.ok === 0 &&
+        ["off", "action", "unknown"].includes(String(data.error));
+      if (data?.ok === 0 && !unsupported) return { kind: "uncertain" };
+      let doc = documentBody(read.response.body, data);
+      if (!doc && unsupported) {
         const native = await host.request(threadURL, session);
         if (native.kind === "response" && native.response.status === 200)
           doc = documentBody(native.response.body, null);
@@ -545,27 +572,52 @@ export function createPostEditorClient<T>(
       if (observed.moderated) return { kind: "moderation" };
       isDraft = observed.draft;
       postId = observed.postId;
+      if (receiptPost && receiptPost !== postId) return { kind: "uncertain" };
+      readEditor = "native";
+    }
+    const scheduled = isDraft && intent === "schedule" && forumDate !== undefined;
+    if (readEditor || scheduled) {
       const selected = { boardId: target.boardId, threadId, postId };
       const source = editorURL(host.origin, selected);
-      const native = await host.request(source, session);
-      const doc2 =
-        native.kind === "response" &&
-        native.response.status === 200 &&
-        documentBody(native.response.body, null);
-      const stored =
-        doc2 &&
-        memberOf(doc2, source) === session.memberId &&
-        nativeEditor(doc2, source, selected);
+      const structuredRead = readEditor === "structured" || scheduled;
+      const result = await host.request(
+        structuredRead ? structured(source) : source,
+        session,
+      );
+      if (result.kind !== "response" || result.response.status !== 200)
+        return { kind: "uncertain" };
+      let stored: Editor | null;
+      if (structuredRead) {
+        const data = json(result.response.body);
+        const messageFormat = object(data?.message)?.json;
+        if (
+          data?.ok !== 1 ||
+          data.type !== "post" ||
+          data.schema !== 16 ||
+          data.login === 1 ||
+          numericId(data.uid) !== session.memberId ||
+          data.first !== Number(editor.first) ||
+          (messageFormat != null && messageFormat !== 0)
+        )
+          return { kind: "uncertain" };
+        stored = structuredEditor(data, source, selected);
+      } else {
+        const doc = documentBody(result.response.body, null);
+        stored =
+          doc && memberOf(doc, source) === session.memberId
+            ? nativeEditor(doc, source, selected)
+            : null;
+      }
       if (
         !stored ||
         stored.first !== editor.first ||
+        (structuredRead && stored.isDraft !== isDraft) ||
         (editor.first && stored.subject?.value !== subject) ||
-        stored.message.value !== message
+        stored.message.value !== message ||
+        (scheduled && stored.scheduledDate !== forumDate)
       )
         return { kind: "uncertain" };
     }
-    if ((queryPost ?? anchorPost) && (queryPost ?? anchorPost) !== postId)
-      return { kind: "uncertain" };
     const post = {
       threadId,
       postId,
@@ -573,29 +625,7 @@ export function createPostEditorClient<T>(
     };
     if (isDraft) {
       if (intent === "save-draft") return { kind: "draft-saved", post };
-      if (intent === "schedule" && forumDate !== undefined) {
-        const selected = { boardId: target.boardId, postId, threadId };
-        const source = editorURL(host.origin, selected);
-        const result = await host.request(structured(source), session);
-        const scheduled =
-          result.kind === "response" &&
-          result.response.status === 200 &&
-          json(result.response.body);
-        const observed =
-          scheduled &&
-          numericId(scheduled.uid) === session.memberId &&
-          scheduled.type === "post" &&
-          scheduled.schema === 16 &&
-          scheduled.ok === 1 &&
-          structuredEditor(scheduled, source, selected);
-        if (
-          observed &&
-          observed.isDraft &&
-          observed.first &&
-          observed.scheduledDate === forumDate
-        )
-          return { kind: "scheduled", post, forumDate };
-      }
+      if (scheduled) return { kind: "scheduled", post, forumDate };
       return { kind: "uncertain" };
     }
     if (intent === "save-draft") return { kind: "uncertain" };
