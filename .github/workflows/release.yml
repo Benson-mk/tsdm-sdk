@@ -52,6 +52,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          EXPECTED_NOTES_SHA256: ${{ needs.prepare.outputs.notes_sha256 }}
           EXPECTED_SHA256: ${{ needs.prepare.outputs.sha256 }}
           RELEASE_TAG: ${{ github.ref_name }}
           SOURCE_COMMIT: ${{ needs.prepare.outputs.source_commit }}
@@ -69,6 +70,9 @@ jobs:
           checksum=$(sha256sum -- "$archive")
           [[ "${checksum%% *}" == "$EXPECTED_SHA256" ]] ||
             { echo "::error::The tarball does not match the reviewed SHA-256."; exit 1; }
+          notes_checksum=$(sha256sum -- RELEASE_NOTES.md)
+          [[ "${notes_checksum%% *}" == "$EXPECTED_NOTES_SHA256" ]] ||
+            { echo "::error::The notes do not match the reviewed SHA-256."; exit 1; }
           object=$(gh api "repos/$GH_REPO/git/ref/tags/$RELEASE_TAG" --jq '.object')
           for depth in {1..10}; do
             [[ $(jq -r '.type' <<< "$object") == tag ]] || break
@@ -77,8 +81,7 @@ jobs:
           done
           jq -e --arg commit "$SOURCE_COMMIT" '.type == "commit" and .sha == $commit' <<< "$object" > /dev/null ||
             { echo "::error::The remote release tag no longer points to the reviewed commit."; exit 1; }
-          qualification="$GITHUB_SERVER_URL/$GH_REPO/blob/$SOURCE_COMMIT/evidence/release/$version/README.md"
           gh release create "$RELEASE_TAG" "$archive" release.json --repo "$GH_REPO" --verify-tag \
-            --title "tsdm-sdk $version" --generate-notes --notes "[Release qualification]($qualification)"
+            --title "tsdm-sdk $version" --notes-file RELEASE_NOTES.md
           [[ $(gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" --jq '.immutable') == true ]] ||
             { echo "::error::GitHub did not report the published release as immutable."; exit 1; }
