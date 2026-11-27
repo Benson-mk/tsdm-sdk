@@ -12,13 +12,16 @@ import { tmpdir } from "node:os";
 import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-if (process.versions.node.split(".")[0] !== "26" || process.argv.length !== 3) {
+if (process.versions.node.split(".")[0] !== "26" || process.argv.length > 3) {
   throw new Error(
-    "Run with Node.js 26.x: node scripts/check-installed-sdk.mjs <tarball>",
+    "Run with Node.js 26.x: node scripts/check-installed-sdk.mjs [tarball]",
   );
 }
 const root = fileURLToPath(new URL("../", import.meta.url));
-const archive = resolve(process.argv[2]);
+const { version } = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
+const archive = resolve(
+  process.argv[2] ?? join(root, "dist", `tsdm-sdk-${version}.tgz`),
+);
 const fixtureRoot =
   process.env.TSDM_READ_FIXTURES && resolve(process.env.TSDM_READ_FIXTURES);
 const discoveryRoot =
@@ -139,7 +142,7 @@ const packageJson = JSON.parse(
   readFileSync(join(installed, "package.json"), "utf8"),
 );
 assert.equal(packageJson.name, "tsdm-sdk");
-assert.equal(packageJson.version, "0.1.0");
+assert.equal(packageJson.version, version);
 assert.equal(packageJson.private, true);
 assert.equal(packageJson.type, "module");
 assert.equal(packageJson.engines.node, "26.x");

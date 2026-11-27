@@ -1,0 +1,84 @@
+name: Build and approve SDK release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: sdk-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: Prepare a reviewable SDK candidate
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    name: Publish the approved SDK release
+    if: github.repository == 'Benson-mk/tsdm-sdk' && github.event_name == 'push' && github.ref_type == 'tag' && !github.event.deleted
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: github-release
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - name: Confirm owner approval
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ENVIRONMENT_ID: ${{ needs.prepare.outputs.environment_id }}
+        shell: bash
+        run: |
+          gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID/approvals" |
+            jq -e --arg owner "$GITHUB_REPOSITORY_OWNER" --argjson environment "$ENVIRONMENT_ID" '
+              any(.[]; .state == "approved" and
+                (.user.login | ascii_downcase) == ($owner | ascii_downcase) and
+                any(.environments[]?; .id == $environment))
+            ' > /dev/null ||
+            { echo "::error::No owner approval was recorded for this release environment."; exit 1; }
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
+          path: release
+      - name: Verify and publish the approved files
+        working-directory: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          EXPECTED_SHA256: ${{ needs.prepare.outputs.sha256 }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          SOURCE_COMMIT: ${{ needs.prepare.outputs.source_commit }}
+        shell: bash
+        run: |
+          version="${RELEASE_TAG#v}"
+          archive="tsdm-sdk-$version.tgz"
+          release_url="$GITHUB_SERVER_URL/$GH_REPO/releases/download/$RELEASE_TAG"
+          jq -e --arg tag "$RELEASE_TAG" --arg commit "$SOURCE_COMMIT" \
+            --arg filename "$archive" --arg url "$release_url/$archive" --arg digest "$EXPECTED_SHA256" '
+              .name == "tsdm-sdk" and .tag == $tag and ("v" + .version) == $tag and
+              .sourceCommit == $commit and .filename == $filename and .assetUrl == $url and
+              .sha256 == $digest and ($digest | test("^[0-9a-f]{64}$"))
+            ' release.json > /dev/null
+          checksum=$(sha256sum -- "$archive")
+          [[ "${checksum%% *}" == "$EXPECTED_SHA256" ]] ||
+            { echo "::error::The tarball does not match the reviewed SHA-256."; exit 1; }
+          object=$(gh api "repos/$GH_REPO/git/ref/tags/$RELEASE_TAG" --jq '.object')
+          for depth in {1..10}; do
+            [[ $(jq -r '.type' <<< "$object") == tag ]] || break
+            tag_sha=$(jq -er '.sha' <<< "$object")
+            object=$(gh api "repos/$GH_REPO/git/tags/$tag_sha" --jq '.object')
+          done
+          jq -e --arg commit "$SOURCE_COMMIT" '.type == "commit" and .sha == $commit' <<< "$object" > /dev/null ||
+            { echo "::error::The remote release tag no longer points to the reviewed commit."; exit 1; }
+          qualification="$GITHUB_SERVER_URL/$GH_REPO/blob/$SOURCE_COMMIT/evidence/release/$version/README.md"
+          gh release create "$RELEASE_TAG" "$archive" release.json --repo "$GH_REPO" --verify-tag \
+            --title "tsdm-sdk $version" --generate-notes --notes "[Release qualification]($qualification)"
+          [[ $(gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" --jq '.immutable') == true ]] ||
+            { echo "::error::GitHub did not report the published release as immutable."; exit 1; }
