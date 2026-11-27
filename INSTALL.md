@@ -21,3 +21,5 @@ npm ci --engine-strict --cache "$(mktemp -d)"
 ```
 
 Require a successful exit before running the installed code. npm can leave extracted files behind after an integrity failure. For a guest read through the installed SDK, use the [board and thread example](README.md#read-a-public-board-and-open-a-thread).
+
+For maintainers, see [SDK CI and releases](docs/releases.md).

@@ -1,5 +1,6 @@
 {
   "name": "tsdm-sdk-build",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,7 +9,7 @@
   "scripts": {
     "build:sdk": "vite build --config vite.sdk.config.ts && tsc --project tsconfig.sdk.json && node scripts/stage-sdk.mjs",
     "pack:sdk": "npm run build:sdk && npm pack --offline --ignore-scripts ./dist/sdk --pack-destination ./dist",
-    "test:install": "node scripts/check-installed-sdk.mjs dist/tsdm-sdk-0.1.0.tgz",
+    "test:install": "node scripts/check-installed-sdk.mjs",
     "test:rehearsal": "node tests/rehearsal/rehearse.mjs"
   },
   "devDependencies": {

@@ -33,9 +33,10 @@ const activityDeclarations = [
   "forum-client/activity-read-types.d.ts",
   "forum-client/activity-effects.d.ts",
 ];
+const { version } = JSON.parse(readFileSync(new URL("package.json", root), "utf8"));
 const manifest = {
   name: "tsdm-sdk",
-  version: "0.1.0",
+  version,
   description: "Unofficial TypeScript SDK for the TSDM forum",
   license: "MIT",
   private: true,

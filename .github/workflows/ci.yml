@@ -1,0 +1,103 @@
+name: SDK CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+    outputs:
+      artifact_id:
+        value: ${{ jobs.verify.outputs.artifact_id }}
+      environment_id:
+        value: ${{ jobs.verify.outputs.environment_id }}
+      sha256:
+        value: ${{ jobs.verify.outputs.sha256 }}
+      source_commit:
+        value: ${{ jobs.verify.outputs.source_commit }}
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  verify:
+    name: Build and verify the SDK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      environment_id: ${{ steps.policy.outputs.environment_id }}
+      sha256: ${{ steps.prepare.outputs.sha256 }}
+      source_commit: ${{ steps.prepare.outputs.source_commit }}
+    steps:
+      - name: Check release policy
+        if: github.event_name == 'push' && github.ref_type == 'tag'
+        id: policy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          environment_id=$(
+            gh api "repos/$GH_REPO/environments/github-release" |
+              jq -er --arg owner "$GITHUB_REPOSITORY_OWNER" '
+                select(.can_admins_bypass == false and any(.protection_rules[]?;
+                  .type == "required_reviewers" and
+                  (.reviewers | length) == 1 and
+                  .reviewers[0].type == "User" and
+                  (.reviewers[0].reviewer.login | ascii_downcase) == ($owner | ascii_downcase)
+                )).id
+              '
+          ) || { echo "::error::The github-release environment must require the owner and disallow administrator bypass."; exit 1; }
+          printf 'environment_id=%s\n' "$environment_id" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          fetch-depth: ${{ github.ref_type == 'tag' && '0' || '1' }}
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version-file: package.json
+          cache: npm
+      - name: Package and exercise a clean installation
+        shell: bash
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run pack:sdk
+          mkdir -p "$RUNNER_TEMP/sdk"
+          node scripts/check-installed-sdk.mjs > "$RUNNER_TEMP/sdk/install.json"
+      - name: Prepare the SDK artifact
+        id: prepare
+        shell: bash
+        run: |
+          version=$(jq -er '.version' package.json)
+          tag="v$version"
+          [[ "$tag" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]] ||
+            { echo "::error::The SDK version must have the form MAJOR.MINOR.PATCH."; exit 1; }
+          source_commit=$(git rev-parse HEAD)
+          artifact="$RUNNER_TEMP/sdk"
+          archive="tsdm-sdk-$version.tgz"
+          digest=$(jq -er '.sha256' "$artifact/install.json")
+          if [[ "$GITHUB_EVENT_NAME" == push && "$GITHUB_REF" == refs/tags/* ]]; then
+            [[ "$GITHUB_REF" == "refs/tags/$tag" ]] ||
+              { echo "::error::The release tag must match $tag."; exit 1; }
+            git merge-base --is-ancestor "$source_commit" refs/remotes/origin/main ||
+              { echo "::error::The release commit must be on main."; exit 1; }
+            grep -Fq -- "$digest" "evidence/release/$version/README.md" ||
+              { echo "::error::The versioned qualification record must identify the candidate SHA-256."; exit 1; }
+          fi
+          cp "dist/$archive" "$artifact/"
+          jq -n --arg version "$version" --arg tag "$tag" --arg commit "$source_commit" \
+            --arg filename "$archive" --arg sha256 "$digest" \
+            --arg url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/download/$tag/$archive" \
+            '{name:"tsdm-sdk", $version, $tag, sourceCommit:$commit, $filename, $sha256, assetUrl:$url}' \
+            > "$artifact/release.json"
+          printf 'source_commit=%s\nsha256=%s\n' "$source_commit" "$digest" >> "$GITHUB_OUTPUT"
+          printf '### SDK candidate %s\n\n- Commit: `%s`\n- Archive: `%s`\n- SHA-256: `%s`\n' \
+            "$tag" "$source_commit" "$archive" "$digest" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        id: upload
+        with:
+          name: sdk-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/sdk/
+          if-no-files-found: error
+          retention-days: 30
