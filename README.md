@@ -32,18 +32,18 @@
 - [Manage moderator access and forum settings](docs/moderator-settings.md)
 - [Use the administrator API under its own session](docs/admin.md)
 
-## Install version 0.1.0
+## Install version 0.1.1
 
 Use Node.js 26.x and npm. From a new project directory, install the versioned GitHub Release asset and import the ESM entry from `tsdm-sdk`.
 
 ```sh
 npm init -y
-npm install --save-exact --engine-strict https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.0/tsdm-sdk-0.1.0.tgz
+npm install --save-exact --engine-strict https://github.com/Benson-mk/tsdm-sdk/releases/download/v0.1.1/tsdm-sdk-0.1.1.tgz
 ```
 
-The tarball includes TypeScript declarations usable without DOM types, this README, and the notices for bundled `parse5` and `entities`. To build the tarball from the SDK checkout, run `npm ci` and `npm run pack:sdk`. The build writes `dist/tsdm-sdk-0.1.0.tgz`. The installed fixture replay and archive digest are recorded under `evidence/install/` in the SDK repository.
+The tarball includes TypeScript declarations usable without DOM types, this README, and the notices for bundled `parse5` and `entities`. To build the tarball from the SDK checkout, run `npm ci` and `npm run pack:sdk`. The build writes `dist/tsdm-sdk-0.1.1.tgz`. If `0.1.1` is awaiting publication, use the [published releases](https://github.com/Benson-mk/tsdm-sdk/releases) to install an available version.
 
-The immutable release includes `release.json`, which records the release tag, source commit and archive SHA-256. Compare it with `shasum -a 256 tsdm-sdk-0.1.0.tgz` before installing an archived download. Commit the consumer's `package.json` and `package-lock.json` to pin a published release. [Installation and distribution decision](https://github.com/Benson-mk/tsdm-sdk/issues/6#issuecomment-6977558151)
+The immutable release includes `release.json`, which records the release tag, source commit and archive SHA-256. Compare it with `shasum -a 256 tsdm-sdk-0.1.1.tgz` before installing an archived download. Commit the consumer's `package.json` and `package-lock.json` to pin a published release. [Installation and distribution decision](https://github.com/Benson-mk/tsdm-sdk/issues/6#issuecomment-6977558151)
 
 ## License
 
