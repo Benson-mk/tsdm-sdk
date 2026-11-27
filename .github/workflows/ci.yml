@@ -10,6 +10,8 @@ on:
         value: ${{ jobs.verify.outputs.artifact_id }}
       environment_id:
         value: ${{ jobs.verify.outputs.environment_id }}
+      notes_sha256:
+        value: ${{ jobs.verify.outputs.notes_sha256 }}
       sha256:
         value: ${{ jobs.verify.outputs.sha256 }}
       source_commit:
@@ -27,6 +29,7 @@ jobs:
     outputs:
       artifact_id: ${{ steps.upload.outputs.artifact-id }}
       environment_id: ${{ steps.policy.outputs.environment_id }}
+      notes_sha256: ${{ steps.notes.outputs.notes_sha256 }}
       sha256: ${{ steps.prepare.outputs.sha256 }}
       source_commit: ${{ steps.prepare.outputs.source_commit }}
     steps:
@@ -52,12 +55,14 @@ jobs:
           printf 'environment_id=%s\n' "$environment_id" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
-          fetch-depth: ${{ github.ref_type == 'tag' && '0' || '1' }}
+          fetch-depth: ${{ (github.ref_type == 'tag' || github.event_name == 'workflow_dispatch') && '0' || '1' }}
           persist-credentials: false
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: package.json
           cache: npm
+      - name: Rehearse release notes
+        run: node tests/release-notes.mjs
       - name: Package and exercise a clean installation
         shell: bash
         run: |
@@ -94,6 +99,27 @@ jobs:
           printf 'source_commit=%s\nsha256=%s\n' "$source_commit" "$digest" >> "$GITHUB_OUTPUT"
           printf '### SDK candidate %s\n\n- Commit: `%s`\n- Archive: `%s`\n- SHA-256: `%s`\n' \
             "$tag" "$source_commit" "$archive" "$digest" >> "$GITHUB_STEP_SUMMARY"
+      - name: Render release notes before approval
+        if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
+        id: notes
+        shell: bash
+        run: |
+          artifact="$RUNNER_TEMP/sdk"
+          notes="$artifact/RELEASE_NOTES.md"
+          args=()
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+            args+=(--preview)
+          fi
+          node scripts/prepare-release-notes.mjs "$artifact/release.json" "${args[@]}" > "$notes"
+          checksum=$(sha256sum -- "$notes")
+          printf 'notes_sha256=%s\n' "${checksum%% *}" >> "$GITHUB_OUTPUT"
+          {
+            if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+              printf '\nPreview only. Download links require a published release.\n'
+            fi
+            printf '\n---\n\n'
+            cat "$notes"
+          } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         id: upload
         with:
