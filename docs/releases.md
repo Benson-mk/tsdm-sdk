@@ -2,6 +2,8 @@
 
 SDK CI runs for pull requests and pushes to `main`. It builds a tarball with the locked dependencies on Node.js 26, tests a clean install and public imports, and type-checks the installed declarations. Each successful run retains the tarball, `release.json`, and an `install.json` receipt as an Actions artifact for 30 days. CI does not publish to GitHub Releases or npm.
 
+Pull requests also run the installed trades and moderation regression suites against that same tarball. The suites use controlled responses and do not contact the forum. Successful PR artifacts include `trades.json` and `moderation.json` with the tested archive SHA-256 and scenario results.
+
 ## Preview and qualify
 
 1. Bump the SDK version with `npm version <version> --no-git-tag-version`. This updates `package.json` and its lockfile without creating a tag. Update the versioned installation examples in `README.md` and `INSTALL.md`.
@@ -15,6 +17,14 @@ To reproduce the automated package checks locally with Node.js 26:
 npm ci --ignore-scripts --no-audit --no-fund
 npm run pack:sdk
 node scripts/check-installed-sdk.mjs > dist/install.json
+```
+
+After packing, reproduce the PR regression checks with:
+
+```sh
+archive="dist/tsdm-sdk-$(node -p 'require("./package.json").version').tgz"
+node scripts/check-installed-trades.mjs "$archive" > dist/trades.json
+node scripts/check-installed-moderation.mjs "$archive" > dist/moderation.json
 ```
 
 ## Publish from a version tag

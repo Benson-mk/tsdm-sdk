@@ -76,6 +76,16 @@ jobs:
           printf 'source_commit=%s\nsha256=%s\n' "$source_commit" "$digest" >> "$GITHUB_OUTPUT"
           printf '### SDK candidate %s\n\n- Commit: `%s`\n- Archive: `%s`\n- SHA-256: `%s`\n' \
             "$tag" "$source_commit" "$archive" "$digest" >> "$GITHUB_STEP_SUMMARY"
+      - name: Exercise trades and moderation regressions
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          artifact="$RUNNER_TEMP/sdk"
+          archive="$artifact/$(jq -er '.filename' "$artifact/release.json")"
+          for suite in trades moderation; do
+            printf 'Running installed SDK %s checks\n' "$suite"
+            node "scripts/check-installed-$suite.mjs" "$archive" > "$artifact/$suite.json"
+          done
       - name: Render release notes
         if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
         id: notes
