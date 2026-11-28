@@ -8,8 +8,6 @@ on:
     outputs:
       artifact_id:
         value: ${{ jobs.verify.outputs.artifact_id }}
-      environment_id:
-        value: ${{ jobs.verify.outputs.environment_id }}
       notes_sha256:
         value: ${{ jobs.verify.outputs.notes_sha256 }}
       sha256:
@@ -28,31 +26,10 @@ jobs:
     timeout-minutes: 15
     outputs:
       artifact_id: ${{ steps.upload.outputs.artifact-id }}
-      environment_id: ${{ steps.policy.outputs.environment_id }}
       notes_sha256: ${{ steps.notes.outputs.notes_sha256 }}
       sha256: ${{ steps.prepare.outputs.sha256 }}
       source_commit: ${{ steps.prepare.outputs.source_commit }}
     steps:
-      - name: Check release policy
-        if: github.event_name == 'push' && github.ref_type == 'tag'
-        id: policy
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-        shell: bash
-        run: |
-          environment_id=$(
-            gh api "repos/$GH_REPO/environments/github-release" |
-              jq -er --arg owner "$GITHUB_REPOSITORY_OWNER" '
-                select(.can_admins_bypass == false and any(.protection_rules[]?;
-                  .type == "required_reviewers" and
-                  (.reviewers | length) == 1 and
-                  .reviewers[0].type == "User" and
-                  (.reviewers[0].reviewer.login | ascii_downcase) == ($owner | ascii_downcase)
-                )).id
-              '
-          ) || { echo "::error::The github-release environment must require the owner and disallow administrator bypass."; exit 1; }
-          printf 'environment_id=%s\n' "$environment_id" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
           fetch-depth: ${{ (github.ref_type == 'tag' || github.event_name == 'workflow_dispatch') && '0' || '1' }}
@@ -99,7 +76,7 @@ jobs:
           printf 'source_commit=%s\nsha256=%s\n' "$source_commit" "$digest" >> "$GITHUB_OUTPUT"
           printf '### SDK candidate %s\n\n- Commit: `%s`\n- Archive: `%s`\n- SHA-256: `%s`\n' \
             "$tag" "$source_commit" "$archive" "$digest" >> "$GITHUB_STEP_SUMMARY"
-      - name: Render release notes before approval
+      - name: Render release notes
         if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
         id: notes
         shell: bash

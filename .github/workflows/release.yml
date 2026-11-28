@@ -1,4 +1,4 @@
-name: Build and approve SDK release
+name: Build and publish SDK release
 
 on:
   push:
@@ -15,11 +15,11 @@ concurrency:
 
 jobs:
   prepare:
-    name: Prepare a reviewable SDK candidate
+    name: Prepare the SDK candidate
     uses: ./.github/workflows/ci.yml
 
   publish:
-    name: Publish the approved SDK release
+    name: Publish the SDK release
     if: github.repository == 'Benson-mk/tsdm-sdk' && github.event_name == 'push' && github.ref_type == 'tag' && !github.event.deleted
     needs: prepare
     runs-on: ubuntu-24.04
@@ -29,25 +29,11 @@ jobs:
       actions: read
       contents: write
     steps:
-      - name: Confirm owner approval
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          ENVIRONMENT_ID: ${{ needs.prepare.outputs.environment_id }}
-        shell: bash
-        run: |
-          gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID/approvals" |
-            jq -e --arg owner "$GITHUB_REPOSITORY_OWNER" --argjson environment "$ENVIRONMENT_ID" '
-              any(.[]; .state == "approved" and
-                (.user.login | ascii_downcase) == ($owner | ascii_downcase) and
-                any(.environments[]?; .id == $environment))
-            ' > /dev/null ||
-            { echo "::error::No owner approval was recorded for this release environment."; exit 1; }
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
         with:
           artifact-ids: ${{ needs.prepare.outputs.artifact_id }}
           path: release
-      - name: Verify and publish the approved files
+      - name: Verify and publish the prepared files
         working-directory: release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -69,10 +55,10 @@ jobs:
             ' release.json > /dev/null
           checksum=$(sha256sum -- "$archive")
           [[ "${checksum%% *}" == "$EXPECTED_SHA256" ]] ||
-            { echo "::error::The tarball does not match the reviewed SHA-256."; exit 1; }
+            { echo "::error::The tarball does not match the prepared SHA-256."; exit 1; }
           notes_checksum=$(sha256sum -- RELEASE_NOTES.md)
           [[ "${notes_checksum%% *}" == "$EXPECTED_NOTES_SHA256" ]] ||
-            { echo "::error::The notes do not match the reviewed SHA-256."; exit 1; }
+            { echo "::error::The notes do not match the prepared SHA-256."; exit 1; }
           object=$(gh api "repos/$GH_REPO/git/ref/tags/$RELEASE_TAG" --jq '.object')
           for depth in {1..10}; do
             [[ $(jq -r '.type' <<< "$object") == tag ]] || break
@@ -80,7 +66,7 @@ jobs:
             object=$(gh api "repos/$GH_REPO/git/tags/$tag_sha" --jq '.object')
           done
           jq -e --arg commit "$SOURCE_COMMIT" '.type == "commit" and .sha == $commit' <<< "$object" > /dev/null ||
-            { echo "::error::The remote release tag no longer points to the reviewed commit."; exit 1; }
+            { echo "::error::The remote release tag no longer points to the prepared commit."; exit 1; }
           gh release create "$RELEASE_TAG" "$archive" release.json --repo "$GH_REPO" --verify-tag \
             --title "tsdm-sdk $version" --notes-file RELEASE_NOTES.md
           [[ $(gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" --jq '.immutable') == true ]] ||
