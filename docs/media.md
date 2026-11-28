@@ -13,8 +13,26 @@ The SDK's forum transport receives only canonical forum requests. Send them with
 | Smileys                   | `readSmileys()` reads the structured catalogue or falls back to the native script and parses its literal groups and entries. `readSmileyScript()` returns script text for inspection as data. Use `readMedia(item.url)` to retrieve an image.                                                                                                                                                                           |
 | Avatar and media          | `readAvatar(url)` reads an offered avatar and tries `/data/avatar/noavatar.svg` on a forum `404` or `410`. Call it without a URL for the fallback directly. `readMedia(url)` handles supported forum post, album and static media. `delivered` includes the bytes and content type. Use the existing [profile client and avatar editor handoff](profile.md) for the signed `rectavatar` upload and crop field contract. |
 | Restricted attachment     | `downloadAttachment(url)` uses the current member's offered link. A `delivered` result includes bytes and a filename hint when present. A denial or incomplete response has a failure result. A paid attachment can return a `browser-handoff` with the native purchase destination. The browser and user handle the purchase.                                                                                          |
+| Seller-priced attachment  | `inspectPaidAttachment({ threadId, attachmentId })` checks current access or reads the exact native seller quote without buying or downloading. IDs are positive decimal strings.                                                                                                                                                                                                                                        |
 | Credit charge             | A forum redirect to `attachcredit` can return `credit-required`. Loading that URL can deduct credits. Present the effect before asking for approval. Call `confirmAttachmentCredit(offer)` once on approval. `credit-confirmed` carries the forum message and an opaque continuation for `resumeAttachment(resume)`. A lost charge response is `unknown`.                                                               |
 | External storage or media | `external-handoff` contains an HTTPS destination and a credentialless GET contract. Use a separate host client with cookies, authorization, device and app headers, and the forum referrer omitted. Keep redirects manual and assess further destinations independently with the same separation.                                                                                                                       |
+
+### Inspect a seller-priced attachment
+
+Pass the thread and attachment IDs from the forum under the intended
+member's session. The SDK first reads the structured thread for evidence of
+current access. If no matching accessible attachment is established, it can
+read the exact native `attachpay` quote under the same account and session.
+An `offer` returns `attachment`, `amount`, and `creditType` separately; the
+supported native layout explicitly shows 天使币. `already-accessible`
+reports access, not a previous purchase. Missing or unrecognized terms
+return `unknown`; an unsupported native page returns a `browser-handoff`
+with the exact purchase destination. A refusal or session change is a
+separate result.
+
+Inspection uses fresh GETs with `effect: false` and never follows a
+redirect, downloads a file, submits a form, or requests `attachcredit`.
+An offer is not a confirmation, a balance check, or an approval to buy.
 
 ### Players embedded in a post
 
@@ -24,7 +42,7 @@ With Python or curl, read the same thread first. In the visible message HTML, in
 
 [SDK tasks](../README.md#tasks)
 
-The SDK reports `refused` for an explicit denial, `invalid` for unsupported inputs or incomplete reads, and `unknown` when a dispatched effect lacks a qualified acknowledgement. Retain acknowledged picture IDs and inspect the forum after an ambiguous write. The SDK supports existing albums and new public, friends-only, private, or password-protected albums. Use the native form for named-friend lists. A credit continuation can expire and a resumed download will stop if the forum requests another charge. Treat returned bytes and filenames as untrusted input. The host decides how to display, store or open them.
+The SDK reports `refused` for an explicit denial, `invalid` for unsupported inputs or incomplete reads, and `unknown` when a dispatched effect lacks a qualified acknowledgement or attachment terms cannot be established. Retain acknowledged picture IDs and inspect the forum after an ambiguous write. The SDK supports existing albums and new public, friends-only, private, or password-protected albums. Use the native form for named-friend lists. A credit continuation can expire and a resumed download will stop if the forum requests another charge. Treat returned bytes and filenames as untrusted input. The host decides how to display, store or open them.
 
 ## TypeScript
 
@@ -35,8 +53,17 @@ import {
   createMediaClient,
   type MediaClientOptions,
   type MediaFile,
+  type PaidAttachmentInspection,
+  type PaidAttachmentTarget,
   type PostImageForm,
 } from "tsdm-sdk";
+
+export function inspectAttachment(
+  host: MediaClientOptions,
+  attachment: PaidAttachmentTarget,
+): Promise<PaidAttachmentInspection> {
+  return createMediaClient(host).inspectPaidAttachment(attachment);
+}
 
 export async function uploadPostImage(
   host: MediaClientOptions,

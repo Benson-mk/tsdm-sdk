@@ -94,7 +94,7 @@ function attachmentID(
     return null;
   }
 }
-function attachment(url: URL, origin: URL) {
+export function attachment(url: URL, origin: URL) {
   if (
     !forumURL(url.href, origin, "/forum.php") ||
     url.searchParams.get("mod") !== "attachment" ||
@@ -252,7 +252,7 @@ const sameAttachment = (a: AttachmentIdentity, b: AttachmentIdentity) =>
   a.attachmentId === b.attachmentId &&
   (!a.threadId || a.threadId === b.threadId) &&
   (!a.memberId || a.memberId === b.memberId);
-const purchaseHandoff = (url: URL) =>
+export const purchaseHandoff = (url: URL) =>
   ({
     kind: "browser-handoff",
     destination: url.href,

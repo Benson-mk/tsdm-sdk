@@ -42,6 +42,8 @@ export type {
   MediaRequest,
   MediaResponse,
   MediaSession,
+  PaidAttachmentInspection,
+  PaidAttachmentTarget,
   PostImageForm,
   PostImageOpen,
   PostImageUpload,

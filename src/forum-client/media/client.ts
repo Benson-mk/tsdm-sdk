@@ -1,4 +1,5 @@
 import { createAlbums } from "./albums.js";
+import { createPaidAttachmentInspection } from "./paid-attachment.js";
 import { createAttachmentRetrieval } from "./retrieval.js";
 import { createMediaResources } from "./resources.js";
 import { mediaHost } from "./host.js";
@@ -11,6 +12,7 @@ export function createMediaClient(options: MediaClientOptions) {
     ...createUploads(host),
     ...createAlbums(host),
     ...createAttachmentRetrieval(host),
+    ...createPaidAttachmentInspection(host),
     ...createMediaResources(host),
   };
 }

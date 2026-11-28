@@ -136,6 +136,21 @@ export type AttachmentCredit =
   | MediaFailure
   | { kind: "credit-confirmed"; message: string; resume: AttachmentResume };
 
+export interface PaidAttachmentTarget {
+  readonly threadId: string;
+  readonly attachmentId: string;
+}
+export type PaidAttachmentInspection =
+  | MediaFailure
+  | (MediaBrowserHandoff & { reason: "purchase" })
+  | { kind: "already-accessible"; attachment: PaidAttachmentTarget }
+  | {
+      kind: "offer";
+      attachment: PaidAttachmentTarget;
+      amount: number;
+      creditType: "天使币";
+    };
+
 export interface SmileyGroup {
   id: string;
   name: string;

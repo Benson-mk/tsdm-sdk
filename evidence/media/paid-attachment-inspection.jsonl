@@ -1,0 +1,18 @@
+{"archiveSHA256":"977b27d75a0bd609d91e6336b11d80f9e47246a33f1c1bc5862ffc11edb389ef","package":"tsdm-sdk@0.1.1","node":"v26.0.0"}
+{"scenario":"captured post and thread author has access, not proof of purchase","outcome":"already-accessible","requests":[["GET","viewthread",false,true,true,true]],"paymentRequests":0}
+{"scenario":"captured locked thread plus projected native form return exact terms","outcome":"offer","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"schema-23 live projection: attachment absent from structured rows","outcome":"offer","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"two-price controlled variation: second exact target receives only its own quote","outcome":"offer","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"captured structured login refusal stops before native quote","outcome":"refused","requests":[["GET","viewthread",false,true,true,true]],"paymentRequests":0}
+{"scenario":"explicit native HTTP refusal is not a quote","outcome":"refused","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"absent native amount is not zero","outcome":"unknown","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"unknown native credit is not assumed to be 天使币","outcome":"unknown","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"wrong hidden attachment identity cannot supply terms","outcome":"browser-handoff","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"wrong form action thread identity cannot supply terms","outcome":"browser-handoff","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"unsupported native HTML preserves the exact browser handoff","outcome":"browser-handoff","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"native quote without a viewer cannot supply terms","outcome":"browser-handoff","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"unfollowed redirect to attachcredit is never followed","outcome":"browser-handoff","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"same-account re-login during native quote invalidates the response","outcome":"session-changed","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"account switched during structured read is not retried","outcome":"session-changed","requests":[["GET","viewthread",false,true,true,true]],"paymentRequests":0}
+{"scenario":"native quote for another viewer cannot supply terms","outcome":"session-changed","requests":[["GET","viewthread",false,true,true,true],["GET","attachpay",false,true,true,true]],"paymentRequests":0}
+{"scenario":"structured response for another viewer cannot establish access","outcome":"session-changed","requests":[["GET","viewthread",false,true,true,true]],"paymentRequests":0}
